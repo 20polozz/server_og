@@ -1,0 +1,68 @@
+Lang = Lang or {}
+
+Lang['en'] = {
+    general = {
+        lastLocation = 'Last Location',
+        createCharacter = 'Create Character',
+        createCharacter_Motel = 'Create character in the motel',
+    },
+    notification = {
+        playerNotOnline = 'The player is online',
+        needID = 'You must enter a valid ID',
+        alreadyMaxSlot = 'You already have the maximum number of characters',
+        givePlayerSlot = 'You have given a slot to the user, now they have %s slots',
+        removePlayerSlot = 'You have removed a slot from the user, now they have %s slots',
+        notPlayerSlotExtra = 'The player does not have extra slots',
+        playerDefaultSlots = 'The player already has %s default slots',
+        not_login = 'The player is not logged in',
+        not_valid_id = 'You must enter a valid ID',
+        close_session = '^2[TitleMenu]^7 %s has closed the session of %s',
+        no_perms = "You don't have permission to use this command.",
+    },
+    commands = {
+        logout = 'logout', -- Command to log out
+        logout_help = 'Log out of the server (Only Staff)',
+        giveslot = 'giveslot', -- Command to give an extra slot to a player
+        giveslot_help = 'Give an extra slot to a player (Only Staff)',
+        removeslot = 'removeslot', -- Command to remove an extra slot from a player
+        removeslot_help = 'Remove an extra slot from a player (Only Staff)',
+        playerID = 'Player ID',
+    },
+    nui = {
+        loading = 'Loading your characters',
+        access = 'Access',
+        play = 'Play',
+        back = 'Back',
+        bank = 'Bank',
+        continue = 'Continue',
+        male = 'Male',
+        female = 'Female',
+        name = 'Name',
+        name_des = 'Enter your name',
+        last_name_desc = 'Enter your last name',
+        last_name = 'Last Name',
+        rules = 'Rules',
+        general_rules = 'General Rules',
+        ilegal_rules = 'Illegal Rules',
+        aval_soon = 'Section available Soon',
+        controls = 'Controls',
+        about = 'About Us',
+        store = 'Origen Store',
+        birthday = 'Birthday',
+        birthday_input = 'DD/MM/YYYY',
+        acopation = 'Occupation',
+        country = 'Nationality',
+        nationality = 'Nationality',
+        locked = 'slot locked',
+        slot = 'slot',
+        choose_slot = 'Choose a slot',
+        all_ready = 'Ready!!',
+        choose_spawn = 'Choose the point where you want to spawn',
+        unlock_slot = 'You have unlocked a slot',
+        unlock_s = 'Slot unlocked',
+        creating_character = 'Creating character',
+        spawn_here = 'Spawn Here',
+        buy_property = 'Acquire this property',
+        loanding_ubi = 'Loading your location',
+    } 
+}

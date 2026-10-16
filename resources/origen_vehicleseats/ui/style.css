@@ -1,0 +1,1045 @@
+/* ══ origen_vehicleseats · el CREADOR DE ASIENTOS en formato RIEL ════════
+
+   El creador se abre sobre el coche (con /seatcreator o desde la gestión
+   del admin) y hay que ver el coche mientras se coloca el asiento: por eso
+   es un menú lateral, como el resto del servidor, y no una ventana en medio.
+   Dos piezas despegadas del canto derecho, la columna a la izquierda y el
+   riel de 64 px pegado al borde, de arriba abajo. Sin velo.
+
+   Medidas, las del inventario y las mascotas (skill origen-riel): columna
+   clamp(420px, 31vw, 548px), riel de 64, hueco entre las dos = aire al canto,
+   despegadas 1,2vh del canto y 1,4vh arriba y abajo.
+
+   Piel pegatina (skill origen-pegatina): panel #c4c6ca, piezas #dcdde0,
+   canto negro fino y sombra dura, rosa #d81b55 con tinta NEGRA, nada
+   inclinado. Nación es esto mismo en naranja: lo repinta la marca (el trozo
+   «ORIGEN · marca» del index.html), aquí no se escribe.
+
+   Rótulos en Barlow Condensed cursiva 800, texto en Barlow 500, cifras en
+   Oxanium 800 con tabular-nums (al mover el gizmo no bailan de sitio).
+
+   Las fuentes van en el <link> del index.html, nunca en un @import. Nada de
+   backdrop-filter, :has() ni color-mix() (el CEF 103 no los tiene). Los vh
+   van divididos por --ogn-escala: por encima de 1080p el <body> ya va
+   escalado entero.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Las medidas del riel, las del inventario. */
+    --va-riel: 64px;
+    --va-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --va-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --va-hueco: var(--va-margen-x);
+    --va-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* La pegatina. */
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-pieza-hi: #f1f1ee;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-tinta-3: #55555c;
+    --peg-tinta-4: #73737c;
+    --peg-rosa: #d81b55;
+    --peg-rosa-hi: #df2f63;
+    --peg-rosa-texto: #b3123f;
+    --peg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-anillo: inset 0 0 0 1.5px #000;
+    --peg-elegido: inset 0 0 0 2px #d81b55, 3px 3px 0 #d81b55;
+
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --texto: "Barlow", "Segoe UI", sans-serif;
+    --cifra: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /* La BARRA DE ABAJO: copia de origen_map/kit/barra-abajo.css (esta
+       página es HTML a pelo). Si cambia una medida allí, cambia aquí. La
+       unidad vale 1 px a 1920x1080 y encoge en pantallas más estrechas. */
+    --bab-u: min(calc(100vh / var(--ogn-escala, 1) / 1080), calc(100vw / var(--ogn-escala, 1) / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-placa: calc(var(--bab-u) * 28);
+    --bab-placa-radio: calc(var(--bab-u) * 8);
+    --bab-placa-icono: calc(var(--bab-u) * 15);
+    --bab-titulo: calc(var(--bab-u) * 20);
+    --bab-titulo-max: calc(var(--bab-u) * 260);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    background: transparent !important;
+}
+
+body {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    font-family: var(--texto);
+    color: var(--peg-tinta);
+    user-select: none;
+}
+
+:where(body) :where(button, input, select, textarea) {
+    font-family: inherit;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/*  El nombre del riel según el servidor: «Origen Asientos» o «Nación
+    Asientos» (<html data-marca>, lo pone el trozo de marca). */
+.solo-nacion { display: none; }
+html[data-marca="nacion"] .solo-nacion { display: inline; }
+html[data-marca="nacion"] .solo-origen { display: none; }
+
+/* ── El armazón ──────────────────────────────────────────────────────────
+   fixed y no absolute (absolute flota en medio de la pantalla). Entra
+   deslizándose desde la derecha. El display lo pone script.js. */
+#creator-app.va {
+    position: fixed;
+    top: var(--va-margen-y);
+    right: var(--va-margen-x);
+    bottom: var(--va-margen-y);
+    z-index: 10;
+    align-items: stretch;
+    gap: var(--va-hueco);
+    pointer-events: none;
+}
+
+.va-col,
+.riel {
+    pointer-events: auto;
+    transform: translateX(calc(100% + var(--va-margen-x) + var(--va-riel) + var(--va-hueco) + 8px));
+    opacity: 0;
+    transition: transform 0.26s var(--va-ease), opacity 0.2s ease;
+}
+
+.riel {
+    transform: translateX(calc(100% + var(--va-margen-x) + 8px));
+}
+
+.va.esta-dentro .va-col,
+.va.esta-dentro .riel {
+    transform: none;
+    opacity: 1;
+}
+
+/*  Con el gizmo moviendo el asiento, la columna se aparta para dejar ver el
+    coche entero; el riel se queda y las teclas salen abajo. Sin ratón (lo
+    tiene el gizmo), así que nada de la página se puede pulsar. */
+.va.colocando .va-col {
+    transform: translateX(calc(100% + var(--va-riel) + var(--va-hueco) + var(--va-margen-x) + 8px));
+    opacity: 0;
+}
+
+.va.colocando .va-col,
+.va.colocando .riel {
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .va-col,
+    .riel {
+        transition: opacity 0.15s ease;
+    }
+}
+
+/*  Los iconos de Iconify llegan como <svg class="iconify">: tamaño por em. */
+.iconify {
+    flex: none;
+    width: 1em;
+    height: 1em;
+}
+
+/* ══ LA COLUMNA ══════════════════════════════════════════════════════════ */
+.va-col {
+    flex: none;
+    width: clamp(420px, 31vw, 548px);
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+/* ── Cabecera ────────────────────────────────────────────────────────── */
+.va-cab {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px 16px;
+}
+
+/*  El filete rosa macizo bajo la cabecera. */
+.va-cab::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+/*  La placa: rosa, icono negro, un pelo girada. */
+.va-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    transform: rotate(-5deg);
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    color: #000;
+    font-size: 24px;
+}
+
+.va-cab__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.va-cab__k {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--peg-rosa-texto);
+}
+
+.va-cab__t {
+    margin-top: 3px;
+    padding-right: 4px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.va-cab__r {
+    margin-top: 5px;
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-3);
+}
+
+.va-cab__r b {
+    font-family: var(--cifra);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--peg-tinta);
+}
+
+/* ── Cuerpo: lo único que se desplaza ────────────────────────────────────
+   Relleno de sobra a la derecha y abajo: es el aire de la sombra dura de
+   cada pieza, que el recorte de la columna cortaría. */
+.va-cuerpo {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 18px 20px 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.va-cuerpo::-webkit-scrollbar {
+    width: 6px;
+}
+
+.va-cuerpo::-webkit-scrollbar-track {
+    margin: 10px 0;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.va-cuerpo::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--peg-tinta);
+}
+
+.va-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/*  Rótulo de sección: el texto y un filete rosa macizo hasta el final. */
+.va-rotulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.va-rotulo__t {
+    flex: none;
+    max-width: 75%;
+    padding-right: 3px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.va-regla {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+/* ── La lista de asientos ────────────────────────────────────────────── */
+.seats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 8px 8px 8px 8px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-tinta);
+    cursor: pointer;
+    transition: box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.list-item:hover {
+    background: var(--peg-pieza-hi);
+}
+
+.list-item:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+/*  El elegido: la misma pieza con el anillo y la sombra en rosa, y la chapa
+    del número en rosa con tinta negra. */
+.list-item.active,
+.list-item.active:active {
+    transform: none;
+    box-shadow: var(--peg-elegido);
+}
+
+/*  La chapa del número: negra con la cifra blanca. */
+.item-num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--peg-tinta);
+    font-family: var(--cifra);
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.list-item.active .item-num {
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-anillo);
+    color: #000;
+}
+
+.item-left {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item-title {
+    padding-right: 3px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-sub {
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.25;
+    color: var(--peg-tinta-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-actions {
+    flex: none;
+    display: flex;
+}
+
+/*  Quitar: control cuadrado de pieza; encima, rosa con tinta negra. */
+.action-icon {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-tinta);
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+
+.action-icon:hover {
+    background: var(--peg-rosa);
+    color: #000;
+}
+
+.action-icon:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+/*  Sin asientos: caja de papel con su raya, no negra. */
+.empty-inline {
+    padding: 22px 18px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-anillo);
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--peg-tinta-3);
+}
+
+.empty-inline b {
+    display: block;
+    margin-bottom: 4px;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.06em;
+    color: var(--peg-tinta);
+}
+
+/* ── La edición ──────────────────────────────────────────────────────── */
+.va-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.va-campo__k {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-2);
+}
+
+.va-campo input,
+.va-campo select {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--peg-tinta);
+    user-select: text;
+    transition: box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.va-campo input::placeholder {
+    color: var(--peg-tinta-4);
+    font-weight: 500;
+}
+
+.va-campo input:focus,
+.va-campo select:focus {
+    background: var(--peg-pieza-hi);
+    box-shadow: inset 0 0 0 2px var(--peg-rosa), 2px 2px 0 #000;
+}
+
+/*  El desplegable: la flecha dibujada en negro a la derecha. */
+.va-campo select {
+    padding-right: 38px;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+}
+
+.va-campo select option {
+    background: var(--peg-pieza);
+    color: var(--peg-tinta);
+    font-family: var(--texto);
+    font-size: 15px;
+}
+
+.va-dos {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+}
+
+/*  Posición y giro: seis chapas en tres columnas, la cifra arriba. */
+.va-datos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.va-dato {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 6px 7px;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-anillo);
+}
+
+.va-dato b {
+    font-family: var(--cifra);
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    color: var(--peg-tinta);
+}
+
+.va-dato i {
+    font-family: var(--cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-3);
+}
+
+/*  Opción que se enciende: fila de pieza con su interruptor. */
+.va-opcion {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 12px 10px 14px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    cursor: pointer;
+}
+
+.va-opcion:hover {
+    background: var(--peg-pieza-hi);
+}
+
+.va-opcion__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.va-opcion__t {
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+
+.va-opcion__d {
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--peg-tinta-2);
+}
+
+/*  El interruptor: pista de pieza con anillo y bola negra; encendido, la
+    pista rosa y la bola a la derecha. */
+.checkbox {
+    flex: none;
+    position: relative;
+    width: 46px;
+    height: 26px;
+    border-radius: 999px;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-anillo);
+    transition: background 0.16s ease;
+}
+
+.checkbox::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--peg-tinta);
+    transition: transform 0.18s var(--va-ease);
+}
+
+.checkbox:checked {
+    background: var(--peg-rosa);
+}
+
+.checkbox:checked::after {
+    transform: translateX(20px);
+}
+
+/* ── Botones ─────────────────────────────────────────────────────────── */
+.va-btn {
+    flex: 1;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 46px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 11px;
+    outline: none;
+    cursor: pointer;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--peg-tinta);
+    transition: background 0.12s ease;
+}
+
+.va-btn > span {
+    padding-right: 2px;
+}
+
+.va-btn .iconify {
+    font-size: 19px;
+}
+
+.va-btn:hover {
+    background: var(--peg-pieza-hi);
+}
+
+.va-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+.va-btn--rosa {
+    background: var(--peg-rosa);
+    color: #000;
+}
+
+.va-btn--rosa:hover {
+    background: var(--peg-rosa-hi);
+}
+
+.va-btn--ancho {
+    flex: none;
+    width: 100%;
+}
+
+.va-btn__ico {
+    display: inline-flex;
+}
+
+/*  «Cerrar» con /seatcreator; «Volver» si se abrió desde la gestión. */
+.va-solo-volver { display: none; }
+.va.desde-gestion .va-solo-volver { display: inline-flex; }
+.va.desde-gestion .va-solo-cerrar { display: none; }
+
+/* ── El aviso: en la columna, sobre el pie, sin velo ─────────────────── */
+.va-aviso {
+    flex: none;
+    flex-direction: column;
+    gap: 10px;
+    margin: 6px 20px 18px 22px;
+    padding: 14px 16px 16px;
+    border-radius: 12px;
+    background: var(--peg-pieza);
+    box-shadow: inset 0 0 0 2px var(--peg-rosa), 3px 3px 0 var(--peg-rosa);
+}
+
+.va-aviso__cab {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+
+.va-aviso__cab .iconify {
+    font-size: 20px;
+    color: var(--peg-rosa-texto);
+}
+
+.va-aviso__txt {
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--peg-tinta-2);
+}
+
+.va-aviso__botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 2px;
+}
+
+.va-aviso__botones .va-btn {
+    height: 40px;
+    font-size: 17px;
+}
+
+/* ── El pie ──────────────────────────────────────────────────────────── */
+/*  Con el aviso abierto, el pie se quita: sus dos botones son los del aviso.
+    (script.js pone el display en línea; :has() no lo tiene el CEF 103.) */
+#confirm-modal[style*="flex"] + .va-pie {
+    display: none;
+}
+
+.va-pie {
+    position: relative;
+    flex: none;
+    padding: 16px 20px 18px 22px;
+}
+
+.va-pie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 1.5px;
+    background: #000;
+}
+
+.va-pie__fila {
+    display: flex;
+    gap: 10px;
+}
+
+/*  Con la edición abierta, el pie es el de la edición. */
+.va-pie--editor { display: none; }
+.va.editando .va-pie--lista { display: none; }
+.va.editando .va-pie--editor { display: flex; }
+
+/* ══ EL RIEL ══════════════════════════════════════════════════════════════
+   El mismo de todos los menús laterales, al píxel: 64 de ancho, relleno
+   14/16, placa de 44. Aquí no hay pestañas: la placa dice de qué va el
+   menú y abajo va el nombre. Sin botón de silencio (solo el inventario). */
+.riel {
+    flex: none;
+    width: var(--va-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+.riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-rosa);
+    font-size: 22px;
+}
+
+.riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--peg-tinta);
+}
+
+/* ══ LA BARRA DE ABAJO ════════════════════════════════════════════════════
+   Mientras el gizmo mueve el asiento: placa rosa, «Colocar · nombre»,
+   filete y las teclas, en UNA línea fina centrada abajo. Va dentro del
+   armazón, pero fija a la pantalla. */
+.va-barra {
+    position: fixed;
+    left: 50%;
+    bottom: var(--bab-abajo);
+    z-index: 11;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--bab-hueco);
+    width: max-content;
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, calc(100% + var(--bab-abajo) + 8px));
+    transition: transform 0.26s var(--va-ease), opacity 0.2s ease;
+}
+
+.va.colocando .va-barra {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.va-barra__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: var(--bab-placa);
+    height: var(--bab-placa);
+    border-radius: var(--bab-placa-radio);
+    transform: rotate(-5deg);
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    color: #000;
+    font-size: var(--bab-placa-icono);
+}
+
+.va-barra__t {
+    max-width: var(--bab-titulo-max);
+    padding-right: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-titulo);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+
+.va-barra__filete {
+    flex: none;
+    width: 1.5px;
+    height: var(--bab-filete-alto);
+    background: #000;
+}
+
+.va-tecla {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--bab-hueco-tecla);
+}
+
+.va-tecla b {
+    min-width: var(--bab-tecla-min);
+    padding: var(--bab-tecla-pad);
+    border-radius: var(--bab-tecla-radio);
+    background: var(--peg-tinta);
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: var(--bab-tecla);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.va-tecla i {
+    padding-right: 2px;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+
+/* La letra de la casa (07/10): rótulos en cursiva 800 casi sin espaciado;
+   el texto del vacío, en Barlow normal. */
+.empty-inline { font-family: var(--texto, "Barlow", sans-serif); font-weight: 500; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.empty-inline b { font-family: var(--cond); letter-spacing: 0.04em; text-transform: uppercase; }
+.va-campo__k, .va-dato i { font-style: italic; font-weight: 800; letter-spacing: 0.05em; }
+
+/* 07/10: al colocar se va todo el menú, riel incluido; solo queda la barra. */
+.va.colocando .riel {
+    transform: translateX(calc(100% + var(--va-margen-x) + 8px));
+    opacity: 0;
+}
+
+/* 08/10: el rótulo a brocha de la cabecera, que no lo llevaba. Va en el
+   contenedor de texto (el título recorta con puntos suspensivos y el ::after
+   dentro se cortaría) y con `order` cae entre el título y el renglón de
+   asientos, que es un dato y no se toca. Rosa literal: en Nación lo repinta
+   kit/marca.js. */
+.va-cab__txt[data-brocha] > .va-cab__r { order: 2; }
+.va-cab__txt[data-brocha]::after {
+    content: attr(data-brocha);
+    order: 1;
+    display: block;
+    margin: 6px 0 3px 2px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}

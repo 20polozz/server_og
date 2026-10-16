@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RF Home Control — Phone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<style>
+  html, body { height: 100%; margin: 0; background: transparent; }
+  body { display: none; font-family: 'Michroma', sans-serif; }
+  #stage { position: fixed; inset: 0; display: grid; align-items: center; justify-items: end;
+           padding-right: 5vw; box-sizing: border-box; }
+  /* the phone sits at its design size and scales down on short screens */
+  #phone { width: 402px; height: 874px; flex: none; border-radius: 44px; overflow: hidden;
+           transform: translateY(115%) scale(var(--fit, 1)); transform-origin: right center;
+           opacity: 0;
+           transition: transform .34s cubic-bezier(.22,.9,.28,1), opacity .22s ease;
+           background: #f1eee8;
+           box-shadow: 0 40px 90px rgba(0,0,0,.6), 0 0 0 10px #1b1a19, 0 0 0 11px rgba(255,255,255,.08); }
+  #stage.is-in #phone { transform: translateY(0) scale(var(--fit, 1)); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { #phone { transition: none; } }
+  #phone > * { height: 100%; }
+  * { -webkit-user-select: none; user-select: none; }
+  input { -webkit-user-select: text; user-select: text; }
+
+  /* the design sets font-family inline in many places, so this has to win */
+  #phone, #phone * { font-family: 'Michroma', sans-serif !important; }
+  /* every label in capitals; the door bars keep their case, and typed links
+     are left alone */
+  #phone, #phone *, [data-src-sheet] { text-transform: uppercase; }
+  #phone input, #phone [data-keep-case], #phone [data-keep-case] * { text-transform: none; }
+  /* A strip's name over its status line. The design sets these inline, which
+     only !important beats: the name larger than the status, a little tracking
+     on both so capitals do not run together, and one line height for the pair. */
+  #phone [data-strip-name] { font-size: 10.5px !important; letter-spacing: .07em !important; line-height: 1.3 !important; }
+  #phone [data-strip-sub]  { font-size: 9px !important;    letter-spacing: .1em !important;  line-height: 1.3 !important; }
+  /* The Light Display card. Its name was smaller than the keys beside it, the
+     readouts sat on a column too narrow for "100%", and the padding differed
+     on every side. One set of values, and columns wide enough for what goes
+     in them, so the two sliders line up with each other. */
+  #phone [data-light-card] { padding: 12px 14px !important; gap: 11px !important; }
+  #phone [data-light-name] { font-size: 10.5px !important; letter-spacing: .06em !important; }
+  #phone [data-light-lab]  { width: 46px !important; font-size: 8px !important; letter-spacing: .12em !important; }
+  #phone [data-light-val]  { width: 42px !important; font-size: 9.5px !important; }
+</style>
+<!-- PEGATINA: la misma hoja que index.html, lift.html y cam.html (va la última);
+     origen.js copia la marca de la página madre en <html data-marca> -->
+<link href="https://fonts.googleapis.com/css2?family=Knewave&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="origen-pegatina.css?v=riel0710">
+<script src="origen.js?v=p0710"></script>
+</head>
+<body>
+<div id="stage"><div id="phone"></div></div>
+<script src="es.js"></script>
+<script src="travel.js"></script>
+<script src="phone-runtime.js"></script>
+<script src="phone-design.js"></script>
+<script src="phone-bridge.js"></script>
+<script>var st=document.createElement("style");st.textContent=(window.PHONE_STYLE||"").replace(/(^|\})\s*body\s*\{[^}]*\}/g,"$1"),document.head.appendChild(st);var clear=document.createElement("style");function fitPhone(){var e=Math.min(1,(window.innerHeight-40)/874);document.documentElement.style.setProperty("--fit",e)}clear.textContent="html, body { background: transparent !important; }",document.head.appendChild(clear),function(){var e=null;function t(){return document.querySelectorAll('#phone div[style*="cursor:pointer"][style*="border-radius:7px"]')}function n(e,n){var i=t()[e];if(i){var o=i.getBoundingClientRect(),r=Math.max(o.left,Math.min(o.right,n));i.dispatchEvent(new MouseEvent("click",{clientX:r,clientY:o.top+o.height/2,bubbles:!0}))}}document.addEventListener("pointerdown",function(i){var o=function(e,n){for(var i=t(),o=0;o<i.length;o++){var r=i[o].getBoundingClientRect();if(e>=r.left&&e<=r.right&&n>=r.top-14&&n<=r.bottom+14)return o}return null}(i.clientX,i.clientY);null!==o&&(e=o,n(o,i.clientX),i.preventDefault())}),document.addEventListener("pointermove",function(t){null!==e&&n(e,t.clientX)}),["pointerup","pointercancel","pointerleave"].forEach(function(t){document.addEventListener(t,function(){e=null})})}(),window.addEventListener("resize",fitPhone),fitPhone()</script>
+</body>
+</html>

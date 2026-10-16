@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+    <AnimRateSets/>
+    <ClipSetMaps/>
+    <VehicleCoverBoundOffsetInfos>
+        <Item type="CVehicleCoverBoundOffsetInfo">
+                              <Name>POLICET3_COVER_OFFSET_INFO</Name>
+                              <ExtraSideOffset value="0.100000" />
+                              <ExtraForwardOffset value="-0.200000" />
+                              <ExtraBackwardOffset value="-0.250000" />
+                              <ExtraZOffset value="1.000000" />
+                              <CoverBoundInfos>
+                                <Item>
+                                  <Name>Front</Name>
+                                  <Position x="0.000000" y="2.000000" z="-0.200000" />
+                                  <Length value="1.300000" />
+                                  <Width value="2.250000" />
+                                  <Height value="0.850000" />
+                                  <ActiveBoundExclusions />
+                                </Item>
+                                <Item>
+                                  <Name>REAR</Name>
+                                  <Position x="0.000000" y="-0.780000" z="0.080000" />
+                                  <Length value="4.250000" />
+                                  <Width value="2.250000" />
+                                  <Height value="2.050000" />
+                                  <ActiveBoundExclusions />
+                                </Item>
+                              </CoverBoundInfos>
+                            </Item>
+    </VehicleCoverBoundOffsetInfos>
+    <BicycleInfos/>
+    <POVTuningInfos/>
+    <EntryAnimVariations/>
+    <VehicleExtraPointsInfos/>
+    <DrivebyWeaponGroups/>
+    <VehicleDriveByAnimInfos/>
+    <VehicleDriveByInfos/>
+    <VehicleSeatInfos/>
+    <VehicleSeatAnimInfos/>
+    <VehicleEntryPointInfos/>
+    <VehicleEntryPointAnimInfos/>
+    <VehicleExplosionInfos/>
+    <VehicleLayoutInfos/>
+    <VehicleScenarioLayoutInfos/>
+    <SeatOverrideAnimInfos/>
+    <InVehicleOverrideInfos/>
+    <FirstPersonDriveByLookAroundData>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                              <Name>VAN_POLICET3_FRONT_LEFT</Name>
+                              <AllowLookback value="false" />
+                              <HeadingLimits x="-100.000000" y="115.000000" />
+                              <DataLeft>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.050000" />
+                                    <AngleToBlendInOffset x="20.000000" y="50.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-4.000000" y="40.000000" />
+                                <AngleToBlendInExtraPitch x="20.000000" y="50.000000" />
+                              </DataLeft>
+                              <DataRight>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="-0.100000" />
+                                    <AngleToBlendInOffset x="0.000000" y="90.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.050000" />
+                                    <AngleToBlendInOffset x="50.000000" y="80.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-10.000000" y="10.500000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="80.000000" />
+                              </DataRight>
+                              <WheelClipInfo>
+                                <HeadingLimitsLeft x="0.380000" y="0.430000" />
+                                <HeadingLimitsRight x="0.480000" y="0.530000" />
+                                <PitchLimits x="0.470000" y="0.530000" />
+                                <PitchOffset x="0.000000" y="0.050000" />
+                                <WheelAngleLimits x="-0.700000" y="0.000000" />
+                                <WheelAngleOffset x="0.010000" y="0.040000" />
+                                <MaxWheelOffsetY value="0.170000" />
+                                <WheelClipLerpInRate value="0.150000" />
+                                <WheelClipLerpOutRate value="0.180000" />
+                              </WheelClipInfo>
+                            </Item>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                              <Name>VAN_POLICET3_FRONT_RIGHT</Name>
+                              <AllowLookback value="false" />
+                              <HeadingLimits x="-98.000000" y="114.000000" />
+                              <DataLeft>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.100000" />
+                                    <AngleToBlendInOffset x="0.000000" y="90.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.050000" />
+                                    <AngleToBlendInOffset x="50.000000" y="80.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-1.000000" y="-2.500000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="80.000000" />
+                              </DataLeft>
+                              <DataRight>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="114.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="114.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.050000" />
+                                    <AngleToBlendInOffset x="0.000000" y="114.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="0.000000" y="5.000000" />
+                                <AngleToBlendInExtraPitch x="20.000000" y="50.000000" />
+                              </DataRight>
+                              <WheelClipInfo>
+                                <HeadingLimitsLeft x="0.380000" y="0.430000" />
+                                <HeadingLimitsRight x="0.480000" y="0.530000" />
+                                <PitchLimits x="0.470000" y="0.530000" />
+                                <PitchOffset x="0.000000" y="0.050000" />
+                                <WheelAngleLimits x="-0.700000" y="0.000000" />
+                                <WheelAngleOffset x="0.010000" y="0.040000" />
+                                <MaxWheelOffsetY value="0.170000" />
+                                <WheelClipLerpInRate value="0.150000" />
+                                <WheelClipLerpOutRate value="0.180000" />
+                              </WheelClipInfo>
+                            </Item>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                              <Name>VAN_POLICET3_REAR_LEFT</Name>
+                              <AllowLookback value="true" />
+                              <HeadingLimits x="-104.000000" y="-30.000000" />
+                              <DataLeft>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-17.000000" y="10.000000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+                              </DataLeft>
+                              <DataRight>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="-0.150000" />
+                                    <AngleToBlendInOffset x="0.000000" y="50.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.050000" />
+                                    <AngleToBlendInOffset x="0.000000" y="50.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-17.000000" y="10.000000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+                              </DataRight>
+                              <WheelClipInfo>
+                                <HeadingLimitsLeft x="0.380000" y="0.430000" />
+                                <HeadingLimitsRight x="0.480000" y="0.530000" />
+                                <PitchLimits x="0.470000" y="0.530000" />
+                                <PitchOffset x="0.000000" y="0.050000" />
+                                <WheelAngleLimits x="-0.700000" y="0.000000" />
+                                <WheelAngleOffset x="0.010000" y="0.040000" />
+                                <MaxWheelOffsetY value="0.170000" />
+                                <WheelClipLerpInRate value="0.150000" />
+                                <WheelClipLerpOutRate value="0.180000" />
+                              </WheelClipInfo>
+                            </Item>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                              <Name>VAN_POLICET3_REAR_RIGHT</Name>
+                              <AllowLookback value="true" />
+                              <HeadingLimits x="-100.000000" y="-33.000000" />
+                              <DataLeft>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.030000" />
+                                    <AngleToBlendInOffset x="0.000000" y="50.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.010000" />
+                                    <AngleToBlendInOffset x="0.000000" y="50.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-15.000000" y="7.000000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+                              </DataLeft>
+                              <DataRight>
+                                <Offsets>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                  <Item>
+                                    <Offset value="0.000000" />
+                                    <AngleToBlendInOffset x="0.000000" y="0.000000" />
+                                  </Item>
+                                </Offsets>
+                                <ExtraRelativePitch x="-15.000000" y="10.000000" />
+                                <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+                              </DataRight>
+                              <WheelClipInfo>
+                                <HeadingLimitsLeft x="0.380000" y="0.430000" />
+                                <HeadingLimitsRight x="0.480000" y="0.530000" />
+                                <PitchLimits x="0.470000" y="0.530000" />
+                                <PitchOffset x="0.000000" y="0.050000" />
+                                <WheelAngleLimits x="-0.700000" y="0.000000" />
+                                <WheelAngleOffset x="0.010000" y="0.040000" />
+                                <MaxWheelOffsetY value="0.170000" />
+                                <WheelClipLerpInRate value="0.150000" />
+                                <WheelClipLerpOutRate value="0.180000" />
+                              </WheelClipInfo>
+                            </Item>
+    </FirstPersonDriveByLookAroundData>
+</CVehicleMetadataMgr>

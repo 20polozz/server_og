@@ -1,0 +1,376 @@
+/* ══ ORIGEN · ox_lib en PEGATINA (menú de lista y menú radial) ══════════
+
+   PARCHE DE ORIGEN (07/10). OJO: si se actualiza ox_lib esto se pierde y
+   hay que volver a ponerlo, igual que los desvíos de resource/interface/
+   client/*.lua (notify, textui, context, input, alert, progress, skillcheck).
+
+   La web de ox_lib es React + Mantine compilado (web/build). Aquí no hay
+   node_modules para recompilar, así que en vez de tocar el código se pisa el
+   estilo con esta hoja, que carga web/build/index.html DESPUÉS de la de ox.
+   La copia fuente vive en web/public/pegatina.css (Vite la copia a build/ si
+   algún día se recompila) y la de build/ es la que se sirve: las dos iguales.
+
+   Van con este parche (también se pierden al actualizar):
+     · web/index.html y web/build/index.html: el <link> de fuentes, esta
+       hoja, el trocito que marca el menú (data-oxpeg) y el trozo de marca.
+     · resource/interface/client/main.lua (final): callback origen:marca:dame.
+     · locales/es.json: «Ajustes» de /ox_lib y la tecla del radial en español
+       (venían en inglés aunque el fichero es el español).
+
+   Lo que queda en la web de ox y se ve:
+     · lib.registerMenu/showMenu (menú de lista con teclado).
+     · lib.registerRadial/addRadialItem (menú radial).
+   Lo demás ya no sale aquí (va a origen_notify, org-menu, org-input,
+   origen_inventory y origen_minijuegos).
+
+   Cómo se engancha:
+     · Las clases de Mantine que se escriben al compilar (mantine-xxxx) son un
+       hash: no valen. Valen las fijas de cada componente (mantine-Stack-root,
+       mantine-Group-root, mantine-Text-root, mantine-Progress-*,
+       mantine-Checkbox-*, mantine-Tooltip-tooltip).
+     · El menú de lista no tiene clase propia: el trocito de JS del index.html
+       le pone data-oxpeg="menu|cabecera|lista|flecha" al montarse.
+     · El radial se reconoce por su SVG: viewBox="0 0 350 350".
+
+   Piel pegatina (skill origen-pegatina). Nación lo ve en naranja: lo repinta
+   el trozo «ORIGEN · marca» del index.html, aquí no se escribe por marca.
+   CEF 103: nada de :has(), color-mix(), backdrop-filter ni @keyframes.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-pieza-hover: #f1f1ee;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-tinta-3: #55555c;
+    --peg-rosa: #d81b55;
+    --peg-rosa-encima: #df2f63;
+    --peg-rosa-texto: #b3123f;
+    --peg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-anillo: inset 0 0 0 1.5px #000;
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --texto: "Barlow", "Segoe UI", sans-serif;
+    --cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/* ── Menú de lista ──────────────────────────────────────────────────────
+   Formato MENÚ PEQUEÑO (skill origen-dialogo): a media altura a la derecha,
+   despegado 1.2vh del canto. La posición que pida quien abre el menú
+   (top-left…) se ignora a propósito: todos los diálogos cortos van ahí. */
+html [data-oxpeg="menu"] {
+    top: 50% !important;
+    right: calc(1.2vh + 64px + 1.2vh) !important;
+    left: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    transform: translateY(-50%);
+    width: 440px !important;
+    min-height: 300px;
+    overflow: visible !important;
+    padding: 0 0 6px;
+    background: var(--peg-panel);
+    border-radius: 20px;
+    box-shadow: var(--peg-canto-panel);
+    font-family: var(--texto) !important;
+    color: var(--peg-tinta);
+}
+
+/*  07/10: el riel de 64 px pegado al canto, como todos los menús pequeños
+    (org-menu). Sin tocar el compilado de ox: lo dibujan el ::after del menú
+    (la caja con la placa del icono y su raya) y el ::before (el nombre en
+    vertical, abajo), colgados por fuera a 1.2vh. */
+html [data-oxpeg="menu"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    border-radius: 20px;
+    background: #c4c6ca url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='80' viewBox='0 0 64 80'%3E%3Crect x='12' y='18' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='10.75' y='16.75' width='41.5' height='41.5' rx='9.25' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Cg transform='translate(20 26)' fill='none' stroke='%23d81b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01'/%3E%3C/g%3E%3Crect x='21' y='71' width='22' height='2' rx='1' fill='%23000'/%3E%3C/svg%3E") center top / 64px 80px no-repeat;
+    box-shadow: var(--peg-canto-panel);
+    pointer-events: none;
+}
+
+html [data-oxpeg="menu"]::before {
+    content: "Origen Menú";
+    position: absolute;
+    left: calc(100% + 1.2vh + 32px);
+    bottom: 16px;
+    z-index: 1;
+    transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+    pointer-events: none;
+}
+
+html[data-marca="nacion"] [data-oxpeg="menu"]::before { content: "Nación Menú"; }
+
+/* Cabecera: rótulo Condensed cursiva 800 y el filete rosa macizo debajo. */
+html [data-oxpeg="cabecera"] {
+    position: relative;
+    width: auto !important;
+    background: transparent !important;
+    border-radius: 20px 20px 0 0 !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding: 0 22px;
+}
+
+html [data-oxpeg="cabecera"]::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+html [data-oxpeg="cabecera"] .mantine-Text-root {
+    font-family: var(--cond) !important;
+    font-style: italic;
+    font-weight: 800 !important;
+    font-size: 27px !important;
+    line-height: 1 !important;
+    text-transform: uppercase;
+    color: var(--peg-tinta) !important;
+    padding-right: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* La lista: sin fondo propio (se ve el panel) y sin barra gruesa. */
+html [data-oxpeg="lista"] {
+    background: transparent !important;
+    border-radius: 0 0 20px 20px !important;
+    padding-top: 4px;
+}
+
+html [data-oxpeg="lista"] .mantine-Stack-root {
+    /* Aire a la derecha y abajo para la sombra dura de cada fila. */
+    padding: 12px 20px 14px 22px !important;
+}
+
+html [data-oxpeg="lista"] .mantine-Stack-root::-webkit-scrollbar {
+    width: 0;
+}
+
+html [data-oxpeg="flecha"] {
+    background: transparent !important;
+    height: 22px !important;
+}
+
+html [data-oxpeg="flecha"] svg {
+    color: var(--peg-tinta) !important;
+    font-size: 16px !important;
+}
+
+/* Filas: piezas #dcdde0 con canto. La elegida (la que tiene el foco del
+   teclado) en rosa con tinta negra. */
+html:root .mantine-Stack-root > div[tabindex] {
+    background: var(--peg-pieza) !important;
+    border-radius: 12px !important;
+    box-shadow: var(--peg-canto);
+    color: var(--peg-tinta);
+    transition: background-color 0.12s ease;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus {
+    background: var(--peg-rosa) !important;
+    outline: none;
+}
+
+html .mantine-Stack-root > div[tabindex] .mantine-Text-root {
+    font-family: var(--texto) !important;
+    font-weight: 600 !important;
+    font-size: 16px;
+    color: var(--peg-tinta) !important;
+}
+
+/* El antetítulo de las filas con valores («COLOR DE CARROCERÍA»). */
+html .mantine-Stack-root > div[tabindex] .mantine-Group-root .mantine-Group-root > .mantine-Stack-root > .mantine-Text-root:first-child {
+    font-family: var(--cond) !important;
+    font-weight: 700 !important;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--peg-tinta-3) !important;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Group-root .mantine-Group-root > .mantine-Stack-root > .mantine-Text-root:first-child {
+    color: var(--peg-tinta) !important;
+}
+
+/* Cifras de «1/4» en Oxanium, sin cursiva. */
+html .mantine-Stack-root > div[tabindex] > .mantine-Group-root > .mantine-Group-root > .mantine-Group-root:last-child .mantine-Text-root {
+    font-family: var(--cifra) !important;
+    font-weight: 800 !important;
+    font-size: 14px;
+    font-style: normal;
+}
+
+html .mantine-Stack-root > div[tabindex] svg {
+    color: var(--peg-tinta) !important;
+}
+
+/* Icono de la fila: chapa negra con el icono blanco; en la elegida, rosa
+   con anillo negro e icono negro (como la fila, se distingue por el anillo). */
+html .mantine-Stack-root > div[tabindex] > .mantine-Group-root > div:first-child:not(.mantine-Group-root):not(.mantine-Stack-root):not(.mantine-Text-root) {
+    justify-content: center;
+    border-radius: 9px;
+    background: var(--peg-tinta);
+}
+
+html .mantine-Stack-root > div[tabindex] > .mantine-Group-root > div:first-child:not(.mantine-Group-root):not(.mantine-Stack-root):not(.mantine-Text-root) svg {
+    color: #fff !important;
+    font-size: 17px !important;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus > .mantine-Group-root > div:first-child:not(.mantine-Group-root):not(.mantine-Stack-root):not(.mantine-Text-root) {
+    background: var(--peg-rosa);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus > .mantine-Group-root > div:first-child:not(.mantine-Group-root):not(.mantine-Stack-root):not(.mantine-Text-root) svg {
+    color: #000 !important;
+}
+
+/* Barras: pista gris con anillo fino y relleno rosa (negro en la fila
+   elegida, que ya es rosa). */
+html:root .mantine-Stack-root > div[tabindex] .mantine-Progress-root {
+    background: var(--peg-panel) !important;
+    box-shadow: var(--peg-anillo);
+    border-radius: 5px;
+    height: 8px;
+}
+
+html:root .mantine-Stack-root > div[tabindex] .mantine-Progress-bar {
+    background: var(--peg-rosa) !important;
+    box-shadow: var(--peg-anillo);
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Progress-root {
+    background: var(--peg-pieza) !important;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Progress-bar {
+    background: var(--peg-tinta) !important;
+}
+
+/* Casilla: pieza con canto; marcada en rosa con la marca negra (en la fila
+   elegida, negra con la marca blanca). */
+html:root .mantine-Checkbox-input {
+    background: var(--peg-pieza) !important;
+    border: none !important;
+    border-radius: 6px !important;
+    box-shadow: var(--peg-canto);
+}
+
+html:root .mantine-Checkbox-input:checked {
+    background: var(--peg-rosa) !important;
+}
+
+html:root .mantine-Checkbox-inner svg,
+html:root .mantine-Checkbox-inner svg path {
+    color: #000 !important;
+    fill: #000 !important;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Checkbox-input:checked {
+    background: var(--peg-tinta) !important;
+}
+
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Checkbox-inner svg,
+html:root .mantine-Stack-root > div[tabindex]:focus .mantine-Checkbox-inner svg path {
+    color: #fff !important;
+    fill: #fff !important;
+}
+
+/* La descripción de la opción (tooltip debajo del menú): una pieza. */
+html:root .mantine-Tooltip-tooltip {
+    background: var(--peg-pieza) !important;
+    color: var(--peg-tinta) !important;
+    border-radius: 10px !important;
+    box-shadow: var(--peg-canto);
+    font-family: var(--texto) !important;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 10px;
+}
+
+/* ── Menú radial ────────────────────────────────────────────────────────
+   Un círculo panel con canto negro y sombra dura; iconos y letras en
+   tinta; el sector bajo el ratón en rosa con tinta negra; el centro rosa
+   con el icono negro. Nada del azul de ox.
+
+   La sombra dura va en el propio <svg>, que ox gira 90° con su atributo
+   transform: el filtro se pinta antes del giro, por eso el desplazamiento
+   va como (3, -3) para que salga abajo a la derecha. */
+html svg[viewBox="0 0 350 350"] {
+    filter: drop-shadow(3px -3px 0 #000);
+}
+
+html svg[viewBox="0 0 350 350"] > g:first-of-type > circle {
+    fill: var(--peg-panel) !important;
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"] {
+    color: var(--peg-tinta) !important;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"] > path {
+    fill: var(--peg-panel) !important;
+    stroke: #000;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+    transition: fill 0.12s ease;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"] > g > text,
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"] > g > svg path {
+    fill: var(--peg-tinta) !important;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"] > g > text {
+    font-family: var(--texto);
+    font-weight: 700;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"]:hover > path {
+    fill: var(--peg-rosa) !important;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"]:hover > g > text,
+html:root svg[viewBox="0 0 350 350"] > g[transform^="rotate"]:hover > g > svg path {
+    fill: #000 !important;
+}
+
+/* El centro (cerrar / volver). */
+html:root svg[viewBox="0 0 350 350"] > g:last-of-type > circle {
+    fill: var(--peg-rosa) !important;
+    stroke: #000 !important;
+    stroke-width: 1.5px !important;
+}
+
+html:root svg[viewBox="0 0 350 350"] > g:last-of-type:hover > circle {
+    fill: var(--peg-rosa-encima) !important;
+}
+
+html:root svg[viewBox="0 0 350 350"] + div svg,
+html:root svg[viewBox="0 0 350 350"] + div svg path {
+    color: #000 !important;
+    fill: #000 !important;
+}

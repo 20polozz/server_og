@@ -1,0 +1,185 @@
+{
+    "bodhi2": [
+        {
+            "id": 236873,
+            "animDict": "amb@world_human_sunbathe@male@back@idle_a",
+            "offset": {
+                "z": 0.82558006048202,
+                "x": 0.01965463533997,
+                "y": -1.65211451053619
+            },
+            "rotation": {
+                "z": 0,
+                "x": 5.960464477539065e-8,
+                "y": 2.384185791015625e-7
+            },
+            "name": "Acostado",
+            "animName": "idle_a",
+            "preset": "sunbathe_back",
+            "openTrunk": false,
+            "allowMoving": true
+        },
+        {
+            "id": 123953,
+            "animDict": "amb@world_human_bum_wash@male@low@idle_a",
+            "offset": {
+                "z": 1.38651764392852,
+                "x": -0.00372207909822,
+                "y": 1.51746082305908
+            },
+            "rotation": {
+                "z": 0,
+                "x": 1.1920928955078128e-7,
+                "y": -2.384185791015625e-7
+            },
+            "name": "Capo",
+            "animName": "idle_a",
+            "preset": "kneeling",
+            "allowMoving": true,
+            "openTrunk": false
+        }
+    ],
+    "blista": [
+        {
+            "id": 586322,
+            "animDict": "missbigscore1",
+            "offset": {
+                "z": 1.5612723827362,
+                "x": -0.03732869401574,
+                "y": -0.62494426965713
+            },
+            "rotation": {
+                "z": 0,
+                "x": 0,
+                "y": 7.450580596923828e-9
+            },
+            "name": "Techo",
+            "animName": "idle_e",
+            "preset": "custom",
+            "openTrunk": false,
+            "allowMoving": true
+        }
+    ],
+    "bison": [
+        {
+            "id": 641031,
+            "animDict": "amb@medic@standing@kneel@idle_a",
+            "offset": {
+                "z": 1.31040871143341,
+                "x": -0.51158446073532,
+                "y": -2.080082654953
+            },
+            "rotation": {
+                "z": 95.7239227294922,
+                "x": 0.91595125198364,
+                "y": 2.00549960136413
+            },
+            "name": "naletero",
+            "animName": "idle_a",
+            "preset": "custom",
+            "allowMoving": true,
+            "openTrunk": false
+        },
+        {
+            "id": 308298,
+            "animDict": "random@arrests",
+            "offset": {
+                "z": 1.26617801189422,
+                "x": 0.17720244824886,
+                "y": -2.14331722259521
+            },
+            "rotation": {
+                "z": 276.4019775390625,
+                "x": 0.03694991022348,
+                "y": -0.09586957097053
+            },
+            "name": "Maletero2",
+            "animName": "kneeling_arrest_idle",
+            "preset": "custom",
+            "allowMoving": true,
+            "openTrunk": false
+        }
+    ],
+    "benson": [
+        {
+            "id": 719818,
+            "animDict": "amb@world_human_picnic@female@base",
+            "offset": {
+                "z": 1.03879714012146,
+                "x": 0.24806144833564,
+                "y": -0.44951510429382
+            },
+            "rotation": {
+                "z": -190.82888793945313,
+                "x": 0.00855859555304,
+                "y": 0.00749615300446
+            },
+            "name": "Puesto1",
+            "animName": "base",
+            "preset": "sit_normal",
+            "openTrunk": false,
+            "allowMoving": true
+        },
+        {
+            "id": 403796,
+            "animDict": "amb@world_human_picnic@female@base",
+            "offset": {
+                "z": 1.05357480049133,
+                "x": 0.0879727602005,
+                "y": -2.73065328598022
+            },
+            "rotation": {
+                "z": -197.96923828125,
+                "x": -0.04777593165636,
+                "y": 0.00254527293145
+            },
+            "name": "PUESTO2",
+            "animName": "base",
+            "preset": "sit_normal",
+            "openTrunk": false,
+            "allowMoving": true
+        }
+    ],
+    "tspoll352": [
+        {
+            "id": 163421,
+            "animDict": "amb@world_human_picnic@male@base",
+            "offset": {
+                "z": 1.31544113159179,
+                "x": -0.0028330553323,
+                "y": -1.56807565689086
+            },
+            "rotation": {
+                "z": -0.01546478271484,
+                "x": 0.04127806797623,
+                "y": -0.21261900663375
+            },
+            "name": "Maletero",
+            "animName": "base",
+            "preset": "trunk_sit",
+            "allowMoving": true,
+            "openTrunk": false
+        }
+    ],
+    "gbterror": [
+        {
+            "id": 918778,
+            "animDict": "amb@medic@standing@kneel@idle_a",
+            "offset": {
+                "z": 1.06407463550567,
+                "x": 0.01946714147925,
+                "y": -2.43285679817199
+            },
+            "rotation": {
+                "z": 177.79380798339845,
+                "x": -0.05930186808109,
+                "y": -0.02226850390434
+            },
+            "name": "MaleteroTerror",
+            "animName": "idle_a",
+            "preset": "custom",
+            "allowMoving": true,
+            "openTrunk": false
+        }
+    ]
+}

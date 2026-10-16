@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+    <AnimRateSets/>
+    <ClipSetMaps/>
+    <VehicleCoverBoundOffsetInfos>
+        <Item type="CVehicleCoverBoundOffsetInfo">
+                      <Name>POLICEB2_COVER_OFFSET_INFO</Name>
+                      <ExtraSideOffset value="0.150000" />
+                      <ExtraForwardOffset value="-0.050000" />
+                      <ExtraBackwardOffset value="-0.150000" />
+                      <ExtraZOffset value="0.050000" />
+                      <CoverBoundInfos>
+                        <Item>
+                          <Name>Front</Name>
+                          <Position x="0.000000" y="0.550000" z="0.110000" />
+                          <Length value="0.920000" />
+                          <Width value="0.800000" />
+                          <Height value="0.800000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                        <Item>
+                          <Name>REAR</Name>
+                          <Position x="0.000000" y="-0.620000" z="0.100000" />
+                          <Length value="1.400000" />
+                          <Width value="0.700000" />
+                          <Height value="0.770000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                      </CoverBoundInfos>
+                    </Item>
+    </VehicleCoverBoundOffsetInfos>
+    <BicycleInfos/>
+    <POVTuningInfos/>
+    <EntryAnimVariations/>
+    <VehicleExtraPointsInfos/>
+    <DrivebyWeaponGroups/>
+    <VehicleDriveByAnimInfos/>
+    <VehicleDriveByInfos/>
+    <VehicleSeatInfos/>
+    <VehicleSeatAnimInfos/>
+    <VehicleEntryPointInfos/>
+    <VehicleEntryPointAnimInfos/>
+    <VehicleExplosionInfos/>
+    <VehicleLayoutInfos/>
+    <VehicleScenarioLayoutInfos/>
+    <SeatOverrideAnimInfos/>
+    <InVehicleOverrideInfos/>
+    <FirstPersonDriveByLookAroundData>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                		<Name>POLBIKE_POLICEB_FRONT</Name>
+                		<AllowLookback value="true" />
+                		<HeadingLimits x="-150.000000" y="150.000000" />
+                		<DataLeft>
+                			<Offsets>
+                				<Item>
+                					<Offset value="-0.025000" />
+                					<AngleToBlendInOffset x="0.000000" y="100.000000" />
+                				</Item>
+                				<Item>
+                					<Offset value="-0.050000" />
+                					<AngleToBlendInOffset x="100.000000" y="135.000000" />
+                				</Item>
+                				<Item>
+                					<Offset value="0.325000" />
+                					<AngleToBlendInOffset x="0.000000" y="105.000000" />
+                				</Item>
+                			</Offsets>
+                			<ExtraRelativePitch x="-20.000000" y="25.000000" />
+                			<AngleToBlendInExtraPitch x="0.000000" y="135.000000" />
+                		</DataLeft>
+                		<DataRight>
+                			<Offsets>
+                				<Item>
+                					<Offset value="0.300000" />
+                					<AngleToBlendInOffset x="0.000000" y="135.000000" />
+                				</Item>
+                				<Item>
+                					<Offset value="-0.075000" />
+                					<AngleToBlendInOffset x="100.000000" y="135.000000" />
+                				</Item>
+                				<Item>
+                					<Offset value="0.200000" />
+                					<AngleToBlendInOffset x="0.000000" y="20.000000" />
+                				</Item>
+                			</Offsets>
+                			<ExtraRelativePitch x="-20.000000" y="25.000000" />
+                			<AngleToBlendInExtraPitch x="0.000000" y="30.000000" />
+                		</DataRight>
+                    </Item>
+    </FirstPersonDriveByLookAroundData>
+</CVehicleMetadataMgr>

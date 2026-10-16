@@ -1,0 +1,2902 @@
+/* Los tokens del papel (iguales en todo el servidor; la referencia es
+   origen_inventory/arcade.css). --arc-vf es el factor de los velos blancos:
+   toda capa blanca va como rgba(255,255,255, calc(a * var(--arc-vf))). */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/* ══ El panel de admin de la radio · estilo «HUD Arcade» ════════════
+   El mismo del inventario: cristal crema, acento rosa #df2f63, Barlow
+   Condensed cursiva para los rotulos y bloques inclinados 10 grados.
+
+   ── Por que este fichero pinta cosas que no son suyas ──────────────────
+   index.html carga primero css/style.css (el reproductor de musica, que
+   sigue en el tema NEGRO viejo) y DESPUES este. El panel de admin reutiliza
+   un monton de clases de aquel —.title-section, .content, .section,
+   .current-section, .now-playing-content, .equalizer-*, .progress-*,
+   .volume-*, .input-section, .url-input, .controls-section, .control-btn,
+   .section-title, .close-btn—, asi que aqui se vuelven a pintar TODAS,
+   colgando de .admin-radio-panel. Asi el panel de admin queda claro entero
+   sin tocar ni una linea de style.css, que va por su cuenta.
+
+   ── Lo que NO se toca ──────────────────────────────────────────────────
+   Los dos bloques :root de abajo se quedan como estaban. style.css no
+   declara ningun --ogn-*: se los toma prestados de aqui. Si se cambiaran a
+   los valores claros, el panel de musica —que sigue negro— se quedaria con
+   lineas y textos oscuros sobre negro y no se veria nada. Cuando a ese le
+   toque su pasada, estos bloques se van con el.
+
+   ── Trampas ───────────────────────────────────────────────────────────
+   - Nada de backdrop-filter: en el CEF de FiveM pinta una banda negra. El
+     cristal es solo el degradado.
+   - .admin-radio-panel lleva overflow: hidden y .content lleva overflow-x
+     hidden. Un bloque inclinado 10 grados sobresale ~tan(10)*alto/2 por
+     cada lado y el relieve baja 5 px: por eso el relleno lateral del panel
+     baja a calc(0.6vh / var(--ogn-escala, 1)) y el que falta se le da a .content y a la cabecera (11 px),
+     que es donde viven las piezas inclinadas. Asi a la mas alta le quedan
+     ~7,6 px de aire y no se corta ni una punta.
+   - Las piezas que ocupan TODO el ancho (el boton de transmision, las
+     secciones, el campo de la URL) NO van inclinadas: no tendrian por donde
+     sobresalir. Se inclina lo que va en fila y le sobra sitio.
+
+   Las fuentes van en el <link> de index.html.
+
+   La copia de antes esta en admin_radio_style.css.ogn-bak.
+   ═════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Tipos ───────────────────────────────────────────────── */
+    --ogn-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ogn-texto: "Barlow", system-ui, sans-serif;
+
+    /* ── Marca ───────────────────────────────────────────────── */
+    --ogn-bg: #07060a;
+    --ogn-fg: #f4f1f6;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #d81b55;
+    --ogn-acc-pale: #fd9bbd;
+    --ogn-acc-deep: #82173c;
+
+    /* ── Superficies ─────────────────────────────────────────── */
+    --ogn-surface: rgba(244, 241, 246, 0.03);
+    --ogn-surface-hi: rgba(244, 241, 246, 0.055);
+    --ogn-surface-on: rgba(244, 241, 246, 0.07);
+    --ogn-sunken: rgba(0, 0, 0, 0.3);
+
+    /* ── Líneas ──────────────────────────────────────────────── */
+    --ogn-line: rgba(244, 241, 246, 0.13);
+    --ogn-line-soft: rgba(244, 241, 246, 0.08);
+    --ogn-line-hi: rgba(244, 241, 246, 0.26);
+
+    /* ── Texto, de más a menos presente ──────────────────────── */
+    --ogn-t1: rgba(244, 241, 246, 0.92);
+    --ogn-t2: rgba(244, 241, 246, 0.62);
+    --ogn-t3: rgba(244, 241, 246, 0.42);
+    --ogn-t4: rgba(244, 241, 246, 0.28);
+
+    /* ── Estados con significado ─────────────────────────────── */
+    --ogn-ok: #3ce6a4;
+    --ogn-warn: #f0b429;
+    --ogn-bad: #ff4d5e;
+    --ogn-info: #56a8ff;
+
+    --ogn-r: 7px;
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* ── Nombres de siempre, apuntando a los nuevos ──────────────
+       Ojo con --primary-color: se usa por todo el fichero como línea y como
+       fondo suave, no solo como color de marca. Si apuntara al acento, la
+       pantalla entera se volvería rosa. Se queda NEUTRO a propósito. */
+    --primary-color: var(--ogn-surface-on);
+    --color-acent: var(--ogn-line-hi);
+    --text-white: var(--ogn-fg);
+    --cubic: var(--ogn-ease);
+
+    --bg-dark: rgba(7, 6, 10, 0.92);
+    --bg-panel: rgba(7, 6, 10, 0.86);
+    --border-color: var(--ogn-line-hi);
+    --border-subtle: var(--ogn-line);
+    --color-danger: var(--ogn-bad);
+}
+
+:root {
+    --primary-color: var(--ogn-line);
+    --secondary-color: #c81a71;
+    --accent-color: var(--ogn-acc);
+    --bg-dark: rgba(15, 15, 15, 0.98);
+    --bg-darker: rgba(5, 5, 5, 0.98);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --border-color: rgba(255, 255, 255, 0.2);
+    --success-color: #00ff88;
+    --danger-color: #b3123f;
+    --warning-color: #ffa502;
+}
+
+/* ── Tokens del tema, solo para el panel de admin ───────────────── */
+.admin-radio-panel,
+.admin-radio-hud {
+    --arc-accent: #df2f63;
+    --arc-accent-deep: #b3123f;
+    --arc-grad: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-edge: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-glass: linear-gradient(160deg, rgba(255, 253, 247, 0.95) 0%, rgba(246, 241, 230, 0.92) 45%, rgba(238, 231, 217, 0.95) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-ok: #146636;
+
+    /* El relieve del tema: filo claro arriba, canto abajo. Al pulsar baja. */
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(120, 110, 88, 0.45);
+    --arc-relieve-on: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 2px 0 rgba(120, 110, 88, 0.45);
+    --arc-papel: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) 0%, rgba(246, 241, 230, 0.7) 100%);
+    /* Una tarjeta hundida dentro del panel: sin canto, solo filo. */
+    --arc-tarjeta: rgba(255, 255, 255, calc(0.42 * var(--arc-vf)));
+    --arc-tarjeta-filo: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ══ El panel ═════════════════════════════════════════════════════════ */
+.admin-radio-panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: calc(1vh / var(--ogn-escala, 1));
+    margin: auto;
+    z-index: 1000;
+
+    width: calc(65vh / var(--ogn-escala, 1));
+    height: fit-content;
+    max-height: calc(95vh / var(--ogn-escala, 1));
+
+    box-sizing: border-box;
+    /* Poco relleno a los lados: el que falta se lo queda .content, que es
+       donde viven las piezas inclinadas (ver la nota de arriba). */
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1));
+
+    border: 0;
+    border-top: 4px solid var(--arc-accent);
+    border-radius: 16px;
+    background: var(--arc-glass);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 30px 70px rgba(0, 0, 0, 0.45);
+    color: var(--arc-ink);
+    font-family: var(--arc-text);
+
+    overflow: hidden;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: calc(0.8vh / var(--ogn-escala, 1));
+    pointer-events: all;
+}
+
+.admin-radio-panel svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ══ Cabecera ═════════════════════════════════════════════════════════
+   Chapa rosa con el icono + titulo en cursiva gruesa + boton de cerrar.
+   El alto sube de calc(2.8vh / var(--ogn-escala, 1)) a calc(4.4vh / var(--ogn-escala, 1)): la chapa mide 44 px como en el resto del
+   servidor y con el alto de antes no cabia. */
+.admin-radio-panel .title-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    min-height: calc(4.4vh / var(--ogn-escala, 1));
+    flex-shrink: 0;
+    padding: 0 11px calc(0.8vh / var(--ogn-escala, 1));
+    border-bottom: 0;
+}
+
+.admin-radio-panel .title-section .title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.admin-radio-panel .title-section .title .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(4.2vh / var(--ogn-escala, 1));
+    height: calc(4.2vh / var(--ogn-escala, 1));
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    transform: var(--arc-skew);
+    background: var(--arc-grad);
+    box-shadow: 0 5px 0 var(--arc-accent-deep);
+    filter: none;
+    color: #fff;
+    font-size: calc(2.2vh / var(--ogn-escala, 1));
+}
+
+.admin-radio-panel .title-section .title .icon > * {
+    transform: var(--arc-unskew);
+}
+
+.admin-radio-panel .title-section .title .title-text {
+    min-width: 0;
+    max-width: calc(30vh / var(--ogn-escala, 1));
+    /* La cursiva se sale de su caja por la derecha y el corte con puntos
+       suspensivos le comia la punta a la ultima letra. */
+    padding-right: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.6vh / var(--ogn-escala, 1));
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .title-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    height: auto;
+}
+
+.admin-radio-panel .close-btn {
+    width: calc(3.6vh / var(--ogn-escala, 1));
+    height: calc(3.6vh / var(--ogn-escala, 1));
+    aspect-ratio: auto;
+    flex: none;
+    border: 0;
+    border-radius: 9px;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--arc-ink-2);
+    transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.admin-radio-panel .close-btn iconify-icon,
+.admin-radio-panel .close-btn svg {
+    width: calc(1.9vh / var(--ogn-escala, 1));
+    height: calc(1.9vh / var(--ogn-escala, 1));
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    transform: var(--arc-unskew);
+    color: inherit;
+    stroke: currentColor;
+    transition: color 0.18s ease;
+}
+
+.admin-radio-panel .close-btn:hover {
+    background: var(--arc-grad);
+    box-shadow: 0 5px 0 var(--arc-accent-deep);
+    color: #fff;
+}
+
+.admin-radio-panel .close-btn:hover iconify-icon,
+.admin-radio-panel .close-btn:hover svg {
+    color: #fff;
+    stroke: #fff;
+}
+
+.admin-radio-panel .close-btn:active {
+    transform: var(--arc-skew) translateY(3px);
+    box-shadow: var(--arc-relieve-on);
+}
+
+/* ══ La columna que rueda ═════════════════════════════════════════════
+   El relleno lateral de 8 px es el aire de lo inclinado; los 10 de abajo,
+   el sitio del canto de la ultima pieza. */
+.admin-radio-panel .content {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 11px 10px;
+}
+
+.admin-radio-panel .content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.admin-radio-panel .content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.admin-radio-panel .content::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-hueco), 0.22);
+    border-radius: 4px;
+}
+
+.admin-radio-panel .content::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--arc-t-hueco), 0.38);
+}
+
+/* ══ Rotulos de seccion ═══════════════════════════════════════════════
+   Titulo en cursiva gruesa y una raya que se apaga, como en el inventario.
+   La raya va en un ::after porque el marcado no la trae. */
+.admin-radio-panel .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    padding: 0;
+    border: 0;
+
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .section-title svg {
+    width: calc(1.8vh / var(--ogn-escala, 1));
+    height: calc(1.8vh / var(--ogn-escala, 1));
+    flex: none;
+    color: var(--arc-accent);
+}
+
+.admin-radio-panel .section-title::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, var(--arc-accent) 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, rgba(255, 255, 255, calc(0 * var(--arc-vf))) 100%);
+}
+
+/* ══ Las secciones: tarjetas de papel ═════════════════════════════════
+   Van a todo el ancho, asi que NO se inclinan: no tendrian por donde
+   sobresalir dentro de .content, que recorta de lado. */
+.admin-radio-panel .section,
+.admin-radio-panel .current-section,
+.admin-radio-panel .mode-section,
+.admin-radio-panel .radius-section,
+.admin-radio-panel .players-list-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 11px 12px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--arc-tarjeta);
+    box-shadow: var(--arc-tarjeta-filo);
+}
+
+/* .broadcast-section solo agrupa el boton y su aviso: no necesita tarjeta
+   propia, o serian dos papeles uno dentro de otro. */
+.admin-radio-panel .broadcast-section {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    gap: 8px;
+}
+
+.admin-radio-panel .current-section {
+    position: relative;
+    overflow: visible;
+}
+
+/* El brillo que cruzaba la tarjeta era un blanco sobre negro; sobre papel
+   crema solo ensucia. */
+.admin-radio-panel .current-section::before {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(calc(-1vh / var(--ogn-escala, 1)));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-radio-panel .radius-section,
+.admin-radio-panel .players-list-section {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ══ Lo que suena ═════════════════════════════════════════════════════ */
+.admin-radio-panel .now-playing-content {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0;
+    min-height: calc(4.6vh / var(--ogn-escala, 1));
+}
+
+.admin-radio-panel .equalizer-standalone {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: calc(4.2vh / var(--ogn-escala, 1));
+    width: calc(4.6vh / var(--ogn-escala, 1));
+    flex: none;
+    padding: 7px 8px;
+    border: 0;
+    border-radius: 9px;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+}
+
+.admin-radio-panel .equalizer-bar {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--arc-accent);
+    height: 30%;
+}
+
+.admin-radio-panel .current-info {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.1vh / var(--ogn-escala, 1));
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .current-title {
+    padding-right: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-radio-panel .no-music {
+    font-family: var(--arc-cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+/* ── La barra del tiempo ─────────────────────────────────────────────── */
+.admin-radio-panel .progress-container {
+    margin-top: 2px;
+}
+
+.admin-radio-panel .progress-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 0;
+    font-family: var(--arc-mono);
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    color: var(--arc-ink-3);
+}
+
+.admin-radio-panel .progress-bar {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(var(--arc-t-hueco), 0.13);
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.admin-radio-panel .progress-fill {
+    position: relative;
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    background: var(--arc-grad);
+    transition: width 0.3s ease;
+}
+
+.admin-radio-panel .progress-fill::after {
+    display: none;
+}
+
+/* ── El volumen ──────────────────────────────────────────────────────── */
+.admin-radio-panel .volume-container-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(var(--arc-t-hueco), 0.12);
+}
+
+.admin-radio-panel .volume-container-inline .volume-icon {
+    width: calc(2.1vh / var(--ogn-escala, 1));
+    height: calc(2.1vh / var(--ogn-escala, 1));
+    flex: none;
+    fill: none;
+    color: var(--arc-ink-3);
+    filter: none;
+}
+
+.admin-radio-panel .volume-container-inline .volume-slider,
+.admin-radio-panel .volume-slider,
+.admin-radio-panel .radius-slider {
+    flex: 1;
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    outline: none;
+    background: rgba(var(--arc-t-hueco), 0.13);
+    box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.admin-radio-panel .volume-slider::-webkit-slider-thumb,
+.admin-radio-panel .radius-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 18px;
+    border: 0;
+    border-radius: 5px;
+    transform: var(--arc-skew);
+    background: var(--arc-grad);
+    box-shadow: 0 3px 0 var(--arc-accent-deep);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease;
+}
+
+.admin-radio-panel .volume-slider::-webkit-slider-thumb:hover,
+.admin-radio-panel .radius-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 3px 0 var(--arc-accent-deep), 0 0 0 3px rgba(223, 47, 99, 0.22);
+}
+
+.admin-radio-panel .volume-slider::-moz-range-thumb,
+.admin-radio-panel .radius-slider::-moz-range-thumb {
+    width: 15px;
+    height: 18px;
+    border: 0;
+    border-radius: 5px;
+    background: #d81b55;
+    box-shadow: 0 3px 0 var(--arc-accent-deep);
+    cursor: pointer;
+}
+
+.admin-radio-panel .volume-container-inline .volume-value,
+.admin-radio-panel .volume-value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: calc(5vh / var(--ogn-escala, 1));
+    text-align: right;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-ink);
+}
+
+/* ══ El campo de la URL ═══════════════════════════════════════════════
+   A todo el ancho: no se inclina (ver la nota de arriba). */
+.admin-radio-panel .input-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    overflow: hidden;
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.admin-radio-panel .input-section:focus-within {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 2px var(--arc-accent);
+}
+
+.admin-radio-panel .input-section .icon {
+    flex: none;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-3);
+    filter: none;
+}
+
+.admin-radio-panel .url-input {
+    width: 100%;
+    background: none;
+    border: 0;
+    outline: none;
+    padding: 0;
+    color: var(--arc-ink);
+    font-family: var(--arc-cond);
+    font-weight: 600;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    letter-spacing: 0.06em;
+}
+
+.admin-radio-panel .url-input::placeholder {
+    color: var(--arc-ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ══ Reproducir · Parar · Añadir ══════════════════════════════════════
+   Tres botones sueltos, inclinados y con su canto. Antes iban pegados con
+   los bordes compartidos; inclinados se montarian unos sobre otros, asi que
+   se separan con un hueco de 7 px y cada uno lleva su radio entero.
+
+   Solo uno va en rosa: el que reproduce. */
+.admin-radio-panel .controls-section {
+    display: flex;
+    align-items: stretch;
+    gap: 7px;
+}
+
+.admin-radio-panel .control-btn {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 10px;
+    border: 0;
+    border-radius: 10px;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+    cursor: pointer;
+
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    line-height: 1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.admin-radio-panel .control-btn > * {
+    transform: var(--arc-unskew);
+}
+
+.admin-radio-panel .control-btn .icon {
+    flex: none;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+}
+
+.admin-radio-panel .control-btn svg {
+    width: calc(1.6vh / var(--ogn-escala, 1));
+    height: calc(1.6vh / var(--ogn-escala, 1));
+    fill: none;
+}
+
+.admin-radio-panel .control-btn:first-of-type,
+.admin-radio-panel .control-btn:last-of-type {
+    border-radius: 10px;
+    border: 0;
+}
+
+.admin-radio-panel .control-btn:hover {
+    background: linear-gradient(180deg, var(--arc-fondo1, #fff)) 0%, var(--arc-fondo1, rgba(250, 246, 238, 0.85)) 100%;
+    color: var(--arc-accent-texto);
+}
+
+.admin-radio-panel .control-btn:active {
+    transform: var(--arc-skew) translateY(3px);
+    box-shadow: var(--arc-relieve-on);
+}
+
+/* El unico rosa de la pantalla. */
+.admin-radio-panel .control-btn.primary {
+    flex: 1.35;
+    background: var(--arc-grad);
+    box-shadow: 0 5px 0 var(--arc-accent-deep);
+    color: #fff;
+    overflow: visible;
+    position: relative;
+}
+
+.admin-radio-panel .control-btn.primary:hover {
+    background: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    color: #fff;
+}
+
+.admin-radio-panel .control-btn.primary:active {
+    transform: var(--arc-skew) translateY(3px);
+    box-shadow: 0 2px 0 var(--arc-accent-deep);
+}
+
+.admin-radio-panel .control-btn.danger {
+    border: 0;
+    color: var(--arc-accent-texto);
+}
+
+.admin-radio-panel .control-btn.danger:hover {
+    background: #ffe3ec;
+    color: var(--arc-accent-texto);
+}
+
+/* ══ Transmision de voz ═══════════════════════════════════════════════
+   A todo el ancho: papel sin inclinar. Al transmitir se llena de rosa
+   fuerte, que es el color de «esto esta pasando ahora». */
+.admin-radio-panel .broadcast-btn {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    padding-left: calc(5.8vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: 12px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+}
+
+.admin-radio-panel .broadcast-btn:hover {
+    background: linear-gradient(180deg, var(--arc-fondo1, #fff)) 0%, var(--arc-fondo1, rgba(250, 246, 238, 0.85)) 100%;
+}
+
+.admin-radio-panel .broadcast-btn:active {
+    transform: translateY(3px);
+    box-shadow: var(--arc-relieve-on);
+}
+
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] {
+    background: var(--arc-grad);
+    box-shadow: 0 5px 0 var(--arc-accent-deep);
+    animation: none;
+}
+
+.admin-radio-panel .broadcast-icon {
+    position: absolute;
+    left: 12px;
+    width: calc(3.8vh / var(--ogn-escala, 1));
+    height: calc(3.8vh / var(--ogn-escala, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 9px;
+    transform: var(--arc-skew);
+    background: rgba(223, 47, 99, 0.14);
+}
+
+.admin-radio-panel .broadcast-icon svg {
+    position: relative;
+    z-index: 2;
+    width: calc(2.1vh / var(--ogn-escala, 1));
+    height: calc(2.1vh / var(--ogn-escala, 1));
+    transform: var(--arc-unskew);
+    color: var(--arc-accent-texto);
+    transition: transform 0.3s ease, color 0.18s ease;
+}
+
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] .broadcast-icon {
+    background: rgba(255, 255, 255, calc(0.28 * var(--arc-vf)));
+}
+
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] .broadcast-icon svg {
+    color: #fff;
+    animation: microphonePulse 1.5s ease-in-out infinite;
+}
+
+.admin-radio-panel .broadcast-waves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] .broadcast-waves {
+    opacity: 1;
+}
+
+.admin-radio-panel .wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, calc(0.55 * var(--arc-vf)));
+    border-radius: 50%;
+    animation: wave-pulse 2s ease-out infinite;
+}
+
+.admin-radio-panel .wave:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.admin-radio-panel .wave:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+@keyframes wave-pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.6);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.8);
+        opacity: 0;
+    }
+}
+
+@keyframes microphonePulse {
+
+    0%,
+    100% {
+        transform: skewX(10deg) scale(1);
+    }
+
+    50% {
+        transform: skewX(10deg) scale(1.1);
+    }
+}
+
+.admin-radio-panel .broadcast-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-radio-panel .broadcast-title {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .broadcast-subtitle {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] .broadcast-title,
+.admin-radio-panel .broadcast-btn[data-broadcasting="true"] .broadcast-subtitle {
+    color: #fff;
+}
+
+/* El aviso de «estas transmitiendo»: no es un adorno, es un estado. */
+.admin-radio-panel .broadcast-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 0;
+    padding: 8px 12px;
+    border: 0;
+    border-left: 4px solid var(--arc-accent-deep);
+    border-radius: 9px;
+    background: rgba(223, 47, 99, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+}
+
+.admin-radio-panel .status-indicator {
+    width: 9px;
+    height: 9px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--arc-accent-deep);
+}
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.admin-radio-panel .status-indicator.pulsing {
+    animation: statusPulse 1.5s ease-in-out infinite;
+}
+
+.admin-radio-panel .status-text {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto);
+}
+
+/* ══ Modo de reproduccion ═════════════════════════════════════════════ */
+.admin-radio-panel .mode-options {
+    display: flex;
+    gap: 7px;
+}
+
+.admin-radio-panel .mode-option {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+}
+
+.admin-radio-panel .mode-option input[type="radio"] {
+    display: none;
+}
+
+.admin-radio-panel .mode-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 9px;
+    height: 100%;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 10px;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+    text-align: left;
+    transition: background 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
+}
+
+.admin-radio-panel .mode-content > * {
+    transform: var(--arc-unskew);
+}
+
+.admin-radio-panel .mode-content svg {
+    width: calc(2.2vh / var(--ogn-escala, 1));
+    height: calc(2.2vh / var(--ogn-escala, 1));
+    flex: none;
+    color: var(--arc-ink-3);
+    transition: color 0.18s ease;
+}
+
+.admin-radio-panel .mode-content:hover {
+    background: linear-gradient(180deg, var(--arc-fondo1, #fff)) 0%, var(--arc-fondo1, rgba(250, 246, 238, 0.85)) 100%;
+}
+
+/* El elegido: rosa. */
+.admin-radio-panel .mode-option input[type="radio"]:checked + .mode-content {
+    background: var(--arc-grad);
+    box-shadow: 0 5px 0 var(--arc-accent-deep);
+}
+
+.admin-radio-panel .mode-option input[type="radio"]:checked + .mode-content svg,
+.admin-radio-panel .mode-option input[type="radio"]:checked + .mode-content .mode-title,
+.admin-radio-panel .mode-option input[type="radio"]:checked + .mode-content .mode-desc {
+    color: #fff;
+}
+
+.admin-radio-panel .mode-option input[type="radio"]:checked + .mode-content:hover {
+    background: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+}
+
+.admin-radio-panel .mode-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.admin-radio-panel .mode-title {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .mode-desc {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+/* ══ Radio de transmision ═════════════════════════════════════════════ */
+.admin-radio-panel .radius-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0;
+}
+
+.admin-radio-panel .radius-label {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+.admin-radio-panel .radius-value {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.2vh / var(--ogn-escala, 1));
+    line-height: 1;
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-accent-texto);
+}
+
+.admin-radio-panel .radius-slider {
+    margin: 4px 0 0;
+}
+
+.admin-radio-panel .radius-markers {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2px;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+/* ══ Quien esta escuchando ════════════════════════════════════════════ */
+.admin-radio-panel .players-list {
+    max-height: calc(20vh / var(--ogn-escala, 1));
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Sitio para el canto de 5 px de la ultima fila. */
+    padding: 2px 6px 7px;
+    margin: -2px -6px -7px;
+}
+
+.admin-radio-panel .players-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.admin-radio-panel .players-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.admin-radio-panel .players-list::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-hueco), 0.22);
+    border-radius: 4px;
+}
+
+.admin-radio-panel .player-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    margin-bottom: 7px;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    transition: background 0.18s ease;
+}
+
+.admin-radio-panel .player-item:last-child {
+    margin-bottom: 0;
+}
+
+.admin-radio-panel .player-item:hover {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+}
+
+.admin-radio-panel .player-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 6px;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+}
+
+.admin-radio-panel .player-distance {
+    flex: none;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    letter-spacing: 0.08em;
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-accent-texto);
+}
+
+/* El vacio: una caja de papel con una frase en versales espaciadas. */
+.admin-radio-panel .players-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--arc-ink-4);
+}
+
+.admin-radio-panel .players-empty svg {
+    width: calc(2.6vh / var(--ogn-escala, 1));
+    height: calc(2.6vh / var(--ogn-escala, 1));
+    opacity: 0.55;
+}
+
+.admin-radio-panel .players-empty span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+/* ══ La chapa de abajo a la izquierda ═════════════════════════════════
+   Se ve mientras suena algo, encima del juego: papel opaco con el filo
+   rosa arriba y sombra fuerte, que detras hay mundo y no panel. */
+.admin-radio-hud {
+    position: fixed;
+    bottom: calc(2vh / var(--ogn-escala, 1));
+    left: calc(2vh / var(--ogn-escala, 1));
+    width: calc(32vh / var(--ogn-escala, 1));
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 13px 11px;
+    border: 0;
+    border-top: 4px solid var(--arc-accent);
+    border-radius: 12px;
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97) 0%, rgba(var(--arc-t-papel2), 0.95) 45%, rgba(var(--arc-t-papel3), 0.96) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 14px 34px rgba(0, 0, 0, 0.5);
+    color: var(--arc-ink);
+    font-family: var(--arc-text);
+    z-index: 999;
+    animation: slideInFromLeft 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-120%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.admin-radio-hud .hud-equalizer {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: calc(4.2vh / var(--ogn-escala, 1));
+    width: calc(4.2vh / var(--ogn-escala, 1));
+    flex: none;
+    justify-content: center;
+    padding: 7px 8px;
+    border-radius: 9px;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-relieve);
+}
+
+.admin-radio-hud .hud-eq-bar {
+    width: 3px;
+    border-radius: 2px;
+    background: var(--arc-accent);
+    box-shadow: none;
+    animation: equalize 0.8s ease-in-out infinite;
+}
+
+.admin-radio-hud .hud-eq-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.admin-radio-hud .hud-eq-bar:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.admin-radio-hud .hud-eq-bar:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.admin-radio-hud .hud-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.admin-radio-hud .hud-label {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+.admin-radio-hud .hud-title {
+    padding-right: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.admin-radio-hud .hud-progress {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    margin-top: 2px;
+    border-radius: 3px;
+    background: rgba(var(--arc-t-hueco), 0.13);
+    overflow: hidden;
+}
+
+.admin-radio-hud .hud-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    background: var(--arc-grad);
+    box-shadow: none;
+    transition: width 0.1s linear;
+}
+
+/* ══ PEGATINA: Origen Música con el estilo del logo ════════════════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   recurso se queda como estaba. Mismas reglas y colores que
+   origen_inventory/source-ui/src/assets/styles/pegatina.css.
+
+   Va en esta hoja porque es la que se carga la ultima, pero cubre las dos:
+   el reproductor del altavoz (#speaker-container, sus dialogos, «Explorar»
+   y el aviso de «sonando») y el panel de admin de la radio
+   (#adminRadioPanel y su aviso). Cada regla lleva el id de su pantalla,
+   porque las dos comparten nombres de clase (.section, .control-btn…).
+
+   Papel blanco, canto negro, sombra dura, rosa con tinta negra para lo
+   encendido, nada inclinado.
+
+   El reproductor traia bordes de 1 px de verdad: no se quitan (cambiaria
+   la medida), se pintan de negro y el resto del canto es un anillo de
+   box-shadow por dentro.
+   Para quitarlo: borrar este bloque y las dos familias (Knewave, Oxanium)
+   del <link> de index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens del reproductor (estan en :root) ────────────────────────── */
+html:root {
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --primary-color: #d81b55;
+    --primary-glow: transparent;
+    --accent-color: #d81b55;
+    --secondary-color: #d81b55;
+    --border-color: #000;
+    --text-primary: #0b0b0d;
+    --text-secondary: #44444a;
+    --text-muted: #73737c;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #b3123f;
+    --ogn-acc-pale: #b3123f;
+    --ogn-acc-deep: #000;
+    --ogn-acc-texto: #b3123f;
+    --arc-accent-texto: #b3123f;
+    --ogn-surface: #e6e7ea;
+    --ogn-line: #0b0b0d;
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #44444a;
+    --ogn-t3: #73737c;
+    --ogn-t4: #9a9aa3;
+    --ogn-ok: #0b0b0d;
+    --ogn-bad: #b3123f;
+    --ogn-info: #0b0b0d;
+    --ogn-warn: #0b0b0d;
+}
+
+/* ── El panel ───────────────────────────────────────────────────────── */
+html #speaker-container .speaker-panel {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html #speaker-container .title-section { border-bottom-color: #000; }
+html #speaker-container .title-section .title .icon { color: #d81b55; filter: none; }
+html #speaker-container .title-section .title .title-text { color: #0b0b0d; }
+
+/* ── Lo pequeño que se pulsa: papel, canto y sombra corta ───────────── */
+html:root #speaker-container .hud-toggle-compact,
+html:root #speaker-container .close-btn,
+html #speaker-container .close-btn.danger,
+html #speaker-container .create-playlist-compact,
+html #speaker-container .explore-playlist-btn,
+html #speaker-container .playlist-tab,
+html #speaker-container .sync-action-btn,
+html #speaker-container .sync-action-btn.danger,
+html #speaker-container .back-btn-compact,
+html #speaker-container .action-icon-btn,
+html:root #speaker-container .playlist-action-btn,
+html #speaker-container .icon-btn-sm {
+    background: #dcdde0;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+/*  Peligro: pieza gris con la letra rosa; al pasar, rosa con tinta negra. */
+html #speaker-container .close-btn.danger, html #speaker-container .sync-action-btn.danger { background: #dcdde0; color: #b3123f; }
+html:root #speaker-container .close-btn.danger:hover, html:root #speaker-container .sync-action-btn.danger:hover { background: #d81b55; color: #000; }
+html #speaker-container .hud-toggle-compact:hover,
+html #speaker-container .create-playlist-compact:hover,
+html #speaker-container .explore-playlist-btn:hover,
+html #speaker-container .playlist-tab:hover:not(.active),
+html #speaker-container .sync-action-btn:hover,
+html #speaker-container .back-btn-compact:hover,
+html #speaker-container .action-icon-btn:hover,
+html #speaker-container .playlist-action-btn:hover,
+html #speaker-container .icon-btn-sm:hover {
+    background: #e6e7ea;
+    border-color: #000;
+    color: #0b0b0d;
+}
+html:root #speaker-container .close-btn:active,
+html #speaker-container .create-playlist-compact:active,
+html #speaker-container .explore-playlist-btn:active,
+html #speaker-container .playlist-tab:active,
+html #speaker-container .sync-action-btn:active,
+html #speaker-container .back-btn-compact:active,
+html #speaker-container .action-icon-btn:active,
+html:root #speaker-container .playlist-action-btn:active,
+html #speaker-container .icon-btn-sm:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root #speaker-container .hud-toggle-compact .icon,
+html:root #speaker-container .close-btn iconify-icon,
+html #speaker-container .back-btn-compact .icon,
+html #speaker-container .action-icon-btn .icon,
+html #speaker-container .icon-btn-sm .icon { color: #0b0b0d; stroke: #0b0b0d; }
+html:root #speaker-container .hud-toggle-compact .toggle-indicator { background: #73737c; }
+html #speaker-container .hud-toggle-compact input:checked ~ .toggle-indicator { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+/*  Lo encendido y lo que no tiene vuelta: rosa con tinta negra. */
+html #speaker-container .close-btn:hover,
+html #speaker-container .close-btn.danger:hover,
+html #speaker-container .sync-action-btn.danger:hover,
+html:root #speaker-container .playlist-tab.active,
+html #speaker-container .action-icon-btn.active,
+html #speaker-container .action-icon-btn.active:hover,
+html #speaker-container .icon-btn-sm.play-btn,
+html #speaker-container .icon-btn-sm.danger:hover,
+html #speaker-container .playlist-action-btn.danger:hover,
+html #speaker-container .playlist-action-btn.favorite.active,
+html #speaker-container .playlist-action-btn.public.active {
+    background: #d81b55;
+    border-color: #000;
+    color: #000;
+}
+html #speaker-container .close-btn.danger:hover, html #speaker-container .sync-action-btn.danger:hover, html #speaker-container .icon-btn-sm.danger:hover, html #speaker-container .playlist-action-btn.danger:hover { background: #d81b55; color: #000; }
+html #speaker-container .icon-btn-sm.play-btn:hover,
+html #speaker-container .playlist-action-btn.favorite.active:hover,
+html #speaker-container .playlist-action-btn.public.active:hover { background: #df2f63; }
+html #speaker-container .playlist-action-btn.danger { color: #b3123f; }
+
+/* ── Las tarjetas ───────────────────────────────────────────────────── */
+html:root #speaker-container .section-title,
+html #speaker-container .sync-section .section-title { color: #0b0b0d; }
+html #speaker-container .current-section,
+html #speaker-container .playlist-section,
+html #speaker-container .sync-section {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #speaker-container .current-section::before { background: none; }
+
+/* ── Sonando ────────────────────────────────────────────────────────── */
+/*  El ecualizador, en una chapa negra dentro del papel. */
+html #speaker-container .equalizer-standalone { background: #0b0b0d; border-color: #0b0b0d; }
+html #speaker-container .equalizer-bar { background: #d81b55; }
+html #speaker-container .current-info { color: #0b0b0d; }
+html:root #speaker-container .no-music { color: #73737c; }
+html #speaker-container .loading { border-color: rgba(11, 11, 13, 0.25); border-top-color: #d81b55; }
+html #speaker-container .progress-time,
+html #speaker-container .volume-container-inline .volume-value {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    color: #0b0b0d;
+}
+html #speaker-container .progress-bar { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #speaker-container .progress-fill { border-radius: 0; background: #d81b55; }
+html #speaker-container .progress-fill::after { border-radius: 0; background: #000; }
+html:root #speaker-container .volume-container-inline { border-top-color: #000; }
+html #speaker-container .volume-container-inline .volume-icon { color: #0b0b0d; }
+html #speaker-container .volume-container-inline .volume-slider { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #speaker-container .volume-container-inline .volume-slider::-webkit-slider-thumb {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* ── Buscador y los tres botones ────────────────────────────────────── */
+/*  Sin sombra por fuera: van a todo el ancho de una caja que rueda y
+    recorta, y se la comeria por la derecha. Solo el canto. */
+html #speaker-container .input-section {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #speaker-container .input-section:focus-within { border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55; }
+html #speaker-container .input-section .icon { color: #0b0b0d; filter: none; }
+html:root #speaker-container .url-input { color: #0b0b0d; }
+html #speaker-container .url-input::placeholder { color: #73737c; }
+html #speaker-container.controls-disabled .url-input,
+html:root #speaker-container .controls-disabled .url-input { background: none; }
+html:root #speaker-container .control-btn {
+    background: #dcdde0;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #0b0b0d;
+}
+html #speaker-container .control-btn:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html #speaker-container .control-btn.primary { background: #d81b55; border-color: #000; color: #000; }
+html #speaker-container .control-btn.primary:hover { background: #df2f63; color: #000; }
+html #speaker-container .control-btn.danger { border-color: #000; color: #b3123f; }
+html #speaker-container .control-btn.danger:hover { background: #d81b55; border-color: #000; }
+
+/* ── Sincronizar ────────────────────────────────────────────────────── */
+html:root #speaker-container .sync-text { color: #44444a; }
+html #speaker-container .sync-text.synced { color: #b3123f; }
+html #speaker-container .sync-text.synced svg { stroke: #b3123f; }
+html #speaker-container .sync-text.slave { color: #0b0b0d; }
+html #speaker-container .sync-text.slave svg { stroke: #0b0b0d; }
+
+/* ── Listas ─────────────────────────────────────────────────────────── */
+html:root #speaker-container .playlist-item {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #speaker-container .playlist-item.shared:hover { background: #e6e7ea; border-color: #000; }
+html #speaker-container .playlist-item-thumbnail { background: #e6e7ea; border-color: #000; }
+html:root #speaker-container .playlist-item-name { color: #0b0b0d; }
+html:root #speaker-container .playlist-item-count { color: #44444a; }
+html #speaker-container .playlist-item-likes { color: #b3123f; }
+html #speaker-container .playlist-item-likes svg { filter: none; }
+/*  La estrella: chapa negra con el icono blanco; rosa si es favorita. */
+html:root #speaker-container .playlist-action-btn-compact { background: #0b0b0d; border-color: #0b0b0d; }
+html #speaker-container .playlist-action-btn-compact:hover:not(.favorite.active) { background: #2a2a30; }
+html #speaker-container .playlist-action-btn-compact .icon { color: #fff; filter: none; }
+html #speaker-container .playlist-action-btn-compact.favorite.active,
+html #speaker-container .playlist-action-btn-compact.favorite.active:hover {
+    background: #d81b55;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1px #000;
+}
+html #speaker-container .playlist-action-btn-compact .icon.active { color: #000; filter: none; }
+html #speaker-container .playlist-action-btn-compact.favorite.active svg { fill: #000; stroke: #000; filter: none; }
+html:root #speaker-container .playlist-item-badge { border-color: #000; }
+html #speaker-container .playlist-item-badge.public { background: #0b0b0d; color: #fff; }
+html #speaker-container .playlist-item-badge.private { background: #dcdde0; color: #44444a; }
+html #speaker-container .empty-state { color: #73737c; }
+
+/* ── Las canciones: bandeja negra con las filas de papel ────────────── */
+html:root #speaker-container .playlist-title { color: #0b0b0d; }
+html:root #speaker-container .playlist-subtitle { color: #44444a; }
+html:root #speaker-container .play-all-btn {
+    background: #d81b55;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html #speaker-container .play-all-btn:hover { background: #df2f63; border-color: #000; }
+html:root #speaker-container .play-all-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #speaker-container .play-all-btn svg { fill: #000; }
+html:root #speaker-container .songs-list { background: #0b0b0d; }
+html #speaker-container .songs-list::-webkit-scrollbar-track { background: #0b0b0d; }
+html #speaker-container .songs-list::-webkit-scrollbar-thumb { background: #d81b55; }
+html #speaker-container .content::-webkit-scrollbar-thumb { background: rgba(11, 11, 13, 0.4); }
+html #speaker-container .content::-webkit-scrollbar-thumb:hover { background: rgba(11, 11, 13, 0.6); }
+html:root #speaker-container .song-item { background: #dcdde0; border-color: #0b0b0d; }
+html #speaker-container .song-item.playing {
+    background: #dcdde0;
+    border-color: #d81b55;
+    box-shadow: inset 0 0 0 2px #d81b55;
+}
+html #speaker-container .song-item-number {
+    background: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    color: #fff;
+}
+html #speaker-container .song-item.playing .song-item-number { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html:root #speaker-container .song-item-title { color: #0b0b0d; }
+
+/* ── Dialogos (cuelgan del <body>) ──────────────────────────────────── */
+html:root .modal .modal-content {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html:root .modal .modal-content h3 { color: #0b0b0d; }
+html:root .modal .modal-input {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html:root .modal .modal-input:focus { border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+html .modal .modal-input::placeholder { color: #73737c; }
+html:root .modal .image-preview-container { background: #e6e7ea; border-color: #000; }
+html:root .modal #imagePreview { box-shadow: none; }
+html:root .modal .modal-btn {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 11px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .modal .modal-btn:hover { background: #e6e7ea; border-color: #000; }
+html .modal .modal-btn.primary { background: #d81b55; border-color: #000; color: #000; }
+html .modal .modal-btn.primary:hover { background: #df2f63; border-color: #000; }
+html:root .modal .modal-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .modal .playlist-select-item {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .modal .playlist-select-item:hover { background: #e6e7ea; }
+html:root .modal .playlist-select-item::before { background-color: #0b0b0d; }
+html:root .modal .playlist-select-item-name { color: #0b0b0d; }
+html:root .modal .playlist-select-item-count { background: #0b0b0d; color: #fff; }
+html:root .modal .sync-modal-subtitle { color: #44444a; }
+html .modal .sync-speakers-list::-webkit-scrollbar-track { background: rgba(11, 11, 13, 0.1); }
+html .modal .sync-speakers-list::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html:root .modal .sync-speaker-item {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .modal .sync-speaker-item:hover { background: #e6e7ea; }
+html:root .modal .sync-speaker-item.selected,
+html:root .modal .sync-speaker-item.selected:hover {
+    background: #ffd6e4;
+    border-color: #d81b55;
+    box-shadow: inset 0 0 0 2px #d81b55;
+}
+html:root .modal .sync-speaker-checkbox { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1px #000; }
+html .modal .sync-speaker-item.selected .sync-speaker-checkbox { background: #d81b55; border-color: #000; }
+html:root .modal .sync-speaker-item.selected .sync-speaker-checkbox::after { color: #000; }
+html:root .modal .sync-speaker-name { color: #0b0b0d; }
+html:root .modal .sync-speaker-distance { color: #44444a; }
+html:root .modal .sync-empty-state { color: #73737c; }
+
+/* ── Explorar listas ────────────────────────────────────────────────── */
+html .explore-modal .explore-modal-content {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html:root .explore-modal .explore-header,
+html:root .explore-modal .explore-filters {
+    background: #dcdde0;
+    border-bottom-color: #000;
+    box-shadow: inset 0 -2px 0 #000;
+}
+html:root .explore-modal .explore-back-btn {
+    background: #dcdde0;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html .explore-modal .explore-back-btn:hover { background: #e6e7ea; }
+html:root .explore-modal .explore-back-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .explore-modal .explore-back-btn svg { stroke: #0b0b0d; color: #0b0b0d; }
+html:root .explore-modal .explore-title { color: #0b0b0d; }
+html:root .explore-modal .explore-title svg { stroke: #d81b55; }
+html:root .explore-modal .explore-search,
+html:root .explore-modal .explore-sort {
+    background-color: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .explore-modal .explore-search::placeholder { color: #73737c; }
+html:root .explore-modal .explore-search:focus,
+html:root .explore-modal .explore-sort:focus { border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+/*  La flecha del desplegable venia en blanco: no se veria sobre el papel. */
+html:root .explore-modal .explore-sort {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%230b0b0d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+html .explore-modal .explore-sort option,
+html .explore-modal .explore-sort option:hover { background: #dcdde0 !important; color: #0b0b0d !important; }
+html .explore-modal .explore-sort option:checked { background: #d81b55 !important; color: #000 !important; }
+html .explore-modal .explore-playlists-container::-webkit-scrollbar-track { background: rgba(11, 11, 13, 0.1); }
+html .explore-modal .explore-playlists-container::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html:root .explore-modal .explore-loading,
+html:root .explore-modal .explore-empty { color: #44444a; }
+html .explore-modal .explore-loading svg { stroke: #d81b55; }
+html:root .explore-modal .explore-empty svg { stroke: #73737c; }
+html:root .explore-modal .explore-playlist-card {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .explore-modal .explore-playlist-card::before { background: none; }
+html .explore-modal .explore-playlist-card:hover { background: #e6e7ea; border-color: #000; }
+html:root .explore-modal .explore-card-thumbnail { background: #e6e7ea; border-color: #000; box-shadow: none; }
+html:root .explore-modal .explore-card-thumbnail svg { stroke: #73737c; }
+html:root .explore-modal .explore-card-title { color: #0b0b0d; }
+html:root .explore-modal .explore-card-creator { color: #55555c; }
+html:root .explore-modal .explore-card-creator strong { color: #0b0b0d; }
+html:root .explore-modal .explore-card-stats { border-top-color: rgba(11, 11, 13, 0.35); border-bottom-color: rgba(11, 11, 13, 0.35); }
+html:root .explore-modal .explore-stat { color: #0b0b0d; }
+html:root .explore-modal .explore-stat.likes { color: #b3123f; }
+html .explore-modal .explore-stat.likes svg { filter: none; }
+html:root .explore-modal .explore-action-btn {
+    background: #dcdde0;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #0b0b0d;
+}
+html .explore-modal .explore-action-btn:hover { background: #e6e7ea; }
+html:root .explore-modal .explore-action-btn.liked,
+html:root .explore-modal .explore-action-btn.primary {
+    background: #d81b55;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #000;
+}
+html:root .explore-modal .explore-action-btn.liked:hover,
+html:root .explore-modal .explore-action-btn.primary:hover {
+    transform: none;
+    background: #df2f63;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .explore-modal .explore-action-btn.liked svg { filter: none; }
+
+/* ── El aviso de «sonando» ──────────────────────────────────────────── */
+html #now-playing-hud.hud-banner {
+    background: #dcdde0;
+    border-color: #000;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #now-playing-hud .hud-bar { background: #d81b55; }
+html:root #now-playing-hud .hud-title { color: #0b0b0d; }
+
+/* ── Tokens (el panel declara los suyos en la propia pieza) ─────────── */
+html .admin-radio-panel.admin-radio-panel,
+html .admin-radio-hud.admin-radio-hud {
+    --arc-vf: 1;
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #000;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-edge: #fff;
+    --arc-glass: #fff;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --arc-ok: #0b0b0d;
+    --arc-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-relieve-on: inset 0 0 0 1.5px #000;
+    --arc-papel: #fff;
+    --arc-tarjeta: #fff;
+    --arc-tarjeta-filo: inset 0 0 0 1.5px #000;
+}
+
+html #adminRadioPanel.admin-radio-panel {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Cabecera: placa rosa girada ────────────────────────────────────── */
+html #adminRadioPanel .title-section .title .icon {
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html #adminRadioPanel .title-section .title .icon > * { transform: none; }
+html #adminRadioPanel .title-section .title .title-text { color: #0b0b0d; }
+html #adminRadioPanel .close-btn {
+    transform: none;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #adminRadioPanel .close-btn iconify-icon,
+html #adminRadioPanel .close-btn svg { transform: none; color: #0b0b0d; stroke: #0b0b0d; }
+html #adminRadioPanel .close-btn:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #adminRadioPanel .close-btn:hover iconify-icon,
+html #adminRadioPanel .close-btn:hover svg { color: #000; stroke: #000; }
+html #adminRadioPanel .close-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Rotulos y tarjetas ─────────────────────────────────────────────── */
+html #adminRadioPanel .section-title { color: #0b0b0d; }
+html #adminRadioPanel .section-title svg { color: #0b0b0d; }
+html #adminRadioPanel .section-title::after { border-radius: 2px; background: #d81b55; }
+html #adminRadioPanel .section,
+html #adminRadioPanel .current-section,
+html #adminRadioPanel .mode-section,
+html #adminRadioPanel .radius-section,
+html #adminRadioPanel .players-list-section {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #adminRadioPanel .broadcast-section { background: none; box-shadow: none; }
+
+/* ── Sonando ────────────────────────────────────────────────────────── */
+html #adminRadioPanel .equalizer-standalone { transform: none; background: #0b0b0d; box-shadow: none; }
+html #adminRadioPanel .equalizer-bar { background: #d81b55; }
+html #adminRadioPanel .current-info { color: #0b0b0d; }
+html:root #adminRadioPanel .no-music { color: #73737c; }
+html #adminRadioPanel .progress-time,
+html #adminRadioPanel .volume-container-inline .volume-value,
+html #adminRadioPanel .radius-value {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    color: #0b0b0d;
+}
+html #adminRadioPanel .radius-value { color: #b3123f; }
+html #adminRadioPanel .progress-bar,
+html #adminRadioPanel .volume-container-inline .volume-slider,
+html #adminRadioPanel .volume-slider,
+html #adminRadioPanel .radius-slider { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #adminRadioPanel .progress-fill { border-radius: 0; background: #d81b55; }
+html #adminRadioPanel .volume-container-inline { border-top-color: #000; }
+html #adminRadioPanel .volume-container-inline .volume-icon { color: #0b0b0d; }
+html #adminRadioPanel .volume-slider::-webkit-slider-thumb,
+html #adminRadioPanel .radius-slider::-webkit-slider-thumb,
+html #adminRadioPanel .volume-slider::-webkit-slider-thumb:hover,
+html #adminRadioPanel .radius-slider::-webkit-slider-thumb:hover {
+    transform: none;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* ── Buscador y botones ─────────────────────────────────────────────── */
+html #adminRadioPanel .input-section {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #adminRadioPanel .input-section:focus-within { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html #adminRadioPanel .input-section .icon { color: #0b0b0d; }
+html #adminRadioPanel .url-input { color: #0b0b0d; }
+html #adminRadioPanel .url-input::placeholder { color: #73737c; }
+html #adminRadioPanel .control-btn {
+    transform: none;
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #adminRadioPanel .control-btn > * { transform: none; }
+html #adminRadioPanel .control-btn:first-of-type,
+html #adminRadioPanel .control-btn:last-of-type { border-radius: 11px; }
+html #adminRadioPanel .control-btn:hover { background: #e6e7ea; color: #0b0b0d; }
+html #adminRadioPanel .control-btn.primary { background: #d81b55; color: #000; }
+html #adminRadioPanel .control-btn.primary:hover { background: #df2f63; color: #000; }
+html #adminRadioPanel .control-btn.danger { color: #b3123f; }
+html #adminRadioPanel .control-btn.danger:hover { background: #d81b55; color: #000; }
+html #adminRadioPanel .control-btn:active,
+html #adminRadioPanel .control-btn.primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* ── Transmision de voz ─────────────────────────────────────────────── */
+html #adminRadioPanel .broadcast-btn {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #adminRadioPanel .broadcast-btn:hover { background: #e6e7ea; }
+html #adminRadioPanel .broadcast-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"],
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"]:hover { background: #d81b55; }
+html #adminRadioPanel .broadcast-icon,
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"] .broadcast-icon { transform: none; background: #0b0b0d; }
+html #adminRadioPanel .broadcast-icon svg,
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"] .broadcast-icon svg { transform: none; color: #fff; }
+html #adminRadioPanel .wave { border-color: #000; }
+html #adminRadioPanel .broadcast-title { color: #0b0b0d; }
+html #adminRadioPanel .broadcast-subtitle { color: #44444a; }
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"] .broadcast-title,
+html #adminRadioPanel .broadcast-btn[data-broadcasting="true"] .broadcast-subtitle { color: #000; }
+html #adminRadioPanel .broadcast-status {
+    border-left-color: #d81b55;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #d81b55;
+}
+html #adminRadioPanel .status-indicator { background: #d81b55; }
+html #adminRadioPanel .status-text { color: #b3123f; }
+
+/* ── Modo, radio y oyentes ──────────────────────────────────────────── */
+html #adminRadioPanel .mode-content {
+    transform: none;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #adminRadioPanel .mode-content > * { transform: none; }
+html #adminRadioPanel .mode-content svg { color: #0b0b0d; }
+html #adminRadioPanel .mode-content:hover { background: #e6e7ea; }
+html #adminRadioPanel .mode-title { color: #0b0b0d; }
+html #adminRadioPanel .mode-desc { color: #44444a; }
+html #adminRadioPanel .mode-option input[type="radio"]:checked + .mode-content {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #adminRadioPanel .mode-option input[type="radio"]:checked + .mode-content:hover { background: #df2f63; }
+html #adminRadioPanel .mode-option input[type="radio"]:checked + .mode-content svg,
+html #adminRadioPanel .mode-option input[type="radio"]:checked + .mode-content .mode-title,
+html #adminRadioPanel .mode-option input[type="radio"]:checked + .mode-content .mode-desc { color: #000; }
+html #adminRadioPanel .radius-label { color: #44444a; }
+html #adminRadioPanel .radius-markers { color: #55555c; }
+html #adminRadioPanel .player-item { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #adminRadioPanel .player-item:hover { background: #e6e7ea; }
+html #adminRadioPanel .player-name { color: #0b0b0d; }
+html #adminRadioPanel .player-distance { color: #b3123f; }
+/*  Sin oyentes: el negro va dentro del papel. */
+html:root #adminRadioPanel .players-empty { background: #0b0b0d; box-shadow: none; color: #fff; }
+
+/* ── El aviso de la radio ───────────────────────────────────────────── */
+html #adminRadioHud.admin-radio-hud {
+    background: #dcdde0;
+    border-top-color: #dcdde0;
+    border-radius: 14px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html #adminRadioHud .hud-equalizer { transform: none; background: #0b0b0d; box-shadow: none; }
+html #adminRadioHud .hud-eq-bar { background: #d81b55; }
+html:root #adminRadioHud .hud-label { color: #44444a; }
+html #adminRadioHud .hud-title { color: #0b0b0d; }
+html #adminRadioHud .hud-progress { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #adminRadioHud .hud-progress-fill { border-radius: 0; background: #d81b55; }
+
+/* [REPASO-HUD 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · EL REPRODUCTOR (verificado 06/10) ══════════════════════════════
+   El reproductor seguía entero en Orbitron fina (peso 100–400). Pasa a
+   la letra del resto: rótulos en Barlow Condensed cursiva 800, texto en
+   Barlow y cifras en Oxanium 800. Placa rosa en la cabecera con su filete
+   macizo, botones con canto y sombra dura (iban pegados, a sangre) y el
+   vacío en su hueco gris a trazos. Solo de día. */
+html:root #speaker-container,
+html:root #speaker-container :is(div, span, p, button, input, label, h1, h2, h3, h4) {
+    font-family: "Barlow", "Barlow Condensed", sans-serif; font-weight: 600; letter-spacing: 0;
+}
+html:root #speaker-container :is(.title-text, .section-title, .control-btn, .control-btn span, .sync-action-btn, .sync-action-btn span, .playlist-tab, .explore-playlist-btn, .explore-playlist-btn span, .create-playlist-compact, .create-playlist-compact span, .empty-state .title, .no-music, .sync-text) {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase;
+}
+html:root #speaker-container .volume-value { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; }
+/*  Cabecera: título grande y filete rosa macizo (era una raya negra de 1 px). */
+html:root #speaker-container .speaker-panel .title-section { border-bottom: 4px solid #d81b55; padding-bottom: 8px; margin-bottom: 10px; }
+html:root #speaker-container .speaker-panel .title-text { font-size: 22px; color: #0b0b0d; }
+html:root #speaker-container .speaker-panel .title > .icon {
+    width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 9px;
+    background: #d81b55; color: #000; transform: rotate(-5deg); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; margin-right: 6px;
+}
+html:root #speaker-container .section-title { font-size: 16px; color: #0b0b0d; }
+html:root #speaker-container .no-music { font-size: 17px; color: #55555c; }
+html:root #speaker-container .sync-text { font-size: 14px; color: #55555c; }
+html:root #speaker-container .url-input { font-size: 15px; font-weight: 600; }
+/*  Reproducir · Parar · Añadir: tres botones sueltos, no una tira a sangre. */
+html:root #speaker-container .controls-section { gap: 9px; padding-right: 3px; padding-bottom: 3px; }
+html:root #speaker-container .control-btn { border: 0; border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: 16px; }
+html:root #speaker-container .control-btn span { font-size: 16px; }
+html:root #speaker-container :is(.sync-action-btn, .playlist-tab, .explore-playlist-btn, .create-playlist-compact),
+html:root #speaker-container :is(.sync-action-btn, .explore-playlist-btn, .create-playlist-compact) span { font-size: 14px; }
+html:root #speaker-container .playlist-tab.active { background: #d81b55; color: #000; }
+/*  La raya bajo «lo que suena»: fuera el filo de 1 px. */
+html:root #speaker-container .volume-container-inline { border-top: 2px solid #0b0b0d; }
+/*  El vacío de las listas. */
+html:root #speaker-container .playlist-list .empty-state { border: 1.5px dashed #73737c; border-radius: 12px; background: transparent; }
+html:root #speaker-container .empty-state .title { font-size: 17px; color: #0b0b0d; }
+html:root #speaker-container .empty-state .subtitle { font-size: 13px; color: #55555c; }
+html:root #speaker-container .empty-state svg { color: #73737c; opacity: 1; }
+/* [REPASO-HUD 05/10 · fin] */
+
+/* [REPASO-HUD-D 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · DIÁLOGOS, «EXPLORAR» Y LAS LISTAS (verificado 06/10) ════════════
+   Visto en captura con la página de verdad (openSpeaker, updatePlaylists y
+   las funciones de cada diálogo, con las respuestas de Lua simuladas).
+   Solo de día. Lo que cambia:
+   - Los cuatro diálogos y «Explorar» seguían enteros en Orbitron fina:
+     título en rótulo cursiva 800 con filete rosa macizo, texto en Barlow,
+     botones en rótulo y cifras en Oxanium.
+   - Vacíos (sin altavoces cerca, sin listas públicas): hueco gris a trazos
+     con el texto en rótulo, no un icono lavado con letra fina.
+   - «Explorar»: cabecera con placa rosa y filete, sin las dos bandas
+     blancas; en las tarjetas «Me gusta» e «Importar» se salían de la
+     tarjeta (iban en fila): ahora uno debajo del otro.
+   - Listas: nombre y botones en rótulo, los cuatro botones con su hueco,
+     chapas «Pública / Privada» con canto de 2 px; la vista de canciones,
+     título y «Reproducir todo» en rótulo.
+   Las medidas van como en style.css: vh partido por la escala. */
+html:root .modal,
+html:root .explore-modal,
+html:root #speaker-container { --u: calc(1vh / var(--ogn-escala, 1)); }
+
+/* ── La letra de los diálogos ───────────────────────────────────────── */
+html:root .modal,
+html:root .modal :is(div, span, p, button, input, h3),
+html:root .explore-modal,
+html:root .explore-modal :is(div, span, p, button, input, select, option, h2, strong) {
+    font-family: "Barlow", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+html:root .modal :is(h3, .modal-btn, .sync-speaker-name, .sync-empty-state p),
+html:root .explore-modal :is(.explore-title, .explore-action-btn, .explore-card-title, .explore-empty p, .explore-loading p) {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/* ── Diálogos ───────────────────────────────────────────────────────── */
+html:root .modal { background: rgba(11, 11, 13, 0.55); }
+html:root .modal .modal-content { padding: calc(2 * var(--u)) calc(2.2 * var(--u)) calc(2.3 * var(--u)) calc(2 * var(--u)); }
+html:root .modal .modal-content h3 {
+    margin: 0 0 calc(1.5 * var(--u));
+    padding-bottom: calc(0.8 * var(--u));
+    border-bottom: 4px solid #d81b55;
+    font-size: calc(2.5 * var(--u));
+    line-height: 1.1;
+}
+html:root .modal .modal-input { box-sizing: border-box; padding: calc(1 * var(--u)) calc(1.2 * var(--u)); margin-bottom: calc(1.3 * var(--u)); font-size: calc(1.6 * var(--u)); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .modal .modal-input:focus { box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+html:root .modal .modal-actions { gap: calc(1.2 * var(--u)); }
+html:root .modal .modal-btn { padding: calc(0.9 * var(--u)); font-size: calc(1.8 * var(--u)); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .modal .modal-btn:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  La imagen de la lista: hueco gris con canto, la foto con su anillo. */
+html:root .modal .image-preview-container { box-sizing: border-box; margin: 0 0 calc(1.4 * var(--u)); padding: calc(1.4 * var(--u)); border: 0; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .modal #imagePreview { max-width: 100%; border-radius: 8px; box-shadow: 0 0 0 1.5px #000; }
+/*  Añadir a una lista. */
+html:root .modal .playlist-select-item { padding: calc(1 * var(--u)); margin-bottom: calc(0.9 * var(--u)); border: 0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .modal .playlist-select-item::before { border-radius: 7px; }
+html:root .modal .playlist-select-item-name { font-size: calc(1.6 * var(--u)); font-weight: 600; }
+html:root .modal .playlist-select-item-count { border-radius: 6px; font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(1.2 * var(--u)); }
+/*  Sincronizar. */
+html:root .modal .sync-modal-subtitle { font-size: calc(1.5 * var(--u)); color: #44444a; }
+html:root .modal .sync-speakers-list { padding: 0 calc(0.3 * var(--u)) 0 0; gap: calc(0.9 * var(--u)); }
+html:root .modal .sync-speaker-item { border: 0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .modal .sync-speaker-item.selected,
+html:root .modal .sync-speaker-item.selected:hover { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root .modal .sync-speaker-checkbox { width: calc(2.2 * var(--u)); height: calc(2.2 * var(--u)); border: 0; border-radius: 6px; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .modal .sync-speaker-item.selected .sync-speaker-checkbox::after { font-family: "Barlow", sans-serif; font-weight: 600; font-size: calc(1.5 * var(--u)); color: #000; }
+html:root .modal .sync-speaker-name { margin: 0; font-size: calc(1.7 * var(--u)); line-height: 1.15; }
+html:root .modal .sync-speaker-distance { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(1.2 * var(--u)); color: #55555c; }
+html:root .modal .sync-empty-state,
+html:root .explore-modal .explore-empty,
+html:root .explore-modal .explore-loading {
+    gap: calc(1 * var(--u));
+    padding: calc(2.6 * var(--u)) calc(2 * var(--u));
+    border: 2.5px dashed #73737c;
+    border-radius: 12px;
+    background: #dcdde0;
+    color: #0b0b0d;
+}
+html:root .modal .sync-empty-state svg,
+html:root .explore-modal .explore-empty svg { width: calc(4.4 * var(--u)); height: calc(4.4 * var(--u)); opacity: 1; stroke: #73737c; color: #73737c; }
+html:root .modal .sync-empty-state p,
+html:root .explore-modal .explore-empty p,
+html:root .explore-modal .explore-loading p { font-size: calc(1.8 * var(--u)); color: #0b0b0d; }
+
+/* ── Explorar listas ────────────────────────────────────────────────── */
+html:root .explore-modal .explore-header {
+    margin: 0 calc(2 * var(--u));
+    padding: calc(1.8 * var(--u)) 0 calc(1 * var(--u));
+    border-bottom: 4px solid #d81b55;
+    background: none;
+    box-shadow: none;
+}
+html:root .explore-modal .explore-back-btn { border: 0; border-radius: 9px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .explore-modal .explore-back-btn:active { box-shadow: inset 0 0 0 1.5px #000; }
+html:root .explore-modal .explore-title { margin: 0; gap: calc(1.2 * var(--u)); font-size: calc(2.8 * var(--u)); line-height: 1.1; }
+/*  La lupa del título hace de placa. */
+html:root .explore-modal .explore-title svg {
+    box-sizing: border-box;
+    width: calc(3.6 * var(--u));
+    height: calc(3.6 * var(--u));
+    padding: calc(0.7 * var(--u));
+    border-radius: 9px;
+    background: #d81b55;
+    stroke: #000;
+    transform: rotate(-5deg);
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .explore-modal .explore-filters { padding: calc(1.5 * var(--u)) calc(2.3 * var(--u)) calc(0.6 * var(--u)) calc(2 * var(--u)); border-bottom: 0; background: none; box-shadow: none; gap: calc(1.2 * var(--u)); }
+html:root .explore-modal .explore-search,
+html:root .explore-modal .explore-sort { font-size: calc(1.6 * var(--u)); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .explore-modal .explore-search:focus,
+html:root .explore-modal .explore-sort:focus { box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+html:root .explore-modal .explore-playlists-container { padding: calc(1.4 * var(--u)) calc(2 * var(--u)) calc(2 * var(--u)); }
+html:root .explore-modal .explore-playlists-grid { padding: 0; }
+html:root .explore-modal .explore-playlist-card { border: 0; box-shadow: inset 0 0 0 1.5px #000; cursor: default; }
+html:root .explore-modal .explore-card-thumbnail { border: 0; border-radius: 8px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .explore-modal .explore-card-thumbnail svg { opacity: 1; stroke: #9a9aa3; color: #9a9aa3; }
+html:root .explore-modal .explore-card-title { font-size: calc(1.75 * var(--u)); line-height: 1.12; min-height: calc(3.9 * var(--u)); }
+html:root .explore-modal .explore-card-creator,
+html:root .explore-modal .explore-card-creator strong { font-size: calc(1.3 * var(--u)); letter-spacing: 0; }
+html:root .explore-modal .explore-card-creator strong { font-weight: 600; }
+/*  Las cifras de la tarjeta: sin las dos rayas de 1 px, en Oxanium. */
+html:root .explore-modal .explore-card-stats { padding: calc(0.2 * var(--u)) 0 calc(0.3 * var(--u)); border: 0; }
+html:root .explore-modal .explore-stat { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(1.3 * var(--u)); letter-spacing: 0; color: #0b0b0d; }
+html:root .explore-modal .explore-stat.likes { color: #b3123f; }
+html:root .explore-modal .explore-stat svg { filter: none; }
+/*  «Me gusta» e «Importar»: uno debajo del otro, que en fila no cabían. */
+html:root .explore-modal .explore-card-actions { flex-direction: column; gap: calc(0.8 * var(--u)); margin: calc(0.2 * var(--u)) 2px 2px 0; }
+html:root .explore-modal .explore-action-btn { flex: 0 0 auto; padding: calc(0.6 * var(--u)); border: 0; border-radius: 9px; font-size: calc(1.6 * var(--u)); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .explore-modal .explore-action-btn.liked,
+html:root .explore-modal .explore-action-btn.primary,
+html:root .explore-modal .explore-action-btn.liked:hover,
+html:root .explore-modal .explore-action-btn.primary:hover { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .explore-modal .explore-action-btn:active,
+html:root .explore-modal .explore-action-btn.liked:active,
+html:root .explore-modal .explore-action-btn.primary:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Las listas del reproductor ─────────────────────────────────────── */
+html:root #speaker-container .playlist-item { border: 0; box-shadow: inset 0 0 0 1.5px #000; padding: calc(1 * var(--u)); }
+html:root #speaker-container .playlist-item-name,
+html:root #speaker-container .playlist-title,
+html:root #speaker-container .play-all-btn,
+html:root #speaker-container .playlist-action-btn,
+html:root #speaker-container .playlist-item-badge {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+html:root #speaker-container .playlist-item-name { font-size: calc(1.8 * var(--u)); line-height: 1.15; }
+html:root #speaker-container .playlist-item-count,
+html:root #speaker-container .playlist-item-count span { font-size: calc(1.35 * var(--u)); }
+html:root #speaker-container .playlist-item-badge { padding: calc(0.3 * var(--u)) calc(0.8 * var(--u)); border: 0; border-radius: 6px; box-shadow: inset 0 0 0 1.5px #000; font-size: calc(1.25 * var(--u)); }
+html:root #speaker-container .playlist-action-btn-compact { border-radius: 6px; }
+html:root #speaker-container .playlist-item-actions { gap: calc(0.9 * var(--u)); padding: 0 2px 2px 0; margin-top: calc(0.8 * var(--u)); }
+html:root #speaker-container .playlist-action-btn { border: 0; border-radius: 8px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: calc(1.5 * var(--u)); }
+html:root #speaker-container .playlist-action-btn:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  La vista de canciones. */
+html:root #speaker-container .playlist-title { margin-bottom: 0; font-size: calc(2.3 * var(--u)); line-height: 1.1; letter-spacing: 0.01em; }
+html:root #speaker-container .playlist-subtitle { font-size: calc(1.35 * var(--u)); opacity: 1; color: #55555c; }
+html:root #speaker-container .play-all-btn { border: 0; border-radius: 10px; font-size: calc(1.8 * var(--u)); box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root #speaker-container .play-all-btn:active { box-shadow: inset 0 0 0 1.5px #000; }
+html:root #speaker-container .songs-controls-row { padding-right: 3px; }
+html:root #speaker-container .songs-list { padding: calc(0.6 * var(--u)); border-radius: 12px; }
+html:root #speaker-container .song-item { border: 0; border-radius: 9px; }
+html:root #speaker-container .song-item-title { font-size: calc(1.5 * var(--u)); }
+
+/* ── Retoques vistos en captura (06/10) ─────────────────────────────── */
+/*  Los dos botones de la cabecera del reproductor medían 16 px (la altura
+    de la fila): chapas de 30 px como la «X» del panel de admin. */
+html:root #speaker-container .title-actions { gap: 8px; height: auto; }
+html:root #speaker-container .hud-toggle-compact,
+html:root #speaker-container .close-btn {
+    box-sizing: border-box; width: 30px; height: 30px; aspect-ratio: auto;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 0; border-radius: 9px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root #speaker-container .hud-toggle-compact .icon,
+html:root #speaker-container .close-btn iconify-icon { width: 18px; height: 18px; font-size: 18px; }
+html:root #speaker-container .hud-toggle-compact .toggle-indicator { width: 8px; height: 8px; right: 4px; bottom: 4px; }
+html:root #speaker-container .close-btn:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  Altavoz sincronizado con otro (mandos apagados): gris con forma de
+    botón, canto gris y sin sombra, no rosa lavado a media opacidad. */
+html:root #speaker-container .controls-disabled .control-btn:not(#closeBtn),
+html:root #speaker-container .controls-disabled .control-btn.primary {
+    opacity: 1; background: #dcdde0; color: #73737c; box-shadow: inset 0 0 0 1.5px #73737c;
+}
+html:root #speaker-container .controls-disabled .control-btn .icon { color: #73737c; }
+html:root #speaker-container .controls-disabled .url-input { opacity: 1; color: #73737c; }
+html:root #speaker-container .controls-disabled .volume-slider { opacity: 0.55; }
+/*  El vacío de «Compartidas» trae el texto en un <p> sin clase: rótulo. */
+html:root #speaker-container .playlist-list .empty-state p {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800;
+    letter-spacing: 0.02em; text-transform: uppercase; font-size: 17px; color: #0b0b0d;
+}
+html:root #speaker-container .playlist-list .empty-state p.subtitle { font-family: "Barlow", sans-serif; font-style: normal; font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 13px; color: #55555c; }
+/*  El aviso de «sonando» seguía en Orbitron. */
+html:root #now-playing-hud .hud-title { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em; font-size: 14px; }
+/*  Panel de admin y su aviso: fuera la letra fina espaciada (0,15–0,2 em). */
+html:root #adminRadioPanel :is(.no-music, .broadcast-subtitle, .radius-label, .radius-markers span, .mode-desc, .status-text, .players-empty span),
+html:root #adminRadioHud .hud-label { font-style: italic; font-weight: 800; letter-spacing: 0.02em; }
+html:root #adminRadioPanel .no-music { font-size: 17px; color: #55555c; }
+html:root #adminRadioPanel #adminUrlInput::placeholder { font-family: "Barlow", sans-serif; font-weight: 600; text-transform: none; letter-spacing: 0; }
+html:root #adminRadioPanel #adminUrlInput { font-family: "Barlow", sans-serif; letter-spacing: 0; }
+/*  «Sin jugadores en rango»: hueco gris a trazos, no barra negra. */
+html:root #adminRadioPanel .players-empty { background: #dcdde0; border: 2.5px dashed #73737c; border-radius: 12px; color: #0b0b0d; }
+html:root #adminRadioPanel .players-empty span { color: #0b0b0d; }
+html:root #adminRadioPanel .players-empty svg { color: #73737c; stroke: #73737c; }
+/* [REPASO-HUD-D 05/10 · fin] */
+
+/* ══ EL PANEL DE ADMIN EN LA PLANTILLA (06/10) ═══════════════════════════
+   #adminRadioPanel es ahora la pantalla completa de plantilla-admin.css y
+   .admin-radio-panel pasa a ser el cuerpo (las zonas): se le quita la caja
+   flotante de antes y se queda con sus tokens. */
+#adminRadioPanel .admin-radio-panel.sp-cuerpo {
+    position: static;
+    inset: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+    max-height: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: 0;
+    gap: var(--oga-hueco);
+    z-index: auto;
+    animation: none;
+    font-family: "Barlow", sans-serif;
+}
+#adminRadioPanel .sp-cuerpo > .oga-zona { flex: 1; }
+#adminRadioPanel .sp-cuerpo > .sp-zona-sonando { flex: 1.35; }
+#adminRadioPanel .sp-cuerpo .oga-zona__body.content { margin: 0 -11px -10px; gap: 1.4vh; }
+#adminRadioPanel .sp-privado { display: none; }
+#adminRadioPanel #playersListSection.hidden + .sp-privado { display: flex; }
+#adminRadioPanel .players-list-section > .section-title { display: none; }
+
+/*  Repaso 06/10: el borde de 1 px que traia la caja de base se veia como
+    una raya blanca entre el canto negro y el gris (esquina de arriba). */
+html #speaker-container .speaker-panel { border: 0; }
+
+/*  Letras centradas (06/10): con la letra de cifras centradas, en el
+    altavoz el texto de los botones (REPRODUCIR…) y la cifra del volumen
+    quedaban 1 px por encima de su icono y del centro de la chapa; en la
+    gestión, la cifra del volumen 1 px por debajo de su icono. Se mueve
+    solo el texto. */
+html #speaker-container .control-btn .btn-text,
+html #speaker-container .volume-value { position: relative; top: 1px; }
+html .admin-radio-panel .volume-container-inline .volume-value { position: relative; top: -1px; }
+/*  «Parar» y «Añadir» llevan el texto suelto (sin .btn-text): se baja todo
+    1 px con el relleno y el icono vuelve a su sitio. */
+html:root #speaker-container .control-btn.secondary { padding-top: calc(0.8vh / var(--ogn-escala, 1) + 1px); padding-bottom: calc(0.8vh / var(--ogn-escala, 1) - 1px); }
+html:root #speaker-container .control-btn.secondary .icon { position: relative; top: -1px; }
+
+/* ══ EL REPRODUCTOR EN FORMATO RIEL (07/10) ═══════════════════════════════
+   Era una columna suelta a media altura, sin riel. Pasa al menú lateral de
+   la casa (skill origen-riel, referencia la tienda de mascotas): columna a
+   todo el alto, despegada del canto, y el riel de 64 px pegado al borde
+   derecho con la placa del altavoz arriba y «Origen Música» abajo. Sin
+   silencio (solo en el inventario). Las dos piezas entran juntas desde la
+   derecha. El contenido se desplaza dentro de .content, que ya crece con
+   flex: 1. */
+html:root #speaker-container {
+    --sp-riel: 64px;
+    --sp-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --sp-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --sp-hueco: var(--sp-margen-x);
+}
+
+html:root #speaker-container .speaker-panel {
+    top: var(--sp-margen-y);
+    bottom: var(--sp-margen-y);
+    right: calc(var(--sp-margen-x) + var(--sp-riel) + var(--sp-hueco));
+    margin: 0;
+    width: clamp(420px, 31vw, 548px);
+    height: auto;
+    max-height: none;
+    animation: slideInRight 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/*  La columna es más estrecha que la caja de antes: la fila de «Listas»
+    baja sus botones a otra línea si no caben, en vez de salirse. */
+html:root #speaker-container .section-title-row { flex-wrap: wrap; row-gap: 8px; }
+html:root #speaker-container .playlist-header-actions { flex-wrap: wrap; padding: 0 3px 3px 0; }
+
+.sp-riel {
+    position: absolute;
+    top: var(--sp-margen-y);
+    bottom: var(--sp-margen-y);
+    right: var(--sp-margen-x);
+    width: var(--sp-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+    pointer-events: all;
+    animation: slideInRight 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sp-riel svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/*  La placa: pieza gris con el dibujo en rosa y el filete negro debajo,
+    la misma de org-menu. */
+.sp-riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #d81b55;
+}
+
+.sp-riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.sp-riel__marca svg { width: 22px; height: 22px; }
+
+.sp-riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:root #speaker-container .speaker-panel,
+    .sp-riel { animation: none; }
+}
+
+/* ══ EL REPRODUCTOR · REPASO DEL 07/10 (capturas del usuario) ═════════════
+   Tres cosas que se veían mal en el riel:
+   - La cabecera era la vieja (icono pequeño y título en una línea): pasa
+     a la de la casa, la de org-menu (.om-cab): placa rosa girada de 44 px,
+     antetítulo, título grande y renglón, con el filete rosa debajo.
+   - La caja de las listas crecía hasta el fondo aunque estuviera vacía
+     (flex: 1 de style.css): ahora mide lo que lleva y, si crece, se
+     desplaza ella sola. El vacío, pequeño.
+   - Mis listas · Compartidas · Explorar · Crear no cabían en la columna y
+     salían cortadas por abajo: pasan al riel como botones con su globito
+     (como la caja del casino).
+   Y los dos botones de arriba a la derecha, en una sola pieza con su
+   nombre en cada mitad. */
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html:root #speaker-container .speaker-panel .title-section.sp-cab {
+    position: relative;
+    height: auto;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 0;
+    padding: 4px 2px 15px 4px;
+    margin-bottom: 8px;
+}
+/*  El filete rosa macizo bajo el título, como en org-menu. */
+html:root #speaker-container .sp-cab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+html:root #speaker-container .sp-cab .title {
+    flex: 1;
+    min-width: 0;
+    align-items: center;
+    gap: 14px;
+}
+html:root #speaker-container .speaker-panel .sp-cab .title > .icon {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    border-radius: 10px;
+    font-size: 21px;
+}
+html:root #speaker-container .sp-cab__txt { flex: 1; min-width: 0; }
+html:root #speaker-container .sp-cab .sp-cab__k {
+    display: block;
+    font-family: "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #b3123f;
+}
+html:root #speaker-container .speaker-panel .sp-cab .title-text {
+    display: block;
+    max-width: none;
+    margin-top: 3px;
+    padding-right: 4px;
+    font-size: 29px;
+    line-height: 0.95;
+    color: #0b0b0d;
+}
+html:root #speaker-container .sp-cab .sp-cab__renglon {
+    margin-top: 5px;
+    font-family: "Barlow", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: #44444a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Aviso y Recoger: una sola pieza ────────────────────────────────── */
+html:root #speaker-container .sp-acciones {
+    flex: none;
+    align-self: flex-start;
+    display: flex;
+    gap: 0;
+    height: auto;
+    margin: 2px 2px 0 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    overflow: hidden;
+}
+html:root #speaker-container .sp-acciones .hud-toggle-compact,
+html:root #speaker-container .sp-acciones .close-btn,
+html:root #speaker-container .sp-acciones .close-btn.danger {
+    position: relative;
+    width: auto;
+    height: 34px;
+    padding: 0 11px;
+    gap: 6px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: #0b0b0d;
+    transform: none;
+    font-family: "Barlow Condensed", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+/*  La raya entre las dos mitades. */
+html:root #speaker-container .sp-acciones .close-btn { box-shadow: inset 1.5px 0 0 #000; }
+html:root #speaker-container .sp-acciones .hud-toggle-compact:hover { background: #f1f1ee; }
+html:root #speaker-container .sp-acciones .close-btn:hover,
+html:root #speaker-container .sp-acciones .close-btn.danger:hover { background: #d81b55; color: #000; }
+html:root #speaker-container .sp-acciones .close-btn:active { transform: none; box-shadow: inset 1.5px 0 0 #000; }
+html:root #speaker-container .sp-acciones .hud-toggle-compact .icon {
+    position: static;
+    order: 0;
+    margin: 0;
+    width: 17px;
+    height: 17px;
+    font-size: 17px;
+}
+html:root #speaker-container .sp-acciones .hud-toggle-compact::after { content: 'Aviso'; order: 1; }
+/*  El testigo del aviso: punto gris apagado, rosa encendido. */
+html:root #speaker-container .sp-acciones .hud-toggle-compact .toggle-indicator {
+    position: static;
+    order: 2;
+    flex: none;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 0 1.5px #000;
+}
+html:root #speaker-container .sp-acciones .close-btn iconify-icon { width: 17px; height: 17px; font-size: 17px; }
+/*  script.js pone una nota en el altavoz (recoger) y una X en la radio
+    del coche (cerrar): el nombre sale de la clase .danger. */
+html:root #speaker-container .sp-acciones .close-btn.danger iconify-icon { display: none; }
+html:root #speaker-container .sp-acciones .close-btn.danger::after { content: 'Recoger'; }
+html:root #speaker-container .sp-acciones .close-btn:not(.danger)::after { content: 'Cerrar'; }
+
+/* ── La caja de las listas: lo que lleva, y se desplaza si crece ───── */
+html:root #speaker-container .playlist-section {
+    flex: 0 1 auto;
+    min-height: calc(16 * var(--u));
+}
+html:root #speaker-container .playlist-section .tab-content {
+    flex: 0 1 auto;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+html:root #speaker-container .playlist-section .tab-content::-webkit-scrollbar { display: block; width: 6px; }
+html:root #speaker-container .playlist-section .tab-content::-webkit-scrollbar-track { border-radius: 3px; background: rgba(0, 0, 0, 0.12); }
+html:root #speaker-container .playlist-section .tab-content::-webkit-scrollbar-thumb { border-radius: 3px; background: #0b0b0d; }
+html:root #speaker-container .songs-list { flex: 0 1 auto; }
+/*  El vacío: una franja corta, no media pantalla. */
+html:root #speaker-container .playlist-section .empty-state {
+    height: auto;
+    gap: 6px;
+    padding: 14px 12px;
+    text-align: center;
+}
+html:root #speaker-container .playlist-section .empty-state svg { width: 26px; height: 26px; }
+
+/* ── Las pestañas de las listas, en el riel ─────────────────────────── */
+.sp-riel { z-index: 2; }
+.sp-riel__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding-top: 8px;
+}
+.sp-riel__filete {
+    flex: none;
+    width: 22px;
+    height: 1px;
+    margin: 4px 0;
+    background: rgba(11, 11, 13, 0.45);
+}
+/*  Chapa negra con el dibujo blanco; encendida, rosa con tinta negra y su
+    canto (la de la caja del casino). Pisa la pegatina de .playlist-tab,
+    .explore-playlist-btn y .create-playlist-compact, que eran chips. */
+html:root #speaker-container .sp-riel .sp-riel__it {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    gap: 0;
+    border: 0;
+    border-radius: 12px;
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+    letter-spacing: 0;
+    cursor: pointer;
+    transform: none;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+html:root #speaker-container .sp-riel .sp-riel__it:hover { background: #2a2a30; color: #fff; }
+html:root #speaker-container .sp-riel .sp-riel__it.active,
+html:root #speaker-container .sp-riel .sp-riel__it.active:hover {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html:root #speaker-container .sp-riel .sp-riel__it:active { transform: none; }
+html:root #speaker-container .sp-riel .sp-riel__it svg { width: 20px; height: 20px; stroke: currentColor; }
+/*  El nombre sale hacia la columna al pasar por encima. */
+html:root #speaker-container .sp-riel .sp-riel__eti {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    z-index: 2;
+    padding: 7px 12px 6px;
+    border-radius: 8px;
+    background: #0b0b0d;
+    color: #fff;
+    font-family: "Barlow Condensed", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-50%) translateX(4px);
+    pointer-events: none;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+html:root #speaker-container .sp-riel .sp-riel__it:hover .sp-riel__eti { opacity: 1; transform: translateY(-50%); }
+
+/*  El campo del enlace de YouTube se estiraba hasta medio panel (07/10): mide
+    lo de un campo, y el hueco que sobra se lo queda la caja de listas. */
+#speaker-container .speaker-panel .content .input-section { flex: none !important; height: auto !important; }
+#speaker-container .speaker-panel .content #urlInput { height: 44px !important; min-height: 0 !important; flex: none !important; }
+
+/*  Separar: pieza gris con letra rosa, como los demás botones que deshacen
+    algo (el rojo no es de la paleta). */
+#speaker-container .sync-action-btn.danger,
+#speaker-container .sync-action-btn.danger:hover {
+    background: #dcdde0 !important;
+    color: #b3123f !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    border: 0 !important;
+}
+
+/* ── Los diálogos, sobre la columna (07/10) ──────────────────────────────
+   «A muchos menús les falta a la derecha la barra»: crear lista, añadir,
+   compartir y sincronizar dejan de ir en mitad de la pantalla. Tapan la
+   COLUMNA del reproductor, a media altura, pegados al riel con su mismo
+   aire (skill origen-dialogo): usan el riel del menú. El velo solo oscurece
+   la columna. El explorador de listas (grande) no se toca. */
+html:root body .modal {
+    top: calc(1.4vh / var(--ogn-escala, 1));
+    bottom: calc(1.4vh / var(--ogn-escala, 1));
+    right: calc(1.2vh / var(--ogn-escala, 1) * 2 + 64px);
+    left: auto;
+    width: clamp(420px, 31vw, 548px);
+    height: auto;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: stretch;
+    border-radius: 20px;
+    background: rgba(11, 11, 13, 0.6);
+}
+html:root body .modal .modal-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    max-height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* ══ LO QUE SUENA, EN LA BARRA DE ABAJO (07/10) ═══════════════════════════
+   «Sonando» (abajo a la derecha) y la radio de admin (abajo a la izquierda,
+   encima del minimapa) eran dos pastillas sueltas con su estilo. Ahora son
+   la barra de abajo del servidor, al centro y en UNA línea: la placa rosa
+   girada con el ecualizador en negro, el rótulo, un filete y el título; la
+   radio de admin, además, su barra de una pieza. Medidas: copia del kit
+   origen_map/kit/barra-abajo.css (si cambia allí, cambia aquí), divididas
+   por la escala de >1080p como el resto de la página. Si salen las dos a la
+   vez, la radio de admin sube encima de «Sonando». */
+:root {
+    --bab-u: min(calc(100vh / var(--ogn-escala, 1) / 1080), calc(100vw / var(--ogn-escala, 1) / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-placa: calc(var(--bab-u) * 28);
+    --bab-placa-radio: calc(var(--bab-u) * 8);
+    --bab-placa-icono: calc(var(--bab-u) * 15);
+    --bab-titulo: calc(var(--bab-u) * 20);
+    --bab-titulo-max: calc(var(--bab-u) * 260);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-tecla-icono: calc(var(--bab-u) * 13);
+    --bab-dato: calc(var(--bab-u) * 12.5);
+    --bab-dato-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 8) calc(var(--bab-u) * 3);
+    --bab-dato-radio: calc(var(--bab-u) * 7);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/* ── El panel: la barra ─────────────────────────────────────────────── */
+html:root body #now-playing-hud.hud-banner,
+html:root body #adminRadioHud.admin-radio-hud {
+    position: fixed;
+    top: auto;
+    right: auto;
+    left: 50%;
+    bottom: var(--bab-abajo);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--bab-hueco);
+    width: max-content;
+    max-width: none;
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    border: 0;
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    color: #0b0b0d;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    /*  La entrada con rebote empujaba desde un lado con su propia
+        transformada y pisaba el centrado: fuera. */
+    animation: none;
+    pointer-events: none;
+}
+html:root body #now-playing-hud.hud-banner.hidden,
+html:root body #adminRadioHud.admin-radio-hud.hidden { display: none; }
+/*  Las dos a la vez: la de admin, una barra más arriba. */
+html:root body #now-playing-hud.hud-banner:not(.hidden) ~ #adminRadioHud.admin-radio-hud {
+    bottom: calc(var(--bab-abajo) + var(--bab-alto) + var(--bab-u) * 12);
+}
+
+/* ── La placa: rosa, girada, con el ecualizador en negro ────────────── */
+html:root body #now-playing-hud .hud-equalizer,
+html:root body #adminRadioHud .hud-equalizer {
+    flex: none;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: calc(var(--bab-u) * 3);
+    width: var(--bab-placa);
+    height: var(--bab-placa);
+    padding: calc(var(--bab-u) * 7) 0;
+    border-radius: var(--bab-placa-radio);
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root body #now-playing-hud .hud-bar,
+html:root body #adminRadioHud .hud-eq-bar {
+    width: calc(var(--bab-u) * 3);
+    border-radius: 2px;
+    background: #000;
+    box-shadow: none;
+}
+html:root body #adminRadioHud .hud-eq-bar:nth-child(1) { height: 45%; }
+html:root body #adminRadioHud .hud-eq-bar:nth-child(2) { height: 100%; }
+html:root body #adminRadioHud .hud-eq-bar:nth-child(3) { height: 70%; }
+
+/* ── El rótulo y el título ──────────────────────────────────────────── */
+html:root body #now-playing-hud .hud-rotulo,
+html:root body #adminRadioHud .hud-label {
+    flex: none;
+    padding-right: calc(var(--bab-u) * 3);
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-titulo);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root body #now-playing-hud .hud-content {
+    flex: none;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    min-height: var(--bab-filete-alto);
+    padding-left: var(--bab-hueco);
+    border-left: 1.5px solid #000;
+}
+html:root body #adminRadioHud .hud-info {
+    flex: none;
+    min-width: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--bab-hueco);
+}
+html:root body #now-playing-hud .hud-title,
+html:root body #adminRadioHud .hud-title {
+    max-width: calc(var(--bab-u) * 420);
+    min-height: var(--bab-filete-alto);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root body #adminRadioHud .hud-title {
+    display: block;
+    line-height: var(--bab-filete-alto);
+    padding-left: var(--bab-hueco);
+    border-left: 1.5px solid #000;
+}
+
+/* ── La barra de la radio de admin: de una pieza ────────────────────── */
+html:root body #adminRadioHud .hud-progress {
+    flex: none;
+    width: calc(var(--bab-u) * 110);
+    height: calc(var(--bab-u) * 10);
+    margin: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root body #adminRadioHud .hud-progress-fill {
+    border-radius: 999px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/*  08/10: el rótulo a brocha del reproductor, entre el título y el renglón.
+    EN FLUJO: empuja el renglón en vez de pisarlo. Rosa literal: en Nación
+    lo repinta la marca. */
+html:root #speaker-container .sp-cab .sp-cab__brocha {
+    display: block;
+    margin: 5px 0 3px 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}

@@ -1,0 +1,87 @@
+/* ORIGEN · pegatina: la lámina impresa en una pieza gris con canto negro y
+   sombra dura; abajo, la tecla para cerrar. */
+:root {
+    --pg-panel: #c4c6ca;
+    --pg-pieza: #dcdde0;
+    --pg-rosa: #d81b55;
+    --pg-tinta: #0b0b0d;
+    --pg-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vh;
+    background: transparent;
+}
+
+.overlay.hidden { display: none; }
+
+.lamina {
+    margin: 0;
+    padding: 1.4vh;
+    background: var(--pg-panel);
+    border-radius: 20px;
+    box-shadow: var(--pg-canto);
+    animation: entrar 0.2s ease-out;
+}
+
+#display-img {
+    display: block;
+    max-width: 84vw;
+    max-height: 80vh;
+    object-fit: contain;
+    background: var(--pg-pieza);
+    border-radius: 12px;
+    box-shadow: 0 0 0 1.5px #000;
+}
+
+.pista {
+    display: flex;
+    align-items: center;
+    gap: 0.8vh;
+    padding: 0.7vh 1.4vh 0.7vh 0.7vh;
+    background: var(--pg-pieza);
+    border-radius: 999px;
+    box-shadow: var(--pg-canto);
+    color: var(--pg-tinta);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.9vh;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.tecla {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.4vh;
+    height: 2.8vh;
+    padding: 0 0.8vh;
+    background: var(--pg-rosa);
+    color: var(--pg-tinta);
+    border-radius: 8px;
+    box-shadow: 0 0 0 1.5px #000;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.5vh;
+}
+
+@keyframes entrar {
+    from { transform: scale(0.94); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

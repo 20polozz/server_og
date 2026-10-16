@@ -1,0 +1,119 @@
+/* PEGATINA · sleepless_interact
+   La tecla y la accion forman una sola pastilla: el color de la casa solo en
+   la tecla, papel gris claro en las acciones, canto negro y sombra dura.
+
+   El color de la casa se escribe en rosa (#d81b55) como en todo el servidor:
+   en Nacion lo repinta a su naranja kit/marca.js (trozo «ORIGEN · marca» del
+   index.html), que se enciende con el mensaje setMarca del Lua (dui.lua). */
+
+:root {
+  --si-peg-acento: #d81b55;
+  --si-peg-papel: #dcdde0;
+  --si-peg-tinta: #0b0b0d;
+}
+
+html body {
+  --si-accent-fallback: var(--si-peg-acento);
+  --theme-color: var(--si-peg-acento);
+  color: var(--si-peg-tinta);
+}
+
+/* Se quita el hueco de serie para unir la tecla E con las opciones. */
+html #container {
+  gap: 0;
+}
+
+html #options-wrapper {
+  position: static;
+  top: auto;
+  left: auto;
+  translate: 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: -2px;
+  /* Sitio para la sombra dura de la ultima opcion. */
+  padding: 0 3px 3px 0;
+}
+
+html #interact-container {
+  z-index: 2;
+  flex: none;
+  width: 2rem;
+  height: 2.7rem;
+  border-radius: 10px 0 0 10px;
+  background: var(--si-peg-papel);
+  /* Mismo vuelo que las acciones; el spread extra alargaba la sombra de la
+     tecla 1.5 px por debajo del resto de la pastilla. */
+  box-shadow: 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+html #interact-key {
+  border: 0;
+  border-radius: 10px 0 0 10px;
+  background: var(--si-peg-acento);
+  box-shadow: inset 0 0 0 1.5px #000;
+  color: var(--si-peg-tinta);
+  font-family: "Oxanium", "Barlow Condensed", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1;
+}
+
+html #interact-progress {
+  background: rgba(11, 11, 13, 0.25);
+}
+
+/* Las acciones: pieza gris con canto y sombra dura. Las que no estan
+   señaladas, con la letra apagada; la señalada (la que hace la E), con la
+   tinta negra y el canto y la sombra en el color de la casa, como lo elegido
+   del menu pequeño. */
+html #options-wrapper .option-container {
+  z-index: 1;
+  margin: 0;
+  min-width: 0;
+  padding: 0 1rem;
+  border: 0;
+  border-radius: 0 10px 10px 0;
+  background: var(--si-peg-papel);
+  box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+  color: #55555c;
+  transform: none;
+}
+
+html #options-wrapper .option-container:hover {
+  background: #f1f1ee;
+}
+
+html #options-wrapper .option-container.highlighted,
+html #options-wrapper .option-container.highlighted:hover {
+  background: var(--si-peg-papel);
+  box-shadow: inset 0 0 0 2px var(--si-peg-acento), 2px 2px 0 var(--si-peg-acento);
+  color: var(--si-peg-tinta);
+  transform: none;
+}
+
+/* Con una sola accion no hace falta señalar nada: va como la pastilla
+   de la tecla, con canto negro. */
+html #options-wrapper .option-container.highlighted:only-child {
+  box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+html #options-wrapper .option-container:active {
+  transform: translate(2px, 2px);
+  box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* El icono y la franja de acento desaparecen para dejar limpio el rotulo. */
+html #options-wrapper .option-icon,
+html #options-wrapper .animated-background {
+  display: none;
+}
+
+html #options-wrapper .option-label {
+  color: inherit;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  line-height: 1;
+}

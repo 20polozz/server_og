@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- YouTube exige saber desde qué página se inserta su reproductor (cabecera
+     Referer). Sin ella contesta con el «Error 153». Esta política la manda
+     siempre, recortada al origen, también en la petición del iframe. -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>tele</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800&display=swap">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  #marco, #marco iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  /* En una DUI no hay ratón, pero así un clic perdido nunca navega a otra
+     página de YouTube o Twitch dentro de la tele. */
+  #marco, #marco iframe { pointer-events: none; }
+  /* Aviso de la tele (sin señal, fin del vídeo…): la pantalla sigue negra,
+     como una tele apagada, y el texto va en una chapa pegatina en el centro.
+     La sombra gigante negra hace de pantalla y tapa el reproductor. */
+  #aviso {
+    position: absolute; left: 50%; top: 50%; max-width: 76%;
+    transform: translate(-50%, -50%);
+    padding: 22px 40px; border-radius: 20px; text-align: center;
+    background: #c4c6ca; color: #0b0b0d;
+    box-shadow: inset 0 0 0 3px #000, 0 0 0 200vmax #000;
+    font: italic 800 46px/1.1 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  #aviso[hidden] { display: none; }
+  #pausa {
+    position: absolute; right: 36px; bottom: 30px; width: 46px; height: 52px;
+    display: flex; gap: 12px; justify-content: center; opacity: 0.85;
+  }
+  #pausa[hidden] { display: none; }
+  #pausa i { display: block; width: 15px; height: 100%; background: #fff; border-radius: 3px; box-shadow: 0 0 12px rgba(0,0,0,0.6); }
+</style>
+</head>
+<body>
+<div id="marco"></div>
+<div id="aviso" hidden></div>
+<div id="pausa" hidden><i></i><i></i></div>
+
+<script>
+(function () {
+  'use strict'
+
+  // ── Qué se admite ─────────────────────────────────────────────────
+  // El servidor ya lo ha validado; se repite aquí porque esta página nunca
+  // debe montar una URL con algo que no cumpla estos patrones.
+  var PATRON = {
+    youtube: { video: /^[A-Za-z0-9_-]{11}$/ },
+    twitch: { directo: /^[A-Za-z0-9_]{3,25}$/, vod: /^\d{1,12}$/ }
+  }
+
+  function valido (tipo, ref, clase) {
+    return !!(PATRON[tipo] && PATRON[tipo][clase] && PATRON[tipo][clase].test(String(ref)))
+  }
+
+  var marco = document.getElementById('marco')
+  var aviso = document.getElementById('aviso')
+  var marcaPausa = document.getElementById('pausa')
+
+  // ── Estado ────────────────────────────────────────────────────────
+  var actual = null        // { tipo, ref, clase }
+  var reproductor = null   // YT.Player o Twitch.Player
+  var listo = false
+  var volumen = 0
+  var pausado = false
+  // La posición que DEBERÍA llevar: `base` segundos en el instante `desde`.
+  var base = 0
+  var desde = performance.now()
+
+  function esperado () {
+    return pausado ? base : base + (performance.now() - desde) / 1000
+  }
+
+  function mostrarAviso (texto) {
+    if (texto) { aviso.textContent = texto; aviso.hidden = false } else { aviso.hidden = true }
+  }
+
+  // «Fin del vídeo» se quita en cuanto se vuelve a colocar antes del final
+  // (un pausar/seguir que rebobina no pasa por PLAYING si queda en pausa).
+  function quitarFin () {
+    if (!aviso.hidden && aviso.textContent === 'Fin del vídeo') mostrarAviso(null)
+  }
+
+  function vaciar () {
+    listo = false
+    try { if (reproductor && reproductor.destroy) reproductor.destroy() } catch (e) {}
+    reproductor = null
+    actual = null
+    marco.innerHTML = ''
+    marcaPausa.hidden = true
+    mostrarAviso(null)
+  }
+
+  // ── Carga perezosa de las librerías de cada sitio ─────────────────
+  var librerias = {}
+  function cargarLibreria (url, listoSi, alTerminar) {
+    if (listoSi()) { alTerminar(); return }
+    var lib = librerias[url]
+    if (!lib) {
+      lib = librerias[url] = { esperando: [] }
+      var s = document.createElement('script')
+      s.src = url
+      s.onerror = function () { lib.error = true; mostrarAviso('No se ha podido conectar') }
+      document.head.appendChild(s)
+      var mirar = setInterval(function () {
+        if (listoSi()) {
+          clearInterval(mirar)
+          var cola = lib.esperando; lib.esperando = []
+          cola.forEach(function (fn) { fn() })
+        }
+      }, 100)
+    }
+    lib.esperando.push(alTerminar)
+  }
+
+  // ── YouTube ───────────────────────────────────────────────────────
+  var ERRORES_YT = {
+    2: 'Enlace de YouTube no válido',
+    5: 'Este vídeo no se puede reproducir aquí',
+    100: 'El vídeo no existe o es privado',
+    101: 'El autor no deja ver este vídeo fuera de YouTube',
+    150: 'El autor no deja ver este vídeo fuera de YouTube',
+    153: 'YouTube ha rechazado el reproductor (error 153)'
+  }
+
+  function montarYoutube (id) {
+    var ifr = document.createElement('iframe')
+    var q = new URLSearchParams({
+      enablejsapi: '1', autoplay: '1', controls: '0', disablekb: '1', fs: '0',
+      iv_load_policy: '3', playsinline: '1', rel: '0', modestbranding: '1',
+      cc_load_policy: '0', hl: 'es',
+      start: String(Math.floor(esperado())),
+      origin: location.origin,
+      widget_referrer: location.origin + '/'
+    })
+    ifr.src = 'https://www.youtube.com/embed/' + id + '?' + q.toString()
+    ifr.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture')
+    ifr.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin')
+    ifr.id = 'yt'
+    marco.appendChild(ifr)
+
+    var esta = actual
+    cargarLibreria('https://www.youtube.com/iframe_api', function () {
+      return window.YT && window.YT.Player
+    }, function () {
+      if (actual !== esta) return
+      reproductor = new YT.Player('yt', {
+        events: {
+          onReady: function () {
+            if (actual !== esta) return
+            listo = true
+            aplicarVolumen()
+            sincronizar(true)
+          },
+          onStateChange: function (e) {
+            if (e.data === YT.PlayerState.PLAYING) mostrarAviso(null)
+            if (e.data === YT.PlayerState.ENDED) mostrarAviso('Fin del vídeo')
+          },
+          onError: function (e) {
+            mostrarAviso(ERRORES_YT[e.data] || ('YouTube no puede reproducirlo (' + e.data + ')'))
+          }
+        }
+      })
+    })
+  }
+
+  // ── Twitch ────────────────────────────────────────────────────────
+  function montarTwitch (ref, clase) {
+    var esta = actual
+    cargarLibreria('https://player.twitch.tv/js/embed/v1.js', function () {
+      return window.Twitch && window.Twitch.Player
+    }, function () {
+      if (actual !== esta) return
+      var opciones = {
+        width: '100%',
+        height: '100%',
+        // El host de ESTA página. Twitch lo compara con el de verdad y además
+        // responde con «frame-ancestors https://<host>»: por eso el recurso
+        // que sirve la página no puede llevar guion bajo.
+        parent: [location.hostname],
+        autoplay: true,
+        muted: volumen <= 0,
+        controls: false
+      }
+      if (clase === 'directo') opciones.channel = ref
+      else opciones.video = 'v' + ref
+
+      reproductor = new Twitch.Player('marco', opciones)
+      reproductor.addEventListener(Twitch.Player.READY, function () {
+        if (actual !== esta) return
+        listo = true
+        aplicarVolumen()
+        sincronizar(true)
+      })
+      reproductor.addEventListener(Twitch.Player.PLAYING, function () { mostrarAviso(null) })
+      reproductor.addEventListener(Twitch.Player.OFFLINE, function () {
+        if (clase === 'directo') mostrarAviso('El canal no está en directo')
+      })
+      reproductor.addEventListener(Twitch.Player.ENDED, function () { mostrarAviso('Fin del vídeo') })
+    })
+  }
+
+  // ── Mandos comunes ────────────────────────────────────────────────
+  function aplicarVolumen () {
+    if (!listo || !reproductor || !actual) return
+    try {
+      if (actual.tipo === 'youtube') {
+        reproductor.setVolume(volumen)
+        if (volumen <= 0) reproductor.mute(); else reproductor.unMute()
+      } else {
+        reproductor.setVolume(volumen / 100)
+        reproductor.setMuted(volumen <= 0)
+      }
+    } catch (e) {}
+  }
+
+  // Coloca el reproductor donde toca. `forzar` al arrancar; después solo se
+  // corrige si se ha ido más de 3 s (un salto cada pocos segundos se notaría).
+  function sincronizar (forzar) {
+    if (!listo || !reproductor || !actual) return
+    marcaPausa.hidden = !pausado
+    var directo = actual.tipo === 'twitch' && actual.clase === 'directo'
+    try {
+      if (actual.tipo === 'youtube') {
+        var datos = reproductor.getVideoData ? reproductor.getVideoData() : null
+        var enVivo = datos && datos.isLive
+        if (!enVivo) {
+          var t = reproductor.getCurrentTime() || 0
+          var dur = reproductor.getDuration() || 0
+          var meta = esperado()
+          if (dur > 0 && meta >= dur - 1) {
+            reproductor.seekTo(Math.max(0, dur - 0.5), true)
+            reproductor.pauseVideo()
+            mostrarAviso('Fin del vídeo')
+            return
+          }
+          if (forzar || Math.abs(t - meta) > 3) reproductor.seekTo(meta, true)
+          quitarFin()
+        }
+        var estado = reproductor.getPlayerState()
+        if (pausado && estado !== YT.PlayerState.PAUSED) reproductor.pauseVideo()
+        if (!pausado && estado !== YT.PlayerState.PLAYING && estado !== YT.PlayerState.BUFFERING) reproductor.playVideo()
+      } else {
+        if (!directo) {
+          var tt = reproductor.getCurrentTime() || 0
+          var m = esperado()
+          if (forzar || Math.abs(tt - m) > 3) reproductor.seek(m)
+        }
+        if (pausado && !reproductor.isPaused()) reproductor.pause()
+        if (!pausado && reproductor.isPaused()) reproductor.play()
+      }
+    } catch (e) {}
+  }
+
+  setInterval(function () { sincronizar(false) }, 4000)
+
+  function cargar (d) {
+    if (!valido(d.tipo, d.ref, d.clase)) { vaciar(); return }
+    var segundo = Math.max(0, Number(d.segundo) || 0)
+    pausado = !!d.pausado
+    base = segundo
+    desde = performance.now()
+    volumen = Math.max(0, Math.min(100, Math.round(Number(d.volumen) || 0)))
+
+    // Mismo contenido: solo se recoloca. Así el latido que manda Lua cada
+    // pocos segundos no vuelve a crear el reproductor.
+    if (actual && actual.tipo === d.tipo && actual.ref === String(d.ref) && actual.clase === d.clase) {
+      aplicarVolumen()
+      sincronizar(false)
+      return
+    }
+
+    vaciar()
+    actual = { tipo: d.tipo, ref: String(d.ref), clase: d.clase }
+    mostrarAviso('Cargando…')
+    if (d.tipo === 'youtube') montarYoutube(actual.ref)
+    else montarTwitch(actual.ref, actual.clase)
+  }
+
+  // ── Mensajes de Lua (SendDuiMessage) ──────────────────────────────
+  // Los iframes de YouTube y Twitch también mandan mensajes a esta ventana:
+  // solo se hace caso a los que llevan la marca `tele`.
+  window.addEventListener('message', function (e) {
+    var d = e.data
+    if (typeof d === 'string') { try { d = JSON.parse(d) } catch (err) { return } }
+    if (!d || d.tele !== 1 || typeof d.accion !== 'string') return
+
+    if (d.accion === 'cargar') cargar(d)
+    else if (d.accion === 'volumen') {
+      volumen = Math.max(0, Math.min(100, Math.round(Number(d.v) || 0)))
+      aplicarVolumen()
+    } else if (d.accion === 'vaciar') vaciar()
+  })
+
+  window.__tele = {
+    enviar: function (d) { d.tele = 1; window.postMessage(d, '*') },
+    estado: function () {
+      var t = null
+      try { t = reproductor && reproductor.getCurrentTime ? reproductor.getCurrentTime() : null } catch (e) {}
+      return { actual: actual, listo: listo, volumen: volumen, pausado: pausado, esperado: esperado(), actualTiempo: t, aviso: aviso.hidden ? null : aviso.textContent }
+    }
+  }
+})()
+</script>
+</body>
+</html>

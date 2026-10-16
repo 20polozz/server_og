@@ -1,0 +1,169 @@
+{
+    "error": {
+        "not_online": "Spiller ikke online",
+        "wrong_format": "Ugyldig format",
+        "missing_args": "Ikke alle argumenter er lagt inn (x, y, z)",
+        "missing_args2": "Alle argumenter må fylles ut!",
+        "no_access": "Ingen tilgang til denne kommandoen",
+        "company_too_poor": "Arbeidsgiveren din er blakk",
+        "item_not_exist": "Gjenstand finnes ikke",
+        "too_heavy": "Lommene er fulle",
+        "location_not_exist": "Plassering finnes ikke",
+        "duplicate_license": "Duplikat Rockstar-lisens funnet",
+        "no_valid_license":  "Ingen gyldig Rockstar-lisens funnet",
+        "not_whitelisted": "Du har ikke tilgang til serveren",
+        "server_already_open": "Serveren er allerede åpen",
+        "server_already_closed": "Serveren er allerede stengt",
+        "no_permission": "Du har ikke tillatelser for dette..",
+        "no_waypoint": "Ingen veipunkt satt.",
+        "tp_error": "Feil under teleportering.",
+        "connecting_database_timeout": "Connection to database timed out. (Is the SQL server on?)",
+        "connecting_error": "An error occurred while connecting to the server. (Check your server console)",
+        "no_match_character_registration": "Anything other than letters aren't allowed, trailing whitespaces aren't allowed either and words must start with a capital letter in input fields. You can however add words with spaces inbetween.",
+        "already_in_queue": "You are already in queue.",
+        "no_subqueue": "You were not let in any sub-queue."
+    },
+    "success": {
+        "server_opened": "Serveren er åpnet",
+        "server_closed": "Serveren er stengt",
+        "teleported_waypoint": "Teleporter til veipunkt.",
+        "character_deleted": "Character deleted!",
+        "character_deleted_citizenid": "You successfully deleted the character with Citizen ID %s."
+    },
+    "info": {
+        "received_paycheck": "Du mottok lønnsslippen din på kr %s",
+        "job_info": "Jobb: %s | Grad: %s | vakt: %s",
+        "gang_info": "Gjeng: %s | Grad: %s",
+        "on_duty": "Du er nå på vakt!",
+        "off_duty": "Du er nå av vakt!",
+        "checking_ban": "Hei %s. Vi sjekker om du er utestengt.",
+        "join_server": "Velkommen %s til %s.",
+        "checking_whitelisted": "Hei %s. Vi sjekker tilganger.",
+        "exploit_banned": "Du har blitt utestengt for juks. Sjekk vår Discord for mer informasjon: %s",
+        "exploit_dropped": "Du har blitt sparket for utnyttelse",
+        "multichar_title": "Qbox Multichar",
+        "multichar_new_character": "New Character #%s",
+        "char_male": "Male",
+        "char_female": "Female",
+        "play": "Play",
+        "play_description": "Play as %s",
+        "delete_character": "Delete Character",
+        "delete_character_description": "Delete %s",
+        "logout_command_help": "Logs you out of your current character",
+        "check_id": "Check your Server ID",
+        "deletechar_command_help": "Delete a players character",
+        "deletechar_command_arg_player_id": "Player ID",
+        "character_registration_title": "Character Registration",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "nationality": "Nationality",
+        "gender": "Sex",
+        "birth_date": "Birth Date",
+        "select_gender": "Select your gender...",
+        "confirm_delete": "Are you sure you wish to delete this character?",
+        "in_queue": "🐌 You are %s/%s in queue. (%s) %s"
+    },
+    "command": {
+        "tp": {
+            "help": "TP til spiller eller koordinater (kun admin)",
+            "params": {
+                "x": { "name": "id/x", "help": "ID for spiller eller X-posisjon"},
+                "y": { "name": "y", "help": "Y posisjon"},
+                "z": { "name": "z", "help": "Z posisjon"}
+            }
+        },
+        "tpm": { "help": "TP Til Marker (kun admin)" },
+        "togglepvp": { "help": "Slå PVP på serveren (kun admin)" },
+        "addpermission": {
+            "help": "Gi spillertillatelser (Kun gud)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "permission": { "name": "permission", "help": "Tillatelsesnivå "}
+            }
+        },
+        "removepermission": {
+            "help": "Fjern spillertillatelser (kun gud)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "permission": { "name": "permission", "help": "Tillatelsesnivå" }
+            }
+        },
+        "openserver": { "help": "Åpne serveren for alle (kun admin)" },
+        "closeserver": {
+            "help": "Lukk serveren for personer uten tillatelser (kun admin)",
+            "params": {
+                "reason": { "name": "reason", "help": "Årsak til stenging (valgfritt)" }
+            }
+        },
+        "car": {
+            "help": "Spawn Vehicle (kun admin)",
+            "params": {
+                "model": { "name": "model", "help": "Modellnavn på kjøretøyet" }
+            }
+        },
+        "dv": { "help": "Slett kjøretøy (kun admin)" },
+        "givemoney": {
+            "help": "Gi en spiller penger (kun admin)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "moneytype": { "name": "moneytype", "help": "Penge type (cash, bank, ogn)" },
+                "amount": { "name": "amount", "help": "Penge beløp" }
+            }
+        },
+        "setmoney": {
+            "help": "Angi spillerens pengebeløp (kun admin)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "moneytype": { "name": "moneytype", "help": "Penge type (cash, bank, ogn)" },
+                "amount": { "name": "amount", "help": "Penge beløp" }
+            }
+        },
+        "job": { "help": "Sjekk din jobb" },
+        "setjob": {
+            "help": "Sett en spillerjobb (kun admin)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "job": { "name": "job", "help": "Jobb navn" },
+                "grade": { "name": "grade", "help": "Jobb grad" }
+            }
+        },
+        "changejob": {
+            "help": "Change Active Job of Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" }
+            }
+        },
+        "addjob": {
+            "help": "Add Job to Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" },
+                "grade": { "name": "grade", "help": "Job grade" }
+            }
+        },
+        "removejob": {
+            "help": "Remove Job from Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" }
+            }
+        },
+        "gang": { "help": "Sjekk din gjeng" },
+        "setgang": {
+            "help": "Sett en spillergjeng (kun admin)",
+            "params": {
+                "id": { "name": "id", "help": "ID på spiller" },
+                "gang": { "name": "gang", "help": "Gjeng navn" },
+                "grade": { "name": "grade", "help": "Gjeng grad" }
+            }
+        },
+        "ooc": { "help": "UAK Chat Melding" },
+        "me": {
+            "help": "Vis lokal melding",
+            "params": {
+                "message": { "name": "message", "help": "Melding å sende" }
+            }
+        }
+    }
+}

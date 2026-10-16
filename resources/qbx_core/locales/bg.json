@@ -1,0 +1,169 @@
+{
+    "error": {
+        "not_online": "Играчът не е онлайн",
+        "wrong_format": "Некоректен формат",
+        "missing_args": "Не всички аргументи са въведени (x, y, z)",
+        "missing_args2": "Всички аргументи трябва да бъдат попълнени!",
+        "no_access": "Нямате достъп до тази команда",
+        "company_too_poor": "Твоят работодател е фалирал",
+        "item_not_exist": "Артикулът не съществува",
+        "too_heavy": "Ивентарът е препълнен",
+        "location_not_exist": "Локацията не съществува",
+        "duplicate_license": "Намерен е дубликат на Rockstar лиценза",
+        "no_valid_license": "Не е намерен валиден Rockstar лиценз",
+        "not_whitelisted": "Вие не сте включени в белия списък за този сървър",
+        "server_already_open": "Сървърът вече е отворен",
+        "server_already_closed": "Сървърът вече е затворен",
+        "no_permission": "Нямате разрешения за това ..",
+        "no_waypoint": "Няма зададена точка.",
+        "tp_error": "Грешка при телепортиране.",
+        "connecting_database_timeout": "Свързването с базата данни изтече. (SQL сървърът работи ли?)",
+        "connecting_error": "An error occurred while connecting to the server. (Check your server console)",
+        "no_match_character_registration": "Anything other than letters aren't allowed, trailing whitespaces aren't allowed either and words must start with a capital letter in input fields. You can however add words with spaces inbetween.",
+        "already_in_queue": "You are already in queue.",
+        "no_subqueue": "You were not let in any sub-queue."
+    },
+    "success": {
+        "server_opened": "Сървърът е отворен",
+        "server_closed": "Сървърът е затворен",
+        "teleported_waypoint": "Телепортиран до точка.",
+        "character_deleted": "Character deleted!",
+        "character_deleted_citizenid": "You successfully deleted the character with Citizen ID %s."
+    },
+    "info": {
+        "received_paycheck": "Получихте заплатата си от $%s",
+        "job_info": "Работа: %s | Ранг: %s | Дежурство: %s",
+        "gang_info": "Банда: %s | Ранг: %s",
+        "on_duty": "Вече сте на дежурство!",
+        "off_duty": "Вече не сте на дежурство!",
+        "checking_ban": "Здравей %s. Проверяваме дали сте баннат.",
+        "join_server": "Добре дошъл %s в %s.",
+        "checking_whitelisted": "Здравей %s. Проверяваме вашето разрешение.",
+        "exploit_banned": "Бяхте баннат за измама. Проверете нашия Discord за повече информация: %s",
+        "exploit_dropped": "Бяхте изхвърлен за използване на експлоит",
+        "multichar_title": "Qbox Multichar",
+        "multichar_new_character": "New Character #%s",
+        "char_male": "Male",
+        "char_female": "Female",
+        "play": "Play",
+        "play_description": "Play as %s",
+        "delete_character": "Delete Character",
+        "delete_character_description": "Delete %s",
+        "logout_command_help": "Logs you out of your current character",
+        "check_id": "Check your Server ID",
+        "deletechar_command_help": "Delete a players character",
+        "deletechar_command_arg_player_id": "Player ID",
+        "character_registration_title": "Character Registration",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "nationality": "Nationality",
+        "gender": "Sex",
+        "birth_date": "Birth Date",
+        "select_gender": "Select your gender...",
+        "confirm_delete": "Are you sure you wish to delete this character?",
+        "in_queue": "🐌 You are %s/%s in queue. (%s) %s"
+    },
+    "command": {
+        "tp": {
+            "help": "ТП към Играч или Координати (Само за админи)",
+            "params": {
+                "x": { "name": "id/x", "help": "ID на играча или X позиция" },
+                "y": { "name": "y", "help": "Y позиция" },
+                "z": { "name": "z", "help": "Z позиция" }
+            }
+        },
+        "tpm": { "help": "ТП до Маркер (Само за админи)" },
+        "togglepvp": { "help": "Превключване на PVP на сървъра (Само за админи)" },
+        "addpermission": {
+            "help": "Дайте на играч разрешения (Само за Бог)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "permission": { "name": "permission", "help": "Ниво на разрешение" }
+            }
+        },
+        "removepermission": {
+            "help": "Премахнете разрешенията на играча (Само за Бог)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "permission": { "name": "permission", "help": "Ниво на разрешение" }
+            }
+        },
+        "openserver": { "help": "Отворете сървъра за всички (Само за админи)" },
+        "closeserver": {
+            "help": "Затворете сървъра за хора без разрешения (Само за админи)",
+            "params": {
+                "reason": { "name": "reason", "help": "Причина за затваряне (по избор)" }
+            }
+        },
+        "car": {
+            "help": "Изваждане на превозно средство от джоба (Само за админи)",
+            "params": {
+                "model": { "name": "model", "help": "Модел на превозното средство" }
+            }
+        },
+        "dv": { "help": "Прибиране на превозно средство в джоба (Само за админи)" },
+        "givemoney": {
+            "help": "Дайте на играч пари (Само за админи)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "moneytype": { "name": "moneytype", "help": "Тип пари (cash, bank, ogn)" },
+                "amount": { "name": "amount", "help": "Сума пари" }
+            }
+        },
+        "setmoney": {
+            "help": "Задайте сумата на парите на играча (Само за админи)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "moneytype": { "name": "moneytype", "help": "Тип пари (cash, bank, ogn)" },
+                "amount": { "name": "amount", "help": "Сума пари" }
+            }
+        },
+        "job": { "help": "Проверка на работата ви" },
+        "setjob": {
+            "help": "Задайте работата на играча (Само за админи)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "job": { "name": "job", "help": "Име на работата" },
+                "grade": { "name": "grade", "help": "Ранг на работата" }
+            }
+        },
+        "changejob": {
+            "help": "Change Active Job of Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" }
+            }
+        },
+        "addjob": {
+            "help": "Add Job to Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" },
+                "grade": { "name": "grade", "help": "Job grade" }
+            }
+        },
+        "removejob": {
+            "help": "Remove Job from Player (Admin Only)",
+            "params": {
+                "id": { "name": "id", "help": "Player ID" },
+                "job": { "name": "job", "help": "Job name" }
+            }
+        },
+        "gang": { "help": "Проверете вашата банда" },
+        "setgang": {
+            "help": "Задайте бандата на играча (Само за админи)",
+            "params": {
+                "id": { "name": "id", "help": "ID на играча" },
+                "gang": { "name": "gang", "help": "Име на бандата" },
+                "grade": { "name": "grade", "help": "Ранг на бандата" }
+            }
+        },
+        "ooc": { "help": "OOC чат съобщение" },
+        "me": {
+            "help": "Показване на локално съобщение",
+            "params": {
+                "message": { "name": "message", "help": "Съобщение за изпращане" }
+            }
+        }
+    }
+}

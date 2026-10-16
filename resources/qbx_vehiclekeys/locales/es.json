@@ -1,0 +1,53 @@
+{
+  "addcom": {
+    "addkeys": "addkeys",
+    "addkeys_help": "Añade llaves de un vehículo a alguien.",
+    "addkeys_id": "id",
+    "addkeys_id_help": "ID de jugador",
+    "addkeys_plate": "matrícula",
+    "addkeys_plate_help": "Matrícula",
+    "givekeys": "givekeys",
+    "givekeys_help": "Dar las llaves a alguien. Sin ID, a la persona más cercana o a todos los del vehículo.",
+    "givekeys_id": "id",
+    "givekeys_id_help": "ID de jugador",
+    "givekeys_plate": "matrícula",
+    "givekeys_plate_help": "Matrícula",
+    "removekeys": "removekeys",
+    "removekeys_help": "Quitar llaves de un vehículo a alguien.",
+    "remove_keys_id": "id",
+    "remove_keys_id_help": "ID de jugador",
+    "remove_keys_plate": "matrícula",
+    "remove_keys_plate_help": "Matrícula"
+  },
+  "info": {
+    "engine": "Encender/apagar motor",
+    "search_keys": "Buscar las llaves",
+    "search_keys_dispatch": "Buscar llaves",
+    "toggle_locks": "Cerrar/abrir el coche",
+    "vehicle_theft": "Robo de vehículo en curso. Tipo: "
+  },
+  "notify": {
+    "carjack_failed": "¡El robo del coche ha fallado!",
+    "failed_lockedpick": "No has conseguido forzar la cerradura.",
+    "failed_keys": "No logras encontrar las llaves y te frustras.",
+    "fpid": "Rellena el ID del jugador y la matrícula",
+    "gave_keys": "Has entregado las llaves",
+    "added_keys": "¡Has entregado una copia de las llaves del vehículo %s al jugador %s!",
+    "keys_taken": "Has recibido las llaves del vehículo",
+    "no_keys": "No tienes las llaves de este vehículo",
+    "not_near": "No hay nadie cerca a quien darle las llaves",
+    "vehicle_not_near": "No estás cerca del vehículo",
+    "vehicle_locked": "Vehículo cerrado",
+    "vehicle_lockedpick": "Has conseguido abrir la cerradura",
+    "vehicle_unlocked": "Vehículo abierto",
+    "removed_keys": "¡Se han retirado las llaves de la matrícula %s al jugador %s!",
+    "removed_keys_player": "¡Te han retirado las llaves de la matrícula %s!",
+    "player_offline": "¡Este jugador no está en línea!",
+	"vehicle_is_unlocked": "¡El vehículo ya está desbloqueado!"
+  },
+  "progress": {
+    "attempting_carjack": "Intentando robar el coche…",
+    "searching_keys": "Buscando las llaves del coche…",
+    "takekeys": "Cogiendo las llaves del cuerpo…"
+  }
+}

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+    <AnimRateSets/>
+    <ClipSetMaps/>
+    <VehicleCoverBoundOffsetInfos>
+        <Item type="CVehicleCoverBoundOffsetInfo">
+                      <Name>POLCOMET6_COVER_OFFSET_INFO</Name>
+                      <ExtraSideOffset value="-0.093000" />
+                      <ExtraForwardOffset value="-0.100000" />
+                      <ExtraBackwardOffset value="-0.175000" />
+                      <ExtraZOffset value="-0.250000" />
+                      <CoverBoundInfos>
+                        <Item>
+                          <Name>Front</Name>
+                          <Position x="-0.022000" y="1.902500" z="0.250000" />
+                          <Length value="0.735000" />
+                          <Width value="1.835000" />
+                          <Height value="1.020000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                        <Item>
+                          <Name>FRONT_WHEEL</Name>
+                          <Position x="0.008000" y="0.827500" z="0.250000" />
+                          <Length value="1.355000" />
+                          <Width value="1.935000" />
+                          <Height value="1.020000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                        <Item>
+                          <Name>MIDDLE</Name>
+                          <Position x="0.008000" y="-0.367500" z="0.320000" />
+                          <Length value="1.035000" />
+                          <Width value="1.905000" />
+                          <Height value="1.110000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                        <Item>
+                          <Name>REAR_WHEEL</Name>
+                          <Position x="0.008000" y="-1.267500" z="0.330000" />
+                          <Length value="0.755000" />
+                          <Width value="1.925000" />
+                          <Height value="1.255000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                        <Item>
+                          <Name>REAR</Name>
+                          <Position x="0.018000" y="-1.940000" z="0.330000" />
+                          <Length value="0.645000" />
+                          <Width value="1.825000" />
+                          <Height value="1.255000" />
+                          <ActiveBoundExclusions />
+                        </Item>
+                      </CoverBoundInfos>
+                    </Item>
+    </VehicleCoverBoundOffsetInfos>
+    <BicycleInfos/>
+    <POVTuningInfos/>
+    <EntryAnimVariations/>
+    <VehicleExtraPointsInfos/>
+    <DrivebyWeaponGroups/>
+    <VehicleDriveByAnimInfos/>
+    <VehicleDriveByInfos/>
+    <VehicleSeatInfos/>
+    <VehicleSeatAnimInfos/>
+    <VehicleEntryPointInfos/>
+    <VehicleEntryPointAnimInfos/>
+    <VehicleExplosionInfos/>
+    <VehicleLayoutInfos/>
+    <VehicleScenarioLayoutInfos/>
+    <SeatOverrideAnimInfos/>
+    <InVehicleOverrideInfos/>
+    <FirstPersonDriveByLookAroundData>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                      <Name>LOW_POLCOMET6_FRONT_LEFT</Name>
+                      <AllowLookback value="true" />
+                      <HeadingLimits x="-185.000000" y="148.000000" />
+                      <DataLeft>
+                        <Offsets>
+                          <Item>
+                            <Offset value="-0.300000" />
+                            <AngleToBlendInOffset x="40.000000" y="120.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.100000" />
+                            <AngleToBlendInOffset x="37.000000" y="120.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.025000" />
+                            <AngleToBlendInOffset x="60.000000" y="120.000000" />
+                          </Item>
+                        </Offsets>
+                        <ExtraRelativePitch x="-9.000000" y="0.000000" />
+                        <AngleToBlendInExtraPitch x="65.000000" y="100.000000" />
+                      </DataLeft>
+                      <DataRight>
+                        <Offsets>
+                          <Item>
+                            <Offset value="0.025000" />
+                            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="-0.035000" />
+                            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.045000" />
+                            <AngleToBlendInOffset x="40.000000" y="90.000000" />
+                          </Item>
+                        </Offsets>
+                        <ExtraRelativePitch x="-3.000000" y="-10.000000" />
+                        <AngleToBlendInExtraPitch x="0.000000" y="90.000000" />
+                      </DataRight>
+                      <WheelClipInfo>
+                        <HeadingLimitsLeft x="0.180000" y="0.430000" />
+                        <HeadingLimitsRight x="0.440000" y="0.460000" />
+                        <PitchLimits x="0.470000" y="0.530000" />
+                        <PitchOffset x="0.000000" y="0.050000" />
+                        <WheelAngleLimits x="-0.700000" y="0.000000" />
+                        <WheelAngleOffset x="0.010000" y="0.070000" />
+                        <MaxWheelOffsetY value="0.170000" />
+                        <WheelClipLerpInRate value="0.250000" />
+                        <WheelClipLerpOutRate value="0.180000" />
+                      </WheelClipInfo>
+                    </Item>
+        <Item type="CFirstPersonDriveByLookAroundData">
+                      <Name>LOW_POLCOMET6_FRONT_RIGHT</Name>
+                      <AllowLookback value="true" />
+                      <HeadingLimits x="-185.000000" y="152.000000" />
+                      <DataLeft>
+                        <Offsets>
+                          <Item>
+                            <Offset value="-0.025000" />
+                            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="-0.050000" />
+                            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.045000" />
+                            <AngleToBlendInOffset x="40.000000" y="90.000000" />
+                          </Item>
+                        </Offsets>
+                        <ExtraRelativePitch x="-2.500000" y="-9.500000" />
+                        <AngleToBlendInExtraPitch x="0.000000" y="90.000000" />
+                      </DataLeft>
+                      <DataRight>
+                        <Offsets>
+                          <Item>
+                            <Offset value="0.315000" />
+                            <AngleToBlendInOffset x="40.000000" y="120.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.100000" />
+                            <AngleToBlendInOffset x="40.000000" y="120.000000" />
+                          </Item>
+                          <Item>
+                            <Offset value="0.025000" />
+                            <AngleToBlendInOffset x="60.000000" y="120.000000" />
+                          </Item>
+                        </Offsets>
+                        <ExtraRelativePitch x="-9.000000" y="0.000000" />
+                        <AngleToBlendInExtraPitch x="65.000000" y="100.000000" />
+                      </DataRight>
+                      <WheelClipInfo>
+                        <HeadingLimitsLeft x="0.180000" y="0.430000" />
+                        <HeadingLimitsRight x="0.480000" y="0.530000" />
+                        <PitchLimits x="0.470000" y="0.530000" />
+                        <PitchOffset x="0.000000" y="0.050000" />
+                        <WheelAngleLimits x="-0.700000" y="0.000000" />
+                        <WheelAngleOffset x="0.010000" y="0.060000" />
+                        <MaxWheelOffsetY value="0.170000" />
+                        <WheelClipLerpInRate value="0.250000" />
+                        <WheelClipLerpOutRate value="0.180000" />
+                      </WheelClipInfo>
+                    </Item>
+    </FirstPersonDriveByLookAroundData>
+</CVehicleMetadataMgr>

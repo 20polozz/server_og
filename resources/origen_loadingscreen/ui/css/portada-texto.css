@@ -1,0 +1,129 @@
+/* La version de SOLO ROTULO (index-portada.html): el cartel de ORIGEN NETWORK
+   escrito con tipografia, sin ilustracion. Hereda de portada.css lo comun
+   (tipografias, esquinas, aviso de musica, barra) y aqui va lo suyo. */
+@import url('portada.css');
+
+/* ── El fondo ─────────────────────────────────────────────────────────── */
+.fondo {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 120% 95% at 50% 40%,
+            var(--rosa-claro) 0%,
+            var(--rosa) 42%,
+            var(--rosa-hondo) 100%);
+}
+
+.grano {
+    position: fixed;
+    inset: 0;
+    opacity: 0.045;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.9) 0.5px, transparent 0.6px);
+    background-size: 3px 3px;
+}
+
+.latido {
+    position: fixed;
+    left: 50%;
+    top: 40%;
+    width: calc(120vw / var(--ogn-escala, 1));
+    height: calc(120vh / var(--ogn-escala, 1));
+    transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 70%);
+    animation: latir 6s ease-in-out infinite;
+}
+
+@keyframes latir {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.06); }
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(26px) scale(0.985); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ── El centro ────────────────────────────────────────────────────────── */
+.centro {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(2.2vh / var(--ogn-escala, 1));
+    padding: calc(6vh / var(--ogn-escala, 1)) calc(4vw / var(--ogn-escala, 1));
+}
+
+.marca {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-wrap: nowrap;
+    font-family: var(--rotulo);
+    font-size: clamp(48px, calc(11.2vw / var(--ogn-escala, 1)), 226px);
+    line-height: 0.8;
+    letter-spacing: -0.012em;
+    text-transform: uppercase;
+    filter: drop-shadow(0 10px 24px rgba(60, 0, 20, 0.28));
+    animation: entrar 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.marca span {
+    display: inline-block;
+    transform-origin: 50% 80%;
+}
+
+.marca .aire {
+    width: 0.3em;
+}
+
+/* ── El cargando ──────────────────────────────────────────────────────── */
+.cargando {
+    display: flex;
+    align-items: center;
+    gap: calc(2.2vh / var(--ogn-escala, 1));
+    margin-top: calc(1.2vh / var(--ogn-escala, 1));
+    animation: entrar 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+.rueda {
+    width: calc(4.6vh / var(--ogn-escala, 1));
+    height: calc(4.6vh / var(--ogn-escala, 1));
+    border-radius: 50%;
+    border: calc(0.62vh / var(--ogn-escala, 1)) solid rgba(255, 255, 255, 0.28);
+    border-top-color: #ffffff;
+    border-right-color: #ffffff;
+    animation: girar 0.9s linear infinite;
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+.cargando__t {
+    font-family: var(--rotulo);
+    font-size: clamp(22px, calc(3.1vw / var(--ogn-escala, 1)), 58px);
+    text-shadow: 0 6px 16px rgba(60, 0, 20, 0.25);
+}
+
+/* El paso, centrado bajo el "Cargando" */
+.paso {
+    position: static;
+    margin: calc(-1.4vh / var(--ogn-escala, 1)) 0 0;
+    max-width: calc(70vw / var(--ogn-escala, 1));
+    text-align: center;
+    font-size: clamp(12px, calc(1.05vw / var(--ogn-escala, 1)), 19px);
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.86);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    animation: entrar 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.musica {
+    bottom: calc(3.4vh / var(--ogn-escala, 1));
+}
+

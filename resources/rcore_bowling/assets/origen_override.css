@@ -1,0 +1,1317 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+
+/* ══ Bolera · estilo «HUD Arcade» ══════════════════════════════════
+   El mismo del inventario (origen_inventory/source-ui/src/assets/styles/
+   arcade.css): cristal crema, acento rosa #d81b55, Barlow Condensed cursiva
+   para los rotulos y bloques inclinados 10 grados.
+
+   ── Que es este fichero ────────────────────────────────────────────────
+   Es NUESTRO. rcore_bowling trae su propia interfaz en assets/assets/css/
+   app.css (suya, minificada) y esta hoja va declarada DESPUES en
+   assets/index.html y en el fxmanifest, asi que manda ella. Aqui se
+   repinta el marcador entero sin tocar una sola linea de rcore: el dia que
+   actualicen el recurso, esto se vuelve a poner encima y ya esta.
+
+   ── Trampas ───────────────────────────────────────────────────────────
+   - Nada de backdrop-filter: en el CEF de FiveM pinta una banda negra. El
+     cristal es solo el degradado.
+   - .scoreboard recorta de lado (overflow-x: hidden). Un bloque inclinado
+     10 grados sobresale ~tan(10)*alto/2 por cada lado y el canto baja 5 px;
+     por eso el relleno del panel sube a 1.6vh y las filas de la tabla dejan
+     su aire. Solo se inclina lo pequeño: botones, chapas y casillas.
+   - Las fuentes van en el <link> de assets/index.html, nunca en @import:
+     el CEF del juego no pide los @import (07/10).
+
+   La copia de antes esta en origen_override.css.ogn-bak.
+   ═════════════════════════════════════════════════════════════════════ */
+
+
+:root {
+    /* ── Tokens del tema ─────────────────────────────────────── */
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #b3123f;
+    --arc-grad: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-edge: rgba(255, 255, 255, 0.7);
+    --arc-glass: linear-gradient(160deg, rgba(220, 221, 224, 0.95) 0%, rgba(220, 221, 224, 0.92) 45%, rgba(220, 221, 224, 0.95) 100%);
+    --arc-papel: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(220, 221, 224, 0.7) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 5px 0 rgba(120, 110, 88, 0.45);
+    --arc-relieve-on: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 0 rgba(120, 110, 88, 0.45);
+    --arc-linea: rgba(38, 34, 26, 0.14);
+
+    /* ── Nombres de siempre, apuntando a los nuevos ────────────── */
+    --ogn-rotulo: var(--arc-cond);
+    --ogn-texto: var(--arc-text);
+    --ogn-fg: var(--arc-ink);
+    --ogn-acc: var(--arc-accent);
+    --ogn-acc-rgb: 223, 47, 99;
+    --ogn-acc-deep: var(--arc-accent-deep);
+    --ogn-t1: var(--arc-ink);
+    --ogn-t2: var(--arc-ink-2);
+    --ogn-t3: var(--arc-ink-3);
+    --ogn-t4: var(--arc-ink-4);
+    --ogn-line: var(--arc-linea);
+    --ogn-r: 10px;
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --primary-color: rgba(255, 255, 255, 0.55);
+    --color-acent: var(--arc-accent);
+    --text-white: var(--arc-ink);
+    --cubic: cubic-bezier(0, .53, .11, .995);
+
+    --bg-panel: var(--arc-glass);
+    --border-color: rgba(255, 255, 255, 0.6);
+    --border-subtle: var(--arc-linea);
+
+    --font-title: var(--arc-cond);
+    --font-body: var(--arc-cond);
+    --font-body-light: var(--arc-text);
+
+    /* Las variables que rcore usa por dentro (las declara su app.css y las
+       pinta el index.html). Aqui se apagan: todos los fondos y filos de la
+       tabla los pone esta hoja. */
+    --table-bg: transparent !important;
+    --table-border-color: transparent !important;
+    --table-header-bg: transparent !important;
+    --table-header-border-color: transparent !important;
+    --table-accent: var(--arc-accent) !important;
+    --table-accent-lighter: var(--arc-accent-deep) !important;
+}
+
+/* Lo que pinta Chromium por su cuenta (marcas de casilla, barras): rosa. */
+* {
+    accent-color: var(--arc-accent);
+}
+
+html,
+body {
+    background: transparent !important;
+    background-color: transparent !important;
+    font-family: var(--arc-text) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: 100% !important;
+    color: var(--arc-ink) !important;
+}
+
+#app {
+    background: transparent !important;
+    background-color: transparent !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    font-family: var(--arc-text) !important;
+    color: var(--arc-ink) !important;
+}
+
+#app h1, #app h2, #app h3,
+#app h4, #app h5, #app h6 {
+    font-family: var(--arc-cond) !important;
+}
+
+/* ══ El panel ═════════════════════════════════════════════════════════ */
+.scoreboard {
+    width: 33vh !important;
+    min-width: 33vh !important;
+    max-width: 33vh !important;
+    max-height: 84vh !important;
+    min-height: 31vh !important;
+    margin: 0 3.2vh 0 0 !important;
+
+    background: var(--arc-glass) !important;
+    border: 0 !important;
+    border-top: 4px solid var(--arc-accent) !important;
+    border-radius: 16px !important;
+    /* 1.6vh de relleno: es el aire que necesitan los botones inclinados,
+       que este panel recorta de lado. */
+    padding: 1.6vh !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 30px 70px rgba(0, 0, 0, 0.45) !important;
+    color: var(--arc-ink) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    animation: fadeIn 0.6s var(--cubic) 0.2s backwards;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+}
+
+/* Con las columnas de rondas a la vista el panel se ensancha. */
+.scoreboard:has(.score-column) {
+    width: 72vh !important;
+    max-width: 90vw !important;
+    overflow-x: auto !important;
+}
+
+.scoreboard > table {
+    width: 100% !important;
+}
+
+.scoreboard table tr td.player-name {
+    min-width: 0 !important;
+    width: auto !important;
+}
+
+.scoreboard svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* ══ La apuesta ═══════════════════════════════════════════════════════ */
+.wager-left,
+.wager-right,
+.wager-center {
+    float: none !important;
+}
+
+.wager-left {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 0 0.8vh 0 !important;
+    position: static !important;
+}
+
+.custom-checkbox {
+    margin: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.8vh !important;
+    cursor: pointer !important;
+}
+
+.custom-checkbox input {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.custom-checkbox span {
+    width: 1.8vh !important;
+    height: 1.8vh !important;
+    border-radius: 50% !important;
+    border: 0 !important;
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 2px rgba(var(--arc-t-hueco), 0.28) !important;
+    color: transparent !important;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.custom-checkbox input:checked + span {
+    background: var(--arc-accent) !important;
+    box-shadow: inset 0 0 0 2px var(--arc-accent-deep) !important;
+}
+
+.wager-label {
+    position: static !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 1.25vh !important;
+    color: var(--arc-ink-3) !important;
+    letter-spacing: 0.16em !important;
+}
+
+.wager-right {
+    width: 100% !important;
+    margin: 0.2vh 0 0.9vh 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 0.6vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.3vh !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--arc-ink-3) !important;
+}
+
+.wager-right input,
+.wager-right .wager-amount {
+    width: 9.5vh !important;
+    height: 2.9vh !important;
+    font-size: 1.5vh !important;
+    text-align: center !important;
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) !important;
+    color: var(--arc-ink) !important;
+}
+
+.wager-center {
+    margin: 0.4vh 0 1vh !important;
+    text-align: left !important;
+}
+
+.wager-center span {
+    border-bottom: 0 !important;
+    padding-bottom: 0.2vh !important;
+    color: var(--arc-ink-3) !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.25vh !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+}
+
+/* ══ La tabla: sin fondos ni filos propios ════════════════════════════ */
+.scoreboard table,
+.scoreboard tr,
+.scoreboard th,
+.scoreboard td,
+.player-name,
+.player-id,
+.score-column,
+.windows,
+.window,
+.scoreboard table tr th,
+.scoreboard table tr td {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* ── Cabeceras ───────────────────────────────────────────────────────── */
+.scoreboard th {
+    border-bottom: 1px solid var(--arc-linea) !important;
+    padding: 1vh 0.8vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.15vh !important;
+    color: var(--arc-ink-3) !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+}
+
+/* El titulo de la tabla (JUGADOR / EQUIPO), con la raya que se apaga. */
+.scoreboard tr:first-child th:nth-child(2) {
+    position: relative !important;
+    color: var(--arc-ink) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2vh !important;
+    letter-spacing: 0.04em !important;
+    text-shadow: none !important;
+    padding-top: 0.6vh !important;
+    padding-bottom: 1.1vh !important;
+}
+
+.scoreboard tr:first-child th:nth-child(2)::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: 0.3vh !important;
+    width: 7vh !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, rgba(223, 47, 99, 0) 0%, var(--arc-accent) 50%, rgba(223, 47, 99, 0) 100%) !important;
+    border-radius: 2px !important;
+}
+
+/* ── Total ───────────────────────────────────────────────────────────── */
+.column-total {
+    color: var(--arc-accent-texto) !important;
+    text-shadow: none !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.9vh !important;
+}
+
+/* ── Filas ───────────────────────────────────────────────────────────── */
+.scoreboard td {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid var(--arc-linea) !important;
+    padding: 0.8vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.4vh !important;
+    letter-spacing: 0.04em !important;
+    color: var(--arc-ink-2) !important;
+    height: 3.6vh !important;
+    text-transform: uppercase !important;
+}
+
+.player-name {
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    color: var(--arc-ink) !important;
+    font-size: 1.7vh !important;
+    text-align: left !important;
+    padding-left: 1.2vh !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* ══ Numero de rondas ═════════════════════════════════════════════════ */
+.round-change {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 2.4vh !important;
+    height: 2.4vh !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    transform: var(--arc-skew) !important;
+    background: var(--arc-papel) !important;
+    box-shadow: var(--arc-relieve) !important;
+    color: var(--arc-ink-2) !important;
+    cursor: pointer !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 800 !important;
+    font-size: 1.6vh !important;
+    line-height: 1 !important;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease !important;
+    vertical-align: middle !important;
+    margin: 0 0.6vh !important;
+}
+
+.round-change:hover {
+    opacity: 1 !important;
+    background: var(--arc-grad) !important;
+    box-shadow: 0 5px 0 var(--arc-accent-deep) !important;
+    color: #fff !important;
+}
+
+.round-change:active {
+    transform: var(--arc-skew) translateY(3px) !important;
+    box-shadow: var(--arc-relieve-on) !important;
+}
+
+.round-number {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 4vh !important;
+    height: 2.4vh !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    transform: var(--arc-skew) !important;
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) !important;
+    color: var(--arc-ink) !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.6vh !important;
+    vertical-align: middle !important;
+}
+
+.round-count-label {
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.25vh !important;
+    color: var(--arc-ink-3) !important;
+    text-transform: uppercase !important;
+    margin-right: 1.4vh !important;
+    vertical-align: middle !important;
+    letter-spacing: 0.16em !important;
+}
+
+/* ══ Casillas de la ronda ═════════════════════════════════════════════ */
+.windows {
+    display: flex !important;
+    gap: 0.3vh !important;
+    justify-content: center !important;
+    margin-bottom: 0.2vh !important;
+}
+
+.window {
+    border: 0 !important;
+    border-radius: 5px !important;
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), inset 0 -2px 0 rgba(var(--arc-t-relieve), 0.25) !important;
+    width: 2vh !important;
+    height: 2vh !important;
+    line-height: 2vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.15vh !important;
+    color: var(--arc-ink-2) !important;
+    text-align: center !important;
+}
+
+.round-score {
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.4vh !important;
+    color: var(--arc-ink) !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* ══ Botones ══════════════════════════════════════════════════════════
+   Papel con canto e inclinado 10 grados. El marcado es de rcore y aqui no
+   se toca: los botones llevan el texto suelto, sin ningun elemento dentro
+   que desinclinar. Por eso el sesgo va en un ::before de fondo (el truco
+   de .pn-sg en origen_businesses/panelnegocio.css) y el boton se queda
+   derecho con su rotulo legible. */
+button {
+    position: relative !important;
+    isolation: isolate !important;
+    background: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: var(--arc-ink-2) !important;
+    padding: 0.7vh 1.4vh !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.5vh !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    cursor: pointer !important;
+    transition: color 0.15s ease !important;
+}
+
+button::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    border-radius: 9px !important;
+    transform: var(--arc-skew) !important;
+    background: var(--arc-papel) !important;
+    box-shadow: var(--arc-relieve) !important;
+    transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+button:hover:not([disabled]) {
+    opacity: 1 !important;
+    color: var(--arc-accent-texto) !important;
+    filter: none !important;
+}
+
+button:hover:not([disabled])::before {
+    background: linear-gradient(180deg, var(--arc-fondo1, #fff) 0%, var(--arc-fondo1, rgba(250, 246, 238, 0.85)) 100%) !important;
+}
+
+button:active:not([disabled]) {
+    transform: translateY(3px) !important;
+}
+
+button:active:not([disabled])::before {
+    box-shadow: var(--arc-relieve-on) !important;
+}
+
+button[disabled] {
+    opacity: 0.55 !important;
+    cursor: default !important;
+}
+
+/* El unico rosa: el que confirma o entra en la partida. */
+button.btn-primary,
+button[class*="confirm"],
+button[class*="join"],
+button[class*="start"] {
+    color: #fff !important;
+}
+
+button.btn-primary::before,
+button[class*="confirm"]::before,
+button[class*="join"]::before,
+button[class*="start"]::before {
+    background: var(--arc-grad) !important;
+    box-shadow: 0 5px 0 var(--arc-accent-deep) !important;
+}
+
+button.btn-primary:hover::before,
+button[class*="confirm"]:hover::before,
+button[class*="join"]:hover::before,
+button[class*="start"]:hover::before {
+    background: linear-gradient(160deg, #d81b55 0%, #d81b55 100%) !important;
+}
+
+button.btn-primary:hover,
+button[class*="confirm"]:hover,
+button[class*="join"]:hover,
+button[class*="start"]:hover {
+    color: #fff !important;
+}
+
+/* El boton que va dentro de la celda del nombre no puede llevar canto: la
+   fila lo cortaria. */
+.player-name button {
+    height: auto !important;
+    top: 0 !important;
+    padding: 0.5vh 1vh !important;
+    font-size: 1.35vh !important;
+}
+
+/* ══ Campos ═══════════════════════════════════════════════════════════ */
+input {
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) !important;
+    color: var(--arc-ink) !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 600 !important;
+    font-size: 1.5vh !important;
+    letter-spacing: 0.06em !important;
+    padding: 0.7vh !important;
+    outline: none !important;
+    transition: background 0.2s ease, box-shadow 0.2s ease !important;
+    text-transform: uppercase !important;
+}
+
+input::placeholder {
+    color: var(--arc-ink-4) !important;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 2px var(--arc-accent) !important;
+}
+
+/* ══ Ventana de resultados ════════════════════════════════════════════ */
+.result {
+    width: auto !important;
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-left: 4px solid var(--arc-accent) !important;
+    border-radius: 10px !important;
+    padding: 1.1vh 1.6vh !important;
+    margin: 1.2vh 0 0 !important;
+
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.4vh !important;
+    line-height: 1.45 !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    color: var(--arc-ink-2) !important;
+    letter-spacing: 0.08em !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) !important;
+}
+
+/* ══ Barras de desplazamiento ═════════════════════════════════════════ */
+*::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-hueco), 0.22) !important;
+    border-radius: 4px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--arc-t-hueco), 0.38) !important;
+}
+
+/* ══ Animaciones ══════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2vh);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ══ Los iconos de bola de rcore: se quedan apagados ══════════════════ */
+.img-black-icon,
+.img-blue-icon,
+.img-orange-icon,
+.img-purple-icon,
+.img-red-icon {
+    top: -2.5vh !important;
+    left: -2.5vh !important;
+    width: 6vh !important;
+    opacity: 0 !important;
+}
+
+
+/* ══ PEGATINA: los bolos con el estilo del logo «Origen Los Santos» ═════════
+
+   05/10: Origen y Nación, la misma interfaz (en Nación el repintado de la
+   marca pone el naranja). Todo cuelga de html:root, con la misma
+   especificidad que el html:not([data-marca="nacion"]) de antes. Mismas reglas y mismos
+   colores que origen_inventory/.../pegatina.css. Ver la skill
+   origen-pegatina.
+
+   Solo el panel del marcador, sus casillas, la apuesta, los botones y el
+   aviso del resultado. Los iconos de las bolas y el resto del arte de rcore
+   no se tocan.
+
+   papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   NEGRA para lo que confirma, nada inclinado.
+
+   Todo lleva !important porque lo de arriba lo lleva. Los cantos son
+   box-shadow, no border: no cambian ninguna medida.
+
+   Para quitarlo: borrar este bloque y el <link> de Knewave y Oxanium de
+   index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+html:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #b3123f;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-glass: #dcdde0;
+    --arc-papel: #dcdde0;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --arc-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-relieve-on: inset 0 0 0 1.5px #000;
+    --arc-linea: rgba(11, 11, 13, 0.35);
+    --ogn-acc-rgb: 216, 27, 85;
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/* ── El panel ───────────────────────────────────────────────────────── */
+/*  El filo de arriba es un borde de verdad de 4 px: se queda del color del
+    papel y el canto va por fuera. */
+html:root #app .scoreboard {
+    background: #c4c6ca !important;
+    border-top-color: #c4c6ca !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .scoreboard th { border-bottom-color: #000 !important; color: #0b0b0d !important; }
+/*  El filete del titulo: rosa macizo, sin degradado. */
+html:root #app .scoreboard tr:first-child th:nth-child(2)::after { background: #d81b55 !important; }
+
+/* ── Cifras ─────────────────────────────────────────────────────────── */
+html:root #app .column-total,
+html:root #app .round-score,
+html:root #app .round-number,
+html:root #app .window {
+    font-family: var(--peg-cifra) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+}
+html:root #app .column-total { color: #b3123f !important; }
+html:root #app .round-score { color: #0b0b0d !important; }
+
+/* ── Las casillas de cada tirada ────────────────────────────────────── */
+/*  Celdas: papel con anillo fino, sin sombra. */
+html:root #app .scoreboard .window {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d !important;
+}
+
+/* ── El numero de rondas ────────────────────────────────────────────── */
+html:root #app .round-change {
+    border-radius: 8px !important;
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .round-change:hover { background: #d81b55 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; color: #000 !important; }
+html:root #app .round-change:active { transform: translate(2px, 2px) !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html:root #app .round-number { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; color: #0b0b0d !important; }
+
+/* ── La apuesta ─────────────────────────────────────────────────────── */
+html:root #app .custom-checkbox span { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html:root #app .custom-checkbox input:checked + span { background: #d81b55 !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html:root #app .wager-label,
+html:root #app .wager-right,
+html:root #app .wager-center span { color: #0b0b0d !important; }
+
+/* ── Campos ─────────────────────────────────────────────────────────── */
+html:root #app input,
+html:root #app .wager-right input,
+html:root #app .wager-right .wager-amount {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d !important;
+}
+html:root #app input:focus,
+html:root #app .wager-right input:focus { background: #dcdde0 !important; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+html:root #app input::placeholder { color: #73737c !important; }
+
+/* ── Botones ────────────────────────────────────────────────────────── */
+/*  La chapa es el ::before: papel con anillo y sombra dura. */
+html:root #app button,
+html:root #app button:hover:not([disabled]) { color: #0b0b0d !important; }
+html:root #app button::before { border-radius: 10px !important; background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app button:hover:not([disabled])::before { background: #e6e7ea !important; }
+html:root #app button:active:not([disabled]) { transform: translate(2px, 2px) !important; }
+html:root #app button:active:not([disabled])::before { box-shadow: inset 0 0 0 1.5px #000 !important; }
+/*  El que confirma: rosa con tinta negra. */
+html:root #app button.btn-primary,
+html:root #app button[class*="confirm"],
+html:root #app button[class*="join"],
+html:root #app button[class*="start"],
+html:root #app button.btn-primary:hover:not([disabled]),
+html:root #app button[class*="confirm"]:hover:not([disabled]),
+html:root #app button[class*="join"]:hover:not([disabled]),
+html:root #app button[class*="start"]:hover:not([disabled]) { color: #000 !important; }
+html:root #app button.btn-primary::before,
+html:root #app button[class*="confirm"]::before,
+html:root #app button[class*="join"]::before,
+html:root #app button[class*="start"]::before { background: #d81b55 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app button.btn-primary:hover:not([disabled])::before,
+html:root #app button[class*="confirm"]:hover:not([disabled])::before,
+html:root #app button[class*="join"]:hover:not([disabled])::before,
+html:root #app button[class*="start"]:hover:not([disabled])::before { background: #d81b55 !important; }
+html:root #app button.btn-primary:active:not([disabled])::before,
+html:root #app button[class*="confirm"]:active:not([disabled])::before,
+html:root #app button[class*="join"]:active:not([disabled])::before,
+html:root #app button[class*="start"]:active:not([disabled])::before { box-shadow: inset 0 0 0 1.5px #000 !important; }
+
+/* ── El aviso del resultado ─────────────────────────────────────────── */
+/*  El filete de la izquierda es un borde de verdad (4 px): transparente, el
+    papel recortado a la caja de dentro y el anillo sale igual por los
+    cuatro lados. */
+html:root #app .result {
+    border-left-color: transparent !important;
+    background: #dcdde0 !important;
+    background-clip: padding-box !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d !important;
+}
+
+html:root *::-webkit-scrollbar-thumb { background: #d81b55 !important; }
+
+/* [REPASO-HUD-D 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · LA BOLERA (verificado 06/10) ═══════════════════════════════════
+   Visto en captura con los mensajes de verdad (setupPlayers, openJoin,
+   update, showui). Solo de día. Lo que cambia:
+   - Cabecera: placa rosa girada + «Bolera» en rótulo con filete rosa
+     macizo, y debajo, a brocha, lo que rcore pone de título de la tabla
+     («Jugador» / «Equipo»).
+   - Fuera la letra fina espaciada (0,16em): rótulo cursiva 800 y cifras
+     en Oxanium.
+   - Crear partida: la apuesta en un botón de papel, las rondas en una
+     sola línea, los apuntados en tarjetas, «Iniciar» en rosa y lo
+     apagado en gris sin sombra.
+   - Marcador: cada jugador en su tarjeta blanca; el turno, en chapa rosa.
+   - El panel se ensanchaba con :has(.score-column), que el CEF 103 del
+     juego NO entiende (allí la tabla salía cortada a 33vh): ahora mide lo
+     que mide su contenido, sin :has.
+   El marcado es de rcore: las filas se distinguen por el data-v de cada
+   componente y por «td.player-id:empty» (vacía al crear, con número al
+   jugar). */
+
+/* ── El panel: a la medida de lo que lleva ──────────────────────────── */
+html:root #app .scoreboard {
+    width: auto !important;
+    min-width: 33vh !important;
+    max-width: 90vw !important;
+    min-height: 0 !important;
+    overflow-x: auto !important;
+    padding: 1.7vh 1.9vh 2vh !important;
+}
+/*  La cabecera. La placa (cuadro rosa girado −5° con su sombra y la bola)
+    va dibujada en el propio fondo: aquí no hay ningún elemento para ella. */
+html:root #app .scoreboard::before {
+    content: "Bolera";
+    display: block;
+    min-height: 4vh;
+    padding: 0 0 0.9vh 5.2vh;
+    margin-bottom: 0.6vh;
+    border-bottom: 4px solid #d81b55;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg transform='rotate(-5 24 24)'%3E%3Crect x='10' y='10' width='32' height='32' rx='8' fill='%23000'/%3E%3Crect x='6.5' y='6.5' width='31' height='31' rx='7' fill='%23d81b55' stroke='%23000' stroke-width='3'/%3E%3Ccircle cx='22' cy='22' r='9.5' fill='%230b0b0d'/%3E%3Ccircle cx='18.5' cy='18.5' r='1.7' fill='%23d81b55'/%3E%3Ccircle cx='24' cy='17.5' r='1.7' fill='%23d81b55'/%3E%3Ccircle cx='21.5' cy='23.5' r='1.7' fill='%23d81b55'/%3E%3C/g%3E%3C/svg%3E") left top / 4.4vh 4.4vh no-repeat;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 3.3vh;
+    line-height: 4vh;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+
+/* ── La tabla: filas sueltas, sin rayas de 1 px ─────────────────────── */
+html:root #app .scoreboard > table {
+    width: 100% !important;
+    border: 0 !important;
+    border-collapse: separate !important;
+    border-spacing: 0 0.9vh !important;
+    margin: 0 !important;
+}
+html:root #app .scoreboard th,
+html:root #app .scoreboard td { border-bottom: 0 !important; letter-spacing: 0.02em !important; }
+/*  La columna del número, vacía mientras se crea la partida: sin ancho. */
+html:root #app .scoreboard tr:first-of-type th:first-child,
+html:root #app .scoreboard td.player-id:empty { width: 0 !important; min-width: 0 !important; padding: 0 !important; }
+html:root #app .scoreboard th {
+    padding: 0.2vh 0.4vh !important;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    font-size: 1.35vh !important;
+    color: #44444a !important;
+}
+/*  El título de la tabla, a brocha (el único de la pantalla). Vue monta la
+    tabla sin <tbody> y con cinco <img> delante: la fila es la primera de su
+    tipo, no el primer hijo (por eso la regla vieja no entraba). */
+html:root #app .scoreboard tr:first-of-type th:nth-child(2) {
+    padding: 0.5vh 0.6vh 0.7vh !important;
+    font-family: "Knewave", "Barlow Condensed", cursive !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 2.5vh !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    text-align: left !important;
+    color: #d81b55 !important;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000,
+        3px 4px 0 #000 !important;
+}
+html:root #app .scoreboard tr:first-of-type th:nth-child(2)::after { display: none !important; }
+html:root #app .scoreboard th.column-total {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-size: 1.7vh !important;
+    color: #0b0b0d !important;
+}
+
+/* ── Crear partida ──────────────────────────────────────────────────── */
+html:root #app .scoreboard td.player-id:empty + td.player-name {
+    height: auto !important;
+    padding: 0 !important;
+    white-space: nowrap;
+    font-size: 1.7vh !important;
+}
+/*  La apuesta: un botón de papel con su casilla, y la cifra al lado. */
+html:root #app .wager-left { display: inline-block !important; width: auto !important; margin: 0 !important; vertical-align: middle; }
+html:root #app .custom-checkbox {
+    height: 3.4vh;
+    box-sizing: border-box;
+    padding: 0 1.3vh 0 1vh !important;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root #app .custom-checkbox span { border-radius: 5px !important; }
+html:root #app .custom-checkbox input:checked + span::before { content: "" !important; }
+html:root #app .wager-label,
+html:root #app .round-count-label,
+html:root #app .wager-center span,
+html:root #app .result {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
+    color: #0b0b0d !important;
+}
+html:root #app .wager-label { font-size: 1.6vh !important; }
+html:root #app .wager-right {
+    display: inline-flex !important;
+    width: auto !important;
+    margin: 0 0 0 1.2vh !important;
+    vertical-align: middle;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.7vh !important;
+    letter-spacing: 0 !important;
+}
+html:root #app .wager-right .wager-amount {
+    height: 3.4vh !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    border-radius: 10px !important;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.6vh !important;
+}
+/*  La apuesta ya fijada: tarjeta con la cifra en Oxanium. */
+html:root #app .wager-center { margin: 0 !important; }
+html:root #app .wager-center span {
+    display: inline-block;
+    padding: 0.7vh 1.3vh !important;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-size: 1.6vh !important;
+}
+html:root #app .wager-center span b { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; font-weight: 800; color: #b3123f; }
+/*  Las rondas: rótulo, menos, cifra y más, en una línea. */
+html:root #app .round-count-label { padding: 0 !important; margin-right: 1.2vh !important; font-size: 1.6vh !important; }
+html:root #app .round-change,
+html:root #app .round-number { width: auto !important; min-width: 3vh !important; height: 3vh !important; padding: 0 0.6vh !important; margin: 0 0.7vh 0 0 !important; box-sizing: border-box; font-size: 1.7vh !important; }
+html:root #app .round-number { min-width: 4.4vh !important; border-radius: 8px !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+/*  La cifra de rondas quedaba 1 px alta en su chapa (06/10). */
+html:root #app .round-number { padding-top: 2px !important; }
+/*  Los apuntados y la fila de apuntarse: tarjetas blancas. */
+html:root #app .scoreboard td.player-id:empty + td.player-name[data-v-73579945] {
+    padding: 0.8vh 1.1vh !important;
+    border-radius: 10px;
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html:root #app .player-name input:not(.wager-amount) {
+    width: 17vh;
+    height: 3.4vh !important;
+    margin: 0 0.9vh 0 0 !important;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border-radius: 10px !important;
+    letter-spacing: 0.02em !important;
+}
+/*  Botones: todos de un alto, rótulo sin espaciar. */
+html:root #app .player-name button {
+    width: auto !important;
+    min-width: 0 !important;
+    height: 3.4vh !important;
+    padding: 0 1.5vh !important;
+    margin: 0 0.9vh 0 0 !important;
+    vertical-align: middle;
+    line-height: 1 !important;
+    font-size: 1.6vh !important;
+    letter-spacing: 0.02em !important;
+}
+/*  «Iniciar» (el primero cuando hay dos): el principal, rosa con tinta negra. */
+html:root #app .player-name[data-v-3d007324] button:first-child:not(:last-child):not([disabled]) { color: #000 !important; }
+html:root #app .player-name[data-v-3d007324] button:first-child:not(:last-child):not([disabled])::before { background: #d81b55 !important; }
+html:root #app .player-name[data-v-3d007324] button:first-child:not(:last-child):not([disabled]):hover::before { background: #d81b55 !important; }
+/*  Apagado: gris con forma de botón, canto gris y sin sombra. */
+html:root #app button[disabled] { opacity: 1 !important; color: #73737c !important; }
+html:root #app button[disabled]::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #9a9aa3 !important; }
+/*  Echar a uno: chapa rosa pequeña a la derecha de su tarjeta. */
+html:root #app .player-name button.remove-player {
+    float: right;
+    width: 2.6vh !important;
+    height: 2.6vh !important;
+    padding: 0 !important;
+    margin: 0 0 0 1.2vh !important;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-style: normal !important;
+    font-size: 1.4vh !important;
+    color: #000 !important;
+}
+html:root #app .player-name button.remove-player::before { border-radius: 7px !important; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app .player-name button.join-team { height: 2.8vh !important; }
+
+/* ── El marcador ────────────────────────────────────────────────────── */
+/*  Cada jugador, una tarjeta: papel en todas sus celdas, el canto arriba
+    y abajo, y los lados en la primera y la última. */
+html:root #app .scoreboard td.player-id:not(:empty),
+html:root #app .scoreboard td.player-id:not(:empty) + td.player-name,
+html:root #app .scoreboard td.score-column {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important;
+}
+html:root #app .scoreboard td.player-id:not(:empty) {
+    padding: 0 0.4vh 0 1.2vh !important;
+    border-radius: 10px 0 0 10px;
+    box-shadow: inset 1.5px 0 0 #000, inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800 !important;
+    color: #73737c !important;
+}
+html:root #app .scoreboard td.player-id:not(:empty) + td.player-name { padding: 0 1.4vh 0 0.6vh !important; white-space: nowrap; }
+html:root #app .scoreboard td.score-column {
+    min-width: 5vh;
+    height: 5.6vh !important;
+    padding: 0 0.3vh 0.5vh !important;
+    vertical-align: bottom !important;
+}
+html:root #app .scoreboard td.score-column.last-column { min-width: 7.2vh; }
+/*  Las tiradas vienen escritas al revés (rcore las colocaba con float: right):
+    con flex salían cambiadas de orden. */
+html:root #app .scoreboard td.score-column .windows { top: 0.7vh !important; left: 0 !important; right: 0 !important; margin: 0 !important; flex-direction: row-reverse !important; }
+html:root #app .scoreboard td.score-column .round-score { padding: 0 !important; line-height: 1 !important; }
+html:root #app .scoreboard td.column-total {
+    min-width: 6vh;
+    padding: 0 1.2vh !important;
+    border-radius: 0 10px 10px 0;
+    vertical-align: middle !important;
+    box-shadow: inset -1.5px 0 0 #000, inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important;
+    font-size: 2.1vh !important;
+}
+/*  A quién le toca: chapa rosa delante del nombre. */
+html:root #app .scoreboard .current-turn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.1vh;
+    height: 2.1vh;
+    margin-right: 0.5vh;
+    top: 0 !important;
+    vertical-align: middle;
+    border-radius: 6px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: "Oxanium", sans-serif;
+    font-style: normal;
+    font-size: 1.3vh !important;
+    line-height: 1 !important;
+    color: #000;
+}
+/*  El final de la partida. */
+html:root #app .result { margin: 0.4vh 0 0 !important; font-size: 1.7vh !important; text-transform: uppercase !important; }
+
+
+
+/* ══ Peligro (07/10): echar a un apuntado, pieza gris con la «x» rosa
+   oscura; al pasar, rosa con tinta negra (antes, rojo vivo). ══════════════ */
+html:root #app .player-name button.remove-player { color: #b3123f !important; }
+html:root #app .player-name button.remove-player:hover { color: #000 !important; }
+html:root #app .player-name button.remove-player:hover::before { background: #d81b55 !important; }
+
+/* ══ MENÚ PEQUEÑO (07/10) ══════════════════════════════════════════════
+   Preparar la partida (apuesta, rondas, apuntados, Iniciar/Cerrar) es un
+   menú corto: va como los diálogos del servidor (org-input, skill
+   origen-dialogo) y como el baloncesto: columna de 440 px y riel de 64 px
+   del mismo alto, juntos a media altura a la derecha, separados 1.2vh y
+   despegados 1.2vh del canto. El marcador de la partida NO cambia.
+   rcore pinta la misma .scoreboard en los dos casos: el compilado
+   (assets/assets/js/app.js) le pone la clase «origen-menu» mientras está en
+   modo edición (editMode), y todo esto cuelga de esa clase.
+   El riel es el ::after de la columna, girado 180° para que el nombre se
+   lea de abajo arriba: por eso la placa del dibujo va al revés y abajo, y la
+   sombra se escribe hacia arriba a la izquierda (acaba abajo a la derecha). */
+html:root #app .scoreboard.origen-menu {
+    position: fixed !important;
+    top: 50% !important;
+    right: calc(1.2vh + 64px + 1.2vh) !important;
+    transform: translateY(-50%) !important;
+    animation: none !important;
+    display: block !important;
+    width: 440px !important;
+    min-width: 440px !important;
+    max-width: 440px !important;
+    min-height: 300px !important;
+    max-height: calc(100vh - 2.8vh) !important;
+    margin: 0 !important;
+    padding: 0 20px 18px 22px !important;
+    box-sizing: border-box;
+    overflow: visible !important;
+}
+/*  El riel: panel gris del alto de la columna, placa arriba, nombre abajo. */
+html:root #app .scoreboard.origen-menu::after {
+    content: "Origen Bolera";
+    position: absolute;
+    top: -4px; /* el filo de arriba del panel es un borde de 4 px */
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    box-sizing: border-box;
+    padding: 16px 0 0;
+    border-radius: 20px;
+    background: #c4c6ca url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='80' viewBox='0 0 64 80'%3E%3Cg transform='rotate(180 32 40)'%3E%3Crect x='12' y='18' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='10.75' y='16.75' width='41.5' height='41.5' rx='9.25' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='31.5' cy='37.5' r='10' fill='none' stroke='%23d81b55' stroke-width='2'/%3E%3Ccircle cx='28' cy='33.5' r='1.6' fill='%23d81b55'/%3E%3Ccircle cx='33.5' cy='32.5' r='1.6' fill='%23d81b55'/%3E%3Ccircle cx='31' cy='38.5' r='1.6' fill='%23d81b55'/%3E%3Crect x='21' y='71' width='22' height='2' rx='1' fill='%23000'/%3E%3C/g%3E%3C/svg%3E") center bottom / 64px 80px no-repeat;
+    box-shadow: 0 0 0 1.5px #000, -3px -3px 0 1.5px #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+    pointer-events: none;
+}
+html[data-marca="nacion"]:root #app .scoreboard.origen-menu::after { content: "Nación Bolera"; }
+
+/* ── Cabecera: placa rosa girada −5°, título y filete rosa de 3 px ──── */
+html:root #app .scoreboard.origen-menu::before {
+    min-height: 0;
+    margin: 0 0 6px;
+    padding: 14px 0 15px 58px;
+    border-bottom: 0;
+    background:
+        linear-gradient(#d81b55, #d81b55) left bottom / 100% 3px no-repeat,
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-3 -3 54 54'%3E%3Cg transform='rotate(-5 22 22)'%3E%3Crect x='2.75' y='2.75' width='42' height='42' rx='9.5' fill='%23000'/%3E%3Crect x='0.75' y='0.75' width='42' height='42' rx='9.5' fill='%23d81b55' stroke='%23000' stroke-width='1.5'/%3E%3Ccircle cx='21.75' cy='21.75' r='10' fill='%230b0b0d'/%3E%3Ccircle cx='18' cy='17.5' r='1.8' fill='%23d81b55'/%3E%3Ccircle cx='24' cy='16.5' r='1.8' fill='%23d81b55'/%3E%3Ccircle cx='21.5' cy='23' r='1.8' fill='%23d81b55'/%3E%3C/g%3E%3C/svg%3E") left -3px top 9px / 54px 54px no-repeat;
+    font-size: 29px;
+    line-height: 44px;
+    letter-spacing: 0;
+}
+
+/* ── La tabla: filas con aire, todo a lo ancho ──────────────────────── */
+html:root #app .scoreboard.origen-menu > table { border-spacing: 0 10px !important; }
+/*  «Jugador» / «Equipo»: rótulo de grupo, no brocha. */
+html:root #app .scoreboard.origen-menu tr:first-of-type th:nth-child(2) {
+    padding: 8px 2px 0 !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: #0b0b0d !important;
+    transform: none;
+    text-shadow: none !important;
+}
+html:root #app .scoreboard.origen-menu td.player-id:empty + td.player-name {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    line-height: 1.15 !important;
+}
+
+/*  La apuesta: casilla-pieza a la izquierda y la cifra a la derecha. */
+html:root #app .scoreboard.origen-menu .wager-left,
+html:root #app .scoreboard.origen-menu .custom-checkbox { position: relative !important; left: 0 !important; top: 0 !important; margin: 0 !important; float: none !important; }
+html:root #app .scoreboard.origen-menu .custom-checkbox {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    height: 44px !important;
+    padding: 0 16px 0 14px !important;
+    border-radius: 11px !important;
+    cursor: pointer;
+}
+html:root #app .scoreboard.origen-menu .custom-checkbox span { width: 20px !important; height: 20px !important; flex: none; }
+html:root #app .scoreboard.origen-menu .wager-label { position: static !important; font-size: 18px !important; text-transform: uppercase; }
+html:root #app .scoreboard.origen-menu .wager-right { float: none !important; margin: 0 0 0 12px !important; font-size: 19px !important; align-items: center; }
+html:root #app .scoreboard.origen-menu .wager-right .wager-amount { width: 120px !important; height: 44px !important; margin-left: 6px !important; padding: 0 12px !important; font-size: 19px !important; }
+html:root #app .scoreboard.origen-menu .wager-center span { padding: 11px 14px !important; border-radius: 11px; font-size: 18px !important; text-transform: uppercase; }
+
+/*  Número de rondas: rótulo a la izquierda; menos, cifra y más a la derecha. */
+html:root #app .scoreboard.origen-menu .round-count-label { margin-right: auto !important; font-size: 18px !important; text-transform: uppercase; vertical-align: middle; }
+html:root #app .scoreboard.origen-menu .round-change,
+html:root #app .scoreboard.origen-menu .round-number {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px !important;
+    height: 40px !important;
+    margin: 0 0 0 8px !important;
+    padding: 0 8px !important;
+    vertical-align: middle;
+    font-size: 20px !important;
+}
+html:root #app .scoreboard.origen-menu .round-number { min-width: 52px !important; padding-top: 2px !important; }
+html:root #app .scoreboard.origen-menu .round-count-label { display: inline-block; width: calc(100% - 156px); }
+
+/*  Los apuntados: piezas con canto y sombra, como las opciones de org-input. */
+html:root #app .scoreboard.origen-menu td.player-id:empty + td.player-name[data-v-73579945] {
+    padding: 11px 14px !important;
+    border-radius: 11px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+}
+html:root #app .scoreboard.origen-menu .player-name button.remove-player { width: 26px !important; height: 26px !important; font-size: 15px !important; }
+/*  La fila de apuntarse: «Tu nombre» y «Registrarse» en una línea; la
+    fila sin pieza alrededor (el campo ya es la pieza). */
+html:root #app .scoreboard.origen-menu td.player-name[data-v-73579945] input:not(.wager-amount) {
+    width: calc(100% - 150px) !important;
+    height: 44px !important;
+    margin: 0 10px 0 0 !important;
+    padding: 0 14px !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 19px !important;
+    text-transform: none !important;
+}
+html:root #app .scoreboard.origen-menu td.player-name[data-v-73579945] input:not(.wager-amount):focus { box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #d81b55 !important; }
+html:root #app .scoreboard.origen-menu td.player-name[data-v-73579945] input:not(.wager-amount) + button {
+    width: 140px !important;
+    margin: 0 !important;
+}
+
+/*  Botones, todos: alto de org-input, rótulo de leer. */
+html:root #app .scoreboard.origen-menu .player-name button:not(.remove-player):not(.join-team) {
+    height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 19px !important;
+    letter-spacing: 0.06em !important;
+}
+
+/* ── Pie: «Cerrar» (pieza) a la izquierda, «Iniciar» (rosa) llena ───── */
+html:root #app .scoreboard.origen-menu td.player-name[data-v-3d007324] {
+    display: flex !important;
+    gap: 10px;
+    padding: 16px 0 0 !important;
+    background: linear-gradient(#000, #000) left top / 100% 1.5px no-repeat !important;
+}
+html:root #app .scoreboard.origen-menu td.player-name[data-v-3d007324] button {
+    height: 46px !important;
+    margin: 0 !important;
+    padding: 0 18px !important;
+    font-size: 19px !important;
+}
+html:root #app .scoreboard.origen-menu td.player-name[data-v-3d007324] button:last-child:not(:first-child) { order: -1; flex: none; }
+html:root #app .scoreboard.origen-menu td.player-name[data-v-3d007324] button:first-child { flex: 1; min-width: 0; font-size: 20px !important; }
+
+/*  «Registrarse»: el principal mientras no estás apuntado, rosa. */
+html:root #app .scoreboard.origen-menu td.player-name[data-v-73579945] input:not(.wager-amount) + button:not([disabled]) { color: #000 !important; }
+html:root #app .scoreboard.origen-menu td.player-name[data-v-73579945] input:not(.wager-amount) + button:not([disabled])::before { background: #d81b55 !important; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }

@@ -1,0 +1,362 @@
+/* == Lenguaje visual de ORIGEN · pegatina ======================
+   Base del ping-pong en el estilo único del servidor (panel #c4c6ca,
+   piezas #dcdde0, rosa #d81b55, tinta #0b0b0d, canto negro y sombra dura).
+   Las piezas una a una las termina el bloque PEGATINA del final de
+   menu.css. Fuentes por <link> en index.html, nunca @import.
+   Ver .claude/skills/origen-pegatina/SKILL.md
+   ============================================================== */
+
+:root {
+    /* ── Tipos ───────────────────────────────────────────────── */
+    --ogn-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ogn-texto: "Barlow", "Segoe UI", sans-serif;
+
+    /* ── Marca ───────────────────────────────────────────────── */
+    --ogn-bg: #c4c6ca;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #df2f63;
+    --ogn-acc-pale: #ffd6e4;
+    --ogn-acc-deep: #b3123f;
+
+    /* ── Superficies ─────────────────────────────────────────── */
+    --ogn-surface: #dcdde0;
+    --ogn-surface-hi: #e6e7ea;
+    --ogn-surface-on: #f1f1ee;
+    --ogn-sunken: rgba(0, 0, 0, 0.08);
+
+    /* ── Líneas ──────────────────────────────────────────────── */
+    --ogn-line: rgba(0, 0, 0, 0.18);
+    --ogn-line-soft: rgba(0, 0, 0, 0.1);
+    --ogn-line-hi: #000;
+
+    /* ── Texto, de más a menos presente ──────────────────────── */
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #44444a;
+    --ogn-t3: #55555c;
+    --ogn-t4: #73737c;
+
+    /* ── Estados con significado ─────────────────────────────── */
+    --ogn-ok: #0b0b0d;
+    --ogn-warn: #b3123f;
+    --ogn-bad: #b3123f;
+    --ogn-info: #0b0b0d;
+
+    --ogn-r: 20px;
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --primary-color: var(--ogn-surface);
+    --color-acent: var(--ogn-acc);
+    --text-white: var(--ogn-fg);
+    --cubic: var(--ogn-ease);
+
+    --bg-dark: #c4c6ca;
+    --bg-panel: #c4c6ca;
+    --border-color: #000;
+    --border-subtle: var(--ogn-line);
+    --color-danger: var(--ogn-bad);
+}
+
+:root {
+    /* Las piezas del marcador: gris pegatina con canto negro (sombra, no
+       borde: el borde de 1px queda transparente y no cambia medidas). */
+    --origen-bg: #c4c6ca;
+    --origen-border: transparent;
+    --origen-accent: #d81b55;
+    --origen-accent-glow: transparent;
+    --origen-text: #0b0b0d;
+    --origen-text-dim: #44444a;
+    --origen-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--ogn-texto);
+}
+
+#miniScores {
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    scale: 1;
+    position: absolute;
+}
+
+.miniScore {
+    padding: 0.6vh 1vh;
+    border-radius: 5px;
+    background-color: var(--origen-bg);
+    border: 1px solid var(--origen-border);
+    box-shadow: var(--origen-shadow);
+    width: auto;
+    min-width: 14vh;
+    height: 4.5vh;
+    color: var(--origen-text);
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    transform: scale(0.9);
+    transform-origin: top left;
+    box-sizing: border-box;
+}
+
+.scoreMug {
+    width: 3.5vh;
+    height: 3.5vh;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.scoreMug img {
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid var(--origen-accent);
+}
+
+.centered-text {
+    text-align: left;
+    margin: 0;
+    font-size: 1.4vh;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-weight: 400;
+    flex-grow: 1;
+}
+
+.scoreValue {
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 1.8vh;
+    color: #b3123f;
+    text-shadow: none;
+    padding: 0 1vh;
+}
+
+/* Scoreboard HUD */
+.hockeyui {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+}
+
+.gameinfo {
+    min-width: 18vw;
+    height: auto;
+    position: absolute;
+    z-index: 99;
+    left: 2vw;
+    top: 3.5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vh;
+}
+
+/* Row (Player info) */
+.gameinfo .row,
+.gameinfo .rowmine {
+    background: var(--origen-bg);
+    border: 1px solid var(--origen-border);
+    border-radius: 5px;
+    box-shadow: var(--origen-shadow);
+    padding: 0.8vh 1.2vh;
+    display: flex;
+    align-items: center;
+    gap: 1.5vh;
+    height: 5.5vh;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    position: relative;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.gameinfo .rowmine {
+    border-color: var(--origen-accent);
+    background: #ffd6e4;
+    box-shadow: none;
+}
+
+.gameinfo .row p,
+.gameinfo .rowmine p {
+    flex-grow: 1;
+    font-size: 1.5vh;
+    font-weight: 400;
+    letter-spacing: 0.033em;
+    color: var(--origen-text);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    text-shadow: none;
+}
+
+.gameinfo .mug {
+    width: 3.8vh;
+    height: 3.8vh;
+    border-radius: 5px;
+    border: 1px solid var(--origen-accent);
+    object-fit: cover;
+    box-shadow: none;
+}
+
+.gameinfo .scorebox {
+    min-width: 3.5vh;
+    height: 3.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--origen-accent);
+    border-radius: 4px;
+    color: var(--ogn-t1);
+    font-weight: 700;
+    font-size: 2vh;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+.gameinfo .extracontent {
+    display: flex;
+    align-items: center;
+    height: 3.5vh;
+}
+
+.gameinfo .extracontent .inside {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+    padding: 0 0.5vh;
+    height: 0.4vh;
+    width: 2.5vh;
+    margin: 0 1vh;
+}
+
+.gameinfo .extracontent .inside .ball {
+    height: 2.2vh;
+    margin-right: -0.5vh;
+    transition: opacity 1s, transform 1s;
+    filter: drop-shadow(0 0 0.3vh rgba(0, 0, 0, 0.5));
+}
+
+.gameinfo .extracontent .inside .img-visible {
+    opacity: 1 !important;
+    transform: translateX(0px) rotate(0deg) !important;
+}
+
+.gameinfo .extracontent .inside .img-invisible {
+    opacity: 0;
+    transform: translateX(2vh) rotate(360deg);
+}
+
+
+/* Match Labels (Stake, Ping) */
+.info-footer {
+    display: flex;
+    gap: 0.5vh;
+    margin-top: 0.6vh;
+}
+
+.gameinfo .littlerow {
+    background: #dcdde0;
+    border: 1px solid var(--origen-border);
+    border-radius: 4px;
+    padding: 0.4vh 1vh;
+    font-size: 1.1vh;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-weight: 600;
+    color: var(--origen-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.109em;
+    width: fit-content;
+    box-shadow: var(--origen-shadow);
+}
+
+/* Action Rows (Match Point, starting msg) */
+.gameinfo .actionrow {
+    margin-top: 0.5vh;
+    background: var(--origen-accent);
+    border-radius: 4px;
+    padding: 0.6vh 1vh;
+    font-size: 1.2vh;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-weight: 700;
+    color: var(--ogn-t1);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    box-shadow: none;
+    animation: action-row-pulse 2s infinite ease-in-out;
+}
+
+@keyframes action-row-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(0.98);
+    }
+}
+
+/* Paddle icon indicators */
+.gameinfo .paddle {
+    width: 1.5vh;
+    height: 1.5vh;
+    border: 1px solid #000;
+    border-radius: 50%;
+    margin-left: 0.5vh;
+}
+
+.gameinfo .p1icon {
+    background-color: #d81b55;
+    box-shadow: none;
+}
+
+.gameinfo .p2icon {
+    background-color: #0b0b0d;
+    box-shadow: none;
+}
+
+/* Loading Bar (Bottom right) */
+.loadingbar {
+    background: var(--origen-bg);
+    border: 1px solid var(--origen-border);
+    border-radius: 5px;
+    box-shadow: var(--origen-shadow);
+    padding: 0.8vh 1.5vh;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    bottom: 2vh;
+    right: 2vh;
+    position: absolute;
+    color: var(--origen-text);
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-size: 1.4vh;
+}
+
+.loadingbar img {
+    width: 2.2vh;
+    height: 2.2vh;
+    filter: drop-shadow(0 0 0.5vh var(--origen-accent-glow));
+}
+
+#menuui,
+#notifyBar {
+    display: none !important;
+}

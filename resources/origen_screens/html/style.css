@@ -1,0 +1,1302 @@
+/* Los tokens del papel (iguales en todo el servidor; la referencia es
+   origen_inventory/arcade.css). --arc-vf es el factor de los velos blancos:
+   toda capa blanca va como rgba(255,255,255, calc(a * var(--arc-vf))). */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/* ══ origen_screens · panel de configuración y administración ═════════
+   Estilo «HUD Arcade»: cristal crema, filo rosa arriba, Barlow
+   Condensed y los bloques sesgados 10°. Las cifras salen tal cual de
+   origen_inventory/source-ui/src/assets/styles/arcade.css y de
+   origen_businesses/.../panelnegocio*.css.
+
+   Solo pinta el panel del jugador/admin (index.html). Las páginas que se
+   dibujan DENTRO de las pantallas del mundo (render.html, render_v2.html,
+   image.html) llevan su propio <style> y no tocan este fichero.
+
+   EL SESGO va en un ::before detrás del contenido, no en la pieza: así el
+   texto no necesita otra caja contra-sesgada y nada se corta al desplazar.
+
+   Las fuentes se cargan con un <link> en index.html, nunca con @import.
+   Prefijo propio del recurso: sc-.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── La paleta del tema ──────────────────────────────────────── */
+    --arc-accent: #df2f63;
+    --arc-accent-deep: #b3123f;
+    --arc-canto: #a80c3f;
+    --arc-grad: #d81b55;
+
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #4a4437;
+    --arc-ink-4: #6f6857;
+    --arc-ink-5: #8a8270;
+    --arc-ink-6: #a8a294;
+
+    --arc-linea: rgba(var(--arc-t-linea), 0.18);
+    --arc-caja: rgba(38, 34, 26, 0.05);
+    --arc-caja-filo: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    --arc-papel: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-papel-filo: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    --arc-hundido: rgba(var(--arc-t-linea), 0.1);
+    --arc-hundido-filo: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 4px 0 rgba(var(--arc-t-relieve), 0.45);
+
+    /* Los estados tienen su color; el rosa no decora. */
+    --arc-verde: #146636;
+    --arc-verde-o: #0f5c31;
+    --arc-rojo: #b3123f;
+    --arc-ambar: #8a5600;
+
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --arc-text: 'Barlow', 'Segoe UI', sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    --cubic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    accent-color: var(--arc-accent);
+}
+
+/* Las cajas de formulario no heredan la letra: con :where para no ganarle
+   a las clases propias de cada campo. */
+:where(body) :where(button, input, select, textarea) { font-family: inherit; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+}
+
+#app-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 17, 12, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.4s var(--cubic);
+}
+
+/* ── La caja ──────────────────────────────────────────────────────────
+   Sin backdrop-filter: en la NUI del juego pinta una banda negra. El crema
+   sube a 0,95 y se lee igual de bien. */
+.panel {
+    background: rgba(var(--arc-t-papel1), 0.95);
+    border: 0;
+    border-top: 4px solid var(--arc-accent);
+    border-radius: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 18px 40px rgba(0, 0, 0, 0.45);
+    padding: 2vh 2.1vh 2.2vh;
+    width: 45vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3vh;
+    color: var(--arc-ink);
+}
+
+/* ── Rótulo de sección: nombre en cursiva y la raya que se apaga ────── */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 1.1vh;
+    margin: 0 0 0.2vh;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 2vh;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    min-width: 2vh;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--arc-accent) 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, rgba(255, 255, 255, calc(0 * var(--arc-vf))) 100%);
+}
+
+/* ── Campos ───────────────────────────────────────────────────────── */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7vh;
+    min-width: 0;
+}
+
+.input-label {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1vh;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    border-radius: 8px;
+    background: var(--arc-hundido);
+    box-shadow: var(--arc-hundido-filo);
+    padding: 1vh 1.2vh;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.44vh;
+    letter-spacing: 0.08em;
+    color: var(--arc-ink);
+    transition: box-shadow 0.16s ease, background 0.16s ease;
+}
+
+input[type="text"]:focus {
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(224, 7, 79, 0.55);
+}
+
+input[type="text"]::placeholder {
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--arc-ink-5);
+}
+
+/* ── La casilla ───────────────────────────────────────────────────── */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    border: 0;
+    border-radius: 5px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-papel-filo);
+    position: relative;
+    transition: background 0.14s ease, box-shadow 0.14s ease;
+}
+
+input[type="checkbox"]:checked {
+    background: var(--arc-grad);
+    box-shadow: 0 2px 0 var(--arc-canto);
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 32%;
+    top: 14%;
+    width: 26%;
+    height: 52%;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(42deg);
+}
+
+/* ── La barra de volumen ──────────────────────────────────────────── */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 1.3vh;
+    min-width: 0;
+}
+
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 1;
+    min-width: 0;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--arc-hundido);
+    box-shadow: var(--arc-hundido-filo);
+    outline: none;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 18px;
+    border: 0;
+    border-radius: 4px;
+    transform: var(--arc-skew);
+    background: var(--arc-grad);
+    box-shadow: 0 2px 0 var(--arc-canto);
+    cursor: pointer;
+}
+
+/* ── Chips de tipo de contenido ───────────────────────────────────── */
+/* Hueco y relleno generosos: los chips van sesgados y sobresalen de su caja. */
+.type-filters {
+    display: flex;
+    gap: 1vh;
+    padding: 0.6vh 0.9vh;
+    border-radius: 10px;
+    background: var(--arc-caja);
+    box-shadow: var(--arc-caja-filo);
+}
+
+.filter-btn {
+    position: relative;
+    isolation: isolate;
+    flex: 1;
+    min-width: 0;
+    height: 3.2vh;
+    border: 0;
+    border-radius: 7px;
+    background: none;
+    cursor: pointer;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.06vh;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.14s ease;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-papel-filo);
+    transition: background 0.14s ease, box-shadow 0.14s ease;
+}
+
+.filter-btn:hover { color: var(--arc-ink); }
+.filter-btn:hover::before { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); }
+
+.filter-btn.active { color: #fff; }
+
+.filter-btn.active::before {
+    background: var(--arc-grad);
+    box-shadow: 0 2px 0 var(--arc-canto);
+}
+
+/* ── Botones ──────────────────────────────────────────────────────── */
+.button-row {
+    display: flex;
+    gap: 0.9vh;
+}
+
+button {
+    position: relative;
+    isolation: isolate;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.14s ease, transform 0.1s ease;
+}
+
+.btn-success,
+.btn-danger,
+.btn-warning,
+.btn-ctrl {
+    flex: 1;
+    min-width: 0;
+    height: 3.8vh;
+    border-radius: 8px;
+    padding: 0 1.2vh;
+    font-size: 1.2vh;
+    letter-spacing: 0.16em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-success::before,
+.btn-danger::before,
+.btn-warning::before,
+.btn-ctrl::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-papel-filo);
+    transition: background 0.14s ease, box-shadow 0.14s ease;
+}
+
+/* El único rosa de cada pantalla: el que confirma (GUARDAR, IR,
+   COMENZAR COLOCACIÓN). */
+.btn-success {
+    color: #fff;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.35vh;
+    letter-spacing: 0.1em;
+}
+
+.btn-success::before {
+    background: var(--arc-grad);
+    box-shadow: 0 2px 0 var(--arc-canto);
+}
+
+.btn-success:hover::before { background: linear-gradient(160deg, #ff6d95 0%, #ea1a5c 100%); }
+
+.btn-success:active { transform: translateY(3px); }
+.btn-success:active::before { box-shadow: 0 2px 0 var(--arc-canto); }
+
+/* Cerrar y cancelar: papel, no rojo. Aquí no se borra nada. */
+.btn-danger { color: var(--arc-ink-3); }
+.btn-danger:hover { color: var(--arc-ink); }
+.btn-danger:hover::before { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); }
+
+.btn-danger:active,
+.btn-warning:active,
+.btn-ctrl:active { transform: translateY(2px); }
+
+/* El interruptor de visibilidad: papel apagado; encendido, en verde de
+   estado (la pantalla se está viendo), que no es confirmar nada. */
+.btn-warning { color: var(--arc-ink-3); }
+.btn-warning:hover { color: var(--arc-ink); }
+.btn-warning:hover::before { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); }
+
+.btn-warning.active-visibility { color: var(--arc-verde-o); }
+
+.btn-warning.active-visibility::before {
+    background: rgba(20, 102, 54, 0.14);
+    box-shadow: inset 0 0 0 1px rgba(20, 102, 54, 0.45);
+}
+
+/* Reproducir / pausar */
+.playback-controls {
+    display: flex;
+    gap: 0.9vh;
+}
+
+.btn-ctrl {
+    height: 3.4vh;
+    font-size: 1.1vh;
+    color: var(--arc-ink-3);
+}
+
+.btn-ctrl:hover { color: var(--arc-ink); }
+.btn-ctrl:hover::before { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); }
+
+/* ── La lista de pantallas ────────────────────────────────────────── */
+.screens-list-wrapper {
+    max-height: 40vh;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: var(--arc-caja);
+    box-shadow: var(--arc-caja-filo);
+    padding: 0.5vh 0.6vh;
+}
+
+.screens-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--arc-cond);
+    font-size: 1.16vh;
+    color: var(--arc-ink-3);
+}
+
+.screens-table th,
+.screens-table td {
+    padding: 1vh 1.2vh;
+    text-align: left;
+    text-transform: uppercase;
+    box-shadow: inset 0 -1px 0 rgba(var(--arc-t-linea), 0.14);
+    vertical-align: middle;
+}
+
+.screens-table th {
+    font-weight: 700;
+    font-size: 1vh;
+    letter-spacing: 0.2em;
+    color: var(--arc-ink-4);
+    box-shadow: inset 0 -1px 0 var(--arc-linea);
+}
+
+.screens-table tbody tr:last-child td { box-shadow: none; }
+
+.screens-table tbody tr { transition: background 0.14s ease; }
+.screens-table tbody tr:hover { background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))); }
+
+.screens-table td strong {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.5vh;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+/* El id que cuelga del nombre lo pinta script.js con su color en línea:
+   aquí se le da el del tema sin tocar el JS. */
+.screens-table td small {
+    display: inline-block;
+    margin-top: 0.2vh;
+    font-family: var(--arc-mono);
+    font-size: 1vh !important;
+    letter-spacing: 0.02em;
+    color: var(--arc-ink-5) !important;
+}
+
+/* «No hay pantallas creadas»: una caja de papel con la frase en versales. */
+.screens-table td[colspan] {
+    padding: 2vh 1.2vh !important;
+    font-weight: 700;
+    font-size: 1.2vh;
+    letter-spacing: 0.18em;
+    color: var(--arc-ink-5) !important;
+    box-shadow: none;
+}
+
+/* ── Estado de la pantalla ────────────────────────────────────────── */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7vh;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.06vh;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+.status-dot {
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+    transform: var(--arc-skew);
+    background: rgba(var(--arc-t-linea), 0.3);
+}
+
+.status-dot.active { background: var(--arc-verde-o); }
+.status-dot.paused { background: #c98a12; }
+
+/* ── Los botones de cada fila ─────────────────────────────────────── */
+.action-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6vh;
+}
+
+.btn-table-action {
+    flex: none;
+    border-radius: 6px;
+    padding: 0.6vh 1vh;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.02vh;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+    white-space: nowrap;
+}
+
+.btn-table-action::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-papel-filo);
+    transition: background 0.14s ease, box-shadow 0.14s ease;
+}
+
+.btn-table-action:hover { color: var(--arc-ink); }
+.btn-table-action:hover::before { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); }
+.btn-table-action:active { transform: translateY(2px); }
+
+/* Borrar no es confirmar: va en el rojo de estado, no en el rosa. */
+.btn-table-delete { color: var(--arc-rojo); }
+
+.btn-table-delete::before {
+    background: rgba(192, 10, 70, 0.09);
+    box-shadow: inset 0 0 0 1px rgba(192, 10, 70, 0.4);
+}
+
+.btn-table-delete:hover { color: #fff; }
+
+.btn-table-delete:hover::before {
+    background: var(--arc-rojo);
+    box-shadow: inset 0 0 0 1px var(--arc-rojo);
+}
+
+/* ── Barra de desplazamiento ──────────────────────────────────────── */
+.screens-list-wrapper::-webkit-scrollbar { width: 5px; }
+.screens-list-wrapper::-webkit-scrollbar-track { background: transparent; }
+
+.screens-list-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-linea), 0.32);
+    border-radius: 4px;
+}
+
+.screens-list-wrapper::-webkit-scrollbar-thumb:hover { background: rgba(var(--arc-t-linea), 0.5); }
+
+/* ── Lo escondido se esconde de verdad ───────────────────────────────
+   Varias piezas llevan display:flex y le ganarían al atributo hidden. */
+[hidden] { display: none !important; }
+
+/* ── Cabecera de cada panel ───────────────────────────────────────── */
+.sc-cab {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.2vh;
+}
+
+.sc-cab__txt { min-width: 0; flex: 1; }
+.sc-cab .section-title { margin: 0.2vh 0 0; }
+
+.sc-kicker {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1vh;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto);
+}
+
+.sc-x {
+    flex: none;
+    width: 3.2vh;
+    height: 3.2vh;
+    border-radius: 7px;
+    background: none;
+    color: var(--arc-ink-4);
+    font-family: var(--arc-text);
+    font-size: 2.2vh;
+    line-height: 1;
+}
+
+.sc-x::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    transform: var(--arc-skew);
+    background: var(--arc-papel);
+    box-shadow: var(--arc-papel-filo);
+}
+
+.sc-x:hover { color: var(--arc-ink); }
+
+/* ── El mando ─────────────────────────────────────────────────────── */
+.sc-mando { width: 46vh; }
+#admin { width: 84vh; }
+
+/* Lo que está puesto: una franja hundida con el estado a la izquierda y
+   el enlace, en mono, debajo. El verde dice «se está emitiendo»; el rosa
+   no aparece aquí porque no es nada que se pueda pulsar. */
+.sc-antena {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas: 'punto rotulo fuente' 'url url url';
+    align-items: center;
+    column-gap: 0.8vh;
+    row-gap: 0.5vh;
+    padding: 1.1vh 1.3vh;
+    border-radius: 9px;
+    background: var(--arc-hundido);
+    box-shadow: var(--arc-hundido-filo);
+    min-width: 0;
+}
+
+.sc-antena .status-dot { grid-area: punto; }
+
+.sc-antena__rotulo {
+    grid-area: rotulo;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.5vh;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+.sc-antena__fuente {
+    grid-area: fuente;
+    justify-self: end;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.05vh;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+
+.sc-antena__url {
+    grid-area: url;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--arc-mono);
+    font-size: 1.2vh;
+    color: var(--arc-ink-3);
+}
+
+.sc-antena__url:empty { display: none; }
+
+.sc-antena[data-estado="antena"] .status-dot { background: var(--arc-verde); }
+.sc-antena[data-estado="antena"] .sc-antena__rotulo { color: var(--arc-verde); }
+.sc-antena[data-estado="pausa"] .status-dot { background: var(--arc-ambar); }
+.sc-antena[data-estado="pausa"] .sc-antena__rotulo { color: var(--arc-ambar); }
+
+.sc-cifra {
+    flex: none;
+    min-width: 5vh;
+    text-align: right;
+    font-family: var(--arc-mono);
+    font-size: 1.3vh;
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-ink-2);
+}
+
+/* Apagar no borra nada: papel como los demás, con la tinta en rojo. */
+.btn-ctrl.sc-apagar { color: var(--arc-rojo); }
+.btn-ctrl.sc-apagar:hover { color: var(--arc-rojo); }
+
+button:disabled { cursor: default; opacity: 0.45; }
+button:disabled:active { transform: none; }
+input[type="range"]:disabled { cursor: default; opacity: 0.45; }
+
+.sc-msg {
+    margin: 0;
+    min-height: 1.6vh;
+    font-family: var(--arc-text);
+    font-size: 1.25vh;
+    color: var(--arc-ink-3);
+}
+
+.sc-msg[data-tipo="error"] { color: var(--arc-rojo); }
+.sc-msg[data-tipo="ok"] { color: var(--arc-verde); }
+
+.sc-pie {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1vh;
+    box-shadow: inset 0 1px 0 var(--arc-linea);
+}
+
+/* Una frase que se lee entera: texto normal, no rótulo en versales. */
+.sc-nota {
+    margin: 0;
+    font-family: var(--arc-text);
+    font-size: 1.2vh;
+    line-height: 1.35;
+    color: var(--arc-ink-4);
+}
+
+.sc-casilla {
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    cursor: pointer;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: 1.1vh;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+.sc-casilla input { width: 2vh; height: 2vh; margin: 0; cursor: pointer; }
+
+.sc-solo-pared { display: flex; flex-direction: column; gap: 1vh; }
+
+.url-input-row {
+    display: flex;
+    gap: 0.9vh;
+    align-items: stretch;
+}
+
+.url-input-row input { flex: 1; min-width: 0; font-family: var(--arc-mono); font-weight: 400; letter-spacing: 0; }
+
+/* «Poner» va junto al campo: pequeño, pero es el que confirma. */
+.url-input-row .btn-success {
+    flex: none;
+    width: 9vh;
+    height: auto;
+}
+
+/* ── Entrada ──────────────────────────────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ══ PEGATINA: el mando de las teles con el estilo del logo «Origen Los Santos» ══
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   panel se queda con el «HUD Arcade» de arriba. Mismas reglas y mismos
+   colores que origen_inventory/.../pegatina.css. Ver la skill
+   origen-pegatina.
+
+   Papel blanco, canto negro grueso, sombra dura, rosa con tinta NEGRA para
+   lo que confirma y lo encendido, nada inclinado.
+
+   Los cantos son box-shadow, no border: no cambian ninguna medida.
+
+   OJO con los botones: la chapa es un ::before y el boton lleva
+   overflow:hidden (para los puntos suspensivos), asi que una sombra dura
+   por fuera saldria cortada. La chapa se encoge 3 px por la derecha y por
+   abajo y la sombra cae DENTRO de la caja del boton, que mide lo mismo.
+
+   Para quitarlo: borrar este bloque y las dos familias (Knewave, Oxanium)
+   del <link> de index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+html #app-container {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-papel1: #dcdde0;
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #b3123f;
+    --arc-accent-texto: #b3123f;
+    --arc-canto: #000;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #0b0b0d;
+    --arc-ink-4: #44444a;
+    --arc-ink-5: #55555c;
+    --arc-ink-6: #73737c;
+    --arc-linea: rgba(11, 11, 13, 0.35);
+    --arc-caja: transparent;
+    --arc-caja-filo: 0 0 0 0 transparent;
+    --arc-papel: #dcdde0;
+    --arc-papel-filo: inset 0 0 0 1.5px #000;
+    --arc-hundido: #dcdde0;
+    --arc-hundido-filo: inset 0 0 0 1.5px #000;
+    --arc-rojo: #b3123f;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --peg-brocha: "Knewave", "Barlow Condensed", cursive;
+    color: #0b0b0d;
+}
+
+/* ── La caja ────────────────────────────────────────────────────────── */
+/*  El filo de arriba es un borde de verdad de 4 px: se queda del color del
+    papel y el canto va por fuera. */
+html #app-container .panel {
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html #app-container .section-title::after { background: #d81b55; }
+/*  El rotulo a brocha: el antetitulo. Mide lo que media (un renglon de
+    1vh): la letra crece, la caja no. */
+html:root #app-container .sc-kicker {
+    height: 1.2vh;
+    overflow: visible;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.9vh;
+    line-height: 1.2vh;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html #app-container .sc-x { color: #0b0b0d; }
+html #app-container .sc-x::before { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app-container .sc-x:hover { color: #000; }
+html #app-container .sc-x:hover::before { background: #d81b55; }
+html #app-container .sc-x:active { transform: translate(2px, 2px); }
+html #app-container .sc-x:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Campos ─────────────────────────────────────────────────────────── */
+html:root #app-container .input-label { color: #0b0b0d; }
+html #app-container input[type="text"] { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app-container input[type="text"]:focus { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app-container input[type="text"]::placeholder { color: #73737c; }
+
+html #app-container input[type="checkbox"] { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container input[type="checkbox"]:checked { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container input[type="checkbox"]:checked::after { border-color: #000; }
+html #app-container .sc-casilla { color: #0b0b0d; }
+
+/*  La barra de volumen: pista blanca con anillo fino y el tirador negro. */
+html #app-container input[type="range"] { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container input[type="range"]::-webkit-slider-thumb { background: #0b0b0d; box-shadow: none; }
+html #app-container .sc-cifra {
+    font-family: var(--peg-cifra);
+    font-style: normal;
+    font-weight: 800;
+    color: #0b0b0d;
+}
+
+/* ── Lo que esta puesto ─────────────────────────────────────────────── */
+/*  No se pulsa: papel con canto, sin sombra. */
+html #app-container .sc-antena { border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container .status-dot { background: #9a9aa3; box-shadow: 0 0 0 1.5px #000; }
+html #app-container .status-dot.active { background: var(--arc-verde-o); }
+html #app-container .status-dot.paused { background: #c98a12; }
+html #app-container .sc-antena[data-estado="antena"] .status-dot { background: var(--arc-verde); }
+html #app-container .sc-antena[data-estado="pausa"] .status-dot { background: var(--arc-ambar); }
+
+/* ── Chips de «Dónde» ───────────────────────────────────────────────── */
+html #app-container .type-filters { background: none; box-shadow: none; }
+html #app-container .filter-btn { color: #0b0b0d; }
+html #app-container .filter-btn::before {
+    right: 2px;
+    bottom: 2px;
+    border-radius: 9px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #app-container .filter-btn:hover { color: #0b0b0d; }
+html #app-container .filter-btn:hover::before { background: #e6e7ea; }
+html #app-container .filter-btn.active,
+html #app-container .filter-btn.active:hover { color: #000; }
+html #app-container .filter-btn.active::before,
+html #app-container .filter-btn.active:hover::before { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+
+/* ── Botones ────────────────────────────────────────────────────────── */
+html:root #app-container .btn-success,
+html #app-container .btn-danger,
+html #app-container .btn-warning,
+html:root #app-container .btn-ctrl { border-radius: 10px; color: #0b0b0d; }
+html #app-container .btn-success::before,
+html #app-container .btn-danger::before,
+html #app-container .btn-warning::before,
+html #app-container .btn-ctrl::before {
+    right: 3px;
+    bottom: 3px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #app-container .btn-danger:hover,
+html #app-container .btn-warning:hover,
+html #app-container .btn-ctrl:hover { color: #0b0b0d; }
+html #app-container .btn-danger:hover::before,
+html #app-container .btn-warning:hover::before,
+html #app-container .btn-ctrl:hover::before { background: #e6e7ea; }
+html #app-container .btn-success:active,
+html #app-container .btn-danger:active,
+html #app-container .btn-warning:active,
+html #app-container .btn-ctrl:active { transform: translate(2px, 2px); }
+html #app-container .btn-success:active::before,
+html #app-container .btn-danger:active::before,
+html #app-container .btn-warning:active::before,
+html #app-container .btn-ctrl:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container button:disabled:active { transform: none; }
+
+/*  El que confirma: rosa con tinta negra. */
+html:root #app-container .btn-success { color: #000; }
+html #app-container .btn-success::before { background: #d81b55; }
+html #app-container .btn-success:hover::before { background: #df2f63; }
+/*  La pantalla oculta: encendido, rosa con tinta negra. */
+html #app-container .btn-warning.active-visibility,
+html #app-container .btn-warning.active-visibility:hover { color: #000; }
+html #app-container .btn-warning.active-visibility::before { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app-container .btn-warning.active-visibility:hover::before { background: #df2f63; }
+html #app-container .btn-warning.active-visibility:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container .btn-ctrl.sc-apagar,
+html #app-container .btn-ctrl.sc-apagar:hover { color: #b3123f; }
+
+/* ── La lista de pantallas ──────────────────────────────────────────── */
+html #app-container .screens-list-wrapper { border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app-container .screens-table { color: #0b0b0d; }
+html #app-container .screens-table th { color: #0b0b0d; box-shadow: inset 0 -2px 0 #000; }
+html #app-container .screens-table tbody tr:hover { background: #e6e7ea; }
+html #app-container .status-badge { color: #0b0b0d; }
+html #app-container .screens-list-wrapper::-webkit-scrollbar-thumb { background: #d81b55; }
+
+html #app-container .btn-table-action { border-radius: 8px; color: #0b0b0d; }
+html #app-container .btn-table-action::before { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app-container .btn-table-action:hover { color: #0b0b0d; }
+html #app-container .btn-table-action:hover::before { background: #e6e7ea; }
+html #app-container .btn-table-action:active { transform: translate(2px, 2px); }
+html #app-container .btn-table-action:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+/*  Borrar: pieza gris con la letra en rosa oscuro; encima, rosa con tinta
+    negra. El rojo queda para estados, no para botones. */
+html #app-container .btn-table-delete { color: #b3123f; }
+html #app-container .btn-table-delete:hover { color: #0b0b0d; }
+html #app-container .btn-table-delete::before { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app-container .btn-table-delete:hover::before { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app-container .btn-table-delete:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Pie ────────────────────────────────────────────────────────────── */
+html #app-container .sc-pie { box-shadow: inset 0 3px 0 #000; }
+
+/* [REPASO-HUD 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · EL MANDO DE LA TELE ═════════════════════════
+   La brocha iba ENCIMA del título y lo pisaba: pasa debajo, como en todos
+   los menús. Etiquetas y botones sin letra fina espaciada (0.16–0.2em a
+   11 px); el enlace y la URL, sin letra de máquina. Solo de día. */
+html:root #app-container .sc-cab__txt { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 0.2vh; }
+html:root #app-container .sc-cab { align-items: flex-start; margin-bottom: 1.2vh; }
+html:root #app-container .sc-cab .section-title { margin: 0; width: 100%; }
+html:root #app-container .sc-kicker { line-height: 1.25; height: auto; font-size: 1.75vh; margin-left: 0.3vh; }
+html:root #app-container :is(.input-label, .btn-ctrl, .btn-success, .btn-danger, .sc-antena__fuente) {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+}
+html:root #app-container .input-label { font-size: 1.5vh; color: #0b0b0d; }
+html:root #app-container .btn-ctrl { font-size: 1.6vh; }
+html:root #app-container .btn-success { font-size: 1.7vh; }
+html:root #app-container .sc-antena__fuente { font-size: 1.35vh; background: #0b0b0d; color: #fff; border-radius: 6px; padding: 0.2vh 0.8vh; }
+html:root #app-container .sc-antena__url,
+html:root #app-container .panel input[type="text"],
+html:root #app-container .panel input[type="number"] {
+    font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-style: normal; letter-spacing: 0.01em;
+}
+html:root #app-container .sc-antena__url { font-size: 1.45vh; color: #44444a; }
+/* [REPASO-HUD 05/10 · fin] */
+
+/*  El fondo detras del mando: el mismo oscurecido, sin el tinte tostado. */
+html #app-container { background: rgba(11, 11, 13, 0.3); }
+
+/* ══ LA GESTIÓN (admin) EN LA PLANTILLA (06/10) ══════════════════════════
+   Lista, colocar y ajustes van dentro de #gestion, la pantalla completa de
+   plantilla-admin.css. Aquí solo se colocan las piezas de siempre dentro
+   de las zonas. */
+html #app-container .sc-vista { flex: 1; min-width: 0; min-height: 0; display: flex; gap: var(--oga-hueco); }
+html #app-container .sc-vista[hidden] { display: none; }
+html #app-container .sc-vista > .oga-zona { flex: 1; }
+html #app-container .sc-form { display: flex; flex-direction: column; gap: 1.6vh; }
+html #app-container .sc-form .sc-acciones { margin-top: auto; padding-top: 1.2vh; }
+html #app-container .sc-form .sc-solo-pared { display: flex; flex-direction: column; gap: 1.2vh; }
+html #app-container .sc-form .sc-solo-pared[hidden] { display: none; }
+html #app-container .sc-form .sc-nota { font-size: 1.45vh; color: #44444a; }
+html #app-container .oga input[type="text"] { height: 4.4vh; font-size: 1.6vh; }
+html #app-container .oga .input-label { font-size: 1.55vh; }
+html #app-container .oga .type-filters { justify-content: flex-start; }
+html #app-container .oga .screens-list-wrapper { max-height: none; overflow: visible; padding: 0.5vh 1vh; }
+html #app-container .oga .screens-table { font-size: 1.45vh; }
+html #app-container .oga .screens-table th { font-size: 1.3vh; letter-spacing: 0.08em; }
+html #app-container .oga .screens-table td strong { font-size: 1.75vh; }
+html #app-container .oga .screens-table td small { font-size: 1.25vh !important; }
+html #app-container .oga :is(.btn-success, .btn-danger, .btn-warning) { height: 4.4vh; font-size: 1.6vh; }
+html #app-container .oga .filter-btn { height: 4.2vh; font-size: 1.5vh; }
+html #app-container .oga .btn-table-action { height: 3.2vh; padding: 0 1.3vh; font-size: 1.3vh; }
+html #app-container .oga .sc-casilla { font-size: 1.45vh; }
+/*  Letras centradas (06/10): la cabecera de la tabla (CONTROL, ESTADO…)
+    quedaba 1 px alta: 1 px del aire de abajo pasa arriba. */
+html #app-container .screens-table th { padding-top: calc(1vh + 1px); padding-bottom: calc(1vh - 1px); }
+
+/* ══ EL MANDO EN FORMATO PEQUEÑO (07/10) ══════════════════════════════════
+   Era una caja centrada sobre un velo pardo. Ahora es el menú pequeño de la
+   casa (skill origen-dialogo, referencia org-menu/html): la columna y un
+   riel de 64 px del mismo alto, juntos a media altura a la derecha y
+   despegados del canto. Entran deslizándose desde la derecha (script.js pone
+   .esta-dentro al fotograma siguiente) y el juego se ve detrás: sin velo.
+   La gestión de admin va a pantalla completa sobre su gris y no lo nota. */
+html #app-container { background: transparent; animation: none; }
+
+.sc-om {
+    position: fixed;
+    top: 50%;
+    right: 1.2vh;
+    max-height: calc(100vh - 2.8vh);
+    z-index: 10;
+    display: flex;
+    align-items: stretch;
+    gap: 1.2vh; /* 07/10: el mismo aire que del riel al canto */
+    transform: translate(calc(100% + 1.2vh + 6px), -50%);
+    opacity: 0;
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+.sc-om.esta-dentro { transform: translateY(-50%); opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+    .sc-om { transform: translateY(-50%); transition: opacity 0.15s ease; }
+}
+
+/*  La columna: si no cabe, se desplaza ella (con aire para la sombra). */
+html #app-container .sc-om > .sc-mando {
+    flex: none;
+    min-height: 0;
+    max-height: calc(100vh - 2.8vh);
+    overflow-y: auto;
+}
+
+/*  La placa de la cabecera: rosa, dibujo negro, un pelo girada. */
+.sc-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+
+.sc-cab__placa svg,
+.sc-riel svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+html #app-container .sc-om .sc-cab { align-items: center; gap: 14px; }
+
+/* ── El riel ─────────────────────────────────────────────────────────── */
+.sc-riel {
+    flex: none;
+    align-self: stretch;
+    min-height: 300px;
+    width: 64px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid #c4c6ca;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+.sc-riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #d81b55;
+}
+
+.sc-riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.sc-riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+
+/* ══ EL MANDO · CABECERA Y PIE DE LA CASA (07/10) ══════════════════════════
+   Visto en captura: el filete rosa salía AL LADO del título (el ::after de
+   .section-title) y había una X arriba a la derecha. Pasa a la cabecera
+   de org-menu (.om-cab): placa, antetítulo «Mando», el nombre de la tele
+   en grande, un renglón con el estado y el filete rosa DEBAJO de todo. Sin
+   X: se cierra con el botón gris del pie (o Escape), y a su derecha
+   «Ajustes de la pantalla» si eres admin. */
+html:root #app-container .sc-om .sc-cab {
+    position: relative;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 0;
+    padding: 2px 0 15px;
+}
+html:root #app-container .sc-om .sc-cab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+html:root #app-container .sc-cab__txt--mando { display: block; flex: 1; min-width: 0; }
+html:root #app-container .sc-cab__k {
+    display: block;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #b3123f;
+}
+html:root #app-container .sc-cab__t {
+    display: block;
+    margin: 3px 0 0;
+    padding-right: 4px;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 29px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: #0b0b0d;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+html:root #app-container .sc-cab__r {
+    margin: 5px 0 0;
+    font-family: "Barlow", "Segoe UI", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: #44444a;
+    overflow-wrap: anywhere;
+}
+
+/*  El pie: filete negro fino arriba, Cerrar a la izquierda y Ajustes a la
+    derecha (los .op-btn de los menús pequeños). */
+html:root #app-container .sc-pie--mando {
+    justify-content: space-between;
+    gap: 10px;
+    padding: 13px 2px 2px 0;
+    box-shadow: inset 0 1.5px 0 #000;
+}
+html:root #app-container .sc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    height: 44px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.14s ease;
+}
+html:root #app-container .sc-btn:hover { background: #e6e7ea; }
+html:root #app-container .sc-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root #app-container .sc-btn kbd {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 3px 7px 2px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+/*  El nombre del riel según el servidor: «Origen X» o «Nación X». */
+.solo-nacion { display: none; }
+html[data-marca="nacion"] .solo-nacion { display: inline; }
+html[data-marca="nacion"] .solo-origen { display: none; }
+
+/*  08/10: el rótulo a brocha del mando, entre el nombre de la tele y el
+    renglón del estado. EN FLUJO: empuja el renglón en vez de pisarlo. Rosa
+    literal: en Nación lo repinta la marca. */
+html:root #app-container .sc-cab__brocha {
+    display: block;
+    margin: 5px 0 3px 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}

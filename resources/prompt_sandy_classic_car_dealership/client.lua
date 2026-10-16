@@ -1,0 +1,5 @@
+CreateThread(function()
+    local oldinterior = GetInteriorAtCoordsWithType(1931.78516, 3730.23828, 31.8600159, 'v_barbers')
+    DisableInterior(oldinterior, true)
+    UnpinInterior(oldinterior)
+end)

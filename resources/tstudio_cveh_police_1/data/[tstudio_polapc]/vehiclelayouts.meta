@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+    <AnimRateSets/>
+    <ClipSetMaps/>
+    <VehicleCoverBoundOffsetInfos>
+        <Item type="CVehicleCoverBoundOffsetInfo">
+              <Name>POLAPC_COVER_OFFSET_INFO</Name>
+              <ExtraSideOffset value="0.000000" />
+              <ExtraForwardOffset value="0.000000" />
+              <ExtraBackwardOffset value="0.000000" />
+              <ExtraZOffset value="0.000000" />
+              <CoverBoundInfos>
+                <Item>
+                  <Name>Front</Name>
+                  <Position x="0.000000" y="2.550000" z="0.250000" />
+                  <Length value="1.300000" />
+                  <Width value="2.600000" />
+                  <Height value="2.000000" />
+                  <ActiveBoundExclusions />
+                </Item>
+                <Item>
+                  <Name>MIDDLE</Name>
+                  <Position x="0.000000" y="0.400000" z="0.250000" />
+                  <Length value="3.000000" />
+                  <Width value="2.850000" />
+                  <Height value="2.000000" />
+                  <ActiveBoundExclusions />
+                </Item>
+                <Item>
+                  <Name>REAR</Name>
+                  <Position x="0.000000" y="-1.950000" z="0.250000" />
+                  <Length value="1.700000" />
+                  <Width value="2.700000" />
+                  <Height value="2.000000" />
+                  <ActiveBoundExclusions />
+                </Item>
+              </CoverBoundInfos>
+            </Item>
+    </VehicleCoverBoundOffsetInfos>
+    <BicycleInfos/>
+    <POVTuningInfos/>
+    <EntryAnimVariations/>
+    <VehicleExtraPointsInfos/>
+    <DrivebyWeaponGroups/>
+    <VehicleDriveByAnimInfos/>
+    <VehicleDriveByInfos/>
+    <VehicleSeatInfos/>
+    <VehicleSeatAnimInfos/>
+    <VehicleEntryPointInfos/>
+    <VehicleEntryPointAnimInfos/>
+    <VehicleExplosionInfos/>
+    <VehicleLayoutInfos/>
+    <VehicleScenarioLayoutInfos/>
+    <SeatOverrideAnimInfos/>
+    <InVehicleOverrideInfos/>
+    <FirstPersonDriveByLookAroundData/>
+</CVehicleMetadataMgr>

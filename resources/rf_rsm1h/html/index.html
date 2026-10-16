@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RF Smart Home</title>
+<link rel="stylesheet" href="style.css?v=p0610">
+<link rel="stylesheet" href="origen-tokens.css?v=riel0710">
+<link rel="stylesheet" href="origen.css?v=p0610">
+<!-- PEGATINA (solo Origen): rótulo a brocha y cifras; la hoja va la última -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Knewave&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<link rel="stylesheet" href="origen-pegatina.css?v=riel0710">
+<!-- ORIGEN · vigilante del raton. NO EDITAR A MANO: este trozo es identico
+         en todas las interfaces del servidor y lo reparte
+         kit/repartir-foco.py. El lado de Lua es @origen_map/shared/foco.lua:
+         mientras el recurso tiene el raton, pregunta cada 1,5 s si esta
+         pagina enseña algo, y si dos veces seguidas no, suelta el raton.
+         Ante la duda contesta que SI: soltar el raton de una pantalla que se
+         ve es peor que tardar en soltarlo. -->
+    <script>
+      (function () {
+        // El fetch del navegador, guardado antes de que la pagina cargue lo
+        // suyo: alguna (origen_titlemenu) declara un `fetch` global propio.
+        var enviar = window.fetch.bind(window)
+        var TOPE = 6000
+        var HUECO = /^(transparent|rgba\([^)]*,\s*0(\.0+)?\))$/
+        var SIEMPRE = { IMG: 1, VIDEO: 1, CANVAS: 1, IFRAME: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, BUTTON: 1, svg: 1, SVG: 1 }
+        var color = function (c) { return c && !HUECO.test(c) }
+        var borde = function (cs) {
+          return (parseFloat(cs.borderTopWidth) > 0 && color(cs.borderTopColor)) ||
+            (parseFloat(cs.borderBottomWidth) > 0 && color(cs.borderBottomColor)) ||
+            (parseFloat(cs.borderLeftWidth) > 0 && color(cs.borderLeftColor)) ||
+            (parseFloat(cs.borderRightWidth) > 0 && color(cs.borderRightColor))
+        }
+        var capa = function (cs) {
+          return color(cs.backgroundColor) || cs.backgroundImage !== 'none' ||
+            cs.boxShadow !== 'none' || borde(cs)
+        }
+        var pseudo = function (el, cual) {
+          var ps = getComputedStyle(el, cual)
+          var c = ps.content
+          if (!c || c === 'none' || c === 'normal') return false
+          return capa(ps) || (c.length > 2 && color(ps.color))
+        }
+        var pinta = function (el, cs) {
+          if (SIEMPRE[el.tagName]) return true
+          if (capa(cs)) return true
+          if (color(cs.color) && parseFloat(cs.fontSize) > 0) {
+            for (var h = el.firstChild; h; h = h.nextSibling) {
+              if (h.nodeType === 3 && h.nodeValue.trim()) return true
+            }
+          }
+          return pseudo(el, '::before') || pseudo(el, '::after')
+        }
+        var hayAlgo = function () {
+          if (!document.body) return true
+          var W = window.innerWidth
+          var H = window.innerHeight
+          var paseo = document.createTreeWalker(document.body, 1, {
+            acceptNode: function (el) {
+              var cs = getComputedStyle(el)
+              // Lo que no se ve no deja ver a sus hijos: se salta la rama.
+              if (cs.display === 'none' || parseFloat(cs.opacity) < 0.02) return 2
+              // Ni lo marcado como HUD fijo (sin raton): no es una pantalla
+              // abierta, y si contara la red no soltaria nunca.
+              if (el.hasAttribute('data-foco-ignora')) return 2
+              return 1
+            }
+          })
+          var n = 0
+          var el
+          while ((el = paseo.nextNode())) {
+            if (++n > TOPE) return true
+            var cs = getComputedStyle(el)
+            if (cs.visibility !== 'visible') continue
+            var r = el.getBoundingClientRect()
+            if (r.width < 2 || r.height < 2) continue
+            if (r.right <= 0 || r.bottom <= 0 || r.left >= W || r.top >= H) continue
+            if (pinta(el, cs)) return true
+          }
+          return false
+        }
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (!d || d.accion !== 'origen:foco:mira') return
+          var visto = true
+          // Una pagina con HUD fijo (siempre pinta algo) dice ella misma si
+          // hay una pantalla CON RATON delante: window.__origenFocoVisto.
+          try {
+            visto = typeof window.__origenFocoVisto === 'function'
+              ? window.__origenFocoVisto() !== false
+              : hayAlgo()
+          } catch (err) { visto = true }
+          try {
+            var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+            if (!yo) return
+            enviar('https://' + yo + '/origen:foco:veo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: JSON.stringify({ n: d.n, visto: visto })
+            }).catch(function () {})
+          } catch (err) {}
+        })
+        window.__origenFocoHayAlgo = hayAlgo
+      })()
+    </script>
+    <!-- /ORIGEN · vigilante del raton -->
+<script>
+  /* Para el vigilante del raton (@origen_map/shared/foco.lua): que cuenta
+     como pantalla CON RATON. Los tres iframes (movil, ascensor, camara) estan
+     siempre montados a pantalla completa, y mirando el DOM entero esta pagina
+     diria siempre «se ve» (27/09). */
+  window.__origenFocoVisto = function () {
+    var raiz = document.getElementById('root')
+    if (raiz && !raiz.classList.contains('hidden')) return true
+    var capas = ['phoneFrame', 'liftFrame']
+    for (var k = 0; k < capas.length; k++) {
+      var f = document.getElementById(capas[k])
+      if (f && f.style.pointerEvents === 'auto') return true
+    }
+    try {
+      var cam = document.getElementById('camFrame')
+      var feed = cam && cam.contentDocument && cam.contentDocument.getElementById('feed')
+      if (feed && feed.classList.contains('is-on')) return true
+    } catch (e) { return true }
+    return false
+  }
+</script>
+<script src="origen.js"></script>
+</head>
+<body>
+
+<div id="yt-host" aria-hidden="true"></div>
+
+<div id="root" class="root hidden">
+  <div class="scrim" data-close></div>
+
+  <div class="tablet">
+    <div class="bezel">
+      <div class="screen">
+
+        <header class="hdr">
+          <div class="hdr-side"><i class="dot"></i><span id="hdrProperty"></span></div>
+          <div class="brand">
+            <img class="brand-logo hidden" id="brandLogo" alt="">
+            <div class="brand-mark hidden" id="brandName"></div>
+            <div class="brand-rule hidden" id="brandRule"></div>
+            <div class="brand-sub" id="brandTag"></div>
+          </div>
+          <div class="hdr-side hdr-side--r">
+            <button class="hdr-mute" id="uiMute" title="Panel sounds" data-ui-mute>
+              <svg class="ico" viewBox="0 0 24 24"><path d=""/></svg>
+            </button>
+            <span id="hdrClock">--:--</span>
+            <svg class="ico" viewBox="0 0 24 24"><path d="M12 18.5h.01M8.4 15.2a5.2 5.2 0 0 1 7.2 0M5.2 11.8a9.8 9.8 0 0 1 13.6 0M2 8.4a14.4 14.4 0 0 1 20 0"/></svg>
+          </div>
+        </header>
+
+        <div class="body">
+          <aside class="rail">
+            <nav class="nav" id="nav">
+              <button class="nav-item is-active" data-view="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H3z"/></svg><span data-t="nav_home">Home</span><i></i></button>
+              <button class="nav-item" data-view="doors"><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6zM14 12h.01"/></svg><span data-t="doors">Doors</span><i></i></button>
+              <button class="nav-item" data-view="audio"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12M4 18a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0M14 16a2.5 2.5 0 1 0 5 0 2.5 2.5 0 0 0-5 0"/></svg><span data-t="media">Media</span><i></i></button>
+              <button class="nav-item" data-view="blinds"><svg viewBox="0 0 24 24"><path d="M4 4h16M4 8h16M4 12h16M4 16h10M12 16v5"/></svg><span data-t="blinds">Blinds</span><i></i></button>
+              <button class="nav-item" data-view="cams"><svg viewBox="0 0 24 24"><path d="M3 7h12a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H3zM17 10l4-2v8l-4-2"/></svg><span data-t="tab_security">Cams</span><i></i></button>
+              <button class="nav-item" data-view="lifts"><svg viewBox="0 0 24 24"><path d="M4 3h16v18H4zM12 3v18M8 10l-1.5 2h3zM16 14l1.5-2h-3z"/></svg><span data-t="elevators">Elevator</span><i></i></button>
+            </nav>
+          </aside>
+
+          <main class="main">
+            <div id="tabs" class="hidden"></div>
+            <div class="content" id="content"></div>
+          </main>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<iframe id="phoneFrame" src="phone.html" title="Phone" allowtransparency="true" style="position:fixed;inset:0;width:100%;height:100%;border:0;background:transparent;pointer-events:none;opacity:0;z-index:60;transition:opacity .30s ease"></iframe>
+
+
+<iframe id="liftFrame" src="lift.html" title="Lift" allowtransparency="true" style="position:fixed;inset:0;width:100%;height:100%;border:0;background:transparent;pointer-events:none;z-index:50"></iframe>
+
+
+<iframe id="camFrame" src="cam.html" title="Camera" allowtransparency="true" style="position:fixed;inset:0;width:100%;height:100%;border:0;background:transparent;pointer-events:none;z-index:40"></iframe>
+
+<script src="es.js"></script>
+<script src="travel.js"></script>
+<script src="app.js"></script>
+
+
+<script src="https://www.youtube.com/iframe_api" async></script>
+</body>
+</html>

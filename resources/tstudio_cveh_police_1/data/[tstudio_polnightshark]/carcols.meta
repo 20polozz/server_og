@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>
+  <Kits>
+    <Item>
+      <kitName>8349_polnightshark_modkit</kitName>
+      <id value="8349" />
+      <kitType>MKT_STANDARD</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_ebh</modelName>
+          <modShopLabel>TS_POL_LIV_EBH</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_fz</modelName>
+          <modShopLabel>TS_POL_LIV_FZ</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_lspd</modelName>
+          <modShopLabel>TS_POL_LIV_LSPD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_lssd</modelName>
+          <modShopLabel>TS_POL_LIV_LSSD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_mrpd</modelName>
+          <modShopLabel>TS_POL_LIV_MRPD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_mws</modelName>
+          <modShopLabel>TS_POL_LIV_MWS</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_noose</modelName>
+          <modShopLabel>TS_POL_LIV_NOOSE</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_polnightshark_liv_sahp</modelName>
+          <modShopLabel>TS_POL_LIV_SAHP</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_dplate1</modelName>
+          <modShopLabel>NTSK_DPLT1</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrdoor1</Item>
+            <Item>nightshark_lrdoor1</Item>
+            <Item>nightshark_lfdoor1</Item>
+            <Item>nightshark_rfdoor1</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_dplate2</modelName>
+          <modShopLabel>NTSK_DPLT2</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrdoor2</Item>
+            <Item>nightshark_lrdoor2</Item>
+            <Item>nightshark_lfdoor2</Item>
+            <Item>nightshark_rfdoor2</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_dplate3</modelName>
+          <modShopLabel>NTSK_DPLT3</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrdoor3</Item>
+            <Item>nightshark_lrdoor3</Item>
+            <Item>nightshark_lfdoor3</Item>
+            <Item>nightshark_rfdoor3</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_fwin1</modelName>
+          <modShopLabel>NTSK_WDPL1</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrwin1</Item>
+            <Item>nightshark_rfwin1</Item>
+            <Item>nightshark_lrwin1</Item>
+            <Item>nightshark_lfwin1</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>window_lf</Item>
+            <Item>window_lr</Item>
+            <Item>window_lm</Item>
+            <Item>windscreen_r</Item>
+            <Item>window_rm</Item>
+            <Item>window_rr</Item>
+            <Item>window_rf</Item>
+            <Item>misc_v</Item>
+            <Item>misc_w</Item>
+            <Item>windscreen_r_col</Item>
+            <Item>misc_g_col</Item>
+            <Item>misc_h_col</Item>
+            <Item>window_lf_col</Item>
+            <Item>window_lr_col</Item>
+            <Item>window_rf_col</Item>
+            <Item>window_rr_col</Item>
+            <Item>windscreen_col</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+          <disableDriveby value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_fwin2</modelName>
+          <modShopLabel>NTSK_WDPL2</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrwin2</Item>
+            <Item>nightshark_rfwin2</Item>
+            <Item>nightshark_lrwin2</Item>
+            <Item>nightshark_lfwin2</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>window_lf</Item>
+            <Item>window_lr</Item>
+            <Item>window_lm</Item>
+            <Item>windscreen_r</Item>
+            <Item>window_rm</Item>
+            <Item>window_rr</Item>
+            <Item>window_rf</Item>
+            <Item>misc_v</Item>
+            <Item>misc_w</Item>
+            <Item>windscreen_r_col</Item>
+            <Item>misc_g_col</Item>
+            <Item>misc_h_col</Item>
+            <Item>window_lf_col</Item>
+            <Item>window_lr_col</Item>
+            <Item>window_rf_col</Item>
+            <Item>window_rr_col</Item>
+            <Item>windscreen_col</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+          <disableDriveby value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_fwin3</modelName>
+          <modShopLabel>NTSK_WDPL3</modShopLabel>
+          <linkedModels>
+            <Item>nightshark_rrwin3</Item>
+            <Item>nightshark_rfwin3</Item>
+            <Item>nightshark_lrwin3</Item>
+            <Item>nightshark_lfwin3</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>window_lf</Item>
+            <Item>window_lr</Item>
+            <Item>window_lm</Item>
+            <Item>windscreen_r</Item>
+            <Item>window_rm</Item>
+            <Item>window_rr</Item>
+            <Item>window_rf</Item>
+            <Item>misc_v</Item>
+            <Item>misc_w</Item>
+            <Item>windscreen_r_col</Item>
+            <Item>misc_g_col</Item>
+            <Item>misc_h_col</Item>
+            <Item>window_lf_col</Item>
+            <Item>window_lr_col</Item>
+            <Item>window_rf_col</Item>
+            <Item>window_rr_col</Item>
+            <Item>windscreen_col</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+          <disableDriveby value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rlc1</modelName>
+          <modShopLabel>NTSK_TLP1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rlc2</modelName>
+          <modShopLabel>NTSK_TLP2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rlc3</modelName>
+          <modShopLabel>NTSK_TLP3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hlc1</modelName>
+          <modShopLabel>NTSK_HLP1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hlc2</modelName>
+          <modShopLabel>NTSK_HLP2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hlc3</modelName>
+          <modShopLabel>NTSK_HLP3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill1</modelName>
+          <modShopLabel>NTSK_GRL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill2</modelName>
+          <modShopLabel>NTSK_GRL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill3</modelName>
+          <modShopLabel>NTSK_GRL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill4</modelName>
+          <modShopLabel>NTSK_GRL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill5</modelName>
+          <modShopLabel>NTSK_GRL5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill6</modelName>
+          <modShopLabel>NTSK_GRL6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill7</modelName>
+          <modShopLabel>NTSK_GRL7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill8</modelName>
+          <modShopLabel>NTSK_GRL8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_grill9</modelName>
+          <modShopLabel>NTSK_GRL9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_exh1</modelName>
+          <modShopLabel>NTSK_EXH1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_exh2</modelName>
+          <modShopLabel>MNU_EXH3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_e</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood1</modelName>
+          <modShopLabel>NTSK_HOOD1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood2</modelName>
+          <modShopLabel>NTSK_HOOD2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood3</modelName>
+          <modShopLabel>NTSK_HOOD3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood10</modelName>
+          <modShopLabel>NTSK_HOOD10</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood6</modelName>
+          <modShopLabel>NTSK_HOOD5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood5</modelName>
+          <modShopLabel>NTSK_HOOD6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood4</modelName>
+          <modShopLabel>NTSK_HOOD4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood9</modelName>
+          <modShopLabel>NTSK_HOOD8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood8</modelName>
+          <modShopLabel>NTSK_HOOD9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>nightshark_hood7</modelName>
+          <modShopLabel>NTSK_HOOD7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+      </visibleMods>
+      <linkMods>
+        <Item>
+          <modelName>nightshark_lfdoor1</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lfdoor2</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lfdoor3</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lfwin1</modelName>
+          <collisionBone>mod_col_2</collisionBone>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lfwin2</modelName>
+          <collisionBone>mod_col_2</collisionBone>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lfwin3</modelName>
+          <collisionBone>mod_col_2</collisionBone>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfdoor1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfdoor2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfdoor3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfwin1</modelName>
+          <collisionBone>mod_col_3</collisionBone>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfwin2</modelName>
+          <collisionBone>mod_col_3</collisionBone>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rfwin3</modelName>
+          <collisionBone>mod_col_3</collisionBone>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrdoor1</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrdoor2</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrdoor3</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrwin1</modelName>
+          <collisionBone>mod_col_5</collisionBone>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrwin2</modelName>
+          <collisionBone>mod_col_5</collisionBone>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_lrwin3</modelName>
+          <collisionBone>mod_col_5</collisionBone>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrdoor1</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrdoor2</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrdoor3</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrwin1</modelName>
+          <collisionBone>mod_col_4</collisionBone>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrwin2</modelName>
+          <collisionBone>mod_col_4</collisionBone>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>nightshark_rrwin3</modelName>
+          <collisionBone>mod_col_4</collisionBone>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="4" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="8" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="12" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="16" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+      </statMods>
+      <liveryNames />
+    </Item>
+  </Kits>
+</CVehicleModelInfoVarGlobal>

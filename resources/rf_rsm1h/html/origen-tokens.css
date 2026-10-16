@@ -1,0 +1,97 @@
+/* ORIGEN: fuentes y tokens del tema «HUD Arcade» para las páginas de rf_rsm1h.
+   Los usan origen.css (panel) y origen-ascensor.css (ascensor). */
+
+@font-face { font-family: "Barlow"; font-weight: 500; font-display: block; src: url(fonts/barlow-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 600 700; font-display: block; src: url(fonts/barlow-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: block; src: url(fonts/barlow-condensed-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700 900; font-display: block; src: url(fonts/barlow-condensed-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: italic; font-weight: 600 700; font-display: block; src: url(fonts/barlow-condensed-latin-700-italic.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: italic; font-weight: 800 900; font-display: block; src: url(fonts/barlow-condensed-latin-800-italic.woff2) format("woff2"); }
+@font-face { font-family: "Oxanium"; font-weight: 100 900; font-display: block; src: url(fonts/oxanium-latin-800-normal.woff2) format("woff2"); }
+
+/* ══ Tokens del tema (copiados de origen_inventory/…/arcade.css) ═════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+
+    --arc-accent: #df2f63;
+    --arc-accent-deep: #b3123f;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: #d81b55;
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-edge: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-glass: linear-gradient(160deg, rgba(255, 253, 247, 0.9) 0%, rgba(246, 241, 230, 0.82) 45%, rgba(238, 231, 217, 0.88) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-placa: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    --arc-placa-canto: rgba(var(--arc-t-relieve), 0.45);
+    --arc-tip: linear-gradient(160deg, rgba(255, 253, 247, 0.98), rgba(246, 241, 230, 0.97));
+    --arc-btn: rgba(255, 255, 255, calc(0.45 * var(--arc-vf)));
+    --arc-btn-hover: rgba(255, 255, 255, calc(0.78 * var(--arc-vf)));
+    --arc-brillo: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    --arc-canto: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-papel: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-filo: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    --arc-canto-duro: 0 4px 0 rgba(var(--arc-t-relieve), 0.4);
+
+    /* El riel */
+    --pm-riel: 64px;
+    --pm-margen-x: 1.2vh;
+    --pm-margen-y: 1.4vh;
+    --pm-hueco: var(--pm-margen-x);
+    --pm-col: clamp(420px, 31vw, 548px);
+    --pm-acc-rgb: 223, 47, 99;
+    --pm-ok: #0f5c31;
+    --pm-warn: #8a5a00;
+    --pm-bad: var(--arc-accent-deep);
+    --pm-r-zona: 16px;
+    --pm-r-ctrl: 10px;
+    --pm-r: 11px;
+    --pm-r-min: 8px;
+    --pm-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --pm-velo: rgba(255, 255, 255, calc(0.42 * var(--arc-vf)));
+    --pm-velo-hi: rgba(255, 255, 255, calc(0.78 * var(--arc-vf)));
+    --pm-aro: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+
+    /* ── Las variables del autor, colgadas del tema ── */
+    --ground: transparent;
+    --ink: var(--arc-ink);
+    --ink-soft: var(--arc-ink-3);
+    --paper: var(--arc-ink);
+    --paper-rgb: 38, 34, 26;
+    --paper-60: var(--arc-ink-3);
+    --paper-45: var(--arc-ink-4);
+    --paper-30: rgba(var(--paper-rgb), 0.3);
+    --green: var(--pm-ok);     --green-rgb: 15, 92, 49;
+    --red: var(--arc-accent-deep); --red-rgb: 179, 18, 63;
+    --amber: var(--pm-warn);   --amber-rgb: 138, 90, 0;
+    --blue: #1f5fa8;           --blue-rgb: 31, 95, 168;
+    --violet: #6b3fb8;         --violet-rgb: 107, 63, 184;
+    --graphite: var(--pm-velo);
+    --tile: transparent;
+    --rim: transparent;
+    --face: var(--arc-papel);
+    --face-lit: rgba(var(--arc-t-elegido), 0.78);
+    --pill: var(--arc-papel);
+    --brand: var(--arc-grad);
+    --led-bg: rgba(var(--arc-t-hueco), 0.06);
+    --shadow: none;
+    --mich: var(--arc-cond);
+    --sans: var(--arc-text);
+}
+
+

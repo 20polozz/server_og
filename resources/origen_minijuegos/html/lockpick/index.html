@@ -1,0 +1,4087 @@
+<!DOCTYPE html>
+<html lang="es" data-escala>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen Minijuegos</title>
+    <!-- Tipos del estilo claro «HUD Arcade». Van aqui en un <link>, nunca en un
+         @import dentro del CSS: detras de otras reglas la NUI no las carga. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700;1,800&family=Barlow:wght@500;600&family=Share+Tech+Mono&family=Knewave&family=Oxanium:wght@800&display=swap">
+    <!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+         con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+         medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+         (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+         de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+    <style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3XmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3Xmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3TmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3Tmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+    <link rel="stylesheet" href="style.css?v=oxa0710">
+    <!-- Los ocho minijuegos nuevos (19/09): todo lo suyo vive en ../nuevos -->
+    <link rel="stylesheet" href="../nuevos/nuevos.css?v=oxa0710">
+    <style>
+        /* ========== TIMING CIRCLES STYLES ========== */
+        #timingcircles-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .timingcircles-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #timingcircles-container .timingcircles-info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .tc-circle-area {
+            width: calc(55vh / var(--ogn-escala, 1));
+            height: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tc-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .tc-outer-circle {
+            fill: none;
+            stroke: var(--arc-line-soft);
+            stroke-width: 2;
+        }
+
+        /* La zona perfecta es LO QUE HAY QUE ACERTAR → rosa del sistema.
+           stroke-width intacto: la zona de acierto no cambia. */
+        .tc-perfect-zone {
+            fill: none;
+            stroke: var(--arc-accent);
+            stroke-width: 3;
+            filter: drop-shadow(0 2px 0 rgba(216, 27, 85, 0.45));
+        }
+
+        /* El circulo que cierra: tinta neutra. Verde si acierta, rojo si falla. */
+        .tc-moving-circle {
+            fill: none;
+            stroke: var(--arc-ink);
+            stroke-width: 4;
+            filter: drop-shadow(0 2px 0 rgba(120, 110, 88, 0.4));
+            transition: stroke 0.2s ease;
+        }
+
+        .tc-moving-circle.perfect {
+            stroke: var(--arc-ok);
+            filter: drop-shadow(0 2px 0 rgba(10, 65, 35, 0.5));
+        }
+
+        .tc-moving-circle.fail {
+            stroke: var(--arc-bad);
+            filter: drop-shadow(0 2px 0 rgba(140, 7, 51, 0.5));
+        }
+
+        #timingcircles-container .timingcircles-instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== VAR HACK STYLES ========== */
+        #varhack-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .varhack-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #varhack-container .varhack-info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .vh-lines-container {
+            display: flex;
+            flex-direction: column;
+            gap: calc(1.5vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+        }
+
+        .vh-line {
+            display: flex;
+            gap: calc(1vh / var(--ogn-escala, 1));
+            justify-content: center;
+            cursor: pointer;
+            padding: calc(1vh / var(--ogn-escala, 1));
+            background: var(--arc-sunken-hi);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve-hundido);
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* La fila sobre la que vas a actuar: rosa. */
+        .vh-line:hover {
+            background: #fff;
+            border-color: var(--arc-accent);
+        }
+
+        /* Alineada = acierto → verde de estado. */
+        .vh-line.aligned {
+            background: var(--arc-ok-wash);
+            border-color: var(--arc-ok);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 3px 0 rgba(15, 92, 49, 0.35);
+        }
+
+        .vh-symbol {
+            width: calc(5vh / var(--ogn-escala, 1));
+            height: calc(5vh / var(--ogn-escala, 1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(2.5vh / var(--ogn-escala, 1));
+            color: var(--arc-ink);
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 4px;
+            box-shadow: var(--arc-relieve-corto);
+        }
+
+        .vh-line.aligned .vh-symbol {
+            color: var(--arc-ok);
+            border-color: rgba(15, 92, 49, 0.35);
+        }
+
+        #varhack-container .varhack-instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== POWER GRID STYLES ========== */
+        #powergrid-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .powergrid-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #powergrid-container .powergrid-info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .pg-grid {
+            display: grid;
+            gap: calc(0.5vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+        }
+
+        /* Ojo: la reja va con gap calc(0.5vh / var(--ogn-escala, 1)). El relieve de estas casillas es
+           INTERIOR (inset) para no invadir el hueco de la de al lado. */
+        .pg-cell {
+            aspect-ratio: 1;
+            background: var(--arc-sunken-hi);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 4px;
+            box-shadow: var(--arc-relieve-hundido);
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .pg-cell:hover:not(.pg-start):not(.pg-end):not(.pg-blocked) {
+            background: #fff;
+            border-color: var(--arc-accent);
+        }
+
+        /* Salida: verde. Meta (a donde hay que llegar): rosa del sistema. */
+        .pg-cell.pg-start {
+            background: var(--arc-ok);
+            border-color: var(--arc-ok);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            font-family: var(--arc-cond);
+            font-style: italic;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: calc(1.5vh / var(--ogn-escala, 1));
+        }
+
+        .pg-cell.pg-end {
+            background: var(--arc-grad);
+            border-color: var(--arc-accent-deep);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+            font-family: var(--arc-cond);
+            font-style: italic;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: calc(1.5vh / var(--ogn-escala, 1));
+        }
+
+        /* El camino trazado: tinta, ni rosa ni verde (no es acierto todavia). */
+        .pg-cell.pg-path {
+            background: #44444a;
+            border-color: #0b0b0d;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+        }
+
+        .pg-cell.pg-blocked {
+            background: var(--arc-bad-wash);
+            border-color: var(--arc-bad);
+            box-shadow: var(--arc-relieve-hundido);
+            cursor: not-allowed;
+        }
+
+        .pg-buttons {
+            display: flex;
+            gap: calc(1vh / var(--ogn-escala, 1));
+            width: calc(55vh / var(--ogn-escala, 1));
+        }
+
+        .pg-button {
+            flex: 1;
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-family: var(--arc-cond);
+            font-style: italic;
+            font-weight: 800;
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            cursor: pointer;
+            box-shadow: var(--arc-relieve);
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.083em;
+        }
+
+        .pg-button:hover {
+            background: #e6e7ea;
+            border-color: rgba(255, 255, 255, 0.9);
+            color: var(--arc-ink);
+        }
+
+        /* Un solo boton rosa por pantalla: el que confirma. */
+        .pg-button-complete {
+            background: var(--arc-grad);
+            border-color: var(--arc-accent-deep);
+            color: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 5px 0 var(--arc-accent-deep);
+        }
+
+        .pg-button-complete:hover {
+            background: linear-gradient(160deg, #ff7096 0%, #ef1a5f 100%);
+            border-color: var(--arc-accent-deep);
+            color: #fff;
+        }
+
+        #powergrid-container .powergrid-instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== MINESWEEPER STYLES ========== */
+        #minesweeper-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .minesweeper-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #minesweeper-container .minesweeper-info-bar,
+        #minesweeper-container .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .ms-grid {
+            display: grid;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+        }
+
+        .ms-cell {
+            aspect-ratio: 1;
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve-corto);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(2.2vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-4);
+            cursor: pointer;
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.2s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.2s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+            position: relative;
+        }
+
+        /* La casilla bajo el raton: rosa, que es sobre la que vas a jugar. */
+        .ms-cell:hover:not(.revealed):not(.mine-hit) {
+            background: #fff;
+            border-color: var(--arc-accent);
+            transform: scale(1.05);
+        }
+
+        .ms-cell.revealed {
+            background: var(--arc-sunken);
+            border-color: var(--arc-line-soft);
+            box-shadow: var(--arc-relieve-hundido);
+            cursor: default;
+        }
+
+        /* Los numeros de minas: mismos ocho colores, oscurecidos para que
+           se lean sobre el crema. Siguen siendo ocho tonos distintos. */
+        .ms-cell.revealed.number-1 {
+            color: #1d4ed8;
+        }
+
+        .ms-cell.revealed.number-2 {
+            color: #15803d;
+        }
+
+        .ms-cell.revealed.number-3 {
+            color: var(--arc-bad);
+        }
+
+        .ms-cell.revealed.number-4 {
+            color: #7e22ce;
+        }
+
+        .ms-cell.revealed.number-5 {
+            color: #c2410c;
+        }
+
+        .ms-cell.revealed.number-6 {
+            color: #0e7490;
+        }
+
+        .ms-cell.revealed.number-7 {
+            color: #be185d;
+        }
+
+        .ms-cell.revealed.number-8 {
+            color: #a16207;
+        }
+
+        .ms-cell.mine-hit {
+            background: var(--arc-bad);
+            color: #fff;
+            border-color: var(--arc-bad);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 2px 2px 0 #000;
+            animation: mineExplode 0.4s ease;
+            cursor: default;
+        }
+
+        .ms-cell.mine-revealed {
+            background: var(--arc-bad-wash);
+            color: var(--arc-bad);
+            border-color: var(--arc-bad);
+            box-shadow: var(--arc-relieve-hundido);
+        }
+
+        @keyframes mineExplode {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        #minesweeper-container .minesweeper-instructions,
+        #minesweeper-container .instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== WIRE PUZZLE STYLES ========== */
+        #wirepuzzle-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .wirepuzzle-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #wirepuzzle-container .wirepuzzle-info-bar,
+        #wirepuzzle-container .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .wp-game-area {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            height: calc(40vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+        }
+
+        .wp-wires-left,
+        .wp-wires-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .wp-wire {
+            width: calc(12vh / var(--ogn-escala, 1));
+            height: calc(4vh / var(--ogn-escala, 1));
+            display: flex;
+            align-items: center;
+            padding: 0 calc(1vh / var(--ogn-escala, 1));
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve-corto);
+            cursor: pointer;
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.2s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.2s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+            position: relative;
+        }
+
+        .wp-wire-left {
+            justify-content: flex-start;
+        }
+
+        .wp-wire-left::after {
+            content: '';
+            position: absolute;
+            right: calc(-1.5vh / var(--ogn-escala, 1));
+            width: calc(1.5vh / var(--ogn-escala, 1));
+            height: calc(0.4vh / var(--ogn-escala, 1));
+            background: currentColor;
+            border-radius: 4px;
+        }
+
+        .wp-wire-right {
+            justify-content: flex-end;
+        }
+
+        .wp-wire-right::before {
+            content: '';
+            position: absolute;
+            left: calc(-1.5vh / var(--ogn-escala, 1));
+            width: calc(1.5vh / var(--ogn-escala, 1));
+            height: calc(0.4vh / var(--ogn-escala, 1));
+            background: currentColor;
+            border-radius: 4px;
+        }
+
+        .wp-wire-label {
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(1.8vh / var(--ogn-escala, 1));
+            font-weight: 400;
+            letter-spacing: 0.056em;
+        }
+
+        .wp-wire:hover:not(.connected):not(.disabled) {
+            background: #fff;
+            border-color: var(--arc-accent);
+            transform: scale(1.02);
+        }
+
+        /* El cable elegido: rosa del sistema. El color del cable lo pone el JS
+           en linea, asi que aqui hay que ganarle con !important para que el
+           codigo y el conector se vean blancos sobre el rosa. */
+        .wp-wire.selected {
+            background: var(--arc-grad);
+            border-color: var(--arc-accent-deep);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 0 var(--arc-accent-deep);
+            color: #fff !important;
+        }
+
+        /* Conectado = acierto → verde de estado. */
+        .wp-wire.connected {
+            background: var(--arc-ok-wash);
+            border-color: var(--arc-ok);
+            box-shadow: var(--arc-relieve-hundido);
+            color: var(--arc-ok) !important;
+            cursor: default;
+            opacity: 0.85;
+        }
+
+        .wp-wire.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .wp-connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .wp-connection-line {
+            stroke-width: calc(0.3vh / var(--ogn-escala, 1));
+            stroke-linecap: round;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .wp-connection-line.correct {
+            stroke: var(--arc-ok);
+            filter: drop-shadow(0 1px 0 rgba(10, 65, 35, 0.4));
+        }
+
+        .wp-connection-line.wrong {
+            stroke: var(--arc-bad);
+            filter: drop-shadow(0 1px 0 rgba(140, 7, 51, 0.4));
+            animation: wireShake 0.3s ease;
+        }
+
+        .wp-connection-line.selecting {
+            stroke: var(--arc-accent);
+            stroke-dasharray: calc(1vh / var(--ogn-escala, 1));
+            animation: wirePulse 1s linear infinite;
+        }
+
+        @keyframes wirePulse {
+            0% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: calc(-2vh / var(--ogn-escala, 1));
+            }
+        }
+
+        @keyframes wireShake {
+
+            0%,
+            100% {
+                stroke-width: calc(0.3vh / var(--ogn-escala, 1));
+            }
+
+            50% {
+                stroke-width: calc(0.5vh / var(--ogn-escala, 1));
+            }
+        }
+
+        #wirepuzzle-container .wirepuzzle-instructions,
+        #wirepuzzle-container .instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== CODE BREAKER STYLES ========== */
+        #codebreaker-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .codebreaker-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #codebreaker-container .codebreaker-info-bar,
+        #codebreaker-container .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+        }
+
+        .cb-sequence-display {
+            display: flex;
+            gap: calc(1vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+            justify-content: center;
+        }
+
+        /* La secuencia que hay que encontrar: rosa, que es el objetivo. */
+        .cb-seq-item {
+            width: calc(5vh / var(--ogn-escala, 1));
+            height: calc(5vh / var(--ogn-escala, 1));
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-accent);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(1.8vh / var(--ogn-escala, 1));
+            color: var(--arc-accent-deep);
+            box-shadow: var(--arc-relieve-corto);
+        }
+
+        /* Ya encontrado: verde de estado. */
+        .cb-seq-item.found {
+            background: var(--arc-ok);
+            border-color: var(--arc-ok);
+            color: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 3px 0 rgba(10, 65, 35, 0.6);
+        }
+
+        .cb-matrix {
+            display: grid;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+        }
+
+        .cb-cell {
+            aspect-ratio: 1;
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve-corto);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(2.2vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            cursor: pointer;
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.2s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.2s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+        }
+
+        .cb-cell:hover:not(.disabled):not(.selected) {
+            background: #fff;
+            border-color: var(--arc-accent);
+            color: var(--arc-ink);
+        }
+
+        /* La fila/columna donde toca jugar: papel encendido con canto rosa. */
+        .cb-cell.highlighted {
+            background: #fff;
+            border-color: var(--arc-accent);
+            color: var(--arc-ink);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 3px 0 rgba(216, 27, 85, 0.3);
+        }
+
+        /* Lo elegido: rosa lleno. */
+        .cb-cell.selected {
+            background: var(--arc-grad);
+            color: #fff;
+            border-color: var(--arc-accent-deep);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 0 var(--arc-accent-deep);
+        }
+
+        .cb-cell.correct {
+            background: var(--arc-ok);
+            color: #fff;
+            border-color: var(--arc-ok);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 3px 0 rgba(10, 65, 35, 0.6);
+            animation: correctPulse 0.4s ease;
+        }
+
+        .cb-cell.wrong {
+            background: var(--arc-bad);
+            color: #fff;
+            border-color: var(--arc-bad);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 2px 2px 0 #000;
+            animation: shake 0.3s ease;
+        }
+
+        .cb-cell.disabled {
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .cb-buffer-bar {
+            display: flex;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+
+            width: calc(55vh / var(--ogn-escala, 1));
+            justify-content: center;
+        }
+
+        .cb-buffer-slot {
+            width: calc(5vh / var(--ogn-escala, 1));
+            height: calc(5vh / var(--ogn-escala, 1));
+            background: var(--arc-sunken);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve-hundido);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(1.8vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-4);
+        }
+
+        .cb-buffer-slot.filled {
+            background: var(--arc-grad);
+            border-color: var(--arc-accent-deep);
+            color: #fff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 3px 0 var(--arc-accent-deep);
+        }
+
+        #codebreaker-container .codebreaker-instructions,
+        #codebreaker-container .instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+        }
+
+        /* ========== HACKING STYLES ========== */
+        #hacking-container {
+            position: fixed;
+            right: calc(1vh / var(--ogn-escala, 1));
+            top: 50%;
+            transform: translateY(-50%) scale(0.7);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: calc(0.8vh / var(--ogn-escala, 1));
+            z-index: 9999;
+        }
+
+        .hacking-label {
+            width: 100%;
+            text-align: center;
+            font-size: calc(1vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            font-weight: 800;
+            font-style: italic;
+            font-family: var(--arc-cond);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #hacking-container .hacking-info-bar,
+        #hacking-container .info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+            color: var(--arc-ink);
+
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.3s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.3s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: calc(1.2vh / var(--ogn-escala, 1));
+            width: calc(55vh / var(--ogn-escala, 1));
+            padding: calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            box-shadow: var(--arc-panel);
+        }
+
+        .code-cell {
+            aspect-ratio: 1;
+            background: var(--arc-paper-flat);
+            border: 1px solid var(--arc-line-soft);
+            border-radius: 5px;
+            box-shadow: var(--arc-relieve);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--arc-mono);
+            font-variant-numeric: tabular-nums;
+            font-size: calc(2.8vh / var(--ogn-escala, 1));
+            color: var(--arc-ink-3);
+            cursor: pointer;
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, color cubic-bezier(0.4, 0, 0.2, 1) 0.2s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.2s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.2s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-cell:hover {
+            background: #fff;
+            border-color: var(--arc-accent);
+            color: var(--arc-ink);
+        }
+
+        /* La casilla que canta la secuencia: rosa, es LO QUE HAY QUE ACERTAR. */
+        .code-cell.showing {
+            background: var(--arc-grad);
+            color: #fff;
+            border-color: var(--arc-accent-deep);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 5px 0 var(--arc-accent-deep);
+            transform: scale(1.05);
+        }
+
+        .code-cell.correct {
+            background: var(--arc-ok);
+            color: #fff;
+            border-color: var(--arc-ok);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 5px 0 rgba(10, 65, 35, 0.65);
+            animation: correctPulse 0.4s ease;
+        }
+
+        .code-cell.wrong {
+            background: var(--arc-bad);
+            color: #fff;
+            border-color: var(--arc-bad);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 2px 2px 0 #000;
+            animation: shake 0.3s ease;
+        }
+
+        .code-cell.disabled {
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        @keyframes correctPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(calc(-0.8vh / var(--ogn-escala, 1)));
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(calc(0.8vh / var(--ogn-escala, 1)));
+            }
+        }
+
+        #hacking-progress-dots {
+            display: flex;
+            gap: calc(1.5vh / var(--ogn-escala, 1));
+            padding: calc(0.5vh / var(--ogn-escala, 1));
+        }
+
+        #hacking-progress-dots .progress-dot {
+            width: calc(1.2vh / var(--ogn-escala, 1));
+            height: calc(1.2vh / var(--ogn-escala, 1));
+            border-radius: 50%;
+            background: var(--arc-sunken);
+            border: 1px solid var(--arc-line);
+            box-shadow: var(--arc-relieve-hundido);
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.3s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.3s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        #hacking-progress-dots .progress-dot.active {
+            background: var(--arc-grad);
+            border-color: var(--arc-accent-deep);
+            box-shadow: 0 2px 0 var(--arc-accent-deep);
+            animation: hackingPulse 1.5s infinite;
+        }
+
+        #hacking-progress-dots .progress-dot.completed {
+            background: var(--arc-ok);
+            border-color: var(--arc-ok);
+            box-shadow: 0 2px 0 rgba(10, 65, 35, 0.7);
+        }
+
+        @keyframes hackingPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.9;
+            }
+        }
+
+        #hacking-container .hacking-instructions,
+        #hacking-container .instructions {
+            font-family: var(--arc-text);
+            text-align: center;
+            padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+            background: var(--arc-paper);
+            border: 1px solid var(--arc-edge);
+            border-radius: 5px;
+            color: var(--arc-ink-2);
+            font-size: calc(1.2vh / var(--ogn-escala, 1));
+            letter-spacing: 0.067em;
+            text-transform: none;
+            font-weight: 600;
+            box-shadow: var(--arc-panel-liso);
+
+            transition: background-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, border-color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, color cubic-bezier(0.4, 0, 0.2, 1) 0.3s, opacity cubic-bezier(0.4, 0, 0.2, 1) 0.3s, transform cubic-bezier(0.4, 0, 0.2, 1) 0.3s, box-shadow cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        /* ========== PIEZAS COMPARTIDAS ==========
+           La palabra resaltada de las instrucciones (ESPACIO, etc.) en la
+           cursiva gruesa del tema y en el rosa profundo. */
+        #timingcircles-container .instructions strong,
+        #varhack-container .instructions strong,
+        #powergrid-container .instructions strong,
+        #minesweeper-container .instructions strong,
+        #wirepuzzle-container .instructions strong,
+        #codebreaker-container .instructions strong,
+        #hacking-container .instructions strong {
+            color: var(--arc-accent-deep);
+            font-family: var(--arc-cond);
+            font-style: italic;
+            font-weight: 800;
+            text-shadow: none;
+        }
+    </style>
+    <!-- PEGATINA (solo Origen): despues de las tres hojas, las pisa con mas peso. -->
+    <link rel="stylesheet" href="pegatina.css?v=r0610">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ORIGEN · vigilante del raton. NO EDITAR A MANO: este trozo es identico
+         en todas las interfaces del servidor y lo reparte
+         kit/repartir-foco.py. El lado de Lua es @origen_map/shared/foco.lua:
+         mientras el recurso tiene el raton, pregunta cada 1,5 s si esta
+         pagina enseña algo, y si dos veces seguidas no, suelta el raton.
+         Ante la duda contesta que SI: soltar el raton de una pantalla que se
+         ve es peor que tardar en soltarlo. -->
+    <script>
+      (function () {
+        // El fetch del navegador, guardado antes de que la pagina cargue lo
+        // suyo: alguna (origen_titlemenu) declara un `fetch` global propio.
+        var enviar = window.fetch.bind(window)
+        var TOPE = 6000
+        var HUECO = /^(transparent|rgba\([^)]*,\s*0(\.0+)?\))$/
+        var SIEMPRE = { IMG: 1, VIDEO: 1, CANVAS: 1, IFRAME: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, BUTTON: 1, svg: 1, SVG: 1 }
+        var color = function (c) { return c && !HUECO.test(c) }
+        var borde = function (cs) {
+          return (parseFloat(cs.borderTopWidth) > 0 && color(cs.borderTopColor)) ||
+            (parseFloat(cs.borderBottomWidth) > 0 && color(cs.borderBottomColor)) ||
+            (parseFloat(cs.borderLeftWidth) > 0 && color(cs.borderLeftColor)) ||
+            (parseFloat(cs.borderRightWidth) > 0 && color(cs.borderRightColor))
+        }
+        var capa = function (cs) {
+          return color(cs.backgroundColor) || cs.backgroundImage !== 'none' ||
+            cs.boxShadow !== 'none' || borde(cs)
+        }
+        var pseudo = function (el, cual) {
+          var ps = getComputedStyle(el, cual)
+          var c = ps.content
+          if (!c || c === 'none' || c === 'normal') return false
+          return capa(ps) || (c.length > 2 && color(ps.color))
+        }
+        var pinta = function (el, cs) {
+          if (SIEMPRE[el.tagName]) return true
+          if (capa(cs)) return true
+          if (color(cs.color) && parseFloat(cs.fontSize) > 0) {
+            for (var h = el.firstChild; h; h = h.nextSibling) {
+              if (h.nodeType === 3 && h.nodeValue.trim()) return true
+            }
+          }
+          return pseudo(el, '::before') || pseudo(el, '::after')
+        }
+        var hayAlgo = function () {
+          if (!document.body) return true
+          var W = window.innerWidth
+          var H = window.innerHeight
+          var paseo = document.createTreeWalker(document.body, 1, {
+            acceptNode: function (el) {
+              var cs = getComputedStyle(el)
+              // Lo que no se ve no deja ver a sus hijos: se salta la rama.
+              if (cs.display === 'none' || parseFloat(cs.opacity) < 0.02) return 2
+              // Ni lo marcado como HUD fijo (sin raton): no es una pantalla
+              // abierta, y si contara la red no soltaria nunca.
+              if (el.hasAttribute('data-foco-ignora')) return 2
+              return 1
+            }
+          })
+          var n = 0
+          var el
+          while ((el = paseo.nextNode())) {
+            if (++n > TOPE) return true
+            var cs = getComputedStyle(el)
+            if (cs.visibility !== 'visible') continue
+            var r = el.getBoundingClientRect()
+            if (r.width < 2 || r.height < 2) continue
+            if (r.right <= 0 || r.bottom <= 0 || r.left >= W || r.top >= H) continue
+            if (pinta(el, cs)) return true
+          }
+          return false
+        }
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (!d || d.accion !== 'origen:foco:mira') return
+          var visto = true
+          // Una pagina con HUD fijo (siempre pinta algo) dice ella misma si
+          // hay una pantalla CON RATON delante: window.__origenFocoVisto.
+          try {
+            visto = typeof window.__origenFocoVisto === 'function'
+              ? window.__origenFocoVisto() !== false
+              : hayAlgo()
+          } catch (err) { visto = true }
+          try {
+            var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+            if (!yo) return
+            enviar('https://' + yo + '/origen:foco:veo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: JSON.stringify({ n: d.n, visto: visto })
+            }).catch(function () {})
+          } catch (err) {}
+        })
+        window.__origenFocoHayAlgo = hayAlgo
+      })()
+    </script>
+    <!-- /ORIGEN · vigilante del raton -->
+    <!-- ORIGEN · marca (el color de la casa segun el servidor: origen o
+         nacion). NO EDITAR A MANO: este trozo es identico en todas las
+         interfaces y lo reparte kit/repartir-marca.py desde kit/marca.js.
+         En origen no hace nada. -->
+    <script>
+      (function () {
+        var PALETAS = {
+          /* tono: el de la marca nueva, en grados.
+             luz:  por donde pasa la escala, [luz del rosa, luz nueva]. El naranja
+                   es mas claro que el rosa a igual papel: el de los botones sube,
+                   y el de LEER sobre crema se queda oscuro para que se lea.
+             fijos: los que tienen que salir clavados, pedidos por el usuario:
+                   acc #FD8A23 · soft #FFAA5C · pale #FFD9B6 · deep #6A3402 */
+          nacion: {
+            tono: 28.5,
+            sat: 1.04,
+            luz: [[0, 0], [0.267, 0.212], [0.396, 0.36], [0.453, 0.565], [0.714, 0.68], [0.8, 0.857], [1, 1]],
+            fijos: {
+              e0074f: [253, 138, 35], fc0259: [253, 138, 35],
+              /* el rosa menos neon (06/10) sale con el MISMO naranja que el rosa de antes */
+              d81b55: [255, 146, 48], df2f63: [255, 154, 64], b3123f: [227, 108, 0],
+              ff6d97: [255, 170, 92],
+              fd9bbd: [255, 217, 182],
+              '7d0b31': [106, 52, 2], '82173c': [106, 52, 2]
+            }
+          }
+        }
+        /* La familia del rosa: del granate antiguo (#850e49) al rosa-rojo del movil
+           (#c2153f). El rojo de los errores (350 en adelante) queda fuera. */
+        var DESDE = 318, HASTA = 349, SAT_MIN = 0.3
+
+        var raiz = document.documentElement
+        var paleta = null
+        var memo = {}
+
+        var hex2 = function (n) { return (n < 16 ? '0' : '') + n.toString(16) }
+
+        /* -> [r, g, b] de la marca nueva, o null si el color no es de la familia. */
+        var cambiar = function (r, g, b) {
+          var k = (r << 16) | (g << 8) | b
+          if (k in memo) return memo[k]
+          var res = null
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn
+          if (d > 0) {
+            var l = (mx + mn) / 510
+            var s = d / (255 - Math.abs(mx + mn - 255))
+            var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4
+            h = (h * 60 + 360) % 360
+            if (s >= SAT_MIN && h >= DESDE && h < HASTA) {
+              res = paleta.fijos[hex2(r) + hex2(g) + hex2(b)]
+              if (!res) {
+                var c = paleta.luz, L = l
+                for (var i = 1; i < c.length; i++) {
+                  if (l <= c[i][0]) {
+                    L = c[i - 1][1] + (c[i][1] - c[i - 1][1]) * (l - c[i - 1][0]) / (c[i][0] - c[i - 1][0])
+                    break
+                  }
+                }
+                var S = Math.min(1, s * paleta.sat)
+                var C = (1 - Math.abs(2 * L - 1)) * S
+                var H = paleta.tono / 60
+                var X = C * (1 - Math.abs(H % 2 - 1))
+                var m = L - C / 2
+                var t = H < 1 ? [C, X, 0] : H < 2 ? [X, C, 0] : H < 3 ? [0, C, X] : H < 4 ? [0, X, C] : H < 5 ? [X, 0, C] : [C, 0, X]
+                res = [Math.round((t[0] + m) * 255), Math.round((t[1] + m) * 255), Math.round((t[2] + m) * 255)]
+              }
+            }
+          }
+          return (memo[k] = res)
+        }
+
+        /* Todo color escrito en un texto de CSS: #hex (3, 4, 6 u 8 cifras, tambien
+           como %23 dentro de un data:), rgb()/rgba() y los tres canales sueltos de
+           un token (`--acc-rgb: 224, 7, 79`). */
+        var COLOR = /(#|%23)([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])|(rgba?\(\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})|(--[\w-]+\s*:\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(?=\s*(?:;|!|$))/g
+
+        var pintar = function (texto) {
+          if (!paleta || !texto) return texto
+          return texto.replace(COLOR, function (todo, almo, hex, f1, r1, s1, g1, s2, b1, f2, r2, s3, g2, s4, b2) {
+            var n
+            if (hex) {
+              var v = hex.length < 6 ? hex.replace(/./g, '$&$&') : hex
+              n = cambiar(parseInt(v.substr(0, 2), 16), parseInt(v.substr(2, 2), 16), parseInt(v.substr(4, 2), 16))
+              return n ? almo + hex2(n[0]) + hex2(n[1]) + hex2(n[2]) + v.substr(6) : todo
+            }
+            if (f1) {
+              n = cambiar(+r1, +g1, +b1)
+              return n && +r1 < 256 && +g1 < 256 && +b1 < 256 ? f1 + n[0] + s1 + n[1] + s2 + n[2] : todo
+            }
+            n = cambiar(+r2, +g2, +b2)
+            return n && +r2 < 256 && +g2 < 256 && +b2 < 256 ? f2 + n[0] + s3 + n[1] + s4 + n[2] : todo
+          })
+        }
+
+        /* Las hojas. NO SE MODIFICA NINGUNA REGLA: la hoja se lee, se repinta el
+           texto y se sustituye entera por un <style> en su mismo sitio.
+
+           Es a proposito y costo un cuelgue encontrarlo (02/10): en el Chromium 103
+           del juego, escribir en una regla de la hoja del movil (Tailwind v4)
+           --`regla.style.cssText = ...` o un solo `setProperty`-- deja el navegador
+           de TODAS las interfaces en un bucle del que no sale. En otras hojas no
+           pasa y en un Chromium moderno tampoco, asi que no se ve en los bancos.
+           Leer si se puede; escribir, no. */
+        var cambio = false
+        var urls = function (texto, base) {
+          // Al pasar de <link> a <style> las rutas dejan de ser relativas al .css.
+          return texto.replace(/url\(\s*(["']?)([^"')]+)\1\s*\)/g, function (todo, c, u) {
+            if (/^(data:|blob:|https?:|nui:|about:|#)/i.test(u)) return todo
+            try { return 'url("' + new URL(u, base).href + '")' } catch (e) { return todo }
+          })
+        }
+        var texto = function (lista, base) {
+          var out = []
+          for (var i = 0; i < lista.length; i++) {
+            var r = lista[i], c = r.cssText, k = c.indexOf('{')
+            // Un @import de casa se trae dentro: su hoja no tiene etiqueta propia.
+            var dentro = null
+            try { dentro = r.styleSheet && r.styleSheet.cssRules } catch (e) {}
+            if (dentro) {
+              var t = texto(dentro, r.styleSheet.href || base)
+              var m = r.media && r.media.mediaText
+              out.push(m ? '@media ' + m + ' {' + t + '}' : t)
+            } else if (k < 0) {
+              // Sin llaves: un @import de fuera, un @namespace... o declaraciones
+              // sueltas dentro de una regla anidada.
+              var p = r.style ? pintar(c) : c
+              if (p !== c) cambio = true
+              out.push(urls(p, base))
+            } else if (r.cssRules) {
+              // Un grupo (@media, @supports, @layer, @keyframes) o, en un
+              // Chromium con anidado, una regla con hijas.
+              var cuerpo = ''
+              if (r.style) {
+                var d = r.style.cssText, nd = pintar(d)
+                if (nd !== d) cambio = true
+                cuerpo = urls(nd, base)
+              }
+              out.push(c.substr(0, k) + '{' + cuerpo + texto(r.cssRules, base) + '}')
+            } else {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              var b = c.substr(k), nb = pintar(b)
+              if (nb !== b) cambio = true
+              out.push(c.substr(0, k) + urls(nb, base))
+            }
+          }
+          return out.join('\n')
+        }
+        /* Tope de reescrituras por nodo. Si otro codigo de la pagina vuelve a
+           poner el rosa cada vez que se lo cambiamos, se le deja ganar: mejor un
+           rosa suelto que dos observadores persiguiendose sin fin. */
+        var veces = new WeakMap()
+        var harto = function (nodo) {
+          var n = (veces.get(nodo) || 0) + 1
+          veces.set(nodo, n)
+          return n > 40
+        }
+        var hoja = function (h) {
+          var lista, dueno = h && h.ownerNode
+          if (!dueno || dueno.nodeType !== 1) return
+          // Una hoja de otro origen (fuentes de Google) no deja leer sus reglas.
+          try { lista = h.cssRules } catch (e) { return }
+          if (!lista || !lista.length) return
+          cambio = false
+          var nuevo
+          try { nuevo = texto(lista, h.href || document.baseURI) } catch (e) { return }
+          if (!cambio || harto(dueno)) return
+          if (dueno.nodeName.toLowerCase() === 'style') {
+            dueno.textContent = nuevo
+            return
+          }
+          var s = document.createElement('style')
+          s.setAttribute('data-ogn-marca', h.href || '')
+          if (dueno.media) s.media = dueno.media
+          s.textContent = nuevo
+          dueno.parentNode.insertBefore(s, dueno.nextSibling)
+          dueno.disabled = true
+        }
+        var hojas = function () {
+          // Sobre una copia: sustituir una hoja cambia la lista mientras se recorre.
+          var l = Array.prototype.slice.call(document.styleSheets)
+          for (var i = 0; i < l.length; i++) hoja(l[i])
+        }
+
+        /* Lo escrito en el propio elemento: style="" y los atributos de SVG. */
+        var ATRIBUTOS = ['style', 'fill', 'stroke', 'stop-color', 'flood-color', 'color']
+        var elemento = function (el) {
+          for (var i = 0; i < ATRIBUTOS.length; i++) {
+            var v = el.getAttribute(ATRIBUTOS[i])
+            if (v) {
+              var n = pintar(v)
+              if (n !== v && !harto(el)) el.setAttribute(ATRIBUTOS[i], n)
+            }
+          }
+        }
+        var SELECTOR = '[style],[fill],[stroke],[stop-color],[flood-color]'
+        var rama = function (nodo) {
+          if (nodo.nodeType !== 1) return
+          var nombre = nodo.nodeName.toLowerCase()
+          if (nombre === 'style') {
+            hoja(nodo.sheet)
+            // El texto de un <style> puede llegar despues que la etiqueta.
+            setTimeout(function () { hoja(nodo.sheet) }, 0)
+            return
+          }
+          if (nombre === 'link') {
+            hoja(nodo.sheet)
+            nodo.addEventListener('load', function () { hoja(nodo.sheet) })
+            return
+          }
+          elemento(nodo)
+          var dentro = nodo.querySelectorAll(SELECTOR + ',style')
+          for (var i = 0; i < dentro.length; i++) {
+            if (dentro[i].sheet) hoja(dentro[i].sheet)
+            else elemento(dentro[i])
+          }
+        }
+
+        /* Lo que no pasa por el DOM: el <canvas> y las reglas que mete una libreria
+           a mano. Solo se enganchan con otra marca puesta. */
+        var ganchos = function () {
+          try {
+            var P = CanvasRenderingContext2D.prototype
+            var uno = function (n) {
+              var d = Object.getOwnPropertyDescriptor(P, n)
+              if (!d || !d.set) return
+              Object.defineProperty(P, n, {
+                configurable: true,
+                enumerable: d.enumerable,
+                get: d.get,
+                set: function (v) { d.set.call(this, typeof v === 'string' ? pintar(v) : v) }
+              })
+            }
+            uno('fillStyle'); uno('strokeStyle'); uno('shadowColor')
+            var parada = CanvasGradient.prototype.addColorStop
+            CanvasGradient.prototype.addColorStop = function (o, c) {
+              return parada.call(this, o, typeof c === 'string' ? pintar(c) : c)
+            }
+          } catch (e) {}
+          try {
+            var meter = CSSStyleSheet.prototype.insertRule
+            CSSStyleSheet.prototype.insertRule = function (t, i) {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              if (typeof t === 'string') {
+                var c = t.indexOf('{')
+                if (c > 0) t = t.substr(0, c) + pintar(t.substr(c))
+              }
+              return arguments.length > 1 ? meter.call(this, t, i) : meter.call(this, t)
+            }
+          } catch (e) {}
+        }
+
+        var activar = function (nombre) {
+          if (paleta || !PALETAS.hasOwnProperty(nombre)) return
+          paleta = PALETAS[nombre]
+          raiz.dataset.marca = nombre
+          /* El mismo freno que el del tema: una propiedad EN TRANSICION cuyo valor
+             sale de un var() se queda congelada en el color viejo cuando la
+             variable cambia desde una hoja. */
+          var freno = document.createElement('style')
+          freno.textContent = '*,*::before,*::after{transition:none !important}'
+          ;(document.head || raiz).appendChild(freno)
+          ganchos()
+          hojas()
+          rama(raiz)
+          new MutationObserver(function (cambios) {
+            for (var i = 0; i < cambios.length; i++) {
+              var c = cambios[i]
+              if (c.type === 'attributes') elemento(c.target)
+              // Le han cambiado el texto a un <style> (la recarga en caliente).
+              else if (c.target.nodeName.toLowerCase() === 'style') hoja(c.target.sheet)
+              else for (var j = 0; j < c.addedNodes.length; j++) rama(c.addedNodes[j])
+            }
+          }).observe(raiz, { subtree: true, childList: true, attributes: true, attributeFilter: ATRIBUTOS })
+          // Las hojas que aun no habian cargado cuando llego la respuesta.
+          document.addEventListener('DOMContentLoaded', hojas)
+          window.addEventListener('load', hojas)
+          if (document.body) void document.body.offsetHeight
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { freno.remove() })
+          })
+          // Para la pagina que quiera saberlo (un logo que cambiar, por ejemplo).
+          window.postMessage({ accion: 'origen:marca:puesta', marca: nombre }, '*')
+        }
+
+        raiz.dataset.marca = 'origen'
+        // Para quien dibuja con colores que esto no ve (WebGL, una imagen).
+        window.__ognMarca = { pintar: pintar, de: function () { return raiz.dataset.marca } }
+
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:marca') activar(d.marca)
+        })
+        // Los bancos de pruebas, sin juego: index.html?marca=nacion
+        try {
+          var q = /[?&]marca=([\w-]+)/.exec(location.search)
+          if (q) activar(q[1])
+        } catch (e) {}
+        // La pantalla de carga: ahi no hay Lua de cliente, lo trae el servidor.
+        try {
+          if (window.nuiHandoverData && window.nuiHandoverData.marca) activar(window.nuiHandoverData.marca)
+        } catch (e) {}
+        /* Y lo normal: preguntarselo al Lua de este recurso. Con reintentos, porque
+           la pagina puede nacer antes de que su script haya puesto el callback. */
+        var intentos = 0
+        var preguntar = function () {
+          var yo = null
+          try { yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null } catch (e) {}
+          // Hay marcos donde el juego no pone esa funcion (visto en el movil al
+          // recargarse): el nombre del recurso tambien va en la direccion.
+          if (!yo) {
+            var h = /^cfx-nui-(.+)$/.exec(location.hostname)
+            if (h) yo = h[1]
+          }
+          if (!yo) return
+          fetch('https://' + yo + '/origen:marca:dame', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            body: '{}'
+          })
+            .then(function (r) { return r.json() })
+            .then(function (d) {
+              if (d && d.marca) activar(d.marca)
+              else throw new Error('sin marca')
+            })
+            .catch(function () { if (++intentos < 6) setTimeout(preguntar, 1500) })
+        }
+        preguntar()
+      })()
+    </script>
+  
+    <!-- ORIGEN · interfaz. NO EDITAR A MANO: este trozo es identico en todas
+         las interfaces del servidor y lo reparte kit/repartir-tema.py. El
+         lado de Lua es @origen_map/shared/tema.lua. Lleva el silencio de la
+         interfaz y la escala por encima de 1080p. -->
+    <script>
+      (function () {
+        var raiz = document.documentElement
+        /* El silencio de la interfaz (boton del riel del inventario, 27/09).
+           Calla los RUIDOS de pantalla: clics, abrir, cerrar, pasar por
+           encima. No la musica ni los videos (<video> o en bucle) ni los
+           pitidos de la radio ni las voces de los personajes (carpeta
+           voces/): eso es contenido, no ruido de menu.
+           Se engancha a play() y a las conexiones de Web Audio antes de que
+           cargue el bundle, asi vale para todas las paginas sin tocarlas. */
+        var callado = false
+        var LIBRE = /walkie|music|musica|radio|[/]voces[/]/i
+        var esRuido = function (el) {
+          return el.tagName !== 'VIDEO' && !el.loop && !LIBRE.test(el.currentSrc || el.src || '')
+        }
+        var ajustar = function (el) {
+          if (callado && esRuido(el)) {
+            if (!el.muted) { el.muted = true; el.__origenCallado = true }
+          } else if (el.__origenCallado) {
+            el.muted = false; el.__origenCallado = false
+          }
+        }
+        try {
+          var reproducir = HTMLMediaElement.prototype.play
+          HTMLMediaElement.prototype.play = function () {
+            ajustar(this)
+            return reproducir.apply(this, arguments)
+          }
+        } catch (e) {}
+        /* Web Audio (minijuegos, Howler...): todo lo que va a los altavoces
+           pasa por una ganancia nuestra por contexto, a 0 en silencio. */
+        var ganancias = []
+        try {
+          var conectar = AudioNode.prototype.connect
+          AudioNode.prototype.connect = function (destino) {
+            if (typeof AudioDestinationNode !== 'undefined' && destino instanceof AudioDestinationNode) {
+              var ctx = destino.context
+              var g = ctx.__origenGanancia
+              if (!g) {
+                g = ctx.createGain()
+                g.gain.value = callado ? 0 : 1
+                conectar.call(g, destino)
+                ctx.__origenGanancia = g
+                ganancias.push(g)
+              }
+              if (this !== g) {
+                var args = Array.prototype.slice.call(arguments)
+                args[0] = g
+                return conectar.apply(this, args)
+              }
+            }
+            return conectar.apply(this, arguments)
+          }
+        } catch (e) {}
+        var silenciar = function (si) {
+          si = si === true
+          if (si === callado) return
+          callado = si
+          raiz.dataset.silencio = si ? 'si' : 'no'
+          for (var i = 0; i < ganancias.length; i++) ganancias[i].gain.value = si ? 0 : 1
+          var els = document.querySelectorAll('audio,video')
+          for (var j = 0; j < els.length; j++) ajustar(els[j])
+          // El boton del riel se entera por este mensaje.
+          window.postMessage({ accion: 'origen:silencio', silencio: si }, '*')
+        }
+        raiz.dataset.silencio = 'no'
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:silencio') silenciar(d.silencio)
+        })
+        /* La ESCALA por encima de 1080p (27/09). Las interfaces se dibujaron
+           a 1920x1080; en 1440p o 4K lo medido en px se quedaba chico y los
+           menus salian finos. Solo en las paginas con <html data-escala>, y
+           solo si la pantalla pasa de 1080 de alto: a 1080 no se toca nada.
+           - El body se escala entero, como si la pantalla midiera 1080.
+           - Lo que la pagina lee por JS (ventana, raton, cajas) se traduce a
+             esas medidas, para que arrastrar y los clics caigan donde toca.
+           - Los vh/vw los divide al compilar origen_map/kit/escala-postcss.mjs.
+           Con `zoom` no: en el Chromium 103 del juego elementFromPoint y
+           getBoundingClientRect salen en coordenadas distintas (medido). */
+        ;(function () {
+          if (!raiz.hasAttribute('data-escala')) return
+          var dW = Object.getOwnPropertyDescriptor(window, 'innerWidth')
+          var dH = Object.getOwnPropertyDescriptor(window, 'innerHeight')
+          if (!dW || !dW.get || !dH || !dH.get) return
+          var s = 1
+          var calcular = function () {
+            var f = window.__ognEscalaForzada
+            return f > 0 ? f : Math.max(1, dH.get.call(window) / 1080)
+          }
+          var hoja = document.createElement('style')
+          hoja.textContent = 'html.ogn-escalado{overflow:hidden}' +
+            'html.ogn-escalado body{margin:0 !important;' +
+            'width:calc(100vw / var(--ogn-escala)) !important;min-width:0 !important;max-width:none !important;' +
+            'height:calc(100vh / var(--ogn-escala)) !important;min-height:0 !important;max-height:none !important;' +
+            'transform:scale(var(--ogn-escala));transform-origin:0 0;overflow:hidden}'
+          document.head.appendChild(hoja)
+          var aplicar = function () {
+            s = calcular()
+            raiz.style.setProperty('--ogn-escala', String(s))
+            raiz.classList.toggle('ogn-escalado', s !== 1)
+          }
+          var entre = function (v) { return v / s }
+          var envolver = function (obj, prop, fn, solo) {
+            var d = Object.getOwnPropertyDescriptor(obj, prop)
+            if (!d || !d.get) return
+            Object.defineProperty(obj, prop, {
+              configurable: true,
+              enumerable: d.enumerable,
+              get: function () {
+                var v = d.get.call(this)
+                return s === 1 || (solo && !solo(this)) ? v : fn(v)
+              },
+              set: d.set
+            })
+          }
+          try {
+            envolver(window, 'innerWidth', entre)
+            envolver(window, 'innerHeight', entre)
+            var raton = ['clientX', 'clientY', 'pageX', 'pageY', 'x', 'y']
+            for (var i = 0; i < raton.length; i++) envolver(MouseEvent.prototype, raton[i], entre)
+            var esRaiz = function (el) { return el === document.documentElement }
+            envolver(Element.prototype, 'clientWidth', entre, esRaiz)
+            envolver(Element.prototype, 'clientHeight', entre, esRaiz)
+            var caja = Element.prototype.getBoundingClientRect
+            Element.prototype.getBoundingClientRect = function () {
+              var r = caja.call(this)
+              return s === 1 ? r : new DOMRect(r.x / s, r.y / s, r.width / s, r.height / s)
+            }
+            var cajas = Element.prototype.getClientRects
+            Element.prototype.getClientRects = function () {
+              var l = cajas.call(this)
+              if (s === 1) return l
+              var o = []
+              for (var k = 0; k < l.length; k++) o.push(new DOMRect(l[k].x / s, l[k].y / s, l[k].width / s, l[k].height / s))
+              o.item = function (n) { return o[n] || null }
+              return o
+            }
+            var punto = Document.prototype.elementFromPoint
+            Document.prototype.elementFromPoint = function (x, y) { return punto.call(this, x * s, y * s) }
+            var puntos = Document.prototype.elementsFromPoint
+            if (puntos) Document.prototype.elementsFromPoint = function (x, y) { return puntos.call(this, x * s, y * s) }
+          } catch (e) {}
+          aplicar()
+          // En captura y antes que nadie: los oyentes de la pagina ya leen
+          // la ventana nueva.
+          window.addEventListener('resize', aplicar, true)
+          window.__ognAplicarEscala = aplicar
+        })()
+        // La pagina puede nacer DESPUES del aviso: entonces hay que preguntar.
+        try {
+          var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+          if (yo) {
+            fetch('https://' + yo + '/origen:tema:dame', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: '{}'
+            })
+              .then(function (r) { return r.json() })
+              .then(function (d) {
+                if (d && typeof d.silencio === 'boolean') silenciar(d.silencio)
+              })
+              .catch(function () {})
+          }
+        } catch (e) {}
+      })()
+    </script>
+  <style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+
+<body>
+    <!-- LOCKPICK -->
+    <div id="lockpick-container" style="display: none;">
+        <!-- Label superior -->
+        <div class="lockpick-label">GANZÚA</div>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-item">
+                <span class="value"><span id="current-pin">1</span>/<span id="total-pins">5</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="timer">5.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value"><span id="completed-pins">0</span>/<span
+                        id="total-pins-2">5</span></span>
+            </div>
+        </div>
+
+        <!-- Progress Dots -->
+        <div class="progress-dots" id="progress-dots"></div>
+
+        <!-- Game Track -->
+        <div class="game-track">
+            <div class="sweet-spot" id="sweet-spot"></div>
+            <div class="pin-indicator" id="pin-indicator"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <span>Pulsa <strong>ESPACIO</strong> cuando la aguja esté en la zona marcada.</span>
+        </div>
+    </div>
+
+    <!-- TIMING CIRCLES -->
+    <div id="timingcircles-container" style="display: none;">
+        <div class="timingcircles-label">CÍRCULOS</div>
+
+        <div class="info-bar timingcircles-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="tc-current">1</span>/<span id="tc-total">6</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="tc-status">ESPERA...</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value">✓ <span id="tc-perfect">0</span></span>
+            </div>
+        </div>
+
+        <div class="tc-circle-area" id="tc-circle-area">
+            <svg class="tc-svg" id="tc-svg" viewBox="0 0 300 300">
+                <circle class="tc-outer-circle" cx="150" cy="150" r="140" />
+                <circle class="tc-perfect-zone" cx="150" cy="150" r="40" id="tc-perfect-zone" />
+                <circle class="tc-moving-circle" cx="150" cy="150" r="140" id="tc-moving-circle" />
+            </svg>
+        </div>
+
+        <div class="instructions timingcircles-instructions">
+            <span id="tc-instruction-text">Pulsa <strong>ESPACIO</strong> cuando el círculo esté en la zona perfecta.</span>
+        </div>
+    </div>
+
+    <!-- VAR HACK -->
+    <div id="varhack-container" style="display: none;">
+        <div class="varhack-label">SÍMBOLOS</div>
+
+        <div class="info-bar varhack-info-bar">
+            <div class="info-item">
+                <span class="value">ALINEAR</span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="vh-timer">35.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value"><span id="vh-aligned">0</span>/<span id="vh-total">4</span></span>
+            </div>
+        </div>
+
+        <div class="vh-lines-container" id="vh-lines-container"></div>
+
+        <div class="instructions varhack-instructions">
+            <span id="vh-instruction-text">Haz <strong>CLIC</strong> en las líneas para girarlas.</span>
+        </div>
+    </div>
+
+    <!-- POWER GRID -->
+    <div id="powergrid-container" style="display: none;">
+        <div class="powergrid-label">RED ELÉCTRICA</div>
+
+        <div class="info-bar powergrid-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="pg-path-length">0</span>/<span id="pg-min-length">12</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="pg-timer">30.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value">⚡</span>
+            </div>
+        </div>
+
+        <div class="pg-grid" id="pg-grid"></div>
+
+        <div class="pg-buttons">
+            <button class="pg-button pg-button-reset" id="pg-button-reset">REINICIAR</button>
+            <button class="pg-button pg-button-complete" id="pg-button-complete">COMPLETAR</button>
+        </div>
+
+        <div class="instructions powergrid-instructions">
+            <span id="pg-instruction-text">Traza un camino desde <strong>INICIO</strong> hasta <strong>FIN</strong>.</span>
+        </div>
+    </div>
+
+    <!-- MINESWEEPER -->
+    <div id="minesweeper-container" style="display: none;">
+        <div class="minesweeper-label">BUSCAMINAS</div>
+
+        <div class="info-bar minesweeper-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="ms-revealed">0</span>/<span id="ms-safe">18</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="ms-timer">50.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value">MINAS <span id="ms-mines">7</span></span>
+            </div>
+        </div>
+
+        <div class="ms-grid" id="ms-grid"></div>
+
+        <div class="instructions minesweeper-instructions">
+            <span id="ms-instruction-text">Despeja el campo sin tocar ninguna mina.</span>
+        </div>
+    </div>
+
+    <!-- WIRE PUZZLE -->
+    <div id="wirepuzzle-container" style="display: none;">
+        <div class="wirepuzzle-label">CABLES</div>
+
+        <div class="info-bar wirepuzzle-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="wp-connected">0</span>/<span id="wp-total">6</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="wp-timer">25.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value"><span id="wp-mistakes">0</span>/<span
+                        id="wp-max-mistakes">2</span></span>
+            </div>
+        </div>
+
+        <div class="wp-game-area">
+            <div class="wp-wires-left" id="wp-wires-left"></div>
+            <svg class="wp-connections" id="wp-connections"></svg>
+            <div class="wp-wires-right" id="wp-wires-right"></div>
+        </div>
+
+        <div class="instructions wirepuzzle-instructions">
+            <span id="wp-instruction-text">Conecta cada cable con su pareja.</span>
+        </div>
+    </div>
+
+    <!-- CODE BREAKER -->
+    <div id="codebreaker-container" style="display: none;">
+        <div class="codebreaker-label">DESCIFRADOR</div>
+
+        <div class="info-bar codebreaker-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="cb-current-seq">1</span>/<span id="cb-total-seq">2</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="cb-timer">30.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value"><span id="cb-buffer-count">0</span>/<span
+                        id="cb-buffer-size">4</span></span>
+            </div>
+        </div>
+
+        <div class="cb-sequence-display" id="cb-sequence-display"></div>
+
+        <div class="cb-matrix" id="cb-matrix"></div>
+
+        <div class="cb-buffer-bar" id="cb-buffer-bar"></div>
+
+        <div class="instructions codebreaker-instructions">
+            <span id="cb-instruction-text">Elige los códigos de la secuencia en orden.</span>
+        </div>
+    </div>
+
+    <!-- HACKING -->
+    <div id="hacking-container" style="display: none;">
+        <div class="hacking-label">HACKEO</div>
+
+        <div class="info-bar hacking-info-bar">
+            <div class="info-item">
+                <span class="value"><span id="hacking-current-level">1</span>/<span
+                        id="hacking-total-levels">5</span></span>
+            </div>
+            <div class="info-item timer">
+                <span class="value" id="hacking-timer">10.0</span>
+            </div>
+            <div class="info-item">
+                <span class="value progress-value"><span id="hacking-completed-levels">0</span>/<span
+                        id="hacking-total-levels-2">5</span></span>
+            </div>
+        </div>
+
+        <div class="code-grid" id="code-grid"></div>
+
+        <div class="progress-dots" id="hacking-progress-dots"></div>
+
+        <div class="instructions hacking-instructions">
+            <span id="instruction-text">Memoriza la secuencia.</span>
+        </div>
+    </div>
+
+    <!-- jQuery en local: sin internet (o con code.jquery.com caido) la pagina
+         se quedaba sin $ y ningun minijuego podia cerrarse. -->
+    <script src="jquery.min.js"></script>
+    <script>
+        /* Las pausas de los minijuegos (el medio segundo tras acertar o fallar)
+           van con mjTras y no con setTimeout a pelo. Cada juego lleva un
+           numero de `partida` que sube al empezar, al salir con Escape y
+           cuando Lua lo cierra; una pausa de una partida que ya no es la de
+           ahora no hace nada. Antes una pausa vieja seguia su curso: mandaba
+           el resultado de la partida cerrada (y Lua cerraba con el la nueva)
+           o seguia jugando sobre la siguiente. */
+        function mjTras(juego, fn, ms) {
+            const mia = juego.partida;
+            return setTimeout(function () {
+                if (mia !== juego.partida) return;
+                fn();
+            }, ms);
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>
+        
+    </script>
+    <script>
+        // =====================================================
+        // HACKING MINIGAME - INLINE COMPLETO
+        // =====================================================
+
+        
+
+        const HackingGame = {
+            isActive: false,
+            partida: 0,
+            currentLevel: 0,
+            totalLevels: 5,
+            timePerLevel: 10,
+            timeLeft: 10,
+            timerInterval: null,
+            currentSequence: [],
+            playerSequence: [],
+            isShowingSequence: false,
+            GRID_CODES: ['00', '01', '10', '11', 'FF', 'A7', 'B3', '7E', 'C4']
+        };
+
+        function hackingPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            const data = event.data;
+
+            if (data.action === 'startHacking') {
+                
+                startHacking(data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeHacking') return;
+            HackingGame.partida++;
+            HackingGame.isActive = false;
+            clearInterval(HackingGame.timerInterval);
+            $('#hacking-container').css('display', 'none');
+        });
+
+        function startHacking(config) {
+            
+
+            if (HackingGame.isActive) return;
+
+            HackingGame.totalLevels = config.levels || 5;
+            HackingGame.timePerLevel = config.timePerLevel || 10;
+            HackingGame.currentLevel = 0;
+            HackingGame.timeLeft = HackingGame.timePerLevel;
+            HackingGame.isActive = true;
+            HackingGame.partida++;
+
+            $('#hacking-container').css('display', 'flex');
+
+            generateHackingGrid();
+            generateHackingProgressDots();
+            startNewHackingLevel();
+        }
+
+        function generateHackingGrid() {
+            
+            const container = $('#code-grid');
+            container.empty();
+
+            HackingGame.GRID_CODES.forEach((code, index) => {
+                const cell = $('<div class="code-cell" data-index="' + index + '">' + code + '</div>');
+                cell.on('click', function () {
+                    handleHackingCellClick(index);
+                });
+                container.append(cell);
+            });
+
+            
+        }
+
+        function generateHackingProgressDots() {
+            const container = $('#hacking-progress-dots');
+            container.empty();
+
+            for (let i = 0; i < HackingGame.totalLevels; i++) {
+                const dot = $('<div class="progress-dot"></div>');
+                if (i === 0) dot.addClass('active');
+                container.append(dot);
+            }
+        }
+
+        function startNewHackingLevel() {
+            
+
+            HackingGame.timeLeft = HackingGame.timePerLevel;
+            HackingGame.playerSequence = [];
+            HackingGame.isShowingSequence = true;
+
+            const sequenceLength = 2 + HackingGame.currentLevel;
+            HackingGame.currentSequence = [];
+
+            for (let i = 0; i < sequenceLength; i++) {
+                HackingGame.currentSequence.push(Math.floor(Math.random() * 9));
+            }
+
+            
+
+            updateHackingUI();
+            disableHackingGrid(true);
+            showHackingSequence();
+        }
+
+        function showHackingSequence() {
+            $('#instruction-text').text('Memoriza la secuencia.');
+
+            let index = 0;
+
+            const showNext = () => {
+                if (index >= HackingGame.currentSequence.length) {
+                    mjTras(HackingGame, () => {
+                        HackingGame.isShowingSequence = false;
+                        disableHackingGrid(false);
+                        $('#instruction-text').text('Repite la secuencia.');
+                        startHackingTimer();
+                    }, 500);
+                    return;
+                }
+
+                const cellIndex = HackingGame.currentSequence[index];
+                const cell = $('.code-cell[data-index="' + cellIndex + '"]');
+
+                cell.addClass('showing');
+
+                mjTras(HackingGame, () => {
+                    cell.removeClass('showing');
+                    index++;
+                    mjTras(HackingGame, showNext, 300);
+                }, 600);
+            };
+
+            mjTras(HackingGame, showNext, 500);
+        }
+
+        function handleHackingCellClick(index) {
+            if (!HackingGame.isActive || HackingGame.isShowingSequence) return;
+
+            
+
+            HackingGame.playerSequence.push(index);
+            const cell = $('.code-cell[data-index="' + index + '"]');
+
+            const currentStep = HackingGame.playerSequence.length - 1;
+            const isCorrect = HackingGame.currentSequence[currentStep] === index;
+
+            if (isCorrect) {
+                cell.addClass('correct');
+                mjTras(HackingGame, () => cell.removeClass('correct'), 300);
+
+                if (HackingGame.playerSequence.length === HackingGame.currentSequence.length) {
+                    successHackingLevel();
+                }
+            } else {
+                cell.addClass('wrong');
+                mjTras(HackingGame, () => {
+                    cell.removeClass('wrong');
+                    failHacking();
+                }, 500);
+            }
+        }
+
+        function startHackingTimer() {
+            if (HackingGame.timerInterval) clearInterval(HackingGame.timerInterval);
+
+            HackingGame.timerInterval = setInterval(() => {
+                HackingGame.timeLeft -= 0.1;
+
+                if (HackingGame.timeLeft <= 0) {
+                    failHacking();
+                }
+
+                updateHackingTimer();
+            }, 100);
+        }
+
+        function updateHackingTimer() {
+            const timerElement = $('#hacking-timer');
+            timerElement.text(Math.max(0, HackingGame.timeLeft).toFixed(1));
+
+            timerElement.removeClass('warning danger');
+            if (HackingGame.timeLeft < 3) {
+                timerElement.addClass('danger');
+            } else if (HackingGame.timeLeft < 5) {
+                timerElement.addClass('warning');
+            }
+        }
+
+        function updateHackingUI() {
+            $('#hacking-current-level').text(HackingGame.currentLevel + 1);
+            $('#hacking-total-levels').text(HackingGame.totalLevels);
+            $('#hacking-total-levels-2').text(HackingGame.totalLevels);
+            $('#hacking-completed-levels').text(HackingGame.currentLevel);
+
+            $('#hacking-progress-dots .progress-dot').each(function (index) {
+                $(this).removeClass('active completed');
+                if (index < HackingGame.currentLevel) {
+                    $(this).addClass('completed');
+                } else if (index === HackingGame.currentLevel) {
+                    $(this).addClass('active');
+                }
+            });
+        }
+
+        function disableHackingGrid(disabled) {
+            if (disabled) {
+                $('.code-cell').addClass('disabled');
+            } else {
+                $('.code-cell').removeClass('disabled');
+            }
+        }
+
+        function successHackingLevel() {
+            
+
+            clearInterval(HackingGame.timerInterval);
+            disableHackingGrid(true);
+
+            mjTras(HackingGame, () => {
+                HackingGame.currentLevel++;
+
+                if (HackingGame.currentLevel >= HackingGame.totalLevels) {
+                    completeHacking(true);
+                } else {
+                    startNewHackingLevel();
+                }
+            }, 500);
+        }
+
+        function failHacking() {
+            
+
+            clearInterval(HackingGame.timerInterval);
+            disableHackingGrid(true);
+
+            mjTras(HackingGame, () => {
+                completeHacking(false);
+            }, 500);
+        }
+
+        function completeHacking(success) {
+            
+
+            HackingGame.isActive = false;
+
+            if (HackingGame.timerInterval) clearInterval(HackingGame.timerInterval);
+
+            mjTras(HackingGame, () => {
+                $('#hacking-container').css('display', 'none');
+                hackingPost('hackingResult', { success: success });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && HackingGame.isActive) {
+                HackingGame.partida++;
+                clearInterval(HackingGame.timerInterval);
+                HackingGame.isActive = false;
+                $('#hacking-container').css('display', 'none');
+                hackingPost('closeHacking', {});
+            }
+        });
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // CODE BREAKER MINIGAME - INLINE COMPLETO
+        // =====================================================
+
+        
+
+        const CodeBreakerGame = {
+            isActive: false,
+            partida: 0,
+            gridSize: 5,
+            matrix: [],
+            currentSequence: [],
+            targetSequence: [],
+            bufferSize: 4,
+            buffer: [],
+            selectingRow: true,
+            lastRow: null,
+            lastCol: null,
+            timeLeft: 30,
+            timerInterval: null,
+            currentSeqIndex: 0,
+            totalSequences: 1,
+            completedSequences: 0,
+            CODES: ['1C', 'BD', '55', 'E9', '7A', 'FF', 'A1', 'B2', 'C3', 'D4', 'E5', 'F6']
+        };
+
+        function cbPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            const data = event.data;
+
+            if (data.action === 'startCodeBreaker') {
+                
+                startCodeBreaker(data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeCodeBreaker') return;
+            CodeBreakerGame.partida++;
+            CodeBreakerGame.isActive = false;
+            clearInterval(CodeBreakerGame.timerInterval);
+            $('#codebreaker-container').css('display', 'none');
+        });
+
+        function startCodeBreaker(config) {
+            
+
+            if (CodeBreakerGame.isActive) return;
+
+            CodeBreakerGame.gridSize = config.gridSize || 5;
+            CodeBreakerGame.bufferSize = config.sequenceLength || 4;
+            CodeBreakerGame.totalSequences = config.sequences || 1;
+            CodeBreakerGame.timeLeft = config.timeLimit || 30;
+            CodeBreakerGame.completedSequences = 0;
+            CodeBreakerGame.isActive = true;
+            CodeBreakerGame.partida++;
+
+            $('#codebreaker-container').css('display', 'flex');
+
+            generateCBMatrix();
+            generateNewCBSequence();
+            updateCBUI();
+            startCBTimer();
+        }
+
+        function generateCBMatrix() {
+            const container = $('#cb-matrix');
+            container.empty();
+            container.css('grid-template-columns', 'repeat(' + CodeBreakerGame.gridSize + ', 1fr)');
+
+            CodeBreakerGame.matrix = [];
+
+            for (let row = 0; row < CodeBreakerGame.gridSize; row++) {
+                CodeBreakerGame.matrix[row] = [];
+                for (let col = 0; col < CodeBreakerGame.gridSize; col++) {
+                    const code = CodeBreakerGame.CODES[Math.floor(Math.random() * CodeBreakerGame.CODES.length)];
+                    CodeBreakerGame.matrix[row][col] = code;
+
+                    const cell = $('<div class="cb-cell" data-row="' + row + '" data-col="' + col + '">' + code + '</div>');
+                    cell.on('click', function () {
+                        handleCBCellClick(row, col);
+                    });
+                    container.append(cell);
+                }
+            }
+
+            
+        }
+
+        function generateNewCBSequence() {
+            CodeBreakerGame.targetSequence = [];
+            CodeBreakerGame.buffer = [];
+            CodeBreakerGame.selectingRow = true;
+            CodeBreakerGame.lastRow = null;
+            CodeBreakerGame.lastCol = null;
+
+            // Generar secuencia objetivo tomando códigos de la matriz
+            for (let i = 0; i < CodeBreakerGame.bufferSize; i++) {
+                const row = Math.floor(Math.random() * CodeBreakerGame.gridSize);
+                const col = Math.floor(Math.random() * CodeBreakerGame.gridSize);
+                CodeBreakerGame.targetSequence.push(CodeBreakerGame.matrix[row][col]);
+            }
+
+            
+
+            updateCBSequenceDisplay();
+            updateCBBufferBar();
+            highlightCBAvailableCells();
+        }
+
+        function updateCBSequenceDisplay() {
+            const container = $('#cb-sequence-display');
+            container.empty();
+
+            CodeBreakerGame.targetSequence.forEach((code, index) => {
+                const item = $('<div class="cb-seq-item">' + code + '</div>');
+                if (index < CodeBreakerGame.buffer.length && CodeBreakerGame.buffer[index] === code) {
+                    item.addClass('found');
+                }
+                container.append(item);
+            });
+        }
+
+        function updateCBBufferBar() {
+            const container = $('#cb-buffer-bar');
+            container.empty();
+
+            for (let i = 0; i < CodeBreakerGame.bufferSize; i++) {
+                const slot = $('<div class="cb-buffer-slot"></div>');
+                if (i < CodeBreakerGame.buffer.length) {
+                    slot.addClass('filled');
+                    slot.text(CodeBreakerGame.buffer[i]);
+                }
+                container.append(slot);
+            }
+        }
+
+        function highlightCBAvailableCells() {
+            $('.cb-cell').removeClass('highlighted disabled');
+
+            if (CodeBreakerGame.selectingRow) {
+                // Puede seleccionar cualquier celda de cualquier fila
+                $('.cb-cell').removeClass('disabled');
+            } else {
+                // Solo puede seleccionar de la columna de la última celda seleccionada
+                $('.cb-cell').addClass('disabled');
+                if (CodeBreakerGame.lastCol !== null) {
+                    $('.cb-cell[data-col="' + CodeBreakerGame.lastCol + '"]').removeClass('disabled').addClass('highlighted');
+                }
+            }
+        }
+
+        function handleCBCellClick(row, col) {
+            if (!CodeBreakerGame.isActive) return;
+
+            const cell = $('.cb-cell[data-row="' + row + '"][data-col="' + col + '"]');
+            if (cell.hasClass('disabled')) return;
+
+            const code = CodeBreakerGame.matrix[row][col];
+            
+
+            // Agregar al buffer
+            CodeBreakerGame.buffer.push(code);
+            cell.addClass('selected');
+
+            CodeBreakerGame.lastRow = row;
+            CodeBreakerGame.lastCol = col;
+            CodeBreakerGame.selectingRow = !CodeBreakerGame.selectingRow;
+
+            updateCBSequenceDisplay();
+            updateCBBufferBar();
+
+            // Verificar si completó la secuencia
+            if (checkCBSequence()) {
+                successCBSequence();
+            } else if (CodeBreakerGame.buffer.length >= CodeBreakerGame.bufferSize) {
+                // Buffer lleno pero no completó la secuencia
+                failCB();
+            } else {
+                highlightCBAvailableCells();
+            }
+        }
+
+        function checkCBSequence() {
+            if (CodeBreakerGame.buffer.length < CodeBreakerGame.targetSequence.length) {
+                return false;
+            }
+
+            // Buscar la secuencia dentro del buffer
+            for (let i = 0; i <= CodeBreakerGame.buffer.length - CodeBreakerGame.targetSequence.length; i++) {
+                let match = true;
+                for (let j = 0; j < CodeBreakerGame.targetSequence.length; j++) {
+                    if (CodeBreakerGame.buffer[i + j] !== CodeBreakerGame.targetSequence[j]) {
+                        match = false;
+                        break;
+                    }
+                }
+                if (match) return true;
+            }
+
+            return false;
+        }
+
+        function successCBSequence() {
+            
+
+            CodeBreakerGame.completedSequences++;
+
+            if (CodeBreakerGame.completedSequences >= CodeBreakerGame.totalSequences) {
+                
+                completeCB(true);
+            } else {
+                // Generar nueva secuencia
+                mjTras(CodeBreakerGame, () => {
+                    $('.cb-cell').removeClass('selected');
+                    generateNewCBSequence();
+                    updateCBUI();
+                }, 800);
+            }
+        }
+
+        function startCBTimer() {
+            if (CodeBreakerGame.timerInterval) clearInterval(CodeBreakerGame.timerInterval);
+
+            CodeBreakerGame.timerInterval = setInterval(() => {
+                CodeBreakerGame.timeLeft -= 0.1;
+
+                if (CodeBreakerGame.timeLeft <= 0) {
+                    failCB();
+                }
+
+                updateCBTimer();
+            }, 100);
+        }
+
+        function updateCBTimer() {
+            const timerElement = $('#cb-timer');
+            timerElement.text(Math.max(0, CodeBreakerGame.timeLeft).toFixed(1));
+
+            timerElement.removeClass('warning danger');
+            if (CodeBreakerGame.timeLeft < 5) {
+                timerElement.addClass('danger');
+            } else if (CodeBreakerGame.timeLeft < 10) {
+                timerElement.addClass('warning');
+            }
+        }
+
+        function updateCBUI() {
+            $('#cb-current-seq').text(CodeBreakerGame.completedSequences + 1);
+            $('#cb-total-seq').text(CodeBreakerGame.totalSequences);
+            $('#cb-buffer-count').text(CodeBreakerGame.buffer.length);
+            $('#cb-buffer-size').text(CodeBreakerGame.bufferSize);
+        }
+
+        function failCB() {
+            
+
+            clearInterval(CodeBreakerGame.timerInterval);
+
+            mjTras(CodeBreakerGame, () => {
+                completeCB(false);
+            }, 500);
+        }
+
+        function completeCB(success) {
+            
+
+            CodeBreakerGame.isActive = false;
+
+            if (CodeBreakerGame.timerInterval) clearInterval(CodeBreakerGame.timerInterval);
+
+            mjTras(CodeBreakerGame, () => {
+                $('#codebreaker-container').css('display', 'none');
+                cbPost('codeBreakerResult', { success: success });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && CodeBreakerGame.isActive) {
+                CodeBreakerGame.partida++;
+                clearInterval(CodeBreakerGame.timerInterval);
+                CodeBreakerGame.isActive = false;
+                $('#codebreaker-container').css('display', 'none');
+                cbPost('closeCodeBreaker', {});
+            }
+        });
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // WIRE PUZZLE MINIGAME - INLINE COMPLETO
+        // =====================================================
+
+        
+
+        const WirePuzzleGame = {
+            isActive: false,
+            partida: 0,
+            wireCount: 6,
+            timeLeft: 25,
+            timerInterval: null,
+            mistakes: 0,
+            maxMistakes: 2,
+            connected: 0,
+            wires: [],
+            selectedLeft: null,
+            COLORS: [
+                // Mismos ocho cables de siempre, en el tono oscuro que se lee
+                // sobre el papel crema. Solo cambia el color, nada mas.
+                /* Rotulo con las dos primeras letras del color en castellano
+                   (antes R1, G1, O1... por el ingles). */
+                { code: 'RO', color: 'var(--ogn-bad)' },
+                { code: 'VE', color: '#15803d' },
+                { code: 'AZ', color: '#1d4ed8' },
+                { code: 'AM', color: '#a16207' },
+                { code: 'MO', color: '#7e22ce' },
+                { code: 'NA', color: '#c2410c' },
+                { code: 'CI', color: '#0e7490' },
+                { code: 'FU', color: '#be185d' }
+            ]
+        };
+
+        function wpPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            const data = event.data;
+
+            if (data.action === 'startWirePuzzle') {
+                
+                startWirePuzzle(data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeWirePuzzle') return;
+            WirePuzzleGame.partida++;
+            WirePuzzleGame.isActive = false;
+            clearInterval(WirePuzzleGame.timerInterval);
+            $('#wirepuzzle-container').css('display', 'none');
+        });
+
+        function startWirePuzzle(config) {
+            
+
+            if (WirePuzzleGame.isActive) return;
+
+            WirePuzzleGame.wireCount = config.wireCount || 6;
+            WirePuzzleGame.timeLeft = config.timeLimit || 25;
+            WirePuzzleGame.maxMistakes = config.mistakes || 2;
+            WirePuzzleGame.mistakes = 0;
+            WirePuzzleGame.connected = 0;
+            WirePuzzleGame.selectedLeft = null;
+            WirePuzzleGame.isActive = true;
+            WirePuzzleGame.partida++;
+
+            $('#wirepuzzle-container').css('display', 'flex');
+
+            generateWPWires();
+            updateWPUI();
+            startWPTimer();
+        }
+
+        function generateWPWires() {
+            
+
+            // Seleccionar colores aleatorios
+            const shuffled = [...WirePuzzleGame.COLORS].sort(() => Math.random() - 0.5);
+            const selectedColors = shuffled.slice(0, WirePuzzleGame.wireCount);
+
+            // Crear pares de cables
+            WirePuzzleGame.wires = selectedColors.map((c, i) => ({
+                id: i,
+                code: c.code,
+                color: c.color,
+                connected: false,
+                leftIndex: i,
+                rightIndex: -1
+            }));
+
+            // Mezclar lado derecho
+            const rightIndices = [...Array(WirePuzzleGame.wireCount).keys()].sort(() => Math.random() - 0.5);
+            WirePuzzleGame.wires.forEach((wire, i) => {
+                wire.rightIndex = rightIndices[i];
+            });
+
+            
+
+            // Renderizar cables
+            const leftContainer = $('#wp-wires-left');
+            const rightContainer = $('#wp-wires-right');
+            leftContainer.empty();
+            rightContainer.empty();
+
+            // Lado izquierdo (orden fijo)
+            WirePuzzleGame.wires.forEach((wire, i) => {
+                const wireEl = $('<div class="wp-wire wp-wire-left" data-id="' + wire.id + '" data-side="left"></div>');
+                wireEl.css('color', wire.color);
+                wireEl.append('<span class="wp-wire-label">' + wire.code + '</span>');
+                wireEl.on('click', function () {
+                    handleWPWireClick(wire.id, 'left');
+                });
+                leftContainer.append(wireEl);
+            });
+
+            // Lado derecho (orden mezclado)
+            const rightWires = [...WirePuzzleGame.wires].sort((a, b) => a.rightIndex - b.rightIndex);
+            rightWires.forEach((wire, i) => {
+                const wireEl = $('<div class="wp-wire wp-wire-right" data-id="' + wire.id + '" data-side="right"></div>');
+                wireEl.css('color', wire.color);
+                wireEl.append('<span class="wp-wire-label">' + wire.code + '</span>');
+                wireEl.on('click', function () {
+                    handleWPWireClick(wire.id, 'right');
+                });
+                rightContainer.append(wireEl);
+            });
+
+            // Limpiar SVG
+            $('#wp-connections').empty();
+        }
+
+        function handleWPWireClick(wireId, side) {
+            if (!WirePuzzleGame.isActive) return;
+
+            const wire = WirePuzzleGame.wires.find(w => w.id === wireId);
+            if (!wire || wire.connected) return;
+
+            
+
+            if (side === 'left') {
+                // Seleccionar cable izquierdo
+                if (WirePuzzleGame.selectedLeft === wireId) {
+                    // Deseleccionar
+                    WirePuzzleGame.selectedLeft = null;
+                    $('.wp-wire[data-side="left"]').removeClass('selected');
+                    removeTempLine();
+                } else {
+                    // Seleccionar
+                    WirePuzzleGame.selectedLeft = wireId;
+                    $('.wp-wire[data-side="left"]').removeClass('selected');
+                    $('.wp-wire[data-id="' + wireId + '"][data-side="left"]').addClass('selected');
+                    updateTempLine();
+                }
+            } else if (side === 'right') {
+                // Conectar con cable derecho
+                if (WirePuzzleGame.selectedLeft === null) return;
+
+                const leftWire = WirePuzzleGame.wires.find(w => w.id === WirePuzzleGame.selectedLeft);
+
+                if (WirePuzzleGame.selectedLeft === wireId) {
+                    // Correcto!
+                    
+                    leftWire.connected = true;
+                    WirePuzzleGame.connected++;
+
+                    $('.wp-wire[data-id="' + wireId + '"]').addClass('connected');
+                    drawConnection(leftWire, true);
+
+                    WirePuzzleGame.selectedLeft = null;
+                    $('.wp-wire[data-side="left"]').removeClass('selected');
+                    removeTempLine();
+
+                    updateWPUI();
+
+                    // Verificar si completó
+                    if (WirePuzzleGame.connected >= WirePuzzleGame.wireCount) {
+                        successWP();
+                    }
+                } else {
+                    // Incorrecto
+                    
+                    WirePuzzleGame.mistakes++;
+
+                    const rightWire = WirePuzzleGame.wires.find(w => w.id === wireId);
+                    drawConnection(leftWire, false, rightWire);
+
+                    mjTras(WirePuzzleGame, () => {
+                        $('.wp-connection-line.wrong').remove();
+                    }, 500);
+
+                    WirePuzzleGame.selectedLeft = null;
+                    $('.wp-wire[data-side="left"]').removeClass('selected');
+                    removeTempLine();
+
+                    updateWPUI();
+
+                    // Verificar si alcanzó máximo de errores
+                    if (WirePuzzleGame.mistakes > WirePuzzleGame.maxMistakes) {
+                        failWP();
+                    }
+                }
+            }
+        }
+
+        function drawConnection(wire, correct, wrongRightWire = null) {
+            const svg = document.getElementById('wp-connections');
+            const leftEl = $('.wp-wire[data-id="' + wire.id + '"][data-side="left"]')[0];
+            const rightEl = wrongRightWire
+                ? $('.wp-wire[data-id="' + wrongRightWire.id + '"][data-side="right"]')[0]
+                : $('.wp-wire[data-id="' + wire.id + '"][data-side="right"]')[0];
+
+            if (!leftEl || !rightEl) return;
+
+            // El contenedor tiene transform: scale(0.7), getBoundingClientRect devuelve coords escaladas
+            // pero el SVG internamente usa coords sin escalar - hay que compensar
+            const scale = 0.7;
+
+            const leftRect = leftEl.getBoundingClientRect();
+            const rightRect = rightEl.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+
+            // Calcular calc(1.5vh / var(--ogn-escala, 1)) en píxeles (tamaño del stub) - ya escalado por el navegador
+            const stubSize = window.innerHeight * 0.015;
+
+            // Convertir las diferencias de coords escaladas a coords internas del SVG
+            const x1 = (leftRect.right - svgRect.left + stubSize) / scale;
+            const y1 = (leftRect.top + leftRect.height / 2 - svgRect.top) / scale;
+
+            const x2 = (rightRect.left - svgRect.left - stubSize) / scale;
+            const y2 = (rightRect.top + rightRect.height / 2 - svgRect.top) / scale;
+
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const midX = (x1 + x2) / 2;
+            const path = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
+
+            line.setAttribute('d', path);
+            line.setAttribute('class', 'wp-connection-line ' + (correct ? 'correct' : 'wrong'));
+
+            svg.appendChild(line);
+        }
+
+        function updateTempLine() {
+            removeTempLine();
+
+            if (WirePuzzleGame.selectedLeft === null) return;
+
+            const wire = WirePuzzleGame.wires.find(w => w.id === WirePuzzleGame.selectedLeft);
+            if (!wire) return;
+
+            const svg = document.getElementById('wp-connections');
+            const leftEl = $('.wp-wire[data-id="' + wire.id + '"][data-side="left"]')[0];
+
+            if (!leftEl) return;
+
+            // Compensar la escala del contenedor
+            const scale = 0.7;
+
+            const leftRect = leftEl.getBoundingClientRect();
+            const svgRect = svg.getBoundingClientRect();
+
+            // Calcular calc(1.5vh / var(--ogn-escala, 1)) en píxeles (tamaño del stub)
+            const stubSize = window.innerHeight * 0.015;
+
+            // Convertir coords escaladas a coords internas del SVG
+            const x1 = (leftRect.right - svgRect.left + stubSize) / scale;
+            const y1 = (leftRect.top + leftRect.height / 2 - svgRect.top) / scale;
+            const svgInternalWidth = svgRect.width / scale;
+            const x2 = svgInternalWidth - svgInternalWidth / 3;
+            const y2 = y1;
+
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const midX = (x1 + x2) / 2;
+            const path = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
+
+            line.setAttribute('d', path);
+            line.setAttribute('class', 'wp-connection-line selecting');
+            line.setAttribute('id', 'temp-line');
+
+            svg.appendChild(line);
+        }
+
+        function removeTempLine() {
+            $('#temp-line').remove();
+        }
+
+        function startWPTimer() {
+            if (WirePuzzleGame.timerInterval) clearInterval(WirePuzzleGame.timerInterval);
+
+            WirePuzzleGame.timerInterval = setInterval(() => {
+                WirePuzzleGame.timeLeft -= 0.1;
+
+                if (WirePuzzleGame.timeLeft <= 0) {
+                    failWP();
+                }
+
+                updateWPTimer();
+            }, 100);
+        }
+
+        function updateWPTimer() {
+            const timerElement = $('#wp-timer');
+            timerElement.text(Math.max(0, WirePuzzleGame.timeLeft).toFixed(1));
+
+            timerElement.removeClass('warning danger');
+            if (WirePuzzleGame.timeLeft < 5) {
+                timerElement.addClass('danger');
+            } else if (WirePuzzleGame.timeLeft < 10) {
+                timerElement.addClass('warning');
+            }
+        }
+
+        function updateWPUI() {
+            $('#wp-connected').text(WirePuzzleGame.connected);
+            $('#wp-total').text(WirePuzzleGame.wireCount);
+            $('#wp-mistakes').text(WirePuzzleGame.mistakes);
+            $('#wp-max-mistakes').text(WirePuzzleGame.maxMistakes);
+        }
+
+        function successWP() {
+            
+
+            clearInterval(WirePuzzleGame.timerInterval);
+
+            mjTras(WirePuzzleGame, () => {
+                completeWP(true);
+            }, 500);
+        }
+
+        function failWP() {
+            
+
+            clearInterval(WirePuzzleGame.timerInterval);
+
+            mjTras(WirePuzzleGame, () => {
+                completeWP(false);
+            }, 500);
+        }
+
+        function completeWP(success) {
+            
+
+            WirePuzzleGame.isActive = false;
+
+            if (WirePuzzleGame.timerInterval) clearInterval(WirePuzzleGame.timerInterval);
+
+            mjTras(WirePuzzleGame, () => {
+                $('#wirepuzzle-container').css('display', 'none');
+                wpPost('wirePuzzleResult', { success: success });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && WirePuzzleGame.isActive) {
+                WirePuzzleGame.partida++;
+                clearInterval(WirePuzzleGame.timerInterval);
+                WirePuzzleGame.isActive = false;
+                $('#wirepuzzle-container').css('display', 'none');
+                wpPost('closeWirePuzzle', {});
+            }
+        });
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // MINESWEEPER MINIGAME - INLINE COMPLETO
+        // =====================================================
+
+        
+
+        const MinesweeperGame = {
+            isActive: false,
+            partida: 0,
+            gridSize: 6,
+            mines: 7,
+            timeLeft: 50,
+            timerInterval: null,
+            grid: [],
+            revealed: 0,
+            safeCells: 0
+        };
+
+        function msPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            const data = event.data;
+
+            if (data.action === 'startMinesweeper') {
+                
+                startMinesweeper(data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeMinesweeper') return;
+            MinesweeperGame.partida++;
+            MinesweeperGame.isActive = false;
+            clearInterval(MinesweeperGame.timerInterval);
+            $('#minesweeper-container').css('display', 'none');
+        });
+
+        function startMinesweeper(config) {
+            
+
+            if (MinesweeperGame.isActive) return;
+
+            MinesweeperGame.gridSize = config.gridSize || 6;
+            MinesweeperGame.mines = config.mines || 7;
+            MinesweeperGame.timeLeft = config.timeLimit || 50;
+            MinesweeperGame.revealed = 0;
+            MinesweeperGame.safeCells = (MinesweeperGame.gridSize * MinesweeperGame.gridSize) - MinesweeperGame.mines;
+            MinesweeperGame.isActive = true;
+            MinesweeperGame.partida++;
+
+            $('#minesweeper-container').css('display', 'flex');
+
+            generateMinesweeperGrid();
+            updateMinesweeperUI();
+            startMinesweeperTimer();
+        }
+
+        function generateMinesweeperGrid() {
+            
+
+            const container = $('#ms-grid');
+            container.empty();
+            container.css('grid-template-columns', 'repeat(' + MinesweeperGame.gridSize + ', 1fr)');
+
+            const totalCells = MinesweeperGame.gridSize * MinesweeperGame.gridSize;
+
+            // Inicializar grid
+            MinesweeperGame.grid = [];
+            for (let i = 0; i < totalCells; i++) {
+                MinesweeperGame.grid.push({
+                    isMine: false,
+                    revealed: false,
+                    adjacentMines: 0
+                });
+            }
+
+            // Colocar minas aleatoriamente
+            let minesPlaced = 0;
+            while (minesPlaced < MinesweeperGame.mines) {
+                const randomIndex = Math.floor(Math.random() * totalCells);
+                if (!MinesweeperGame.grid[randomIndex].isMine) {
+                    MinesweeperGame.grid[randomIndex].isMine = true;
+                    minesPlaced++;
+                }
+            }
+
+            // Calcular números adyacentes
+            for (let i = 0; i < totalCells; i++) {
+                if (!MinesweeperGame.grid[i].isMine) {
+                    MinesweeperGame.grid[i].adjacentMines = countAdjacentMines(i);
+                }
+            }
+
+            // Crear celdas visuales
+            for (let i = 0; i < totalCells; i++) {
+                const cell = $('<div class="ms-cell" data-index="' + i + '"></div>');
+                cell.on('click', function () {
+                    handleMinesweeperClick(i);
+                });
+                container.append(cell);
+            }
+
+            
+        }
+
+        function countAdjacentMines(index) {
+            const row = Math.floor(index / MinesweeperGame.gridSize);
+            const col = index % MinesweeperGame.gridSize;
+            let count = 0;
+
+            // Verificar las 8 celdas adyacentes
+            for (let dr = -1; dr <= 1; dr++) {
+                for (let dc = -1; dc <= 1; dc++) {
+                    if (dr === 0 && dc === 0) continue;
+
+                    const newRow = row + dr;
+                    const newCol = col + dc;
+
+                    if (newRow >= 0 && newRow < MinesweeperGame.gridSize &&
+                        newCol >= 0 && newCol < MinesweeperGame.gridSize) {
+                        const newIndex = newRow * MinesweeperGame.gridSize + newCol;
+                        if (MinesweeperGame.grid[newIndex].isMine) {
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        function handleMinesweeperClick(index) {
+            if (!MinesweeperGame.isActive) return;
+
+            const cellData = MinesweeperGame.grid[index];
+            if (cellData.revealed) return;
+
+            
+
+            if (cellData.isMine) {
+                // ¡BOOM! Tocó una mina
+                
+                revealMine(index);
+                failMinesweeper();
+            } else {
+                // Celda segura
+                revealCell(index);
+
+                // Verificar victoria
+                if (MinesweeperGame.revealed >= MinesweeperGame.safeCells) {
+                    
+                    successMinesweeper();
+                }
+            }
+        }
+
+        function revealCell(index) {
+            const cellData = MinesweeperGame.grid[index];
+
+            if (cellData.revealed || cellData.isMine) return;
+
+            cellData.revealed = true;
+            MinesweeperGame.revealed++;
+
+            const cell = $('.ms-cell[data-index="' + index + '"]');
+            cell.addClass('revealed');
+
+            if (cellData.adjacentMines > 0) {
+                cell.text(cellData.adjacentMines);
+                cell.addClass('number-' + cellData.adjacentMines);
+            } else {
+                // Si no hay minas adyacentes, revelar celdas vecinas automáticamente
+                revealAdjacentCells(index);
+            }
+
+            updateMinesweeperUI();
+        }
+
+        function revealAdjacentCells(index) {
+            const row = Math.floor(index / MinesweeperGame.gridSize);
+            const col = index % MinesweeperGame.gridSize;
+
+            for (let dr = -1; dr <= 1; dr++) {
+                for (let dc = -1; dc <= 1; dc++) {
+                    if (dr === 0 && dc === 0) continue;
+
+                    const newRow = row + dr;
+                    const newCol = col + dc;
+
+                    if (newRow >= 0 && newRow < MinesweeperGame.gridSize &&
+                        newCol >= 0 && newCol < MinesweeperGame.gridSize) {
+                        const newIndex = newRow * MinesweeperGame.gridSize + newCol;
+                        revealCell(newIndex);
+                    }
+                }
+            }
+        }
+
+        /* La mina dibujada: el emoji no sale en el navegador del juego (no
+           tiene fuente de color) y quedaba un punto suelto. */
+        const MS_BOMBA = '<svg viewBox="0 0 24 24" width="56%" height="56%" aria-hidden="true"><circle cx="10.5" cy="14" r="7" fill="currentColor"/><path d="M14.5 9.5 17 7M17 7l1.5-1.5M19.5 4.5h2M19.5 4.5v-2" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>';
+
+        function revealMine(hitIndex) {
+            // Revelar la mina que fue clickeada
+            const hitCell = $('.ms-cell[data-index="' + hitIndex + '"]');
+            hitCell.addClass('mine-hit');
+            hitCell.html(MS_BOMBA);
+
+            // Revelar todas las demás minas
+            mjTras(MinesweeperGame, () => {
+                for (let i = 0; i < MinesweeperGame.grid.length; i++) {
+                    if (i !== hitIndex && MinesweeperGame.grid[i].isMine) {
+                        const cell = $('.ms-cell[data-index="' + i + '"]');
+                        cell.addClass('mine-revealed');
+                        cell.html(MS_BOMBA);
+                    }
+                }
+            }, 300);
+        }
+
+        function startMinesweeperTimer() {
+            if (MinesweeperGame.timerInterval) clearInterval(MinesweeperGame.timerInterval);
+
+            MinesweeperGame.timerInterval = setInterval(() => {
+                MinesweeperGame.timeLeft -= 0.1;
+
+                if (MinesweeperGame.timeLeft <= 0) {
+                    
+                    failMinesweeper();
+                }
+
+                updateMinesweeperTimer();
+            }, 100);
+        }
+
+        function updateMinesweeperTimer() {
+            const timerElement = $('#ms-timer');
+            timerElement.text(Math.max(0, MinesweeperGame.timeLeft).toFixed(1));
+
+            timerElement.removeClass('warning danger');
+            if (MinesweeperGame.timeLeft < 10) {
+                timerElement.addClass('danger');
+            } else if (MinesweeperGame.timeLeft < 20) {
+                timerElement.addClass('warning');
+            }
+        }
+
+        function updateMinesweeperUI() {
+            $('#ms-revealed').text(MinesweeperGame.revealed);
+            $('#ms-safe').text(MinesweeperGame.safeCells);
+            $('#ms-mines').text(MinesweeperGame.mines);
+        }
+
+        function successMinesweeper() {
+            
+
+            clearInterval(MinesweeperGame.timerInterval);
+
+            // Mostrar todas las minas en verde
+            for (let i = 0; i < MinesweeperGame.grid.length; i++) {
+                if (MinesweeperGame.grid[i].isMine) {
+                    const cell = $('.ms-cell[data-index="' + i + '"]');
+                    cell.addClass('revealed');
+                    cell.css({
+                        'background': 'var(--arc-ok)',
+                        'color': '#fff',
+                        'border-color': 'var(--arc-ok)'
+                    });
+                    cell.html(MS_BOMBA);
+                }
+            }
+
+            mjTras(MinesweeperGame, () => {
+                completeMinesweeper(true);
+            }, 800);
+        }
+
+        function failMinesweeper() {
+            
+
+            clearInterval(MinesweeperGame.timerInterval);
+            MinesweeperGame.isActive = false;
+
+            mjTras(MinesweeperGame, () => {
+                completeMinesweeper(false);
+            }, 1000);
+        }
+
+        function completeMinesweeper(success) {
+            
+
+            MinesweeperGame.isActive = false;
+
+            if (MinesweeperGame.timerInterval) clearInterval(MinesweeperGame.timerInterval);
+
+            mjTras(MinesweeperGame, () => {
+                $('#minesweeper-container').css('display', 'none');
+                msPost('minesweeperResult', { success: success });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && MinesweeperGame.isActive) {
+                MinesweeperGame.partida++;
+                clearInterval(MinesweeperGame.timerInterval);
+                MinesweeperGame.isActive = false;
+                $('#minesweeper-container').css('display', 'none');
+                msPost('closeMinesweeper', {});
+            }
+        });
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // TIMING CIRCLES MINIGAME
+        // =====================================================
+
+        
+
+        const TimingCirclesGame = {
+            isActive: false,
+            partida: 0,
+            currentRound: 0,
+            totalRounds: 6,
+            perfectHits: 0,
+            speed: 1.3,
+            perfectZone: 20,
+            currentRadius: 140,
+            shrinking: true,
+            animationFrame: null
+        };
+
+        function tcPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.data.action === 'startTimingCircles') {
+                
+                startTimingCircles(event.data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeTimingCircles') return;
+            TimingCirclesGame.partida++;
+            TimingCirclesGame.isActive = false;
+            TimingCirclesGame.shrinking = false;
+            cancelAnimationFrame(TimingCirclesGame.animationFrame);
+            $('#timingcircles-container').css('display', 'none');
+        });
+
+        function startTimingCircles(config) {
+            if (TimingCirclesGame.isActive) return;
+
+            TimingCirclesGame.totalRounds = config.rounds || 6;
+            TimingCirclesGame.speed = config.speed || 1.3;
+            TimingCirclesGame.perfectZone = config.perfectZone || 20;
+            TimingCirclesGame.currentRound = 0;
+            TimingCirclesGame.perfectHits = 0;
+            TimingCirclesGame.isActive = true;
+            TimingCirclesGame.partida++;
+
+            $('#timingcircles-container').css('display', 'flex');
+
+            updateTimingCirclesUI();
+            startTimingCirclesRound();
+        }
+
+        function startTimingCirclesRound() {
+            TimingCirclesGame.currentRound++;
+            TimingCirclesGame.currentRadius = 140;
+            TimingCirclesGame.shrinking = true;
+
+            $('#tc-status').text('¡AHORA!').css('color', 'var(--ogn-acc)');
+            $('.tc-moving-circle').removeClass('perfect fail');
+
+            updateTimingCirclesUI();
+            animateTimingCircle();
+        }
+
+        function animateTimingCircle() {
+            if (!TimingCirclesGame.shrinking) return;
+
+            TimingCirclesGame.currentRadius -= TimingCirclesGame.speed;
+
+            if (TimingCirclesGame.currentRadius <= 10) {
+                // Se pasó - falló
+                TimingCirclesGame.shrinking = false;
+                $('.tc-moving-circle').addClass('fail');
+                $('#tc-status').text('FALLIDO').css('color', 'var(--ogn-bad)');
+
+                mjTras(TimingCirclesGame, () => {
+                    failTimingCircles();
+                }, 500);
+                return;
+            }
+
+            $('#tc-moving-circle').attr('r', TimingCirclesGame.currentRadius);
+
+            TimingCirclesGame.animationFrame = requestAnimationFrame(animateTimingCircle);
+        }
+
+        function handleTimingCirclesClick() {
+            if (!TimingCirclesGame.isActive || !TimingCirclesGame.shrinking) return;
+
+            TimingCirclesGame.shrinking = false;
+            cancelAnimationFrame(TimingCirclesGame.animationFrame);
+
+            const perfectRadius = 40;
+            const tolerance = perfectRadius * (TimingCirclesGame.perfectZone / 100);
+
+            const isPerfect = Math.abs(TimingCirclesGame.currentRadius - perfectRadius) <= tolerance;
+
+            if (isPerfect) {
+                
+                TimingCirclesGame.perfectHits++;
+                $('.tc-moving-circle').addClass('perfect');
+                $('#tc-status').text('¡PERFECTO!').css('color', 'var(--arc-ok)');
+
+                updateTimingCirclesUI();
+
+                mjTras(TimingCirclesGame, () => {
+                    if (TimingCirclesGame.currentRound >= TimingCirclesGame.totalRounds) {
+                        successTimingCircles();
+                    } else {
+                        startTimingCirclesRound();
+                    }
+                }, 600);
+            } else {
+                
+                $('.tc-moving-circle').addClass('fail');
+                $('#tc-status').text('FALLIDO').css('color', 'var(--ogn-bad)');
+
+                mjTras(TimingCirclesGame, () => {
+                    failTimingCircles();
+                }, 500);
+            }
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === ' ' || e.key === 'Spacebar') {
+                if (TimingCirclesGame.isActive) {
+                    e.preventDefault();
+                    handleTimingCirclesClick();
+                }
+            }
+
+            if (e.key === 'Escape' && TimingCirclesGame.isActive) {
+                TimingCirclesGame.partida++;
+                TimingCirclesGame.shrinking = false;
+                cancelAnimationFrame(TimingCirclesGame.animationFrame);
+                TimingCirclesGame.isActive = false;
+                $('#timingcircles-container').css('display', 'none');
+                tcPost('closeTimingCircles', {});
+            }
+        });
+
+        function updateTimingCirclesUI() {
+            $('#tc-current').text(TimingCirclesGame.currentRound);
+            $('#tc-total').text(TimingCirclesGame.totalRounds);
+            $('#tc-perfect').text(TimingCirclesGame.perfectHits);
+        }
+
+        function successTimingCircles() {
+            TimingCirclesGame.isActive = false;
+            mjTras(TimingCirclesGame, () => {
+                $('#timingcircles-container').css('display', 'none');
+                tcPost('timingCirclesResult', { success: true });
+            }, 300);
+        }
+
+        function failTimingCircles() {
+            TimingCirclesGame.isActive = false;
+            mjTras(TimingCirclesGame, () => {
+                $('#timingcircles-container').css('display', 'none');
+                tcPost('timingCirclesResult', { success: false });
+            }, 300);
+        }
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // VAR HACK MINIGAME
+        // =====================================================
+
+        
+
+        const VarHackGame = {
+            isActive: false,
+            partida: 0,
+            lines: 4,
+            symbols: 5,
+            timeLeft: 35,
+            timerInterval: null,
+            lineStates: [],
+            SYMBOLS: ['▲', '■', '●', '◆', '★', '▼', '◀', '▶']
+        };
+
+        function vhPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.data.action === 'startVarHack') {
+                
+                startVarHack(event.data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closeVarHack') return;
+            VarHackGame.partida++;
+            VarHackGame.isActive = false;
+            clearInterval(VarHackGame.timerInterval);
+            $('#varhack-container').css('display', 'none');
+        });
+
+        function startVarHack(config) {
+            if (VarHackGame.isActive) return;
+
+            VarHackGame.lines = config.lines || 4;
+            VarHackGame.symbols = config.symbols || 5;
+            VarHackGame.timeLeft = config.timeLimit || 35;
+            VarHackGame.isActive = true;
+            VarHackGame.partida++;
+
+            $('#varhack-container').css('display', 'flex');
+
+            generateVarHackLines();
+            updateVarHackUI();
+            startVarHackTimer();
+        }
+
+        function generateVarHackLines() {
+            const container = $('#vh-lines-container');
+            container.empty();
+
+            VarHackGame.lineStates = [];
+
+            for (let lineIdx = 0; lineIdx < VarHackGame.lines; lineIdx++) {
+                const randomOffset = Math.floor(Math.random() * VarHackGame.symbols);
+                VarHackGame.lineStates.push({
+                    offset: randomOffset,
+                    symbols: []
+                });
+
+                // Generar símbolos aleatorios para esta línea
+                for (let i = 0; i < VarHackGame.symbols; i++) {
+                    const symbol = VarHackGame.SYMBOLS[Math.floor(Math.random() * VarHackGame.SYMBOLS.length)];
+                    VarHackGame.lineStates[lineIdx].symbols.push(symbol);
+                }
+
+                const line = $('<div class="vh-line" data-line="' + lineIdx + '"></div>');
+
+                for (let i = 0; i < VarHackGame.symbols; i++) {
+                    const symbolEl = $('<div class="vh-symbol"></div>');
+                    line.append(symbolEl);
+                }
+
+                line.on('click', function () {
+                    rotateVarHackLine(lineIdx);
+                });
+
+                container.append(line);
+            }
+
+            updateVarHackDisplay();
+            checkVarHackAlignment();
+        }
+
+        function rotateVarHackLine(lineIdx) {
+            if (!VarHackGame.isActive) return;
+
+            VarHackGame.lineStates[lineIdx].offset = (VarHackGame.lineStates[lineIdx].offset + 1) % VarHackGame.symbols;
+
+            updateVarHackDisplay();
+            checkVarHackAlignment();
+        }
+
+        function updateVarHackDisplay() {
+            VarHackGame.lineStates.forEach((lineState, lineIdx) => {
+                const line = $('.vh-line[data-line="' + lineIdx + '"]');
+                const symbols = line.find('.vh-symbol');
+
+                for (let i = 0; i < VarHackGame.symbols; i++) {
+                    const displayIndex = (i + lineState.offset) % VarHackGame.symbols;
+                    $(symbols[i]).text(lineState.symbols[displayIndex]);
+                }
+            });
+        }
+
+        function checkVarHackAlignment() {
+            let alignedCount = 0;
+
+            // Verificar cada columna
+            for (let col = 0; col < VarHackGame.symbols; col++) {
+                let allSame = true;
+                let firstSymbol = null;
+
+                for (let lineIdx = 0; lineIdx < VarHackGame.lines; lineIdx++) {
+                    const displayIndex = (col + VarHackGame.lineStates[lineIdx].offset) % VarHackGame.symbols;
+                    const symbol = VarHackGame.lineStates[lineIdx].symbols[displayIndex];
+
+                    if (firstSymbol === null) {
+                        firstSymbol = symbol;
+                    } else if (symbol !== firstSymbol) {
+                        allSame = false;
+                        break;
+                    }
+                }
+
+                if (allSame) {
+                    alignedCount++;
+                }
+            }
+
+            // Marcar líneas alineadas
+            $('.vh-line').removeClass('aligned');
+
+            if (alignedCount > 0) {
+                // Buscar qué columnas están alineadas
+                for (let col = 0; col < VarHackGame.symbols; col++) {
+                    let allSame = true;
+                    let firstSymbol = null;
+
+                    for (let lineIdx = 0; lineIdx < VarHackGame.lines; lineIdx++) {
+                        const displayIndex = (col + VarHackGame.lineStates[lineIdx].offset) % VarHackGame.symbols;
+                        const symbol = VarHackGame.lineStates[lineIdx].symbols[displayIndex];
+
+                        if (firstSymbol === null) {
+                            firstSymbol = symbol;
+                        } else if (symbol !== firstSymbol) {
+                            allSame = false;
+                            break;
+                        }
+                    }
+
+                    if (allSame) {
+                        // Todas las líneas están alineadas - marcar todas
+                        for (let lineIdx = 0; lineIdx < VarHackGame.lines; lineIdx++) {
+                            $('.vh-line[data-line="' + lineIdx + '"]').addClass('aligned');
+                        }
+                        break;
+                    }
+                }
+            }
+
+            updateVarHackUI();
+
+            // Verificar victoria
+            if (alignedCount > 0) {
+                
+                successVarHack();
+            }
+        }
+
+        function startVarHackTimer() {
+            if (VarHackGame.timerInterval) clearInterval(VarHackGame.timerInterval);
+
+            VarHackGame.timerInterval = setInterval(() => {
+                VarHackGame.timeLeft -= 0.1;
+
+                if (VarHackGame.timeLeft <= 0) {
+                    failVarHack();
+                }
+
+                const timerElement = $('#vh-timer');
+                timerElement.text(Math.max(0, VarHackGame.timeLeft).toFixed(1));
+
+                timerElement.removeClass('warning danger');
+                if (VarHackGame.timeLeft < 5) {
+                    timerElement.addClass('danger');
+                } else if (VarHackGame.timeLeft < 10) {
+                    timerElement.addClass('warning');
+                }
+            }, 100);
+        }
+
+        function updateVarHackUI() {
+            $('#vh-aligned').text($('.vh-line.aligned').length > 0 ? '1' : '0');
+            $('#vh-total').text(VarHackGame.lines);
+        }
+
+        function successVarHack() {
+            clearInterval(VarHackGame.timerInterval);
+            VarHackGame.isActive = false;
+
+            mjTras(VarHackGame, () => {
+                $('#varhack-container').css('display', 'none');
+                vhPost('varHackResult', { success: true });
+            }, 500);
+        }
+
+        function failVarHack() {
+            clearInterval(VarHackGame.timerInterval);
+            VarHackGame.isActive = false;
+
+            mjTras(VarHackGame, () => {
+                $('#varhack-container').css('display', 'none');
+                vhPost('varHackResult', { success: false });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && VarHackGame.isActive) {
+                VarHackGame.partida++;
+                clearInterval(VarHackGame.timerInterval);
+                VarHackGame.isActive = false;
+                $('#varhack-container').css('display', 'none');
+                vhPost('closeVarHack', {});
+            }
+        });
+
+        
+    </script>
+
+    <script>
+        // =====================================================
+        // POWER GRID MINIGAME
+        // =====================================================
+
+        
+
+        const PowerGridGame = {
+            isActive: false,
+            partida: 0,
+            gridSize: 6,
+            minPathLength: 12,
+            timeLeft: 30,
+            timerInterval: null,
+            grid: [],
+            path: [],
+            startCell: null,
+            endCell: null,
+            isDrawing: false
+        };
+
+        function pgPost(action, data = {}) {
+            return $.post('https://origen_minijuegos/' + action, JSON.stringify(data));
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.data.action === 'startPowerGrid') {
+                
+                startPowerGrid(event.data.config);
+            }
+        });
+
+        // Lua la cierra (otra partida encima, o el raton soltado a la fuerza):
+        // fuera sin mandar nada, que Lua ya ha contestado a quien esperaba.
+        window.addEventListener('message', function (event) {
+            if (!event.data || event.data.action !== 'closePowerGrid') return;
+            PowerGridGame.partida++;
+            PowerGridGame.isActive = false;
+            clearInterval(PowerGridGame.timerInterval);
+            $('#powergrid-container').css('display', 'none');
+        });
+
+        function startPowerGrid(config) {
+            if (PowerGridGame.isActive) return;
+
+            PowerGridGame.gridSize = config.gridSize || 6;
+            PowerGridGame.minPathLength = config.pathLength || 12;
+            PowerGridGame.timeLeft = config.timeLimit || 30;
+            PowerGridGame.path = [];
+            PowerGridGame.isActive = true;
+            PowerGridGame.partida++;
+
+            $('#powergrid-container').css('display', 'flex');
+
+            generatePowerGrid();
+            updatePowerGridUI();
+            startPowerGridTimer();
+        }
+
+        function generatePowerGrid() {
+            
+
+            const container = $('#pg-grid');
+            container.empty();
+            container.css('grid-template-columns', 'repeat(' + PowerGridGame.gridSize + ', 1fr)');
+
+            const totalCells = PowerGridGame.gridSize * PowerGridGame.gridSize;
+            PowerGridGame.grid = [];
+
+            // Posiciones aleatorias para start y end
+            PowerGridGame.startCell = Math.floor(Math.random() * PowerGridGame.gridSize);
+            PowerGridGame.endCell = totalCells - 1 - Math.floor(Math.random() * PowerGridGame.gridSize);
+
+            
+            
+
+            // Generar algunas celdas bloqueadas
+            const blockedCount = Math.floor(totalCells * 0.2);
+            const blockedCells = new Set();
+            blockedCells.add(PowerGridGame.startCell);
+            blockedCells.add(PowerGridGame.endCell);
+
+            while (blockedCells.size < blockedCount + 2) {
+                blockedCells.add(Math.floor(Math.random() * totalCells));
+            }
+
+            for (let i = 0; i < totalCells; i++) {
+                const cell = $('<div class="pg-cell" data-index="' + i + '"></div>');
+
+                if (i === PowerGridGame.startCell) {
+                    cell.addClass('pg-start');
+                    cell.text('INICIO');
+                    PowerGridGame.grid.push({ type: 'start', inPath: false });
+                } else if (i === PowerGridGame.endCell) {
+                    cell.addClass('pg-end');
+                    cell.text('FIN');
+                    PowerGridGame.grid.push({ type: 'end', inPath: false });
+                } else if (blockedCells.has(i) && i !== PowerGridGame.startCell && i !== PowerGridGame.endCell) {
+                    cell.addClass('pg-blocked');
+                    PowerGridGame.grid.push({ type: 'blocked', inPath: false });
+                } else {
+                    PowerGridGame.grid.push({ type: 'empty', inPath: false });
+                }
+
+                // Click para todos los tipos de celdas
+                cell.on('click', function () {
+                    handlePowerGridClick(i);
+                });
+
+                container.append(cell);
+            }
+
+            
+        }
+
+        function handlePowerGridClick(index) {
+            if (!PowerGridGame.isActive) return;
+
+            
+
+            const cellType = PowerGridGame.grid[index].type;
+
+            // Si es una celda bloqueada, no hacer nada
+            if (cellType === 'blocked') {
+                
+                return;
+            }
+
+            // Si el path está vacío, debe empezar en START
+            if (PowerGridGame.path.length === 0) {
+                if (index === PowerGridGame.startCell) {
+                    
+                    PowerGridGame.path = [index];
+                    updatePowerGridPath();
+                    updatePowerGridUI();
+                } else {
+                    
+                }
+                return;
+            }
+
+            const lastIndex = PowerGridGame.path[PowerGridGame.path.length - 1];
+
+            // Si clickea la última celda del path, eliminar desde ahí hacia atrás
+            if (PowerGridGame.path.includes(index)) {
+                const clickedPosition = PowerGridGame.path.indexOf(index);
+                PowerGridGame.path = PowerGridGame.path.slice(0, clickedPosition + 1);
+                
+                updatePowerGridPath();
+                updatePowerGridUI();
+                return;
+            }
+
+            // Verificar si es adyacente
+            if (!isAdjacent(lastIndex, index)) {
+                
+                return;
+            }
+
+            // Agregar al path
+            PowerGridGame.path.push(index);
+            
+            updatePowerGridPath();
+            updatePowerGridUI();
+        }
+
+        function isAdjacent(index1, index2) {
+            const row1 = Math.floor(index1 / PowerGridGame.gridSize);
+            const col1 = index1 % PowerGridGame.gridSize;
+            const row2 = Math.floor(index2 / PowerGridGame.gridSize);
+            const col2 = index2 % PowerGridGame.gridSize;
+
+            const rowDiff = Math.abs(row1 - row2);
+            const colDiff = Math.abs(col1 - col2);
+
+            return (rowDiff === 1 && colDiff === 0) || (rowDiff === 0 && colDiff === 1);
+        }
+
+        function updatePowerGridPath() {
+            $('.pg-cell').removeClass('pg-path');
+
+            PowerGridGame.path.forEach(index => {
+                $('.pg-cell[data-index="' + index + '"]').addClass('pg-path');
+            });
+        }
+
+        function resetPowerGridPath() {
+            PowerGridGame.path = [];
+            PowerGridGame.isDrawing = false;
+            updatePowerGridPath();
+            updatePowerGridUI();
+        }
+
+        function completePowerGridPath() {
+            if (!PowerGridGame.isActive) return;
+
+            
+            
+            
+            
+            
+            
+
+            if (PowerGridGame.path.length === 0) {
+                
+                return;
+            }
+
+            const firstIndex = PowerGridGame.path[0];
+            const lastIndex = PowerGridGame.path[PowerGridGame.path.length - 1];
+
+            
+            
+
+            const startsAtStart = firstIndex === PowerGridGame.startCell;
+            const endsAtEnd = lastIndex === PowerGridGame.endCell;
+            const hasMinLength = PowerGridGame.path.length >= PowerGridGame.minPathLength;
+
+            
+            
+            
+
+            if (startsAtStart && endsAtEnd && hasMinLength) {
+                
+                successPowerGrid();
+            } else {
+                
+
+                if (!startsAtStart) {
+                    
+                    $('#pg-instruction-text').html('Tienes que empezar en <strong>INICIO</strong>.').css('color', 'var(--ogn-bad)');
+                } else if (!endsAtEnd) {
+                    
+                    $('#pg-instruction-text').html('Tienes que llegar hasta <strong>FIN</strong>.').css('color', 'var(--ogn-bad)');
+                } else if (!hasMinLength) {
+                    
+                    const remaining = PowerGridGame.minPathLength - PowerGridGame.path.length;
+                    $('#pg-instruction-text').text('Te faltan ' + remaining + ' casillas más.').css('color', 'var(--ogn-bad)');
+                }
+
+                mjTras(PowerGridGame, () => {
+                    $('#pg-instruction-text').html('Traza un camino desde <strong>INICIO</strong> hasta <strong>FIN</strong>.').css('color', 'var(--arc-ink-2)');
+                }, 2000);
+            }
+        }
+
+        $(document).on('click', '#pg-button-reset', function () {
+            
+            resetPowerGridPath();
+        });
+
+        $(document).on('click', '#pg-button-complete', function () {
+            
+            completePowerGridPath();
+        });
+
+        function startPowerGridTimer() {
+            if (PowerGridGame.timerInterval) clearInterval(PowerGridGame.timerInterval);
+
+            PowerGridGame.timerInterval = setInterval(() => {
+                PowerGridGame.timeLeft -= 0.1;
+
+                if (PowerGridGame.timeLeft <= 0) {
+                    failPowerGrid();
+                }
+
+                const timerElement = $('#pg-timer');
+                timerElement.text(Math.max(0, PowerGridGame.timeLeft).toFixed(1));
+
+                timerElement.removeClass('warning danger');
+                if (PowerGridGame.timeLeft < 5) {
+                    timerElement.addClass('danger');
+                } else if (PowerGridGame.timeLeft < 10) {
+                    timerElement.addClass('warning');
+                }
+            }, 100);
+        }
+
+        function updatePowerGridUI() {
+            $('#pg-path-length').text(PowerGridGame.path.length);
+            $('#pg-min-length').text(PowerGridGame.minPathLength);
+        }
+
+        function successPowerGrid() {
+            clearInterval(PowerGridGame.timerInterval);
+            PowerGridGame.isActive = false;
+
+            mjTras(PowerGridGame, () => {
+                $('#powergrid-container').css('display', 'none');
+                pgPost('powerGridResult', { success: true });
+            }, 500);
+        }
+
+        function failPowerGrid() {
+            clearInterval(PowerGridGame.timerInterval);
+            PowerGridGame.isActive = false;
+
+            mjTras(PowerGridGame, () => {
+                $('#powergrid-container').css('display', 'none');
+                pgPost('powerGridResult', { success: false });
+            }, 300);
+        }
+
+        $(document).on('keydown', function (e) {
+            if (e.key === 'Escape' && PowerGridGame.isActive) {
+                PowerGridGame.partida++;
+                clearInterval(PowerGridGame.timerInterval);
+                PowerGridGame.isActive = false;
+                $('#powergrid-container').css('display', 'none');
+                pgPost('closePowerGrid', {});
+            }
+        });
+
+        
+    </script>
+    <!-- Los minijuegos nuevos: el motor y, detras, los juegos que se apuntan a el -->
+    <script src="../nuevos/nuevos.js"></script>
+    <script src="../nuevos/fx.js?v=oxa0710"></script>
+    <script src="../nuevos/juegos-cerraduras.js"></script>
+    <script src="../nuevos/juegos-electronica.js?v=p0710"></script>
+    <script src="../nuevos/juegos-golpe.js"></script>
+    <script src="../nuevos/juegos-red.js"></script>
+</body>
+
+</html>

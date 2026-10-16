@@ -1,0 +1,305 @@
+/* ══ PEGATINA: los minijuegos con el estilo del logo ═════════════════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y los
+   minijuegos se quedan como en style.css, el <style> de index.html y
+   ../nuevos/nuevos.css. Se carga DESPUÉS de las tres.
+
+   Casi todo sale de los tokens --arc-*: se redefinen aquí con los valores
+   pegatina (panel gris, piezas gris claro, canto negro, sombra dura, rosa plano) y detrás
+   van, una a una, las piezas que llevaban el color escrito a mano.
+
+   REGLA DE ORO DEL RECURSO (ver style.css): son minijuegos. No se mueve
+   ni una medida ni una zona de acierto. Los cantos son box-shadow y los
+   bordes de 1 px que ya había solo cambian de color.
+
+   Los paneles van apilados a 0,8 vh: el canto de 4 + sombra de 7 por fuera
+   se pisaría con el de abajo. Por eso aquí el canto va por DENTRO (borde
+   de 1 px + anillo de 2) y la sombra dura es de 4.
+
+   No se toca lo que es el juego: las pantallas de aparato de los grandes
+   (.mj-zona--pantalla y sus lienzos), la cerradura, el dial y la huella.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+/*  style.css los declara en :root (0,1,0): con `html` a secas ganaba él.
+    `html:root` pesa (0,1,1). */
+html:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-papel1: #dcdde0;
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+
+    --arc-accent: #d81b55;
+    /*  El «canto de abajo de lo rosa» pasa a ser el canto negro. */
+    --arc-accent-deep: #000;
+    --arc-grad: #d81b55;
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #44444a;
+    --arc-ink-3: #55555c;
+    --arc-ink-4: #73737c;
+    --arc-paper: #c4c6ca;
+    --arc-paper-flat: #dcdde0;
+    --arc-sunken: #dcdde0;
+    --arc-sunken-hi: #dcdde0;
+    --arc-edge: #000;
+    --arc-line: #000;
+    --arc-line-soft: #000;
+    --arc-ok: #146636;
+    --arc-ok-hi: #146636;
+    --arc-ok-wash: #dcdde0;  /* sin menta de fondo: el acierto lo dice el canto verde */
+    --arc-bad: #b3123f;
+    --arc-bad-wash: #dcdde0;  /* sin rosa palido: el fallo lo dice el canto */
+    --arc-warn: #b3123f;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-relieve-corto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-relieve-hundido: inset 0 0 0 1.5px #000;
+    --arc-panel: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-panel-liso: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+/* ── Paneles ────────────────────────────────────────────────────────── */
+html .info-bar,
+html .instructions,
+html .game-track,
+html .tc-circle-area,
+html .vh-lines-container,
+html .pg-grid,
+html .ms-grid,
+html .wp-game-area,
+html .cb-sequence-display,
+html .cb-matrix,
+html .cb-buffer-bar,
+html .code-grid,
+html:root #mj-raiz .mj-barra,
+html:root #mj-raiz .mj-marco,
+html:root #mj-raiz .mj-ayuda { border-radius: 12px; }
+
+/*  Siete de los ocho clásicos repiten barra e instrucciones colgadas de su
+    id (#…-container .info-bar): hace falta el id para ganarles. */
+html:root :is(#lockpick-container, #timingcircles-container, #varhack-container, #powergrid-container, #minesweeper-container, #wirepuzzle-container, #codebreaker-container, #hacking-container) :is(.info-bar, .instructions) { border-radius: 12px; }
+html:root :is(#lockpick-container, #timingcircles-container, #varhack-container, #powergrid-container, #minesweeper-container, #wirepuzzle-container, #codebreaker-container, #hacking-container) .instructions,
+html:root #mj-raiz .mj-ayuda { color: #0b0b0d; }
+html:root :is(#lockpick-container, #timingcircles-container, #varhack-container, #powergrid-container, #minesweeper-container, #wirepuzzle-container, #codebreaker-container, #hacking-container) .instructions strong { color: #b3123f; }
+
+/*  El contador del centro: la cifra que más se mira. */
+html .value,
+html:root #mj-raiz .mj-reloj,
+html:root #mj-raiz .mj-cuenta { font-weight: 800; color: #0b0b0d; }
+html .info-item.timer .value.warning { color: #b3123f; }  /* sin ambar (06/10) */
+html .info-item.timer .value.danger,
+html:root #mj-raiz .mj-reloj--apura { color: #b3123f; }
+
+/* ── Los puntos de progreso ─────────────────────────────────────────── */
+html:root .progress-dot,
+html:root #hacking-progress-dots .progress-dot { background: #dcdde0; border-color: #000; box-shadow: none; }
+html .progress-dot.active,
+html #hacking-progress-dots .progress-dot.active { background: #d81b55; border-color: #000; box-shadow: none; }
+html .progress-dot.completed,
+html #hacking-progress-dots .progress-dot.completed { background: #0b0b0d; border-color: #000; box-shadow: none; }
+
+/* ── Ganzúa clásica ─────────────────────────────────────────────────── */
+html .game-track { background: #dcdde0; }
+/*  La zona de acierto: rosa plano. Sus dos bordes de 1 px no se tocan. */
+html:root .sweet-spot { background: rgba(216, 27, 85, 0.3); box-shadow: none; }
+html .game-track.success { border-color: #146636; box-shadow: inset 0 0 0 2px #146636, 2px 2px 0 #000; }
+html .game-track.fail { border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+
+/* ── Timing circles ─────────────────────────────────────────────────── */
+html:root .tc-outer-circle { stroke: #9a9aa3; }
+html .tc-perfect-zone,
+html .tc-moving-circle,
+html .tc-moving-circle.perfect,
+html .tc-moving-circle.fail { filter: none; }
+
+/* ── Var hack ───────────────────────────────────────────────────────── */
+html .vh-line:hover { background: #e6e7ea; border-color: #000; }
+html .vh-line.aligned { background: #dcdde0; border-color: #146636; box-shadow: inset 0 0 0 1.5px #146636; }
+html .vh-line.aligned .vh-symbol { color: #146636; border-color: #146636; box-shadow: inset 0 0 0 1.5px #146636; }
+
+/* ── Power grid ─────────────────────────────────────────────────────── */
+html .pg-cell:hover:not(.pg-start):not(.pg-end):not(.pg-blocked) { background: #e6e7ea; border-color: #000; }
+html .pg-cell.pg-start { background: #146636; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #fff; }
+html .pg-cell.pg-end { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .pg-cell.pg-path { background: #0b0b0d; border-color: #000; box-shadow: none; }
+html .pg-cell.pg-blocked { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .pg-button { border-radius: 11px; background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .pg-button:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html .pg-button:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .pg-button-complete,
+html .pg-button-complete:hover { background: #d81b55; border-color: #000; color: #000; }
+html .pg-button-complete:hover { background: #df2f63; }
+
+/* ── Buscaminas ─────────────────────────────────────────────────────── */
+html .ms-cell { color: #0b0b0d; }
+html .ms-cell:hover:not(.revealed):not(.mine-hit) { background: #e6e7ea; border-color: #000; }
+html:root .ms-cell.revealed { background: #e6e7ea; border-color: #000; box-shadow: none; }
+html .ms-cell.mine-hit { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ms-cell.mine-revealed { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; color: #b3123f; }
+
+/* ── Cables ─────────────────────────────────────────────────────────── */
+html .wp-wire:hover:not(.connected):not(.disabled) { background: #e6e7ea; border-color: #000; }
+html .wp-wire.selected { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000 !important; }
+html .wp-wire.connected { background: #dcdde0; border-color: #146636; box-shadow: inset 0 0 0 1.5px #146636; color: #146636 !important; }
+html .wp-connection-line.correct,
+html .wp-connection-line.wrong { filter: none; }
+
+/* ── Code breaker ───────────────────────────────────────────────────── */
+html .cb-seq-item { border-color: #000; color: #0b0b0d; }
+html .cb-seq-item.found { background: #146636; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #fff; }
+html .cb-cell { color: #0b0b0d; }
+html .cb-cell:hover:not(.disabled):not(.selected) { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html .cb-cell.highlighted { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55; color: #0b0b0d; }
+html .cb-cell.selected,
+html .cb-buffer-slot.filled { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .cb-cell.correct { background: #146636; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #fff; }
+html .cb-cell.wrong { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .cb-buffer-slot { background: #dcdde0; }
+
+/* ── Hacking ────────────────────────────────────────────────────────── */
+html .code-cell { color: #0b0b0d; }
+html .code-cell:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html .code-cell.showing { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .code-cell.correct { background: #146636; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #fff; }
+html .code-cell.wrong { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+
+/* ══ Los minijuegos nuevos (#mj-raiz) ══════════════════════════════════ */
+
+/*  El rótulo de arriba, a brocha: rosa con el contorno negro del logo. */
+html #mj-raiz .mj-rotulo {
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000, 3px 4px 0 #000;
+}
+html #mj-raiz .mj-pip { transform: none; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #mj-raiz .mj-pips--progreso .mj-pip--lleno { background: #0b0b0d; box-shadow: none; }
+html #mj-raiz .mj-pips--vidas .mj-pip--lleno { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; }
+html #mj-raiz .mj-ayuda strong { color: #b3123f; }
+html:root #mj-raiz .mj-etiqueta { color: #0b0b0d; }
+html #mj-raiz .mj-fin--mal { background: #d81b55; color: #000; }
+html #mj-raiz .mj-fin--bien { background: #146636; color: #fff; }
+
+html #mj-raiz .mj-medidor { background: #dcdde0; }
+html #mj-raiz .mj-medidor__relleno { background: #0b0b0d; }
+html #mj-raiz .mj-medidor__relleno--mal { background: #d81b55; }
+html #mj-raiz .mj-medidor__relleno--bien { background: #146636; }
+
+html:root #mj-raiz .mj-boton { border-radius: 9px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #mj-raiz .mj-boton:hover:not(:disabled) { background: #df2f63; }
+html #mj-raiz .mj-boton:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #mj-raiz .mj-boton:disabled { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+
+/*  Pines, dial, taladro, clave y señal: los huecos son papel con anillo
+    fino; lo elegido lleva el anillo rosa que ya tenía. */
+html #mj-raiz .pn-pin { box-shadow: none; }
+html #mj-raiz .pn-canal--elegido { box-shadow: inset 0 0 0 1.5px #000, 0 0 0 2.5px #d81b55; }
+html:root #mj-raiz .dl-hueco--ahora,
+html:root #mj-raiz .cl-casilla--ahora { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; color: #0b0b0d; }
+html:root #mj-raiz .dl-hueco--hecho { background: #146636; box-shadow: inset 0 0 0 1.5px #000; color: #fff; }
+html:root #mj-raiz .dl-lectura,
+html #mj-raiz .cl-casilla { background: #dcdde0; }
+html #mj-raiz .dl-fonendo__nivel { background: #0b0b0d; }
+html #mj-raiz .dl-fonendo__nivel--alto { background: #d81b55; }
+html #mj-raiz .cl-cifra { background: #0b0b0d; color: #fff; }
+html #mj-raiz .cl-cifra--bien { background: #146636; }
+html #mj-raiz .cl-cifra--casi { background: #c77700; }
+html #mj-raiz .cl-cifra--no { background: #73737c; }
+html #mj-raiz .cl-tecla { border-radius: 8px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #mj-raiz .cl-tecla:hover:not(:disabled) { background: #e6e7ea; }
+html #mj-raiz .cl-tecla:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #mj-raiz .cl-tecla--accion { color: #0b0b0d; }
+html #mj-raiz .cl-tecla--ok,
+html #mj-raiz .cl-tecla--ok:hover:not(:disabled) { background: #d81b55; color: #000; }
+html #mj-raiz .sn-deslizador { background: #dcdde0; }
+html #mj-raiz .sn-deslizador::-webkit-slider-thumb { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+
+/* [REPASO-HUD 05/10 · principio] (verificado 06/10) */
+/* ══ REPASO VISUAL (05/10, verificado 06/10) · LOS MINIJUEGOS NUEVOS (#mj-raiz) ═
+   Criterio del minimapa: las tres piezas de fuera (la barra del reloj, el
+   marco del juego y la ayuda) en el gris de panel; lo de dentro, en pieza. Las
+   etiquetas («FONENDO»…) y el botón, en rótulo cursiva 800 sin espaciar;
+   el reloj y las lecturas, en Oxanium 800. Los filos de 1 px de los huecos
+   pasan a anillo de 2 px. Solo de día. */
+html:root #mj-raiz .mj-barra,
+html:root #mj-raiz .mj-marco,
+html:root #mj-raiz .mj-ayuda { background: #c4c6ca; }
+html:root #mj-raiz .mj-etiqueta,
+html:root #mj-raiz .mj-boton {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+}
+html:root #mj-raiz .mj-etiqueta { font-size: calc(1.5vh / var(--ogn-escala, 1)); }
+html:root #mj-raiz .mj-reloj,
+html:root #mj-raiz .mj-cuenta,
+html:root #mj-raiz .dl-lectura { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; letter-spacing: 0; }
+html:root #mj-raiz .mj-reloj--apura { color: #b3123f; }
+html:root #mj-raiz .mj-ayuda { font-weight: 600; }
+/*  Los huecos de dentro: pieza gris con anillo de 2 px (traían filo de 1 px). */
+html:root #mj-raiz :is(.dl-lectura, .dl-fonendo, .dl-hueco, .cl-casilla, .cl-historial, .mj-medidor, .mj-lienzo) { border-color: transparent; box-shadow: inset 0 0 0 1.5px #000; }
+html:root #mj-raiz :is(.dl-fonendo, .dl-hueco, .cl-historial) { background: #dcdde0; }
+html:root #mj-raiz .dl-hueco--ahora,
+html:root #mj-raiz .cl-casilla--ahora { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root #mj-raiz .dl-hueco--hecho { background: #146636; box-shadow: inset 0 0 0 1.5px #000; }
+/* [REPASO-HUD 05/10 · fin] (verificado 06/10) */
+
+/* ══ REPASO VISUAL (06/10) · LOS OCHO CLÁSICOS ═══════════════════════════
+   Para que se lean igual que los nuevos (#mj-raiz): el rótulo de arriba a
+   brocha, las piezas de fuera (barra, marco del juego, ayuda) en gris
+   de panel y lo de dentro en pieza, la ayuda a todo el ancho y los puntos de
+   progreso cuadrados como los pips. Visto en captura (inicio, jugando,
+   acierto y fallo). Solo de día; ninguna medida del juego cambia. */
+html:root :is(.lockpick-label, .timingcircles-label, .varhack-label, .powergrid-label, .minesweeper-label, .wirepuzzle-label, .codebreaker-label, .hacking-label) {
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000, 3px 4px 0 #000;
+}
+/*  Las tres piezas de fuera, en el gris de panel (como .mj-barra/.mj-marco/.mj-ayuda). */
+html:root :is(#lockpick-container, #timingcircles-container, #varhack-container, #powergrid-container, #minesweeper-container, #wirepuzzle-container, #codebreaker-container, #hacking-container) :is(.info-bar, .instructions, .game-track, .tc-circle-area, .vh-lines-container, .pg-grid, .ms-grid, .wp-game-area, .cb-sequence-display, .cb-matrix, .cb-buffer-bar, .code-grid) { background: #c4c6ca; }
+/*  La ayuda, a todo el ancho del juego como .mj-ayuda (era una píldora). */
+html:root :is(#lockpick-container, #timingcircles-container, #varhack-container, #powergrid-container, #minesweeper-container, #wirepuzzle-container, #codebreaker-container, #hacking-container) .instructions { align-self: stretch; }
+/*  Puntos de progreso: cuadrados, como los pips de los nuevos. */
+html:root .progress-dot,
+html:root #hacking-progress-dots .progress-dot { border-radius: 2px; box-shadow: inset 0 0 0 0.5px #000; }
+
+/*  Lo de dentro, en pieza gris (el búfer vacío era crema). Los estados (.filled, .aligned) no se tocan. */
+html:root .cb-buffer-slot:not(.filled) { background: #dcdde0; }
+html:root .vh-line:not(.aligned) { border-color: #000; box-shadow: inset 0 0 0 1px #000; }
+
+/*  Ganzúa: la zona de acierto, rosa pálido macizo (sobre gris, el rosa
+    translúcido salía sucio). Sus bordes de 1 px no se tocan. */
+html:root .sweet-spot { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+
+/*  Timing circles: el disco, pieza gris con canto negro (como la esfera de la
+    ganzúa nueva); el radio no cambia. */
+html:root .tc-outer-circle { fill: #dcdde0; stroke: #000; }
+
+/*  Buscaminas: lo destapado queda hundido (hueco gris claro, sin sombra). */
+html:root .ms-cell.revealed { background: #dcdde0; border-color: #000; box-shadow: none; }
+
+/*  Power grid: el START y el END siguen viéndose cuando el camino pasa por
+    ellos (el negro del camino los tapaba y «END» quedaba negro sobre negro). */
+html:root .pg-cell.pg-start.pg-path { background: #146636; color: #fff; }
+html:root .pg-cell.pg-end.pg-path { background: #d81b55; color: #000; }
+
+/*  Hacking: la casilla que se enseña / acierta / falla no se apaga con el
+    resto de la rejilla bloqueada. */
+html:root .code-cell.disabled:is(.showing, .correct, .wrong) { opacity: 1; }
+/* [REPASO VISUAL 06/10 · fin] */
+
+/*  Cifras centradas (06/10): las chapas de los cables (R1, G1…) dejaban la
+    letra ~0,6 px alta (hasta 1 px según cae el píxel). Se empuja medio
+    píxel de media sin mover lo que viene debajo. */
+html .wp-wire { padding-top: 1px; margin-bottom: -1px; }

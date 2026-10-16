@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent !important;
+    }
+    #layer {
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="layer"></div>
+  <script>
+    const layer = document.getElementById('layer');
+    let loadedImage = null;
+
+    function setImage(src) {
+      if (!src || src === loadedImage) return;
+
+      const probe = new Image();
+      probe.onload = () => {
+        loadedImage = src;
+        layer.style.backgroundImage = `url("${src}")`;
+      };
+      probe.onerror = (err) => {
+        console.warn('[origen_livery] Error al cargar imagen en DUI:', src, err);
+      };
+      probe.src = src;
+    }
+
+    // Comprobar parámetros de URL (?img=... o ?url=... o ?image=...)
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const urlParam = params.get('img') || params.get('url') || params.get('image');
+      if (urlParam) {
+        setImage(urlParam);
+      }
+    } catch (e) {}
+
+    // Escuchar mensajes de FiveM (SendDuiMessage)
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (!data) return;
+      const img = data.image || data.url;
+      if (img) {
+        setImage(img);
+      }
+    });
+  </script>
+</body>
+</html>

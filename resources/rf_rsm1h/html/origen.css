@@ -1,0 +1,467 @@
+/*
+ * ORIGEN: el panel de la casa convertido en menú lateral de la casa (riel a la
+ * derecha + columna), con la piel «HUD Arcade» del inventario.
+ *
+ * Va encima de style.css, que es del autor y está minificado. No se toca su DOM:
+ * se reordena con CSS. .screen pasa a ser una rejilla de dos columnas
+ * (columna | riel); .bezel y .body se disuelven con display: contents.
+ * Si el autor actualiza html/, hay que volver a enlazar esta hoja y origen.js.
+ */
+
+/* Fuentes y tokens: origen-tokens.css, enlazada antes que esta. */
+
+/* ══ El armazón: columna | riel, despegados del canto derecho ═════════ */
+.root { position: fixed; inset: 0; display: block; }
+.scrim { position: absolute; inset: 0; background: none; }   /* pinchar fuera cierra (data-close) */
+
+.tablet {
+    position: fixed;
+    top: var(--pm-margen-y);
+    right: var(--pm-margen-x);
+    bottom: var(--pm-margen-y);
+    width: auto;
+    height: auto;
+    animation: none;
+    transform: translateX(calc(100% + var(--pm-margen-x)));
+    opacity: 0;
+    transition: transform 0.26s var(--pm-ease), opacity 0.2s ease;
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+}
+.root.dentro .tablet { transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+    .tablet { transition: opacity 0.15s ease; transform: none; }
+}
+
+.bezel, .body { display: contents; }
+.screen {
+    display: grid;
+    grid-template-columns: var(--pm-col) var(--pm-riel);
+    grid-template-rows: auto minmax(0, 1fr);
+    column-gap: var(--pm-hueco);
+    width: auto;
+    height: 100%;
+    background: none;
+    border-radius: 0;
+    overflow: visible;
+}
+/* La columna es una sola pieza de cristal debajo de la cabecera y el cuerpo */
+.screen::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1 / 3;
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--pm-r-zona);
+    background: var(--arc-glass);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+                0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+                0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* Nada de relieve, resplandores ni brillos del autor dentro */
+.main *, .main *::before, .main *::after, .hdr * { text-shadow: none !important; filter: none !important; }
+.hdr-mute { filter: none !important; }
+
+/* ── Cabecera de la columna ── */
+.hdr {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    z-index: 1;
+    flex: none;
+    height: auto;
+    margin-top: 4px;
+    padding: 14px 22px 12px;
+    background: none;
+    box-shadow: none;
+    border-bottom: 2px solid rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    color: var(--arc-ink);
+    overflow: visible;
+}
+.hdr .brand { display: none; }
+.hdr-side {
+    font: 700 13px var(--arc-cond);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto);
+}
+.hdr .dot { background: var(--pm-ok); box-shadow: none; }
+.hdr-side--r { color: var(--arc-ink-3); font-family: var(--arc-mono); letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.hdr-mute { color: var(--arc-ink-3); }
+.hdr-mute.is-muted { color: var(--arc-accent-deep); }
+
+/* ── Cuerpo ── */
+.main {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: none;
+    overflow: hidden;
+    border-radius: 0 0 var(--pm-r-zona) var(--pm-r-zona);
+}
+.content { padding: 14px 20px 18px; gap: 15px; overflow-x: hidden; }
+
+/* ══ El riel ═════════════════════════════════════════════════════════ */
+.rail {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    width: var(--pm-riel);
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border: 0;
+    border-top: 4px solid var(--arc-edge);
+    border-radius: var(--pm-r-zona);
+    background: var(--arc-glass);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+                0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+                0 30px 70px rgba(0, 0, 0, 0.45);
+    color: var(--arc-ink);
+    overflow: visible;
+    z-index: 2;
+}
+/* La marca: una casa en su placa, con el subrayado rosa */
+.rail::before {
+    content: "";
+    flex: none;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: var(--pm-r-ctrl);
+    background: var(--arc-placa);
+    box-shadow: inset 0 1px 0 var(--arc-brillo), 0 4px 0 var(--arc-placa-canto);
+    -webkit-mask: none;
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff2d6a' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E"),
+        var(--arc-placa);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 21px 21px, 100% 100%;
+}
+/* El rótulo del pie, de abajo arriba */
+.rail::after {
+    content: "Origen Casa";
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font: italic 800 14px var(--arc-cond);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--arc-ink-4);
+}
+.nav { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 0; }
+.nav-item {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    gap: 0;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: var(--pm-r-ctrl);
+    background: var(--arc-btn);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))),
+                inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--arc-ink-4);
+    transition: background 0.12s ease, color 0.12s ease;
+}
+.nav-item:hover { background: var(--arc-btn-hover); color: var(--arc-ink-2); }
+.nav-item.is-active { background: var(--arc-grad); box-shadow: 0 5px 0 var(--arc-accent-deep); color: #fff; }
+.nav-item svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.nav-item i { display: none; }
+/* El globito con el nombre, hacia la columna */
+.nav-item span {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    padding: 7px 12px 6px;
+    border-left: 3px solid var(--arc-accent);
+    border-radius: var(--pm-r-min);
+    background: var(--arc-tip);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))),
+                0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf))),
+                0 8px 20px rgba(0, 0, 0, 0.3);
+    color: var(--arc-ink);
+    font: italic 800 14px var(--arc-cond);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(4px) var(--arc-skew);
+    z-index: 2;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+.nav-item:hover span { opacity: 1; transform: translateY(-50%) var(--arc-skew); }
+
+/* ══ Lo de dentro ════════════════════════════════════════════════════ */
+
+/* Una sola columna: el panel del autor estaba pensado a 1140 px de ancho */
+.home, .home .col, .audio-grid, .screens-grid, .doors-grid, .lifts-grid, .media, .media--split, .media--a, .media--b, .grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+.home, .doors-grid, .media, .media--split { display: flex !important; flex-direction: column; gap: 12px; }
+.home .col, .doors-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.doors-sep { display: none; }
+
+/* Títulos de sección */
+.page-title h2, .lock-title {
+    font: italic 800 32px/0.92 var(--arc-cond);
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+.page-title p, .lock-sub { font: 600 14px var(--arc-cond); letter-spacing: 0.12em; text-transform: uppercase; color: var(--arc-ink-3); }
+.lock-sub.is-bad { color: var(--pm-bad); }
+.sec-label, .pick-head, .eq-label, .doors-room {
+    font: italic 800 19px var(--arc-cond);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--arc-ink-2);
+}
+
+/* Fichas = filas de papel, sin borde: velo, filo y aro */
+.card, .wx, .wx.is-night, .led, .tv-led, .spec-led, .picker, .eq-panel {
+    background: var(--pm-velo);
+    border: 0;
+    border-radius: var(--pm-r);
+    box-shadow: var(--pm-aro) !important;
+    color: var(--arc-ink);
+}
+.card { padding: 12px 14px 14px; }
+.card.strip, .strip { padding: 0; }
+.card-head .tile {
+    width: 40px; height: 40px;
+    border-radius: 9px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), var(--arc-canto-duro) !important;
+    color: var(--arc-accent-texto);
+    transform: var(--arc-skew);
+}
+.card-head .tile svg { transform: var(--arc-unskew); }
+.card-title { font: italic 800 19px/1.05 var(--arc-cond); letter-spacing: 0; text-transform: uppercase; color: var(--arc-ink); }
+.card-meta { font: 500 13px var(--arc-text); letter-spacing: 0; text-transform: none; color: var(--arc-ink-3); }
+.lab { font: 700 12px var(--arc-cond); letter-spacing: 0.18em; text-transform: uppercase; color: var(--arc-ink-3); }
+.val, .room-pct, .wx-clock, .lift-digit, .led-text, .spec-time, .eq-val, .lkey-code {
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-ink);
+}
+
+/* El tiempo: sin el cielo azul del autor */
+.wx { color: var(--arc-ink); }
+.wx-clock { font-size: 44px; }
+.wx-day, .wx-next small, .wx-d span { font: 700 12px var(--arc-cond); letter-spacing: 0.18em; text-transform: uppercase; color: var(--arc-ink-3); }
+.wx-next span { font: italic 800 17px var(--arc-cond); text-transform: uppercase; color: var(--arc-ink); }
+.wx-d.is-on { color: var(--arc-accent-texto); }
+.wx-d.is-on i { background: var(--arc-accent); }
+.wx svg { stroke: currentColor; }
+
+/* El bloque de "ir a" de las tiras */
+.go {
+    background: none;
+    border-left: 2px solid rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    color: var(--arc-ink-3);
+    box-shadow: none !important;
+    transition: background 0.16s ease, color 0.16s ease;
+}
+.go:hover { background: rgba(var(--arc-t-elegido), 0.6); color: var(--arc-accent-texto); }
+
+/* Botones de papel sesgados, con canto; el texto enderezado */
+.preset, .btn, .pill, .gated-btn, .lkey, .dbar {
+    border: 0;
+    border-radius: 9px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), var(--arc-canto-duro) !important;
+    color: var(--arc-ink-2);
+    font: italic 800 15px var(--arc-cond);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transform: var(--arc-skew);
+    transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+.preset > *, .btn > *, .pill > *, .lkey > *, .dbar > * { transform: var(--arc-unskew); }
+.preset:hover, .btn:hover, .pill:hover, .lkey:hover, .dbar:hover { background: var(--pm-velo-hi); color: var(--arc-ink); }
+.preset:active, .btn:active, .dbar:active, .lkey:active { transform: var(--arc-skew) translateY(3px); }
+.preset:disabled { color: var(--arc-ink-4); }
+.pill--lit, .lkey.is-here { background: rgba(var(--arc-t-elegido), 0.78); box-shadow: inset 0 0 0 2px var(--arc-accent), var(--arc-canto-duro) !important; color: var(--arc-accent-texto); }
+.pill--red, .dbar.is-locked { color: var(--pm-bad); }
+.lkey.is-called { box-shadow: inset 0 0 0 2px var(--arc-accent), var(--arc-canto-duro) !important; }
+
+/* Teclas cuadradas (luces, persianas, puertas…): papel sesgado */
+.mkey, .key { background: none; padding: 0; border-radius: 9px; box-shadow: none !important; transform: var(--arc-skew); }
+/* El teclado del código no se sesga: la cifra va suelta dentro y no habría a qué enderezarla */
+.key { transform: none; }
+.key:active { transform: translateY(3px); }
+.mkey-face, .key .key-face {
+    border: 0;
+    border-radius: 9px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), var(--arc-canto-duro) !important;
+    color: var(--arc-ink-2);
+    transition: background 0.16s ease, color 0.16s ease;
+}
+.mkey-face > *, .key .key-face > * { transform: var(--arc-unskew); }
+.mkey:hover .mkey-face, .key:hover .key-face { background: var(--pm-velo-hi); color: var(--arc-ink); }
+.mkey:active { transform: var(--arc-skew) translateY(3px); }
+/* Encendido: el tinte de lo elegido con el filete rosa, no relleno lleno */
+.mkey.is-on .mkey-face {
+    background: rgba(var(--arc-t-elegido), 0.78);
+    box-shadow: inset 0 0 0 2px var(--arc-accent), var(--arc-canto-duro) !important;
+    color: var(--arc-accent-texto);
+}
+.mkey--redoff:not(.is-on) .mkey-face { color: var(--pm-bad); }
+.key .key-face { font: 400 26px var(--arc-mono); }
+.key--alt .key-face { background: var(--arc-papel); color: var(--arc-ink-3); }
+/* El único relleno rosa de la columna: el botón que confirma el código */
+.key--go .key-face { background: var(--arc-grad); box-shadow: 0 5px 0 var(--arc-accent-deep) !important; color: #fff; }
+.key--go:hover .key-face { background: var(--arc-grad); color: #fff; }
+.key-name, .cap { font: 700 12px var(--arc-cond); letter-spacing: 0.14em; text-transform: uppercase; color: var(--arc-ink-3); }
+
+/* Interruptores: pista hundida, encendido en verde */
+.toggle { background: rgba(var(--arc-t-hueco), 0.1); box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.25) !important; }
+.toggle::after { background: var(--arc-papel1); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) !important; }
+.toggle.is-on { background: rgba(var(--green-rgb), 0.25); }
+
+/* Barras de altura, velocidad y volumen */
+.track { background: rgba(var(--arc-t-hueco), 0.08); border: 0; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2) !important; }
+.fill { border-radius: 2px; }
+
+/* Campo de texto: no se sesga */
+.pick-url input {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.25) !important;
+    font: 600 18px var(--arc-cond);
+    color: var(--arc-ink);
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+.pick-url input::placeholder { color: var(--arc-ink-4); }
+.pick-url input:focus { outline: none; background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf))); box-shadow: inset 0 0 0 2px var(--arc-accent) !important; }
+.pick.is-current { background: rgba(var(--arc-t-elegido), 0.78); box-shadow: inset 0 0 0 2px var(--arc-accent) !important; }
+
+/* Teclado del código */
+.pad-dots i { background: rgba(var(--arc-t-hueco), 0.07); border: 0; border-radius: 8px; box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.25) !important; }
+.pad-dots i::after { background: var(--arc-ink-4); }
+.pad-dots i.is-set { box-shadow: inset 0 0 0 2px var(--arc-accent) !important; }
+.pad-dots i.is-set::after { background: var(--arc-accent); }
+.lock-state { font: 700 13px var(--arc-cond); letter-spacing: 0.28em; text-transform: uppercase; color: var(--arc-accent-texto); }
+.lock-state i { background: var(--arc-accent); box-shadow: none !important; }
+
+/* Vacío */
+.empty h3 { font: 700 14px var(--arc-cond); letter-spacing: 0.18em; text-transform: uppercase; color: var(--arc-ink-3); }
+.empty p { font: 500 13px var(--arc-text); color: var(--arc-ink-3); }
+
+.content::-webkit-scrollbar { width: 4px; }
+.content::-webkit-scrollbar-thumb { background: rgba(var(--arc-t-linea), 0.3); border-radius: 2px; }
+
+/* ══ Piezas del autor con el fondo oscuro escrito a mano ════════════ */
+/* Las tiras de inicio iban repartidas a 1 1 0 en una columna alta; aquí se miden solas */
+.home .col > * { flex: none !important; }
+.home .col:nth-child(2) > .strip { min-height: 58px; }
+.wx-days { background: rgba(var(--arc-t-hueco), 0.05); border-top: 2px solid rgba(255, 255, 255, calc(0.8 * var(--arc-vf))); }
+.lockscreen { background: none; }
+.keybtn, .lift-show {
+    border: 0;
+    border-radius: 8px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), 0 3px 0 rgba(var(--arc-t-relieve), 0.4) !important;
+    color: var(--arc-ink-2);
+    font: 700 12px var(--arc-cond);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: background 0.16s ease, color 0.16s ease;
+}
+.keybtn:hover, .lift-show:hover { background: var(--pm-velo-hi); color: var(--arc-accent-texto); }
+.flat-tag { background: rgba(var(--arc-t-hueco), 0.07); color: var(--arc-ink-3); font: 700 11px var(--arc-cond); letter-spacing: 0.14em; }
+.flat-tag--warn { color: var(--pm-warn); }
+.dbar .dhold, .bc-stop { background: rgba(var(--arc-t-hueco), 0.08); }
+.bc-track { background: rgba(var(--arc-t-hueco), 0.08); box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2) !important; }
+.spec-files .pick { background: var(--pm-velo); box-shadow: var(--pm-aro) !important; border-radius: 9px; }
+.spec-files .pick:hover { background: var(--pm-velo-hi); }
+/* Las pantallas de vídeo, las cámaras y el visualizador de música se quedan oscuros: son pantallas */
+
+/* Persianas: el autor las ponía en dos columnas de 300 + 160 px */
+.bc-grid { grid-template-columns: minmax(0, 1fr) !important; }
+
+/* Puertas: la fila es papel; cerrada o abierta lo dice el candado, no un relleno rosa */
+.dbar span { background: none !important; box-shadow: none !important; }
+.dbar > span { color: var(--arc-ink); font: italic 800 16px var(--arc-cond); letter-spacing: 0.04em; }
+.dbar svg { stroke: var(--pm-ok); }
+.dbar.is-locked svg { stroke: var(--pm-bad); }
+
+/* El tiempo: los iconos del día en tinta, que en blanco no se ven sobre crema */
+.wx-icon, .wx-d .wx-icon, .wx-side svg { color: var(--arc-ink-3); stroke: currentColor; }
+.wx-d.is-on .wx-icon { color: var(--arc-accent-texto); }
+
+/* Cámaras: eran recuadros de vídeo oscuros con el nombre en claro. Aquí son filas
+   de papel en dos columnas: icono | nombre y estancia | en directo */
+.cam-tiles {
+    flex: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: auto;
+    gap: 8px;
+}
+.cam-tile {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    grid-template-areas: "ico cab" "ico sub";
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 1px;
+    height: auto;
+    min-height: 54px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: var(--pm-r);
+    background: var(--pm-velo);
+    box-shadow: var(--pm-aro) !important;
+    color: var(--arc-ink);
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+.cam-tile:hover { background: var(--pm-velo-hi); }
+.cam-tile:active { transform: none; }
+.cam-tile.is-motion { background: rgba(var(--amber-rgb), 0.12); box-shadow: inset 0 0 0 2px var(--amber) !important; }
+.cam-tile-head { grid-area: cab; min-width: 0; gap: 6px; }
+.cam-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: italic 800 16px/1.05 var(--arc-cond);
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+}
+.cam-live { font: 700 10px var(--arc-cond); letter-spacing: 0.14em; color: var(--arc-accent-texto); }
+.cam-live i { background: var(--arc-accent); box-shadow: none !important; }
+.cam-tile-ico {
+    grid-area: ico;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), 0 3px 0 rgba(var(--arc-t-relieve), 0.4) !important;
+    color: var(--arc-accent-texto);
+}
+.cam-tile-ico svg { width: 18px; height: 18px; stroke-width: 2; }
+.cam-sub {
+    grid-area: sub;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font: 500 12px var(--arc-text);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--arc-ink-3);
+}
+.sec-label { color: var(--arc-ink-2); }

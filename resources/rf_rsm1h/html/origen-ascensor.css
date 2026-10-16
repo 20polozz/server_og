@@ -1,0 +1,162 @@
+/*
+ * ORIGEN: el panel del ascensor de rf_rsm1h (lift.html) como columna lateral de
+ * la casa, con la piel «HUD Arcade» (tokens en origen-tokens.css).
+ * La columna va sola a la derecha, sin riel: el ascensor no tiene secciones.
+ * El aviso de tecla del autor (#hint) no se pinta: sale el de origen_notify
+ * (ver origen.js y client/origen_aviso.lua).
+ */
+
+#hint { display: none !important; }
+
+body { font-family: var(--arc-text); color: var(--arc-ink); }
+
+/* ── El armazón: la columna despegada del canto derecho ── */
+#app {
+    width: 100vw;
+    height: 100vh;
+    justify-content: flex-end;
+    align-items: stretch;
+    padding: var(--pm-margen-y) var(--pm-margen-x);
+    transition: opacity 0.2s ease;
+}
+#app .card {
+    width: clamp(360px, 26vw, 440px);
+    max-width: 92vw;
+    padding: 0;
+    gap: 0;
+    border: 0;
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--pm-r-zona);
+    background: var(--arc-glass);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+                0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+                0 30px 70px rgba(0, 0, 0, 0.45);
+    color: var(--arc-ink);
+    transform: translateX(calc(100% + var(--pm-margen-x)));
+    opacity: 0;
+    transition: transform 0.26s var(--pm-ease), opacity 0.2s ease;
+}
+#app.open .card { transform: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+    #app .card { transition: opacity 0.15s ease; transform: none; }
+}
+
+/* ── Cabecera: antetítulo, estado y el número de planta ── */
+.top {
+    padding: 16px 22px 0;
+}
+.top img { display: none; }
+.top::before {
+    content: "Control Casa · Ascensor";
+    font: 700 13px var(--arc-cond);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto);
+}
+.badge { font: 700 12px var(--arc-cond); letter-spacing: 0.14em; color: var(--arc-ink-3); }
+.badge i { background: var(--pm-ok); box-shadow: none; }
+
+.led {
+    margin: 0;
+    padding: 10px 22px 16px;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    border-bottom: 2px solid rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+}
+.led.dest { box-shadow: none; }
+.read { align-items: flex-start; gap: 4px; text-align: left; }
+.status {
+    font: 600 14px var(--arc-cond);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+.led.dest .status { color: var(--arc-accent-texto); }
+.floor {
+    font: italic 800 32px/0.92 var(--arc-cond);
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+.rule { justify-content: flex-start; margin-top: 6px; }
+.rule i { background: linear-gradient(90deg, rgba(var(--arc-t-linea), 0), rgba(var(--arc-t-linea), 0.3)); }
+.rule i:first-child { display: none; }
+.rule i + .digit + i { background: linear-gradient(90deg, rgba(var(--arc-t-linea), 0.3), rgba(var(--arc-t-linea), 0)); }
+.digit {
+    font: 400 64px/0.9 var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--arc-ink);
+    text-shadow: none;
+}
+.led.dest .digit { color: var(--arc-accent); text-shadow: none; }
+
+/* ── Las plantas: filas de papel ── */
+.keys {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    gap: 8px;
+    padding: 14px 20px 18px;
+}
+.keys::-webkit-scrollbar { width: 4px; }
+.keys::-webkit-scrollbar-thumb { background: rgba(var(--arc-t-linea), 0.3); border-radius: 2px; }
+.key {
+    flex: none;
+    min-height: 0;
+    padding: 8px 12px;
+    justify-content: flex-start;
+    border-radius: var(--pm-r);
+    background: var(--pm-velo);
+    box-shadow: var(--pm-aro);
+    color: var(--arc-ink);
+    transition: background 0.16s ease, box-shadow 0.16s ease, color 0.16s ease;
+}
+.key:hover, .key.pick { background: var(--pm-velo-hi); box-shadow: var(--pm-aro); }
+.key:active { transform: translateY(2px); }
+.ktext { flex-direction: row; align-items: center; gap: 12px; }
+/* El número, en su chapa. Sin sesgo: la cifra va suelta dentro y no habría a qué enderezarla */
+.face {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: var(--arc-papel);
+    box-shadow: var(--arc-filo), 0 4px 0 rgba(var(--arc-t-relieve), 0.4);
+    font: 400 18px var(--arc-mono);
+    letter-spacing: 0;
+    color: var(--arc-ink-2);
+}
+.lbl {
+    text-align: left;
+    font: italic 800 19px/1.05 var(--arc-cond);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+.tick { display: none; }
+
+/* Donde está: el tinte de lo elegido con el filete rosa */
+.key.cur { background: rgba(var(--arc-t-elegido), 0.78); box-shadow: inset 0 0 0 2px var(--arc-accent); }
+.key.cur .face { color: var(--arc-accent-texto); text-shadow: none; }
+.key.cur .lbl { color: var(--arc-ink); }
+/* A donde va: el único relleno rosa */
+.key.going { background: var(--arc-grad); box-shadow: 0 5px 0 var(--arc-accent-deep); }
+.key.going .face { background: rgba(255, 255, 255, 0.22); box-shadow: none; color: #fff; text-shadow: none; }
+.key.going .lbl { color: #fff; }
+#app.sent .key { opacity: 0.55; }
+#app.sent .key.going { opacity: 1; }
+
+/* ── Pie ── */
+.foot {
+    padding: 12px 20px 16px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.5 * var(--arc-vf))) 0%, rgba(255, 255, 255, calc(0.3 * var(--arc-vf))) 100%);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border-radius: 0 0 var(--pm-r-zona) var(--pm-r-zona);
+    font: 700 12px var(--arc-cond);
+    letter-spacing: 0.14em;
+    color: var(--arc-ink-3);
+}
+.foot b { font-weight: 700; color: var(--arc-ink); }

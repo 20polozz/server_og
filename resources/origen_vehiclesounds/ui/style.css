@@ -1,0 +1,806 @@
+/*
+    ORIGEN SOUNDS · lo suyo
+
+    Las zonas, los botones, las pastillas, los campos y el armazón los pinta
+    ogn.css, que va cargado antes que esto y ya está en el estilo «HUD
+    Arcade». Aquí queda la ficha de un motor y poco más.
+*/
+
+.vs-cab { display: flex; align-items: center; gap: calc(0.9vh / var(--ogn-escala, 1)); }
+
+/* Los filtros por tipo, en su franja dentro de la zona. Sin línea propia: la
+   raya que se apaga ya la pone el rótulo de la zona justo encima, y dos
+   líneas seguidas se leen como un fallo de dibujo. */
+.vs-filtros {
+    flex: none;
+    padding: 0 calc(var(--ogn-pad) - 7px);
+    border: 0;
+}
+
+/* La caja que rueda va aparte de la rejilla: pegada al canto de la zona, el
+   redondeo de la zona no se ve. El relleno es también el aire de lo que va
+   sesgado dentro —los botones de cada ficha—. */
+.vs-caja {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+}
+
+.vs-rejilla { grid-template-columns: repeat(auto-fill, minmax(calc(30vh / var(--ogn-escala, 1)), 1fr)); }
+
+/* ── La ficha de un motor ────────────────────────────────────────────────
+   Nombre, para qué suena, y al pie lo que se puede hacer con él. Papel
+   crema con su filo; sin sesgo, que dentro lleva dos botones sesgados y uno
+   dentro de otro sale del revés. */
+.vs-motor {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.1vh / var(--ogn-escala, 1));
+    padding: calc(1.4vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: var(--ogn-r);
+    background: rgba(255, 255, 255, calc(0.42 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    transition: background 0.16s ease;
+}
+
+.vs-motor:hover { background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf))); }
+
+/* El elegido, en rosa: es lo único encendido de la pantalla. */
+.vs-motor--on,
+.vs-motor--on:hover {
+    background: rgba(var(--arc-t-elegido), 0.78);
+    box-shadow: inset 0 0 0 2px var(--arc-accent);
+}
+
+.vs-motor__cab { display: flex; align-items: center; gap: calc(1vh / var(--ogn-escala, 1)); min-width: 0; }
+
+/* El icono en su chapa sesgada: sin caja se pierde contra el nombre. */
+.vs-motor__ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(3.2vh / var(--ogn-escala, 1));
+    height: calc(3.2vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: 8px;
+    transform: var(--arc-skew);
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.4);
+    color: var(--arc-ink-3);
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+.vs-motor__ico > * { transform: var(--arc-unskew); }
+
+.vs-motor--on .vs-motor__ico {
+    background: var(--arc-grad);
+    box-shadow: 0 3px 0 var(--arc-accent-deep);
+    color: #fff;
+}
+
+/* El nombre se reconoce: cursiva gruesa y en versales. */
+.vs-motor__n {
+    flex: 1;
+    min-width: 0;
+    padding-right: 5px;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Cómo suena se lee de corrido, así que Barlow normal y a dos líneas como
+   mucho: con tres, las fichas de la rejilla dejan de medir igual. */
+.vs-motor__d {
+    font-family: var(--arc-text);
+    font-weight: 500;
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    line-height: 1.45;
+    color: var(--arc-ink-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: calc(3.6vh / var(--ogn-escala, 1));
+}
+
+/* El nombre de audio, que es lo que se escribe a mano en la otra pantalla:
+   se compara carácter a carácter, así que monoespaciada. */
+.vs-motor__a {
+    font-family: var(--arc-cifra);
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    letter-spacing: 0.02em;
+    color: var(--arc-ink-4);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Los dos botones del pie van sesgados y con su canto: el hueco de calc(1vh / var(--ogn-escala, 1)) es el
+   aire que necesitan para no montarse uno sobre otro. */
+.vs-motor__pie {
+    display: flex;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    padding-top: calc(1.1vh / var(--ogn-escala, 1));
+    border-top: 1px solid rgba(var(--arc-t-relieve), 0.2);
+}
+
+.vs-motor__pie .ogn-btn { flex: 1; min-width: 0; }
+
+/* ── A mano ──────────────────────────────────────────────────────────── */
+.vs-mano {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.3vh / var(--ogn-escala, 1));
+    padding-bottom: calc(0.6vh / var(--ogn-escala, 1));
+    overflow-y: auto;
+}
+
+.vs-mano > .ogn-panel { flex: none; }
+
+.vs-escribir {
+    display: flex;
+    align-items: flex-end;
+    gap: calc(1.4vh / var(--ogn-escala, 1));
+    margin-top: calc(1.6vh / var(--ogn-escala, 1));
+}
+
+.vs-escribir .ogn-field { flex: 1; }
+
+/* El botón se apoya en la línea de abajo de la caja del campo: el rótulo del
+   campo reserva dos líneas, así que sin esto queda desalineado. */
+.vs-escribir .ogn-btn { flex: none; height: calc(3.4vh / var(--ogn-escala, 1)); }
+
+
+/* ══ PEGATINA: Origen Sounds con el estilo del logo ════════════════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y la
+   tablet se queda con ogn.css. Mismas reglas y colores que
+   origen_inventory/source-ui/src/assets/styles/pegatina.css.
+
+   Va aqui y no en ogn.css porque esta hoja se carga la ultima. Pisa tanto
+   las piezas de la tablet (.ogn-*) como la ficha del motor (.vs-*).
+
+   Papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   negra para lo encendido, nada inclinado.
+
+   Los cantos son box-shadow, no border. Para quitarlo: borrar este bloque
+   y las dos familias (Knewave, Oxanium) del <link> de index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+/*  En la raiz: el rotulo flotante del riel cuelga del <body>, fuera de
+    #app. Esta hoja va despues de ogn.css, asi que a igual peso gana. */
+html:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #000;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-edge: #fff;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --arc-glass: #dcdde0;
+    --arc-papel: #dcdde0;
+    --arc-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-canto-2: inset 0 0 0 1.5px #000;
+    --arc-canto-bajo: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-hundido: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-plato: none;
+
+    --ogn-acc-soft: #b3123f;
+    --ogn-acc-pale: #b3123f;
+    --ogn-ok: #0b0b0d;
+    --ogn-bad: #b3123f;
+    --ogn-line: rgba(11, 11, 13, 0.35);
+    --ogn-line-soft: rgba(11, 11, 13, 0.2);
+    --ogn-line-hi: rgba(11, 11, 13, 0.6);
+    --ogn-r-zona: 20px;
+}
+
+/* ── Los huecos ─────────────────────────────────────────────────────── */
+/*  Cada zona lleva por fuera su canto (4) y su sombra dura (7), y la de al
+    lado su canto: con los ~14 px de serie se pisaban. La tablet no tiene
+    variable de hueco, asi que va en el propio gap de cada armazon (y, entre
+    el riel y el marco, en el relleno del marco: riel + su margen + 20). */
+html #app .ogn-frame {
+    padding-left: calc(var(--ogn-rail) + calc(1.2vh / var(--ogn-escala, 1)) + 20px);
+    gap: 20px;
+}
+html #app .ogn-bar { gap: 20px; }
+html #app .vs-mano { gap: 20px; }
+/*  Estas dos cajas recortan, y se comerian el canto y la sombra de la zona
+    que llevan dentro. La zona ya recorta lo suyo y lo que rueda es .vs-caja. */
+html #app .ogn-content,
+html #app .vs-mano { overflow: visible; }
+
+/* ── Las zonas: riel, cabecera, paneles y celdas de la barra ────────── */
+html #app .ogn-rail,
+html #app .ogn-head,
+html #app .ogn-panel,
+html #app .ogn-bar__cell {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html #app .ogn-rail__mark {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #d81b55;
+    overflow: visible;
+}
+html #app .ogn-rail__nav::before { background: #000; }
+html #app .ogn-rail__it { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .ogn-rail__it:hover { background: #2a2a30; color: #fff; }
+html #app .ogn-rail__it.is-on,
+html #app .ogn-rail__it.is-on:hover {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html #app .ogn-rail__word,
+html #app .ogn-rail__state,
+html #app .ogn-rail__foot.is-on .ogn-rail__state { color: #0b0b0d; }
+html #app .ogn-rail__dot { background: #73737c; }
+html #app .ogn-rail__foot.is-on .ogn-rail__dot { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+/*  El rotulo flotante cuelga del <body>: colores a mano. */
+html .ogn-tip.ogn-portal {
+    border: 0;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+/*  El antetitulo, a brocha, como «Mochila personal» en el inventario. Mide
+    lo que media (el renglon de 1,875 vh): la letra crece, la caja no. */
+html #app .ogn-head .ogn-kicker {
+    align-self: flex-start;
+    margin-left: 4px;
+    overflow: visible;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    line-height: calc(1.875vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html #app .ogn-h2 { color: #0b0b0d; }
+html #app .ogn-chip,
+html #app .ogn-chip--neutral {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Botones ────────────────────────────────────────────────────────── */
+html #app .ogn-btn {
+    transform: none;
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .ogn-btn > * { transform: none; }
+html #app .ogn-btn:hover:not(:disabled) { background: #e6e7ea; color: #0b0b0d; }
+html #app .ogn-btn--ghost { color: #0b0b0d; }
+html #app .ogn-btn--quiet {
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .ogn-btn--quiet:hover:not(:disabled) { background: #e6e7ea; color: #0b0b0d; }
+/*  Lo primario y lo que no tiene vuelta: rosa con tinta negra. */
+html #app .ogn-btn--primary,
+html #app .ogn-btn--danger {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html #app .ogn-btn--danger { background: #dcdde0; color: #b3123f; }
+html #app .ogn-btn--primary:hover:not(:disabled),
+html #app .ogn-btn--danger:hover:not(:disabled) { background: #df2f63; color: #000; }
+html #app .ogn-btn--danger:hover:not(:disabled) { background: #d81b55; color: #0b0b0d; }
+html #app .ogn-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #app .ogn-btn--quiet:active:not(:disabled) { box-shadow: inset 0 0 0 1.5px #000; }
+html #app .ogn-btn:disabled { box-shadow: inset 0 0 0 1.5px #000; }
+html #app .ogn-btn--quiet:disabled { box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Rotulo de zona y filtros ───────────────────────────────────────── */
+html #app .ogn-panel__head { color: #0b0b0d; }
+html #app .ogn-panel__head::after { border-radius: 2px; background: #d81b55; }
+html #app .ogn-tabs__tab {
+    transform: none;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .ogn-tabs__tab > * { transform: none; }
+html #app .ogn-tabs__tab:hover { background: #e6e7ea; color: #0b0b0d; }
+html #app .ogn-tabs__tab--on,
+html #app .ogn-tabs__tab--on:hover { background: #d81b55; color: #000; }
+html #app .ogn-tabs__tab:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* ── La ficha de un motor ───────────────────────────────────────────── */
+html #app .vs-motor {
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #app .vs-motor:hover { background: #e6e7ea; }
+html #app .vs-motor--on,
+html #app .vs-motor--on:hover {
+    background: #ffd6e4;
+    box-shadow: inset 0 0 0 1.5px #d81b55;
+}
+html #app .vs-motor__ico {
+    transform: none;
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+}
+html #app .vs-motor__ico > * { transform: none; }
+html #app .vs-motor--on .vs-motor__ico {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #000;
+}
+html #app .vs-motor__n { color: #0b0b0d; }
+html #app .vs-motor__d { color: #44444a; }
+html #app .vs-motor__a { color: #55555c; }
+html #app .vs-motor__pie { border-top-color: rgba(11, 11, 13, 0.35); }
+
+/*  Sin motores: el negro va dentro del papel. */
+html #app .ogn-empty { background: #0b0b0d; box-shadow: none; }
+html #app .ogn-empty__icon,
+html #app .ogn-empty__text { color: #fff; }
+
+/* ── A mano ─────────────────────────────────────────────────────────── */
+html #app .ogn-prose { color: #44444a; }
+html #app .ogn-field__label { color: #44444a; }
+html #app .ogn-field__input {
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .ogn-field__input:hover { background: #dcdde0; }
+html #app .ogn-field__input:focus {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000;
+}
+html #app .ogn-field__input::placeholder { color: #73737c; }
+
+/* ── Barra de datos ─────────────────────────────────────────────────── */
+html #app .ogn-bar__label { color: #44444a; }
+html #app .ogn-bar__value { color: #0b0b0d; }
+html #app .ogn-bar__value--accent { color: #b3123f; }
+
+/* ══ PANEL DE ADMINISTRACION · REPASO VISUAL (04/10) ══════════════════════
+   Todos los paneles de administracion iguales: riel del servidor, cabecera
+   con chapa + rotulo + brocha, zonas gris perla con piezas blancas de canto
+   2.5, un solo tipo de campo, boton, interruptor y desplegable, borrar en
+   rojo, vacios en hueco gris a trazos y cifras en Oxanium.
+   ════════════════════════════════════════════════════════════════════ */
+
+/*  Lo comun a los paneles de administracion que usan el armazon .ogn-*
+    (riel, cabecera, zonas, campos, dialogos). Es el mismo bloque en
+    origen_dealership, origen_vehiclehandling, origen_vehiclesounds y
+    qbx_smallresources (teleports): si se toca uno, se tocan todos. */
+
+/* ── Medida y tokens ────────────────────────────────────────────────── */
+/*  --peg-u es «un vh de la casa» (ya dividido por la escala de 2K/4K).
+    Las cifras dejan la monoespaciada: Oxanium, que solo viene en 800. */
+html:is(#_, html):is(#_, html) {
+    --peg-u: calc(1vh / var(--ogn-escala, 1));
+    --peg-rojo: #ff4438;
+    --peg-rojo-2: #ff6b61;
+}
+html:is(#_, html):is(#_, html) .ogn-stage,
+html:is(#_, html):is(#_, html) .ogn-modal,
+html:is(#_, html):is(#_, html) .ogn-select__panel {
+    --arc-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --ogn-mono: "Oxanium", "Barlow Condensed", sans-serif;
+}
+html:is(#_, html):is(#_, html) .ogn-mono { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0.02em; }
+
+/* ── El riel: el mismo que el del servidor ──────────────────────────── */
+/*  64 de ancho, relleno 14/16, botones de 44 cada 51, placa de 44 girada
+    con 9 px debajo. La placa va en rosa (acento) con el icono negro. */
+html:is(#_, html):is(#_, html) .ogn-rail { padding: 14px 0 16px; border-top: 4px solid #c4c6ca; }
+html:is(#_, html):is(#_, html) .ogn-rail__mark {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    margin-bottom: 9px;
+    border-radius: 11px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+    overflow: visible;
+    transform: rotate(-5deg);
+}
+html:is(#_, html):is(#_, html) .ogn-rail__nav { gap: 7px; }
+html:is(#_, html):is(#_, html) .ogn-rail__nav::before { width: 22px; height: 2px; margin: 2px 0 0; border-radius: 1px; background: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-rail__it { border-radius: 10px; }
+html:is(#_, html):is(#_, html) .ogn-rail__it svg { width: 20px; height: 20px; }
+/*  El rotulo vertical: letra de rotulo, que se lea. */
+html:is(#_, html):is(#_, html) .ogn-rail__word { font-size: 15px; letter-spacing: 0.05em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-rail__state,
+html:is(#_, html):is(#_, html) .ogn-rail__foot.is-on .ogn-rail__state { font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 0.05em; color: #44444a; }
+html:is(#_, html):is(#_, html) .ogn-tip { font-size: 14px; letter-spacing: 0.03em; }
+
+/* ── La cabecera ────────────────────────────────────────────────────── */
+/*  Entradilla en chapa negra, titulo en rotulo grande y, DEBAJO, el rotulo
+    a brocha (el unico de la pantalla): sale del data-brocha del <h2>; sin
+    estas reglas el atributo no pinta nada, asi que en Nación no existe. */
+html:is(#_, html):is(#_, html) .ogn-head { border-top: 4px solid #c4c6ca; padding-top: calc(var(--peg-u) * 1.5); padding-bottom: calc(var(--peg-u) * 1.7); }
+html:is(#_, html):is(#_, html) .ogn-head__title { align-items: flex-start; gap: calc(var(--peg-u) * 0.7); }
+html:is(#_, html):is(#_, html) .ogn-head .ogn-kicker {
+    align-self: flex-start;
+    height: auto;
+    padding: 3px 9px 2px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.3);
+    line-height: 1.25;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+    transform: none;
+    text-shadow: none;
+}
+html:is(#_, html):is(#_, html) .ogn-head .ogn-h2 { font-size: calc(var(--peg-u) * 3.4); line-height: 0.95; letter-spacing: 0.005em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-head .ogn-h2[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    width: fit-content;
+    margin: calc(var(--peg-u) * 1) 0 0 calc(var(--peg-u) * 0.7);
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(var(--peg-u) * 2.1);
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  A la derecha, todo del mismo alto: buscador, chapas y accion. */
+html:is(#_, html):is(#_, html) .ogn-head__right { gap: calc(var(--peg-u) * 1.3); padding: 0 4px 0 0; }
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-btn,
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-search,
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-select__control { box-sizing: border-box; height: calc(var(--peg-u) * 4.2); }
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-btn { padding: 0 calc(var(--peg-u) * 1.6); font-size: calc(var(--peg-u) * 1.6); }
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-search { min-width: calc(var(--peg-u) * 30); }
+html:is(#_, html):is(#_, html) .ogn-head__right .ogn-chip { height: calc(var(--peg-u) * 4.2); box-sizing: border-box; padding: 0 calc(var(--peg-u) * 1.2); border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000; font-size: calc(var(--peg-u) * 1.5); }
+
+/* ── Zonas ──────────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-panel { border-top: 4px solid #c4c6ca; }
+html:is(#_, html):is(#_, html) .ogn-panel__head { padding-bottom: calc(var(--peg-u) * 1.3); font-size: calc(var(--peg-u) * 2.1); letter-spacing: 0.01em; }
+html:is(#_, html):is(#_, html) .ogn-panel__head::after,
+html:is(#_, html):is(#_, html) .ogn-modal__head::after { height: 4px; border-radius: 2px; background: #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-panel__count { padding: 2px 8px 1px; border-radius: 6px; background: #0b0b0d; font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(var(--peg-u) * 1.25); letter-spacing: 0.02em; color: #fff; }
+
+/* ── Rotulo de seccion: letra de rotulo y filete rosa macizo ────────── */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-label,
+html:is(#_, html):is(#_, html) .ogn-modal .ogn-label {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--peg-u) * 1.1);
+    min-width: 0;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.75);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-label::after,
+html:is(#_, html):is(#_, html) .ogn-modal .ogn-label::after { content: ''; flex: 1; min-width: calc(var(--peg-u) * 2); height: 3px; border-radius: 2px; background: #d81b55; }
+
+/* ── Chapas ─────────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-chip {
+    padding: calc(var(--peg-u) * 0.3) calc(var(--peg-u) * 0.8) calc(var(--peg-u) * 0.2);
+    border-radius: 7px;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.3);
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+}
+/*  Las que son solo una cuenta: cifra. */
+html:is(#_, html):is(#_, html) .ogn-panel__head .ogn-chip,
+html:is(#_, html):is(#_, html) .ogn-chip--cifra { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; letter-spacing: 0.02em; }
+
+/* ── Botones: uno solo ──────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-btn { letter-spacing: 0.03em; }
+html:is(#_, html):is(#_, html) .ogn-btn svg { flex: none; }
+/*  Peligro (borrar): pieza gris con la letra en rosa oscuro; encima, rosa
+    con tinta negra. El rojo queda para estados, no para botones. */
+html:is(#_, html):is(#_, html) .ogn-btn--danger { background: #dcdde0; color: #b3123f; }
+html:is(#_, html):is(#_, html) .ogn-btn--danger:hover:not(:disabled) { background: #d81b55; color: #0b0b0d; }
+/*  El apagado: gris con forma de boton, canto gris y sin sombra. */
+html:is(#_, html):is(#_, html) .ogn-btn:disabled,
+html:is(#_, html):is(#_, html) .ogn-btn--primary:disabled,
+html:is(#_, html):is(#_, html) .ogn-btn--solid:disabled,
+html:is(#_, html):is(#_, html) .ogn-btn--danger:disabled { opacity: 1; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #9a9aa3; cursor: default; }
+html:is(#_, html):is(#_, html) .ogn-btn--quiet:disabled { box-shadow: inset 0 0 0 1.5px #9a9aa3; }
+
+/* ── Campos: uno solo ───────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-field__label,
+html:is(#_, html):is(#_, html) .ogn-select__label {
+    display: block;
+    height: auto;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.35);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #55555c;
+}
+html:is(#_, html):is(#_, html) .ogn-field__input {
+    height: calc(var(--peg-u) * 3.8);
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--arc-text);
+    font-weight: 600;
+    font-size: calc(var(--peg-u) * 1.5);
+    letter-spacing: 0;
+}
+html:is(#_, html):is(#_, html) .ogn-field__input[type="number"] { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; letter-spacing: 0.02em; }
+html:is(#_, html):is(#_, html) .ogn-field__input--area { height: auto; font-weight: 500; font-size: calc(var(--peg-u) * 1.45); line-height: 1.5; }
+html:is(#_, html):is(#_, html) .ogn-field__input:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-field__input:disabled { opacity: 1; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+/*  El desplegable es un campo mas: mismo alto, mismo canto, sin sombra. */
+html:is(#_, html):is(#_, html) .ogn-select__control,
+html:is(#_, html):is(#_, html) .ogn-select__control:active { height: calc(var(--peg-u) * 3.8); border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000; transform: none; }
+html:is(#_, html):is(#_, html) .ogn-select__control--on,
+html:is(#_, html):is(#_, html) .ogn-select__control--on:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-select__value { letter-spacing: 0.02em; }
+/*  La lista va fija y sin coordenadas (asi no la recorta la caja), y su
+    sitio «natural» dentro de una columna flex es ARRIBA, encima del rotulo
+    y del propio campo. Se baja con un margen: rotulo + hueco + campo. */
+html:is(#_, html):is(#_, html) .ogn-select__panel { border-top: 0; border-radius: 12px; min-width: calc(var(--peg-u) * 20); margin-top: calc(var(--peg-u) * 4.4); }
+html:is(#_, html):is(#_, html) .ogn-select__label + .ogn-select__control + .ogn-select__panel { margin-top: calc(var(--peg-u) * 6.5); }
+html:is(#_, html):is(#_, html) .ogn-select__option { font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+html:is(#_, html):is(#_, html) .ogn-select__option--on::before { background: #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-select__vacio { font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+/*  El buscador. */
+html:is(#_, html):is(#_, html) .ogn-search { box-sizing: border-box; min-height: calc(var(--peg-u) * 3.8); padding-top: 0; padding-bottom: 0; border-radius: 10px; }
+html:is(#_, html):is(#_, html) .ogn-search__input,
+html:is(#_, html):is(#_, html) .ogn-search__input::placeholder { font-family: var(--arc-text); font-weight: 600; font-size: calc(var(--peg-u) * 1.5); letter-spacing: 0; text-transform: none; }
+
+/* ── Interruptor: uno solo ──────────────────────────────────────────── */
+/*  Pista blanca con canto negro y punto negro; encendido, rosa. Cada
+    fila va en su hueco gris, para que se lea como una lista. */
+html:is(#_, html):is(#_, html) .ogn-switch-row { padding: calc(var(--peg-u) * 0.85) calc(var(--peg-u) * 1.2); border-radius: 10px; background: #dcdde0; }
+html:is(#_, html):is(#_, html) .ogn-switch-row__label { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.5); line-height: 1.2; letter-spacing: 0.02em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-switch-row__hint { font-size: calc(var(--peg-u) * 1.3); color: #55555c; }
+html:is(#_, html):is(#_, html) .ogn-switch,
+html:is(#_, html):is(#_, html) .ogn-switch--on { width: calc(var(--peg-u) * 4.4); height: calc(var(--peg-u) * 2.4); box-shadow: inset 0 0 0 1.5px #000; }
+html:is(#_, html):is(#_, html) .ogn-switch__knob { left: calc(var(--peg-u) * 0.6); width: calc(var(--peg-u) * 1.2); height: calc(var(--peg-u) * 1.2); margin-top: calc(var(--peg-u) * -0.6); }
+html:is(#_, html):is(#_, html) .ogn-switch--on .ogn-switch__knob { left: calc(100% - calc(var(--peg-u) * 1.8)); }
+
+/* ── Pestañas ───────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-tabs { gap: calc(var(--peg-u) * 0.9); }
+html:is(#_, html):is(#_, html) .ogn-tabs__tab { font-size: calc(var(--peg-u) * 1.45); letter-spacing: 0.03em; }
+
+/* ── Filas y fichas de lista ────────────────────────────────────────── */
+/*  El nombre, entero: dos renglones antes que los puntos suspensivos. */
+html:is(#_, html):is(#_, html) .ogn-item__name,
+html:is(#_, html):is(#_, html) .ogn-row__name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+}
+html:is(#_, html):is(#_, html) .ogn-item__meta,
+html:is(#_, html):is(#_, html) .ogn-row__meta { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.25); letter-spacing: 0.03em; color: #55555c; }
+html:is(#_, html):is(#_, html) .ogn-item__meta.ogn-mono,
+html:is(#_, html):is(#_, html) .ogn-row__meta.ogn-mono { font-style: normal; font-size: calc(var(--peg-u) * 1.2); letter-spacing: 0.02em; }
+html:is(#_, html):is(#_, html) .ogn-list { gap: calc(var(--peg-u) * 0.9); padding: calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.6); }
+
+/* ── Tablas: cabecera negra, filas blancas con canto ────────────────── */
+html:is(#_, html):is(#_, html) .ogn-table__head { box-sizing: border-box; width: auto; margin: calc(var(--peg-u) * 1.2) calc(var(--peg-u) * 1.2) 0; border: 0; border-radius: 10px; background: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-table__th { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.04em; color: #fff; }
+html:is(#_, html):is(#_, html) .ogn-table__td--strong { letter-spacing: 0.01em; }
+
+/* ── Estado vacio: hueco gris con canto a trazos ────────────────────── */
+/*  El trazo es un outline hacia dentro: no cambia ninguna medida. */
+html:is(#_, html):is(#_, html) .ogn-empty { background: #dcdde0; box-shadow: none; outline: 2.5px dashed #9a9aa3; outline-offset: -2.5px; }
+/*  Solo en su zona: que llene el hueco, no una franja suelta arriba. */
+html:is(#_, html):is(#_, html) .ogn-panel__body > .ogn-empty:only-child { box-sizing: border-box; min-height: 100%; }
+html:is(#_, html):is(#_, html) .ogn-empty__icon { color: #73737c; }
+html:is(#_, html):is(#_, html) .ogn-empty__text { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); line-height: 1.3; letter-spacing: 0.03em; color: #44444a; }
+
+/* ── El pie de cifras ───────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-bar__cell { border-top: 4px solid #dcdde0; padding-top: calc(var(--peg-u) * 0.9); padding-bottom: calc(var(--peg-u) * 1.1); }
+html:is(#_, html):is(#_, html) .ogn-bar__label { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.04em; color: #55555c; }
+html:is(#_, html):is(#_, html) .ogn-bar__value { font-size: calc(var(--peg-u) * 2.5); line-height: 1.1; letter-spacing: 0; }
+
+/* ── Dialogos ───────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-modal { background: rgba(11, 11, 13, 0.66); }
+html:is(#_, html):is(#_, html) .ogn-modal__card { border-top: 4px solid #c4c6ca; }
+html:is(#_, html):is(#_, html) .ogn-modal__title { font-size: calc(var(--peg-u) * 2.5); letter-spacing: 0.01em; }
+html:is(#_, html):is(#_, html) .ogn-modal__sub { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.03em; color: #55555c; }
+/*  El pie, sin raya a sangre pegada a los botones. */
+html:is(#_, html):is(#_, html) .ogn-modal__foot { background: none; box-shadow: none; gap: calc(var(--peg-u) * 1.2); padding-top: calc(var(--peg-u) * 0.6); }
+html:is(#_, html):is(#_, html) .ogn-modal__foot .ogn-btn { min-width: calc(var(--peg-u) * 13); padding-top: calc(var(--peg-u) * 1.1); padding-bottom: calc(var(--peg-u) * 1.1); font-size: calc(var(--peg-u) * 1.55); }
+
+/* ── Lo suyo de Origen Sounds ───────────────────────────────────────── */
+/*  OJO AL PESO: las reglas viejas de esta hoja cuelgan de #app (un id), asi
+    que todo este bloque lleva dos «:is(#_, html)» pegados al <html>: no
+    cambian a quien apunta el selector (el id #_ no existe; el html si) y le
+    dan el peso de dos ids. Por eso gana siempre al dia de arriba. */
+html:is(#_, html):is(#_, html) { --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif; --peg-brocha: "Knewave", "Barlow Condensed", cursive; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__top { gap: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__mark iconify-icon { font-size: 22px; color: #000; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__nav { padding: 0 0 6px; border: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__it { width: 44px; height: 44px; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__it iconify-icon { font-size: 20px !important; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__bar { display: none; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-rail__foot.is-on .ogn-rail__dot { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+html:is(#_, html):is(#_, html) .ogn-head__title::after { display: none; }
+html:is(#_, html):is(#_, html) .ogn-head .ogn-kicker { order: 0; margin: 0; }
+html:is(#_, html):is(#_, html) .ogn-head .ogn-h2 { order: 1; margin: 0; padding-right: 6px; }
+/*  El coche que se esta tocando: chapa negra con el nombre. */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-head__right .ogn-chip { display: inline-flex; align-items: center; background: #0b0b0d; box-shadow: none; font-size: calc(var(--peg-u) * 1.6); letter-spacing: 0.03em; color: #fff; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-head__right .ogn-btn { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+
+/*  Botones: uno solo. */
+html:is(#_, html):is(#_, html) .ogn-btn,
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--ghost,
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--quiet { gap: calc(var(--peg-u) * 0.7); border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: calc(var(--peg-u) * 1.45); line-height: 1.15; color: #0b0b0d; transform: none; }
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--quiet { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: calc(var(--peg-u) * 1.4); }
+html:is(#_, html):is(#_, html) .ogn-btn:hover:not(:disabled) { background: #e6e7ea; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--primary,
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--solid { background: #d81b55; color: #000; }
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--primary:hover:not(:disabled),
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--solid:hover:not(:disabled) { background: #df2f63; color: #000; }
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--danger { background: #dcdde0; color: #b3123f; }
+html:is(#_, html):is(#_, html) .ogn-btn.ogn-btn--danger:hover:not(:disabled) { background: #d81b55; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-btn iconify-icon { font-size: calc(var(--peg-u) * 1.7); }
+
+/* ── El catalogo ────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-panel__head { padding-top: calc(var(--peg-u) * 1.6); border-bottom: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-panel__title { padding-right: 5px; font-size: calc(var(--peg-u) * 2.1); letter-spacing: 0.01em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-panel__head .ogn-chip { padding: calc(var(--peg-u) * 0.5) calc(var(--peg-u) * 1.1) calc(var(--peg-u) * 0.4); background: #0b0b0d; box-shadow: none; font-size: calc(var(--peg-u) * 1.35); color: #fff; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-filtros { padding-top: calc(var(--peg-u) * 1.4); padding-bottom: calc(var(--peg-u) * 0.4); border-bottom: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-tabs { padding: 0 3px 3px 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-tabs__tab { box-sizing: border-box; height: calc(var(--peg-u) * 3.6); padding: 0 calc(var(--peg-u) * 1.3); border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-caja { padding: calc(var(--peg-u) * 1) calc(var(--peg-u) * 1.8) calc(var(--peg-u) * 1.8); }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-rejilla { gap: calc(var(--peg-u) * 1.4); }
+/*  La ficha de un motor: titulo entero, descripcion, el nombre de audio en
+    chapa negra (es lo que se escribe en la config) y dos botones de verdad. */
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor,
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor:hover { gap: calc(var(--peg-u) * 1.1); padding: calc(var(--peg-u) * 1.5) calc(var(--peg-u) * 1.5) calc(var(--peg-u) * 1.6); border-radius: 14px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor.vs-motor--on,
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor.vs-motor--on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__n { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; white-space: normal; padding-right: 4px; font-size: calc(var(--peg-u) * 2.1); line-height: 1.02; letter-spacing: 0.01em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__d { flex: 1; font-size: calc(var(--peg-u) * 1.4); line-height: 1.4; color: #44444a; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__a { align-self: flex-start; padding: 2px 8px 1px; border-radius: 6px; background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; font-size: calc(var(--peg-u) * 1.2); letter-spacing: 0.02em; color: #fff; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__pie { gap: calc(var(--peg-u) * 0.9); padding: 0 3px 3px 0; border-top: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__pie .ogn-btn { flex: 1 1 0; padding: calc(var(--peg-u) * 0.8) calc(var(--peg-u) * 1); }
+/*  Elegir es LA accion de la ficha: rosa. Elegido ya: gris con forma. */
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__pie .ogn-btn[data-elegir] { background: #d81b55; color: #000; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__pie .ogn-btn[data-elegir]:hover:not(:disabled) { background: #df2f63; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor__pie .ogn-btn[data-elegir]:disabled { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-empty { border-radius: 12px; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-empty__icon { color: #73737c; }
+
+/* ── A mano ─────────────────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-prose { font-size: calc(var(--peg-u) * 1.45); line-height: 1.5; color: #44444a; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-escribir { gap: calc(var(--peg-u) * 1.2); padding: 0 3px 3px 0; }
+html:is(#_, html):is(#_, html) .ogn-stage .vs-escribir .ogn-btn { box-sizing: border-box; height: calc(var(--peg-u) * 3.8); padding-top: 0; padding-bottom: 0; }
+html:is(#_, html):is(#_, html) .ogn-field__input,
+html:is(#_, html):is(#_, html) .ogn-field__input:hover { box-sizing: border-box; padding-top: 0; padding-bottom: 0; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-field__input:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:is(#_, html):is(#_, html) .ogn-field__input::placeholder { font-weight: 500; opacity: 1; color: #73737c; }
+
+/* ── El pie de cifras ───────────────────────────────────────────────── */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-bar__cell { border-radius: 16px; background: #dcdde0; border-top-color: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+/*  Aqui los valores son nombres (el coche, el motor), no cifras: rotulo. */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-bar__value { font-size: calc(var(--peg-u) * 2.3); letter-spacing: 0.01em; color: #0b0b0d; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-bar__value--accent { color: #b3123f; }
+
+/* ══ fin del repaso de los paneles de administracion ══ */
+
+/* Cifras centradas (06/10): las pestanas (alto fijo) y el antetitulo negro
+   dejaban la letra 1 px alta; 2 px de aire arriba en la pestana y 4/1 en el
+   antetitulo la centran (medido en pixel). */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-tabs__tab { padding-top: 2px; }
+html:is(#_, html):is(#_, html) .ogn-head .ogn-kicker { padding: 4px 9px 1px; }
+
+/* >>> FONDO GRIS Y PANEL ENTERO (06/10) */
+/*  El suelo de los paneles de gestión es gris liso, no el velo oscuro.
+    El catálogo llega hasta la barra de abajo y los chips vacíos no salen. */
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-stage__veil { background: #b9bbc0; backdrop-filter: none; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-content { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+html:is(#_, html):is(#_, html) .ogn-stage #pantalla-catalogo { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+html:is(#_, html):is(#_, html) .ogn-stage #pantalla-catalogo .vs-caja { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-chip:empty,
+html:is(#_, html):is(#_, html) .ogn-stage .ogn-chip.es-vacio { display: none; }
+
+/* ══ Revisión 06/10: el motor elegido sin rosa pálido ══════════════════
+   Elegido = la misma pieza gris con anillo rosa fino y sombra dura rosa;
+   el fondo rosa pálido ya no se usa en ningún menú. */
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor.vs-motor--on,
+html:is(#_, html):is(#_, html) .ogn-stage .vs-motor.vs-motor--on:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 3px 3px 0 #d81b55; }
+
+/*  El nombre del riel según el servidor: «Origen X» o «Nación X». */
+.solo-nacion { display: none; }
+html[data-marca="nacion"] .solo-nacion { display: inline; }
+html[data-marca="nacion"] .solo-origen { display: none; }

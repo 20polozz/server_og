@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CMapParentTxds>
+  <txdRelationships>
+            <Item>
+        <parent>globalroads</parent>
+        <child>cs4_09_land</child>
+            </Item>
+            <Item>
+        <parent>ch_chint02_entity_set_arcade_set_derelict_txd</parent>
+        <child>cs1_03_decal1</child>
+            </Item>
+            <Item>
+        <parent>bh1_45_detail</parent>
+        <child>cs6_10_details</child>
+          </Item>
+            <Item>
+        <parent>cs4_02_utool</parent>
+        <child>cs6_10_details</child>
+          </Item>
+            <Item>
+        <parent>cs1_06_ground</parent>
+        <child>cs1_06_alpha</child>
+          </Item>
+  </txdRelationships>
+</CMapParentTxds>

@@ -1,0 +1,1126 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+
+/* ══ Baloncesto · estilo «HUD Arcade» ══════════════════════════════
+   El mismo del inventario (origen_inventory/source-ui/src/assets/styles/
+   arcade.css): cristal crema, acento rosa #d81b55, Barlow Condensed cursiva
+   para los rotulos y bloques inclinados 10 grados.
+
+   ── Que es este fichero ────────────────────────────────────────────────
+   Es NUESTRO. rcore_basketball trae su interfaz en assets/assets/css/
+   app.css (suya) y esta hoja va declarada DESPUES en assets/index.html y en
+   el fxmanifest, asi que manda ella. Aqui se repinta el minijuego entero
+   sin tocar una linea de rcore: el dia que actualicen el recurso, esto se
+   vuelve a poner encima y ya esta.
+
+   Ojo: los tokens --ogn-* del tema NEGRO viejo los declara el app.css de
+   rcore (le metieron un bloque :root delante). No se tocan; aqui
+   simplemente no se usan, y los que hacen falta se redeclaran abajo
+   apuntando a los claros.
+
+   ── Trampas ───────────────────────────────────────────────────────────
+   - Nada de backdrop-filter: en el CEF de FiveM pinta una banda negra.
+   - El marcado es de rcore y no se toca: los botones llevan el texto suelto
+     y no hay ningun elemento dentro que desinclinar. Por eso el sesgo va en
+     un ::before de fondo (el truco de .pn-sg en panelnegocio.css) y el
+     rotulo se queda derecho.
+   - .basketball recorta (overflow: hidden). El relleno de .content sube a
+     1.4vh/2vh, que es de sobra para lo que sobresale un bloque inclinado
+     (~tan(10)*alto/2) y para el canto de 5 px.
+   - Las fuentes van en el <link> de assets/index.html, nunca en @import:
+     el CEF del juego no pide los @import (07/10).
+
+   La copia de antes esta en origen_override.css.ogn-bak.
+   ═════════════════════════════════════════════════════════════════════ */
+
+
+:root {
+    /* ── Tokens del tema ─────────────────────────────────────── */
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #b3123f;
+    --arc-grad: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-glass: linear-gradient(160deg, rgba(220, 221, 224, 0.95) 0%, rgba(220, 221, 224, 0.92) 45%, rgba(220, 221, 224, 0.95) 100%);
+    --arc-papel: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(220, 221, 224, 0.7) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 5px 0 rgba(120, 110, 88, 0.45);
+    --arc-relieve-on: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 0 rgba(120, 110, 88, 0.45);
+    --arc-linea: rgba(38, 34, 26, 0.14);
+
+    /* ── Nombres de siempre, apuntando a los nuevos ────────────── */
+    --ogn-rotulo: var(--arc-cond);
+    --ogn-texto: var(--arc-text);
+    --ogn-fg: var(--arc-ink);
+    --ogn-acc: var(--arc-accent);
+    --ogn-acc-rgb: 223, 47, 99;
+    --ogn-t1: var(--arc-ink);
+    --ogn-t2: var(--arc-ink-2);
+    --ogn-t3: var(--arc-ink-3);
+    --ogn-t4: var(--arc-ink-4);
+    --ogn-line: var(--arc-linea);
+    --ogn-r: 10px;
+
+    --primary-color: rgba(255, 255, 255, 0.55);
+    --color-acent: var(--arc-accent);
+    --text-white: var(--arc-ink);
+    --cubic: cubic-bezier(0, .53, .11, .995);
+
+    --bg-dark: var(--arc-glass);
+    --bg-panel: var(--arc-glass);
+    --border-color: rgba(255, 255, 255, 0.6);
+    --border-subtle: var(--arc-linea);
+
+    /* Las variables que usa por dentro el app.css de rcore. */
+    --color-bg: transparent !important;
+    --color-border: transparent !important;
+    --color-player-bg: transparent !important;
+    --color-score-bg: transparent !important;
+    --color-score-color: var(--arc-ink) !important;
+    --color-player-divider: var(--arc-linea) !important;
+    --color-text: var(--arc-ink) !important;
+    --color-remove-player: var(--arc-accent-deep) !important;
+    --color-button-border: transparent !important;
+    --color-button-background: transparent !important;
+    --color-button-color: var(--arc-ink-2) !important;
+    --color-button-inactive-border: transparent !important;
+    --color-button-inactive-background: transparent !important;
+    --color-button-inactive-color: var(--arc-ink-2) !important;
+    --color-button-disabled-background: transparent !important;
+    --color-button-disabled-border: transparent !important;
+    --color-button-disabled-color: var(--arc-ink-4) !important;
+    --color-input-background: transparent !important;
+    --color-input-color: var(--arc-ink) !important;
+    --color-input-border: transparent !important;
+}
+
+* {
+    accent-color: var(--arc-accent);
+}
+
+body {
+    background: transparent !important;
+    font-family: var(--arc-text) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: var(--arc-ink) !important;
+}
+
+#app {
+    font-family: var(--arc-text) !important;
+    color: var(--arc-ink) !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: relative !important;
+}
+
+/* OJO: aqui NO se pone la regla de siempre (`svg { fill: none; stroke:
+   currentColor }`). Los iconos que trae rcore compilados —el aspa de quitar
+   a un jugador, por ejemplo— estan dibujados con RELLENO, no con trazo: con
+   esa regla se quedan en blanco. Cada icono se pinta en su sitio. */
+
+/* ══ El panel ═════════════════════════════════════════════════════════ */
+.basketball {
+    width: 55vh !important;
+    background: var(--arc-glass) !important;
+    border: 0 !important;
+    border-top: 4px solid var(--arc-accent) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 30px 70px rgba(0, 0, 0, 0.45) !important;
+    color: var(--arc-ink) !important;
+    overflow: hidden !important;
+    padding: 0 0 1.4vh !important;
+}
+
+.basketball-ball {
+    display: none !important;
+}
+
+/* ── Cabecera ────────────────────────────────────────────────────────── */
+.header {
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.5 * var(--arc-vf))) 0%, rgba(255, 255, 255, calc(0.25 * var(--arc-vf))) 100%) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--arc-linea) !important;
+    padding: 1.4vh 0 1.3vh !important;
+    margin-bottom: 0.6vh !important;
+}
+
+.header-inner {
+    text-align: center !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2.7vh !important;
+    line-height: 1 !important;
+    /* La cursiva se sale por la derecha: este pelin de relleno se lo devuelve
+       al centro optico. */
+    padding: 0 0.6vh 0 0 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase !important;
+    color: var(--arc-ink) !important;
+    text-shadow: none !important;
+}
+
+/* ── Cuerpo ──────────────────────────────────────────────────────────── */
+.content {
+    padding: 1.4vh 2vh !important;
+}
+
+.content-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 0.6vh 0 0.8vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.18em !important;
+    color: var(--arc-ink-3) !important;
+    font-size: 1.2vh !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--arc-linea) !important;
+    margin-bottom: 1.1vh !important;
+}
+
+.content-modes {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0.4vh 0 1.1vh !important;
+    gap: 1.2vh !important;
+}
+
+.content-modes .content-col,
+.content-modes .col-3 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.9vh !important;
+    width: 32% !important;
+}
+
+/* Los <br> que rcore mete entre botones sumaban una linea en blanco encima
+   de cada hueco; con la columna en flex sobran. */
+.content-modes br {
+    display: none !important;
+}
+
+/* ── Resumen del modo elegido ───────────────────────────────────────── */
+.mode-summary {
+    background: rgba(255, 255, 255, calc(0.42 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) !important;
+    margin: 1.1vh 0 !important;
+    padding: 1vh 0.6vh !important;
+}
+
+/* En el resumen solo se pinta la opcion elegida y no hay alternativa al
+   lado: ahi el rosa no dice nada (rosa = lo que eliges o lo que confirma).
+   Se quedan en papel, y el unico rosa de la pantalla es «Empezar». */
+.mode-summary button.active {
+    color: var(--arc-ink-2) !important;
+}
+
+.mode-summary button.active::before {
+    background: var(--arc-papel) !important;
+    box-shadow: var(--arc-relieve) !important;
+}
+
+.summary-wager {
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2.2vh !important;
+    letter-spacing: 0.01em !important;
+    color: var(--arc-accent-texto) !important;
+    text-shadow: none !important;
+}
+
+/* ══ Botones ══════════════════════════════════════════════════════════
+   Sesgo en el ::before, rotulo derecho (ver la nota de arriba). */
+button {
+    position: relative !important;
+    isolation: isolate !important;
+    background: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    color: var(--arc-ink-2) !important;
+    padding: 0.9vh 1.2vh !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.5vh !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: color 0.15s ease !important;
+    width: 100% !important;
+    min-height: 4vh !important;
+    outline: none !important;
+    margin-bottom: 0 !important;
+}
+
+button::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: -1 !important;
+    border-radius: 10px !important;
+    transform: var(--arc-skew) !important;
+    background: var(--arc-papel) !important;
+    box-shadow: var(--arc-relieve) !important;
+    transition: background 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+button:hover:not(.disabled):not(.active) {
+    color: var(--arc-accent-texto) !important;
+}
+
+button:hover:not(.disabled):not(.active)::before {
+    background: linear-gradient(180deg, var(--arc-fondo1, #fff) 0%, var(--arc-fondo1, rgba(250, 246, 238, 0.85)) 100%) !important;
+}
+
+button:active:not(.disabled) {
+    transform: translateY(3px) !important;
+}
+
+button:active:not(.disabled)::before {
+    box-shadow: var(--arc-relieve-on) !important;
+}
+
+/* Lo elegido, en rosa. */
+button.active {
+    color: #fff !important;
+    filter: none !important;
+}
+
+button.active::before {
+    background: var(--arc-grad) !important;
+    box-shadow: 0 5px 0 var(--arc-accent-deep) !important;
+}
+
+button.disabled {
+    opacity: 0.5 !important;
+    cursor: default !important;
+}
+
+/* ══ Filas de la lista de jugadores y del marcador ════════════════════
+   Ojo con el marcado COMPILADO: el <tr> de la lista de jugadores no lleva
+   la clase .player-line que si aparece en nui_src/src/components/
+   PlayerLine.vue. Por eso se apunta tambien a `.player-list tr:not(.spacer)
+   td`, que es lo que hay de verdad en assets/assets/js/app.js.
+
+   Y OJO con `::v-deep`: la version de antes de este fichero lo llevaba en
+   estas dos reglas. `::v-deep` es cosa del compilador de Vue, no del
+   navegador: en una hoja normal es un selector invalido, y un selector
+   invalido dentro de una lista TIRA LA REGLA ENTERA. O sea que estas dos
+   reglas no pintaban nada, ni antes ni con el tema negro. Fuera. */
+.player-list tr:not(.spacer) td,
+.player-line td,
+.score-line td {
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))) !important;
+    padding: 0.9vh 1.2vh !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.5vh !important;
+    letter-spacing: 0.03em !important;
+    color: var(--arc-ink-2) !important;
+}
+
+.player-list tr:not(.spacer) td:first-child,
+.player-line td:first-child,
+.score-line td:first-child {
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.player-list tr:not(.spacer) td:last-child,
+.player-line td:last-child,
+.score-line td:last-child {
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+}
+
+/* El nombre del jugador en la lista de espera, con la cursiva del tema. */
+.player-list tr:not(.spacer) td:first-child {
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.7vh !important;
+    color: var(--arc-ink) !important;
+    text-align: left !important;
+}
+
+.score-line.active td {
+    background: rgba(var(--arc-t-elegido), 0.85) !important;
+    box-shadow: inset 0 0 0 2px var(--arc-accent) !important;
+    color: var(--arc-accent-texto) !important;
+    filter: none !important;
+}
+
+/* El aspa de quitar a un jugador: el icono compilado de rcore es de RELLENO
+   (viene de Inkscape), asi que se pinta con fill y no con stroke. */
+.remove svg {
+    fill: var(--arc-accent-deep) !important;
+    stroke: none !important;
+    color: var(--arc-accent-texto) !important;
+    opacity: 0.75 !important;
+    transition: opacity 0.15s ease !important;
+}
+
+.remove:hover svg {
+    opacity: 1 !important;
+}
+
+/* ══ La apuesta ═══════════════════════════════════════════════════════ */
+.wager-container {
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))) !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) !important;
+    padding: 0.5vh 1.1vh !important;
+    display: flex !important;
+    align-items: center !important;
+    min-height: 4vh !important;
+}
+
+.wager-currency {
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2vh !important;
+    color: var(--arc-ink-3) !important;
+}
+
+.wager-input input,
+.register input {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    padding: 0.7vh 1.1vh !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.9vh !important;
+    letter-spacing: 0.02em !important;
+    color: var(--arc-ink) !important;
+    text-shadow: none !important;
+    outline: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: background 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.wager-input input::placeholder,
+.register input::placeholder {
+    color: var(--arc-ink-4) !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 1.5vh !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+}
+
+.wager-input input:focus,
+.register input:focus {
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 2px var(--arc-accent) !important;
+}
+
+.wager-input input {
+    width: 9vh !important;
+    text-align: center !important;
+    padding: 0.4vh !important;
+}
+
+.register input {
+    width: 90% !important;
+    margin: 0.5vh auto 1.2vh auto !important;
+    display: block !important;
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) !important;
+}
+
+.register input.input-error {
+    background: #ffe3ec !important;
+    box-shadow: inset 0 0 0 2px var(--arc-accent-deep) !important;
+}
+
+.register {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.6vh !important;
+    margin-bottom: 1.6vh !important;
+}
+
+/* ══ Botones de abajo ═════════════════════════════════════════════════
+   Empezar y Cerrar van en fila; solo el primero (el que arranca la
+   partida) es rosa. El sitio del canto de 5 px se lo da el relleno de
+   abajo de .basketball. */
+.bottom-button {
+    padding: 0 2vh !important;
+    width: auto !important;
+}
+
+.interaction-buttons {
+    display: flex !important;
+    gap: 0.9vh !important;
+}
+
+.interaction-buttons button {
+    flex: 1 !important;
+    margin: 0.6vh 0 0 !important;
+    filter: none !important;
+    color: var(--arc-ink-2) !important;
+}
+
+.interaction-buttons button:first-of-type {
+    margin-right: 0 !important;
+    color: #fff !important;
+}
+
+.interaction-buttons button:first-of-type::before {
+    background: var(--arc-grad) !important;
+    box-shadow: 0 5px 0 var(--arc-accent-deep) !important;
+}
+
+.interaction-buttons button:first-of-type:hover:not(.disabled) {
+    color: #fff !important;
+}
+
+.interaction-buttons button:first-of-type:hover:not(.disabled)::before {
+    background: linear-gradient(160deg, #ff7099 0%, #d81b55 100%) !important;
+}
+
+/* Si solo hay un boton (el de cerrar, cuando no eres el dueño) no puede
+   salir en rosa: ahi no confirma nada. */
+.interaction-buttons button:only-of-type {
+    color: var(--arc-ink-2) !important;
+}
+
+.interaction-buttons button:only-of-type::before {
+    background: var(--arc-papel) !important;
+    box-shadow: var(--arc-relieve) !important;
+}
+
+/* ══ El marcador ══════════════════════════════════════════════════════ */
+.score {
+    right: 4vh !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: var(--arc-glass) !important;
+    border: 0 !important;
+    border-top: 4px solid var(--arc-accent) !important;
+    border-radius: 14px !important;
+    padding: 1.2vh !important;
+    min-width: 28vh !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 24px 56px rgba(0, 0, 0, 0.45) !important;
+    color: var(--arc-ink) !important;
+}
+
+.score-header {
+    background: transparent !important;
+    color: var(--arc-ink) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2vh !important;
+    padding: 0.2vh 0.5vh 1vh !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--arc-linea) !important;
+    text-align: center !important;
+}
+
+.score .vertical-center {
+    transform: none !important;
+}
+
+.score table {
+    width: 100% !important;
+    border-spacing: 0 !important;
+    border-collapse: separate !important;
+}
+
+/* OJO con el marcado COMPILADO del marcador: no lleva ninguna de las clases
+   que si estan en nui_src (.score-line, .player-name, .player-score, ni
+   .active). Lo que hay de verdad en assets/assets/js/app.js es:
+
+     <tr><td>[la pelota si es su turno]</td><td>Nombre</td><td>Puntos</td></tr>
+     <tr class="spacer"><td colspan="3"></td></tr>
+
+   Asi que aqui se apunta por POSICION, y de paso se dejan tambien las
+   clases por si otra version del recurso si las trae. */
+.score table tr:not(.spacer) td,
+.score tr.score-line td {
+    padding: 0.9vh 0.8vh !important;
+    vertical-align: middle !important;
+    font-family: var(--arc-cond) !important;
+    font-weight: 700 !important;
+    font-size: 1.5vh !important;
+    color: var(--arc-ink-2) !important;
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf))) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))) !important;
+    border: none !important;
+}
+
+/* La celda de la pelota (a quien le toca) y la del nombre. */
+.score tr:not(.spacer) td:not(.score-header):first-child,
+.score tr.score-line td.turn-indicator {
+    width: 3vh !important;
+    padding: 0 0.6vh !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.score tr:not(.spacer) td:nth-child(2),
+.score tr.score-line td.player-name {
+    border-right: 2px solid var(--arc-linea) !important;
+    padding-right: 1vh !important;
+    text-align: right !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.7vh !important;
+    color: var(--arc-ink) !important;
+}
+
+.score tr:not(.spacer) td:nth-child(3),
+.score tr.score-line td.player-score {
+    padding: 0 1vh !important;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    color: var(--arc-accent-texto) !important;
+    font-family: var(--arc-cond) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 2vh !important;
+    font-variant-numeric: tabular-nums !important;
+    filter: none !important;
+    text-align: left !important;
+}
+
+/* La cabecera va en un td con colspan: no le toca ni fondo ni filo de fila. */
+.score tr td.score-header {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border-right: 0 !important;
+}
+
+/* A quien le toca, si el recurso si marca la fila. */
+.score tr.score-line.active td {
+    background: rgba(var(--arc-t-elegido), 0.85) !important;
+    box-shadow: inset 0 2px 0 var(--arc-accent), inset 0 -2px 0 var(--arc-accent) !important;
+    color: var(--arc-accent-texto) !important;
+}
+
+/* La pelota que marca el turno: es un <img> de rcore, no un div con clase.
+   Se queda, que es lo unico que dice de quien es el turno, pero con un
+   aro rosa detras para que se lea como «esta es la fila». */
+.score tr:not(.spacer) td:first-child img,
+.score .ball-icon {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    width: 2vh !important;
+    height: 2vh !important;
+    border-radius: 50% !important;
+    box-shadow: 0 0 0 2px var(--arc-accent) !important;
+}
+
+/* ══ Barras de desplazamiento ═════════════════════════════════════════ */
+*::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-hueco), 0.22) !important;
+    border-radius: 4px !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--arc-t-hueco), 0.38) !important;
+}
+
+
+/* ══ PEGATINA: el baloncesto con el estilo del logo «Origen Los Santos» ══════
+
+   05/10: Origen y Nación, la misma interfaz (en Nación el repintado de la
+   marca pone el naranja). Todo cuelga de html:root, con la misma
+   especificidad que el html:not([data-marca="nacion"]) de antes. Mismas reglas y mismos
+   colores que origen_inventory/.../pegatina.css. Ver la skill
+   origen-pegatina.
+
+   Solo los paneles (el de preparar la partida y el marcador), sus filas y
+   sus botones. La pelota y el resto del arte de rcore no se tocan.
+
+   papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   NEGRA para lo elegido y lo que confirma, nada inclinado.
+
+   Todo lleva !important porque lo de arriba lo lleva. Los cantos son
+   box-shadow, no border: no cambian ninguna medida. Las filas son <td>
+   sueltos: el anillo se dibuja a trozos (arriba y abajo en todas, el lado
+   en la primera y en la ultima).
+
+   Para quitarlo: borrar este bloque y el <link> de Knewave y Oxanium de
+   index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+html:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #b3123f;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-glass: #dcdde0;
+    --arc-papel: #dcdde0;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --arc-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-relieve-on: inset 0 0 0 1.5px #000;
+    --arc-linea: rgba(11, 11, 13, 0.35);
+    --ogn-acc-rgb: 216, 27, 85;
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/* ── Los dos paneles ────────────────────────────────────────────────── */
+/*  El filo de arriba es un borde de verdad de 4 px: se queda del color del
+    papel y el canto va por fuera. */
+html:root #app .basketball,
+html:root #app .score {
+    background: #c4c6ca !important;
+    border-top-color: #c4c6ca !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .header { background: #dcdde0 !important; border-bottom-color: #000 !important; }
+html:root #app .content-header { color: #0b0b0d !important; border-bottom-color: #d81b55 !important; }
+html:root #app .score-header { border-bottom-color: #000 !important; }
+
+/* ── Resumen del modo elegido ───────────────────────────────────────── */
+html:root #app .mode-summary { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html:root #app .summary-wager {
+    font-family: var(--peg-cifra) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    color: #b3123f !important;
+}
+
+/* ── Botones ────────────────────────────────────────────────────────── */
+/*  La chapa es el ::before: papel con anillo y sombra dura (los tokens de
+    arriba); aqui los estados. */
+html:root #app button { color: #0b0b0d !important; }
+html:root #app button::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app button:hover:not(.disabled):not(.active) { color: #0b0b0d !important; }
+html:root #app button:hover:not(.disabled):not(.active)::before { background: #e6e7ea !important; }
+html:root #app button:active:not(.disabled) { transform: translate(2px, 2px) !important; }
+html:root #app button:active:not(.disabled)::before { box-shadow: inset 0 0 0 1.5px #000 !important; }
+/*  Lo elegido y el que arranca la partida: rosa con tinta negra. */
+html:root #app button.active,
+html:root #app .interaction-buttons button:first-of-type,
+html:root #app .interaction-buttons button:first-of-type:hover:not(.disabled) { color: #000 !important; }
+html:root #app button.active::before,
+html:root #app .interaction-buttons button:first-of-type::before { background: #d81b55 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app .interaction-buttons button:first-of-type:hover:not(.disabled)::before { background: #d81b55 !important; }
+html:root #app .interaction-buttons button:first-of-type:active:not(.disabled)::before { box-shadow: inset 0 0 0 1.5px #000 !important; }
+/*  En el resumen y cuando el unico boton es «Cerrar», papel. */
+html:root #app .mode-summary button.active,
+html:root #app .interaction-buttons button:only-of-type,
+html:root #app .interaction-buttons button:only-of-type:hover:not(.disabled) { color: #0b0b0d !important; }
+html:root #app .mode-summary button.active::before,
+html:root #app .interaction-buttons button:only-of-type::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html:root #app .interaction-buttons button:only-of-type:hover:not(.disabled)::before { background: #e6e7ea !important; }
+
+/* ── Filas (lista de jugadores y marcador) ──────────────────────────── */
+html:root #app .player-list tr:not(.spacer) td,
+html:root #app .player-line td,
+html:root #app .score-line td,
+html:root #app .score table tr:not(.spacer) td {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .player-list tr:not(.spacer) td:first-child,
+html:root #app .player-line td:first-child,
+html:root #app .score-line td:first-child,
+html:root #app .score table tr:not(.spacer) td:first-child { box-shadow: inset 1.5px 0 0 #000, inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important; }
+html:root #app .player-list tr:not(.spacer) td:last-child,
+html:root #app .player-line td:last-child,
+html:root #app .score-line td:last-child,
+html:root #app .score table tr:not(.spacer) td:last-child { box-shadow: inset -1.5px 0 0 #000, inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important; }
+html:root #app .player-list tr:not(.spacer) td:first-child:last-child,
+html:root #app .score table tr:not(.spacer) td:first-child:last-child { box-shadow: inset 0 0 0 1.5px #000 !important; }
+/*  La cabecera del marcador es un <td> mas: sin fondo ni anillo. */
+html:root #app .score table tr td.score-header.score-header.score-header {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #0b0b0d !important;
+}
+html:root #app .score tr:not(.spacer) td:nth-child(2) { border-right-color: #000 !important; }
+/*  Los puntos: cifra. */
+html:root #app .score tr:not(.spacer) td:nth-child(3):not(.score-header),
+html:root #app .score tr.score-line td.player-score {
+    font-family: var(--peg-cifra) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    color: #0b0b0d !important;
+}
+/*  A quien le toca: «elegido», rosa palido con el anillo rosa. */
+html:root #app .score-line.active td,
+html:root #app .score table tr.score-line.active td {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 3px 0 #d81b55, inset 0 -3px 0 #d81b55 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .remove svg { fill: #0b0b0d !important; opacity: 1 !important; }
+html:root #app .remove:hover svg { fill: #b3123f !important; }
+
+/* ── La apuesta y el nombre ─────────────────────────────────────────── */
+html:root #app .wager-container { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html:root #app .wager-currency,
+html:root #app .wager-input input {
+    font-family: var(--peg-cifra) !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    color: #0b0b0d !important;
+}
+html:root #app .wager-input input:focus { background: #dcdde0 !important; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+html:root #app .register input { border-radius: 10px !important; background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; color: #0b0b0d !important; }
+html:root #app .register input:focus { background: #dcdde0 !important; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+html:root #app .register input.input-error { background: #dcdde0 !important; box-shadow: inset 0 0 0 2px #b3123f !important; }
+html:root #app .wager-input input::placeholder,
+html:root #app .register input::placeholder { color: #73737c !important; }
+
+html:root *::-webkit-scrollbar-thumb { background: #d81b55 !important; }
+
+/* [REPASO-HUD-D 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · EL BALONCESTO (verificado 06/10) ═══════════════════════════════
+   Visto en captura con los mensajes de verdad (update + showui en los
+   estados free, registration, playing y thrown). Solo de día. Lo que cambia:
+   - Cabecera: fuera la banda blanca con raya de 1 px; placa rosa girada,
+     «Baloncesto» en rótulo con filete rosa macizo y un rótulo a brocha.
+   - «Modo de juego · Dificultad · Apuesta»: rótulo cursiva 800 con filete
+     macizo (era letra fina espaciada 0,18em con raya de 1 px).
+   - Las tres columnas, alineadas arriba y con el mismo hueco.
+   - Nombre + «Registro» en una fila; «Registro» y «Comenzar» en rosa,
+     lo apagado en gris sin sombra.
+   - Los apuntados, tarjetas a todo el ancho con la chapa de echar.
+   - El resumen de lo elegido son chapas, no botones (sin sombra).
+   - Marcador: título en rótulo con filete, nombres a la izquierda. */
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html:root #app .basketball { padding: 0 0 1.8vh !important; }
+html:root #app .header {
+    padding: 1.7vh 2vh 0 !important;
+    margin: 0 !important;
+    border-bottom: 0 !important;
+    background: none !important;
+}
+/*  La placa (cuadro rosa girado −5° con su sombra y el balón) va dibujada
+    en el fondo: el balón de rcore (.basketball-ball) está apagado. */
+html:root #app .header-inner {
+    position: relative;
+    min-height: 4vh;
+    padding: 0 0 3.3vh 5.2vh !important;
+    border-bottom: 4px solid #d81b55;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cg transform='rotate(-5 24 24)'%3E%3Crect x='10' y='10' width='32' height='32' rx='8' fill='%23000'/%3E%3Crect x='6.5' y='6.5' width='31' height='31' rx='7' fill='%23d81b55' stroke='%23000' stroke-width='3'/%3E%3Ccircle cx='22' cy='22' r='9.5' fill='%23fff' stroke='%230b0b0d' stroke-width='2.4'/%3E%3Cpath d='M12.5 22h19M22 12.5v19M15.3 15.3c3 2.6 3 10.8 0 13.4M28.7 15.3c-3 2.6-3 10.8 0 13.4' fill='none' stroke='%230b0b0d' stroke-width='1.8'/%3E%3C/g%3E%3C/svg%3E") left top / 4.4vh 4.4vh no-repeat;
+    text-align: left !important;
+    font-size: 3.3vh !important;
+    line-height: 4vh !important;
+    letter-spacing: 0.01em !important;
+}
+/*  El rótulo a brocha, bajo el título. */
+html:root #app .header-inner::after {
+    content: "Tiros a canasta";
+    position: absolute;
+    left: 5.4vh;
+    top: 4.3vh;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vh;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000,
+        3px 4px 0 #000;
+}
+
+/* ── Los tres rótulos de columna ────────────────────────────────────── */
+html:root #app .content { padding: 1.2vh 2vh 0 !important; }
+html:root #app .content-header {
+    padding: 0.4vh 0 0.6vh !important;
+    margin-bottom: 1.2vh !important;
+    border-bottom: 3px solid #d81b55 !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 1.7vh !important;
+    letter-spacing: 0.02em !important;
+    color: #0b0b0d !important;
+}
+
+/* ── Elegir modo, dificultad y apuesta ──────────────────────────────── */
+html:root #app .content-modes { display: flex !important; align-items: flex-start !important; justify-content: space-between !important; padding: 0 0.4vh 1.4vh 0 !important; }
+/*  Las columnas se reparten el ancho: con o sin apuesta caen bajo su rótulo. */
+html:root #app .content-modes .content-col { width: auto !important; flex: 1 1 0 !important; min-width: 0; }
+html:root #app .content-modes .difficulty-container,
+html:root #app .content-modes .wager-container { margin: 0 !important; }
+html:root #app .content-modes .difficulty-container { display: flex; flex-direction: column; gap: 0.9vh; padding: 0 !important; }
+html:root #app .content-modes .wager-container { box-sizing: border-box; height: 4vh; padding: 0 1.1vh !important; }
+html:root #app .wager-input input::placeholder,
+html:root #app .register input::placeholder { font-style: italic !important; font-weight: 800 !important; letter-spacing: 0.02em !important; }
+html:root #app button { margin: 0 !important; letter-spacing: 0.02em !important; font-size: 1.6vh !important; }
+
+/* ── Lo elegido, cuando ya hay gente apuntada: chapas, no botones ───── */
+html:root #app .mode-summary { width: 100%; padding: 0.9vh 0.8vh !important; margin: 0 0 1.2vh !important; }
+html:root #app .mode-summary td { padding: 0 0.5vh; text-align: center; }
+html:root #app .mode-summary button.active { cursor: default !important; }
+html:root #app .mode-summary button.active::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000 !important; }
+
+/* ── Los apuntados: tarjetas a todo el ancho ────────────────────────── */
+html:root #app .player-list { margin: 0 0 0.4vh !important; }
+html:root #app .player-list table { width: 100% !important; border-collapse: separate !important; border-spacing: 0 !important; }
+html:root #app .player-list tr.spacer td { height: 0.9vh !important; padding: 0 !important; }
+html:root #app .player-list tr:not(.spacer) td { height: 4vh; padding: 0 1.2vh !important; vertical-align: middle; letter-spacing: 0.02em !important; }
+html:root #app .player-list tr:not(.spacer) td + td { width: 3.4vh; padding: 0 0.9vh 0 0 !important; text-align: right; }
+/*  Echar a uno: chapa rosa con el icono negro. */
+html:root #app .player-list .remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.7vh;
+    height: 2.7vh;
+    vertical-align: middle;
+    border-radius: 7px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    cursor: pointer;
+}
+html:root #app .player-list .remove:hover { background: #d81b55; }
+html:root #app .player-list .remove svg,
+html:root #app .player-list .remove:hover svg { width: 1.7vh !important; height: 1.7vh !important; fill: #000 !important; color: #000 !important; }
+
+/* ── Apuntarse y los botones de abajo ───────────────────────────────── */
+html:root #app .bottom-button { padding: 0 0.4vh 0 0 !important; }
+html:root #app .register { flex-direction: row !important; align-items: center !important; gap: 0.9vh !important; margin: 0 0 1.1vh !important; }
+html:root #app .register input { flex: 1 1 auto; width: auto !important; min-width: 0; height: 4vh !important; margin: 0 !important; display: block !important; }
+html:root #app .register button { flex: 0 0 auto; width: 17vh !important; }
+html:root #app .interaction-buttons button { margin: 0 !important; }
+/*  «Registro»: el principal mientras no estás apuntado. */
+html:root #app .register button:not(.disabled),
+html:root #app .register button:not(.disabled):hover { color: #000 !important; }
+html:root #app .register button:not(.disabled)::before { background: #d81b55 !important; }
+html:root #app .register button:not(.disabled):hover::before { background: #d81b55 !important; }
+/*  Apagado: gris con forma de botón, canto gris y sin sombra. */
+html:root #app button.disabled,
+html:root #app .interaction-buttons button.disabled:first-of-type { opacity: 1 !important; color: #73737c !important; }
+html:root #app button.disabled::before,
+html:root #app .interaction-buttons button.disabled:first-of-type::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #9a9aa3 !important; }
+
+/* ── El marcador de la partida ──────────────────────────────────────── */
+html:root #app .score { padding: 1.3vh 1.5vh 1.6vh 1.3vh !important; }
+html:root #app .score table tr td.score-header.score-header.score-header {
+    padding: 0.2vh 0.2vh 0.7vh !important;
+    border-bottom: 4px solid #d81b55 !important;
+    text-align: left !important;
+    font-size: 2.4vh !important;
+    letter-spacing: 0.01em !important;
+}
+html:root #app .score tr.spacer td { height: 0.8vh !important; }
+html:root #app .score tr:not(.spacer) td:nth-child(2):not(.score-header) { text-align: left !important; padding-left: 0.4vh !important; letter-spacing: 0.02em !important; }
+/*  Sin el 0,5vh de arriba: con la letra de cifras centradas la marca (C-A…)
+    caía 3 px por debajo del centro de la fila (06/10). */
+html:root #app .score tr:not(.spacer) td:nth-child(3):not(.score-header) { min-width: 9vh; padding: 0 1.2vh !important; font-size: 1.9vh !important; line-height: 1 !important; }
+
+/* ── Retoques vistos en captura (06/10) ─────────────────────────────── */
+/*  Lo elegido en el resumen es «elegido» (no un botón ni algo apagado):
+    rosa pálido con el anillo rosa, sin sombra. */
+html:root #app .mode-summary button.active::before { background: #dcdde0 !important; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+/*  El icono de echar venía con position:absolute; top:5px de rcore y se
+    salía por arriba de la chapa: centrado dentro de ella. */
+html:root #app .player-list .remove svg { position: static !important; top: auto !important; display: block; }
+/*  Entre dos celdas de una misma fila el canto se cortaba (el filo cae en
+    medio píxel y queda una muesca clara arriba y abajo). Cada fila es ahora
+    UNA celda con canto: la de al lado se queda sin ancho y lo suyo (la
+    chapa de echar, el balón del turno) se monta encima, por dentro. */
+html:root #app .player-list tr:not(.spacer) td:first-child {
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html:root #app .player-list tr:not(.spacer) td.remove-player {
+    width: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+html:root #app .player-list .remove {
+    position: absolute;
+    right: 0.9vh;
+    top: calc(50% - 1.35vh);
+}
+html:root #app .player-list .remove:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  El marcador: la celda del balón sin ancho; el nombre lleva el canto
+    izquierdo y deja sitio al balón, que se pinta encima. */
+html:root #app .score table tr:not(.spacer) td:not(.score-header):first-child {
+    width: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+html:root #app .score table tr:not(.spacer) td:nth-child(2):not(.score-header) {
+    padding-left: 3.6vh !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+    box-shadow: inset 1.5px 0 0 #000, inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000 !important;
+}
+html:root #app .score tr:not(.spacer) td:first-child img { position: absolute !important; z-index: 1; top: calc(50% - 1vh) !important; left: 1vh !important; margin: 0 !important; }
+
+
+
+/* ══ MENÚ PEQUEÑO (07/10) ══════════════════════════════════════════════
+   Preparar la partida y el registro son un menú corto: van como los
+   diálogos del servidor (org-menu, skill origen-dialogo), columna de 440 px
+   y riel de 64 px pegado al canto, juntos a media altura a la derecha. La
+   columna es el panel de rcore; el riel lo dibujan su ::after (la caja con
+   la pieza del balón y su raya) y su ::before (el nombre en vertical,
+   abajo), colgados por fuera: por eso el panel deja de recortar (ya no hay
+   nada inclinado que se salga). El marcador de la partida no cambia. */
+html:root #app .basketball {
+    left: auto !important;
+    right: calc(1.2vh + 64px + 1.2vh) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    animation: none !important;
+    width: 440px !important;
+    min-height: 300px;
+    max-height: calc(100vh - 2.8vh);
+    box-sizing: border-box;
+    overflow: visible !important;
+}
+html:root #app .basketball::after {
+    content: "";
+    position: absolute;
+    top: -4px; /* el filo de arriba del panel es un borde de 4 px */
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    border-radius: 20px;
+    background: #c4c6ca url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='80' viewBox='0 0 64 80'%3E%3Crect x='12' y='18' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='10.75' y='16.75' width='41.5' height='41.5' rx='9.25' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Cg transform='translate(20 26)' fill='none' stroke='%23d81b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M4.9 4.9a10 10 0 0 1 0 14.2M19.1 4.9a10 10 0 0 0 0 14.2M2 12h20M12 2v20'/%3E%3C/g%3E%3Crect x='21' y='71' width='22' height='2' rx='1' fill='%23000'/%3E%3C/svg%3E") center top / 64px 80px no-repeat;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    pointer-events: none;
+}
+html:root #app .basketball::before {
+    content: "Origen Baloncesto";
+    position: absolute;
+    left: calc(100% + 1.2vh + 32px);
+    bottom: 16px;
+    z-index: 1;
+    transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+    pointer-events: none;
+}
+html[data-marca="nacion"]:root #app .basketball::before { content: "Nación Baloncesto"; }
+
+/*  Echar a un apuntado es peligro: pieza gris con el icono rosa oscuro; al
+    pasar, rosa con tinta negra (antes, rojo vivo). */
+html:root #app .player-list .remove { background: #dcdde0; }
+html:root #app .player-list .remove:hover { background: #d81b55; }
+html:root #app .player-list .remove svg { fill: #b3123f !important; color: #b3123f !important; }
+html:root #app .player-list .remove:hover svg { fill: #000 !important; color: #000 !important; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* ── 07/10 · rótulo del marcador, cifras y apuesta ─────────────────── */
+html:root #app .score table tr td.score-header {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.01em !important;
+    font-size: 2.1vh !important;
+    color: #0b0b0d !important;
+}
+html:root #app .score table tr:not(.spacer) td:nth-child(3),
+html:root #app .summary-wager,
+html:root #app .wager-input input {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+}
+/* El $ va detrás de la cifra: «0 $». */
+html:root #app .wager-currency { order: 2 !important; margin-left: 0.4vh !important; }
+html:root #app .wager-input { order: 1 !important; }

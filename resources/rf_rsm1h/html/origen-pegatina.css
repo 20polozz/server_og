@@ -1,0 +1,2158 @@
+/* ══ PEGATINA: el panel «Control Casa» con el estilo del logo ═════════════
+
+   El único estilo del servidor (las dos marcas: en Nación el rosa sale
+   naranja; la marca la pone origen.js, que pregunta `origen:marca:dame` a
+   @origen_map/shared/tema.lua).
+
+   Va la ÚLTIMA en index.html, lift.html y cam.html, encima de style.css (del
+   autor, minificada), origen-tokens.css y origen.css. No se reescribe nada
+   de aquellas: se pisa con más peso.
+
+   Panel gris #c4c6ca para la columna y el riel; piezas de dentro gris claro
+   #dcdde0; canto negro fino (box-shadow, no border: no cambia medidas),
+   sombra dura, rosa #d81b55 con tinta negra, rótulos Barlow Condensed
+   cursiva 800, cifras Oxanium 800, un rótulo a brocha (Knewave) bajo el
+   título.
+
+   CEF 103: sin :has(), color-mix(), backdrop-filter, rotate:/scale: sueltos
+   ni @keyframes nuevos.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* El rótulo, por si la página no carga origen-tokens.css (cam.html). Knewave
+   y Oxanium llegan por el <link> de Google Fonts de cada página. */
+@font-face { font-family: "Barlow Condensed"; font-weight: 700 900; font-display: block; src: url(fonts/barlow-condensed-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-style: italic; font-weight: 800 900; font-display: block; src: url(fonts/barlow-condensed-latin-800-italic.woff2) format("woff2"); }
+
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+/*  «html:root» y no «html»: style.css y origen-tokens.css los declaran en
+    :root, que con «html» a secas gana (y el morado de --violet se colaba). */
+html:root {
+    --pg-rosa: #d81b55;
+    --pg-rosa-palido: #ffd6e4;
+    --pg-rosa-texto: #b3123f;
+    --pg-tinta: #0b0b0d;
+    --pg-gris: #44444a;
+    --pg-gris-2: #73737c;
+    --pg-papel: #c4c6ca;
+    --pg-hueco: #dcdde0;
+    --pg-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --pg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --pg-brocha: "Knewave", "Barlow Condensed", cursive;
+    /* Los tres cantos: botón, botón pequeño y tarjeta que no se pulsa */
+    --pg-btn: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --pg-btn-s: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --pg-aro: inset 0 0 0 1.5px #000;
+
+    /* Los del tema Arcade, con los valores de la pegatina: con esto cambia
+       la mayor parte de origen.css sin tocar regla a regla */
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 255, 255, 255;
+    --arc-t-papel2: 255, 255, 255;
+    --arc-t-papel3: 255, 255, 255;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #000;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-edge: #000;
+    --arc-glass: #c4c6ca;
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --arc-placa: #dcdde0;
+    --arc-placa-canto: #000;
+    --arc-tip: #dcdde0;
+    --arc-btn: #0b0b0d;
+    --arc-btn-hover: #2a2a30;
+    --arc-brillo: transparent;
+    --arc-canto: #000;
+    --arc-papel: #dcdde0;
+    --arc-filo: inset 0 0 0 1.5px #000;
+    --arc-canto-duro: 2px 2px 0 #000;
+
+    /* Canto (4) + sombra (7) van por fuera, y la pieza de al lado trae su
+       canto: con 10 px se pisaban; va el aire del riel al canto (07/10) */
+    --pm-hueco: var(--pm-margen-x);
+    /*  La columna de todos los menús de riel: 420–500 px. */
+    --pm-col: clamp(420px, 31vw, 548px);
+    --pm-r-zona: 20px;
+    --pm-r-ctrl: 10px;
+    --pm-r: 12px;
+    --pm-ok: #0b0b0d;
+    --pm-warn: #0b0b0d;
+    --pm-bad: #b3123f;
+    --pm-velo: #dcdde0;
+    --pm-velo-hi: #e6e7ea;
+    --pm-aro: inset 0 0 0 1.5px #000;
+
+    --paper-rgb: 11, 11, 13;
+    --green: #0b0b0d;  --green-rgb: 11, 11, 13;
+    --red: #b3123f;    --red-rgb: 179, 18, 63;
+    --amber: #0b0b0d;  --amber-rgb: 11, 11, 13;
+    --blue: #0b0b0d;   --blue-rgb: 11, 11, 13;
+    --violet: #0b0b0d; --violet-rgb: 11, 11, 13;
+    --face-lit: #d81b55;
+    --led-bg: #dcdde0;
+}
+
+/* ══ 1 · COLUMNA Y RIEL ══════════════════════════════════════════════ */
+html .root .screen::before,
+html .root .rail {
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+/* Fuera relieves, resplandores y transparencias del autor */
+html .root .main *,
+html .root .main *::before,
+html .root .main *::after { text-shadow: none !important; filter: none !important; }
+
+/* El riel: el mismo de todos los menús (64 px, placa y botones de 44, uno
+   cada 51, icono de 20). Botones NEGROS con el icono blanco. */
+html .root .rail { padding: 14px 0 16px; gap: 7px; }
+html .root .rail::before {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    background-color: #dcdde0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 21px 21px;
+}
+html .root .rail::after {
+    font: italic 800 14px var(--pg-rotulo);
+    letter-spacing: 0.2em;
+    color: #0b0b0d;
+}
+html .root .nav { gap: 7px; }
+html .root .nav-item {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+}
+html .root .nav-item:hover { background: #2a2a30; color: #fff; }
+html .root .nav-item.is-active {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .root .nav-item svg { width: 20px; height: 20px; stroke-width: 2.2; }
+html .root .nav-item span {
+    border-left: 0;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+
+/* ══ 2 · CABECERA ════════════════════════════════════════════════════ */
+/*  Placa rosa girada con la casa, «CONTROL CASA» en rótulo grande y debajo
+    el rótulo a brocha con el estado o la sección (data-brocha lo pone
+    origen.js). A la derecha el altavoz en botón y la hora en chapa negra. */
+html .root .hdr {
+    padding: 18px 20px 24px 22px;
+    border-bottom: 0;
+    align-items: flex-start;
+}
+html .root .hdr-side {
+    width: auto;
+    gap: 16px;
+    align-items: center;
+    font: italic 800 34px/0.95 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .hdr .dot {
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #d81b55 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.3' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E") center / 24px 24px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+    animation: none;
+}
+html .root #hdrProperty {
+    position: relative;
+    display: block;
+    padding-bottom: 15px;
+    white-space: nowrap;
+}
+html .root #hdrProperty[data-brocha]::after {
+    content: attr(data-brocha);
+    position: absolute;
+    left: 12px;
+    top: 31px;
+    font-family: var(--pg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 19px;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html .root .hdr-side--r {
+    gap: 9px;
+    padding-top: 6px;
+    font: 800 15px/1 var(--pg-cifra);
+    letter-spacing: 0.02em;
+}
+html .root .hdr-side--r > .ico { display: none; }   /* el dibujo de la wifi: adorno */
+html .root .hdr-mute {
+    width: 32px;
+    height: 30px;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    filter: none !important;
+}
+html .root .hdr-mute:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .root .hdr-mute .ico { width: 17px; height: 17px; stroke-width: 2.2; }
+html .root .hdr-mute.is-muted { background: #d81b55; color: #000; }
+html .root #hdrClock {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    padding: 1px 10px 0;
+    border-radius: 8px;
+    background: #0b0b0d;
+    font: 800 15px/1 var(--pg-cifra);
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+/* ══ 3 · PIEZAS COMUNES ══════════════════════════════════════════════ */
+html .root .content { padding: 2px 20px 20px; gap: 12px; }
+html .root .content::-webkit-scrollbar { width: 5px; }
+html .root .content::-webkit-scrollbar-thumb { background: #0b0b0d; border-radius: 3px; }
+
+/* Tarjetas: blancas, canto de 2.5, sin sombra */
+html .root .card,
+html .root .wx,
+html .root .wx.is-night,
+html .root .picker,
+html .root .eq-panel {
+    border-radius: 14px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d;
+}
+
+/* Chapa negra del icono de fila */
+html .root .card-head .tile {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #0b0b0d;
+    box-shadow: none !important;
+    color: #fff;
+    transform: none;
+}
+html .root .card-head .tile svg { width: 20px; height: 20px; stroke-width: 2.1; transform: none; }
+html .root .card-title {
+    font: italic 800 20px/1.05 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .card-meta {
+    font: 700 13px/1.2 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+
+/* EL botón: papel, canto de 3 y sombra dura; rótulo */
+html .root .preset,
+html .root .btn,
+html .root .pill,
+html .root .gated-btn,
+html .root .keybtn {
+    height: 38px;
+    max-width: none;
+    padding: 1px 14px 0;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    font: italic 800 16px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform: none;
+    transition: background 0.12s ease, transform 0.08s ease;
+}
+html .root .preset > *,
+html .root .btn > *,
+html .root .pill > * { transform: none; }
+html .root .preset:hover,
+html .root .btn:hover,
+html .root .pill:hover,
+html .root .gated-btn:hover,
+html .root .keybtn:hover { background: #e6e7ea; color: #0b0b0d; }
+html .root .preset:active,
+html .root .btn:active,
+html .root .pill:active,
+html .root .gated-btn:active,
+html .root .keybtn:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+/* El principal y el encendido: rosa con tinta negra */
+html .root .pill--lit,
+html .root .pill--lit:hover,
+html .root .keybtn.is-on,
+html .root .preset.is-on { background: #d81b55; color: #000; }
+html .root .pill--lit:hover { background: #df2f63; }
+html .root .pill--red { color: #0b0b0d; }
+html .root .keybtn.is-busy { background: #dcdde0; color: #000; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+/* El apagado: gris con forma de botón, canto gris y sin sombra */
+html .root .preset:disabled,
+html .root .pill:disabled,
+html .root .gated-btn:disabled,
+html .root .keybtn:disabled {
+    opacity: 1;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #9a9aa3 !important;
+    color: #73737c;
+    transform: none;
+}
+
+/* Las teclas cuadradas (.mkey): el mismo botón, con icono */
+html .root .mkey,
+html .root .mkey.is-on {
+    padding: 0 3px 3px 0;   /* sitio para la sombra de la cara */
+    border-radius: 12px;
+    background: none;
+    box-shadow: none !important;
+    transform: none;
+}
+html .root .mkey .mkey-face,
+html .root .mkey--sm .mkey-face {
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    transition: background 0.12s ease, transform 0.08s ease;
+}
+html .root .mkey .mkey-face > * { transform: none; }
+html .root .mkey .mkey-face svg { stroke-width: 2.2; }
+html .root .mkey:hover .mkey-face { background: #e6e7ea; color: #0b0b0d; }
+html .root .mkey:active { transform: none; }
+html .root .mkey:active .mkey-face {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .mkey.is-on .mkey-face,
+html .root .mkey.is-on:hover .mkey-face { background: #d81b55; color: #000; }
+html .root .mkey--redoff:not(.is-on) .mkey-face { color: #0b0b0d; }
+html .root .mkey .cc-face {
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+/* EL deslizador: pista blanca con anillo, relleno negro y pomo rosa */
+html .root .slider { gap: 10px; color: #0b0b0d; }
+html .root .track {
+    height: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    overflow: visible;
+}
+html .root .track .fill {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--pct, 0%);
+    min-width: 16px;
+    border-radius: 8px;
+    background: #0b0b0d;
+    box-shadow: none !important;
+}
+html .root .track .fill::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    border-radius: 50%;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .root .slider .lab,
+html .root .lab {
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+html .root .slider .val,
+html .root .val,
+html .root .eq-val,
+html .root .room-pct {
+    font: 800 14px/1 var(--pg-cifra);
+    letter-spacing: 0;
+    color: #0b0b0d;
+}
+html .root .slider .lit-btn { color: #0b0b0d; }
+html .root .slider .lit-btn.is-on { color: #0b0b0d; }
+html .root .slider .lit-btn svg { width: 17px; height: 17px; stroke-width: 2.2; }
+
+/* EL interruptor */
+html .root .toggle { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .toggle::after { background: #0b0b0d; box-shadow: none !important; transform: scale(0.72); }
+html .root .toggle.is-on { background: #d81b55; }
+html .root .toggle.is-on::after { transform: translateX(24px) scale(0.72); }
+
+/* EL campo */
+html .root .pick-url input {
+    height: 38px;
+    padding: 1px 12px 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    font: 600 16px var(--arc-text);
+    color: #0b0b0d;
+}
+html .root .pick-url input::placeholder { color: #73737c; }
+html .root .pick-url input:focus { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+
+/* Encabezados de sección: rótulo + filete rosa macizo */
+html .root .sec-label,
+html .root .pick-head,
+html .root .doors-room,
+html .root .home .col::before {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: italic 800 20px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .sec-label::after,
+html .root .pick-head::after {
+    content: "";
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+
+/* La cabecera de página: título con filete, dato en chapa, botones debajo */
+html .root .page-head {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 9px;
+    min-height: 0;
+}
+html .root .page-title {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    padding: 0;
+}
+html .root .page-title h2 {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: italic 800 26px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .page-title h2::after {
+    content: "";
+    flex: 1;
+    min-width: 24px;
+    height: 4px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+html .root .page-title p {
+    flex: none;
+    max-width: 100%;
+    padding: 5px 9px 4px;
+    border-radius: 7px;
+    background: #0b0b0d;
+    font: italic 800 14px/1.1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html .root .page-title p:empty { display: none; }
+html .root .page-actions { flex: 1 1 100%; gap: 9px; padding-right: 3px; }
+html .root .page-actions:empty { display: none; }
+html .root .page-actions .pill { flex: 1; }
+
+/* Vacíos: hueco gris con canto a trazos */
+html .root .empty {
+    padding: 18px 16px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: none !important;
+    outline: 1.5px dashed #73737c;
+    outline-offset: -1.5px;
+}
+html .root .empty h3 {
+    font: italic 800 18px/1.1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .empty p { font: 500 14px/1.3 var(--arc-text); color: #44444a; }
+
+/* ══ 4 · BLOQUEO (el código) ═════════════════════════════════════════ */
+/*  Una tarjeta blanca arriba, centrada, con las casillas y el teclado. Sin
+    el hueco de media pantalla que dejaba el centrado vertical del autor. */
+html .root .gate { flex: none; margin: 0; }
+html .root .gate .lockscreen,
+html .root .lockscreen {
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 22px 22px 25px;
+    border-radius: 14px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .lock-top { gap: 12px; align-self: stretch; }
+/* «Cerrada» ya lo dice la brocha de la cabecera y el título de abajo */
+html .root .lock-state { display: none; }
+html .root .lock-title {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font: italic 800 26px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .lock-title::before,
+html .root .lock-title::after {
+    content: "";
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+html .root .pad { gap: 14px; margin-top: 4px; }
+html .root .pad-dots { gap: 10px; }
+html .root .gate .pad-dots i,
+html .root .pad-dots i {
+    width: 54px;
+    height: 60px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .pad-dots i::after { width: 10px; height: 10px; background: #c9ccd1; box-shadow: none; }
+html .root .pad-dots i.is-set { background: #0b0b0d; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .pad-dots i.is-set::after { width: 14px; height: 14px; border-radius: 50%; background: #dcdde0; }
+html .root .gate .lock-sub,
+html .root .lock-sub {
+    font: italic 800 16px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+html .root .lock-sub.is-bad { color: #b3123f; }
+/* El teclado: teclas anchas a tres columnas, del ancho de las casillas */
+html .root .gate .pad-keys,
+html .root .pad-keys {
+    grid-template-columns: repeat(3, 104px);
+    gap: 9px 10px;
+    padding: 0 3px 3px 0;
+}
+html .root .gate .key,
+html .root .key {
+    width: 104px;
+    height: 64px;
+    padding: 0;
+    border-radius: 12px;
+    background: none;
+    box-shadow: none !important;
+    transform: none;
+}
+html .root .gate .key .key-face,
+html .root .key .key-face {
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    font: 800 26px/1 var(--pg-cifra);
+    color: #0b0b0d;
+    transition: background 0.12s ease, transform 0.08s ease;
+}
+html .root .key:hover .key-face { background: #e6e7ea; color: #0b0b0d; }
+html .root .key:active { transform: none; }
+html .root .key:active .key-face { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .key--alt .key-face { background: #dcdde0; color: #0b0b0d; }
+html .root .lockscreen .key.key--go .key-face { background: #d81b55; color: #000; }
+html .root .lockscreen .key.key--go:hover .key-face { background: #df2f63; }
+html .root .key .key-ico { width: 26px; height: 26px; stroke-width: 2.6; }
+
+/* ══ 5 · INICIO ══════════════════════════════════════════════════════ */
+html .root .home,
+html .root .home .col { gap: 10px; }
+
+/* El reloj y la previsión */
+html .root .home .wx { padding: 14px 16px 14px; }
+html .root .home .wx-clock,
+html .root .wx-clock {
+    font: 800 46px/0.95 var(--pg-cifra);
+    letter-spacing: 0.01em;
+    color: #0b0b0d;
+}
+html .root .home .wx-day,
+html .root .wx-day {
+    margin-top: 5px;
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+html .root .wx-side { gap: 12px; }
+html .root .wx-icon,
+html .root .wx-side svg { color: #0b0b0d; stroke: currentColor; stroke-width: 2; }
+html .root .wx-next { gap: 4px; padding-left: 12px; border-left: 1.5px solid #0b0b0d; }
+html .root .wx-next small {
+    font: italic 800 13px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #73737c;
+}
+html .root .wx-next span { font: italic 800 17px/1 var(--pg-rotulo); text-transform: uppercase; color: #0b0b0d; }
+html .root .wx-next span svg { width: 17px; height: 17px; }
+html .root .home .wx-days,
+html .root .wx-days {
+    gap: 7px;
+    margin: 12px 0 0;
+    padding: 0;
+    border-top: 0;
+    background: none;
+}
+html .root .wx-d {
+    gap: 5px;
+    padding: 8px 0 7px;
+    border-radius: 9px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #0b0b0d;
+}
+html .root .home .wx-d span,
+html .root .wx-d span {
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .wx-d .wx-icon { width: 20px; height: 20px; color: #0b0b0d; }
+html .root .wx-d.is-empty .wx-icon { color: #9a9aa3; }
+html .root .wx-d i { display: none; }
+html .root .wx-d.is-on { background: #d81b55; }
+html .root .wx-d.is-on .wx-icon { color: #000; }
+
+/* Rótulos de las dos mitades (no hay texto en el DOM: van aquí) */
+html .root .home .col::before { content: "Estancias"; margin-top: 4px; }
+html .root .home .col:nth-child(3)::before { content: "Mandos"; }
+html .root .home .col::before {
+    background: linear-gradient(#d81b55, #d81b55) no-repeat right center / calc(100% - 98px) 4px;
+}
+html .root .home .col:nth-child(3)::before { background-size: calc(100% - 82px) 4px; }
+
+/* Las filas de acceso: se pulsan → canto y sombra dura */
+html .root .home .col > .strip,
+html .root .card.strip {
+    min-height: 54px;
+    margin-right: 3px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    overflow: visible;
+}
+html .root .home .strip .card-head,
+html .root .home .strip.room .card-head { padding: 0 6px 0 9px; gap: 12px; }
+html .root .home .strip .card-head .tile { width: 38px; height: 38px; border-radius: 9px; }
+html .root .home .strip .card-head .tile svg { width: 20px; height: 20px; }
+html .root .home .strip .card-text {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+html .root .home .strip .card-title {
+    flex: none;
+    font: italic 800 20px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+}
+/* El estado, a la derecha, en chapa */
+html .root .home .strip .card-meta {
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 5px 8px 4px;
+    border-radius: 7px;
+    background: #0b0b0d;
+    font: italic 800 13px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    color: #fff;
+}
+html .root .go,
+html .root .home .strip .go {
+    width: auto;
+    gap: 7px;
+    padding: 0 12px 0 4px;
+    border-left: 0;
+    background: none;
+    box-shadow: none !important;
+    color: #0b0b0d;
+    overflow: visible;
+}
+html .root .go:hover { background: none; color: #b3123f; }
+html .root .go-l svg,
+html .root .home .strip .go-l svg { width: 19px; height: 19px; stroke-width: 2.2; }
+html .root .go .chev,
+html .root .home .strip .go .chev { width: 18px; height: 18px; stroke-width: 3; }
+html .root .go .bars i { box-shadow: none; background: #d81b55; }
+
+/* Los cuatro accesos grandes: cada uno una tarjeta con su tecla, su nombre
+   y su botón de verdad */
+html .root .card.card--keys,
+html .root .home .card--keys {
+    padding: 0;
+    background: none;
+    box-shadow: none !important;
+    overflow: visible;
+}
+html .root .home .card--keys .key-grid { gap: 8px; padding: 0; }
+html .root .home .card--keys .key-cell {
+    gap: 8px;
+    padding: 10px 8px 11px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .root .home .card--keys .key-cell.is-lit { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55; }
+html .root .home .card--keys .mkey { width: 100%; height: 60px; border-radius: 12px; }
+html .root .home .card--keys .mkey-face { border-radius: 11px; }
+html .root .home .card--keys .mkey-face svg { width: 30px; height: 30px; }
+html .root .home .card--keys .key-name,
+html .root .key-name {
+    min-height: 32px;
+    align-items: center;
+    font: italic 800 15px/1.05 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .home .card--keys .keybtn {
+    width: calc(100% - 3px);
+    max-width: none;
+    height: 32px;
+    margin-right: 3px;
+    padding: 1px 4px 0;
+    border-radius: 9px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    font-size: 15px;
+}
+html .root .home .card--keys .keybtn:active { box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .cap,
+html .root .home .card--keys .cap {
+    padding: 4px 8px 3px;
+    border: 0;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font: italic 800 12px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* El espectáculo de luces */
+html .root .home .card--wave { padding: 12px 14px 15px; gap: 11px; }
+html .root .home .card--wave .card-head { gap: 10px; }
+html .root .home .card--wave .card-head .mkey--sm { width: 47px; height: 47px; border-radius: 11px; }
+html .root .home .card--wave .card-head .mkey--sm .mkey-face { border-radius: 11px; }
+html .root .home .card--wave .card-head .mkey--sm .mkey-face svg { width: 22px; height: 22px; }
+html .root .home .card--wave .card-title { font-size: 20px; letter-spacing: 0.01em; }
+html .root .home .card--wave .slider { gap: 10px; margin-top: 0; }
+html .root .home .card--wave .lab { width: 68px; font-size: 14px; letter-spacing: 0.03em; }
+html .root .home .card--wave .val { width: 44px; font: 800 14px/1 var(--pg-cifra); }
+html .root .home .card--wave .presets { gap: 9px; margin-top: 2px; padding-right: 3px; }
+html .root .home .card--wave .presets .preset { height: 38px; font-size: 16px; letter-spacing: 0.03em; }
+html .root .wave-row i { background: #0b0b0d; }
+
+/* ══ 6 · PUERTAS ═════════════════════════════════════════════════════ */
+/*  Sin la caja grande: cada planta con su rótulo y sus puertas a dos
+    columnas, para que quepan las 24 sin recortarse. */
+html .root .doors-page { flex: none; gap: 12px; }
+html .root .doors-page > .card {
+    flex: none;
+    padding: 0;
+    background: none;
+    box-shadow: none !important;
+    overflow: visible;
+}
+html .root .doors-grid { padding: 0; gap: 12px; }
+html .root .doors-col { gap: 12px; }
+html .root .doors-group {
+    flex: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 9px;
+    padding-right: 2px;
+}
+html .root .doors-room { grid-column: 1 / -1; padding: 0; margin-bottom: 1px; }
+html .root .doors-room span { font: inherit; color: inherit; }
+/* El punto del autor hace de filete */
+html .root .doors-room i,
+html .root .doors-group.is-all .doors-room i {
+    flex: 1;
+    width: auto;
+    height: 4px;
+    border-radius: 2px;
+    background: #d81b55;
+    box-shadow: none;
+}
+html .root .dbar,
+html .root .doors-group .dbar {
+    flex: none;
+    height: 40px;
+    min-height: 0;
+    max-height: none;
+    padding: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    transform: none;
+}
+html .root .dbar:hover { background: #e6e7ea; }
+html .root .dbar:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .dbar > span {
+    gap: 6px;
+    padding: 0 7px 0 11px;
+    border-radius: 10px;
+    background: none !important;
+    box-shadow: none !important;
+    color: #0b0b0d;
+    font: italic 800 16px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+html .root .dbar > span > span {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    display: block;
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    text-transform: uppercase;
+}
+/* El candado, en su chapa: negra cerrada, rosa con canto abierta */
+html .root .dbar > span > svg {
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    padding: 5px;
+    border-radius: 7px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    stroke: #000;
+    stroke-width: 2.4;
+}
+html .root .dbar.is-locked > span > svg { background: #0b0b0d; box-shadow: none; stroke: #fff; }
+/* Abierta: la fila «elegida» */
+html .root .dbar:not(.is-locked) { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+/* Dejarla sujeta (portones) */
+html .root .dbar .dhold {
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    border-radius: 7px;
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d;
+}
+html .root .dbar .dhold svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.4; }
+html .root .dbar .dhold.is-on { background: #0b0b0d !important; color: #fff; }
+html .root .dbar .leaves { font: 800 12px/1 var(--pg-cifra); opacity: 1; color: #44444a; }
+
+/* ══ 7 · PERSIANAS ═══════════════════════════════════════════════════ */
+html .root .bc { flex: none; gap: 12px; }
+html .root .bc-grid,
+html .root .bc-side { flex: none; gap: 12px; }
+html .root .bc-master { padding: 12px; gap: 12px; }
+html .root .bc-led {
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .bc-led-l { flex-direction: row; align-items: center; gap: 12px; }
+html .root .bc-led-cap {
+    font: italic 800 20px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .bc-led-num { font: 800 26px/1 var(--pg-cifra); color: #0b0b0d; }
+html .root .bc-led-r,
+html .root .bc-row-state,
+html .root .bc-detail-head .bc-cap {
+    padding: 5px 9px 4px;
+    border-radius: 7px;
+    background: #0b0b0d;
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html .root .bc-scenes { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+html .root .bc-scene { gap: 6px; }
+html .root .bc-scene .mkey { width: 100%; height: 50px; }
+html .root .bc-scene .mkey-face { color: #0b0b0d; }
+html .root .bc-scene .mkey-face svg { width: 24px; height: 24px; }
+html .root .bc-scene-name {
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+/* Las plantas: rótulo con filete y cuatro botones a dos columnas */
+html .root .bc-floors {
+    flex: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 9px;
+    padding: 0 3px 3px 0;
+    background: none;
+    box-shadow: none !important;
+    overflow: visible;
+}
+html .root .bc-floors > .bc-cap,
+html .root .bc-detail-head > span:first-child {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    font: italic 800 20px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .bc-floors > .bc-cap::after,
+html .root .bc-detail-head > span:first-child::after {
+    content: "";
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #d81b55;
+}
+html .root .bc-floor {
+    height: 40px;
+    padding: 1px 11px 0 12px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    font: italic 800 16px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+html .root .bc-floor:hover { background: #e6e7ea; color: #0b0b0d; }
+html .root .bc-floor:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .bc-floor.is-on,
+html .root .bc-floor.is-on:hover { background: #d81b55; color: #000; }
+html .root .bc-floor-r em { font: 800 13px/1 var(--pg-cifra); letter-spacing: 0; color: inherit; }
+/* El punto de estado: redondo, con anillo y sin sombra. Rosa cerrada,
+   blanco abierta, negro moviéndose */
+html .root .bc-dot { width: 10px; height: 10px; border-radius: 50%; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .bc-dot.bc-red,
+html .root .bc-red .bc-dot { background: #d81b55; }
+html .root .bc-dot.bc-green,
+html .root .bc-green .bc-dot { background: #dcdde0; }
+html .root .bc-dot.bc-amber,
+html .root .bc-amber .bc-dot { background: #0b0b0d; }
+html .root .bc-floor.is-on .bc-dot.bc-red { background: #0b0b0d; }
+
+/* El detalle de la planta: rótulo y una tarjeta por persiana */
+html .root .bc-detail {
+    padding: 0;
+    gap: 9px;
+    background: none;
+    box-shadow: none !important;
+    overflow: visible;
+}
+html .root .bc-detail-head { align-items: center; gap: 12px; padding: 0; }
+html .root .bc-detail-head > span:first-child { flex: 1; }
+html .root .bc-row {
+    height: auto;
+    gap: 12px;
+    padding: 11px 10px 12px 13px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .bc-row-main { gap: 8px; }
+html .root .bc-row-head { align-items: center; }
+html .root .bc-row-name {
+    font: italic 800 18px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .bc-row-state { padding: 4px 8px 3px; font-size: 13px; }
+html .root .bc-row:not(.bc-red) .bc-row-state { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .root .bc-track {
+    height: 14px;
+    padding: 0;
+    border-radius: 7px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    overflow: hidden;
+}
+html .root .bc-track i { border-radius: 7px; background: #0b0b0d; box-shadow: none; }
+html .root .bc-stops { gap: 5px; }
+html .root .bc-stop {
+    height: 26px;
+    padding: 1px 0 0;
+    border-radius: 7px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    color: #0b0b0d;
+    font: italic 800 13px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+html .root .bc-stop:hover { background: #e6e7ea; color: #0b0b0d; }
+html .root .bc-stop.is-on,
+html .root .bc-stop.is-on:hover { background: #d81b55; color: #000; }
+html .root .bc-row-keys { gap: 6px; }
+html .root .bc-row-keys .mkey--sm { width: 45px; height: 45px; }
+
+/* ══ 8 · ASCENSORES ══════════════════════════════════════════════════ */
+html .root .lifts-grid { flex: none; gap: 12px; }
+html .root .lift { padding: 12px; gap: 11px; }
+/* La pantalla: hueco gris con la planta en cifra grande a la izquierda */
+html .root .lift-led,
+html .root .lift.is-moving .lift-led {
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .lift.is-moving .lift-led { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html .root .lift-ghost { inset: 0 12px 0 auto; width: 64px; opacity: 1; color: #c9ccd1; }
+html .root .lift-ghost svg { width: 56px; height: 56px; max-width: none; stroke-width: 1.6; }
+html .root .lift-read {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "cifra piso" "cifra estado";
+    align-items: center;
+    justify-items: start;
+    gap: 5px 14px;
+    padding-right: 66px;
+    text-align: left;
+}
+html .root .lift-rule { grid-area: cifra; width: auto; }
+html .root .lift-rule i { display: none; }
+html .root .lift-digit,
+html .root .lift.is-moving .lift-digit {
+    display: grid;
+    place-items: center;
+    min-width: 58px;
+    height: 58px;
+    padding: 2px 8px 0;
+    border-radius: 11px;
+    background: #0b0b0d;
+    font: 800 38px/1 var(--pg-cifra);
+    color: #fff;
+}
+html .root .lift.is-moving .lift-digit { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .root .lift-floor {
+    grid-area: piso;
+    align-self: end;
+    width: auto;
+    max-width: 100%;
+    font: italic 800 24px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .lift-status,
+html .root .lift.is-moving .lift-status {
+    grid-area: estado;
+    align-self: start;
+    width: auto;
+    max-width: 100%;
+    font: italic 800 14px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+html .root .lift.is-moving .lift-status { color: #b3123f; }
+html .root .lift-show {
+    left: auto;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+}
+html .root .lift-show svg { stroke-width: 2.2; }
+html .root .lift-show.is-on { background: #d81b55; color: #000; }
+/* Las plantas: filas-botón a dos columnas, el número en chapa */
+html .root .lift-keys {
+    flex: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 9px;
+    padding: 0 2px 2px 0;
+}
+html .root .lkey {
+    flex: none;
+    min-height: 0;
+    height: 44px;
+    padding: 0 10px 0 7px;
+    justify-content: flex-start;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    transform: none;
+    overflow: visible;
+}
+html .root .lkey > * { transform: none; }
+html .root .lkey:hover { background: #e6e7ea; }
+html .root .lkey:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .lkey-text { flex-direction: row; align-items: center; gap: 10px; }
+html .root .lkey-code,
+html .root .lkey.is-here .lkey-code,
+html .root .lkey.is-called .lkey-code {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding-top: 1px;
+    border-radius: 8px;
+    background: #0b0b0d;
+    font: 800 16px/1 var(--pg-cifra);
+    letter-spacing: 0;
+    color: #fff;
+}
+html .root .lkey-name,
+html .root .lkey.is-here .lkey-name,
+html .root .lkey.is-called .lkey-name {
+    text-align: left;
+    font: italic 800 17px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .lkey-edge { display: none; }
+/* Donde está: fila «elegida». A donde va: rosa lleno */
+html .root .lkey.is-here,
+html .root .lkey.is-here:hover { background: #ffd6e4; box-shadow: inset 0 0 0 2px #d81b55 !important; }
+html .root .lkey.is-here .lkey-code { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .root .lkey.is-called,
+html .root .lkey.is-called:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html .root .lkey.is-passing .lkey-code { background: #d81b55; color: #000; }
+
+/* ══ 9 · MULTIMEDIA ══════════════════════════════════════════════════ */
+html .root .media-v2 { flex: none; grid-template-rows: auto auto; gap: 12px; }
+html .root .media-v2--f .zone-card { padding: 12px 12px 14px; row-gap: 11px; column-gap: 10px; grid-template-rows: auto auto auto auto; }
+html .root .zc-head,
+html .root .sv-head { gap: 10px; }
+/* La chapa del icono (aquí no va dentro de .card-head) */
+html .root .zc-head .tile,
+html .root .sv-head .tile,
+html .root .media-v2--f .zc-head .tile {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #0b0b0d;
+    box-shadow: none !important;
+    color: #fff;
+}
+html .root .zc-head .tile svg,
+html .root .sv-head .tile svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+html .root .media-v2--f .zc-head .card-title { font-size: 20px; }
+html .root .media-v2--f .zc-head .card-meta { font-size: 13px; }
+/* «Sonando / Apagado», en chapa */
+html .root .zc-pill,
+html .root .zc-head .zc-pill {
+    margin-right: 0;
+    padding: 5px 8px 4px;
+    border-radius: 7px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    font: italic 800 13px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .zc-pill.is-on { background: #d81b55; color: #000; }
+html .root .zc-pill.is-on::before { display: none; }
+/* Las teclas de la cabecera y del transporte */
+html .root .zc-head .pwr,
+html .root .sv-head .pwr,
+html .root .zone-card .pwr { width: 43px; height: 43px; border-radius: 11px; }
+html .root .zc-head .eq-key,
+html .root .zone-card .eq-key { width: auto; height: 43px; border-radius: 11px; }
+html .root .eq-key .mkey-face { padding: 1px 10px 0; font-size: 15px; white-space: nowrap; }
+html .root .media-v2--f .zone-card .room-key,
+html .root .screen-v2 .room-key { width: 45px; height: 43px; border-radius: 11px; }
+html .root .media-v2--f .zone-card .room-key--play,
+html .root .screen-v2 .room-key--play { width: 57px; }
+html .root .media-v2--f .zone-card .eq-key { width: auto; }
+html .root .media-v2--f .zone-card .room-key .mkey-face,
+html .root .room-key .mkey-face {
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+}
+html .root .media-v2--f .zone-card .room-key.is-on .mkey-face,
+html .root .room-key.is-on .mkey-face { background: #d81b55; color: #000; }
+html .root .media-v2--f .zone-card .room-key:active .mkey-face,
+html .root .room-key:active .mkey-face { box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .room-key .cc-face { font: italic 800 15px/1 var(--pg-rotulo); letter-spacing: 0.03em; }
+
+/* El visualizador: una pantalla negra DENTRO del papel, barras en rosa */
+html .root .led { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .spec-v2,
+html .root .media-v2--f .spec-v2 {
+    min-height: 118px;
+    padding: 12px 14px 10px;
+    gap: 9px;
+    border-radius: 10px;
+    background: #0b0b0d;
+    box-shadow: none !important;
+}
+html .root .spec-v2::before { display: none; }
+html .root .media-v2--f .spec-v2 .spec { gap: 5px; border-bottom: 2px solid #44444a; }
+html .root .media-v2--f .spec-v2 .spec i { border-radius: 2px 2px 0 0; background: #44444a; }
+html .root .media-v2--f .spec-v2.is-live .spec i { background: #d81b55; -webkit-mask: none; }
+html .root .media-v2--f .spec-v2 .spec i::after { background: #73737c; box-shadow: none; }
+html .root .media-v2--f .spec-v2.is-live .spec i::after { background: #dcdde0; box-shadow: none; }
+html .root .media-v2--f .spec-v2 .spec-title,
+html .root .spec-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font: italic 800 19px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html .root .media-v2--f .spec-v2 .spec-time,
+html .root .media-v2--f .spec-v2.is-live .spec-time,
+html .root .spec-time {
+    flex: none;
+    font: italic 800 13px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #c4c4cb;
+}
+html .root .media-v2--f .spec-v2.is-live .spec-time { color: #ff6d97; }
+/* Los archivos: filas blancas dentro de la pantalla */
+html .root .spec-files { gap: 6px; }
+html .root .spec-files .pick,
+html .root .pick {
+    height: 32px;
+    padding: 1px 10px 0;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: none !important;
+    color: #0b0b0d;
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+html .root .spec-files .pick:hover,
+html .root .pick:hover { background: #e6e7ea; }
+html .root .spec-files .pick svg { opacity: 1; }
+html .root .spec-files .pick.is-current,
+html .root .pick.is-current { background: #d81b55; box-shadow: none !important; color: #000; }
+html .root .spec-files-none {
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    color: #c4c4cb;
+}
+/* Las zonas (altavoces): botones pequeños con su punto */
+html .root .media-v2--f .zc-transport { gap: 6px; }
+html .root .media-v2--f .zone-list,
+html .root .zc-zone-strip { gap: 7px; margin-left: 3px; padding: 0 3px 3px 0; }
+html .root .media-v2--f .zone,
+html .root .zone {
+    height: 40px;
+    column-gap: 7px;
+    padding: 1px 10px 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+}
+html .root .zone:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .zone.is-sel { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html .root .zone-dot { width: 10px; height: 10px; border-radius: 50%; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .zone.is-on .zone-dot { background: #d81b55; }
+html .root .media-v2--f .zone-name,
+html .root .zone-name,
+html .root .zone.is-sel .zone-name {
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .zone-sub { font: 700 12px/1 var(--pg-rotulo); text-transform: uppercase; color: #44444a; }
+/* El volumen ocupa su fila entera */
+html .root .media-v2--f .zc-transport { grid-column: 1 / -1; }
+html .root .media-v2--f .zc-level { grid-column: 1 / -1; grid-row: 4; }
+html .root .media-v2--f .zc-tools { grid-row: 5; }
+html .root .media-v2--f .zone-card { grid-template-rows: auto auto auto auto auto; }
+html .root .media-v2 .track { height: 16px; padding: 0; border-radius: 8px; }
+html .root .media-v2 .track .fill { left: 0; top: 0; bottom: 0; width: var(--pct, 0%); border-radius: 8px; }
+html .root .zc-level .val,
+html .root .sv-transport .slider .val { width: 42px; font: 800 14px/1 var(--pg-cifra); }
+html .root .pick-url { gap: 9px; padding-right: 3px; }
+html .root .sv-link .pill,
+html .root .zc-tools .pill { height: 38px; padding: 0 14px 1px; }
+
+/* El ecualizador */
+html .root .eq-panel { padding: 12px 12px 14px; gap: 10px; }
+html .root .eq-panel .card-meta { white-space: normal; text-transform: none; font: 500 13px/1.25 var(--arc-text); letter-spacing: 0; }
+html .root .eq-band { gap: 10px; }
+html .root .eq-label {
+    flex: none;
+    width: 62px;
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .eq-val { flex: none; width: 46px; font: 800 13px/1 var(--pg-cifra); color: #0b0b0d; }
+html .root .eq-presets { gap: 8px; margin-top: 2px; padding-right: 3px; }
+html .root .eq-presets .preset { flex: 1 1 auto; height: 34px; padding: 1px 10px 0; font-size: 15px; }
+html .root .eq-note,
+html .root .pick-note,
+html .root .pick-sub { font: 500 13px/1.3 var(--arc-text); color: #44444a; }
+html .root .pick-note.is-bad { color: #b3123f; }
+
+/* La pantalla (sala de cine) */
+html .root .screen-v2 { padding: 12px; gap: 9px 12px; grid-template-columns: 128px minmax(0, 1fr); }
+html .root .tv-v2,
+html .root .led.tv-v2 {
+    border-radius: 10px;
+    background-color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .root .tv-v2::after { border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000; }
+html .root .tv-v2 .bars i { background: #d81b55; box-shadow: none; }
+html .root .tv-v2-face,
+html .root .tv-v2.is-on .tv-v2-face { color: #fff; }
+html .root .tv-v2 .led-text,
+html .root .tv-v2.is-on .tv-v2-face .led-text {
+    font: italic 800 13px/1.1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-align: center;
+    color: #fff;
+}
+html .root .sv-transport { gap: 6px; }
+html .root .sv-transport .slider { margin-left: 3px; gap: 7px; }
+html .root .sv-timeline { gap: 8px; }
+html .root .sv-timeline.is-idle { opacity: 1; }
+html .root .sv-timeline .sv-time {
+    min-width: 34px;
+    font: 800 12px/1 var(--pg-cifra);
+    letter-spacing: 0;
+    color: #0b0b0d;
+}
+html .root .sv-timeline.is-idle .sv-time { color: #9a9aa3; }
+html .root .sv-timeline .track { height: 12px; border-radius: 6px; }
+html .root .sv-timeline .track .fill { min-width: 12px; border-radius: 6px; }
+html .root .sv-timeline .track .fill::after { width: 16px; height: 16px; margin-top: -8px; }
+html .root .sv-timeline.is-idle .track .fill { display: none; }
+html .root .range:disabled { cursor: default; }
+
+/* El selector antiguo de pistas (por si el autor lo abre) */
+html .root .picker { padding: 12px 12px 14px; gap: 12px; }
+html .root .pick-zone {
+    font: italic 800 20px/1 var(--pg-rotulo);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html .root .picker .pick { box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .pick-empty { font: italic 800 15px/1 var(--pg-rotulo); text-transform: uppercase; color: #44444a; }
+html .root .pick-add {
+    height: 38px;
+    padding: 1px 14px 0;
+    border: 0;
+    border-radius: 10px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #000;
+    font: italic 800 16px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+html .root .pick-add:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+
+/* ══ 10 · SEGURIDAD (cámaras) ════════════════════════════════════════ */
+html .root .sec-page { flex: none; gap: 12px; }
+html .root .sec-page > .grow { flex: none; }
+/* Las cámaras, sin caja: rótulo y rejilla de filas-botón */
+html .root .card--cams {
+    padding: 0;
+    gap: 9px;
+    background: none;
+    box-shadow: none !important;
+    overflow: visible;
+}
+html .root .cam-tiles { gap: 8px 9px; padding-right: 2px; }
+html .root .cam-tile {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-height: 50px;
+    padding: 7px 10px 7px 8px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    color: #0b0b0d;
+    overflow: visible;
+}
+html .root .cam-tile:hover { background: #e6e7ea; }
+html .root .cam-tile:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000 !important; }
+html .root .cam-tile-ico {
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: #0b0b0d;
+    box-shadow: none !important;
+    color: #fff;
+}
+html .root .cam-tile-ico svg { stroke-width: 2.1; }
+html .root .cam-name { font: italic 800 17px/1.05 var(--pg-rotulo); letter-spacing: 0.01em; text-transform: uppercase; color: #0b0b0d; }
+html .root .cam-sub { font: 700 13px/1 var(--pg-rotulo); letter-spacing: 0.03em; text-transform: uppercase; color: #44444a; }
+/* «En directo» lo dice ya el rótulo de arriba: aquí queda el punto */
+html .root .cam-live,
+html .root .cam-tile.is-motion .cam-live { flex: none; font-size: 0; letter-spacing: 0; opacity: 1; animation: none; }
+html .root .cam-live i {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0;
+    border-radius: 50%;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    opacity: 1;
+    animation: none;
+}
+html .root .cam-tile.is-motion { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000 !important; }
+html .root .cam-tile.is-motion .cam-tile-ico { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000 !important; color: #000; }
+/* Acceso oculto y detector: una tarjeta debajo de otra (a medias no cabían) */
+html .root .sec-split { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+html .root .sec-half { gap: 10px; }
+html .root .sec-page .card { padding: 10px 12px 12px 10px; gap: 10px; }
+html .root .sec-page .card--cams { padding: 0; }
+html .root .sec-page .card-head { gap: 10px; }
+html .root .card-right { gap: 8px; padding-right: 1px; }
+html .root .gated .card-meta,
+html .root .gated.is-lit .card-meta { color: #44444a; }
+/* El aviso de movimiento sobre la columna */
+html .root .motion-halo {
+    inset: 0 calc(var(--pm-riel) + var(--pm-hueco)) 0 0;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 6px #d81b55;
+    animation: none;
+}
+html .root .motion-halo span {
+    top: auto;
+    bottom: 18px;
+    padding: 6px 12px 5px;
+    border-radius: 8px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.04em;
+    color: #000;
+}
+
+/* Las pestañas de propiedad (si hay más de una) */
+html .root #tabs { display: flex; gap: 8px; padding: 0 23px 10px 20px; }
+html .root #tabs.hidden { display: none; }
+html .root #tabs .tab {
+    flex: 1;
+    height: 34px;
+    padding: 1px 10px 0;
+    border: 0;
+    border-radius: 9px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    font: italic 800 15px/1 var(--pg-rotulo);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+html .root #tabs .tab.is-active { background: #d81b55; color: #000; }
+
+/* En pantallas bajas el inicio no se aplasta: rueda la columna */
+html .root .home,
+html .root .home .col,
+html .root .home .wx { flex: none; }
+
+/* ══ 11 · EL PANEL DEL ASCENSOR (lift.html) ══════════════════════════ */
+/*  La misma columna, sola a la derecha: placa, «ASCENSOR» y la brocha con
+    el estado; la planta en chapa; las plantas como filas-botón. */
+html #app .card {
+    border-top: 0;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+    overflow: visible;
+}
+html #app .top {
+    position: relative;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 18px 20px 26px 22px;
+}
+html #app .top::before {
+    content: "";
+    flex: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #d81b55 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M4 3h16v18H4zM12 3v18M8 10l-1.5 2h3zM16 14l1.5-2h-3z'/%3E%3C/svg%3E") center / 25px 25px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+}
+html #app .top::after {
+    content: "Ascensor";
+    font: italic 800 34px/0.95 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+    padding-bottom: 15px;
+}
+html #app.veh .top::after { content: "Montacoches"; }
+/* El «En línea» del autor hace de rótulo a brocha */
+html #app .badge {
+    position: absolute;
+    left: 98px;
+    top: 49px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 19px;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html #app .badge i { display: none; }
+
+html #app .led,
+html #app .led.dest {
+    margin: 0 20px;
+    padding: 11px 14px;
+    border-bottom: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #app .led.dest { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html #app .read {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "cifra piso" "cifra estado";
+    align-items: center;
+    justify-items: start;
+    gap: 5px 14px;
+    text-align: left;
+}
+html #app .rule { grid-area: cifra; width: auto; margin: 0; }
+html #app .rule i { display: none; }
+html #app .digit,
+html #app .led.dest .digit {
+    display: grid;
+    place-items: center;
+    min-width: 62px;
+    height: 62px;
+    padding: 2px 8px 0;
+    border-radius: 12px;
+    background: #0b0b0d;
+    font: 800 40px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    color: #fff;
+    text-shadow: none;
+}
+html #app .led.dest .digit { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .floor {
+    grid-area: piso;
+    align-self: end;
+    width: auto;
+    max-width: 100%;
+    font: italic 800 26px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html #app .status,
+html #app .led.dest .status {
+    grid-area: estado;
+    align-self: start;
+    width: auto;
+    max-width: 100%;
+    font: italic 800 15px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #44444a;
+}
+html #app .led.dest .status { color: #b3123f; }
+
+html #app .keys { gap: 8px; padding: 14px 23px 14px 20px; }
+html #app .keys::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html #app .key {
+    height: 48px;
+    padding: 0 12px 0 8px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    overflow: visible;
+    transition: background 0.12s ease, transform 0.08s ease;
+}
+html #app .key:hover { background: #e6e7ea; }
+html #app .key:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .ktext { gap: 12px; }
+html #app .face,
+html #app .key.cur .face,
+html #app .key.going .face {
+    width: 32px;
+    height: 32px;
+    padding-top: 1px;
+    border-radius: 8px;
+    background: #0b0b0d;
+    box-shadow: none;
+    font: 800 17px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    color: #fff;
+    text-shadow: none;
+}
+html #app .lbl,
+html #app .key.cur .lbl,
+html #app .key.going .lbl {
+    font: italic 800 19px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+/* El cursor del teclado: canto más grueso */
+html #app .key.pick { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+/* Donde está: fila «elegida». A donde va: rosa lleno */
+html #app .key.cur { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55; }
+html #app .key.cur.pick { box-shadow: inset 0 0 0 4px #d81b55; }
+html #app .key.cur .face { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .key.going { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+/* En marcha, las demás plantas apagadas: grises, canto gris, sin sombra */
+html #app.sent .key { opacity: 1; }
+html #app.sent .key:not(.going):not(.cur) { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; }
+html #app.sent .key:not(.going):not(.cur) .face { background: #9a9aa3; }
+html #app.sent .key:not(.going):not(.cur) .lbl { color: #73737c; }
+
+html #app .foot {
+    padding: 4px 20px 18px;
+    border-radius: 0 0 20px 20px;
+    background: none;
+    box-shadow: none;
+    font: italic 800 14px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    color: #44444a;
+}
+html #app .foot b {
+    display: inline-block;
+    margin-right: 3px;
+    padding: 4px 6px 3px;
+    border-radius: 5px;
+    background: #0b0b0d;
+    font: 800 12px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0;
+    color: #fff;
+}
+
+/* ══ 11b · EL ASCENSOR COMO MENÚ PEQUEÑO (07/10) ═══════════════════════
+   Es un menú corto sin secciones: columna de 440 px y riel de 64 del mismo
+   alto, juntos a media altura a la derecha (skill origen-dialogo). El riel
+   va DENTRO de la tarjeta (.og-riel, colgado a su derecha) para que mida lo
+   mismo que ella y para que pinchar en él no cuente como «pinchar fuera». */
+html #app {
+    align-items: center;
+    padding: 1.4vh calc(1.2vh + 64px + 1.2vh) 1.4vh 1.2vh;
+}
+html #app .card {
+    width: 440px;
+    min-height: 300px;
+    max-height: calc(100vh - 2.8vh);
+    transform: translateX(calc(100% + 1.2vh + 64px + 26px));
+}
+html #app.open .card { transform: none; }
+html #app .og-riel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 0 16px;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    pointer-events: auto;
+}
+html #app .og-riel::before {
+    content: "";
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #dcdde0 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E") center / 21px 21px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #app .og-riel::after {
+    content: "Origen Casa";
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font: italic 800 14px "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+
+/* ══ 12 · LA VISTA DE CÁMARA (cam.html) ══════════════════════════════ */
+/*  Va sobre la imagen del juego: cada dato es una pegatina (papel, canto y
+    sombra dura). La película (viñeta, rayas, grano) se queda como estaba. */
+html #feed .hud { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; color: #0b0b0d; }
+html #feed .tl { top: 26px; left: 34px; }
+html #feed .cam-id {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px 7px 7px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font: italic 800 24px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    text-shadow: none;
+    color: #0b0b0d;
+}
+html #feed .cam-id b {
+    padding: 6px 9px 4px;
+    border-radius: 7px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font: 800 16px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    color: #000;
+}
+/* La estancia, a brocha */
+html #feed .cam-room {
+    margin: 9px 0 0 16px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-size: 22px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html #feed .tr { top: 26px; right: 38px; }
+html #feed .rec {
+    display: inline-flex;
+    gap: 7px;
+    padding: 6px 10px 4px 9px;
+    border-radius: 8px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font: 800 15px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0.04em;
+    color: #000;
+}
+html #feed .rec i { width: 10px; height: 10px; margin-top: -2px; background: #000; box-shadow: none; }
+html #feed .stamp { margin-top: 10px; }
+html #feed .stamp > span {
+    display: inline-block;
+    padding: 6px 10px 4px;
+    border-radius: 8px;
+    background: #0b0b0d;
+    font: 800 17px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+html #feed .stamp small {
+    margin-top: 6px;
+    font: italic 800 15px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 1.5px 1.5px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+/* Zoom e inclinación: una tarjeta abajo a la izquierda */
+html #feed .bl {
+    left: 34px;
+    bottom: 74px;
+    padding: 9px 12px 10px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #feed .zoom {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    font: 800 17px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0;
+    color: #0b0b0d;
+}
+html #feed .zoom b { font-weight: 800; }
+html #feed .zoom span {
+    font: italic 800 14px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.04em;
+    color: #44444a;
+}
+html #feed .zbar {
+    width: 124px;
+    height: 12px;
+    margin-top: 7px;
+    border-radius: 6px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    overflow: hidden;
+}
+html #feed .zbar i { border-radius: 6px; background: #0b0b0d; box-shadow: none; }
+html #feed .tiltline { margin-top: 9px; font-size: 17px; }
+/* El arco de giro */
+html #feed .arc { bottom: 82px; }
+html #feed .arc-track { height: 10px; border-radius: 5px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #feed .arc-track::before,
+html #feed .arc-track::after { display: none; }
+html #feed .arc.at-lo .arc-track,
+html #feed .arc.at-hi .arc-track { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html #feed .arc-nib {
+    top: -5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #feed .arc-lbl {
+    margin-top: 10px;
+    font: 800 14px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0;
+    color: #fff;
+    text-shadow: 1.5px 1.5px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+/* Giro automático */
+html #feed .br { right: 38px; bottom: 74px; }
+html #feed .pill {
+    gap: 8px;
+    padding: 9px 13px 7px 11px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font: italic 800 16px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    color: #0b0b0d;
+}
+html #feed .pill i { width: 10px; height: 10px; margin-top: -2px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #feed .pill.is-on { background: #d81b55; color: #000; }
+html #feed .pill.is-on i { background: #000; }
+/* La tira de cámaras */
+html #feed .strip { bottom: 32px; gap: 7px; padding: 0 3px 3px 0; overflow: visible; }
+html #feed .chip {
+    padding: 6px 10px 4px;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font: italic 800 14px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    color: #0b0b0d;
+}
+html #feed .chip.is-here { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #feed .chip.is-next { box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #feed .chip.is-hit { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55; color: #000; }
+html #feed .keys {
+    bottom: 7px;
+    font: italic 800 13px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+html #feed .keys b {
+    display: inline-block;
+    padding: 3px 5px 2px;
+    border-radius: 4px;
+    background: #dcdde0;
+    font: 800 11px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    letter-spacing: 0;
+    color: #000;
+}
+/* Movimiento: el aviso gordo */
+html #feed .motion {
+    top: 26px;
+    gap: 9px;
+    padding: 10px 16px 8px 14px;
+    border-radius: 11px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font: italic 800 19px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.03em;
+    color: #000;
+}
+html #feed .motion i { width: 11px; height: 11px; margin-top: -2px; background: #000; box-shadow: none; }
+html #feed .alarm { background: none; box-shadow: inset 0 0 0 8px #d81b55; }
+/* Conectando */
+html #feed .conn { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; }
+html #feed .conn-cam {
+    font: italic 800 30px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html #feed .conn-cam b {
+    display: inline-block;
+    margin-right: 6px;
+    padding: 6px 9px 4px;
+    border-radius: 7px;
+    background: #d81b55;
+    font: 800 18px/1 "Oxanium", "Barlow Condensed", sans-serif;
+    vertical-align: 4px;
+    color: #000;
+}
+html #feed .conn-room {
+    margin-top: 9px;
+    font: italic 800 16px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.05em;
+    color: #c4c4cb;
+}
+html #feed .conn-bar { width: 220px; height: 10px; border-radius: 5px; background: #dcdde0; }
+html #feed .conn-bar i { border-radius: 5px; background: #d81b55; box-shadow: none; }
+html #feed .conn-txt {
+    margin-top: 13px;
+    font: italic 800 15px/1 "Barlow Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0.06em;
+    color: #fff;
+}
+
+/* La sala de cine en columnas estrechas (720p): la miniatura encoge y el
+   volumen baja a su renglón en vez de quedarse sin pista */
+html .root .screen-v2 { grid-template-columns: 27% minmax(0, 1fr); }
+html .root .sv-transport { flex-wrap: wrap; row-gap: 8px; }
+html .root .sv-transport .slider { flex: 1 1 120px; }
+
+/* El boton «exposicion» del ascensor (05/10): iba anclado a la caja de la
+   cifra y caia ENCIMA del numero de planta. Ahora cuelga de la cabecera
+   entera y va a la derecha, antes del coche, centrado en vertical. */
+html .root .lift-read { position: relative; padding-right: 112px; }
+html .root .lift-rule { position: static; }
+html .root .lift-show {
+    position: absolute;
+    left: auto;
+    right: 70px;
+    top: 50%;
+    bottom: auto;
+    margin: -16px 0 0;
+    transform: none;
+}
+
+/* ══ NACIÓN · gemelos en naranja ═══════════════════════════════════════════
+   Estas páginas no llevan el trozo «ORIGEN · marca» del kit (no lo repinta
+   nadie): origen.js solo apunta <html data-marca>. Para que en Nación el
+   panel salga en su naranja, cada regla de arriba (y los tokens de
+   origen-tokens.css) que lleva un rosa tiene aquí su gemela con el color
+   pasado por la misma fórmula que kit/marca.js. Si se cambia un rosa
+   arriba, se cambia también su gemela. */
+html[data-marca="nacion"] { --arc-t-elegido: 255, 240, 226; --arc-accent: #ff9a40; --arc-accent-deep: #b25806; --arc-accent-texto: #b25806; --arc-grad: linear-gradient(160deg, #ffa554 0%, #fd8a23 100%); --pm-acc-rgb: 255, 154, 64; --red-rgb: 178, 88, 6; }
+html[data-marca="nacion"]:root { --pg-rosa: #ff9230; --pg-rosa-palido: #fff0e2; --pg-rosa-texto: #e36c00; --arc-t-elegido: 255, 240, 226; --arc-accent: #ff9230; --arc-accent-texto: #e36c00; --arc-grad: linear-gradient(#ff9230, #ff9230); --pm-bad: #e36c00; --red: #e36c00; --red-rgb: 227, 108, 0; --face-lit: #ff9230; }
+html[data-marca="nacion"] .root .rail::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9230' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E"); }
+html[data-marca="nacion"] .root .nav-item.is-active { background: #ff9230; }
+html[data-marca="nacion"] .root .hdr .dot { background: #ff9230 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.3' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E") center / 24px 24px no-repeat; }
+html[data-marca="nacion"] .root #hdrProperty[data-brocha]::after { color: #ff9230; }
+html[data-marca="nacion"] .root .hdr-mute.is-muted { background: #ff9230; }
+html[data-marca="nacion"] .root .pill--lit, html[data-marca="nacion"] .root .pill--lit:hover, html[data-marca="nacion"] .root .keybtn.is-on, html[data-marca="nacion"] .root .preset.is-on { background: #ff9230; }
+html[data-marca="nacion"] .root .pill--lit:hover { background: #ff9a40; }
+html[data-marca="nacion"] .root .keybtn.is-busy { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] .root .mkey.is-on .mkey-face, html[data-marca="nacion"] .root .mkey.is-on:hover .mkey-face { background: #ff9230; }
+html[data-marca="nacion"] .root .track .fill::after { background: #ff9230; }
+html[data-marca="nacion"] .root .toggle.is-on { background: #ff9230; }
+html[data-marca="nacion"] .root .pick-url input:focus { box-shadow: inset 0 0 0 2px #ff9230 !important; }
+html[data-marca="nacion"] .root .sec-label::after, html[data-marca="nacion"] .root .pick-head::after { background: #ff9230; }
+html[data-marca="nacion"] .root .page-title h2::after { background: #ff9230; }
+html[data-marca="nacion"] .root .lock-title::before, html[data-marca="nacion"] .root .lock-title::after { background: #ff9230; }
+html[data-marca="nacion"] .root .lock-sub.is-bad { color: #e36c00; }
+html[data-marca="nacion"] .root .lockscreen .key.key--go .key-face { background: #ff9230; }
+html[data-marca="nacion"] .root .lockscreen .key.key--go:hover .key-face { background: #ff9a40; }
+html[data-marca="nacion"] .root .wx-d.is-on { background: #ff9230; }
+html[data-marca="nacion"] .root .home .col::before { background: linear-gradient(#ff9230, #ff9230) no-repeat right center / calc(100% - 98px) 4px; }
+html[data-marca="nacion"] .root .go:hover { color: #e36c00; }
+html[data-marca="nacion"] .root .go .bars i { background: #ff9230; }
+html[data-marca="nacion"] .root .home .card--keys .key-cell.is-lit { background: #dcdde0; box-shadow: inset 0 0 0 2px #ff9230; }
+html[data-marca="nacion"] .root .doors-room i, html[data-marca="nacion"] .root .doors-group.is-all .doors-room i { background: #ff9230; }
+html[data-marca="nacion"] .root .dbar > span > svg { background: #ff9230; }
+html[data-marca="nacion"] .root .dbar:not(.is-locked) { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] .root .bc-floors > .bc-cap::after, html[data-marca="nacion"] .root .bc-detail-head > span:first-child::after { background: #ff9230; }
+html[data-marca="nacion"] .root .bc-floor.is-on, html[data-marca="nacion"] .root .bc-floor.is-on:hover { background: #ff9230; }
+html[data-marca="nacion"] .root .bc-dot.bc-red, html[data-marca="nacion"] .root .bc-red .bc-dot { background: #ff9230; }
+html[data-marca="nacion"] .root .bc-row:not(.bc-red) .bc-row-state { background: #ff9230; }
+html[data-marca="nacion"] .root .bc-stop.is-on, html[data-marca="nacion"] .root .bc-stop.is-on:hover { background: #ff9230; }
+html[data-marca="nacion"] .root .lift.is-moving .lift-led { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] .root .lift.is-moving .lift-digit { background: #ff9230; }
+html[data-marca="nacion"] .root .lift.is-moving .lift-status { color: #e36c00; }
+html[data-marca="nacion"] .root .lift-show.is-on { background: #ff9230; }
+html[data-marca="nacion"] .root .lkey.is-here, html[data-marca="nacion"] .root .lkey.is-here:hover { background: #dcdde0; box-shadow: inset 0 0 0 2px #ff9230 !important; }
+html[data-marca="nacion"] .root .lkey.is-here .lkey-code { background: #ff9230; }
+html[data-marca="nacion"] .root .lkey.is-called, html[data-marca="nacion"] .root .lkey.is-called:hover { background: #ff9230; }
+html[data-marca="nacion"] .root .lkey.is-passing .lkey-code { background: #ff9230; }
+html[data-marca="nacion"] .root .zc-pill.is-on { background: #ff9230; }
+html[data-marca="nacion"] .root .media-v2--f .zone-card .room-key.is-on .mkey-face, html[data-marca="nacion"] .root .room-key.is-on .mkey-face { background: #ff9230; }
+html[data-marca="nacion"] .root .media-v2--f .spec-v2.is-live .spec i { background: #ff9230; }
+html[data-marca="nacion"] .root .media-v2--f .spec-v2.is-live .spec-time { color: #ffaa5c; }
+html[data-marca="nacion"] .root .spec-files .pick.is-current, html[data-marca="nacion"] .root .pick.is-current { background: #ff9230; }
+html[data-marca="nacion"] .root .zone.is-sel { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] .root .zone.is-on .zone-dot { background: #ff9230; }
+html[data-marca="nacion"] .root .pick-note.is-bad { color: #e36c00; }
+html[data-marca="nacion"] .root .tv-v2 .bars i { background: #ff9230; }
+html[data-marca="nacion"] .root .pick-add { background: #ff9230; }
+html[data-marca="nacion"] .root .cam-live i { background: #ff9230; }
+html[data-marca="nacion"] .root .cam-tile.is-motion { background: #dcdde0; box-shadow: inset 0 0 0 2px #ff9230, 2px 2px 0 #000 !important; }
+html[data-marca="nacion"] .root .cam-tile.is-motion .cam-tile-ico { background: #ff9230; }
+html[data-marca="nacion"] .root .motion-halo { box-shadow: inset 0 0 0 6px #ff9230; }
+html[data-marca="nacion"] .root .motion-halo span { background: #ff9230; }
+html[data-marca="nacion"] .root #tabs .tab.is-active { background: #ff9230; }
+html[data-marca="nacion"] #app .top::before { background: #ff9230 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M4 3h16v18H4zM12 3v18M8 10l-1.5 2h3zM16 14l1.5-2h-3z'/%3E%3C/svg%3E") center / 25px 25px no-repeat; }
+html[data-marca="nacion"] #app .badge { color: #ff9230; }
+html[data-marca="nacion"] #app .led.dest { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] #app .led.dest .digit { background: #ff9230; }
+html[data-marca="nacion"] #app .led.dest .status { color: #e36c00; }
+html[data-marca="nacion"] #app .key.cur { background: #dcdde0; box-shadow: inset 0 0 0 2px #ff9230; }
+html[data-marca="nacion"] #app .key.cur.pick { box-shadow: inset 0 0 0 4px #ff9230; }
+html[data-marca="nacion"] #app .key.cur .face { background: #ff9230; }
+html[data-marca="nacion"] #app .key.going { background: #ff9230; }
+html[data-marca="nacion"] #feed .cam-id b { background: #ff9230; }
+html[data-marca="nacion"] #feed .cam-room { color: #ff9230; }
+html[data-marca="nacion"] #feed .rec { background: #ff9230; }
+html[data-marca="nacion"] #feed .arc.at-lo .arc-track, html[data-marca="nacion"] #feed .arc.at-hi .arc-track { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #ff9230, 2px 2px 0 #ff9230; }
+html[data-marca="nacion"] #feed .arc-nib { background: #ff9230; }
+html[data-marca="nacion"] #feed .pill.is-on { background: #ff9230; }
+html[data-marca="nacion"] #feed .chip.is-here { background: #ff9230; }
+html[data-marca="nacion"] #feed .chip.is-hit { background: #dcdde0; box-shadow: inset 0 0 0 2px #ff9230; }
+html[data-marca="nacion"] #feed .motion { background: #ff9230; }
+html[data-marca="nacion"] #feed .alarm { box-shadow: inset 0 0 0 8px #ff9230; }
+html[data-marca="nacion"] #feed .conn-cam b { background: #ff9230; }
+html[data-marca="nacion"] #feed .conn-bar i { background: #ff9230; }
+
+html[data-marca="nacion"] .root .rail::after { content: "Nación Casa"; }
+
+/* cifras centradas (06/10): con Barlow ya centrada, el px de más arriba dejaba el rótulo de las píldoras 1 px bajo. */
+html .root .pill { padding: 0 14px 1px; }
+
+
+/* ── Mando de mano (phone.html) ────────────────────────────────────────
+   El diseño del autor va en estilos en línea (phone-design.js); aquí solo
+   el marco: canto negro fino, bisel gris de panel y sombra dura, en vez del
+   bisel negro con sombra difusa. Las piezas de dentro siguen siendo del
+   autor. */
+html #stage #phone {
+    box-shadow:
+        0 0 0 1.5px #000,
+        0 0 0 10px #c4c6ca,
+        0 0 0 11.5px #000,
+        5px 5px 0 11.5px #000 !important;
+}
+/* El riel del ascensor (11b) en Nación: placa naranja y su nombre. */
+html[data-marca="nacion"] #app .og-riel::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff9230' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M3 11l9-7 9 7v9H3z'/%3E%3Cpath d='M9.5 20v-5.5h5V20'/%3E%3C/svg%3E"); }
+html[data-marca="nacion"] #app .og-riel::after { content: "Nación Casa"; }
+
+/* El silencio solo va en el inventario (07/10). */
+.hdr-mute { display: none !important; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }

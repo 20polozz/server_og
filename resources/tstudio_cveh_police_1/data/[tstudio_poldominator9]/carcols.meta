@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>
+  <Kits>
+    <Item>
+      <kitName>8367_poldominator9_modkit</kitName>
+      <id value="8367" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>tstudio_poldominator9_liv_lspd</modelName>
+          <modShopLabel>TS_POL_LIV_LSPD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_liv_lssd</modelName>
+          <modShopLabel>TS_POL_LIV_LSSD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_liv_mrpd</modelName>
+          <modShopLabel>TS_POL_LIV_MRPD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_liv_sahp</modelName>
+          <modShopLabel>TS_POL_LIV_SAHP</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARB</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARC</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbard</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARD</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbarb</Item>
+            <Item>tstudio_poldominator9_pushbard</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARE</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbard</Item>
+            <Item>tstudio_poldominator9_pushbarc</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_10</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARF</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbarb</Item>
+            <Item>tstudio_poldominator9_pushbarc</Item>
+            <Item>tstudio_poldominator9_pushbard</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARC</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_bumfe</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARD</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbarb</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARE</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbarc</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_10</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbara</modelName>
+          <modShopLabel>POL_PBARF</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_pushbarb</Item>
+            <Item>tstudio_poldominator9_pushbarc</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_PLAQUE</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_anta</modelName>
+          <modShopLabel>POL_ANTA</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_antb</modelName>
+          <modShopLabel>POL_ANTB</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_antc</modelName>
+          <modShopLabel>POL_ANTC</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_antd</modelName>
+          <modShopLabel>POL_ANTD</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_ante</modelName>
+          <modShopLabel>POL_ANTE</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_antf</modelName>
+          <modShopLabel>POL_ANTF</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_antg</modelName>
+          <modShopLabel>POL_ANTG</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarma</modelName>
+          <modShopLabel>POL_SLIGHTB</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_slighta</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarma</modelName>
+          <modShopLabel>POL_SLIGHTC</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_slightb</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarma</modelName>
+          <modShopLabel>POL_SLIGHTD</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_slightc</Item>
+            <Item>tstudio_poldominator9_slightarmd</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarma</modelName>
+          <modShopLabel>POL_SLIGHTE</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_slightd</Item>
+            <Item>tstudio_poldominator9_slightarmd</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarma</modelName>
+          <modShopLabel>POL_SLIGHTF</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_slighte</Item>
+            <Item>tstudio_poldominator9_slightarmb</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_alpr1a</modelName>
+          <modShopLabel>POL_ALPR1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIGHTBAR</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_alpr1b</modelName>
+          <modShopLabel>POL_ALPR1B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIGHTBAR</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_alpr1c</modelName>
+          <modShopLabel>POL_ALPR1C</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIGHTBAR</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_cam1a</modelName>
+          <modShopLabel>POL_DASHCAM1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_cons1a</modelName>
+          <modShopLabel>POL_CONS1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_KNOB</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_cons1b</modelName>
+          <modShopLabel>POL_CONS1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_KNOB</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag0_a</modelName>
+          <modShopLabel>POL_UNITTAG1A</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_dtag0_b</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag1_a</modelName>
+          <modShopLabel>POL_UNITTAG1B</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_dtag1_b</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag2_a</modelName>
+          <modShopLabel>POL_UNITTAG1C</modShopLabel>
+          <linkedModels>
+            <Item>tstudio_poldominator9_dtag2_b</Item>
+          </linkedModels>
+          <turnOffBones />
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign0_a</modelName>
+          <modShopLabel>POL_CSIGN0</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign1_a</modelName>
+          <modShopLabel>POL_CSIGN1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign2_a</modelName>
+          <modShopLabel>POL_CSIGN2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign3_a</modelName>
+          <modShopLabel>POL_CSIGN3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign4_a</modelName>
+          <modShopLabel>POL_CSIGN4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign5_a</modelName>
+          <modShopLabel>POL_CSIGN5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign6_a</modelName>
+          <modShopLabel>POL_CSIGN6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign7_a</modelName>
+          <modShopLabel>POL_CSIGN7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign8_a</modelName>
+          <modShopLabel>POL_CSIGN8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign9_a</modelName>
+          <modShopLabel>POL_CSIGN9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign0_b</modelName>
+          <modShopLabel>POL_CSIGN0</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign1_b</modelName>
+          <modShopLabel>POL_CSIGN</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign2_b</modelName>
+          <modShopLabel>POL_CSIGN2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign3_b</modelName>
+          <modShopLabel>POL_CSIGN3B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign4_b</modelName>
+          <modShopLabel>POL_CSIGN4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign5_b</modelName>
+          <modShopLabel>POL_CSIGN5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign6_b</modelName>
+          <modShopLabel>POL_CSIGN6B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign7_b</modelName>
+          <modShopLabel>POL_CSIGN7B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign8_b</modelName>
+          <modShopLabel>POL_CSIGN8B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign9_b</modelName>
+          <modShopLabel>POL_CSIGN9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign0_c</modelName>
+          <modShopLabel>POL_CSIGN0</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign1_c</modelName>
+          <modShopLabel>POL_CSIGN1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign2_c</modelName>
+          <modShopLabel>POL_CSIGN2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign3_c</modelName>
+          <modShopLabel>POL_CSIGN3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign4_c</modelName>
+          <modShopLabel>POL_CSIGN4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign5_c</modelName>
+          <modShopLabel>POL_CSIGN5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign6_c</modelName>
+          <modShopLabel>POL_CSIGN6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign7_c</modelName>
+          <modShopLabel>POL_CSIGN7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign8_c</modelName>
+          <modShopLabel>POL_CSIGN8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_csign9_c</modelName>
+          <modShopLabel>POL_CSIGN9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+      </visibleMods>
+      <linkMods>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbarb</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbarc</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_pushbard</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_bumfe</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slighta</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightb</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightc</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightd</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slighte</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarmb</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_slightarmd</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag0_b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag1_b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        <Item>
+          <modelName>tstudio_poldominator9_dtag2_b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+      </linkMods>
+      <slotNames>
+        <Item>
+          <slot>VMT_CHASSIS</slot>
+          <name>TOP_CALLSIGNA</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>TOP_CALLSIGNB</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>TOP_CALLSIGNC</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>TOP_CALLSIGND</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>TOP_CALLSIGNE</name>
+        </Item>
+        <Item>
+          <slot>VMT_ROOF</slot>
+          <name>TOP_POLANTENNA</name>
+        </Item>
+        <Item>
+          <slot>VMT_INTERIOR2</slot>
+          <name>TOP_POLDASH</name>
+        </Item>
+        <Item>
+          <slot>VMT_INTERIOR4</slot>
+          <name>TOP_POLPART</name>
+        </Item>
+        <Item>
+          <slot>VMT_KNOB</slot>
+          <name>TOP_POLCONS</name>
+        </Item>
+        <Item>
+          <slot>VMT_LIGHTBAR</slot>
+          <name>TOP_POLALPR</name>
+        </Item>
+        <Item>
+          <slot>VMT_PLAQUE</slot>
+          <name>TOP_PUSH</name>
+        </Item>
+        <Item>
+          <slot>VMT_WING_L</slot>
+          <name>TOP_SEARCHLIGHT</name>
+        </Item>
+      </slotNames>
+    </Item>
+  </Kits>
+</CVehicleModelInfoVarGlobal>

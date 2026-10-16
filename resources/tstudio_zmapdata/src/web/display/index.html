@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TStudio Elevator Display</title>
+<style>
+  /* Shared shell: skins own everything inside #root */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050505;
+    user-select: none;
+  }
+
+  /* Skins are authored against this design size and scaled to the actual DUI
+     surface, so a map may pick any resolution for its screen. */
+  #root {
+    width: 512px;
+    height: 1024px;
+    transform-origin: top left;
+  }
+</style>
+<style id="skin-css"></style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  var QS = new URLSearchParams(location.search);
+  var RES = QS.get('res') || 'tstudio_zmapdata';
+  var V = QS.get('v') || '1';
+  var DESIGN_W = 512, DESIGN_H = 1024;
+
+  // ── Shared state ──
+  var S = {
+    floors: [],      // { name, desc, primary }
+    current: 1,      // 1-based index into floors
+    target: null,
+    dir: 0,          // -1 / 0 / 1
+    moving: false,
+    status: 'ready', // ready | transit | arrived
+    theme: {},       // { title, topColor, bottomColor }
+    display: {},     // { style, building, ... }
+    env: {},         // in-game clock + weather, refreshed by the client script
+    strings: {},     // display-* texts from locales/*.lua (skins keep English fallbacks)
+    lang: 'en',      // base language code, for toLocaleUpperCase
+    textDir: 'ltr',  // 'rtl' for right-to-left languages (S.dir is the travel direction)
+    debug: QS.get('debug') === '1', // Config.Debug: show technical error details on the panel
+  };
+
+  var skin = null;
+  var skinName = null;
+  var moveTimer = null, readyTimer = null, tickTimer = null;
+  var rootEl = document.getElementById('root');
+  var skinCssEl = document.getElementById('skin-css');
+  var errored = false;
+
+  function fit() {
+    rootEl.style.transform = 'scale(' +
+      (window.innerWidth / DESIGN_W) + ',' + (window.innerHeight / DESIGN_H) + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+
+  function upper(s) {
+    s = String(s);
+    try { return s.toLocaleUpperCase(S.lang || 'en'); } catch (e) { return s.toUpperCase(); }
+  }
+
+  // Any failure paints on the panel instead of leaving a silent black screen.
+  // Players see a neutral "out of service"; the technical reason is only shown
+  // with Config.Debug (passed in the page URL, so it works before init too) and
+  // always goes to the console.
+  function showError(msg) {
+    errored = true;
+    console.error('[TStudio Display] ' + msg);
+
+    var box = document.createElement('div');
+    if (S.debug) {
+      box.style.cssText = 'height:100%;padding:40px;background:#050505;' +
+        'font:15px Consolas,monospace;color:#ff7a7a;white-space:pre-wrap;';
+      box.textContent = 'DISPLAY ERROR\n\n' + msg;
+    } else {
+      var text = S.strings['display-out-of-service'];
+      box.style.cssText = 'height:100%;padding:40px;background:#050505;display:flex;' +
+        'align-items:center;justify-content:center;text-align:center;overflow-wrap:break-word;' +
+        'font:600 26px "Segoe UI",system-ui,sans-serif;letter-spacing:3px;color:rgba(255,255,255,0.55);';
+      box.textContent = upper(typeof text === 'string' ? text : 'Out of service');
+    }
+
+    skinCssEl.textContent = '';
+    document.body.className = '';
+    rootEl.innerHTML = '';
+    rootEl.appendChild(box);
+  }
+
+  window.onerror = function (m, src, line) {
+    showError(m + '\n' + (src || '') + ':' + (line || '?'));
+  };
+
+  function normFloors(arr) {
+    var out = [];
+    // Names always as strings: a numeric name (name = 3) must not break a skin
+    (arr || []).forEach(function (f) {
+      if (typeof f === 'string' || typeof f === 'number') {
+        out.push({ name: String(f), desc: '', primary: false });
+      } else {
+        f = f || {};
+        out.push({
+          name: (f.name === undefined || f.name === null || f.name === '') ? '?' : String(f.name),
+          desc: f.description ? String(f.description) : '',
+          primary: !!f.primary
+        });
+      }
+    });
+    return out;
+  }
+
+  // Skins are fetched on demand: the client script reports which ones exist, so
+  // a map can ship its own skin without this page knowing about it up front.
+  function ensureSkins(names, cb) {
+    window.SKINS = window.SKINS || {};
+    var pending = names.filter(function (n, i) {
+      return n && !window.SKINS[n] && names.indexOf(n) === i;
+    });
+    if (!pending.length) return cb();
+
+    var left = pending.length;
+    pending.forEach(function (n) {
+      var s = document.createElement('script');
+      s.src = 'skins/' + n + '.js?v=' + V;
+      s.onload = s.onerror = function () { if (--left === 0) cb(); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function setSkin(name) {
+    // A fresh render must not replay the one-shot arrival animation
+    if (S.status === 'arrived') {
+      S.status = 'ready';
+      if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+    }
+
+    var reg = window.SKINS || {};
+    skinName = (name && reg[name]) ? name : (reg.terminal ? 'terminal' : null);
+    if (!skinName) {
+      showError('No skins loaded.\nCheck the files{} list in fxmanifest.lua, then restart the resource.');
+      skin = null;
+      return;
+    }
+    skin = reg[skinName];
+    if (tickTimer) { clearInterval(tickTimer); tickTimer = null; }
+
+    skinCssEl.textContent = skin.css || '';
+    document.body.className = 'skin-' + skinName;
+    rootEl.innerHTML = skin.render(S);
+    if (skin.tick) tickTimer = setInterval(function () { skin.update(S); }, 1000);
+    skin.update(S);
+  }
+
+  // ── Travel state machine (skin-independent) ──
+  function arrive() {
+    S.moving = false;
+    S.dir = 0;
+    S.target = null;
+    S.status = 'arrived';
+    if (skin) skin.update(S);
+    if (readyTimer) clearTimeout(readyTimer);
+    readyTimer = setTimeout(function () {
+      S.status = 'ready';
+      if (skin) skin.update(S);
+    }, 1800);
+  }
+
+  function travelTo(target) {
+    if (moveTimer) { clearInterval(moveTimer); moveTimer = null; }
+    if (readyTimer) { clearTimeout(readyTimer); readyTimer = null; }
+    if (!S.floors[target - 1]) return;
+    if (target === S.current) { arrive(); return; }
+
+    S.moving = true;
+    S.target = target;
+    S.dir = target > S.current ? 1 : -1;
+    S.status = 'transit';
+    if (skin) skin.update(S);
+
+    // The whole trip takes about the same time however many floors it covers:
+    // a short hop still ticks over visibly, a long one doesn't crawl.
+    var steps = Math.abs(target - S.current);
+    var step = Math.max(70, Math.min(450, Math.round(700 / steps)));
+
+    moveTimer = setInterval(function () {
+      S.current += S.dir;
+      if (S.current === S.target) {
+        clearInterval(moveTimer);
+        moveTimer = null;
+        arrive();
+      } else if (skin) {
+        skin.update(S);
+      }
+    }, step);
+  }
+
+  function selectFloor(idx) {
+    if (S.moving || idx === S.current || !S.floors[idx - 1]) return;
+    travelTo(idx);
+    fetch('https://' + RES + '/display_select', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ floor: idx })
+    }).catch(function () {});
+  }
+
+  // Delegated clicks: any skin element carrying data-floor is a floor button,
+  // data-action="close" steps back out of the panel. Mouse events only arrive
+  // while the player has the panel focused.
+  rootEl.addEventListener('click', function (e) {
+    var floorEl = e.target.closest('[data-floor]');
+    if (floorEl) return selectFloor(Number(floorEl.dataset.floor));
+
+    var actionEl = e.target.closest('[data-action]');
+    if (actionEl && actionEl.dataset.action === 'close') {
+      fetch('https://' + RES + '/display_close', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}'
+      }).catch(function () {});
+    }
+  });
+
+  // ── Messages from the client script ──
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (!d || !d.type) return;
+
+    try {
+      if (d.type === 'init') {
+        // Texts first, so an error while handling the rest already has them
+        var strings = d.strings;
+        S.strings = (strings && typeof strings === 'object' && !Array.isArray(strings)) ? strings : {};
+        S.lang = (typeof d.lang === 'string' && d.lang) ? d.lang : 'en';
+        S.textDir = d.dir === 'rtl' ? 'rtl' : 'ltr';
+        S.debug = d.debug === true;
+        document.documentElement.lang = S.lang;
+        document.documentElement.dir = S.textDir;
+
+        S.theme = d.theme || {};
+        S.display = d.display || {};
+        S.env = d.env || {};
+        S.floors = normFloors(d.floors);
+        S.current = d.floor || 1;
+        S.status = 'ready';
+        if (moveTimer) { clearInterval(moveTimer); moveTimer = null; }
+        S.moving = false; S.dir = 0; S.target = null;
+        ensureSkins((d.skins || []).concat([S.display.style, 'terminal']), function () {
+          setSkin(S.display.style);
+        });
+      } else if (d.type === 'setFloor') {
+        if (S.floors.length && skin) travelTo(d.floor);
+      } else if (d.type === 'env') {
+        S.env = d.env || S.env;
+        if (skin) skin.update(S);
+      } else if (d.type === 'style') {
+        ensureSkins([d.style, 'terminal'], function () { setSkin(d.style); });
+      } else if (d.type === 'theme') {
+        S.theme = d.theme || S.theme;
+        if (skin) setSkin(skinName);
+      }
+    } catch (err) {
+      showError((d.type || '?') + ' handler: ' + (err.message || err));
+    }
+  });
+
+  // Ready handshake: tell the client script the page is listening
+  fetch('https://' + RES + '/display_ready', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: '{}'
+  }).catch(function () {});
+
+  // If nothing arrived after a few seconds, say so on the panel
+  setTimeout(function () {
+    if (!skin && !errored) {
+      showError('No init received from the client script.\n' +
+        'Handshake or SendDuiMessage path failed — check F8 console.');
+    }
+  }, 4000);
+</script>
+</body>
+</html>

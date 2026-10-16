@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NUI React Boilerplate</title>
+    <script type="module" crossorigin src="./assets/index-CzC7UnG0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-SonfJNby.css">
+    <!-- ORIGEN (07/10) · pegatina para el menú de lista y el radial de ox.
+         OJO: al actualizar ox_lib se pierde; ver la cabecera de pegatina.css. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,800&family=Barlow:wght@500;600;700&family=Oxanium:wght@800&display=swap" />
+    <link rel="stylesheet" href="./pegatina.css?v=riel0710" />
+    <script>
+      /* El menú de lista de ox no tiene clase propia (las de Mantine son un
+         hash): al montarse se le marcan las piezas con data-oxpeg para que
+         pegatina.css las encuentre. Solo pone atributos; no toca la lógica. */
+      (function () {
+        function marcar() {
+          var filas = document.querySelectorAll('.mantine-Stack-root > div[tabindex]');
+          for (var i = 0; i < filas.length; i++) {
+            var lista = filas[i].parentNode && filas[i].parentNode.parentNode;
+            var menu = lista && lista.parentNode;
+            if (!menu || menu.getAttribute('data-oxpeg') === 'menu') continue;
+            menu.setAttribute('data-oxpeg', 'menu');
+            lista.setAttribute('data-oxpeg', 'lista');
+            if (menu.firstElementChild && menu.firstElementChild !== lista)
+              menu.firstElementChild.setAttribute('data-oxpeg', 'cabecera');
+            if (lista.nextElementSibling) lista.nextElementSibling.setAttribute('data-oxpeg', 'flecha');
+          }
+          var flecha = document.querySelector('[data-oxpeg="lista"] + div:not([data-oxpeg])');
+          if (flecha) flecha.setAttribute('data-oxpeg', 'flecha');
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+          var raiz = document.getElementById('root');
+          if (!raiz) return;
+          new MutationObserver(marcar).observe(raiz, { childList: true, subtree: true });
+        });
+      })();
+    </script>
+    <!-- ORIGEN · marca (el color de la casa segun el servidor: origen o
+         nacion). NO EDITAR A MANO: este trozo es identico en todas las
+         interfaces y lo reparte kit/repartir-marca.py desde kit/marca.js.
+         En origen no hace nada. -->
+    <script>
+      (function () {
+        var PALETAS = {
+          /* tono: el de la marca nueva, en grados.
+             luz:  por donde pasa la escala, [luz del rosa, luz nueva]. El naranja
+                   es mas claro que el rosa a igual papel: el de los botones sube,
+                   y el de LEER sobre crema se queda oscuro para que se lea.
+             fijos: los que tienen que salir clavados, pedidos por el usuario:
+                   acc #FD8A23 · soft #FFAA5C · pale #FFD9B6 · deep #6A3402 */
+          nacion: {
+            tono: 28.5,
+            sat: 1.04,
+            luz: [[0, 0], [0.267, 0.212], [0.396, 0.36], [0.453, 0.565], [0.714, 0.68], [0.8, 0.857], [1, 1]],
+            fijos: {
+              e0074f: [253, 138, 35], fc0259: [253, 138, 35],
+              /* el rosa menos neon (06/10) sale con el MISMO naranja que el rosa de antes */
+              d81b55: [255, 146, 48], df2f63: [255, 154, 64], b3123f: [227, 108, 0],
+              ff6d97: [255, 170, 92],
+              fd9bbd: [255, 217, 182],
+              '7d0b31': [106, 52, 2], '82173c': [106, 52, 2]
+            }
+          }
+        }
+        /* La familia del rosa: del granate antiguo (#850e49) al rosa-rojo del movil
+           (#c2153f). El rojo de los errores (350 en adelante) queda fuera. */
+        var DESDE = 318, HASTA = 349, SAT_MIN = 0.3
+
+        var raiz = document.documentElement
+        var paleta = null
+        var memo = {}
+
+        var hex2 = function (n) { return (n < 16 ? '0' : '') + n.toString(16) }
+
+        /* -> [r, g, b] de la marca nueva, o null si el color no es de la familia. */
+        var cambiar = function (r, g, b) {
+          var k = (r << 16) | (g << 8) | b
+          if (k in memo) return memo[k]
+          var res = null
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn
+          if (d > 0) {
+            var l = (mx + mn) / 510
+            var s = d / (255 - Math.abs(mx + mn - 255))
+            var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4
+            h = (h * 60 + 360) % 360
+            if (s >= SAT_MIN && h >= DESDE && h < HASTA) {
+              res = paleta.fijos[hex2(r) + hex2(g) + hex2(b)]
+              if (!res) {
+                var c = paleta.luz, L = l
+                for (var i = 1; i < c.length; i++) {
+                  if (l <= c[i][0]) {
+                    L = c[i - 1][1] + (c[i][1] - c[i - 1][1]) * (l - c[i - 1][0]) / (c[i][0] - c[i - 1][0])
+                    break
+                  }
+                }
+                var S = Math.min(1, s * paleta.sat)
+                var C = (1 - Math.abs(2 * L - 1)) * S
+                var H = paleta.tono / 60
+                var X = C * (1 - Math.abs(H % 2 - 1))
+                var m = L - C / 2
+                var t = H < 1 ? [C, X, 0] : H < 2 ? [X, C, 0] : H < 3 ? [0, C, X] : H < 4 ? [0, X, C] : H < 5 ? [X, 0, C] : [C, 0, X]
+                res = [Math.round((t[0] + m) * 255), Math.round((t[1] + m) * 255), Math.round((t[2] + m) * 255)]
+              }
+            }
+          }
+          return (memo[k] = res)
+        }
+
+        /* Todo color escrito en un texto de CSS: #hex (3, 4, 6 u 8 cifras, tambien
+           como %23 dentro de un data:), rgb()/rgba() y los tres canales sueltos de
+           un token (`--acc-rgb: 224, 7, 79`). */
+        var COLOR = /(#|%23)([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])|(rgba?\(\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})|(--[\w-]+\s*:\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(?=\s*(?:;|!|$))/g
+
+        var pintar = function (texto) {
+          if (!paleta || !texto) return texto
+          return texto.replace(COLOR, function (todo, almo, hex, f1, r1, s1, g1, s2, b1, f2, r2, s3, g2, s4, b2) {
+            var n
+            if (hex) {
+              var v = hex.length < 6 ? hex.replace(/./g, '$&$&') : hex
+              n = cambiar(parseInt(v.substr(0, 2), 16), parseInt(v.substr(2, 2), 16), parseInt(v.substr(4, 2), 16))
+              return n ? almo + hex2(n[0]) + hex2(n[1]) + hex2(n[2]) + v.substr(6) : todo
+            }
+            if (f1) {
+              n = cambiar(+r1, +g1, +b1)
+              return n && +r1 < 256 && +g1 < 256 && +b1 < 256 ? f1 + n[0] + s1 + n[1] + s2 + n[2] : todo
+            }
+            n = cambiar(+r2, +g2, +b2)
+            return n && +r2 < 256 && +g2 < 256 && +b2 < 256 ? f2 + n[0] + s3 + n[1] + s4 + n[2] : todo
+          })
+        }
+
+        /* Las hojas. NO SE MODIFICA NINGUNA REGLA: la hoja se lee, se repinta el
+           texto y se sustituye entera por un <style> en su mismo sitio.
+
+           Es a proposito y costo un cuelgue encontrarlo (02/10): en el Chromium 103
+           del juego, escribir en una regla de la hoja del movil (Tailwind v4)
+           --`regla.style.cssText = ...` o un solo `setProperty`-- deja el navegador
+           de TODAS las interfaces en un bucle del que no sale. En otras hojas no
+           pasa y en un Chromium moderno tampoco, asi que fuera del juego no se ve.
+           Leer si se puede; escribir, no. */
+        var cambio = false
+        var urls = function (texto, base) {
+          // Al pasar de <link> a <style> las rutas dejan de ser relativas al .css.
+          return texto.replace(/url\(\s*(["']?)([^"')]+)\1\s*\)/g, function (todo, c, u) {
+            if (/^(data:|blob:|https?:|nui:|about:|#)/i.test(u)) return todo
+            try { return 'url("' + new URL(u, base).href + '")' } catch (e) { return todo }
+          })
+        }
+        var texto = function (lista, base) {
+          var out = []
+          for (var i = 0; i < lista.length; i++) {
+            var r = lista[i], c = r.cssText, k = c.indexOf('{')
+            // Un @import de casa se trae dentro: su hoja no tiene etiqueta propia.
+            var dentro = null
+            try { dentro = r.styleSheet && r.styleSheet.cssRules } catch (e) {}
+            if (dentro) {
+              var t = texto(dentro, r.styleSheet.href || base)
+              var m = r.media && r.media.mediaText
+              out.push(m ? '@media ' + m + ' {' + t + '}' : t)
+            } else if (k < 0) {
+              // Sin llaves: un @import de fuera, un @namespace... o declaraciones
+              // sueltas dentro de una regla anidada.
+              var p = r.style ? pintar(c) : c
+              if (p !== c) cambio = true
+              out.push(urls(p, base))
+            } else if (r.cssRules) {
+              // Un grupo (@media, @supports, @layer, @keyframes) o, en un
+              // Chromium con anidado, una regla con hijas.
+              var cuerpo = ''
+              if (r.style) {
+                var d = r.style.cssText, nd = pintar(d)
+                if (nd !== d) cambio = true
+                cuerpo = urls(nd, base)
+              }
+              out.push(c.substr(0, k) + '{' + cuerpo + texto(r.cssRules, base) + '}')
+            } else {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              var b = c.substr(k), nb = pintar(b)
+              if (nb !== b) cambio = true
+              out.push(c.substr(0, k) + urls(nb, base))
+            }
+          }
+          return out.join('\n')
+        }
+        /* Tope de reescrituras por nodo. Si otro codigo de la pagina vuelve a
+           poner el rosa cada vez que se lo cambiamos, se le deja ganar: mejor un
+           rosa suelto que dos observadores persiguiendose sin fin. */
+        var veces = new WeakMap()
+        var harto = function (nodo) {
+          var n = (veces.get(nodo) || 0) + 1
+          veces.set(nodo, n)
+          return n > 40
+        }
+        var hoja = function (h) {
+          var lista, dueno = h && h.ownerNode
+          if (!dueno || dueno.nodeType !== 1) return
+          // Una hoja de otro origen (fuentes de Google) no deja leer sus reglas.
+          try { lista = h.cssRules } catch (e) { return }
+          if (!lista || !lista.length) return
+          cambio = false
+          var nuevo
+          try { nuevo = texto(lista, h.href || document.baseURI) } catch (e) { return }
+          if (!cambio || harto(dueno)) return
+          if (dueno.nodeName.toLowerCase() === 'style') {
+            dueno.textContent = nuevo
+            return
+          }
+          var s = document.createElement('style')
+          s.setAttribute('data-ogn-marca', h.href || '')
+          if (dueno.media) s.media = dueno.media
+          s.textContent = nuevo
+          dueno.parentNode.insertBefore(s, dueno.nextSibling)
+          dueno.disabled = true
+        }
+        var hojas = function () {
+          // Sobre una copia: sustituir una hoja cambia la lista mientras se recorre.
+          var l = Array.prototype.slice.call(document.styleSheets)
+          for (var i = 0; i < l.length; i++) hoja(l[i])
+        }
+
+        /* Lo escrito en el propio elemento: style="" y los atributos de SVG. */
+        var ATRIBUTOS = ['style', 'fill', 'stroke', 'stop-color', 'flood-color', 'color']
+        var elemento = function (el) {
+          for (var i = 0; i < ATRIBUTOS.length; i++) {
+            var v = el.getAttribute(ATRIBUTOS[i])
+            if (v) {
+              var n = pintar(v)
+              if (n !== v && !harto(el)) el.setAttribute(ATRIBUTOS[i], n)
+            }
+          }
+        }
+        var SELECTOR = '[style],[fill],[stroke],[stop-color],[flood-color]'
+        var rama = function (nodo) {
+          if (nodo.nodeType !== 1) return
+          var nombre = nodo.nodeName.toLowerCase()
+          if (nombre === 'style') {
+            hoja(nodo.sheet)
+            // El texto de un <style> puede llegar despues que la etiqueta.
+            setTimeout(function () { hoja(nodo.sheet) }, 0)
+            return
+          }
+          if (nombre === 'link') {
+            hoja(nodo.sheet)
+            nodo.addEventListener('load', function () { hoja(nodo.sheet) })
+            return
+          }
+          elemento(nodo)
+          var dentro = nodo.querySelectorAll(SELECTOR + ',style')
+          for (var i = 0; i < dentro.length; i++) {
+            if (dentro[i].sheet) hoja(dentro[i].sheet)
+            else elemento(dentro[i])
+          }
+        }
+
+        /* Lo que no pasa por el DOM: el <canvas> y las reglas que mete una libreria
+           a mano. Solo se enganchan con otra marca puesta. */
+        var ganchos = function () {
+          try {
+            var P = CanvasRenderingContext2D.prototype
+            var uno = function (n) {
+              var d = Object.getOwnPropertyDescriptor(P, n)
+              if (!d || !d.set) return
+              Object.defineProperty(P, n, {
+                configurable: true,
+                enumerable: d.enumerable,
+                get: d.get,
+                set: function (v) { d.set.call(this, typeof v === 'string' ? pintar(v) : v) }
+              })
+            }
+            uno('fillStyle'); uno('strokeStyle'); uno('shadowColor')
+            var parada = CanvasGradient.prototype.addColorStop
+            CanvasGradient.prototype.addColorStop = function (o, c) {
+              return parada.call(this, o, typeof c === 'string' ? pintar(c) : c)
+            }
+          } catch (e) {}
+          try {
+            var meter = CSSStyleSheet.prototype.insertRule
+            CSSStyleSheet.prototype.insertRule = function (t, i) {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              if (typeof t === 'string') {
+                var c = t.indexOf('{')
+                if (c > 0) t = t.substr(0, c) + pintar(t.substr(c))
+              }
+              return arguments.length > 1 ? meter.call(this, t, i) : meter.call(this, t)
+            }
+          } catch (e) {}
+        }
+
+        var activar = function (nombre) {
+          if (paleta || !PALETAS.hasOwnProperty(nombre)) return
+          paleta = PALETAS[nombre]
+          raiz.dataset.marca = nombre
+          /* El mismo freno que el del tema: una propiedad EN TRANSICION cuyo valor
+             sale de un var() se queda congelada en el color viejo cuando la
+             variable cambia desde una hoja. */
+          var freno = document.createElement('style')
+          freno.textContent = '*,*::before,*::after{transition:none !important}'
+          ;(document.head || raiz).appendChild(freno)
+          ganchos()
+          hojas()
+          rama(raiz)
+          new MutationObserver(function (cambios) {
+            for (var i = 0; i < cambios.length; i++) {
+              var c = cambios[i]
+              if (c.type === 'attributes') elemento(c.target)
+              // Le han cambiado el texto a un <style> (la recarga en caliente).
+              else if (c.target.nodeName.toLowerCase() === 'style') hoja(c.target.sheet)
+              else for (var j = 0; j < c.addedNodes.length; j++) rama(c.addedNodes[j])
+            }
+          }).observe(raiz, { subtree: true, childList: true, attributes: true, attributeFilter: ATRIBUTOS })
+          // Las hojas que aun no habian cargado cuando llego la respuesta.
+          document.addEventListener('DOMContentLoaded', hojas)
+          window.addEventListener('load', hojas)
+          if (document.body) void document.body.offsetHeight
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { freno.remove() })
+          })
+          // Para la pagina que quiera saberlo (un logo que cambiar, por ejemplo).
+          window.postMessage({ accion: 'origen:marca:puesta', marca: nombre }, '*')
+        }
+
+        raiz.dataset.marca = 'origen'
+        // Para quien dibuja con colores que esto no ve (WebGL, una imagen).
+        window.__ognMarca = { pintar: pintar, de: function () { return raiz.dataset.marca } }
+
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:marca') activar(d.marca)
+        })
+        // Fuera del juego (la pagina en un navegador): index.html?marca=nacion
+        try {
+          var q = /[?&]marca=([\w-]+)/.exec(location.search)
+          if (q) activar(q[1])
+        } catch (e) {}
+        // La pantalla de carga: ahi no hay Lua de cliente, lo trae el servidor.
+        try {
+          if (window.nuiHandoverData && window.nuiHandoverData.marca) activar(window.nuiHandoverData.marca)
+        } catch (e) {}
+        /* Y lo normal: preguntarselo al Lua de este recurso. Con reintentos, porque
+           la pagina puede nacer antes de que su script haya puesto el callback. */
+        var intentos = 0
+        var preguntar = function () {
+          var yo = null
+          try { yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null } catch (e) {}
+          // Hay marcos donde el juego no pone esa funcion (visto en el movil al
+          // recargarse): el nombre del recurso tambien va en la direccion.
+          if (!yo) {
+            var h = /^cfx-nui-(.+)$/.exec(location.hostname)
+            if (h) yo = h[1]
+          }
+          if (!yo) return
+          fetch('https://' + yo + '/origen:marca:dame', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            body: '{}'
+          })
+            .then(function (r) { return r.json() })
+            .then(function (d) {
+              if (d && d.marca) activar(d.marca)
+              else throw new Error('sin marca')
+            })
+            .catch(function () { if (++intentos < 6) setTimeout(preguntar, 1500) })
+        }
+        preguntar()
+      })()
+    </script>
+  <style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

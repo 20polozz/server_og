@@ -1,0 +1,745 @@
+/* ══ Los tokens mecanicos del tema claro/oscuro ═════════════════
+   NO SE EDITAN A MANO: son identicos en todo el servidor y los pone
+   kit/tokenizar-tema.py. La referencia es origen_inventory/arcade.css.
+
+   No son colores, son la MANERA de convertir una capa de claro a oscuro:
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Con el factor a 1 el
+               resultado es EXACTAMENTE el de siempre, asi que el tema claro no
+               puede cambiar. Con 0.13 todas bajan a la vez, que es la regla del
+               modo oscuro: las superficies SUBEN (blanco al 4-10 %), nunca se
+               hunden con negro sobre negro.
+
+     --arc-t-* los tres canales de un tinte, para darles la vuelta sin tocar el
+               alfa de cada regla.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #fffdf7;
+    --arc-papel2: #f3ecdd;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. En claro pueden ser el mismo granate; de noche NO. */
+    --arc-accent-texto: #c00a46;
+    --ogn-acc-texto: #c00a46;
+}
+
+html[data-tema="oscuro"] {
+    --arc-vf: 0.13;
+    /* El que hunde deja de ser el tinte oscuro y pasa a ser el blanco. */
+    --arc-t-hueco: 255, 255, 255;
+    --arc-t-linea: 255, 255, 255;
+    /* Y la sombra dura se vuelve negra: sobre un panel oscuro una sombra
+       clara es un halo, no un relieve. */
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 10, 10, 10;
+    --arc-t-papel2: 8, 8, 8;
+    --arc-t-papel3: 5, 5, 5;
+    /* Lo elegido sigue siendo rosa, pero rosa OSCURO: un rosa palido sobre
+       negro vuelve a ser una isla de luz. */
+    --arc-t-elegido: 92, 24, 48;
+    --arc-papel1: #0a0a0a;
+    --arc-papel2: #080808;
+    --arc-accent-texto: #ff6d97;
+    --ogn-acc-texto: #ff6d97;
+
+    /* Los papeles de la cola larga. SOLO se declaran aqui: en claro la
+       variable no existe y cada regla usa su reserva --el color exacto que
+       tenia siempre--, asi que el tema claro no puede moverse ni un canal. */
+    --arc-fondo1: #0a0a0a;
+    --arc-fondo2: #080808;
+    --arc-fondo3: #050505;
+
+    /* Las tintas, que faltaban: sin ellas un
+       `var(--arc-tinta1, #26221a)` cae a la reserva y el texto
+       se queda oscuro sobre el panel negro. */
+    --arc-tinta1: #f5f0e6;
+    --arc-tinta2: #cfc8ba;
+    --arc-tinta3: #9d9687;
+    /* Los estados, igual: solo existen de noche. Para los colores que un
+       componente elige en JavaScript (`var(--arc-estado-ok, #146636)`). */
+    --arc-estado-ok: #3ce6a4;
+    --arc-estado-warn: #f0b429;
+    --arc-estado-bad: #ff6d97;
+    --arc-estado-info: #56a8ff;
+}
+
+/* ══ Tema claro «HUD Arcade» ═══════════════════════════════════════════
+   El mismo del inventario (source-ui/src/assets/styles/arcade.css): cristal
+   crema, acento rosa #ff2d6a, Barlow Condensed cursiva para los rotulos y
+   bloques inclinados 10 grados.
+
+   Esta pantalla es la de VERDAD: el fxmanifest declara `loadscreen
+   'ui/index.html'`. Lo que hay detras es un video a pantalla completa, asi
+   que aqui solo se pinta el cromo de encima —la barra, el girador y el aviso
+   de la musica— y manda la legibilidad sobre cualquier fotograma: crema
+   opaco, filo rosa y sombra fuerte.
+
+   Las fuentes van en el <link> de ui/index.html, no en un @import de aqui.
+
+   Nada de backdrop-filter: en el CEF de FiveM sale una banda negra.
+
+   La copia de antes esta en css/style.css.ogn-bak.
+   ═════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Tokens del tema ─────────────────────────────────────── */
+    --arc-accent: #ff2d6a;
+    --arc-accent-deep: #c00a46;
+    --arc-grad: linear-gradient(160deg, #ff5c89 0%, #e0074f 100%);
+    --arc-ink: #26221a;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-edge: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-glass: linear-gradient(160deg, rgba(255, 253, 247, 0.95) 0%, rgba(246, 241, 230, 0.92) 45%, rgba(238, 231, 217, 0.95) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Share Tech Mono", Consolas, monospace;
+
+    /* El relieve del tema: filo claro arriba, canto abajo. */
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+
+    /* ── Nombres de siempre, apuntando a los nuevos ──────────────
+       --primary-color se usa mas abajo como color de las bolitas del
+       girador; ahora es el rosa del tema. */
+    --ogn-rotulo: var(--arc-cond);
+    --ogn-texto: var(--arc-text);
+    --ogn-fg: var(--arc-papel1);
+    --ogn-acc: var(--arc-accent);
+    --ogn-acc-deep: var(--arc-accent-deep);
+    --ogn-t1: #fffdf7;
+    --ogn-t2: rgba(255, 253, 247, 0.72);
+    --ogn-t3: rgba(255, 253, 247, 0.5);
+    --ogn-t4: rgba(255, 253, 247, 0.32);
+    --ogn-surface: rgba(255, 253, 247, 0.06);
+    --ogn-r: 9px;
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --primary-color: var(--arc-accent);
+    --color-acent: var(--arc-accent);
+    --text-white: var(--ogn-fg);
+    --cubic: var(--ogn-ease);
+    --color-danger: var(--arc-accent-deep);
+}
+
+/* De noche (kit/gemelos-de-lamina.py): sin esto la lamina se queda
+   crema o la tinta parda, y con el resto ya dado la vuelta no se lee. */
+html[data-tema="oscuro"] {
+    --arc-glass: linear-gradient(160deg, rgba(10, 10, 10, 0.95) 0%, rgba(8, 8, 8, 0.94) 45%, rgba(5, 5, 5, 0.95) 100%);
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    color: var(--ogn-t1);
+    font-weight: 500;
+    font-family: var(--arc-text);
+    background-color: #000;
+}
+
+video {
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+    object-fit: cover;
+}
+
+#initial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.loading-text {
+    color: var(--ogn-t1);
+    font-size: calc(4.6vh / var(--ogn-escala, 1));
+    text-align: start;
+    margin-bottom: calc(3vh / var(--ogn-escala, 1));
+    margin-left:calc(.5vh / var(--ogn-escala, 1));
+    opacity: 0;
+    transform: translateY(calc(2vh / var(--ogn-escala, 1)));
+    animation: slideUp 1s cubic-bezier(0,.76,.36,.99) forwards;
+    animation-delay:1s;
+    display: flex;
+    gap:calc(.5vh / var(--ogn-escala, 1));
+    align-items: center;
+    font-family: var(--ogn-rotulo);
+    line-height:calc(1vh / var(--ogn-escala, 1));
+}
+
+.spinner {
+    width: calc(1vh / var(--ogn-escala, 1));
+    height: calc(1vh / var(--ogn-escala, 1));
+    border: 1px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+    filter: drop-shadow(calc(0.1vh / var(--ogn-escala, 1)) calc(0.1vh / var(--ogn-escala, 1)) black)
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dots {
+    display: inline-flex;
+}
+
+.dot {
+    opacity: 0;
+    animation: dotAnimation 1.5s infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotAnimation {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    60% { opacity: 1; }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(calc(2vh / var(--ogn-escala, 1)));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Antes acababa en opacity 0.4: sobre negro un texto blanco al 40 % se leia,
+   pero una chapa de papel crema a media opacidad se vuelve sucia. */
+@keyframes slideUp2 {
+    from {
+        opacity: 0;
+        transform: translateY(calc(2vh / var(--ogn-escala, 1))) var(--arc-skew);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) var(--arc-skew);
+    }
+}
+
+/* Sube de calc(8vh / var(--ogn-escala, 1)) a calc(9.5vh / var(--ogn-escala, 1)): la chapa de la musica de abajo es ahora un bloque de
+   papel con relleno y canto (antes era una linea de texto suelta) y el ultimo
+   tramo de la barra le quedaba a 3 px. Asi quedan 13. */
+.progress-container {
+    animation-delay: 0.3s;
+    position: fixed;
+    bottom: calc(9.5vh / var(--ogn-escala, 1));
+    left: 0;
+    width: calc(100% - calc(30vh / var(--ogn-escala, 1)));
+    padding:0 calc(15vh / var(--ogn-escala, 1));
+    display:flex;
+    flex-direction: column;
+    z-index: 10;
+    
+}
+
+/* La entrada. El sesgo del tema viaja DENTRO del transform de la animacion:
+   es `forwards`, asi que al acabar sigue mandando ella y un `transform` suelto
+   mas abajo se quedaria sin efecto (la chapa saldria derecha). */
+.control {
+    opacity: 0;
+    transform: translateY(calc(2vh / var(--ogn-escala, 1))) var(--arc-skew);
+    animation: slideUp2 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 2s;
+}
+
+@keyframes loaderAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 0.94;
+        transform: scale(1);
+    }
+}
+
+h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.swiper {
+    width: 100%;
+    height: calc(100vh / var(--ogn-escala, 1));
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    border-radius: var(--ogn-r);
+}
+
+.swiper-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+.slide-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    overflow: visible;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transform: scale(1) rotate(0deg);
+}
+
+.slide-inner.background {
+    box-shadow: inset 0 0 calc(15vh / var(--ogn-escala, 1)) black;
+    z-index: 1;
+        border-radius: var(--ogn-r);
+}
+
+.slide-inner.character {
+    z-index: 2;
+    mix-blend-mode: normal;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position:absolute;
+    top:calc(5vh / var(--ogn-escala, 1));
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.swiper-slide-active .slide-inner.background {
+    animation: zoomEffect 10s linear forwards;
+}
+
+.slide-inner.character {
+    /* animation: zoomEffect2 10s linear forwards 0.5s; */
+    transform-origin: bottom;
+    transform: scale(1) rotate(0deg);
+
+}
+
+.special-character {
+    width: calc(206vh / var(--ogn-escala, 1)) !important;
+    height: calc(201vh / var(--ogn-escala, 1)) !important;
+    position:absolute;
+    left:calc(5vh / var(--ogn-escala, 1));
+    top:calc(-44vh / var(--ogn-escala, 1)) !important;
+}
+@keyframes zoomEffect {
+    0% {
+        transform:  rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.93) rotate(-2deg);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomEffect2 {
+    0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.005) rotate(-2deg);
+        opacity: 1;
+    }
+}
+
+/* Ajustes para el efecto coverflow */
+.swiper-slide {
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0);
+}
+
+.swiper-slide-active {
+    z-index: 2;
+}
+
+/* Ocultar elementos de navegación de Swiper */
+.swiper-button-next,
+.swiper-button-prev,
+.swiper-pagination {
+    display: none !important;
+}
+
+.swiper-wrapper {
+    pointer-events: none;
+}
+
+.progress-bar {
+    position: relative;
+}
+
+/* ── La barra: cinco tramos inclinados 10 grados ───────────────────────
+   El hueco entre tramos sube a calc(0.9vh / var(--ogn-escala, 1)): un bloque de calc(2.5vh / var(--ogn-escala, 1)) de alto inclinado
+   sobresale ~2,4 px por cada lado, y con el hueco de antes (calc(0.5vh / var(--ogn-escala, 1))) los
+   tramos se tocaban en las puntas.
+
+   El canto de abajo va DENTRO (inset 0 -3px 0) y no como sombra exterior:
+   la capa de relleno se recorta con clip-path: inset(0 X% 0 0), que corta
+   justo al borde de la caja y se habria comido cualquier relieve de fuera. */
+.progress-segments-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    z-index: 1;
+    height: calc(2.5vh / var(--ogn-escala, 1));
+}
+
+.progress-fill-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    z-index: 2;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.3s ease-out;
+    height: calc(2.5vh / var(--ogn-escala, 1));
+}
+
+.progress-segment-empty {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    transform: var(--arc-skew);
+    background: rgba(var(--arc-t-papel1), 0.28);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+        inset 0 0 0 1px rgba(255, 255, 255, calc(0.55 * var(--arc-vf))),
+        inset 0 -3px 0 rgba(var(--arc-t-relieve), 0.3);
+}
+
+.progress-segment-filled {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 6px;
+    transform: var(--arc-skew);
+    background: var(--arc-grad);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        inset 0 -4px 0 var(--arc-accent-deep);
+}
+
+.loader {
+    position: absolute;
+    right: calc(5vh / var(--ogn-escala, 1));
+    bottom: calc(7vh / var(--ogn-escala, 1));
+    z-index: 10;
+    --uib-speed: 0.8s;
+    display: inline-block;
+    width: calc(6vh / var(--ogn-escala, 1));
+    height: calc(5vh / var(--ogn-escala, 1));
+    animation: spin calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.loader__dot {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+}
+
+/* Las tres bolitas, en el rosa del tema con filo crema: sobre el video
+   cambia el fotograma y el rosa solo no siempre se despegaba del fondo. */
+.loader__dot:after {
+    content: '';
+    position: absolute;
+    height: 0%;
+    width: 100%;
+    padding-bottom: 100%;
+    background: var(--arc-grad);
+    box-shadow:
+        inset 0 0 0 1.5px rgba(var(--arc-t-papel1), 0.9),
+        0 2px 8px rgba(0, 0, 0, 0.55);
+    border-radius: var(--ogn-r);
+}
+
+.loader__dot:nth-child(1) {
+    bottom: 5%;
+    left: 0;
+    transform: rotate(60deg);
+    transform-origin: 50% 85%;
+}
+
+.loader__dot:nth-child(1)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite ease-in-out;
+    animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.loader__dot:nth-child(2) {
+    bottom: 5%;
+    right: 0;
+    transform: rotate(-60deg);
+    transform-origin: 50% 85%;
+}
+
+.loader__dot:nth-child(2)::after {
+    bottom: 0;
+    left: 0;
+    animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15) ease-in-out;
+}
+
+.loader__dot:nth-child(3) {
+    bottom: -5%;
+    left: 0;
+    transform: translateX(116.666%);
+}
+
+.loader__dot:nth-child(3)::after {
+    top: 0;
+    left: 0;
+    animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wobble1 {
+
+    0%,
+    100% {
+        transform: translateY(0%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-66%) scale(0.65);
+        opacity: 0.8;
+    }
+}
+
+@keyframes wobble2 {
+
+    0%,
+    100% {
+        transform: translateY(0%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(66%) scale(0.65);
+        opacity: 0.8;
+    }
+}
+
+.loader img{
+    width: calc(100vh / var(--ogn-escala, 1));
+    filter: brightness(5);
+}
+
+/* ── El aviso de la musica: una chapa del tema ─────────────────────────
+   Un bloque de papel crema inclinado 10 grados con su canto; el texto va
+   desinclinado para leerse derecho. El margen de abajo sube a calc(2.6vh / var(--ogn-escala, 1)) para
+   dejar sitio al canto de 5 px. */
+.control {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(2.6vh / var(--ogn-escala, 1));
+    margin: 0 auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1));
+    border-radius: 9px;
+    /* El sesgo NO va aqui: lo pone la animacion de entrada (ver mas arriba). */
+    background: var(--arc-glass);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))),
+        0 5px 0 rgba(var(--arc-t-relieve), 0.45),
+        0 10px 24px rgba(0, 0, 0, 0.45);
+    color: var(--arc-ink-2);
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+.control span {
+    display: flex;
+    align-items: center;
+    transform: var(--arc-unskew);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* El texto que cambia (pausar / reproducir) no puede desinclinarse otra vez:
+   ya lo hace el <span> de fuera, y un segundo unskew lo dejaria torcido. */
+.control span span {
+    transform: none;
+    letter-spacing: inherit;
+    color: var(--arc-accent-texto);
+}
+
+.control #key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 calc(0.7vh / var(--ogn-escala, 1));
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    padding: calc(0.2vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1)) calc(0.1vh / var(--ogn-escala, 1));
+    background: var(--arc-grad);
+    border-radius: 4px;
+    box-shadow: 0 2px 0 var(--arc-accent-deep);
+    color: #fff;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    /* z-index: 9999; */
+    /* animation: fadeOut 1s ease-in-out forwards; */
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.background-image .background-layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: 
+     radial-gradient(ellipse at 20% 30%, var(--ogn-surface) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(200, 26, 113, 0.09) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, var(--ogn-surface) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(10, 5, 10, 0.88) 100%);
+}
+
+.logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: calc(3vh / var(--ogn-escala, 1));
+    width: calc(12vh / var(--ogn-escala, 1));
+}
+/* ══ Los mismos tokens, de noche ══════════════════════════════════
+   Cuelga del MISMO selector que los declara en claro, y no de
+   :root, porque las variables CSS se heredan por elemento: un
+   valor puesto en <html> no pisa a uno puesto en el panel.
+   ═════════════════════════════════════════════════════════════ */
+html[data-tema="oscuro"] {
+    --ogn-bg: #0a0a0a;
+    --ogn-fg: #f5f0e6;
+    --ogn-t1: #f5f0e6;
+    --ogn-t2: #cfc8ba;
+    --ogn-t3: #9d9687;
+    --ogn-t4: #8d8678;
+    /* Los estados vuelven a su version CLARA: el verde oscuro que se lee
+       sobre crema desaparece sobre negro. El significado no cambia, el tono si. */
+    --ogn-ok: #3ce6a4;
+    --ogn-warn: #f0b429;
+    --ogn-bad: #ff6d97;
+    --ogn-info: #56a8ff;
+    /* El rosa de los rotulos: en claro es el granate, que sobre negro no se ve. */
+    --ogn-acc-soft: #ff6d97;
+    --ogn-acc-pale: #ff6d97;
+    --ogn-acc-deep: #7d0b31;
+    --ogn-acc-texto: #ff6d97;
+    --arc-accent-deep: #7d0b31;
+    --arc-accent-texto: #ff6d97;
+    --arc-ink: #f5f0e6;
+    --arc-ink-2: #cfc8ba;
+    --arc-ink-3: #9d9687;
+    --arc-ink-4: #9d9687;
+
+    /* El PAPEL de las zonas. Es un token, asi que el transformador no lo
+       toca (por diseño: las declaraciones de token se escriben a mano), y
+       sin esto el riel, la cabecera y la barra se quedan CREMA dentro de un
+       panel negro. Fue lo que delato org_parking y propplacer. */
+    --ogn-veil: linear-gradient(160deg, rgba(10, 10, 10, 0.96) 0%, rgba(8, 8, 8, 0.94) 45%, rgba(5, 5, 5, 0.96) 100%);
+    --panel-bg: var(--ogn-veil);
+
+    /* Y las superficies y filetes, por lo mismo. En oscuro las capas SUBEN:
+       blanco muy flojo, nunca negro sobre negro. */
+    --ogn-surface: rgba(255, 255, 255, 0.05);
+    --ogn-surface-hi: rgba(255, 255, 255, 0.08);
+    --ogn-surface-on: rgba(255, 255, 255, 0.11);
+    --ogn-sunken: rgba(255, 255, 255, 0.04);
+    --ogn-fill: rgba(255, 255, 255, 0.06);
+    --ogn-fill-soft: rgba(255, 255, 255, 0.04);
+    --ogn-fill-hi: rgba(255, 255, 255, 0.1);
+    --ogn-line: rgba(255, 255, 255, 0.12);
+    --ogn-line-soft: rgba(255, 255, 255, 0.07);
+    --ogn-line-hi: rgba(255, 255, 255, 0.2);
+}

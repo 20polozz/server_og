@@ -1,0 +1,408 @@
+/* == ORIGEN · estilo claro «HUD Arcade» ==========================
+   Tokens compartidos por LOS OCHO minijuegos. Este fichero lo carga
+   index.html con un <link> ANTES del <style> de dentro, asi que el
+   :root de aqui alimenta tambien a los siete juegos que viven alli.
+
+   REGLA DE ORO DE ESTE RECURSO: son minijuegos. Aqui solo se cambian
+   colores, tipografias, filos y relieves. Ni una medida, ni un
+   relleno, ni un borde de 1px, ni una zona de acierto se mueve.
+   El filo rosa de arriba de los paneles va con `inset 0 4px 0` en la
+   box-shadow —NO con border-top— justamente para no crecer 3px.
+   ============================================================== */
+
+/* ── La base del tema ──────────────────────────────────────────────
+   Estas variables vivian solo en ../hacking/style.css, que index.html
+   NO carga: sin ellas --arc-paper y todos los relieves eran invalidos y
+   los paneles de los minijuegos salian transparentes en el juego.
+   Van aqui, que es la hoja que si se carga (19/09/2026). */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    /* La tinta de un rotulo de acento: el rosa de texto de la pegatina. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+:root {
+    /* ── Arcade: la paleta ───────────────────────────────────── */
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #000;
+    --arc-grad: #d81b55;
+
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #44444a;
+    --arc-ink-3: #55555c;
+    --arc-ink-4: #73737c;
+
+    /* Pegatina SOLIDA: esto se ve encima del juego, nada de
+       transparencias ni de backdrop-filter (pinta negro en la NUI). */
+    --arc-paper: #c4c6ca;
+    --arc-paper-flat: #dcdde0;
+    --arc-sunken: #dcdde0;
+    --arc-sunken-hi: #dcdde0;
+
+    --arc-edge: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    --arc-line: rgba(var(--arc-t-relieve), 0.34);
+    --arc-line-soft: rgba(var(--arc-t-relieve), 0.2);
+
+    /* ── Estados de verdad ───────────────────────────────────── */
+    --arc-ok: #146636;
+    --arc-ok-hi: #146636;
+    --arc-ok-wash: #dcdde0;
+    --arc-bad: #b3123f;
+    --arc-bad-wash: #dcdde0;
+    --arc-warn: #b3123f;
+
+    /* ── Tipos ───────────────────────────────────────────────── */
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /* ── Relieves (la sombra NO ocupa sitio: no mueve medidas) ── */
+    --arc-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    --arc-relieve-corto: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.45);
+    --arc-relieve-hundido: inset 0 2px 0 rgba(var(--arc-t-relieve), 0.22), inset 0 -1px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    --arc-panel: inset 0 4px 0 var(--arc-accent), 0 5px 0 rgba(var(--arc-t-relieve), 0.4), 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.42);
+    --arc-panel-liso: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.4), 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.42);
+
+    /* ── Nombres de siempre, apuntando a los nuevos ──────────── */
+    --ogn-rotulo: var(--arc-cond);
+    --ogn-texto: var(--arc-text);
+    --ogn-acc: var(--arc-accent);
+    --ogn-bad: var(--arc-bad);
+    --ogn-ok: var(--arc-ok);
+    --ogn-t1: var(--arc-ink);
+    --ogn-t2: var(--arc-ink-2);
+    --ogn-t3: var(--arc-ink-3);
+    --ogn-t4: var(--arc-ink-4);
+    --ogn-line: var(--arc-line);
+    --ogn-fg: var(--arc-ink);
+
+    --primary: var(--arc-accent);
+    --success: var(--arc-ok);
+    --danger: var(--arc-bad);
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--arc-text);
+    background: transparent;
+    overflow: hidden;
+    user-select: none;
+    color: var(--arc-ink);
+}
+
+/* ========== CONTAINER ========== */
+#lockpick-container {
+    position: fixed;
+    right: calc(3vh / var(--ogn-escala, 1));
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: calc(0.8vh / var(--ogn-escala, 1));
+    scale: 0.7;
+}
+
+/* ========== LABEL SUPERIOR ========== */
+.lockpick-label {
+    width: 100%;
+    text-align: center;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-3);
+    font-weight: 800;
+    font-style: italic;
+    font-family: var(--arc-cond);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+/* ========== INFO BAR ========== */
+.info-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(55vh / var(--ogn-escala, 1));
+    padding: calc(1.5vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    background: var(--arc-paper);
+    border: 1px solid var(--arc-edge);
+    border-radius: 5px;
+    box-shadow: var(--arc-panel);
+    color: var(--arc-ink);
+
+    transition: background-color var(--cubic) 0.3s, border-color var(--cubic) 0.3s, color var(--cubic) 0.3s, opacity var(--cubic) 0.3s, transform var(--cubic) 0.3s, box-shadow var(--cubic) 0.3s;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+    min-width: calc(8vh / var(--ogn-escala, 1));
+}
+
+.info-item.timer {
+    min-width: calc(13vh / var(--ogn-escala, 1));
+    width: calc(13vh / var(--ogn-escala, 1));
+    justify-content: center;
+}
+
+.label {
+    font-family: var(--arc-cond);
+    font-size: calc(0.75vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.107em;
+    font-weight: 700;
+}
+
+/* Cifras y contadores: "Oxanium", "Barlow Condensed", sans-serif con cifras de ancho fijo. */
+.value {
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-2);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-align: center;
+}
+
+.info-item.timer .value {
+    font-size: calc(2.5vh / var(--ogn-escala, 1));
+    color: var(--arc-ink);
+    text-shadow: none;
+    letter-spacing: 0.04em;
+}
+
+.progress-value {
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+}
+
+/* ========== PROGRESS DOTS ========== */
+.progress-dots {
+    display: flex;
+    gap: calc(1.5vh / var(--ogn-escala, 1));
+    padding: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.progress-dot {
+    width: calc(1.2vh / var(--ogn-escala, 1));
+    height: calc(1.2vh / var(--ogn-escala, 1));
+    border-radius: 50%;
+    background: var(--arc-sunken);
+    border: 1px solid var(--arc-line);
+    box-shadow: var(--arc-relieve-hundido);
+    transition: background-color var(--cubic) 0.3s, border-color var(--cubic) 0.3s, color var(--cubic) 0.3s, opacity var(--cubic) 0.3s, transform var(--cubic) 0.3s, box-shadow var(--cubic) 0.3s;
+}
+
+/* El que toca ahora: rosa. */
+.progress-dot.active {
+    background: var(--arc-grad);
+    border-color: var(--arc-accent-deep);
+    box-shadow: 0 2px 0 var(--arc-accent-deep);
+    animation: pulse 1.5s infinite;
+}
+
+/* Los ya hechos: verde de estado. */
+.progress-dot.completed {
+    background: var(--arc-ok);
+    border-color: var(--arc-ok);
+    box-shadow: 0 2px 0 rgba(10, 65, 35, 0.7);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.9;
+    }
+}
+
+/* ========== GAME TRACK ========== */
+.game-track {
+    width: calc(55vh / var(--ogn-escala, 1));
+    height: calc(8vh / var(--ogn-escala, 1));
+    background: var(--arc-sunken);
+    border: 1px solid var(--arc-edge);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--arc-panel);
+
+    transition: background-color var(--cubic) 0.3s, border-color var(--cubic) 0.3s, color var(--cubic) 0.3s, opacity var(--cubic) 0.3s, transform var(--cubic) 0.3s, box-shadow var(--cubic) 0.3s;
+}
+
+/* Sweet Spot: ESTO es lo que hay que acertar → rosa del sistema.
+   Bordes de 1px como antes: la zona de acierto no cambia ni un pixel. */
+.sweet-spot {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(90deg,
+        rgba(223, 47, 99, 0.14) 0%,
+        rgba(223, 47, 99, 0.32) 50%,
+        rgba(223, 47, 99, 0.14) 100%
+    );
+    border-left: 1px solid var(--arc-accent);
+    border-right: 1px solid var(--arc-accent);
+    transition: background-color var(--cubic) 0.3s, border-color var(--cubic) 0.3s, color var(--cubic) 0.3s, opacity var(--cubic) 0.3s, transform var(--cubic) 0.3s, box-shadow var(--cubic) 0.3s;
+    box-shadow: inset 0 0 calc(1vh / var(--ogn-escala, 1)) rgba(223, 47, 99, 0.22);
+}
+
+/* La ganzua: tinta oscura sobre la pieza gris. Se pone VERDE al entrar. */
+.pin-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(0.6vh / var(--ogn-escala, 1));
+    height: 80%;
+    background: var(--arc-ink);
+    border-radius: 4px;
+    box-shadow: none;
+    transition: left 0.02s linear;
+    z-index: 2;
+}
+
+.pin-indicator::before {
+    content: '';
+    position: absolute;
+    top: calc(-1vh / var(--ogn-escala, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-top: calc(1vh / var(--ogn-escala, 1)) solid var(--arc-ink);
+    filter: none;
+}
+
+.pin-indicator::after {
+    content: '';
+    position: absolute;
+    bottom: calc(-1vh / var(--ogn-escala, 1));
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: calc(1vh / var(--ogn-escala, 1)) solid var(--arc-ink);
+    filter: none;
+}
+
+.pin-indicator.in-zone {
+    background: var(--arc-ok);
+    box-shadow: none;
+}
+
+.pin-indicator.in-zone::before {
+    border-top-color: var(--arc-ok);
+    filter: none;
+}
+
+.pin-indicator.in-zone::after {
+    border-bottom-color: var(--arc-ok);
+    filter: none;
+}
+
+/* ========== INSTRUCTIONS ========== */
+.instructions {
+    font-family: var(--arc-text);
+    text-align: center;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    background: var(--arc-paper);
+    border: 1px solid var(--arc-edge);
+    border-radius: 5px;
+    color: var(--arc-ink-2);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0.03em;
+    text-transform: none;
+    font-weight: 600;
+    box-shadow: var(--arc-panel-liso);
+}
+
+.instructions strong {
+    color: var(--arc-accent-texto);
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    text-shadow: none;
+}
+
+/* ========== SUCCESS/FAIL FEEDBACK ========== */
+.game-track.success {
+    border-color: var(--arc-ok);
+    box-shadow: inset 0 4px 0 var(--arc-ok), 0 5px 0 rgba(10, 65, 35, 0.55), 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(15, 92, 49, 0.45);
+    animation: successPulse 0.5s ease;
+}
+
+.game-track.fail {
+    border-color: var(--arc-bad);
+    box-shadow: inset 0 4px 0 var(--arc-bad), 2px 2px 0 #000, 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(216, 27, 85, 0.45);
+    animation: shake 0.3s ease;
+}
+
+@keyframes successPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(calc(-0.8vh / var(--ogn-escala, 1))); }
+    20%, 40%, 60%, 80% { transform: translateX(calc(0.8vh / var(--ogn-escala, 1))); }
+}
+
+/* Timer Warning */
+.info-item.timer .value.warning {
+    color: var(--arc-warn);
+    text-shadow: none;
+}
+
+.info-item.timer .value.danger {
+    color: var(--arc-bad);
+    text-shadow: none;
+    animation: pulse 0.5s infinite;
+}
+
+/* ========== FADE IN ANIMATION ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#lockpick-container {
+    animation: fadeIn 0.3s var(--cubic);
+}

@@ -1,0 +1,744 @@
+/* ══ Golf · capa «pegatina» de Origen ════════════════════════════════
+   Hoja NUESTRA encima de la interfaz de rcore (React + Tailwind). No toca
+   una línea de rcore: se enlaza en ui/index.html (y en el compilado
+   ui/build/index.html) y pisa colores, letras y radios con más peso.
+   Vive en ui/public/ para que `vite build` la copie tal cual a ui/build/.
+
+   - Los selectores empiezan por `html` y llevan !important: la hoja de
+     rcore se enlaza DESPUÉS de esta y muchas medidas van en línea (style=).
+   - Los tokens --ogn-* del tema negro viejo se redeclaran en `html:root`
+     (más peso que el :root del bundle).
+   - Cantos con box-shadow, nunca border: no se mueve ninguna medida.
+   - CEF 103: nada de color-mix, :has ni backdrop-filter.
+   Fuentes: <link> de Google Fonts en el index.html (nunca @import).
+   ═════════════════════════════════════════════════════════════════════ */
+
+html:root {
+    --ogn-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ogn-texto: "Barlow", "Segoe UI", sans-serif;
+    --ogn-bg: #c4c6ca;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #df2f63;
+    --ogn-acc-pale: #ffd6e4;
+    --ogn-acc-deep: #b3123f;
+    --ogn-surface: #dcdde0;
+    --ogn-surface-hi: #e6e7ea;
+    --ogn-surface-on: #f1f1ee;
+    --ogn-sunken: rgba(0, 0, 0, 0.08);
+    --ogn-line: rgba(0, 0, 0, 0.18);
+    --ogn-line-soft: rgba(0, 0, 0, 0.1);
+    --ogn-line-hi: #000;
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #44444a;
+    --ogn-t3: #55555c;
+    --ogn-t4: #73737c;
+    --ogn-ok: #0b0b0d;
+    --ogn-bad: #b3123f;
+    --ogn-r: 20px;
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-pieza-hover: #f1f1ee;
+    --peg-rosa: #d81b55;
+    --peg-rosa-hover: #df2f63;
+    --peg-rosa-texto: #b3123f;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-boton: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-cifras: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+html body {
+    background: transparent !important;
+    font-family: "Barlow", "Segoe UI", sans-serif !important;
+    color: var(--peg-tinta) !important;
+}
+
+html * {
+    accent-color: var(--peg-rosa) !important;
+}
+
+html .nui-wrapper {
+    color: var(--peg-tinta) !important;
+    font-family: "Barlow", "Segoe UI", sans-serif !important;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+html .nui-wrapper .container {
+    background: var(--peg-panel) !important;
+    border-color: transparent !important;
+    border-radius: 20px !important;
+    box-shadow: var(--peg-canto) !important;
+}
+
+html .nui-wrapper .header {
+    background: transparent !important;
+    border-bottom: 0 !important;
+    border-radius: 20px 20px 0 0 !important;
+    /* filete rosa macizo bajo la cabecera */
+    box-shadow: inset 0 -3px 0 var(--peg-rosa) !important;
+}
+
+html .nui-wrapper .logo-text,
+html .nui-wrapper .join-title,
+html .nui-wrapper .lobby-title,
+html .nui-wrapper .minigame-title,
+html .nui-wrapper .form-title {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.01em !important;
+    color: var(--peg-tinta) !important;
+}
+
+html .nui-wrapper .join-description,
+html .nui-wrapper .minigame-description {
+    color: var(--peg-tinta-2) !important;
+}
+
+/* ── Botones de acción ─────────────────────────────────────────────── */
+html .nui-wrapper .create-button,
+html .nui-wrapper .start-button,
+html .nui-wrapper .disband-button {
+    border-color: transparent !important;
+    border-radius: 12px !important;
+    box-shadow: var(--peg-boton) !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    opacity: 1 !important;
+}
+html .nui-wrapper .create-button,
+html .nui-wrapper .start-button {
+    background: var(--peg-rosa) !important;
+    color: var(--peg-tinta) !important;
+}
+html .nui-wrapper .create-button:hover,
+html .nui-wrapper .start-button:hover { background: var(--peg-rosa-hover) !important; }
+
+/* Disolver / salir: pieza gris con la letra en rosa oscuro */
+html .nui-wrapper .disband-button {
+    background: var(--peg-pieza) !important;
+    color: var(--peg-rosa-texto) !important;
+}
+html .nui-wrapper .disband-button:hover { background: var(--peg-pieza-hover) !important; }
+
+html .nui-wrapper .close-button:active,
+html .nui-wrapper .create-button:active,
+html .nui-wrapper .start-button:active,
+html .nui-wrapper .disband-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+
+/* ── Campos ────────────────────────────────────────────────────────── */
+html .nui-wrapper .form-input {
+    background: var(--peg-pieza) !important;
+    color: var(--peg-tinta) !important;
+    border-color: transparent !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+    font-family: var(--peg-cifras) !important;
+    font-weight: 800 !important;
+}
+html .nui-wrapper .form-input:focus { box-shadow: inset 0 0 0 1.5px var(--peg-rosa) !important; }
+html .nui-wrapper .form-input:disabled { opacity: 0.75; }
+
+/* ── Sala ──────────────────────────────────────────────────────────── */
+html .nui-wrapper .lobby-table-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18) !important;
+}
+html .nui-wrapper .lobby-table-name { font-weight: 700; }
+html .nui-wrapper .delete-icon { filter: brightness(0); }
+
+html .nui-wrapper .table-container::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.08) !important; }
+html .nui-wrapper .table-container::-webkit-scrollbar-thumb { background: var(--peg-tinta) !important; }
+
+/* ── Tarjeta de puntos (Scoreboard, estilos en línea) ──────────────── */
+html .nui-wrapper > .flex {
+    background: var(--peg-panel) !important;
+    border: 0 !important;
+    outline: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: var(--peg-canto) !important;
+    opacity: 1 !important;
+    overflow: hidden;
+}
+html .nui-wrapper > .flex thead {
+    background: var(--peg-pieza) !important;
+    color: var(--peg-tinta) !important;
+    border-bottom: 0 !important;
+    box-shadow: inset 0 -3px 0 var(--peg-rosa);
+}
+html .nui-wrapper > .flex th {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+html .nui-wrapper > .flex td {
+    color: var(--peg-tinta) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+html .nui-wrapper > .flex td:nth-child(2),
+html .nui-wrapper > .flex td:nth-child(3),
+html .nui-wrapper > .flex td:nth-child(4) {
+    font-family: var(--peg-cifras) !important;
+    font-weight: 800;
+}
+
+/* ── Menú pequeño (07/10) ──────────────────────────────────────────────
+   Crear, unirse y la sala son un formulario corto sin secciones: van como
+   el menú pequeño de todo el servidor (org-input) —columna de 440 px a media
+   altura a la derecha y riel de 64 px del mismo alto, separados 1.2vh (el aire del canto) y
+   despegados 1.2vh del canto—, no como una caja en mitad de la pantalla.
+   Sin tocar el React de rcore: la columna se fija con position:fixed y el
+   riel lo pintan los dos pseudo-elementos de la propia columna (::after el
+   riel con el nombre vertical abajo, ::before la placa rosa con la bandera).
+   La tarjeta de puntos (.nui-wrapper > .flex) va igual: ver su bloque. */
+html .nui-wrapper .container {
+    position: fixed !important;
+    top: 50%;
+    right: calc(1.2vh + 64px + 1.2vh);
+    transform: translateY(-50%);
+    width: 440px !important;
+    height: auto !important;
+    min-height: 300px;
+    max-height: calc(100vh - 2.8vh);
+    box-sizing: border-box;
+}
+html .nui-wrapper .container .body {
+    height: auto !important;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 18px 18px;
+}
+html .nui-wrapper .container .header { padding: 1.4rem 1rem 1.2rem 1.2rem !important; height: auto !important; }
+html .nui-wrapper .container .create-form { width: 100% !important; height: auto !important; padding-bottom: 0 !important; }
+html .nui-wrapper .container .create-button { margin-top: 1.2rem; height: 42px !important; }
+html .nui-wrapper .container .lobby-container { height: auto !important; }
+html .nui-wrapper .container .table-container { height: auto !important; max-height: 40vh; }
+/* El riel: panel gris con canto, del alto de la columna. */
+html .nui-wrapper .container::after {
+    content: "Origen Golf";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(-64px - 1.2vh);
+    width: 64px;
+    box-sizing: border-box;
+    /*  Girado 180° para leerse de abajo arriba, como el nombre de los
+        demás rieles: por eso el hueco va arriba (acaba abajo) y la sombra
+        se escribe al revés (acaba abajo a la derecha). */
+    padding: 16px 0 0;
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: 0 0 0 1.5px #000, -3px -3px 0 1.5px #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--peg-tinta);
+}
+html[data-marca="nacion"] .nui-wrapper .container::after { content: "Nación Golf"; }
+/* La placa de arriba del riel: gris con la bandera en rosa, como la de
+   todos los rieles de menú (07/10). */
+html .nui-wrapper .container::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    right: calc(-64px - 1.2vh + 10px);
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: none;
+    background: var(--peg-pieza) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22V3'/%3E%3Cpath d='M6 3l12 4.5L6 12'/%3E%3Cellipse cx='12' cy='21' rx='8' ry='1.6'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+/* ══ MENÚ PEQUEÑO · piel de org-input (07/10, 2ª pasada) ═══════════════
+   «Unirse a la sala», «Crear sala» y la sala al calco de org-input y del
+   menú pequeño del baloncesto (skill origen-dialogo). Sin tocar el React:
+   - Cabecera de la casa: la placa rosa girada −5° la pinta .header::before
+     (colgada de la columna: la cabecera queda static); el antetítulo rosa es
+     el «Club de Golf de Los Santos» de rcore; el título y el renglón gris
+     son el h1/p del cuerpo, con el filete rosa de 3 px debajo.
+   - Sin la X: el botón de cerrar de rcore baja al pie como «Cerrar» (pieza)
+     junto a «Crear sala»/«Unirse» (rosa); la raya negra del pie es .body::after.
+   - «Sin… / Alquilar…»: cada casilla redonda se estira por debajo de su
+     pareja y hace de PIEZA (z-index −1 dentro de su pareja): la elegida con
+     el anillo y la sombra en rosa, como .on de org-input.
+   - Los hoyos: pista de una pieza; el tramo elegido en rosa lo pinta el
+     propio react-range (colores cambiados en el compilado y en Create.tsx). */
+html .nui-wrapper .container {
+    border-top: 4px solid var(--peg-panel) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+    text-align: left !important;
+    font-size: 16px !important;
+}
+/* El riel: arriba en el canto de la columna (con su filo de 4 px), la raya
+   negra bajo la placa (va al revés: el riel está girado 180°). */
+html .nui-wrapper .container::after {
+    top: -4px;
+    background: linear-gradient(#000, #000) center bottom 72px / 22px 2px no-repeat, var(--peg-panel);
+}
+/* La placa del riel, como riel__marca: pieza gris con el icono en rosa. */
+html .nui-wrapper .container::before {
+    top: 14px;
+    transform: none;
+    background: var(--peg-pieza) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22V3'/%3E%3Cpath d='M6 3l12 4.5L6 12'/%3E%3Cellipse cx='12' cy='21' rx='8' ry='1.6'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html .nui-wrapper .container .header {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    padding: 14px 22px 0 80px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+html .nui-wrapper .container .header::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: var(--peg-pieza) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22V3'/%3E%3Cpath d='M6 3l12 4.5L6 12'/%3E%3Cellipse cx='12' cy='21' rx='8' ry='1.6'/%3E%3C/svg%3E") center / 21px 21px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+/*  El antetítulo: rosa, pequeño, mayúsculas espaciadas. */
+html .nui-wrapper .container .logo-text {
+    display: block !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.28em !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    color: var(--peg-rosa-texto) !important;
+}
+/*  El título (h1 del cuerpo) y el renglón gris, con el filete rosa. */
+html .nui-wrapper .container .body {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding: 0 0 18px !important;
+    text-align: left !important;
+}
+html .nui-wrapper .container .join-title,
+html .nui-wrapper .container .lobby-title {
+    margin: 3px 0 0 !important;
+    padding: 0 22px 0 80px !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 29px !important;
+    line-height: 0.95 !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    color: var(--peg-tinta) !important;
+}
+html .nui-wrapper .container .join-description {
+    margin: 0 !important;
+    padding: 5px 22px 15px 80px !important;
+    font-family: "Barlow", "Segoe UI", sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    text-align: left !important;
+    color: var(--peg-tinta-2) !important;
+}
+html .nui-wrapper .container .join-description,
+html .nui-wrapper .container .lobby-title {
+    background: linear-gradient(var(--peg-rosa), var(--peg-rosa)) left 22px bottom / calc(100% - 44px) 3px no-repeat !important;
+}
+html .nui-wrapper .container .lobby-title { padding-bottom: 15px !important; }
+
+/* ── Cuerpo ─────────────────────────────────────────────────────────── */
+html .nui-wrapper .container .create-form {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 16px 20px 0 22px !important;
+}
+html .nui-wrapper .container .form-section { margin: 0 !important; }
+html .nui-wrapper .container .form-section + .form-section { margin-top: 16px !important; }
+/*  Rótulo de grupo. */
+html .nui-wrapper .container .form-title {
+    padding: 0 0 8px 2px !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    line-height: 1.15 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    color: var(--peg-tinta) !important;
+}
+/*  Las dos opciones de cada fila: piezas. */
+html .nui-wrapper .container .double-checkbox {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px !important;
+    padding: 0 !important;
+}
+html .nui-wrapper .container .checkbox-pair {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    min-width: 0 !important;
+    padding: 10px 14px !important;
+    border-radius: 11px;
+    text-align: left !important;
+    cursor: pointer;
+}
+html .nui-wrapper .container .checkbox {
+    position: absolute !important;
+    z-index: -1;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 11px !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: var(--peg-pieza) !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    transition: background 0.16s ease, box-shadow 0.16s ease !important;
+}
+html .nui-wrapper .container .checkbox-pair:hover .checkbox { background: #e6e7ea !important; }
+html .nui-wrapper .container .checkbox:checked {
+    background: var(--peg-pieza) !important;
+    box-shadow: inset 0 0 0 2px var(--peg-rosa), 2px 2px 0 var(--peg-rosa) !important;
+}
+html .nui-wrapper .container .checkbox-text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 0 3px 0 0 !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    font-size: 17px !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta) !important;
+}
+/*  La marca redonda de la opción (oi-marca--radio). */
+html .nui-wrapper .container .checkbox-text::before {
+    content: "";
+    flex: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .nui-wrapper .container .checkbox:checked + .checkbox-text::before {
+    background: radial-gradient(circle, #000 0 3.5px, var(--peg-rosa) 4px);
+}
+/*  La apuesta escrita. */
+html .nui-wrapper .container .form-input {
+    height: auto !important;
+    margin-top: 10px;
+    padding: 10px 14px 9px !important;
+    font-size: 19px !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+}
+html .nui-wrapper .container .form-input:focus { box-shadow: inset 0 0 0 2px var(--peg-rosa), 2px 2px 0 var(--peg-rosa) !important; }
+html .nui-wrapper .container .form-input::placeholder { color: #73737c !important; opacity: 1 !important; font-family: "Barlow Condensed", sans-serif; font-weight: 600; }
+
+/*  Los hoyos: pista de una pieza, tramo elegido en rosa, asas pieza. */
+html .nui-wrapper .container [style*="height: 36px"] { height: 28px !important; padding: 0 9px; box-sizing: border-box; }
+html .nui-wrapper .container [style*="height: 5px"][style*="border-radius: 4px"] {
+    height: 12px !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+html .nui-wrapper .container [role="slider"] {
+    width: 18px !important;
+    height: 26px !important;
+    border-radius: 7px !important;
+    background: var(--peg-pieza) !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    outline: none !important;
+    cursor: grab;
+}
+html .nui-wrapper .container [role="slider"] > div {
+    width: 2px !important;
+    height: 10px !important;
+    border-radius: 1px;
+    background: var(--peg-tinta) !important;
+}
+/*  Las marcas de cada hoyo (5×16 blancas): fuera, la pista ya se lee. */
+html .nui-wrapper .container [style*="height: 16px"][style*="width: 5px"]:not([role="slider"] > div) { display: none !important; }
+html .nui-wrapper .container #output {
+    margin-top: 6px !important;
+    padding: 0 !important;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    color: var(--peg-tinta) !important;
+}
+
+/* ── Minijuegos (radios de verdad): la misma pieza ──────────────────── */
+html .nui-wrapper .container .minigame-title {
+    margin: 16px 0 8px !important;
+    padding-left: 2px;
+    font-size: 15px !important;
+    text-align: left !important;
+}
+html .nui-wrapper .container .minigame-container { align-items: stretch !important; }
+html .nui-wrapper .container .minigame-radio {
+    position: relative;
+    z-index: 0;
+    display: block !important;
+    margin: 10px 0 0 !important;
+    padding: 10px 14px 10px 42px !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+html .nui-wrapper .container .minigame-radio:first-child { margin-top: 0 !important; }
+html .nui-wrapper .container .minigame-radio input {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 11px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--peg-pieza);
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    cursor: pointer;
+}
+html .nui-wrapper .container .minigame-radio input:checked {
+    box-shadow: inset 0 0 0 2px var(--peg-rosa), 2px 2px 0 var(--peg-rosa);
+}
+html .nui-wrapper .container .minigame-radio::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html .nui-wrapper .container .minigame-description {
+    margin-top: 5px;
+    padding: 0 2px;
+    font-size: 14px !important;
+    line-height: 1.35;
+}
+
+/* ── Pie: «Cerrar» (pieza) y el que confirma (rosa) ─────────────────── */
+html .nui-wrapper .container .body::after {
+    content: "";
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 78px;
+    height: 1.5px;
+    background: #000;
+}
+html .nui-wrapper .container .close-button {
+    position: absolute !important;
+    left: 22px;
+    bottom: 18px;
+    width: 116px !important;
+    height: 46px !important;
+    border-radius: 10px !important;
+    background: var(--peg-pieza) !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+html .nui-wrapper .container .close-button:hover { background: #e6e7ea !important; }
+html .nui-wrapper .container .close-button svg { display: none !important; }
+html .nui-wrapper .container .close-button::after {
+    content: "Cerrar";
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000;
+}
+html .nui-wrapper .container .create-button,
+html .nui-wrapper .container .start-button,
+html .nui-wrapper .container .disband-button {
+    height: 46px !important;
+    padding: 0 14px !important;
+    border-radius: 10px !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    font-size: 19px !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+html .nui-wrapper .container .create-button {
+    display: block;
+    width: calc(100% - 126px) !important;
+    margin: 32px 0 0 126px !important;
+    font-size: 20px !important;
+}
+html .nui-wrapper .container .lobby-container {
+    display: block !important;
+    padding: 0 20px 0 22px !important;
+}
+html .nui-wrapper .container .lobby-container .lobby-title { margin-left: -22px !important; margin-right: -20px !important; }
+html .nui-wrapper .container .table-container { margin-top: 16px; }
+html .nui-wrapper .container .buttons-control {
+    display: flex !important;
+    gap: 10px;
+    height: auto !important;
+    margin: 32px 0 0 126px !important;
+    width: calc(100% - 126px) !important;
+}
+html .nui-wrapper .container .buttons-control > button { flex: 1; width: auto !important; min-width: 0; margin: 0 !important; }
+html .nui-wrapper .container .lobby-container > .disband-button {
+    display: block;
+    width: calc(100% - 126px) !important;
+    margin: 32px 0 0 126px !important;
+}
+html .nui-wrapper .container .close-button:active,
+html .nui-wrapper .container .create-button:active,
+html .nui-wrapper .container .start-button:active,
+html .nui-wrapper .container .disband-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000 !important;
+}
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* ── La tarjeta de puntos, en menú pequeño (07/10) ────────────────────
+   Iba en mitad de la pantalla, un tercio de ancho. Ahora como el resto:
+   columna de 440 a media altura a la derecha y riel de 64 dibujado por
+   los pseudo-elementos (mismo riel que crear y unirse). La columna deja de
+   recortar para que se vea el riel; las esquinas de la cabecera de la tabla
+   se redondean a mano. */
+html .nui-wrapper > .flex {
+    position: fixed !important;
+    top: 50%;
+    right: calc(1.2vh + 64px + 1.2vh);
+    transform: translateY(-50%);
+    width: 440px !important;
+    min-height: 300px;
+    max-height: calc(100vh - 2.8vh);
+    box-sizing: border-box;
+    padding: 0 0 12px;
+    overflow: visible !important;
+}
+html .nui-wrapper > .flex table { border-collapse: separate; border-spacing: 0; align-self: flex-start; }
+html .nui-wrapper > .flex th { padding: 14px 10px 13px; }
+html .nui-wrapper > .flex th:first-child { border-top-left-radius: 20px; padding-left: 22px; text-align: left; }
+html .nui-wrapper > .flex th:last-child { border-top-right-radius: 20px; padding-right: 22px; }
+html .nui-wrapper > .flex td { padding: 9px 10px; text-align: center; }
+html .nui-wrapper > .flex td:first-child { padding-left: 22px; text-align: left; font-weight: 600; }
+html .nui-wrapper > .flex td:last-child { padding-right: 22px; }
+html .nui-wrapper > .flex::after {
+    content: "Origen Golf";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(-64px - 1.2vh);
+    width: 64px;
+    box-sizing: border-box;
+    padding: 16px 0 0;
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: 0 0 0 1.5px #000, -3px -3px 0 1.5px #000;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    pointer-events: none;
+}
+html[data-marca="nacion"] .nui-wrapper > .flex::after { content: "Nación Golf"; }
+html .nui-wrapper > .flex::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 14px;
+    right: calc(-64px - 1.2vh + 10px);
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--peg-pieza) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d81b55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 22V3'/%3E%3Cpath d='M6 3l12 4.5L6 12'/%3E%3Cellipse cx='12' cy='21' rx='8' ry='1.6'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    pointer-events: none;
+}
+
+/* ── Rótulo a brocha bajo el título (08/10) ──────────────────────────────
+   Crear/unirse y la sala llevaban antetítulo y título sin la segunda línea a
+   brocha del resto de menús. El React no se toca: la frase va en el
+   ::after del h1, EN FLUJO (display:block), así empuja el renglón gris y el
+   filete rosa en vez de pisarlos. Se anulan la cursiva y las mayúsculas que
+   hereda del título. El rosa es literal: en Nación lo repinta kit/marca.js. */
+html .nui-wrapper .container .join-title::after,
+html .nui-wrapper .container .lobby-title::after {
+    display: block;
+    margin: 6px 0 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal; font-weight: 400;
+    font-size: 20px; line-height: 1; letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html .nui-wrapper .container .join-title::after { content: "Al hoyo"; }
+html .nui-wrapper .container .lobby-title::after { content: "Cada golpe cuenta"; }

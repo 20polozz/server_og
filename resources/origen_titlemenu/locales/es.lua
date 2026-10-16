@@ -1,0 +1,70 @@
+Lang = Lang or {}
+
+Lang['es'] = {
+    general = {
+        lastLocation = 'Última ubicación',
+        createCharacter = 'Crear personaje',
+        createCharacter_Motel = 'Crear personaje en el motel',
+    },
+    notification = {
+        playerNotOnline = 'El jugador está en línea', 
+        needID = 'Debes introducir una ID válida', 
+        alreadyMaxSlot = 'Ya tienes el máximo de personajes',
+        givePlayerSlot = 'Has dado un slot al usuario, ahora tiene %s slots',
+        removePlayerSlot = 'Has quitado un slot al usuario, ahora tiene %s slots',
+        notPlayerSlotExtra = 'El jugador no tiene slots extra',
+        playerDefaultSlots = 'El jugador ya tiene %s slots por defecto',
+        not_login = 'El jugador no está conectado',
+        not_valid_id = 'Debes introducir una ID válida',
+        close_session = '^2[TitleMenu]^7 %s ha cerrado la sesión de %s',
+        no_perms = "No tienes permisos para usar este comando",
+    },
+    commands = {
+        logout = 'logout', -- Comando para cerrar sesión
+        logout_help = 'Cierra sesión en el servidor (Only Staff)',
+        giveslot = 'giveslot', -- Comando para dar un slot extra a un jugador
+        giveslot_help = 'Da un slot extra a un jugador (Only Staff)',
+        removeslot = 'removeslot', -- Comando para quitar un slot extra a un jugador
+        removeslot_help = 'Quita un slot extra a un jugador (Only Staff)',
+        playerID = 'ID del jugador',
+    },
+    nui = {
+        loading = 'Cargando tus personajes',
+        access =  'Acceder',
+        play = 'Jugar',
+        back = 'atrás',
+        bank = 'banco',
+        continue = 'continuar',
+        male = 'Hombre',
+        female = 'Mujer',
+        name = 'Nombre',
+        name_des = 'Inserta tu nombre',
+        last_name_desc = 'Inserta tu apellido',
+        last_name = 'Apellido',
+        rules = 'REGLAS',
+        general_rules = 'Reglas Generales',
+        ilegal_rules = 'Reglas Ilegales',
+        aval_soon = 'Seccion disponible Proximamente',
+        controls = 'CONTROLES',
+        about = 'SOBRE NOSOTROS',
+        store = 'ORIGEN STORE',
+        home = 'INICIO',
+        birthday = 'Cumpleaños',
+        birthday_input = 'DD/MM/AAAA',
+        acopation = 'Ocupacion',
+        country = 'Nacionalidad',
+        nationality = 'Nacionalidad',
+        locked = 'slot bloqueado',
+        slot = 'slot',
+        choose_slot = 'Elige un slot',
+        all_ready = 'Listo !!',
+        choose_spawn = 'Elige el punto donde quieres aparecer',
+        unlock_slot = 'Has desbloqueado un slot',
+        unlock_s = 'Slot desbloqueado',
+        creating_character = 'Creando personaje',
+        spawn_here = 'Aparecer Aqui',   
+        buy_property = 'Adquirir esta propiedad',
+        loanding_ubi = 'Cargando tu ubicación',
+
+    } 
+}

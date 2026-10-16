@@ -1,0 +1,754 @@
+<html>
+
+<head>
+    <title>Origen Menú</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="build/css/countrySelect.css">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- <script src="https://kit.fontawesome.com/1c4b4851e0.js" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.min.css"
+        integrity="sha512-Mvnc3gzZhD8rZtNMHJkotZpdfvAHunpqankLPnj3hXpphETXpxbfr4+oNMOzF179JYu8B8/EqruGdpsH5fNYww=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/theme.min.css"
+        integrity="sha512-Q2qvb9omuMvaoo6ofA3xaiD3b1aA7BlQGYxEOTij6i4HRsDNB7K2uEUHbbymUqqFDduToacMzKNYYVRwe4H2yw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+        integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
+
+</head>
+
+<body>
+    <div class="menu-container principal" style="display:none">
+        <!-- <video preload="auto" loop infinite autoplay muted class="bg-imagen">
+                <source src="https://origennetwork.com/videos/v7/bg.mp4?a" type="video/mp4">
+            </video> -->
+        <div class="bg-wrapper">
+            <div class="bg-inner"></div>
+        </div>
+        <div class="moving-clouds"></div>
+        <div class="grid-bg ba-grid anim">
+            <div class="inner"></div>
+        </div>
+        <div class="menu-section title-screen" style="display:none !important">
+            <div class="title-content">
+                <img src="./assets/logo.png" class="server-logo" id="brand-logo-main">
+                <div class="iniciar-container">
+                    <div class="btn-iniciar">
+                        <div class="btn-bg"></div>
+                        <div translate="access">ACCESS</div>
+                        <div class="loading-box">
+                            <img src="assets/loading.svg">
+                        </div>
+                        <div class="loading-info">
+                            <span class="text" translate="loading">LOADING YOU CHARACTERS</span>
+                            <span class="dot-animation">
+                                <span class="dot-1">.</span>
+                                <span class="dot-2">.</span>
+                                <span class="dot-3">.</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-section home-screen" style="display:block">
+            <div class="modern-header animate__animated animate__fadeInDown">
+                <nav class="header-nav">
+                    <a class="nav-link active" id="nav-home">
+                        <span translate="home">INICIO</span>
+                    </a>
+                    <a class="nav-link seccion-nav" seccion="normativa">
+                        <span translate="rules">REGLAS</span>
+                    </a>
+                    <a class="nav-link seccion-nav" seccion="controles">
+                        <span translate="controls">CONTROLES</span>
+                    </a>
+                    <a class="nav-link seccion-nav" seccion="nosotros">
+                        <span translate="about">SOBRE NOSOTROS</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="modern-content">
+                <div class="hero-section">
+                    <div class="hero-left">
+                        <h1 class="hero-title animate__animated animate__fadeInLeft">BIENVENIDO A</h1>
+                        <h2 class="hero-subtitle animate__animated animate__fadeInLeft" style="animation-delay:0.2s" id="brand-server-name">
+                            ORIGEN NETWORK</h2>
+                        <p class="hero-description animate__animated animate__fadeInLeft" style="animation-delay:0.4s" id="brand-hero-description">
+                            Vive la mejor experiencia de roleplay en FiveM. Servidor activo desde 2020 con más de 50,000
+                            jugadores registrados.
+                        </p>
+                        <div class="hero-features animate__animated animate__fadeInUp" style="animation-delay:0.6s">
+                            <div class="feature-item">
+                                <i class="lni lni-checkmark-circle"></i>
+                                <span>Sistema económico realista</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="lni lni-checkmark-circle"></i>
+                                <span>Vehículos custom</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="lni lni-checkmark-circle"></i>
+                                <span>Staff activo 24/7</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="lni lni-checkmark-circle"></i>
+                                <span>Actualizaciones semanales</span>
+                            </div>
+                        </div>
+                        <div class="hero-actions animate__animated animate__fadeInUp" style="animation-delay:0.8s">
+                            <button class="hero-btn primary" id="start-play">
+                                <i class="lni lni-game"></i>
+                                <span translate="play">EMPEZAR A JUGAR</span>
+                            </button>
+                            <button class="hero-btn secondary link" id="brand-discord-link" url="https://discord.gg/elorigenrp">
+                                <!-- <i class="lni lni-discord"></i> -->
+                                <span>ÚNETE A NUESTRA COMUNIDAD</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-right animate__animated animate__fadeInRight">
+                        <div class="server-preview">
+                            <div class="video-container">
+                                <div class="video-wrapper">
+                                    <div id="youtube-player"></div>
+                                    <div class="video-overlay"></div>
+                                    <div class="video-fade" id="video-fade"></div>
+                                </div>
+                                <div class="video-label">
+                                    <i class="lni lni-video"></i>
+                                    <span id="video-title">GAMEPLAY EN VIVO</span>
+                                </div>
+                            </div>
+                            <div class="quick-stats">
+                                <div class="quick-stat">
+                                    <i class="lni lni-signal"></i>
+                                    <div class="quick-stat-info">
+                                        <span class="quick-stat-label">LATENCIA</span>
+                                        <span class="quick-stat-value" id="server-latency">25ms</span>
+                                    </div>
+                                </div>
+                                <div class="quick-stat">
+                                    <i class="lni lni-network"></i>
+                                    <div class="quick-stat-info">
+                                        <span class="quick-stat-label">VERSIÓN</span>
+                                        <span class="quick-stat-value" id="server-version">v4.2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modern-footer animate__animated animate__fadeInUp animate__faster"
+                    style="animation-delay:0.5s">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="lni lni-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="players-online">0/512</div>
+                            <div class="stat-label" translate="online">JUGADORES ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="lni lni-timer"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="server-uptime">--:--</div>
+                            <div class="stat-label" translate="uptime">UPTIME DEL SERVIDOR</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="lni lni-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="staff-online">0</div>
+                            <div class="stat-label">STAFF ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="lni lni-gift"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value" translate="update_title">¡NUEVA UPDATE!</div>
+                            <div class="stat-label" translate="whats_new">NOVEDADES</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="secciones">
+                <div class="normativa seccion animate__animated animate__fadeInUp">
+                    <div class="seccion-title" translate="rules">
+                        <i class="lni lni-shield"></i>
+                        <span>NORMATIVA</span>
+                    </div>
+                    <div class="seccion-content rules-grid animate__animated animate__fadeInUp">
+                        <div class="rules-column animate__animated animate__fadeInLeft">
+                            <h3 class="rules-column-title" translate="general_rules">
+                                <i class="lni lni-shield"></i>
+                                <span>REGLAS GENERALES</span>
+                            </h3>
+                            <div class="rules-cards-container">
+                                <!-- Las reglas se cargarán dinámicamente desde JavaScript -->
+                            </div>
+                        </div>
+                        <div class="rules-column animate__animated animate__fadeInRight">
+                            <h3 class="rules-column-title ilegal" translate="ilegal_rules">
+                                <i class="lni lni-warning"></i>
+                                <span>REGLAS ILEGALES</span>
+                            </h3>
+                            <div class="rules-cards-container-ilegal">
+                                <!-- Las reglas se cargarán dinámicamente desde JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controles seccion animate__animated animate__fadeInUp">
+                    <div class="seccion-title" translate="controls">
+                        <i class="lni lni-keyboard"></i>
+                        <span>CONTROLES</span>
+                    </div>
+                    <div class="seccion-content controls-grid animate__animated animate__fadeInUp">
+                        <div id="controls-container" class="modern-controls-container">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nosotros seccion animate__animated animate__fadeInUp">
+                    <div class="seccion-title" translate="about">
+                        <i class="lni lni-star"></i>
+                        <span>SOBRE ORIGEN NETWORK</span>
+                    </div>
+                    <div class="seccion-content about-content animate__animated animate__fadeInUp">
+                        <div class="about-hero-card">
+                            <h3>Sobre Nosotros - Origen Network</h3>
+                            <p>
+                                En Origen Network no solo construimos un servidor de roleplay: construimos una
+                                experiencia propia, única y diferente. Apostamos por desarrollar nuestros propios
+                                scripts y mapas personalizados para ofrecer un entorno inmersivo, optimizado y
+                                pensado para el roleplay serio.
+                            </p>
+                            <p>
+                                Nuestra propuesta combina tecnología, diseño de producto y visión de comunidad. Cada
+                                decisión se toma con un objetivo claro: garantizar estabilidad, rendimiento y una
+                                experiencia coherente para todos los perfiles de jugador.
+                            </p>
+                        </div>
+                        <div class="about-body-grid">
+                            <div class="about-story-card">
+                                <h4>Una visión clara</h4>
+                                <p>
+                                    Desde el primer día decidimos no ser uno más. Somos pioneros en apostar por el
+                                    desarrollo interno, en no depender de recursos externos y en construir una
+                                    identidad auténtica. Cada sistema, cada mecánica y cada rincón del mapa reflejan
+                                    horas de trabajo, pruebas y mejora constante.
+                                </p>
+                                <p>
+                                    No olvidamos a todas las personas que han pasado por este proyecto y han dejado su
+                                    huella. Este crecimiento es el resultado del esfuerzo acumulado de muchos, junto al
+                                    trabajo diario de un staff que mantiene el orden, apoya a la comunidad y protege
+                                    la calidad del rol.
+                                </p>
+                                <p>
+                                    Nuestra filosofía de mejora continua impulsa nuevos sistemas, ajustes semanales y
+                                    evoluciones constantes del mapa. En Origen Network trabajamos con mentalidad de
+                                    largo plazo: consolidar una base sólida, mantener estándares altos y seguir
+                                    marcando diferencia dentro del roleplay nacional.
+                                </p>
+                            </div>
+                            <div class="about-team-card">
+                                <h4>Equipo de Programación</h4>
+                                <div class="about-team-grid">
+                                    <span>DanielGP</span>
+                                    <span>Becker</span>
+                                    <span>Trend</span>
+                                    <span>Santi</span>
+                                    <span>PVPMalaga</span>
+                                    <span>Adri</span>
+                                    <span>Fishi</span>
+                                </div>
+                                <p>
+                                    Un equipo técnico comprometido con la calidad, la escalabilidad y la innovación del
+                                    proyecto. Su trabajo diario se coordina con staff y administración para transformar
+                                    ideas en funcionalidades reales, medibles y estables.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="about-pillars">
+                            <div class="about-pill"><i class="fa-solid fa-code"></i><span>Desarrollo interno</span></div>
+                            <div class="about-pill"><i class="fa-solid fa-map-location-dot"></i><span>Mapas propios</span></div>
+                            <div class="about-pill"><i class="fa-solid fa-shield-heart"></i><span>Staff comprometido</span></div>
+                            <div class="about-pill"><i class="fa-solid fa-rocket"></i><span>Evolución constante</span></div>
+                        </div>
+                        <div class="about-actions">
+                            <div class="about-btn link" id="brand-youtube-link" url="https://www.youtube.com/@origennetwork3412/">
+                                <i class="lni lni-youtube"></i>
+                                <span translate="watch_trailer">VER TRAILER</span>
+                            </div>
+                        </div>
+                        <div class="about-powered">Powered By Origen Network</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="volume-control-container">
+            <div class="volume-control">
+                <div class="volume-slider-wrapper">
+                    <progress value="90" max="100" min="0" id="progress-volumen"></progress>
+                    <input type="range" id="inp-musicvolume" oninput="sliderselector(this)" value="50" min="0" max="100"
+                        style="opacity:0;width: 100%;transform: translate(-1vh, -1vh);height: .7tuvh; position:absolute;top:0;left:0;"></input>
+                </div>
+                <span class="volume-icon">
+                    <i class="fa-solid fa-volume-high"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-container slots-container" style="display:none;background-size:cover;width:100%;height:100%;">
+        <div class="radial-bg"></div>
+        <div class="info-pj">
+            <div class="back-button slots-selection animate__animated animate__fadeInDown animate__faster">
+                <i class="fa-solid fa-chevron-left"></i>
+                <div translate="back">BACK</div>
+            </div>
+            <div class="streak-goals-bar">
+                <div class="streak-goals-head">
+                    <div class="streak-title-wrap">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <span class="streak-title">RACHA DIARIA</span>
+                    </div>
+                    <div class="streak-days-main"><span id="streak-days-main">0</span> DÍAS</div>
+                </div>
+                <div class="streak-track">
+                    <div class="streak-track-fill" id="streak-track-fill"></div>
+                </div>
+                <div class="streak-milestones">
+                    <div class="streak-milestone" data-goal="3">
+                        <div class="dot">3</div>
+                        <div class="label">META</div>
+                    </div>
+                    <div class="streak-milestone" data-goal="7">
+                        <div class="dot">7</div>
+                        <div class="label">META</div>
+                    </div>
+                    <div class="streak-milestone" data-goal="14">
+                        <div class="dot">14</div>
+                        <div class="label">META</div>
+                    </div>
+                    <div class="streak-milestone" data-goal="30">
+                        <div class="dot">30</div>
+                        <div class="label">MÁX</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pj-info-right">
+                <div class="pj-stats-card">
+                    <div class="pj-info-container">
+                        <div class="d-flex">
+                            <div class="pj-stats">
+                                <div class="stat heart">
+                                    <div class="stat-icon">
+                                        <i class="lni lni-heart"></i>
+                                    </div>
+                                    <div class="stat-progress">
+                                        <div class="stat-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="stat hunger">
+                                    <div class="stat-icon">
+                                        <i class="lni lni-burger"></i>
+                                    </div>
+                                    <div class="stat-progress">
+                                        <div class="stat-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="stat thirst">
+                                    <div class="stat-icon">
+                                        <i class="lni lni-juice"></i>
+                                    </div>
+                                    <div class="stat-progress">
+                                        <div class="stat-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pj-data-card">
+                    <div class="top-bar">
+                        <div class="d-flex">
+                            <div class="data-info" style="transition-delay:0.45s">
+                                <div class="info-icon">
+                                    <img src="assets/birthday.svg">
+                                </div>
+                                <div class="info-data-container">
+                                    <div class="title" translate="birthday">BIRTHDAY</div>
+                                    <div class="info-data birthdate"></div>
+                                </div>
+                            </div>
+                            <div class="data-info" style="transition-delay:0.30s">
+                                <div class="info-icon">
+                                    <img src="assets/job.svg">
+                                </div>
+                                <div class="info-data-container">
+                                    <div class="title" translate="acopation">OCUPATION</div>
+                                    <div class="info-data job"></div>
+                                </div>
+                            </div>
+                            <div class="data-info" style="transition-delay:0.15s">
+                                <div class="info-icon">
+                                    <img src="assets/world.svg">
+                                </div>
+                                <div class="info-data-container">
+                                    <div class="title" translate="nationality">NACIONALITY</div>
+                                    <div class="info-data nationality"></div>
+                                </div>
+                            </div>
+                            <div class="data-info">
+                                <div class="info-icon">
+                                    <img src="assets/bank.svg">
+                                </div>
+                                <div class="info-data-container">
+                                    <div class="title" translate="bank">BANK</div>
+                                    <div class="info-data bank">-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar animate__animated animate__fadeInUp animate__faster">
+            <div class="d-flex flex-column h-100 slots-content side-panel player-content">
+                <div class="title">INFO PERSONAJE</div>
+                <div class="separator"></div>
+                <div class="player-info-list">
+                    <div class="player-info-item">
+                        <div class="player-info-label">CUMPLEAÑOS</div>
+                        <div class="player-info-value info-data birthdate">-</div>
+                    </div>
+                    <div class="player-info-item">
+                        <div class="player-info-label">OCUPACIÓN</div>
+                        <div class="player-info-value info-data job">-</div>
+                    </div>
+                    <div class="player-info-item">
+                        <div class="player-info-label">NACIONALIDAD</div>
+                        <div class="player-info-value info-data nationality">-</div>
+                    </div>
+                    <div class="player-info-item">
+                        <div class="player-info-label">BANCO</div>
+                        <div class="player-info-value info-data bank">-</div>
+                    </div>
+                </div>
+                <div class="player-extra-grid">
+                    <div class="player-extra-item">
+                        <div class="player-extra-label">ÚLT. SESIÓN</div>
+                        <div class="player-extra-value player-last-session">-</div>
+                    </div>
+                    <div class="player-extra-item">
+                        <div class="player-extra-label">TIEMPO JUGADO</div>
+                        <div class="player-extra-value player-playtime">-</div>
+                    </div>
+                    <div class="player-extra-item">
+                        <div class="player-extra-label">RACHA</div>
+                        <div class="player-extra-value player-streak">0 DÍAS</div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="player-stats-list">
+                    <div class="stat heart">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="stat-bar"></div>
+                        </div>
+                    </div>
+                    <div class="stat hunger">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="stat-bar"></div>
+                        </div>
+                    </div>
+                    <div class="stat thirst">
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="stat-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-column h-100 slots-content side-panel character-slots-content">
+                <div class="title">TUS PERSONAJES</div>
+                <div class="separator"></div>
+                <div class="slots">
+                    <div class="slot desbloqueado" slot="1">
+                        <div class="img-container">
+                            <div class="img-slot"></div>
+                        </div>
+                        <div class="slot-info">
+                            <div class="slot-name" translate="locked">SLOT LOCKED</div>
+                            <div class="slot-number">SLOT 1</div>
+                        </div>
+                    </div>
+                    <div class="slot bloqueado" slot="2">
+                        <div class="img-container">
+                            <div class="img-slot"></div>
+                        </div>
+                        <div class="slot-info">
+                            <div class="slot-name" translate="locked">SLOT LOCKED</div>
+                            <div class="slot-number">SLOT 2</div>
+                        </div>
+                    </div>
+                    <div class="slot" slot="3">
+                        <div class="img-container">
+                            <div class="img-slot"></div>
+                        </div>
+                        <div class="slot-info">
+                            <div class="slot-name" translate="locked">SLOT LOCKED</div>
+                            <div class="slot-number">SLOT 3</div>
+                        </div>
+                    </div>
+                    <div class="slot" slot="4">
+                        <div class="img-container">
+                            <div class="img-slot"></div>
+                        </div>
+                        <div class="slot-info">
+                            <div class="slot-name" translate="locked">SLOT LOCKED</div>
+                            <div class="slot-number">SLOT 4</div>
+                        </div>
+                    </div>
+                    <div class="slot" slot="5">
+                        <div class="img-container">
+                            <div class="img-slot"></div>
+                        </div>
+                        <div class="slot-info">
+                            <div class="slot-name" translate="locked">SLOT LOCKED</div>
+                            <div class="slot-number">SLOT 5</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="select-button">
+                    <div class='container-select' translate="choose_slot">
+                        CHOOSE ONE SLOT</div>
+                </div>
+            </div>
+        </div>
+        <div class="register">
+            <div class="back-button animate__animated animate__fadeInDown animate__faster">
+                <i class="fa-solid fa-chevron-left"></i>
+                <div translate="back">BACK</div>
+            </div>
+            <div class="d-flex w-100 h-100">
+                <div class="register-form-container slots-content">
+                    <div class="title register-title">Crea tu personaje</div>
+                    <div class="separator register-sep"></div>
+                    <div class="register-inputs">
+                        <div class="register-data">
+                            <div class="title" translate="name">Name</div>
+                            <input type="text" class="name input-register" validation="validation-name" maxlength="15"
+                                placeholder="Insert your name" translate="name_des">
+                        </div>
+                        <div class="register-data">
+                            <div class="title" translate="last_name">Last Name</div>
+                            <input type="text" class="surname input-register" validation="validation-surname"
+                                maxlength="20" placeholder="Insert your lastname" translate="last_name_desc">
+                        </div>
+                        <div class="register-data">
+                            <div class="title" translate="birthday">Birthday</div>
+                            <input type="text" id="calendar" class="date input-register" validation="validation-date"
+                                placeholder="DD/MM/AAAA" translate="birthday_input" />
+                        </div>
+                        <div class="register-data">
+                            <div class="title" translate="country">Country</div>
+                            <input type="text" class="input-register" id="country">
+                        </div>
+                    </div>
+                    <div class="genero-container">
+                        <div class="genero" genero="0"><i class="fa-solid fa-mars"></i>
+                            <div translate="male">Male</div>
+                        </div>
+                        <div class="genero" genero="1"><i class="fa-solid fa-venus"></i>
+                            <div translate="female">Female</div>
+                        </div>
+                    </div>
+                    <div class="center-container">
+                        <div class="btn-register btn-anim disabled">
+                            <div class="btn-bg"></div>
+                            <div translate="all_ready">¡ALL READY!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spawn-selector">
+            <div class="back-button spawn-selection animate__animated animate__fadeInDown animate__faster">
+                <i class="fa-solid fa-chevron-left"></i>
+                <div translate="back">BACK</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-center w-100 h-100 spawn-layout">
+                <div class="container-spawn">
+                    <div class="map-container">
+                        <div id="mapCentral" class="map"></div>
+
+                    </div>
+                    <div class="right-spawn">
+                        <h1 class="animate__animated animate__bounceInDown"><i class="fa-solid fa-bed"></i>
+                            <div>ÚLTIMA UBICACIÓN</div>
+                        </h1>
+                        <div class="spawn-spotlight">
+                            <div class="spotlight-server-grid">
+                                <div class="spot-chip">
+                                    <div class="spot-chip-icon"><i class="fa-solid fa-users"></i></div>
+                                    <div class="spot-chip-data">
+                                        <span>Jugadores</span>
+                                        <strong id="spawn-server-online">--/--</strong>
+                                    </div>
+                                </div>
+                                <div class="spot-chip">
+                                    <div class="spot-chip-icon"><i class="fa-solid fa-user-shield"></i></div>
+                                    <div class="spot-chip-data">
+                                        <span>Staff online</span>
+                                        <strong id="spawn-server-staff">--</strong>
+                                    </div>
+                                </div>
+                                <div class="spot-chip">
+                                    <div class="spot-chip-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+                                    <div class="spot-chip-data">
+                                        <span>Latencia</span>
+                                        <strong id="spawn-server-latency">-- MS</strong>
+                                    </div>
+                                </div>
+                                <div class="spot-chip">
+                                    <div class="spot-chip-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                                    <div class="spot-chip-data">
+                                        <span>Uptime</span>
+                                        <strong id="spawn-server-uptime">--</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spotlight-overview-grid">
+                                <div class="overview-card">
+                                    <div class="overview-top"><i class="fa-regular fa-clock"></i><span class="overview-label">Hora RP</span></div>
+                                    <span class="overview-value" id="overview-rp-time">--:--</span>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="overview-top"><i class="fa-solid fa-cloud-sun"></i><span class="overview-label">Clima actual</span></div>
+                                    <span class="overview-value" id="overview-weather">No disponible</span>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="overview-top"><i class="fa-solid fa-wifi"></i><span class="overview-label">Latencia</span></div>
+                                    <span class="overview-value" id="overview-latency">-- MS</span>
+                                </div>
+                                <div class="overview-card">
+                                    <div class="overview-top"><i class="fa-solid fa-code-branch"></i><span class="overview-label">Versión</span></div>
+                                    <span class="overview-value" id="overview-version">--</span>
+                                </div>
+                            </div>
+                            <div class="spotlight-banner">
+                                <i class="fa-solid fa-server"></i>
+                                <span id="spawn-server-note">Información en tiempo real del servidor antes de despertar.</span>
+                            </div>
+                        </div>
+                        <div class="btn-aparecer">
+                            DESPERTARSE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="unlock">
+        <div class="radial-bg">
+            <div class="d-flex h-100 w-100 align-items-center justify-content-center flex-column">
+                <div class="title" translate="unlock_slot">¡YOU HAS UNLOCKED AN SLOT!</div>
+                <img src="assets/confeti.webp" class="animate__animated animate__bounceIn">
+                <div class="continue-button">
+                    <div class="btn-anim confirm-slot">
+                        <div class="btn-bg"></div>
+                        <div translate="continue">Continuar</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    <div class="blackscreen"></div>
+    <div class="loading-container">
+        <div class="loading-text">
+            <div class="loading"><img src="assets/loading.svg"> <span class="text"
+                    translate="creating_character">Creating character</span></div>
+
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="build/js/countrySelect.min.js"></script>
+    <script src="js/mapLogic.js"></script>
+    <script src="js/youtube-player.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/bg.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        $("#country").countrySelect({
+            defaultCountry: "us",
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do', 'jp'],
+            preferredCountries: ['es', 'us', 'gb', 'jp', 'cn']
+        });
+
+        $('#calendar').datepicker({
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

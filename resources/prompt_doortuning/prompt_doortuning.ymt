@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDoorTuningFile>
+  <NamedTuningArray>
+	<Item>
+      <Name>Prompt_Sliding_Police_And_Mp_Only</Name>
+      <Tuning>
+        <AutoOpenVolumeOffset x="0.000000" y="0.000000" z="0.000000" />
+        <Flags>AutoOpensForMPPlayerPedsOnly AutoOpensForLawEnforcement</Flags>
+        <AutoOpenRadiusModifier value="1.000000" />
+        <AutoOpenRate value="2.250000" />
+        <AutoOpenCosineAngleBetweenThreshold value="-1.000000" />
+        <AutoOpenCloseRateTaper value="false" />
+        <UseAutoOpenTriggerBox value="true" />
+        <CustomTriggerBox value="true" />
+        <TriggerBoxMinMax>
+          <min x="-3.000000" y="-6.250000" z="-1.500000" w="0.000000" />
+          <max x="3.000000" y="8.000000" z="3.000000" w="0.000000" />
+        </TriggerBoxMinMax>
+        <BreakableByVehicle value="false" />
+        <BreakingImpulse value="0.000000" />
+        <ShouldLatchShut value="false" />
+        <MassMultiplier value="1.000000" />
+        <WeaponImpulseMultiplier value="1.000000" />
+        <RotationLimitAngle value="0.000000" />
+        <TorqueAngularVelocityLimit value="5.000000" />
+        <StdDoorRotDir>StdDoorOpenBothDir</StdDoorRotDir>
+      </Tuning>
+    </Item>
+	<Item>
+      <Name>Prompt_Police_Standart</Name>
+      <Tuning>
+        <AutoOpenVolumeOffset x="0.000000" y="0.000000" z="-2.000000" />
+        <Flags>AutoOpensForMPPlayerPedsOnly AutoOpensForLawEnforcement</Flags>
+        <AutoOpenRadiusModifier value="1.500000" />
+        <AutoOpenRate value="0.275000" />
+        <AutoOpenCosineAngleBetweenThreshold value="-1.000000" />
+        <AutoOpenCloseRateTaper value="true" />
+        <UseAutoOpenTriggerBox value="false" />
+        <CustomTriggerBox value="false" />
+        <TriggerBoxMinMax>
+          <min x="0.000000" y="0.000000" z="0.000000" w="0.000000" />
+          <max x="0.000000" y="0.000000" z="0.000000" w="0.000000" />
+        </TriggerBoxMinMax>
+        <BreakableByVehicle value="false" />
+        <BreakingImpulse value="0.000000" />
+        <ShouldLatchShut value="false" />
+        <MassMultiplier value="1.000000" />
+        <WeaponImpulseMultiplier value="1.000000" />
+        <RotationLimitAngle value="0.000000" />
+        <TorqueAngularVelocityLimit value="5.000000" />
+        <StdDoorRotDir>StdDoorOpenBothDir</StdDoorRotDir>
+      </Tuning>
+    </Item>
+    <Item>
+	   <Name>Prompt_Close_SupermodGarage</Name>
+	   <Tuning>
+	    <AutoOpenVolumeOffset x="0" y="-1.675" z="-2.45" />
+	    <Flags />
+	    <AutoOpenRadiusModifier value="1.763" />
+	    <AutoOpenRate value="1" />
+	    <AutoOpenCosineAngleBetweenThreshold value="-1" />
+	    <AutoOpenCloseRateTaper value="true" />
+	    <UseAutoOpenTriggerBox value="true" />
+	    <CustomTriggerBox value="false" />
+	    <TriggerBoxMinMax>
+	     <min x="0" y="0" z="0" />
+	     <max x="0" y="0" z="0" />
+	    </TriggerBoxMinMax>
+	    <BreakableByVehicle value="false" />
+	    <BreakingImpulse value="0" />
+	    <ShouldLatchShut value="false" />
+	    <MassMultiplier value="1" />
+	    <WeaponImpulseMultiplier value="1" />
+	    <RotationLimitAngle value="0" />
+	    <TorqueAngularVelocityLimit value="5" />
+	    <StdDoorRotDir>StdDoorOpenBothDir</StdDoorRotDir>
+	   </Tuning>
+	</Item>
+	<Item>
+      <Name>Prompt_Zoo_Gate_OneWay</Name>
+      <Tuning>
+        <AutoOpenVolumeOffset x="0.000000" y="0.000000" z="0.000000" />
+        <Flags />
+        <AutoOpenRadiusModifier value="1.000000" />
+        <AutoOpenRate value="0.500000" />
+        <AutoOpenCosineAngleBetweenThreshold value="-1.000000" />
+        <AutoOpenCloseRateTaper value="false" />
+        <UseAutoOpenTriggerBox value="false" />
+        <CustomTriggerBox value="false" />
+        <TriggerBoxMinMax>
+          <min x="0.000000" y="0.000000" z="0.000000" w="0.000000" />
+          <max x="0.000000" y="0.000000" z="0.000000" w="0.000000" />
+        </TriggerBoxMinMax>
+        <BreakableByVehicle value="false" />
+        <BreakingImpulse value="0.000000" />
+        <ShouldLatchShut value="false" />
+        <MassMultiplier value="1.000000" />
+        <WeaponImpulseMultiplier value="1.000000" />
+        <RotationLimitAngle value="0.000000" />
+        <TorqueAngularVelocityLimit value="5.000000" />
+        <!-- One-way hinge. PosDir = door may only swing to a POSITIVE open ratio.
+             Confirmed in game: NegDir blocked the wrong side, PosDir is the one we want. -->
+        <StdDoorRotDir>StdDoorOpenPosDir</StdDoorRotDir>
+      </Tuning>
+    </Item>
+</NamedTuningArray>
+  <ModelToTuneMapping>
+    <Item>
+      <ModelName>prompt_zoo_prop_cs_sm_27_gate</ModelName>
+      <TuningName>Prompt_Zoo_Gate_OneWay</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_rdealer_garage_door</ModelName>
+      <TuningName>PromptGarageRDealer</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sdair_meintenance_garage_door</ModelName>
+      <TuningName>DefaultGarageCustomBox</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_toilet_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_sheriff_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_records_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_processing_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_processing_door_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_office_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_office_door_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_metaldoor_left</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_locker_door_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_locker_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_locker_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_listening_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_kitchen_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_interrogation_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_interrogation_door_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_helipads_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_griddoor_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_griddoor_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_garage_door_r</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_evidence_door_l</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_detective_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_default_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_classroom_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <Item>
+      <ModelName>prompt_sandy_sheriff_armory_door</ModelName>
+      <TuningName>DefaultStandardLatchShut</TuningName>
+    </Item>
+    <!-- sandy_hospital -->
+	<Item>
+	  <ModelName>v_ilev_ph_gendoor005_new</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<!-- trainstation -->
+	<Item>
+	  <ModelName>prompt_sandy_ts_door_left</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>prompt_sandy_ts_door_right</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<!-- houses_1 -->
+	<Item>
+	  <ModelName>house9_extkap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house9_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house9_garage_kap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house1_furnshell_kap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house2_extkap2</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house2_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house6_nofurni_extkap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house6_nofurni_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house10_kap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house7_soloextkap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house7_extkap2</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house7_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house4_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house4_extkap2</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house5_nofurni_extkap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house3_extkap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house8_extsolokap3</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house8_extsolokap2</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house8_garage_kap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>house8_extsolokap</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<!-- airfield -->
+	<Item>
+	  <ModelName>prompt_sdair_entrance_door</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>prompt_sdair_meintenance_garage_door</ModelName>
+	  <TuningName>DefaultGarage</TuningName>
+	</Item>
+	<!-- rdealer -->
+	<Item>
+	  <ModelName>prompt_rdealer_garage_door</ModelName>
+	  <TuningName>SupermodGarage</TuningName>
+	</Item>
+	<Item>
+   	  <ModelName>d1n_sch_door_01</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>d1n_sch_door_02_r</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>d1n_sch_door_02_l</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>d1n_sch_door_03_l</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>d1n_sch_door_03_r</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>j17_vfd_gar_door_r</ModelName>
+   	  <TuningName>SupermodGarage</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>j17_vinewoodfire_extdoor_2</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+  	<Item>
+   	  <ModelName>j17_vinewoodfire_baydoor_1</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prop_church_exit_door_r</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prop_church_exit_door</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prop_church_entr_door</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prop_church_entr_door_r</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_is_left_door_car_wash_b</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_is_ent_door_car_wash_f</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_gas_door_w</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_gas_door_l</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>car_service_entr_door</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>car_service_door_garage</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>car_service_door_storage</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>car_service_door_toilet</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>car_service_door_director</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_dlcbmeca_prop_door_r</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_dlcbmeca_prop_door_l</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_dlcbmeca_prop_door2</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_motel_entrancedoor</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_motel_rec_door_entr_right</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_motel_rec_door_sidedoor</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>prompt_sandy_motel_rec_door_sidedoor_manager</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+	<Item>
+   	  <ModelName>chuz_is_shelf_door_pocker_b</ModelName>
+   	  <TuningName>DefaultStandardLatchShut</TuningName>
+  	</Item>
+        <Item>
+   	  <ModelName>prompt_dlcbmeca_prop_gdoor1</ModelName>
+   	  <TuningName>Prompt_Close_SupermodGarage</TuningName>
+  	</Item>
+        <Item>
+   	  <ModelName>prompt_dlclogistic_int2_prop_gdoor1</ModelName>
+   	  <TuningName>SupermodGarage</TuningName>
+  	</Item>
+        <Item>
+          <ModelName>sirhc_prop_bollard_door</ModelName>
+          <TuningName>Prompt_Sliding_Police_And_Mp_Only</TuningName>
+        </Item>
+        <Item>
+          <ModelName>prop_sec_barier_03b</ModelName>
+          <TuningName>DefaultBarrierArm</TuningName>
+        </Item>
+        <Item>
+          <ModelName>sirhc_prop_mrpd_gate_r</ModelName>
+          <TuningName>Prompt_Sliding_Police_And_Mp_Only</TuningName>
+        </Item>
+        <Item>
+          <ModelName>sirhc_prop_mrpd_gate_l</ModelName>
+          <TuningName>Prompt_Sliding_Police_And_Mp_Only</TuningName>
+        </Item>
+        <Item>
+          <ModelName>sirhc_prop_mrpd_garage_door</ModelName>
+          <TuningName>Prompt_Police_Standart</TuningName>
+        </Item>
+        <Item>
+          <ModelName>sirhc_prop_mrpd_garage_door_large</ModelName>
+          <TuningName>Prompt_Police_Standart</TuningName>
+        </Item>
+        <Item>
+   	  <ModelName>i45pt_ch_c_garage_gatedoor</ModelName>
+   	  <TuningName>SupermodGarage</TuningName>
+  	</Item>
+        <Item>
+   	  <ModelName>i45pt_hornys_doorglass_01</ModelName>
+   	  <TuningName>SupermodGarage</TuningName>
+  	</Item>
+	<!-- sandy corner: bowling alley / steak bar / diner (door leaves; frames excluded) -->
+	<Item>
+	  <ModelName>i45pt_bowlingalley_maindoor_l</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_bowlingalley_maindoor_r</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_steakbar_metaldoor_01a</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_steakebar_main_door_01a_l</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_steakebar_main_door_01a_r</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_steakebar_single_door_01a</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>i45pt_steakebar_single_door_01b</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>chuz_is_diner_door_front</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>marlon_bs_drivethrukapii</ModelName>
+	  <TuningName>DefaultSlidingHorizontal</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>marlon_bs_extkapi</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>marlon_bs_kap1</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>marlon_bs_kap2</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+	<Item>
+	  <ModelName>marlon_bs_wckapi</ModelName>
+	  <TuningName>DefaultStandardLatchShut</TuningName>
+	</Item>
+  </ModelToTuneMapping>
+</CDoorTuningFile>

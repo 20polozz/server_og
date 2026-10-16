@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProximityMenu</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    background-color: transparent !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    cursor: default;
+  }
+
+  @keyframes headerShimmer {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3), 0 0 60px rgba(0,0,0,0.12);
+  }
+
+  #menu.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  /* Position classes */
+  #menu.pos-left    { top: 20px; left: 20px; }
+  #menu.pos-right   { top: 20px; right: 20px; }
+  #menu.pos-center  { top: 50%; left: 50%; transform: translate(-50%, -50%) translateY(-6px) scale(0.98); }
+  #menu.pos-center.visible { transform: translate(-50%, -50%) scale(1); }
+
+  /* Size classes */
+  #menu.size-small  { width: 240px; max-height: 35vh; }
+  #menu.size-medium { width: 320px; max-height: 50vh; }
+  #menu.size-large  { width: 400px; max-height: 60vh; }
+
+  /* Center position: override width for grid layout */
+  #menu.pos-center.size-small  { width: auto; min-width: 360px; max-width: 80vw; max-height: 60vh; }
+  #menu.pos-center.size-medium { width: auto; min-width: 480px; max-width: 80vw; max-height: 60vh; }
+  #menu.pos-center.size-large  { width: auto; min-width: 600px; max-width: 85vw; max-height: 65vh; }
+
+  #menu.size-small .header  { padding: 10px 14px; }
+  #menu.size-small .title   { font-size: 13px; letter-spacing: 0.6px; }
+  #menu.size-small .item    { padding: 8px 14px; }
+  #menu.size-small .label   { font-size: 12px; }
+  #menu.size-small .footer  { padding: 6px 14px; }
+
+  #menu.size-large .header  { padding: 18px 22px; }
+  #menu.size-large .title   { font-size: 17px; letter-spacing: 1px; }
+  #menu.size-large .item    { padding: 14px 22px; }
+  #menu.size-large .label   { font-size: 16px; }
+  #menu.size-large .footer  { padding: 10px 22px; }
+
+  /* Center position: header centered */
+  #menu.pos-center .header  { text-align: center; }
+
+  /* Center position: grid layout for items */
+  #menu.pos-center .items {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+    padding: 10px;
+  }
+
+  #menu.pos-center.size-small .items  { grid-template-columns: repeat(4, 1fr); }
+  #menu.pos-center.size-large .items  { grid-template-columns: repeat(8, 1fr); }
+
+  #menu.pos-center .item {
+    justify-content: center;
+    text-align: center;
+    border-left: none;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    padding: 12px 8px;
+  }
+
+  #menu.pos-center .item:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--accent, rgba(255,255,255,0.3));
+  }
+
+  #menu.pos-center .item:active {
+    background: rgba(255,255,255,0.15);
+  }
+
+  #menu.pos-center .item .arrow { display: none; }
+
+  #menu.pos-center .item .label {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Center + size overrides for grid items */
+  #menu.pos-center.size-small .item  { padding: 8px 6px; }
+  #menu.pos-center.size-small .label { font-size: 11px; }
+  #menu.pos-center.size-large .item  { padding: 16px 10px; }
+  #menu.pos-center.size-large .label { font-size: 15px; }
+
+  /* Center position: footer centered */
+  #menu.pos-center .footer { justify-content: center; }
+
+  .header {
+    padding: 14px 18px;
+    background: linear-gradient(
+      135deg,
+      var(--c1, rgba(68,68,68,0.6)),
+      var(--c2, rgba(34,34,34,0.6)),
+      var(--c1, rgba(68,68,68,0.6))
+    );
+    background-size: 200% 200%;
+    animation: headerShimmer 4s ease infinite;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .header .title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+
+  .items {
+    background: rgba(10, 10, 14, 0.5);
+    padding: 4px 0;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .items::-webkit-scrollbar { width: 3px; }
+  .items::-webkit-scrollbar-track { background: transparent; }
+  .items::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    cursor: pointer;
+    transition: background 0.12s ease, border-color 0.12s ease;
+    border-inline-start: 2px solid transparent;
+  }
+
+  .item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-inline-start-color: var(--accent, rgba(255,255,255,0.4));
+  }
+
+  .item:active {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .item .label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: 0.3px;
+  }
+
+  .item .arrow {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.12s ease, transform 0.12s ease;
+    flex-shrink: 0;
+    margin-inline-start: 8px;
+  }
+
+  .item:hover .arrow {
+    color: rgba(255, 255, 255, 0.6);
+    transform: translateX(2px);
+  }
+
+  /* Right-to-left languages: arrow points the other way */
+  [dir="rtl"] .item .arrow { transform: scaleX(-1); }
+  [dir="rtl"] .item:hover .arrow { transform: translateX(-2px) scaleX(-1); }
+
+  .footer {
+    background: rgba(10, 10, 14, 0.5);
+    padding: 8px 18px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .footer span {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  .footer .key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Interact Prompt ── */
+  #prompt {
+    position: fixed;
+    bottom: 6vh;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: rgba(10, 10, 14, 0.75);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 20px rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  #prompt.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  #prompt .key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 7px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.18);
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
+  }
+
+  #prompt .hidden { display: none; }
+
+  #prompt .text {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.3px;
+  }
+
+  /* Text after the key starting with punctuation ("[E], um ...") hugs the key */
+  #prompt .text.tight { margin-inline-start: -7px; }
+
+  /* ── Configurator Panel ── */
+  #configurator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: rgba(10, 10, 14, 0.85);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  #configurator.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .cfg-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cfg-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 4px;
+  }
+
+  .cfg-btn {
+    padding: 6px 14px;
+    border-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+
+  .cfg-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .cfg-btn.active {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+
+  .cfg-divider {
+    width: 1px;
+    height: 24px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .cfg-hint {
+    font-size: 9px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .cfg-save {
+    padding: 6px 18px;
+    border-radius: 5px;
+    border: 1px solid rgba(100,200,120,0.3);
+    background: rgba(100,200,120,0.1);
+    color: rgba(100,200,120,0.8);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .cfg-save:hover {
+    background: rgba(100,200,120,0.18);
+    color: rgba(100,200,120,1);
+    border-color: rgba(100,200,120,0.5);
+  }
+
+  .cfg-save.saved {
+    border-color: rgba(100,200,120,0.5);
+    background: rgba(100,200,120,0.2);
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<div id="menu">
+  <div class="header">
+    <div class="title" id="menuTitle"></div>
+  </div>
+  <div class="items" id="menuItems"></div>
+  <div class="footer">
+    <span class="key">ESC</span>
+    <span id="menuClose">close</span>
+  </div>
+</div>
+
+<div id="prompt">
+  <span class="text hidden" id="promptBefore"></span>
+  <span class="key" id="promptKey"></span>
+  <span class="text" id="promptText"></span>
+</div>
+
+<div id="configurator">
+  <div class="cfg-group">
+    <span class="cfg-label">Menu</span>
+    <button class="cfg-btn active" data-cfg="menuType" data-val="elevators">Elevators</button>
+    <button class="cfg-btn" data-cfg="menuType" data-val="carElevators">Car Elevators</button>
+    <button class="cfg-btn" data-cfg="menuType" data-val="smartSwitches">Smart Switches</button>
+  </div>
+  <div class="cfg-divider"></div>
+  <div class="cfg-group">
+    <span class="cfg-label">Position</span>
+    <button class="cfg-btn active" data-cfg="position" data-val="left">Left</button>
+    <button class="cfg-btn" data-cfg="position" data-val="right">Right</button>
+    <button class="cfg-btn" data-cfg="position" data-val="center">Center</button>
+  </div>
+  <div class="cfg-divider"></div>
+  <div class="cfg-group">
+    <span class="cfg-label">Size</span>
+    <button class="cfg-btn" data-cfg="size" data-val="small">Small</button>
+    <button class="cfg-btn active" data-cfg="size" data-val="medium">Medium</button>
+    <button class="cfg-btn" data-cfg="size" data-val="large">Large</button>
+  </div>
+  <div class="cfg-divider"></div>
+  <button class="cfg-save" id="cfgSave">Save</button>
+  <div class="cfg-divider"></div>
+  <span class="cfg-hint">ESC to close</span>
+</div>
+
+<script>
+  var RESOURCE_NAME = (typeof GetParentResourceName === 'function') ? GetParentResourceName() : 'tstudio_zmapdata';
+
+  var menuEl = document.getElementById('menu');
+  var titleEl = document.getElementById('menuTitle');
+  var itemsEl = document.getElementById('menuItems');
+  var closeEl = document.getElementById('menuClose');
+
+  // Language + text direction from Config.Locale (sent by Lua); English otherwise
+  function applyLang(data) {
+    var root = document.documentElement;
+    root.lang = (data && data.lang) || 'en';
+    root.dir = (data && data.dir === 'rtl') ? 'rtl' : 'ltr';
+  }
+
+  function postNUI(endpoint, data) {
+    fetch('https://' + RESOURCE_NAME + '/' + endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data || {})
+    });
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
+  function show(data) {
+    // Apply position and size classes
+    menuEl.className = '';
+    var pos = data.position || 'left';
+    var sz  = data.size || 'medium';
+    menuEl.classList.add('pos-' + pos, 'size-' + sz);
+
+    applyLang(data);
+    titleEl.textContent = data.title || '';
+    closeEl.textContent = data.closeLabel || 'close';
+
+    if (data.headerGradient) {
+      var top = data.headerGradient.topColor;
+      var bot = data.headerGradient.bottomColor;
+      menuEl.style.setProperty('--c1', 'rgba(' + top.r + ',' + top.g + ',' + top.b + ',0.6)');
+      menuEl.style.setProperty('--c2', 'rgba(' + bot.r + ',' + bot.g + ',' + bot.b + ',0.6)');
+      // Accent color for hover = lighter version of top color
+      menuEl.style.setProperty('--accent', 'rgba(' + Math.min(top.r+60,255) + ',' + Math.min(top.g+60,255) + ',' + Math.min(top.b+60,255) + ',0.5)');
+    } else {
+      menuEl.style.setProperty('--c1', 'rgba(68,68,68,0.6)');
+      menuEl.style.setProperty('--c2', 'rgba(34,34,34,0.6)');
+      menuEl.style.setProperty('--accent', 'rgba(255,255,255,0.4)');
+    }
+
+    itemsEl.innerHTML = '';
+    if (data.items && data.items.length) {
+      for (var i = 0; i < data.items.length; i++) {
+        (function(item) {
+          var el = document.createElement('div');
+          el.className = 'item';
+          el.innerHTML =
+            '<div class="label">' + escapeHtml(item.label) + '</div>' +
+            '<div class="arrow">&#x203A;</div>';
+          el.addEventListener('click', function() {
+            postNUI('proximity:select', { id: item.id });
+          });
+          itemsEl.appendChild(el);
+        })(data.items[i]);
+      }
+    }
+
+    menuEl.classList.add('visible');
+  }
+
+  function hide() {
+    menuEl.classList.remove('visible');
+  }
+
+  // ── Configurator logic ──
+  var cfgEl = document.getElementById('configurator');
+  var cfgSaveBtn = document.getElementById('cfgSave');
+  var cfgMode = false;
+  var cfgState = { menuType: 'elevators', position: 'left', size: 'medium' };
+  var storedSettings = {};  // per-type settings received from server
+
+  var previewData = {
+    title: 'Preview Menu',
+    items: [
+      { id: 'f1',  label: 'Floor 1' },
+      { id: 'f2',  label: 'Floor 2' },
+      { id: 'f3',  label: 'Floor 3' },
+      { id: 'f4',  label: 'Floor 4' },
+      { id: 'f5',  label: 'Floor 5' },
+      { id: 'f6',  label: 'Floor 6' },
+      { id: 'f7',  label: 'Floor 7' },
+      { id: 'f8',  label: 'Floor 8' },
+      { id: 'f9',  label: 'Floor 9' },
+      { id: 'f10', label: 'Floor 10' },
+      { id: 'f11', label: 'Floor 11' },
+      { id: 'f12', label: 'Floor 12' },
+      { id: 'f13', label: 'Floor 13' },
+      { id: 'f14', label: 'Floor 14' }
+    ]
+  };
+
+  function showConfigurator(data) {
+    cfgMode = true;
+    // Store server-sent effective settings per type
+    if (data && data.currentSettings) {
+      storedSettings = data.currentSettings;
+    }
+    // Initialize to elevators type
+    cfgState.menuType = 'elevators';
+    loadTypeSettings('elevators');
+    updateCfgButtons();
+    cfgEl.classList.add('visible');
+    showPreview();
+  }
+
+  function loadTypeSettings(menuType) {
+    var s = storedSettings[menuType] || {};
+    cfgState.position = s.position || 'left';
+    cfgState.size = s.size || 'medium';
+  }
+
+  function hideConfigurator() {
+    cfgMode = false;
+    cfgEl.classList.remove('visible');
+    hide();
+  }
+
+  function showPreview() {
+    previewData.position = cfgState.position;
+    previewData.size = cfgState.size;
+    show(previewData);
+    // Re-disable click events on preview items during configurator
+    var items = menuEl.querySelectorAll('.item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].style.pointerEvents = 'none';
+    }
+  }
+
+  function updateCfgButtons() {
+    var btns = cfgEl.querySelectorAll('.cfg-btn');
+    for (var i = 0; i < btns.length; i++) {
+      var btn = btns[i];
+      var group = btn.getAttribute('data-cfg');
+      var val = btn.getAttribute('data-val');
+      if (cfgState[group] === val) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+  }
+
+  cfgEl.addEventListener('click', function(e) {
+    var btn = e.target.closest('.cfg-btn');
+    if (!btn) return;
+    var group = btn.getAttribute('data-cfg');
+    var val = btn.getAttribute('data-val');
+    if (group && val) {
+      cfgState[group] = val;
+      // When switching menu type, load that type's stored settings
+      if (group === 'menuType') {
+        loadTypeSettings(val);
+      }
+      updateCfgButtons();
+      showPreview();
+    }
+  });
+
+  // Save button
+  cfgSaveBtn.addEventListener('click', function() {
+    postNUI('proximity:save', {
+      menuType: cfgState.menuType,
+      position: cfgState.position,
+      size: cfgState.size
+    });
+    // Update local stored settings so switching types reflects the save
+    if (!storedSettings[cfgState.menuType]) storedSettings[cfgState.menuType] = {};
+    storedSettings[cfgState.menuType].position = cfgState.position;
+    storedSettings[cfgState.menuType].size = cfgState.size;
+    // Visual feedback
+    cfgSaveBtn.textContent = 'Saved \u2713';
+    cfgSaveBtn.classList.add('saved');
+    setTimeout(function() {
+      cfgSaveBtn.textContent = 'Save';
+      cfgSaveBtn.classList.remove('saved');
+    }, 1500);
+  });
+
+  // ── Interact prompt ──
+  var promptEl = document.getElementById('prompt');
+  var promptBeforeEl = document.getElementById('promptBefore');
+  var promptKeyEl = document.getElementById('promptKey');
+  var promptTextEl = document.getElementById('promptText');
+
+  // data: { key, before, text } - before-text, key badge, text after the key
+  function showPrompt(data) {
+    applyLang(data);
+
+    var before = data.before || '';
+    promptBeforeEl.textContent = before;
+    promptBeforeEl.classList.toggle('hidden', !before);
+
+    if (data.key) {
+      promptKeyEl.textContent = data.key;
+      promptKeyEl.classList.remove('hidden');
+    } else {
+      promptKeyEl.classList.add('hidden');
+    }
+
+    var after = data.text || '';
+    promptTextEl.textContent = after;
+    promptTextEl.classList.toggle('hidden', !after);
+    promptTextEl.classList.toggle('tight', !!data.key && /^[,.;:!?)]/.test(after));
+
+    promptEl.classList.add('visible');
+  }
+
+  window.addEventListener('message', function(e) {
+    if (!e.data || !e.data.action) return;
+    if (e.data.action === 'proximity:show') {
+      promptEl.classList.remove('visible');
+      show(e.data.data);
+    } else if (e.data.action === 'proximity:hide') {
+      hideConfigurator();
+      hide();
+    } else if (e.data.action === 'proximity:configurator') {
+      showConfigurator(e.data.data);
+    } else if (e.data.action === 'interact:show') {
+      showPrompt(e.data.data || {});
+    } else if (e.data.action === 'interact:hide') {
+      promptEl.classList.remove('visible');
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' || e.key === 'Backspace') {
+      e.preventDefault();
+      postNUI('proximity:close', {});
+    }
+  });
+</script>
+</body>
+</html>

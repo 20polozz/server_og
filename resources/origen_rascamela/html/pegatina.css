@@ -1,0 +1,150 @@
+/* ══ PEGATINA: el rasca y gana con el estilo del logo ══════════════════
+
+   A PRUEBA, SOLO EN ORIGEN: todo cuelga de html;
+   en Nación el rasca se queda como en App.vue (negro con rayas finas).
+   Pareja de pegatina.css del inventario: mismos colores y mismas reglas.
+
+   El panel es papel gris perla con canto negro y sombra dura; el boleto
+   (la zona que se rasca) es la pieza blanca de dentro, con su canto; los
+   tres premios, casillas blancas con la cifra en Oxanium. El título va a
+   brocha (es el único rótulo a brocha de la pantalla).
+
+   La capa que se rasca la pinta el canvas en gris (ctx.fillStyle = 'gray'):
+   el CSS no llega a esos píxeles, así que se aclara con un filtro hasta un
+   gris plata. Lo ya rascado es transparente y el filtro no lo toca.
+
+   Los cantos son box-shadow: no cambian ninguna medida. Fuente: está en
+   web/src/pegatina.css (lo importa main.js, después de App.vue). Mientras
+   no se compile, html/pegatina.css es una copia idéntica que enlaza
+   html/index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── El panel ───────────────────────────────────────────────────────── */
+html #app .panel {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 2vh;
+    outline: none;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+/* ── El título, a brocha ────────────────────────────────────────────── */
+/*  Rosa con el contorno negro del logo (ocho direcciones + sombra dura),
+    girado −3°. Sin mayúsculas forzadas: el body pone uppercase a todo. */
+html #app .panel .section-title {
+    font-family: "Knewave", "Barlow Condensed", cursive !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 3.6vh;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #d81b55;
+    border-bottom-color: transparent;
+    transform: rotate(-3deg);
+    text-shadow:
+        0.15vh 0 #000, -0.15vh 0 #000, 0 0.15vh #000, 0 -0.15vh #000,
+        0.12vh 0.12vh #000, -0.12vh 0.12vh #000, 0.12vh -0.12vh #000, -0.12vh -0.12vh #000,
+        0.3vh 0.35vh 0 #000;
+}
+
+/* ── El boleto ──────────────────────────────────────────────────────── */
+/*  Canto por FUERA (no inset): el canvas tapa el interior del boleto y se
+    comería un anillo pintado por dentro. */
+html #app .panel .rasca {
+    background: #dcdde0;
+    border-color: transparent;
+    border-radius: 1.2vh;
+    box-shadow: 0 0 0 1.5px #000;
+}
+html #app .panel .rasca canvas {
+    border-radius: 1.2vh;
+    /*  'gray' (128) → plata (~#c0c0c0). */
+    -webkit-filter: brightness(1.5);
+    filter: brightness(1.5);
+}
+
+/* ── Los tres premios ───────────────────────────────────────────────── */
+html #app .panel .reward-box {
+    background: #dcdde0;
+    border-color: transparent;
+    border-radius: 1vh;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html #app .panel .reward-box span {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #0b0b0d;
+}
+
+/* ── La línea de ayuda ──────────────────────────────────────────────── */
+html #app .panel .chip-label {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #44444a;
+}
+
+/* El resultado al acabar de rascar: chapa gris con tinta negra («Sin premio
+   esta vez») o rosa con tinta negra («¡Premio! 1.000 $»). */
+html #app .panel .chip-label.chip-label--fin {
+    display: inline-block;
+    padding: 0.6vh 1.4vh;
+    border-radius: 1vh;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    font-size: 1.6vh;
+}
+html #app .panel .chip-label.chip-label--premio { background: #d81b55; color: #0b0b0d; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* ── 07/10 · el riel de 64 px pegado al boleto ──────────────────────────
+   Las tarjetas de juego llevan riel, como el menú pequeño: placa con el
+   icono (gris claro, boleto rosa, filete negro debajo) y «Origen Rasca»
+   en vertical abajo. Va con pseudo-elementos para no tocar la plantilla. */
+html #app .panel {
+    position: relative;
+    min-height: 300px;
+    margin-right: calc(64px + 1.2vh);
+}
+html #app .panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    border-radius: 20px;
+    background-color: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='60' viewBox='0 0 48 60'%3E%3Crect x='3.25' y='3.25' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='0.75' y='0.75' width='44' height='44' rx='10' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Cg transform='translate(11.75 11.75) scale(0.9167)' fill='none' stroke='%23d81b55' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z'/%3E%3Cpath d='M13 5v2M13 17v2M13 11v2'/%3E%3C/g%3E%3Crect x='11.75' y='56.75' width='22' height='2' rx='1' fill='%23000'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 9.25px 14px;
+    background-size: 48px 60px;
+}
+html #app .panel::after {
+    content: 'Origen Rasca';
+    position: absolute;
+    bottom: 0;
+    left: calc(100% + 1.2vh);
+    width: 64px;
+    line-height: 64px;
+    padding-top: 16px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+html[data-marca="nacion"] #app .panel::after { content: 'Nación Rasca'; }

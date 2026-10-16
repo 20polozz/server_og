@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RF Elevator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<style>
+:root { --ui-scale:1; --led:#7fb8ff; --led-rgb:127,184,255; --amb:#f5c451; --ink:#f4f1ec; --mich:"Michroma",sans-serif; --sans:"Michroma",sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; height:100vh; width:100vw; font-family:var(--sans); color:var(--ink); background:transparent; overflow:hidden; }
+#app { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .32s ease; }
+/* after a floor is picked: the choice lit, the rest still there to press */
+/* while it runs, the floors it is not going to sit back */
+#app.sent .key { opacity:.55; }
+#app.sent .key.going { opacity:1; }
+#app.open { opacity:1; pointer-events:auto; }
+#app.veh { --led:#7fb8ff; --led-rgb:127,184,255; }
+#app.ppl { --led:#62d38a; --led-rgb:98,211,138; }
+.card { position:relative; overflow:hidden; width:460px; max-width:92vw; border-radius:24px; padding:14px; display:flex; flex-direction:column; gap:14px; background:linear-gradient(160deg,#2a2826,#111); box-shadow:0 18px 44px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); user-select:none; transform:translateY(12px) scale(.97); opacity:0; transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease; }
+#app.open .card { transform:translateY(0) scale(var(--ui-scale)); opacity:1; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+.top { display:flex; justify-content:space-between; align-items:center; padding:2px 6px 0; }
+.top img { height:20px; width:auto; opacity:.9; }
+.badge { display:flex; align-items:center; gap:8px; font-family:var(--mich); font-size:8.5px; letter-spacing:.16em; text-transform:uppercase; color:rgba(244,241,236,.4); }
+.badge i { width:5px; height:5px; border-radius:3px; background:#62d38a; box-shadow:0 0 6px #62d38a; }
+.led { position:relative; overflow:hidden; border-radius:16px; background:linear-gradient(180deg,#0a0a0a,#161514); box-shadow:0 3px 12px rgba(0,0,0,.95) inset, 0 0 0 1px rgba(255,85,96,.22), 0 0 18px rgba(255,85,96,.07) inset; display:flex; align-items:center; padding:22px 20px; transition:box-shadow .3s; }
+.led.dest { box-shadow:0 3px 12px rgba(0,0,0,.95) inset, 0 0 0 1px rgba(255,85,96,.55), 0 0 26px rgba(255,85,96,.18) inset; }
+.read { flex:1; min-width:0; display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; }
+.status { display:block; width:100%; font-family:var(--mich); font-size:9.5px; letter-spacing:.22em; text-transform:uppercase; color:rgba(244,241,236,.66); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.led.dest .status { color:#ff5560; }
+.floor { display:block; width:100%; font-family:var(--mich); font-size:14px; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rule { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; }
+.rule i { flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,85,96,.35)); }
+.rule i + .digit + i { background:linear-gradient(90deg,rgba(255,85,96,.35),transparent); }
+.digit { flex:none; font-family:var(--mich); font-size:72px; line-height:.9; color:var(--led); text-shadow:0 0 20px var(--led); transition:color .3s, text-shadow .3s; }
+.led.dest .digit { color:#ff5560; text-shadow:0 0 20px #ff5560; }
+.name-off, .arrow-off { position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+.keys { display:flex; flex-direction:column; gap:8px; }
+.key { position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; width:100%; min-height:58px; border:0; border-radius:14px; padding:0 16px; cursor:pointer; font:inherit; color:inherit; background:radial-gradient(circle at 50% 30%,#44413c,#2a2826 55%,#1e1d1b); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 -3px 0 rgba(0,0,0,.5) inset, 0 4px 8px rgba(0,0,0,.4); transition:color .16s, transform .12s; }
+.key:active { transform:translateY(2px) scale(.99); }
+.ktext { display:flex; flex-direction:column; align-items:center; gap:6px; flex:1; min-width:0; }
+.face { display:block; font-family:var(--mich); font-size:14px; letter-spacing:.1em; color:rgba(244,241,236,.72); }
+.lbl { display:block; width:100%; text-align:center; font-family:var(--mich); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:rgba(244,241,236,.72); }
+.tick { position:absolute; left:12px; right:12px; bottom:0; height:2px; border-radius:2px; background:rgba(244,241,236,.1); }
+.key.cur { background:linear-gradient(180deg,#141312,#242220); box-shadow:0 3px 8px rgba(0,0,0,.7) inset, 0 0 18px rgba(255,255,255,.12) inset, 0 0 0 1px var(--led); }
+.key.cur .face { color:var(--led); text-shadow:0 0 12px var(--led); }
+.key.cur .lbl { color:var(--ink); }
+.key.cur .tick { background:var(--led); box-shadow:0 0 12px var(--led); }
+/* where it is headed, while it runs: red, like the phone's elevator page */
+.key.going { background:linear-gradient(180deg,#141312,#242220); box-shadow:0 3px 8px rgba(0,0,0,.7) inset, 0 0 18px rgba(255,85,96,.22) inset, 0 0 0 1px rgba(255,85,96,.6); }
+.key.going .face { color:#ff5560; text-shadow:0 0 12px #ff5560; }
+.key.going .lbl { color:var(--ink); }
+.key.going .tick { background:#ff5560; box-shadow:0 0 12px #ff5560; }
+/* the keyboard cursor: enough to see, not enough to read as lit */
+.key.pick { box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 -3px 0 rgba(0,0,0,.5) inset, 0 4px 8px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.18); }
+.foot { display:flex; justify-content:space-between; align-items:center; padding:0 6px 2px; font-family:var(--mich); font-size:7.5px; letter-spacing:.14em; text-transform:uppercase; color:rgba(244,241,236,.3); }
+.foot b { font-weight:400; color:rgba(244,241,236,.55); }
+
+#hint { position:fixed; left:50%; bottom:28%; transform:translate(-50%,16px); opacity:0; pointer-events:none; transition:opacity .25s ease, transform .35s cubic-bezier(.16,1,.3,1); z-index:5; }
+#hint.show { opacity:1; transform:translate(-50%,0); }
+#app.open ~ #hint { opacity:0 !important; }
+.hint-btn { box-sizing:border-box; width:236px; display:grid; grid-template-columns:36px 18px 1fr; align-items:center; gap:0 12px; padding:10px 16px 10px 10px; border-radius:14px; background:linear-gradient(160deg,#2a2826,#111); box-shadow:0 12px 28px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06); }
+.hint-key { box-sizing:border-box; width:36px; height:36px; border-radius:10px; display:grid; place-items:center; line-height:1;  background:linear-gradient(180deg,#3d3b37,#1e1d1b); box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 -3px 0 rgba(0,0,0,.5) inset, 0 4px 8px rgba(0,0,0,.4); font-family:var(--mich); font-size:12px; color:var(--ink); transform:translateY(-.05em); }
+/* Michroma's line box is centred on its ascent and descent rather than on the
+   cap height, so a capital sits a fraction low in its square. The nudge is on
+   the letter, not the square, and is in em so it holds at any size. */
+.hint-key-l { display:block; font-style:normal; transform:translateY(-.035em); }
+.hint-text { font-family:var(--mich); font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:rgba(244,241,236,.85); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.hint-ico { width:18px; height:18px; flex:none; justify-self:center; fill:none; stroke:currentColor; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; color:rgba(244,241,236,.8); }
+.hint-ico.is-red   { color:#ff5560; }
+.hint-ico.is-green { color:#62d38a; }
+
+/* Nothing in a panel is meant to be selected: dragging across a label should
+   not leave a blue highlight behind. Text fields stay selectable so a pasted
+   link can still be edited. */
+* { -webkit-user-select: none; user-select: none; }
+input, textarea { -webkit-user-select: text; user-select: text; }
+img, svg { -webkit-user-drag: none; user-drag: none; }
+  /* ORIGEN: quitado el Michroma forzado en todo el body */
+</style>
+<link rel="stylesheet" href="origen-tokens.css?v=riel0710">
+<link rel="stylesheet" href="origen-ascensor.css?v=p0610">
+<!-- PEGATINA (solo Origen): la hoja va la última -->
+<link href="https://fonts.googleapis.com/css2?family=Knewave&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<link rel="stylesheet" href="origen-pegatina.css?v=riel0710">
+<script src="origen.js"></script>
+</head>
+<body>
+<div id="app">
+<div class="card">
+  <div class="top"><img src="lift/logo-white-cropped.png" alt=""><div class="badge"><i></i><span id="badgeText">Online</span></div></div>
+  <div class="led" id="led">
+    <div class="read">
+      <span class="status" id="statusText">Idle · doors open</span>
+      <span class="floor" id="floorName">Entrance</span>
+      <span class="rule"><i></i><span class="digit" id="floorDisplay">1</span><i></i></span>
+    </div>
+    <span class="name-off"><svg id="typeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d=""/></svg><span id="typeName">Elevator</span></span>
+    <svg class="arrow-off" id="arrow" width="1" height="1" viewBox="0 0 24 24"><path id="arrowPath" d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+  <div class="keys" id="keys"></div>
+  <div class="foot"><span><b>◂ ▸</b> select &nbsp; <b>Enter</b> go</span><span><b>Esc</b> or click away</span></div>
+  <!-- ORIGEN: el riel del menú pequeño (placa y «Origen Casa»); lo pinta origen-pegatina.css -->
+  <span class="og-riel" aria-hidden="true"></span>
+</div>
+</div>
+
+<div id="hint"><div class="hint-btn"><span class="hint-key"><i class="hint-key-l" id="hintKey">E</i></span><svg class="hint-ico" id="hintIco" viewBox="0 0 24 24" style="visibility:hidden"><path id="hintIcoPath" d=""/></svg><span class="hint-text" id="hintText">Use Elevator</span></div></div>
+
+<script src="es.js"></script>
+<script>!function(){var e=document.getElementById("app"),t=document.getElementById("floorDisplay"),n=document.getElementById("floorName"),a=document.getElementById("statusText"),i=document.getElementById("led"),o=document.getElementById("arrowPath"),r=document.getElementById("keys"),s=document.getElementById("typeIcon").querySelector("path"),l=document.getElementById("typeName"),c=document.getElementById("hint"),u=document.getElementById("hintText"),f=document.getElementById("hintIco"),m=document.getElementById("hintIcoPath"),d=document.getElementById("hintKey"),h=[],v=0,p=0,g=null,y=!1,M=0,b=-1,x="function"==typeof GetParentResourceName?GetParentResourceName():window.parent&&"function"==typeof window.parent.GetParentResourceName?window.parent.GetParentResourceName():location.hostname||"rf_rsm1h";function I(e,t){try{fetch("https://"+x+"/lift"+e.charAt(0).toUpperCase()+e.slice(1),{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(t||{})}).catch(function(){})}catch(e){}}var T={},E=1,w={},A={uiopen:1};function L(e){I("uiSound",{name:e})}function C(e,t,n,a){try{var i=T[e];if(!i)return;var o=A[e]||n?1:S(a).distGain;if("move"===e){if(w[e])return;var r;return(r=new Audio("lift/"+i)).loop=!0,r.volume=.7*E*o,w[e]=r,void r.play().catch(function(){})}(r=new Audio("lift/"+i)).volume=(null!=G[e]?G[e]:.8)*E*o*("number"==typeof t?t:1),r.play().catch(function(){})}catch(e){}}var k={};function S(e){return e=null==e?"_":String(e),k[e]||(k[e]={id:e,seq:0,timers:[],clips:[],fades:[],nodes:[],live:[],master:null,dist:null,endsAt:0,gain:1,rampTo:null,rampMs:0,distGain:1,sounding:!1}),k[e]}var B={start:.8,move:.7,ending:.8},G={};function R(){var e,t=0;for(e in k)if(k[e].sounding){var n=k[e].distGain;t+=n*n}var a=Math.sqrt(t),i=a>1?1/a:1;for(e in k){var o=k[e],r=o.distGain*(o.sounding?i:1);if(V&&o.dist)try{o.dist.gain.setTargetAtTime(r,V.currentTime,.05)}catch(e){}o.mixed=r,o.clips.forEach(function(e){try{e.volume=Math.max(0,Math.min(1,(e.__base||e.volume)*r))}catch(e){}})}}var P=.25,V=null,q={},D={};function N(){if(V)return V;try{V=new(window.AudioContext||window.webkitAudioContext)}catch(e){V=null}return V}function O(){var e=N();["start","move","ending"].forEach(function(t){var n=T[t];if(n&&(e&&void 0===q[t]&&(q[t]=!1,fetch("lift/"+n).then(function(e){return e.arrayBuffer()}).then(function(t){return e.decodeAudioData(t)}).then(function(n){n=function(e,t){for(var n=.001,a=t.length,i=-1,o=0;o<t.numberOfChannels;o++){for(var r=t.getChannelData(o),s=0;s<a;s++)if(Math.abs(r[s])>n){a=s;break}for(var l=r.length-1;l>i;l--)if(Math.abs(r[l])>n){i=l;break}}if(i<=a)return t;var c=Math.floor(.03*t.sampleRate);a=Math.max(0,a-c),i=Math.min(t.length-1,i+c);var u=i-a+1;if(u>=t.length-2)return t;for(var f=e.createBuffer(t.numberOfChannels,u,t.sampleRate),m=0;m<t.numberOfChannels;m++)f.getChannelData(m).set(t.getChannelData(m).subarray(a,a+u));return f}(e,n),"move"===t&&(n=function(e,t,n){n=n||.12;var a=Math.floor(t.sampleRate*n);t.length<3*a&&(a=Math.floor(t.length/3));if(a<8)return t;for(var i=t.length-a,o=e.createBuffer(t.numberOfChannels,i,t.sampleRate),r=0;r<t.numberOfChannels;r++){var s=t.getChannelData(r),l=o.getChannelData(r);l.set(s.subarray(0,i));for(var c=0;c<a;c++){var u=c/(a-1),f=Math.cos(u*Math.PI/2),m=Math.sin(u*Math.PI/2);l[c]=s[i+c]*f+s[c]*m}}return o}(e,n)),q[t]=n,D[t]=n.duration}).catch(function(){q[t]=null})),!D[t])){var a=new Audio("lift/"+n);a.preload="auto",a.addEventListener("loadedmetadata",function(){isFinite(a.duration)&&!D[t]&&(D[t]=a.duration)}),a.load()}})}function _(e,t){for(var n=new Float32Array(48),a=0;a<48;a++){var i=a/47;n[a]=e*Math.cos(i*Math.PI/2)+t*Math.sin(i*Math.PI/2)}return n}function F(e,t){if(t="number"==typeof t?t:.15,e.timers.forEach(function(e){clearTimeout(e)}),e.timers=[],e.fades.forEach(function(e){clearInterval(e)}),e.fades=[],t<=.2?e.clips.forEach(function(e){try{e.pause()}catch(e){}}):e.clips.forEach(function(n){j(e,n,1e3*t)}),e.clips=[],V&&e.master){try{var n=e.master.gain,a=V.currentTime;n.cancelScheduledValues(a),n.setValueAtTime(n.value,a),n.linearRampToValueAtTime(0,a+t)}catch(e){}var i=e.nodes;setTimeout(function(){i.forEach(function(e){try{e.stop()}catch(e){}})},1e3*t+50)}e.nodes=[],e.live=[],e.master=null,e.endsAt=0,e.sounding=!1,R()}function H(e,t,n,a,i,o,r){F(e,i||o?.9:.15);var s=++e.seq;e.sounding=!0;var l=N();if(l&&q.start&&q.ending){if("suspended"===l.state)try{l.resume()}catch(e){}var c=Math.max(0,0|t)/1e3,u=Math.max(0,0|n)/1e3,f=Math.max(0,0|a)/1e3,m=l.currentTime,d=m+Math.max(0,c-f)+.02,h=m+c,v=h+u,p=q.start.duration,g=q.ending.duration,y=l.createGain();y.gain.value=e.distGain,y.connect(l.destination),e.dist=y;var M=l.createGain();if(M.gain.value=1,M.connect(y),e.master=M,"number"==typeof e.rampTo&&e.rampMs>0){var b=l.currentTime;M.gain.setValueAtTime(e.gain,b),M.gain.linearRampToValueAtTime(e.rampTo,b+e.rampMs/1e3)}else M.gain.value=1;R();var x="number"==typeof r?Math.max(0,Math.min(1,r)):.3,I=Math.max(v-g-.5,h+u*x);I<d+.3&&(I=d+.3);var T=Math.max(0,I+g-(v+1.2)),w=I+(g-T),A=null,L=null;if(o&&q.move)L=S(q.move,d,0,!0,B.move,P);else{L=A=S(q.start,d,0,!1,B.start);var C=d+p-P;if(q.move&&C+P<I){var k=S(q.move,C,0,!0,B.move,P);G(A,C,P),L=k}}G(L,I,P),G(S(q.ending,I,T,!1,B.ending,P),w-.25,.25),e.endsAt=w,e.timers.push(setTimeout(function(){e.seq===s&&F(e)},Math.ceil(1e3*(w-m))+300))}else!function(e,t,n,a,i,o){var r=e.seq,s=1e3*(D.start||4.6),l=1e3*(D.ending||4.6),c=Math.max(0,0|n),u=Math.max(0,0|t),f=Math.max(0,0|a),m=Math.max(0,u-f),d="number"==typeof o?Math.max(0,Math.min(1,o)):.3,h=Math.max(u+c-l-500,u+c*d);h<m+300&&(h=m+300);var v=Math.max(0,(h+l-(u+c+1200))/1e3),p=h+(l-1e3*v),g=null,y=null;function M(t,n){e.timers.push(setTimeout(function(){e.seq===r&&n()},t))}M(m,i?function(){y=U(e,"move",{loop:!0,fadeIn:.25})}:function(){(g=U(e,"start"))&&m+s<h&&g.addEventListener("ended",function(){e.seq===r&&g&&(y=U(e,"move",{loop:!0,fadeIn:.25}))})});M(h,function(){j(e,g,250),g=null,j(e,y,250),y=null,U(e,"ending",{seek:v,fadeIn:.25})}),M(p+300,function(){F()})}(e,t,n,a,o,r);function S(t,n,a,i,o,r){return function(e,t,n,a,i,o,r,s,l){var c=e.createBufferSource();c.buffer=a,c.loop=!!r,s=s*E*("number"==typeof t.rampTo&&t.rampMs>0?1:t.gain);var u=e.createGain();l>0?(u.gain.setValueAtTime(0,i),u.gain.setValueCurveAtTime(_(0,s),i,l)):(u.gain.setValueAtTime(0,i),u.gain.linearRampToValueAtTime(s,i+.03)),c.connect(u),u.connect(n),c.start(i,o||0),t.nodes.push(c);var f={src:c,gain:u,vol:s};return t.live.push(f),f}(l,e,M,t,n,a,i,o,r)}function G(e,t,n){return function(e,t,n){if(e)try{e.gain.gain.setValueAtTime(e.vol,t),e.gain.gain.setValueCurveAtTime(_(e.vol,0),t,n),e.src.stop(t+n+.02)}catch(e){}}(e,t,n)}}function U(e,t,n){var a=T[t];if(!a)return null;var i=new Audio("lift/"+a);i.loop=!(!n||!n.loop);var o=(B[t]||.8)*E;if(n&&n.seek>0)try{i.currentTime=n.seek}catch(e){}if(n&&n.fadeIn){var r=0;i.volume=0;var s=setInterval(function(){var e=++r/8;try{i.volume=Math.max(0,Math.min(1,o*Math.sin(e*Math.PI/2)))}catch(e){}r>=8&&clearInterval(s)},Math.max(10,1e3*n.fadeIn/8));e.fades.push(s),i.__base=o}else i.volume=o;return i.__base=o,i.play().catch(function(){}),e.clips.push(i),i}function j(e,t,n){if(t){var a=t.volume||0,i=0,o=setInterval(function(){var e=++i/8;try{t.volume=Math.max(0,a*Math.cos(e*Math.PI/2))}catch(e){}if(i>=8){clearInterval(o);try{t.pause()}catch(e){}}},Math.max(10,n/8));e.fades.push(o)}}function z(e){return(e=String(e||"")).toLowerCase().replace(/(^|\s)\S/g,function(e){return e.toUpperCase()})}function J(){if(h.length){var e=y?M:p;(e<0||e>=h.length)&&(e=v);var s=h[e];t.textContent=String(s.code),n.textContent=z(s.label)||"Floor "+s.code,i.classList.toggle("dest",y),a.textContent=y?"Moving · doors closed":"Idle · doors open",o.setAttribute("d",M>p?"M12 5v14M6 13l6 6 6-6":"M12 19V5M6 11l6-6 6 6");for(var l=r.children,c=0;c<l.length;c++)l[c].classList.toggle("going",y&&c===M),l[c].classList.toggle("cur",b>=0?c===b:!y&&c===p),l[c].classList.toggle("pick",!y&&c===v&&c!==p)}else t.textContent="0"}function K(){e.classList.remove("sent")}function Q(){if(h.length&&v!==p){var t=g,n=h[v].id,i=z(h[v].label)||"Floor "+h[v].code;I("selectFloor",{elevatorId:t,floorId:n}),L("press"),e.classList.add("sent"),y=!0,M=v,J(),a.textContent="Going to "+i}}function W(){K(),e.classList.remove("open"),h=[],v=0,p=0,b=-1,g=null,I("close")}function X(e){h.length&&(v=(v+e+h.length)%h.length,J(),L("press"))}e.addEventListener("mousedown",function(t){e.classList.contains("open")&&(t.target.closest&&t.target.closest(".card")||W())}),window.addEventListener("keydown",function(t){e.classList.contains("open")&&("Escape"!==t.key?"ArrowLeft"===t.key||"ArrowDown"===t.key?X(-1):"ArrowRight"===t.key||"ArrowUp"===t.key?X(1):"Enter"===t.key&&Q():W())}),window.addEventListener("message",function(t){var n,a,i,o=t.data||{};if("string"==typeof o.action&&0===o.action.indexOf("lift:"))if("open"===(o=Object.assign({},o,{action:o.action.slice(5)})).action)K(),c&&c.classList.remove("show"),h=Array.isArray(o.floors)?o.floors:[],v="number"==typeof o.currentIndex?Math.max(0,o.currentIndex-1):0,p=v,M=v,y=!1,b=-1,g=o.elevatorId,o.uiScale&&document.documentElement.style.setProperty("--ui-scale",o.uiScale),o.sounds&&(T=o.sounds),a=g,i="1"===String(a)||/veh|car/i.test(String(a)),e.classList.toggle("veh",i),e.classList.toggle("ppl",!i),s.setAttribute("d",i?"M5 17h14M6 17l1.5-5h9L18 17M7 12l1-3h8l1 3M6 20h2M16 20h2":"M12 4a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM5 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"),l.textContent=i?"Vehicle Elevator":"Elevator",r.innerHTML="",r.className="keys",h.forEach(function(e,t){var n=document.createElement("button");n.className="key",n.type="button",n.innerHTML='<span class="ktext"><span class="face">'+String(e.code)+'</span><span class="lbl">'+z(e.label)+'</span></span><i class="tick"></i>',n.addEventListener("click",function(){h.length&&(v=t,J(),t!==p?Q():L("press"))}),r.appendChild(n)}),e.classList.add("open"),J(),C("uiopen");else if("state"===o.action){if(null!=g&&String(o.id)!==String(g))return;var x=function(e){for(var t=0;t<h.length;t++)if(String(h[t].id)===String(e))return t;return-1},I=x(o.current),A=x(o.target);if(b=-1,null!=o.at)for(var k=0;k<h.length;k++)if(h[k].id===o.at){b=k;break}I>=0&&(p=I),M=A>=0?A:p,(y=!!o.moving)||(M=p,v=p,e.classList.remove("sent")),J()}else if("close"===o.action)K(),e.classList.remove("open");else if("showHint"===o.action){if(e.classList.contains("open"))return;u&&(u.textContent=o.text||"Use Elevator"),f&&(m.setAttribute("d",o.icon||""),f.style.visibility=o.icon?"visible":"hidden",f.setAttribute("class","hint-ico"+(o.tone?" is-"+o.tone:""))),d&&o.key&&(d.textContent=String(o.key)),c&&c.classList.add("show")}else if("hideHint"===o.action)c&&c.classList.remove("show");else if("init"===o.action)"number"==typeof o.volume&&(E=Math.max(0,Math.min(1,o.volume))),o.levels&&"object"==typeof o.levels&&(G=o.levels,["start","move","ending"].forEach(function(e){"number"==typeof G[e]&&(B[e]=G[e])})),o.sounds&&(T=o.sounds,O());else if("motor"===o.action){var P=S(o.id);P.gain="number"==typeof o.gain?Math.max(0,Math.min(1,o.gain)):1,P.rampTo="number"==typeof o.gainTo?Math.max(0,Math.min(1,o.gainTo)):null,P.rampMs="number"==typeof o.rampMs?o.rampMs:0,H(P,o.departDelayMs,o.rideMs,o.leadMs,!0===o.blend,!0===o.fromLoop,"number"==typeof o.endFloor?o.endFloor:void 0)}else if("motorStop"===o.action)n=S(o.id),!!o.soft||(n.seq++,F(n));else if("gain"===o.action){var V=S(o.id);for(var q in V.distGain=Math.max(0,Math.min(1,"number"==typeof o.value?o.value:1)),R(),w)if(w[q])try{w[q].volume=.7*E*V.distGain}catch(t){}}else"playSound"===o.action?C(o.name,o.gain,!0===o.positioned,o.id):"stopSound"===o.action&&function(e){try{w[e]&&(w[e].pause(),w[e]=null)}catch(e){}}(o.name)}),I("uiReady"),setTimeout(function(){I("uiReady")},1500),setTimeout(function(){I("uiReady")},4e3)}()</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<!--
+  La ficha de una evidencia: la pinta el juego como textura (DUI) al lado de
+  la evidencia que tienes más cerca, desde client/evidencias.lua. No es una
+  página de la NUI: no tiene foco ni ratón, solo recibe lo que tiene que decir
+  con SendDuiMessage.
+
+  Mide 600 x 168 y el fondo es transparente: lo que no es la ficha no se ve.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<!-- En un <link>: el CEF no pide las fuentes de un @import. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;1,800&family=Barlow:wght@600;700&family=Oxanium:wght@800&display=swap">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<style>
+  /* Pegatina clara, como el resto del servidor (en policía el acento es azul):
+     panel gris con canto negro fino y sombra dura. El número va en el mismo
+     amarillo que la placa del suelo, para que se vea a cuál corresponde. */
+  html, body { margin: 0; padding: 0; width: 600px; height: 168px; overflow: hidden; background: transparent; }
+
+  .ficha {
+    position: absolute; left: 4px; top: 4px; right: 8px; bottom: 8px;
+    display: flex; align-items: stretch; gap: 16px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 16px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    opacity: 0; transition: opacity 0.18s ease;
+  }
+  .ficha.on { opacity: 1; }
+
+  .num {
+    flex: none; width: 112px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: #ffd21f;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    font-family: Oxanium, 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 62px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cuerpo { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding-right: 10px; }
+
+  .kicker {
+    font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 20px;
+    letter-spacing: 0.08em; text-transform: uppercase; color: #1f6fd1;
+  }
+  .fila { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  /* Chapa negra con el icono blanco, como los iconos de fila de los menús. */
+  .icono { flex: none; width: 38px; height: 38px; padding: 6px; box-sizing: border-box; border-radius: 9px; background: #0b0b0d; color: #fff; }
+  .icono svg { width: 100%; height: 100%; display: block; }
+  .titulo {
+    font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800; font-size: 36px; line-height: 1;
+    text-transform: uppercase; color: #0b0b0d;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .detalle {
+    font-family: Barlow, system-ui, sans-serif; font-weight: 700; font-size: 21px;
+    color: #44444a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-variant-numeric: tabular-nums;
+  }
+  .detalle .sep { color: #2f8cff; margin: 0 6px; }
+</style>
+</head>
+<body>
+<div class="ficha" id="ficha">
+  <div class="num" id="num">1</div>
+  <div class="cuerpo">
+    <div class="kicker" id="kicker">Evidencia</div>
+    <div class="fila">
+      <div class="icono" id="icono"></div>
+      <div class="titulo" id="titulo"></div>
+    </div>
+    <div class="detalle" id="detalle"></div>
+  </div>
+</div>
+<script>
+  // Iconos de lucide (los mismos que usa la MDT) y el casquillo, dibujado aquí.
+  const I = {
+    casquillo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9.5c0-3 1.3-6 3-7.5c1.7 1.5 3 4.5 3 7.5"/><rect x="8" y="9.5" width="8" height="10" rx="1"/><path d="M7 19.5h10v2.5H7z"/></svg>',
+    impacto: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4M6 12H2m10-6V2m0 20v-4"/></svg>',
+    sangre: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5S5 13 5 15a7 7 0 0 0 7 7"/></svg>',
+    vehiculo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8l-2 2l-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10L3 8m4 6h.01M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2m14-2v2"/></svg>',
+    sustancia: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5l10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7m-2-12l7 7"/></svg>',
+    otra: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2m10 0h2a2 2 0 0 1 2 2v2m0 10v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16l-1.9-1.9"/></svg>',
+  }
+
+  const $ = (id) => document.getElementById(id)
+  const escapar = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+
+  function pintar(d) {
+    if (!d || !d.titulo) { $('ficha').classList.remove('on'); return }
+    $('num').textContent = d.n ?? ''
+    $('kicker').textContent = d.kicker || 'Evidencia'
+    $('icono').innerHTML = I[d.icono] || I.otra
+    $('titulo').textContent = d.titulo
+    $('detalle').innerHTML = (d.detalle || []).filter(Boolean).map(escapar).join('<span class="sep">·</span>')
+    $('ficha').classList.add('on')
+  }
+
+  window.addEventListener('message', (e) => {
+    let d = e.data
+    if (typeof d === 'string') { try { d = JSON.parse(d) } catch { return } }
+    pintar(d)
+  })
+
+  // Para verla en un navegador: ficha.html?prueba
+  if (location.search.includes('prueba')) {
+    pintar({ n: 3, kicker: 'Evidencia 03', icono: 'casquillo', titulo: 'Casquillo', detalle: ['9x19 mm', '4 unidades', 'hace 6 min'] })
+  }
+</script>
+</body>
+</html>

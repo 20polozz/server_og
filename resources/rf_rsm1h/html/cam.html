@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Camera feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   The overlay drawn over a camera feed.
+   This was native DrawRect/DrawText before. Bars and text are all that draws
+   well that way - a vignette, scanlines or grain are not really possible - so
+   it lives here instead, as a page with no pointer events over the game.
+   Nothing in here ever takes input: the camera is driven by game controls.
+   =========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+
+:root {
+  --ink: #e8e6e2;
+  --dim: rgba(232,230,226,.45);
+  --red: #ff5560;
+  --amber: #f5c451;
+  --green: #62d38a;
+  --mich: 'Michroma', system-ui, sans-serif;
+}
+
+#feed { position: fixed; inset: 0; opacity: 0; transition: opacity .18s ease; --bar: 0px; }
+#feed.is-on { opacity: 1; }
+
+/* The letterbox. Height is worked out from the real viewport rather than
+   hard-coded, so the crop is a true 2.39:1 on whatever the screen is - a
+   fixed percentage would be wrong on anything but 16:9, and negative on an
+   ultrawide. They slide in when the feed opens. */
+.bar { position: absolute; left: 0; right: 0; height: var(--bar); background: #000;
+       z-index: 5; transition: height .35s cubic-bezier(.2,.8,.3,1); }
+.bar--t { top: 0; box-shadow: 0 1px 0 rgba(255,255,255,.05); }
+.bar--b { bottom: 0; box-shadow: 0 -1px 0 rgba(255,255,255,.05); }
+#feed:not(.is-on) .bar { height: 0; }
+
+/* Everything else - the film and the readouts - sits inside the crop, not over
+   the bars. The bars are meant to read as the edge of the picture. */
+.frame { position: absolute; left: 0; right: 0; top: var(--bar); bottom: var(--bar);
+         overflow: hidden; }
+
+/* ---------------------------------------------------------------- the look */
+
+/* Corners fall off rather than a hard letterbox. The old black bars cut the
+   picture in two straight lines; a lens does not do that. */
+.vig {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(130% 100% at 50% 50%, transparent 38%, rgba(0,0,0,.30) 74%, rgba(0,0,0,.72) 100%);
+}
+/* Something for the text to sit on, without a line across the picture. */
+.scrim {
+  position: absolute; left: 0; right: 0; height: 190px; pointer-events: none;
+}
+.scrim--t { top: 0;    background: linear-gradient(180deg, rgba(0,0,0,.66), rgba(0,0,0,0)); }
+.scrim--b { bottom: 0; background: linear-gradient(0deg,   rgba(0,0,0,.70), rgba(0,0,0,0)); }
+
+/* Scanlines. Two pixels on, one off, very low contrast - at full strength it
+   reads as a broken screen rather than a camera. */
+.lines {
+  position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background: repeating-linear-gradient(180deg,
+    rgba(0,0,0,.20) 0px, rgba(0,0,0,.20) 1px, transparent 1px, transparent 3px);
+}
+
+/* Grain. A tiling noise tile moved around by transform rather than by redrawing
+   it - the layer is composited, so the game does not pay for a repaint every
+   frame. Oversized so the movement never shows an edge. */
+.grain {
+  position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  pointer-events: none; opacity: .055; will-change: transform;
+  animation: grain 1.1s steps(1) infinite;
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/>\
+<feColorMatrix type='saturate' values='0'/></filter>\
+<rect width='160' height='160' filter='url(%23n)' opacity='.9'/></svg>");
+}
+@keyframes grain {
+  0%   { transform: translate3d(0,0,0); }
+  20%  { transform: translate3d(-6%,3%,0); }
+  40%  { transform: translate3d(4%,-5%,0); }
+  60%  { transform: translate3d(-3%,-2%,0); }
+  80%  { transform: translate3d(5%,4%,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+/* The slow bright band that drifts down a cheap sensor's picture. */
+.roll {
+  position: absolute; left: 0; right: 0; height: 22%; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.028), rgba(255,255,255,0));
+  animation: roll 7s linear infinite; will-change: transform;
+}
+@keyframes roll { from { transform: translateY(-30%); } to { transform: translateY(460%); } }
+
+/* Gain wobble. Tiny, and on a prime-ish interval so it never falls into step
+   with the roll band and reads as a pulse. */
+.flick {
+  position: absolute; inset: 0; pointer-events: none; background: #fff;
+  opacity: 0; animation: flick 2.7s ease-in-out infinite;
+}
+@keyframes flick {
+  0%, 44%, 100% { opacity: 0; }
+  46% { opacity: .022; }
+  48% { opacity: 0; }
+  72% { opacity: .014; }
+  74% { opacity: 0; }
+}
+
+/* ------------------------------------------------------------------ chrome */
+.hud { position: absolute; inset: 0; pointer-events: none;
+       font-family: var(--mich); color: var(--ink); }
+
+.tl { position: absolute; top: 26px; left: 34px; }
+.cam-id   { font-size: 19px; letter-spacing: .10em; text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+.cam-id b { color: var(--red); font-weight: normal; }
+.cam-room { margin-top: 7px; font-size: 8.5px; letter-spacing: .26em;
+            text-transform: uppercase; color: var(--dim); }
+
+.tr { position: absolute; top: 26px; right: 34px; text-align: right; }
+.rec { display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+       font-size: 10px; letter-spacing: .22em; color: var(--red); }
+.rec i { width: 9px; height: 9px; border-radius: 50%; background: var(--red);
+         box-shadow: 0 0 10px var(--red); animation: rec 1.2s steps(1) infinite; }
+@keyframes rec { 0%, 55% { opacity: 1; } 56%, 100% { opacity: .18; } }
+.stamp { margin-top: 8px; font-size: 12px; letter-spacing: .12em; }
+.stamp small { display: block; margin-top: 4px; font-size: 8.5px;
+               letter-spacing: .2em; color: var(--dim); }
+
+/* the arc, bottom centre: where this camera is pointed within its own limits */
+.arc { position: absolute; left: 50%; bottom: 78px; transform: translateX(-50%);
+       width: 300px; }
+.arc-track { position: relative; height: 3px; border-radius: 2px;
+             background: rgba(232,230,226,.16); }
+.arc-track::before, .arc-track::after {
+  content: ''; position: absolute; top: -5px; width: 2px; height: 13px;
+  background: rgba(232,230,226,.4); }
+.arc-track::before { left: 0; } .arc-track::after { right: 0; }
+/* the ends go red as the camera runs out of travel, so a limit is seen coming */
+.arc.at-lo .arc-track::before, .arc.at-hi .arc-track::after {
+  background: var(--red); box-shadow: 0 0 8px var(--red); }
+.arc-nib { position: absolute; top: -6px; width: 3px; height: 15px; border-radius: 2px;
+           background: var(--ink); box-shadow: 0 0 9px rgba(255,255,255,.65);
+           transform: translateX(-50%); transition: left .09s linear; }
+.arc-lbl { margin-top: 9px; display: flex; justify-content: space-between;
+           font-size: 7.5px; letter-spacing: .2em; color: var(--dim); }
+
+/* zoom, bottom left */
+.bl { position: absolute; left: 34px; bottom: 74px; }
+.zoom { font-size: 13px; letter-spacing: .12em; }
+.zoom span { font-size: 8px; letter-spacing: .24em; color: var(--dim); }
+.zbar { margin-top: 8px; width: 116px; height: 3px; border-radius: 2px;
+        background: rgba(232,230,226,.16); }
+.zbar i { display: block; height: 100%; border-radius: 2px; background: var(--ink);
+          box-shadow: 0 0 8px rgba(255,255,255,.5); transition: width .09s linear; }
+/* Read alongside the arc's pan figure, these two are what startPan/startTilt
+   in the camera's entry take: aim it, note them, paste them in. */
+.tiltline { margin-top: 10px; font-size: 11px; }
+
+/* auto-pan, bottom right. Pressing X said nothing at all before. */
+.br { position: absolute; right: 34px; bottom: 74px; text-align: right; }
+.pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px;
+        border-radius: 11px; font-size: 8px; letter-spacing: .2em;
+        text-transform: uppercase; color: var(--dim);
+        background: rgba(0,0,0,.4); box-shadow: 0 0 0 1px rgba(232,230,226,.1) inset;
+        transition: color .15s, box-shadow .15s; }
+.pill i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.is-on { color: var(--green);
+              box-shadow: 0 0 0 1px rgba(98,211,138,.45) inset, 0 0 16px rgba(98,211,138,.16) inset; }
+.pill.is-on i { animation: rec 1s steps(1) infinite; }
+
+/* the camera strip along the bottom */
+.strip { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%);
+         display: flex; gap: 6px; max-width: 86vw; overflow: hidden; }
+.chip { flex: none; padding: 6px 11px; border-radius: 9px; font-size: 7.5px;
+        letter-spacing: .18em; text-transform: uppercase; white-space: nowrap;
+        color: rgba(232,230,226,.42); background: rgba(0,0,0,.42);
+        box-shadow: 0 0 0 1px rgba(232,230,226,.08) inset; }
+.chip.is-here { color: var(--ink); background: rgba(0,0,0,.66);
+                box-shadow: 0 0 0 1px rgba(232,230,226,.42) inset; }
+.chip.is-next { color: rgba(232,230,226,.7);
+                box-shadow: 0 0 0 1px rgba(232,230,226,.2) inset; }
+.chip.is-hit  { color: var(--red);
+                box-shadow: 0 0 0 1px rgba(255,85,96,.5) inset, 0 0 14px rgba(255,85,96,.18) inset; }
+
+.keys { position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
+        font-size: 7px; letter-spacing: .2em; text-transform: uppercase;
+        color: rgba(232,230,226,.3); white-space: nowrap; }
+.keys b { color: rgba(232,230,226,.6); font-weight: normal; }
+
+/* motion, top centre. Loud on purpose - it is the one thing here that is not
+   just status. */
+.motion { position: absolute; top: 24px; left: 50%; transform: translateX(-50%) translateY(-14px);
+          display: flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 12px;
+          font-size: 9px; letter-spacing: .24em; text-transform: uppercase; color: var(--red);
+          background: rgba(40,0,3,.62);
+          box-shadow: 0 0 0 1px rgba(255,85,96,.5) inset, 0 0 26px rgba(255,85,96,.2) inset;
+          opacity: 0; transition: opacity .2s, transform .2s; }
+.motion.is-on { opacity: 1; transform: translateX(-50%) translateY(0); }
+.motion i { width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+            box-shadow: 0 0 10px var(--red); animation: rec .5s steps(1) infinite; }
+/* the whole picture takes a red wash for a moment */
+.alarm { position: absolute; inset: 0; pointer-events: none; opacity: 0;
+         background: radial-gradient(120% 90% at 50% 50%, transparent 45%, rgba(255,85,96,.24) 100%);
+         transition: opacity .25s; }
+.alarm.is-on { opacity: 1; animation: alarm 1.1s ease-in-out infinite; }
+@keyframes alarm { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+/* ------------------------------------------------------- connecting -------
+   Between the click and the picture there is nothing to see: a camera across
+   the property has not streamed in yet, and the feed opens on an empty world.
+   This covers that, above the letterbox, and lifts once the scene is there. */
+/* On instantly, off with a fade. Fading it IN meant the feed was visible
+   through it for the first fraction of a second - which is the exact moment it
+   exists to hide. */
+.conn { position: absolute; inset: 0; z-index: 20; background: #000;
+        display: grid; place-items: center; font-family: var(--mich);
+        opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.conn.is-on { opacity: 1; transition: none; }
+.conn-in { text-align: center; }
+.conn-cam { font-size: 15px; letter-spacing: .12em; color: var(--ink); }
+.conn-cam b { color: var(--red); font-weight: normal; }
+.conn-room { margin-top: 7px; font-size: 8px; letter-spacing: .26em;
+             text-transform: uppercase; color: var(--dim); }
+.conn-bar { margin: 20px auto 0; width: 190px; height: 2px; border-radius: 2px;
+            background: rgba(232,230,226,.14); overflow: hidden; }
+.conn-bar i { display: block; width: 38%; height: 100%; border-radius: 2px;
+              background: var(--ink); box-shadow: 0 0 10px rgba(255,255,255,.6);
+              animation: conn 1.05s cubic-bezier(.5,0,.5,1) infinite; }
+@keyframes conn { 0% { transform: translateX(-110%); } 100% { transform: translateX(370%); } }
+.conn-txt { margin-top: 14px; font-size: 7.5px; letter-spacing: .3em;
+            text-transform: uppercase; color: rgba(232,230,226,.35); }
+
+/* Everything filmic can be turned off and the readouts stay. */
+body.plain .lines, body.plain .grain, body.plain .roll, body.plain .flick { display: none; }
+body.plain .vig { background: radial-gradient(130% 100% at 50% 50%, transparent 55%, rgba(0,0,0,.45) 100%); }
+</style>
+<!-- PEGATINA (solo Origen): origen.js apunta la marca en <html>; la hoja va la última -->
+<link href="https://fonts.googleapis.com/css2?family=Knewave&family=Oxanium:wght@800&display=swap" rel="stylesheet">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<link rel="stylesheet" href="origen-pegatina.css?v=riel0710">
+<script src="origen.js"></script>
+</head>
+<body>
+
+<div id="feed">
+  <div class="bar bar--t"></div>
+  <div class="bar bar--b"></div>
+
+  <div class="frame">
+  <div class="vig"></div>
+  <div class="lines"></div>
+  <div class="roll"></div>
+  <div class="grain"></div>
+  <div class="flick"></div>
+  <div class="alarm" id="alarm"></div>
+  <div class="scrim scrim--t"></div>
+  <div class="scrim scrim--b"></div>
+
+  <div class="conn" id="conn">
+    <div class="conn-in">
+      <div class="conn-cam"><b id="connNo">CAM 01</b> <span id="connName"></span></div>
+      <div class="conn-room" id="connRoom"></div>
+      <div class="conn-bar"><i></i></div>
+      <div class="conn-txt" id="connTxt">Connecting</div>
+    </div>
+  </div>
+
+  <div class="hud">
+    <div class="tl">
+      <div class="cam-id"><b id="camNo">CAM 01</b> <span id="camName"></span></div>
+      <div class="cam-room" id="camRoom"></div>
+    </div>
+
+    <div class="tr">
+      <div class="rec"><i></i><span>REC</span></div>
+      <div class="stamp"><span id="clock">00:00:00</span><small id="date"></small></div>
+    </div>
+
+    <div class="motion" id="motion"><i></i><span id="motionTxt">Motion</span></div>
+
+    <div class="bl">
+      <div class="zoom"><span>ZOOM</span> <b id="zoomVal">1.0x</b></div>
+      <div class="zbar"><i id="zoomBar"></i></div>
+      <div class="zoom tiltline"><span>INCLINAR</span> <b id="tiltVal">0&deg;</b></div>
+    </div>
+
+    <div class="arc" id="arc">
+      <div class="arc-track"><div class="arc-nib" id="arcNib"></div></div>
+      <div class="arc-lbl"><span id="arcLo"></span><span id="arcPan"></span><span id="arcHi"></span></div>
+    </div>
+
+    <div class="br"><span class="pill" id="sweep"><i></i>Auto pan</span></div>
+
+    <div class="strip" id="strip"></div>
+    <div class="keys" id="keys"></div>
+  </div>
+  </div>
+</div>
+
+<script src="es.js"></script>
+<script>!function(){var t=document.getElementById("feed"),n={};["conn","connNo","connName","connRoom","connTxt","camNo","camName","camRoom","clock","date","zoomVal","zoomBar","tiltVal","arc","arcNib","arcLo","arcHi","arcPan","sweep","strip","keys","motion","motionTxt","alarm"].forEach(function(t){n[t]=document.getElementById(t)});var e=[],o=1,a=null,i=2.39;function s(){var n=window.innerWidth,e=window.innerHeight,o=(e-n/i)/2;o=Math.max(0,Math.min(.25*e,o)),t.style.setProperty("--bar",Math.round(o)+"px")}function l(t){return(t<10?"0":"")+t}function c(){for(var t=e.length?o%e.length+1:0,a="",i=0;i<e.length;i++){var s=e[i],c=s.index;a+='<span class="chip'+(c===o?" is-here":c===t?" is-next":"")+'" data-cam="'+c+'">'+l(c)+" "+(s.label||"")+"</span>"}n.strip.innerHTML=a}function r(t){if(null!=t.index&&t.index!==o&&(o=t.index,c()),null!=t.label&&(n.camNo.textContent="CAM "+l(o),n.camName.textContent=t.label),null!=t.room&&(n.camRoom.textContent=t.room||""),null!=t.time&&(n.clock.textContent=t.time),null!=t.date&&(n.date.textContent=t.date),null!=t.fov){var e=null!=t.fovMin?t.fovMin:22,a=null!=t.fovMax?t.fovMax:70;n.zoomVal.textContent=(a/Math.max(1,t.fov)).toFixed(1)+"x";var i=(a-t.fov)/Math.max(.001,a-e);n.zoomBar.style.width=Math.round(100*Math.max(0,Math.min(1,i)))+"%"}if(null!=t.pan&&null!=t.panLo&&null!=t.panHi){var s=t.panHi-t.panLo,r=s>.01?(t.pan-t.panLo)/s:.5;r=Math.max(0,Math.min(1,r)),n.arcNib.style.left=100*r+"%",n.arcLo.textContent=Math.round(t.panLo)+"°",n.arcHi.textContent=Math.round(t.panHi)+"°",n.arcPan.textContent=(t.pan>=0?"+":"")+Math.round(t.pan)+"°",n.arc.className="arc"+(r<=.005?" at-lo":r>=.995?" at-hi":"")}null!=t.tilt&&(n.tiltVal.textContent=(t.tilt>=0?"+":"")+Math.round(t.tilt)+"°"),null!=t.sweep&&(n.sweep.className="pill"+(t.sweep?" is-on":"")),null!=t.keys&&(n.keys.innerHTML=t.keys)}window.addEventListener("resize",s),window.addEventListener("message",function(m){var d=m.data||{};if("string"==typeof d.action&&0===d.action.indexOf("cam:")){var u=d.action.slice(4);"open"===u?(e=d.cams||[],o=d.index||1,"number"==typeof d.aspect&&d.aspect>.5&&(i=d.aspect),document.body.classList.toggle("plain",!1===d.film),s(),c(),r(d),t.classList.add("is-on")):"loading"===u?(n.connNo.textContent="CAM "+l(d.index||o),n.connName.textContent=d.label||"",n.connRoom.textContent=d.room||"",n.connTxt.textContent=d.text||"Connecting",n.conn.classList.add("is-on")):"ready"===u?n.conn.classList.remove("is-on"):"state"===u?r(d):"motion"===u?function(t,e){n.motionTxt.textContent="Motion · "+(t||""),n.motion.classList.add("is-on"),n.alarm.classList.add("is-on");var o=n.strip.querySelector('[data-cam="'+(arguments[2]||-1)+'"]');o&&o.classList.add("is-hit"),clearTimeout(a),a=setTimeout(function(){n.motion.classList.remove("is-on"),n.alarm.classList.remove("is-on");var t=n.strip.querySelector(".is-hit");t&&t.classList.remove("is-hit")},e||5e3)}(d.label,d.ms,d.id):"close"===u&&(t.classList.remove("is-on"),n.conn.classList.remove("is-on"),clearTimeout(a),n.motion.classList.remove("is-on"),n.alarm.classList.remove("is-on"))}})}()</script>
+</body>
+</html>

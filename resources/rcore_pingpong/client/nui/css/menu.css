@@ -1,0 +1,503 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+
+/* (SignPainter por @import retirado: el titulo va en Knewave por <link>) */
+
+.key-content span {
+    background-color: #dcdde0;
+    color: black;
+    /* Set the text color to black */
+    padding: 0.1em;
+    /* Set padding to create a square */
+    padding-left: 0.15em;
+    padding-right: 0.15em;
+    min-width: 1.3em;
+    /* Set width and height to create a square */
+    height: 1.3em;
+    line-height: 1.3em;
+    /* Set line-height to match the square's height */
+    text-align: center;
+    /* Center the text horizontally */
+    display: inline-block;
+    /* Allows it to behave like normal text */
+    border-radius: 4px;
+    /* Adjust the border-radius to make it rounder or squarer */
+}
+
+
+.player-card {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0.55em;
+    padding-top: 0.55em;
+}
+
+.player-image {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    /* Adjust as needed */
+
+}
+
+.player-nickname {
+    color: var(--ogn-t1);
+
+}
+
+.container {
+    min-width: 23.7vw;
+    max-width: 371px;
+    width: auto;
+    height: auto;
+    background: rgb(0 0 0 / 50%);
+    max-width: 23.7vw !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+.container.top {
+    position: absolute;
+    top: 1.5vw;
+}
+
+.container.bottom {
+    position: absolute;
+    bottom: 1.5vw;
+}
+
+.container.bottom.right {
+    position: absolute;
+    bottom: 1.5vw;
+    right: 1.8vw;
+}
+
+.container.bottom.left {
+    position: absolute;
+    bottom: 1.5vw;
+    left: 1.8vw;
+}
+
+.container.top.right {
+    position: absolute;
+    top: 1.5vw;
+    right: 1.8vw;
+}
+
+.container.top.left {
+    position: absolute;
+    top: 1.5vw;
+    left: 1.8vw;
+}
+
+.container.middle.right {
+    position: absolute;
+    bottom: 40%;
+    right: 1.8vw;
+}
+
+.container.middle_screen.middle_screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.container.middle.left {
+    position: absolute;
+    bottom: 40%;
+    left: 1.8vw;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center the content */
+    align-items: center;
+    /* Vertically center the content */
+    width: 100%;
+    height: 10vh;
+    padding: 1px 0px;
+    text-align: center;
+    background: rgb(0, 0, 0)
+}
+
+.title p {
+    font-family: 'SignPainter', sans-serif;
+    color: var(--ogn-t1);
+    font-size: 3vw;
+    top: 0.5vw;
+    position: relative;
+    padding: 0.35vw;
+}
+
+.menu {
+    width: 100%;
+    padding: 0.37vw 0px;
+}
+
+.menu p {
+    padding: 0;
+    margin: 0;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    font-size: 1vw;
+    color: var(--ogn-t1);
+    text-align: left;
+    padding-left: 0.5vw;
+}
+
+.menu.active {
+    width: 100%;
+    background: var(--arc-fondo1, #ffffff);
+}
+
+.menu.active p {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    color: var(--arc-tinta1, #000);
+    text-align: left;
+    padding-left: 0.5vw;
+}
+
+.menu.black {
+    width: 100%;
+    background: black;
+}
+
+.menu.black p {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    color: var(--arc-tinta1, rgb(0, 0, 0));
+    text-align: left;
+    padding-left: 0.5vw;
+}
+
+.menu.disabled {
+    width: 100%;
+}
+
+.menu.disabled p {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    color: rgb(170, 170, 170);
+    text-align: left;
+    padding-left: 0.5vw;
+}
+
+.button p {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    text-align: center;
+    position: relative;
+    top: 7px;
+    color: var(--ogn-t1);
+}
+
+.button:hover {
+    background: #000000a6;
+    transition: background-color 200ms linear;
+    cursor: pointer;
+}
+
+.button {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; letter-spacing: .01em;
+    position: relative;
+    left: 29px;
+    bottom: 12px;
+    background: #000000;
+    height: 39px;
+    width: 127px;
+    float: left;
+    margin: 7px;
+    border-radius: 4px;
+    transition: background-color 200ms linear;
+}
+
+#inputdiv {
+    max-width: 266px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -6%);
+}
+
+#scrolldiv {
+    max-height: 20vw;
+    overflow: auto;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--arc-fondo1, #f1f1f1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+textarea:focus,
+input:focus {
+    outline: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#inputak {
+    outline: none;
+    border: none;
+    border-radius: 0px;
+}
+
+/* ══ PEGATINA: el ping-pong con el estilo del logo «Origen Los Santos» ══════
+
+   Estilo unico del servidor: todo cuelga de
+   html y vale para las dos marcas (Nación la ve igual, en su naranja). Mismas reglas y
+   mismos colores que origen_inventory/.../pegatina.css. Ver la skill
+   origen-pegatina.
+
+   Cubre el menu de la mesa (.container), el aviso de teclas, el marcador de
+   la partida (.gameinfo) y los marcadores pequeños (.miniScore). Las fotos
+   de los jugadores, las palas y la pelota no se tocan.
+
+   papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   NEGRA para lo elegido.
+
+   Va al final de menu.css, que es la ultima hoja de la pagina, y pisa
+   tambien a style.css. Lleva !important donde el marcado de rcore trae el
+   color en un style="" (el fondo del titulo, el negro de la franja, el
+   blanco de la descripcion). Los cantos son box-shadow o el color de un
+   borde que ya existia: no cambia ninguna medida.
+
+   Para quitarlo: borrar este bloque y el <link> de Knewave y Oxanium de
+   index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── El menu de la mesa y el aviso ──────────────────────────────────── */
+html .hockeyui .container {
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    overflow: hidden;
+}
+/*  El titulo: el rotulo a brocha, rosa con el contorno negro del logo,
+    sobre el papel. El color de fondo viene en un style="". */
+html .hockeyui .container .title { background: #dcdde0 !important; }
+html .hockeyui .container .title p {
+    font-family: "Knewave", "SignPainter", cursive;
+    font-size: 2.4vw;
+    white-space: nowrap;
+    font-weight: 400;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    text-shadow:
+        2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000,
+        1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000,
+        4px 4.5px 0 #000;
+}
+/*  Las filas. */
+html .hockeyui .menu { background-image: none !important; }
+html .hockeyui .menu p,
+html .hockeyui .menu p[style] { color: #0b0b0d !important; }
+/*  La franja del subtitulo y el contador (venia en negro por style=""):
+    papel entre dos filetes. */
+html .hockeyui .container > .menu[style*="black"] {
+    background: #dcdde0 !important;
+    box-shadow: inset 0 3px 0 #000, inset 0 -3px 0 #000;
+}
+html .hockeyui .menu p.menuSubtitle { color: #b3123f !important; }
+html .hockeyui .menu:not(.key-content):not(.active) p:not(.menuSubtitle):not(.key-content)[style*="color"] { color: #b3123f !important; }
+html .hockeyui .container > .menu[style*="black"] p:not(.menuSubtitle) {
+    font-family: "Oxanium", sans-serif;
+    font-weight: 800;
+    color: #0b0b0d !important;
+}
+/*  La fila en la que estas: encendida, rosa con tinta negra. */
+html .hockeyui .menu.active { background: #d81b55; box-shadow: inset 0 3px 0 #000, inset 0 -3px 0 #000; }
+html .hockeyui .menu.active p,
+html .hockeyui .menu.active p[style] { color: #000 !important; }
+html .hockeyui .menu.black { background: #0b0b0d; }
+html .hockeyui .menu.black p { color: #fff !important; }
+html .hockeyui .menu.disabled p { color: #9a9aa3 !important; }
+/*  La descripcion y el aviso de teclas. */
+html .hockeyui .menu.key-content { background: #dcdde0; box-shadow: inset 0 3px 0 #000; }
+html .hockeyui .menu p.key-content,
+html .hockeyui .menu.key-content p { color: #0b0b0d !important; }
+/*  Chapas de tecla. */
+html .hockeyui .key-content span {
+    background-color: #0b0b0d;
+    font-family: "Oxanium", sans-serif;
+    font-weight: 800;
+    color: #fff;
+}
+html .hockeyui .button { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .hockeyui .button:hover { background: #e6e7ea; }
+html .hockeyui .button p { color: #0b0b0d; }
+html .hockeyui ::-webkit-scrollbar-track { background: #dcdde0; }
+html .hockeyui ::-webkit-scrollbar-thumb { background: #d81b55; }
+html .hockeyui ::-webkit-scrollbar-thumb:hover { background: #df2f63; }
+
+/* ── El marcador de la partida ──────────────────────────────────────── */
+/*  Cada fila ya traia un borde de 1 px: va transparente (sumado al anillo
+    salia un canto de 2,5 px) y el canto fino lo pone el anillo. La sombra
+    dura, corta, que las filas van seguidas. */
+html:root .gameinfo .row,
+html:root .gameinfo .rowmine {
+    border-color: transparent;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+/*  La tuya: «elegido», rosa palido con el anillo rosa. */
+html:root .gameinfo .rowmine { border-color: transparent; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html:root .gameinfo .row p,
+html:root .gameinfo .rowmine p { color: #0b0b0d; text-shadow: none; }
+html:root .gameinfo .mug { border-color: #000; }
+html:root .gameinfo .scorebox {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: "Oxanium", sans-serif;
+    font-weight: 800;
+    color: #000;
+    text-shadow: none;
+}
+html .gameinfo .extracontent .inside { background: rgba(11, 11, 13, 0.12); }
+/*  Ping y apuesta: chapas negras con la letra blanca. */
+html:root .gameinfo .littlerow { border-color: #0b0b0d; background: #0b0b0d; box-shadow: none; color: #fff; }
+html:root .gameinfo .actionrow { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+
+/* ── Los marcadores pequeños y la barra de carga ────────────────────── */
+html .miniScore,
+html .loadingbar {
+    border-color: #000;
+    border-radius: 10px;
+    background-color: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .miniScore .scoreMug img { border-color: #000; }
+html:root .miniScore .scoreValue {
+    font-family: "Oxanium", sans-serif;
+    font-weight: 800;
+    color: #b3123f;
+    text-shadow: none;
+}
+html .loadingbar img { filter: none; }
+
+/* [REPASO-HUD-D 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · EL MARCADOR DE LA MESA (verificado 06/10) ══════════════════════
+   Visto en captura llamando a las funciones de verdad (FillPlayerData,
+   ToggleTennisUI, ScoreChanged, SetPing, ToggleBettingBar, CreateScorebar…
+   por el mensaje {action:'javascript'}). Solo de día.
+   El MENÚ de la mesa no se toca aquí: en el juego no se ve nunca
+   (style.css lo apaga con «#menuui, #notifyBar { display: none !important }»
+   y editable_client.lua lo sustituye por org-input y origen_notify).
+   Lo que cambia:
+   - Nombres en rótulo cursiva 800 (iban en Montserrat fina) y sin espaciar.
+   - Las dos filas iban pegadas: ToggleGameInfo pone display:block y el
+     «gap» de style.css deja de valer. Ahora llevan su hueco.
+   - Ping y apuesta: chapas negras con la cifra en Oxanium, sin espaciar
+     (0,109em). «Match point»: rótulo, sin espaciar (0,125em).
+   - Fuera lo que no pinta nada en el tenis de mesa: el hueco gris de las
+     bolas de billar cuando está vacío. */
+html:root .gameinfo .row,
+html:root .gameinfo .rowmine { margin-bottom: 1vh; gap: 1.2vh; }
+html:root .gameinfo .row p,
+html:root .gameinfo .rowmine p {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 2vh;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+html:root .gameinfo .mug { border: 0; box-shadow: 0 0 0 1.5px #000; }
+html:root .gameinfo .extracontent .inside:empty { background: none; }
+html:root .gameinfo .scorebox { min-width: 3.8vh; border-radius: 7px; font-size: 2.1vh; }
+html:root .gameinfo .info-footer { margin-top: 0.2vh; gap: 0.6vh; }
+html:root .gameinfo .littlerow {
+    border-radius: 6px;
+    padding: 0.5vh 1vh;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-weight: 800;
+    font-size: 1.25vh;
+    letter-spacing: 0.02em;
+}
+html:root .gameinfo .littlerow:empty { display: none; }
+html:root .gameinfo .actionrow {
+    margin-top: 1vh;
+    border-radius: 9px;
+    padding: 0.7vh 1vh;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 1.8vh;
+    letter-spacing: 0.02em;
+}
+html:root .miniScore .scoreValue { color: #0b0b0d; font-size: 2vh; }
+html:root .miniScore .miniScoreDiv { align-self: stretch; width: 2px !important; background-color: #0b0b0d !important; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* ── El marcador de la partida en UN panel (07/10) ─────────────────────
+   Las dos filas, el ping y la apuesta iban sueltos en la esquina, cada uno
+   con su canto: piezas sueltas sobre el juego («hay un montón de cosas que
+   no siguen el estilo»). Ahora van dentro de un panel gris con canto negro
+   y sombra dura, radio 20, como el resto de tarjetas del servidor; las
+   filas pasan a piezas de dentro (anillo fino, sin sombra). No cambia de
+   sitio ni de medidas: solo la piel. */
+html:root .gameinfo {
+    box-sizing: border-box;
+    padding: 1.4vh 1.4vh 0.4vh;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .gameinfo .row { box-shadow: inset 0 0 0 1.5px #000; }
+html:root .gameinfo .rowmine { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root .gameinfo .info-footer { margin-bottom: 1vh; }
+html:root .gameinfo .actionrow { margin-bottom: 1vh; }
+

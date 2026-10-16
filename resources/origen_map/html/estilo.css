@@ -1,0 +1,2847 @@
+
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento: los dos son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/*  origen_map — el minimapa de Leaflet.
+
+    Las medidas estan en vw/vh para que la caja se quede donde el minimapa de
+    GTA en cualquier resolucion: en px, a 1440p el mapa se iria a otro sitio.  */
+
+/*  Solo las dos del estilo. Orbitron y Manrope eran del tema negro y ya no
+    las pide ningun font-family: se descargaban para nada. */
+
+:root {
+    /*  Aqui vivian --ogn-rotulo, --ogn-texto, --ogn-bg, --ogn-fg, --ogn-t2 y
+        --ogn-t3 del tema NEGRO. Estaban MUERTOS: no habia un solo var() que
+        los leyera en todo el recurso (comprobado el 12/09/2026). Se quitan
+        para que no vuelvan a confundir a nadie.
+
+        --ogn-line se queda porque lo lee --linea, y --ogn-ease porque lo usa
+        de verdad una transicion, mas abajo. */
+    --ogn-line: rgba(var(--arc-t-linea), 0.2);
+
+    /*  El acento de la casa. El mismo rosa que el resto del servidor: el
+        antetitulo del rotulo iba con un morado escrito a mano que en realidad
+        era el color de las tiendas del mapa.
+
+        Ahora es el del estilo (--accent, mas abajo), que antes era el
+        rosa viejo del tema negro. */
+    --ogn-acc: var(--accent);
+
+    /*  Las medidas EXACTAS del marco que dibuja origen_hud, sacadas de
+        client/minimap.lua: position = { x = 20, bottomMargin = 20 } y
+        BASE.minimap = { .., .., 0.1638, 0.183 }.
+
+        Tienen que ser las mismas o el mapa se sale del marco: el borde y el
+        rotulo de la calle los sigue pintando el HUD, y lo que va dentro somos
+        nosotros.  */
+    /*  El tamaño lo multiplica --caja-escala, que pone el jugador desde los
+        ajustes del mapa grande. Se multiplica en vez de tener cuatro parejas
+        de medidas para que la proporcion del marco no pueda romperse por un
+        descuido.  */
+    --caja-escala: 1;
+    --caja-w: calc(16.38vw * var(--caja-escala));
+    --caja-h: calc(18.3vh * var(--caja-escala));
+    /*  El aire hasta los cantos, en PROPORCION de pantalla: 20 px a 1080p
+        (20 / 1080 = 1,852vh). En px fijos, a 1440p o en 4K el hueco se quedaba
+        en la mitad de lo que se ve a 1080 mientras la caja y la linea de
+        comida y agua crecian, y el conjunto no quedaba como en 1920 (27/09).
+        Las dos en vh para que en una ultrapanoramica no se abra de lado. */
+    --caja-x: 1.852vh;
+    --caja-y: 1.852vh;
+
+    /*  El carmin viejo (#c2153f) del tema negro. Se queda el nombre —no lo
+        usa nadie ya— apuntando al tono medio de la familia nueva. */
+    --carmin: var(--accent-mid);
+    --linea: var(--ogn-line);
+
+    /*  La curva de la casa: sale rapido y frena largo al final. La misma que
+        usan los paneles del servidor, para que un mapa que aparece se mueva
+        igual que un panel que se abre.  */
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /*  ── El diseño claro ────────────────────────────────────────────────
+        Los colores del cristal claro, los mismos nombres que en los paneles
+        del inventario (OrigenInventory.vue y compañia).  */
+    --accent: #df2f63;
+    --accent-mid: #d81b55;
+    --ink: #0b0b0d;
+    --ink-4: #6f6857;
+
+    /*  La unidad del diseño. OrigenMinimap.vue esta dibujado a 232 px de
+        ancho; aqui la caja mide lo que diga el ajuste de tamaño, asi que cada
+        medida del diseño se escribe como N * --u y todo crece a la par: letra,
+        rellenos y franjas. Con px sueltos, el minimapa grande tendria la letra
+        del pequeño.  */
+    --u: calc(var(--caja-w) / 232);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /*  El fondo transparente y sin eventos: esto es una calcomania encima del
+        juego, no una pantalla. Sin pointer-events:none el CEF se come los
+        clics aunque no se vea nada.  */
+    background: transparent;
+    pointer-events: none;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/*  El marco. Tres pisos: brujula, mapa y calle.
+
+    El mapa conserva el tamaño de siempre (--caja-w por --caja-h) y las dos
+    franjas se añaden encima y debajo: el ajuste de tamaño dice cuanto MAPA
+    quiere ver el jugador, y no seria justo que el marco nuevo se lo comiera.
+
+    SIN backdrop-filter, aunque el diseño lo lleve: en el CEF de FiveM pinta
+    una banda negra en vez de desenfocar. El cristal va casi opaco y listo.  */
+.caja {
+    position: absolute;
+    left: var(--caja-x);
+    bottom: var(--caja-y);
+    width: var(--caja-w);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: calc(12 * var(--u));
+    background: rgba(var(--arc-t-papel1), 0.94);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 calc(16 * var(--u)) calc(36 * var(--u)) rgba(0, 0, 0, 0.45);
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+/*  La ventana por la que se ve el mapa. Todo lo que sobra del giro se recorta
+    aqui, y no en la caja: la caja deja ver la brujula y la barra.  */
+.ventana {
+    position: relative;
+    flex: none;
+    height: var(--caja-h);
+    overflow: hidden;
+    background: #0b0b0d;
+}
+
+.caja[hidden] { display: none !important; }
+
+/*  ── Aparecer y desaparecer ─────────────────────────────────────────────
+
+    El minimapa entra al montarte en un coche y se va al bajarte, y hasta ahora
+    lo hacia de golpe: un corte seco en la esquina que se nota mas que el propio
+    mapa. Ahora crece desde la esquina donde esta anclado —abajo a la
+    izquierda— y se va por el mismo sitio.
+
+    Solo `transform` y `opacity`: las dos las resuelve el compositor, asi que
+    animar la caja no cuesta ni un reflow aunque lleve un mapa vivo dentro.
+
+    La entrada dura casi el doble que la salida y con otra curva. No es un
+    capricho: llegar cuesta y se mira, irse no. Una salida lenta deja la
+    pantalla ocupada por algo que ya no importa.  */
+/*  TRANSICIONES Y NO @keyframes, Y ESTO NO ES UNA PREFERENCIA.
+
+    Esto estuvo con `animation: ... both` y dejo el minimapa INVISIBLE al
+    montarse en un coche. Medido dentro del juego por el depurador de la NUI: la
+    animacion se creaba, decia `running`... y su reloj se quedaba clavado en 0
+    mientras el reloj del documento avanzaba con normalidad. Con `both`, una
+    animacion parada se queda pintando su primer fotograma —opacidad 0— para
+    siempre.
+
+    Las transiciones si corren ahi: comprobado en el mismo sitio, una de 300 ms
+    marcaba 0,39 a mitad de camino.
+
+    Y aunque un dia dejaran de correr, el modo de fallar es el bueno: una
+    transicion que no tira deja el elemento en su estado final —puesto y
+    visible, como estaba antes de que existiera esta animacion—, mientras que
+    la animacion que no tira lo dejaba borrado. Entre dos cosas que pueden
+    romperse, la que se rompe hacia el lado que no se nota.  */
+.caja {
+    /*  El origen de la escala es la esquina anclada. Con el centro, la caja
+        parece encogerse hacia dentro y se despega del borde de la pantalla al
+        entrar.  */
+    transform-origin: 0 100%;
+    /*  0,6 s y no 0,34: a 0,34 se leia como un corte con un poco de fundido.
+        Con la curva de la casa arranca rapido y frena largo, asi que no se
+        hace pesado aunque dure casi el doble.  */
+    transition: opacity 0.25s ease, transform 0.6s var(--ogn-ease), clip-path 0.6s var(--ogn-ease);
+    /*  26/09: el minimapa NACE HACIA ARRIBA desde la linea de comida y agua
+        (el usuario: «como que nace hacia arriba desde la comida y el agua, y
+        lo mismo para quitarlo hacia abajo»). Se destapa con un recorte que
+        sube desde el canto de abajo; al irse, el recorte baja. El poligono
+        va holgado por los lados y por arriba y abajo (-50 %/400 %, -30 %/130 %)
+        para no cortar la sombra, el bisel de la redonda ni su capsula, que
+        se salen de la caja. */
+    clip-path: polygon(-50% -30%, 400% -30%, 400% 130%, -50% 130%);
+}
+
+/*  El punto de partida de la entrada, y el de llegada de la salida. Se pone,
+    se deja ver un fotograma y se quita: la transicion hace el resto.  */
+.caja.fuera {
+    opacity: 0;
+    transform: translateY(1.2vh);
+    clip-path: polygon(-50% 100%, 400% 100%, 400% 100%, -50% 100%);
+}
+
+/*  Salir va mas rapido y con otra curva: llegar cuesta y se mira, irse no.  */
+.caja.saliendo {
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 1, 1) 0.12s,
+                transform 0.32s cubic-bezier(0.4, 0, 1, 1),
+                clip-path 0.32s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/*  El giro y el desplazamiento, en capas separadas.
+
+    El desplazamiento tiene que pasar DENTRO del marco ya girado —si no, al
+    girar te lleva el centro a otro sitio—, y dos transformaciones en el mismo
+    elemento se mezclan en un orden que no es el que hace falta.  */
+.giro,
+.pan {
+    position: absolute;
+    inset: 0;
+    /*  El navegador no tiene que recalcular nada al girar o desplazar: son dos
+        transformaciones de capa, no un reflow.  */
+    will-change: transform;
+}
+
+.giro { transform-origin: 50% 50%; }
+
+/*  El lienzo es mas grande que la caja a proposito: al girarlo, las esquinas
+    de la caja tienen que seguir viendo mapa. La diagonal de un cuadrado es
+    1,41 veces su lado, y queda holgura para el desplazamiento entre anclajes.  */
+/*  320% y no 260%.
+
+    Al girar, la caja tiene que seguir viendo mapa en las esquinas: hace falta
+    cubrir un circulo del diametro de su diagonal. Pero ademas el lienzo se
+    desplaza hasta 60 px entre anclajes, y ese desplazamiento se come margen
+    por un lado. Con 260% y un salto de 90 px la cuenta salia justa por debajo
+    y asomaba una cuña negra en una esquina al girar.  */
+#lienzo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320%;
+    height: 320%;
+    transform: translate(-50%, -50%);
+    background: #0b0b0d;
+}
+
+/*  Leaflet pinta su propio fondo y su marca; aqui sobran los dos.  */
+.leaflet-container { background: #0b0b0d !important; outline: none; }
+.leaflet-control-attribution { display: none !important; }
+
+.yo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    /*  --giro-yo lo pone mapa.js: la flecha apunta a donde mira el personaje,
+        que con el mapa girando con la camara no siempre es arriba.  */
+    transform: translate(-50%, -50%) rotate(var(--giro-yo, 0deg));
+    filter: drop-shadow(0 0.2vh 0.4vh rgba(0, 0, 0, 0.8));
+    z-index: 400;
+    pointer-events: none;
+}
+
+/*  La flecha (06/10): papel con canto negro y sombra DURA de pegatina. La
+    sombra tiene que caer siempre abajo a la derecha, y un filtro sobre algo
+    que gira gira con ello; por eso aqui el giro pasa al svg y el filtro se
+    queda en la caja, que no gira.  */
+.yo:not(.yo--ref) {
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(1.5px 2px 0 #000);
+}
+.yo:not(.yo--ref) svg {
+    display: block;
+    overflow: visible;
+    transform: rotate(var(--giro-yo, 0deg));
+}
+
+/*  Cuando el jugador lleva referencia policial activa, el centro sustituye la flecha por su blip  */
+.yo--ref {
+    filter: none;
+}
+
+.yo-ref {
+    position: relative;
+    transform: scale(var(--ref-escala, 1));
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yo-ref__circulo {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--fondo-ref, #2f6bff);
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.yo-ref__img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
+}
+
+.yo-ref__puntero {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 3.5px solid transparent;
+    border-right: 3.5px solid transparent;
+    border-bottom: 5.5px solid #ffffff;
+    filter: drop-shadow(0 -1px 2px rgba(0, 0, 0, 0.7));
+    z-index: 3;
+}
+
+/*  ── La brujula ─────────────────────────────────────────────────────────
+
+    El piso de arriba: el rumbo en letra a la izquierda, la cinta en medio y
+    los grados a la derecha. Va arriba porque en un mapa orientado a tu rumbo
+    arriba es lo que tienes delante: es donde se mira.
+
+    Ya no va encima del mapa con un velo negro: tiene su franja, y sobre el
+    cristal claro la tinta oscura se lee sin sombras ni degradados.  */
+.brujula {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(8 * var(--u));
+    padding: calc(5 * var(--u)) calc(9 * var(--u));
+    box-shadow: inset 0 -1px 0 rgba(var(--arc-t-linea), 0.18);
+}
+
+/*  Hacia donde miras, en letra. Es lo unico de la franja que esta ENCENDIDO
+    —lo demas es la escala—, asi que es lo que lleva el acento. Ancho fijo para
+    que la cinta no baile al pasar de «N» a «NE».  */
+.brujula__rumbo {
+    flex: none;
+    min-width: calc(17 * var(--u));
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(13 * var(--u));
+    line-height: 1;
+    color: var(--accent-mid);
+}
+
+/*  La cinta. La pista es tres vueltas enteras y aqui se recorta; los bordes
+    se difuminan para que las marcas entren y salgan en vez de cortarse contra
+    el filo.  */
+.cinta {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    height: calc(9 * var(--u));
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 18%, #000 82%, transparent 100%);
+}
+
+/*  La pista: tres vueltas de 360 grados puestas en fila, para que al
+    desplazarla nunca se vea el final. La rellena mapa.js.  */
+.cinta__pista {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    will-change: transform;
+}
+
+/*  Cada marca. `left` se lo pone mapa.js en pixeles; aqui solo el centrado.
+    Los ocho rumbos llevan su letra y las de en medio un punto.  */
+.cinta__m {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-weight: 700;
+    font-size: calc(8 * var(--u));
+    line-height: calc(9 * var(--u));
+    letter-spacing: 0.1em;
+    color: rgba(var(--arc-t-linea), 0.55);
+    white-space: nowrap;
+}
+
+/*  Los cuatro cardinales un punto mas presentes: son los que se buscan de un
+    vistazo, y los intermedios estan para dar escala entre ellos.  */
+.cinta__m--cardinal { color: rgba(var(--arc-t-linea), 0.85); }
+
+/*  La aguja: donde miras, clavada en el centro.  */
+.cinta__aguja {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--accent-mid);
+}
+
+/*  Los grados. Es el rumbo de BRUJULA —0 al norte, creciendo hacia el este—,
+    no el de GTA, que crece al reves; la cuenta se hace en mapa.js.
+
+    tabular-nums y ancho fijo porque si no la cifra baila al pasar de 99 a 100
+    y mueve la cinta mientras giras, que es justo cuando se mira.  */
+.grados {
+    flex: none;
+    min-width: calc(24 * var(--u));
+    text-align: right;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: calc(10 * var(--u));
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-4);
+}
+
+/*  ── La calle y la zona ─────────────────────────────────────────────────
+
+    El piso de abajo. La calle manda —en grande y en versales— y la zona va a
+    la derecha, pequeña: lo pequeño dice donde estas y lo grande por donde vas.
+
+    Alto fijo para que la barra no encoja cuando todavia no hay calle.  */
+.sitio {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(8 * var(--u));
+    height: calc(25 * var(--u));
+    padding: 0 calc(9 * var(--u));
+}
+
+.sitio__acento {
+    flex: none;
+    width: calc(3 * var(--u));
+    height: calc(13 * var(--u));
+    border-radius: calc(2 * var(--u));
+    background: var(--accent);
+}
+
+.sitio__calle {
+    flex: 1;
+    min-width: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(14 * var(--u));
+    line-height: 1;
+    color: var(--ink);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*  La zona tambien se recorta, pero cede antes que la calle: un barrio largo
+    —«Pacific Bluffs Country Club»— no puede dejar la calle en tres letras.  */
+.sitio__zona {
+    flex: 0 1 auto;
+    max-width: 38%;
+    font-weight: 700;
+    font-size: calc(8.5 * var(--u));
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sitio__dist {
+    flex: none;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-size: calc(9 * var(--u));
+    font-weight: 800;
+    line-height: 1;
+    color: var(--ink);
+    padding: calc(2 * var(--u)) calc(5 * var(--u));
+    border-radius: calc(3 * var(--u));
+    background: rgba(var(--arc-t-linea), 0.08);
+    border: 1px solid rgba(var(--arc-t-linea), 0.15);
+    white-space: nowrap;
+}
+.sitio__dist[hidden] { display: none !important; }
+
+/*  La medida. Es lo unico que este prototipo tiene que enseñar bien: si las
+    cifras no se leen de un vistazo, no sirve para decidir nada.  */
+/*  Escondida por defecto: esto ya no es un prototipo que se mira, es el
+    minimapa. Las cifras siguen ahi para cuando haya que volver a medir, pero
+    se piden con /mapamedida en vez de estar siempre encima del mapa.  */
+.medida[hidden] { display: none !important; }
+
+/*  Arriba y no abajo: abajo vive el rotulo de la calle, y dos velos negros
+    uno encima de otro en la misma esquina no hay quien los lea.  */
+.medida {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    gap: 0.8vh;
+    padding: 0.35vh 0.6vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0));
+    z-index: 500;
+}
+
+.medida__d {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25vh;
+}
+
+.medida__d b {
+    font-size: 1.15vh;
+    font-weight: 700;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.medida__d i {
+    font-size: 0.85vh;
+    font-style: normal;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/*  ── Las marcas del mundo ───────────────────────────────────────────────
+
+    Chincheta redonda con punta abajo, anclada por la punta para que señale al
+    sitio exacto y no al centro del dibujo.
+
+    El contragiro se hereda de :root y no se escribe marca por marca: el mapa
+    gira entero, y sin esto las marcas saldrian del reves en cuanto te dieras
+    la vuelta. Asi es una escritura por fotograma en lugar de setenta.  */
+/*  La de fuera SOLO contragira. Gira sobre la punta y no sobre el centro:
+    la punta es la que señala el sitio, y pivotando ahi se queda clavada.  */
+.mm-pin {
+    position: relative;
+    display: block;
+    width: 15px;
+    height: 20px;
+    transform: rotate(var(--contragiro, 0deg));
+    transform-origin: 50% 100%;
+}
+
+/*  La de dentro SOLO cambia de tamaño, y con transicion. Crece hacia arriba
+    —origen abajo— para que la punta no se despegue del sitio al agrandarse.
+    Los avisos llegan cada 700 ms; la transicion es lo que convierte esos
+    saltos en un crecimiento continuo.  */
+.mm-pin__b {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: var(--fondo, var(--arc-fondo3, #d8d5da));
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+    transform: scale(var(--escala, 1));
+    transform-origin: 50% 133%;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mm-pin__b svg { width: 9px; height: 9px; }
+
+.mm-pin__b::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: inherit;
+    border-right: 1px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 0 0 1px 0;
+}
+
+/*  ── El pulso ────────────────────────────────────────────────────────────
+
+    Un aro que sale de la chincheta y se apaga. Es para lo que dura poco y hay
+    que ver ahora —una carrera recien lanzada—, no para un sitio de siempre.
+
+    Va en un ::before y no en el propio boton porque el boton ya gasta su
+    `transform` en la escala por distancia: animarlo ahi se comeria el tamaño.
+    El aro tiene su propia caja y late sin tocar nada de eso.  */
+.mm-pin.late .mm-pin__b::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 1.5px solid var(--fondo, #ffffff);
+    animation: mm-late 1.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    pointer-events: none;
+}
+
+@keyframes mm-late {
+    0%   { transform: scale(1);   opacity: 0.9; }
+    70%  { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+/*  ── Referencias policiales de compañeros ────────────────────────────── */
+.capa-refs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 350;
+    overflow: visible;
+}
+
+.caja.redonda .capa-refs {
+    border-radius: 50%;
+}
+
+.mm-ref-pin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    will-change: transform;
+    z-index: 360;
+}
+
+.mm-ref-pin__b {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--fondo, #2f6bff);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+    transform-origin: 50% 50%;
+    transform: scale(var(--ref-escala, 1));
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.mm-ref-pin--clamped .mm-ref-pin__b {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px var(--fondo, #2f6bff), 0 2px 7px rgba(0, 0, 0, 0.9);
+}
+
+.mm-ref-pin__puntero {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 3.5px solid transparent;
+    border-right: 3.5px solid transparent;
+    border-bottom: 5.5px solid #ffffff;
+    transform: translate(-50%, calc(-17px * var(--ref-escala, 1))) rotate(var(--rot, 0deg));
+    transform-origin: 50% calc(17px * var(--ref-escala, 1));
+    z-index: 365;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.mm-ref-pin--clamped .mm-ref-pin__puntero {
+    display: block;
+}
+
+.mm-ref-icon {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
+    pointer-events: none;
+}
+
+.leaflet-marker-icon.mm-marker-ref {
+    transition: transform var(--mm-ref-duracion, 0.08s) linear;
+    will-change: transform;
+}
+
+.mm-pin--ref {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 26px;
+    transform: rotate(var(--contragiro, 0deg));
+    transform-origin: 50% 50%;
+}
+
+.mm-pin__b--ref {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--fondo, #2f6bff);
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.75);
+    transform-origin: 50% 50%;
+}
+
+.mm-pin__b--ref::after {
+    display: none !important;
+}
+
+/*  ── El destino de la ruta ──────────────────────────────────────────────
+    Las mismas cuentas que en el menu de pausa: la punta de la chincheta cae a
+    18,2 de 20 y el centro de su cabeza a (10, 8). El circulo va centrado en la
+    CABEZA, no en la punta.
+
+    En el rosa VIVO de la familia nueva (--accent), no en el tono medio de la
+    linea: la chincheta y su pulso son dos marcas pequeñas —18 px y un aro de
+    2— sobre un mapa oscuro, asi que necesitan el tono mas luminoso. El que
+    lleva la linea es mas cerrado a proposito, para que el final del camino se
+    distinga del camino.  */
+.mm-destino { position: relative; display: block; width: 0; height: 0; }
+
+.mm-destino__pin {
+    position: absolute;
+    left: -9px;
+    top: -16.4px;
+    width: 18px;
+    height: 18px;
+    color: var(--accent);
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+}
+
+.mm-destino__pin svg { display: block; width: 18px; height: 18px; }
+
+/*  Pegatina (06/10): canto negro y sombra dura, igual que en el mapa grande.
+    El canto va por detras del relleno para no comerse la chincheta.  */
+.mm-destino__pin { filter: drop-shadow(1.5px 2px 0 #000); }
+.mm-destino__pin svg path { stroke: #000; stroke-width: 1.7px; stroke-linejoin: round; paint-order: stroke fill; }
+
+.mm-destino__pulso {
+    position: absolute;
+    left: -11.5px;
+    top: -20.6px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 1.5px #000, inset 0 0 0 1.5px #000;
+    animation: mm-latido 1.6s ease-in-out infinite;
+}
+
+@keyframes mm-latido {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.28); opacity: 0.4; }
+}
+
+/*  ── Los chevrones de la ruta ───────────────────────────────────────────
+
+    Flechas sobre la linea que dicen el SENTIDO, que es lo unico que una linea
+    no dice sola. NO se contragiran: apuntan por donde va la carretera, y la
+    carretera gira con el mapa.
+
+    Dibujada con bordes y no con un svg: son quince marcas y un triangulo de
+    bordes no crea ningun nodo mas que el propio span.  */
+.mm-chevron {
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    width: 0;
+    height: 0;
+    /*  Encogido con la linea: un chevron de 10 px sobre una linea de 3 tapa la
+        linea entera y se lee como una marca suelta, no como una flecha SOBRE
+        el camino.  */
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 6px solid rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    filter: drop-shadow(0 0 1.5px rgba(0, 0, 0, 0.9));
+}
+
+/*  Las rayas que partian el mapa en cuadricula.
+
+    No es un hueco entre teselas: medido dentro del juego, se tocan sin dejar
+    ni un pixel libre y las imagenes no traen borde pintado. Es de mas abajo.
+
+    Este mapa vive a zooms fraccionarios (4,0 / 4,4 / 4,8: lo que importa es
+    cuantos metros entran en la caja, no que el numero sea redondo), asi que
+    Leaflet escala el contenedor de teselas por una fraccion. Y como cada
+    tesela se coloca con translate3d, Chromium le da a cada una su propia capa:
+    al escalarlas, el borde de cada capa se suaviza contra el vacio y queda
+    medio transparente. Ese borde a medias, encima de la tesela de al lado, es
+    la raya. El CEF de FiveM es Chrome 103, donde eso se ve claro.
+
+    Hacen falta DOS cosas, y ninguna sola vale:
+
+      - `outline` de un pixel transparente agranda los limites de la capa, asi
+        que el borde suavizado cae fuera de lo que se ve;
+      - y un pixel de solape tapa ademas el borde de la PROPIA IMAGEN, que al
+        reescalarse se queda sin vecinos de los que muestrear y se oscurece.
+
+    Medido dentro del juego sobre el mapa del menu de pausa, que tiene el mismo
+    problema, comparando el contraste en la junta contra el del dibujo normal
+    del mapa: sin nada 83,3; solo contorno 34,4; solo solape 29,4; los dos con
+    257px 1,2 (el mapa normal marca 4,1). O sea, invisible.
+
+    257 y no mas: el solape estira la tesela, y estirarla desalinea su dibujo
+    con el de al lado. Un pixel sobre 256 es un 0,4%; cuatro ya mueven una
+    carretera en la junta.  */
+.leaflet-tile {
+    outline: 1px solid transparent;
+    width: 257px !important;
+    height: 257px !important;
+    /*  Y sin el parche de Leaflet 1.9. Esa version pinta cada tesela con
+        `mix-blend-mode: plus-lighter` -su propio intento contra las juntas- y
+        con el las rayas seguian saliendo dentro del juego. Lo de arriba solo
+        esta probado en el menu de pausa, que va con Leaflet 1.8 y no lo trae;
+        esto deja las teselas de la 1.9 igual que las de la 1.8. Con !important
+        porque la regla de Leaflet tiene mas especificidad
+        (.leaflet-container img.leaflet-tile). */
+    mix-blend-mode: normal !important;
+}
+
+/* ── Las rayas que partían el mapa en cuadrícula ───────────────────────────
+   No son un hueco entre teselas: el mapa se escala por una fracción, y como
+   cada tesela se coloca con translate3d, Chromium le da a cada una su propia
+   capa y le suaviza el borde contra el vacío. Ese medio píxel transparente,
+   encima de la tesela de al lado, es la raya.
+
+   Hacen falta las dos reglas, y ninguna sola vale: el contorno de un píxel
+   transparente agranda los límites de la capa, así que el borde suavizado cae
+   fuera de lo que se ve; y el píxel de solape tapa además el borde de la
+   propia imagen, que al reescalarse se queda sin vecinos que muestrear y se
+   oscurece. Un píxel sobre 256 es un 0,4% y no se nota; con cuatro ya se
+   mueve una carretera en la junta.
+
+   La medición está en origen_pausemenu/html/src/App.vue, que es donde salió
+   esto primero. */
+.leaflet-tile {
+    outline: 1px solid transparent;
+    width: 257px !important;
+    height: 257px !important;
+}
+
+/*  ══ El HUD del coche (diseño «HUD carplay», 11/09/2026) ══════════════════
+
+    En coche la tarjeta cambia el piso de abajo: la calle sube al mapa (con un
+    degradado para que se lea sobre cualquier fondo) y abajo van velocidad,
+    marcha, gasolina y estado. Todo en N * --u, como el resto del marco, para
+    que crezca con el ajuste de tamaño.  */
+.caja.en-coche .sitio { display: none; }
+
+/*  ══ La entrada y la salida del coche ════════════════════════════════════
+
+    Antes el piso de abajo cambiaba de golpe --la calle por la velocidad-- y la
+    caja pegaba un salto de 21 u. Ahora es una coreografia, y toda con
+    TRANSICIONES, no con @keyframes: dentro del juego el reloj de una animacion
+    se queda clavado en 0 (ver `.caja`, mas arriba).
+
+    Tres clases en la caja, que pone mapa.js:
+      .en-coche      que piso se ve (estructura, sin animacion);
+      .coche-dentro  las piezas del coche en su sitio. Sin ella estan en su
+                     punto de partida: al quitarla se recogen deprisa;
+      .llegando      mientras entran: los retardos escalonados. Se quita al
+                     acabar, para que un cambio de gasolina en marcha no espere.
+
+    Y dos para la calle: .sitio-sale (se funde antes del cambio) y
+    .sitio-llega (su punto de partida al volver).
+
+    Los transform de cada punto de partida REPITEN el de reposo de la pieza
+    (el sesgo, el ajuste de la velocidad): si no, al llegar daria un tiron.  */
+
+/*  Los km y el nitroso se ponen a la vista desde el dato, que llega en el
+    mismo aviso que sube al coche pero ANTES de que el piso cambie: sin esto
+    salian de golpe mientras la calle todavia se estaba fundiendo.  */
+.caja:not(.en-coche) .cuentakm,
+.caja:not(.en-coche) .nos { display: none; }
+
+.piso {
+    flex: none;
+    transition: height 0.46s var(--ogn-ease);
+}
+
+/*  Solo mientras cambia: recortar siempre se comeria el canto de la marcha.  */
+.piso.cambiando { overflow: hidden; }
+
+.sitio {
+    transition: opacity 0.32s ease, transform 0.42s var(--ogn-ease);
+}
+
+.caja.sitio-sale .sitio {
+    opacity: 0;
+    transform: translateY(calc(-5 * var(--u)));
+    transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.caja.sitio-llega .sitio {
+    opacity: 0;
+    transform: translateY(calc(6 * var(--u)));
+    transition: none;
+}
+
+/* ── Reposo: cada pieza con la duracion de su llegada ── */
+.sobre, .cuentakm, .destinokm, .testigo, .vel, .marcha, .medidor, .nos {
+    transition: opacity 0.4s ease, transform 0.55s var(--ogn-ease);
+}
+/*  El testigo cambia ademas de color (cinturon, luces) y eso no se retrasa.  */
+.testigo {
+    transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.14s ease, box-shadow 0.14s ease, color 0.14s ease;
+}
+.marcha {
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Los retardos, solo al llegar ── */
+.caja.llegando.coche-dentro .sobre { transition-delay: 0.1s; }
+.caja.llegando.coche-dentro .vel { transition-delay: 0.16s; }
+.caja.llegando.coche-dentro .medidor:nth-child(1) { transition-delay: 0.22s; }
+.caja.llegando.coche-dentro .medidor:nth-child(2) { transition-delay: 0.28s; }
+.caja.llegando.coche-dentro .medidor:nth-child(3) { transition-delay: 0.34s; }
+.caja.llegando.coche-dentro .cuentakm { transition-delay: 0.26s; }
+.caja.llegando.coche-dentro .destinokm { transition-delay: 0.28s; }
+.caja.llegando.coche-dentro .marcha { transition-delay: 0.32s; }
+.caja.llegando.coche-dentro .testigo:nth-child(1) { transition-delay: 0.34s, 0.34s, 0s, 0s, 0s; }
+.caja.llegando.coche-dentro .testigo:nth-child(2) { transition-delay: 0.42s, 0.42s, 0s, 0s, 0s; }
+.caja.llegando.coche-dentro .nos { transition-delay: 0.5s; }
+
+/*  Las celdas se encienden una tras otra, como un salpicadero al dar el
+    contacto. Solo al llegar: en marcha la gasolina baja sin ceremonia.  */
+.caja.llegando .medidor__celdas i { transition: background 0.18s ease; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(1) { transition-delay: 0.42s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(2) { transition-delay: 0.47s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(3) { transition-delay: 0.52s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(4) { transition-delay: 0.57s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(5) { transition-delay: 0.62s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(6) { transition-delay: 0.67s; }
+.caja.llegando.coche-dentro .medidor__celdas i:nth-child(7) { transition-delay: 0.72s; }
+
+/* ── Punto de partida, y de llegada al recogerse: deprisa y sin retardo ── */
+.caja.en-coche:not(.coche-dentro) .sobre {
+    opacity: 0;
+    transform: translateY(calc(10 * var(--u)));
+    transition: opacity 0.18s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .cuentakm {
+    opacity: 0;
+    transform: translateX(calc(-14 * var(--u))) skewX(-10deg);
+    transition: opacity 0.18s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .destinokm {
+    opacity: 0;
+    transform: translateX(calc(-14 * var(--u))) skewX(-10deg);
+    transition: opacity 0.18s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .testigo {
+    opacity: 0;
+    transform: translateY(calc(-6 * var(--u))) scale(0.5) skewX(-10deg);
+    transition: opacity 0.16s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .vel {
+    opacity: 0;
+    transform: translateY(calc(12 * var(--u)));
+    transition: opacity 0.18s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .marcha {
+    opacity: 0;
+    transform: scale(0.4) skewX(-10deg);
+    transition: opacity 0.14s ease, transform 0.18s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .medidor {
+    opacity: 0;
+    transform: translateX(calc(16 * var(--u)));
+    transition: opacity 0.16s ease, transform 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+.caja.en-coche:not(.coche-dentro) .medidor .medidor__celdas i.on {
+    background: rgba(var(--arc-t-linea), 0.2);
+}
+.caja.en-coche:not(.coche-dentro) .nos {
+    opacity: 0;
+    transition: opacity 0.16s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .piso, .sitio, .sobre, .cuentakm, .testigo, .vel, .marcha, .medidor, .nos,
+    .caja.llegando .medidor__celdas i { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+}
+.testigos[hidden], .sobre[hidden], .conduccion[hidden], .nos[hidden], .cuentakm[hidden], .destinokm[hidden] { display: none !important; }
+
+.testigos {
+    position: absolute; z-index: 5; right: calc(5 * var(--u)); top: calc(5 * var(--u));
+    display: flex; gap: calc(4 * var(--u));
+}
+.testigo {
+    width: calc(20 * var(--u)); height: calc(20 * var(--u));
+    display: flex; align-items: center; justify-content: center;
+    border-radius: calc(5 * var(--u)); transform: skewX(-10deg);
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf))); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--arc-tinta3, #9c9484);
+}
+.testigo[hidden] { display: none; }
+
+/*  El cuentakilómetros: la misma chapa que un testigo apagado, del mismo alto
+    y a la misma distancia del canto, pero en la esquina de enfrente. Así las
+    dos esquinas de arriba se leen como un par.  */
+.cuentakm {
+    position: absolute; z-index: 5; left: calc(5 * var(--u)); top: calc(5 * var(--u));
+    height: calc(20 * var(--u)); padding: 0 calc(7 * var(--u));
+    display: flex; align-items: center;
+    border-radius: calc(5 * var(--u)); transform: skewX(-10deg);
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 calc(3 * var(--u)) 0 rgba(var(--arc-t-relieve), 0.35);
+}
+.cuentakm > span {
+    display: block; transform: skewX(10deg);
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(9 * var(--u)); line-height: 1;
+    color: var(--ink); white-space: nowrap;
+}
+.testigo svg { width: calc(12 * var(--u)); height: calc(11 * var(--u)); transform: skewX(10deg); }
+.testigo__faro { fill: transparent; }
+/* Cinturón: blanco puesto, rosa si falta. */
+.testigo.ok { background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf))); box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 calc(3 * var(--u)) 0 rgba(var(--arc-t-relieve), 0.35); color: var(--ink); }
+.testigo.mal { background: linear-gradient(180deg, #df2f63 0%, var(--accent-mid) 100%); box-shadow: 0 calc(3 * var(--u)) 0 #a80c3f; color: #fff; }
+/* Luces: el faro se rellena de amarillo al darlas. */
+.testigo.encendida { background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf))); box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 calc(3 * var(--u)) 0 rgba(var(--arc-t-relieve), 0.35); color: var(--ink); }
+.testigo.encendida .testigo__faro { fill: #f2c200; }
+
+.sobre {
+    position: absolute; z-index: 4; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: baseline; gap: calc(6 * var(--u));
+    padding: calc(12 * var(--u)) calc(8 * var(--u)) calc(4 * var(--u));
+    line-height: 1;
+    background: linear-gradient(180deg, rgba(20, 24, 16, 0) 0%, rgba(20, 24, 16, 0.62) 100%);
+}
+.sobre__calle {
+    flex: 1; min-width: 0; font-weight: 700; font-size: calc(11 * var(--u)); letter-spacing: 0.04em;
+    color: #fff; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+}
+.sobre__zona {
+    flex: 0 1 auto; max-width: 42%; font-weight: 700; font-size: calc(7.5 * var(--u)); letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(255, 255, 255, 0.82); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sobre__dist {
+    flex: none;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-size: calc(8.5 * var(--u));
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    padding: calc(2 * var(--u)) calc(5 * var(--u));
+    border-radius: calc(3 * var(--u));
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+}
+.sobre__dist[hidden] { display: none !important; }
+
+/*  La pastilla de destino: muestra la distancia viva al waypoint o aviso marcado  */
+.destinokm {
+    position: absolute; z-index: 5; left: calc(5 * var(--u)); top: calc(5 * var(--u));
+    height: calc(20 * var(--u)); padding: 0 calc(7 * var(--u));
+    display: flex; align-items: center; gap: calc(4 * var(--u));
+    border-radius: calc(5 * var(--u)); transform: skewX(-10deg);
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 calc(3 * var(--u)) 0 rgba(var(--arc-t-relieve), 0.35);
+    color: var(--ink);
+}
+
+.caja.en-coche .destinokm {
+    top: calc(28 * var(--u));
+}
+
+.destinokm svg {
+    width: calc(11 * var(--u)); height: calc(11 * var(--u)); transform: skewX(10deg);
+    color: var(--accent); flex: none;
+}
+
+.destinokm > span {
+    display: block; transform: skewX(10deg);
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-size: calc(9 * var(--u)); line-height: 1;
+    font-weight: 800; color: var(--ink); white-space: nowrap;
+}
+
+.conduccion {
+    flex: none; display: flex; align-items: center; gap: calc(7 * var(--u));
+    padding: calc(5 * var(--u)) calc(8 * var(--u));
+}
+/*  La velocidad: el número y, a su derecha, la marcha encima de «km/h».
+
+    El grupo va CENTRADO en un hueco fijo de 66 u, que es lo que mide con tres
+    cifras («188») más un margen. Antes la cifra iba alineada a la derecha en
+    un min-width: con una sola cifra quedaban 24 u vacías a la izquierda y el
+    cero pegado a la marcha. Fijo y no a su tamaño, para que las barras de la
+    derecha no bailen al pasar de 9 a 10 o de 99 a 100.
+
+    Aire medido: 6 u entre la cifra y la columna, y 3,45 u entre la pastilla y
+    «km/h» (el canto de 1,5 u deja 2 u limpias). Las dos piezas de la derecha
+    miden juntas lo que el trazo de las cifras (19,3 u, ±0,1): la pastilla
+    arranca a la altura de lo alto del número y «km/h» se apoya en su línea
+    base. Por eso la marcha va a 9 u con 1 u de relleno y «km/h» con la línea
+    recortada.
+
+    Los dos translateY no son a ojo, están medidos con measureText
+    (el trazo, no la caja de la fuente, que es la que centra flexbox):
+      .vel       sube 0,71 u y deja las cifras en el centro exacto del piso.
+      .vel__lado baja 0,74 u y casa la pastilla y «km/h» con las cifras.
+    Si se toca la fuente o algún tamaño de aquí, hay que volver a medirlo.  */
+.vel { flex: none; width: calc(66 * var(--u)); display: flex; align-items: center; justify-content: center; gap: calc(6 * var(--u)); transform: translateY(calc(-0.71 * var(--u))); }
+.vel__lado {
+    display: flex; flex-direction: column; align-items: flex-start; gap: calc(3.45 * var(--u));
+    transform: translateY(calc(0.74 * var(--u)));
+}
+.vel__n {
+    font-style: italic; font-weight: 800;
+    font-size: calc(26 * var(--u)); line-height: 0.8; letter-spacing: -0.01em; color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+.vel__u { display: block; font-weight: 700; font-size: calc(8 * var(--u)); line-height: 0.75; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-4); }
+
+.marcha {
+    display: block; flex: none; padding: calc(1 * var(--u)) calc(5 * var(--u)); border-radius: calc(5 * var(--u));
+    transform: skewX(-10deg);
+    background: linear-gradient(180deg, #df2f63 0%, var(--accent-mid) 100%); box-shadow: 0 calc(1.5 * var(--u)) 0 #a80c3f;
+    font-style: italic; font-weight: 800; font-size: calc(9 * var(--u)); line-height: 1; color: #fff;
+}
+.marcha > span { display: block; transform: skewX(10deg); min-width: calc(7 * var(--u)); text-align: center; }
+
+.medidores { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: calc(3 * var(--u)); }
+.medidor { display: flex; align-items: center; gap: calc(6 * var(--u)); }
+.medidor[hidden] { display: none !important; }
+.medidor__k {
+    flex: none; width: calc(22 * var(--u)); font-weight: 700; font-size: calc(7.5 * var(--u));
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4);
+}
+.medidor__celdas { flex: 1; display: flex; gap: calc(2 * var(--u)); }
+.medidor__celdas i {
+    flex: 1; height: calc(5 * var(--u)); border-radius: calc(2 * var(--u)); transform: skewX(-10deg);
+    background: rgba(var(--arc-t-linea), 0.2);
+}
+.medidor__celdas i.on { background: var(--arc-tinta2, #6b6352); }
+.medidor--coche .medidor__celdas i.on { background: var(--arc-estado-ok, #1f8f4e); }
+.medidor.bajo .medidor__celdas i.on { background: var(--accent-mid); }
+.medidor__v {
+    flex: none; min-width: calc(22 * var(--u)); text-align: right;
+    font-style: italic; font-weight: 800; font-size: calc(10 * var(--u)); line-height: 1; color: var(--ink);
+}
+.medidor--coche .medidor__v { color: var(--arc-estado-ok, #146636); }
+.medidor.bajo .medidor__v { color: var(--arc-estado-bad, #b3123f); }
+
+/* El nitroso: una tira de 4 px en el borde de abajo, azul lo que queda. */
+.nos {
+    flex: none; height: calc(4 * var(--u));
+    background-color: rgba(var(--arc-t-linea), 0.2); background-repeat: no-repeat;
+}
+.nos.activo { box-shadow: inset 0 0 calc(6 * var(--u)) rgba(53, 166, 255, 0.95); }
+.nos.bloqueado { filter: saturate(0.2) brightness(1.1); }
+
+/* ══ Colocar la caja ══════════════════════════════════════════════════════
+
+    El modo posicionar (mapa.js, «Donde esta la caja»): la caja se agarra y se
+    lleva a cualquier sitio, con un aviso pegado que dice las teclas.
+
+    Mientras dura, la pagina SI recibe el raton. De normal no --html y body van
+    con pointer-events:none para que el minimapa no se coma los clics del
+    juego--, y sin quitarlo el mousemove dejaba de llegar en cuanto el cursor
+    salia de la caja y el arrastre se quedaba colgado.
+
+    El filete va con `outline` y no con borde: el borde le cambiaria la medida a
+    la caja (y con ella el encaje contra los cantos), y la caja lleva
+    overflow:hidden, que recorta a sus hijos pero no su propio outline.  */
+html.posicionando,
+html.posicionando body { pointer-events: auto; }
+
+.caja.posicionando {
+    cursor: move;
+    outline: 2px dashed var(--accent);
+    outline-offset: 4px;
+}
+.caja.posicionando.arrastrando { cursor: grabbing; }
+
+/*  Nada de dentro de la caja puede quedarse el clic: se agarra la caja entera.  */
+.caja.posicionando * { pointer-events: none; }
+
+/*  El aviso. El mismo papel que la caja, con la barrita de acento de la calle.
+    Las medidas en --u con un suelo en px: con el minimapa en «pequeño» a 1080p
+    la letra se quedaba en nueve pixeles.  */
+.posicionar {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: max(8px, calc(8 * var(--u)));
+    /*  Su ancho, y no el que le quede hasta el canto: con la caja pegada a la
+        derecha, un `left` grande lo encogia y partia el aviso en dos renglones
+        Solo se parte si no cabe en la pantalla.  */
+    width: max-content;
+    max-width: calc(100vw - 20px);
+    padding: max(7px, calc(6 * var(--u))) max(10px, calc(10 * var(--u)));
+    border-radius: max(9px, calc(9 * var(--u)));
+    background: rgba(var(--arc-t-papel1), 0.96);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 10px 26px rgba(0, 0, 0, 0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--ink);
+    pointer-events: auto;
+    cursor: default;
+    white-space: nowrap;
+}
+.posicionar[hidden] { display: none !important; }
+
+.posicionar__acento {
+    flex: none;
+    width: 3px;
+    height: max(14px, calc(13 * var(--u)));
+    border-radius: 2px;
+    background: var(--accent);
+}
+
+.posicionar__t {
+    font-style: italic;
+    font-weight: 800;
+    font-size: max(15px, calc(14 * var(--u)));
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.posicionar__teclas {
+    display: flex;
+    gap: max(8px, calc(8 * var(--u)));
+    font-weight: 700;
+    font-size: max(11px, calc(9 * var(--u)));
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+}
+.posicionar__teclas > span { display: inline-flex; align-items: center; gap: 4px; }
+
+.posicionar kbd {
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: var(--ink-4);
+    color: var(--arc-papel1);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: max(10px, calc(8.5 * var(--u)));
+    letter-spacing: 0.04em;
+}
+
+.posicionar__botones { display: flex; gap: 5px; }
+
+/*  Las chapas inclinadas de la casa (las .om-opt del diálogo de ajustes).  */
+.posicionar__b {
+    border: 0;
+    margin: 0;
+    padding: max(6px, calc(5 * var(--u))) max(10px, calc(9 * var(--u)));
+    border-radius: 7px;
+    transform: skewX(-10deg);
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(var(--arc-t-papel2), 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.4);
+    color: var(--ink);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: max(13px, calc(11 * var(--u)));
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.posicionar__b > span { display: block; transform: skewX(10deg); }
+.posicionar__b:hover { background: var(--arc-fondo1, #fff); }
+.posicionar__b--rosa {
+    background: linear-gradient(180deg, #df2f63, var(--accent-mid));
+    box-shadow: 0 3px 0 #a80c3f;
+    color: #fff;
+}
+.posicionar__b--rosa:hover { background: linear-gradient(160deg, #ff709a, #ea1a5e); }
+
+/* ══ La forma redonda ════════════════════════════════════════════════════
+
+    El ajuste `forma` (client/main.lua, AJUSTES): mapa.js le pone .redonda a
+    la caja. Es LA MISMA PIEZA en otra forma, no otro widget: los mismos
+    nodos, las mismas clases del coche y la misma coreografia. Solo cambia
+    donde se dibuja cada cosa:
+
+      - el mapa en un circulo con su aro de papel;
+      - la brujula, una pastilla montada sobre el aro por arriba;
+      - la calle, otra pastilla montada sobre el aro por abajo (a pie es
+        .sitio y en coche .sobre, en el mismo sitio: el cambio solo se funde);
+      - el coche, una tarjeta debajo de la calle;
+      - los km y los testigos, en los hombros del aro.
+
+    La caja deja de ser el marco: se vuelve transparente y sin recorte, y cada
+    pieza lleva su propio papel. Sigue midiendo --caja-w de ancho, asi que el
+    encaje contra los cantos del modo posicionar mide lo mismo que se ve.
+
+    El circulo mide 208 u (el 90 % del ancho): con eso ENSEÑA LA MISMA
+    CANTIDAD DE MAPA que la ventana apaisada (pi * 104² frente a 232 × 147 u a
+    16:9), y el aro cabe dentro del ancho de la caja. Los tamaños de los
+    ajustes siguen valiendo porque todo va en --u.
+
+    Sin backdrop-filter, como el resto: en el CEF pinta una banda negra.  */
+.caja.redonda {
+    /*  La redonda, un 15 % mas pequeña que la cuadrada del mismo tamaño
+        (14/09): con el aro y la tarjeta del coche colgando ocupaba mucho mas
+        pantalla. Asi mide de ancho lo que la cuadrada (262 × 0,85 ≈ 223 u).  */
+    /*  25/09: de 0,85 a 0,58 (en dos veces: 0,7 seguía «muy grande»). Con
+        la cápsula del coche al lado, el conjunto se comía media esquina.
+        mapa.js (medirNecSube) usa el mismo factor: REDONDA_ESCALA.  */
+    --u: calc(var(--caja-w) * 0.58 / 232);
+    --diametro: calc(208 * var(--u));
+    --aro: calc(5 * var(--u));
+    /*  El bisel cierra el aro entero (14/09) y por los lados llega a 131 u
+        del centro: la caja se ensancha hasta ahi, para que al posicionarla
+        contra un canto de la pantalla no se salga ni un pelo.  */
+    width: calc(262 * var(--u));
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/*  La ventana, cuadrada y centrada, pero SIN recortar: el que recorta es el
+    mapa (.giro, abajo). Asi las piezas que cuelgan de la ventana --la calle en
+    coche, los km, los testigos-- pueden salirse del circulo y montar sobre el
+    aro, y la flecha sigue en el centro sin tocar nada.
+
+    El aro y la sombra son sombras de la propia ventana, que NO gira: la
+    sombra cae siempre hacia abajo aunque el mapa de la vuelta.  */
+.caja.redonda .ventana {
+    align-self: center;
+    width: var(--diametro);
+    height: var(--diametro);
+    overflow: visible;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 0 var(--aro) rgba(var(--arc-t-papel1), 0.94),
+                0 0 0 calc(var(--aro) + 1px) rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 calc(16 * var(--u)) calc(36 * var(--u)) var(--aro) rgba(0, 0, 0, 0.45);
+}
+
+/*  El recorte. En la capa que gira y no en la ventana: un circulo centrado
+    que gira sigue siendo el mismo circulo, y todo lo de Leaflet --teselas,
+    ruta, chinchetas-- vive dentro, asi que lo que cae fuera no asoma.
+    clip-path Y border-radius: el primero recorta seguro las capas propias de
+    dentro (.pan y las teselas van con translate3d); el segundo es el de
+    siempre, por si un dia el clip-path falla en el CEF.  */
+.caja.redonda .giro {
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+    background: #0b0b0d;
+}
+
+/*  El canto entre el mapa y el aro, con un poco de hundido: sin el, el papel
+    parece pegado encima del mapa en vez de enmarcarlo. Por debajo de las
+    chapas (z 4-5) y por encima del mapa.  */
+.caja.redonda .ventana::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28),
+                inset 0 calc(2 * var(--u)) calc(7 * var(--u)) rgba(0, 0, 0, 0.28);
+    pointer-events: none;
+}
+
+/*  Las piezas de papel de fuera del circulo: el mismo cristal que la caja
+    cuadrada, con una sombra mas corta porque son pequeñas.  */
+.caja.redonda .brujula,
+.caja.redonda .sitio,
+.caja.redonda .sobre,
+.caja.redonda .conduccion {
+    background: rgba(var(--arc-t-papel1), 0.96);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 calc(4 * var(--u)) calc(12 * var(--u)) rgba(0, 0, 0, 0.32);
+}
+
+/*  La brujula de la redonda es el BISEL (mapa.js, «El bisel»): un arco de
+    papel que abraza el circulo por arriba con las marcas sobre la curva. La
+    franja recta se queda en la caja SIN VERSE y sin nada dentro, como hueco:
+    el bisel sobresale 24 u por encima del mapa, y asi la caja mide lo que se
+    ve (el encaje contra los cantos del modo posicionar mide la caja).
+    `visibility` y no `display`: la cinta sigue midiendo su ancho, y al volver
+    a la cuadrada no hay que rehacer nada.  */
+.caja.redonda .brujula {
+    visibility: hidden;
+    box-sizing: border-box;
+    height: calc(27 * var(--u));
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.bisel { display: none; }
+
+.caja.redonda .bisel {
+    display: block;
+    position: absolute;
+    z-index: 6;
+    left: 50%;
+    top: 50%;
+    width: calc(260 * var(--u));
+    height: calc(260 * var(--u));
+    transform: translate(-50%, -50%);
+    overflow: visible;
+    pointer-events: none;
+    /*  La sombra de las piezas de papel. drop-shadow sigue la forma del arco;
+        no es backdrop-filter, que es el que pinta la banda negra en el CEF.  */
+    filter: drop-shadow(0 calc(3 * var(--u)) calc(5 * var(--u)) rgba(0, 0, 0, 0.3));
+}
+
+.bisel__franja { fill: none; stroke: rgba(var(--arc-t-papel1), 0.97); stroke-linecap: round; }
+.bisel__canto { fill: none; stroke: rgba(var(--arc-t-linea), 0.22); stroke-linecap: round; }
+
+/*  Las marcas: la letra de los ocho rumbos, mas presente en los cuatro
+    cardinales, y un punto en los de en medio. La del rumbo al que miras se
+    enciende en rosa.  */
+.bisel__m {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: var(--ink-4);
+}
+.bisel__m--cardinal { font-weight: 800; font-size: 12.5px; fill: var(--ink); }
+.bisel__m--punto { fill: rgba(var(--arc-t-linea), 0.6); }
+.bisel__m.on { fill: var(--accent-mid); }
+
+.bisel__aguja { fill: var(--accent-mid); }
+
+/*  Los dos extremos fijos del bisel, como en la franja recta: el rumbo en
+    rosa a la izquierda y los grados a la derecha.  */
+.bisel__rumbo {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13.5px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: var(--accent-mid);
+}
+.bisel__grados {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: 10.5px;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: var(--ink-4);
+}
+
+/*  El piso sube hasta el borde de abajo del circulo: la calle monta sobre el
+    aro. En coche la tarjeta baja lo que mide la pastilla (ver .conduccion),
+    y eso lo funde la transicion de altura que ya tenia el piso.  */
+.caja.redonda .piso {
+    position: relative;
+    z-index: 6;
+    margin-top: calc(-12.5 * var(--u));
+}
+.caja.redonda .sitio {
+    order: 3;
+}
+
+/*  Las dos pastillas de la calle, iguales: a pie .sitio y en coche .sobre. Se
+    centran con margin:auto y un ancho a su medida, NO con translate: el
+    transform de las dos ya lo gasta la coreografia de subir y bajar.  */
+.caja.redonda .sitio,
+.caja.redonda .sobre {
+    width: max-content;
+    max-width: calc(212 * var(--u));
+    height: calc(25 * var(--u));
+    margin: 0 auto;
+    padding: 0 calc(12 * var(--u)) 0 calc(9 * var(--u));
+    align-items: center;
+    gap: calc(7 * var(--u));
+    border-radius: calc(12.5 * var(--u));
+    line-height: 1;
+}
+
+/*  La de coche cuelga de la ventana: abajo del todo y medio por fuera, en
+    el mismo sitio exacto que la de a pie.  */
+.caja.redonda .sobre {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: calc(-12.5 * var(--u));
+}
+
+.caja.redonda .sitio__calle,
+.caja.redonda .sobre__calle {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(13 * var(--u));
+    letter-spacing: 0;
+    color: var(--ink);
+    text-shadow: none;
+}
+
+.caja.redonda .sitio__zona,
+.caja.redonda .sobre__zona {
+    /*  La calle cede y la zona no, hasta su tope: como en la cuadrada (un
+        38 % alli). Encogiendo las dos a la par, una calle larga dejaba el
+        barrio en dos letras; y un barrio largo tampoco puede comerse la
+        calle, por eso el tope.  */
+    flex: none;
+    max-width: calc(72 * var(--u));
+    font-weight: 700;
+    font-size: calc(8 * var(--u));
+    letter-spacing: 0.16em;
+    color: var(--ink-4);
+    text-shadow: none;
+}
+
+/*  La de coche no tiene la barrita de acento en el HTML (sobre el mapa no la
+    llevaba): se pinta aqui para que las dos pastillas sean la misma.  */
+.caja.redonda .sobre::before {
+    content: '';
+    flex: none;
+    width: calc(3 * var(--u));
+    height: calc(13 * var(--u));
+    border-radius: calc(2 * var(--u));
+    background: var(--accent);
+}
+
+/*  El coche: una tarjeta debajo de la pastilla, del ancho del aro. Baja
+    29,5 u desde lo alto del piso: las 12,5 que el piso sube sobre el circulo,
+    las 12,5 de media pastilla que cuelgan por debajo y 4,5 de aire.  */
+.caja.redonda .conduccion {
+    width: calc(218 * var(--u));
+    /*  Debajo del ARCO de la calle (14/09): el piso arranca 12,5 u por encima
+        del canto del mapa, el arco cuelga 26,5 u por debajo, y 5 u de aire.  */
+    margin: calc(44 * var(--u)) auto 0;
+    border-radius: calc(12 * var(--u));
+}
+
+/*  La calle de la redonda va escrita sobre el arco de abajo del bisel
+    (mapa.js). Las dos pastillas rectas se quedan en su sitio SIN VERSE: la de
+    a pie hace de hueco —mas alta, 39 u, para que la caja mida hasta donde
+    llega el arco— y la de coche sigue su coreografia sin que se note.  */
+.caja.redonda .sitio,
+.caja.redonda .sobre {
+    visibility: hidden;
+}
+.caja.redonda .sitio { height: calc(39 * var(--u)); }
+
+/*  El nitroso: su tira fina, suelta bajo la tarjeta y con papel detras, que
+    aqui no tiene el marco de la caja para apoyarse.  */
+.caja.redonda .nos {
+    align-self: center;
+    width: calc(150 * var(--u));
+    height: calc(5 * var(--u));
+    margin-top: calc(4 * var(--u));
+    border-radius: calc(2.5 * var(--u));
+    background-color: rgba(var(--arc-t-papel1), 0.94);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2),
+                0 calc(3 * var(--u)) calc(8 * var(--u)) rgba(0, 0, 0, 0.3);
+}
+
+/*  Los km y los testigos, DENTRO de la tarjeta del coche (14/09). En los
+    hombros del aro colgaban sueltos y se veian mal; como solo salen en coche,
+    mapa.js los muda a una fila fina al pie de la tarjeta (.conduccion__pie):
+    los km a la izquierda, cinturon y luces a la derecha, con un filete
+    encima que la separa de la velocidad y las barras.  */
+.caja.redonda .conduccion {
+    flex-wrap: wrap;
+    row-gap: calc(4 * var(--u));
+}
+
+.conduccion__pie {
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(6 * var(--u));
+    padding-top: calc(5 * var(--u));
+    box-shadow: inset 0 1px 0 rgba(var(--arc-t-linea), 0.16);
+}
+
+/*  Sin filas vacias: si el coche no lleva ninguno de los dos, no se pinta. */
+.conduccion__pie:not(:has(> :not([hidden]))) { display: none; }
+
+.caja.redonda .conduccion__pie .cuentakm,
+.caja.redonda .conduccion__pie .testigos {
+    position: static;
+    top: auto;
+    left: auto;
+    right: auto;
+}
+
+/*  Mas bajitos que sobre el mapa: aqui van en una fila de apoyo, no son
+    chapas sueltas que tengan que verse encima de la ciudad.  */
+.caja.redonda .conduccion__pie .cuentakm { height: calc(17 * var(--u)); padding: 0 calc(7 * var(--u)); }
+.caja.redonda .conduccion__pie .testigo { width: calc(17 * var(--u)); height: calc(17 * var(--u)); }
+.caja.redonda .conduccion__pie .cuentakm > span { font-size: calc(9 * var(--u)); }
+
+/*  La medida de /mapamedida, dentro del circulo: a lo ancho de la ventana
+    se saldria por los lados.  */
+.caja.redonda .medida {
+    top: 22%;
+    left: 50%;
+    width: max-content;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+/*  La calle y el barrio sobre el arco de abajo del bisel: la calle como la
+    pastilla recta (cursiva gruesa, tinta) y el barrio detras en versalitas
+    apagadas. Centrados sobre la linea (`startOffset` 50 % en mapa.js).  */
+.bisel__sitio {
+    text-anchor: middle;
+    dominant-baseline: central;
+}
+.bisel__calle {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    fill: var(--ink);
+}
+.bisel__zona {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    fill: var(--ink-4);
+}
+
+/* ══ El coche en la redonda: la media luna (opción B, 14/09) ══════════════
+
+    La tarjeta deja de ser un rectangulo debajo del arco de la calle y pasa a
+    abrazarlo: su canto de arriba es un arco concentrico con el mapa (136 u,
+    5,5 u por fuera del bisel) y las alas suben por los lados. El papel es el
+    svg .conduccion__papel (index.html), porque un mask recortaria la sombra.
+
+    Tres columnas: la gasolina a la izquierda, la velocidad en el centro,
+    justo debajo del hueco del arco, y motor y chapa apilados a la derecha.
+    Abajo, a todo lo ancho, el pie de siempre con los km y los testigos.
+
+    Medidas (u, desde el centro del mapa hacia abajo): el piso arranca a
+    91,5; la caja baja 20 y deja su canto de arriba a 111,4, la altura de
+    las puntas de las alas (±78 u). En el centro el arco baja 24,6 u mas: la
+    velocidad empieza por debajo de eso.  */
+.conduccion__papel { display: none; }
+
+.caja.redonda .conduccion {
+    position: relative;
+    box-sizing: border-box;
+    width: calc(216 * var(--u));
+    height: calc(96 * var(--u));
+    margin: calc(20 * var(--u)) auto 0;
+    padding: calc(29 * var(--u)) calc(13 * var(--u)) calc(7 * var(--u));
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    grid-template-rows: 1fr 1fr auto;
+    column-gap: calc(4 * var(--u));
+    row-gap: calc(5 * var(--u));
+    align-items: center;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    /*  Su propio contexto de apilado: el papel va a z -1 dentro de el. Un
+        svg absoluto se pinta ENCIMA de las piezas sin posicionar (los
+        medidores), y las tapaba.  */
+    z-index: 0;
+}
+.caja.redonda .conduccion[hidden] { display: none !important; }
+
+.caja.redonda .conduccion__papel {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: -1;
+    pointer-events: none;
+    filter: drop-shadow(0 calc(4 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, 0.32));
+}
+.caja.redonda .conduccion__papel path {
+    fill: rgba(var(--arc-t-papel1), 0.96);
+    stroke: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    stroke-width: 1px;
+    vector-effect: non-scaling-stroke;
+}
+
+.caja.redonda .medidores { display: contents; }
+
+.caja.redonda .vel { grid-column: 2; grid-row: 1 / 3; width: calc(70 * var(--u)); }
+
+/*  Cada medidor en dos pisos: «GAS 63%» y las celdas debajo. La de la
+    izquierda se alinea a su canto y las de la derecha al suyo.  */
+.caja.redonda .medidor {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: "k v" "c c";
+    align-items: baseline;
+    column-gap: calc(3.5 * var(--u));
+    row-gap: calc(3.5 * var(--u));
+}
+/*  Las celdas miden mas que «GAS 63%»: el hueco que sobra se lo lleva la
+    columna de fuera, para que la cifra vaya pegada a su rotulo.  */
+.caja.redonda #mGas { grid-column: 1; grid-row: 1 / 3; justify-self: start; grid-template-columns: max-content 1fr; }
+.caja.redonda #mMotor { grid-column: 3; grid-row: 1; align-self: end; justify-self: end; grid-template-columns: 1fr max-content; }
+.caja.redonda #mCoche { grid-column: 3; grid-row: 2; align-self: start; justify-self: end; grid-template-columns: 1fr max-content; }
+/*  Sin motor (hay vehiculos que no lo mandan), la chapa sola al centro.  */
+.caja.redonda #mMotor[hidden] + #mCoche { grid-row: 1 / 3; align-self: center; }
+
+.caja.redonda .medidor__k { grid-area: k; width: auto; font-size: calc(7.5 * var(--u)); letter-spacing: 0.14em; }
+.caja.redonda .medidor__v { grid-area: v; min-width: 0; text-align: left; font-size: calc(9.5 * var(--u)); }
+.caja.redonda #mMotor .medidor__k,
+.caja.redonda #mCoche .medidor__k { justify-self: end; }
+.caja.redonda .medidor__celdas { grid-area: c; flex: none; gap: calc(1.8 * var(--u)); }
+.caja.redonda #mMotor .medidor__celdas,
+.caja.redonda #mCoche .medidor__celdas { justify-content: flex-end; }
+.caja.redonda .medidor__celdas i {
+    flex: none;
+    width: calc(5.4 * var(--u));
+    height: calc(3.6 * var(--u));
+    border-radius: calc(1.8 * var(--u));
+    transform: none;
+}
+
+.caja.redonda .conduccion__pie { grid-column: 1 / -1; grid-row: 3; }
+
+/*  La gasolina llega desde su lado, no desde la derecha como las otras.  */
+.caja.redonda.en-coche:not(.coche-dentro) #mGas { transform: translateX(calc(-16 * var(--u))); }
+
+/* ══ Comida y agua ═══════════════════════════════════════════════════════
+
+   Una LINEA debajo del minimapa, del mismo ancho (index.html, .necesidades):
+   comida a la izquierda, agua a la derecha. Sustituye a las dos cajitas
+   negras que solo salian por debajo del 25 % (tema negro de antes, en un
+   minimapa que ya es de papel). Primero fue una tarjeta a la derecha del
+   mapa; al usuario no le gusto: la quiere debajo y en linea (25/09).
+
+   La linea ocupa la esquina (--caja-x, --caja-y) y el minimapa SUBE lo que
+   ella mide: --nec-sube lo pone mapa.js en px al enseñarla. Asi el grupo
+   entero sigue anclado donde diga «Posicionar», y a pie, sin minimapa, la
+   linea se queda sola en la esquina.
+
+   Piezas del piso del coche: el papel de .caja, la pastilla inclinada de
+   .marcha y las celdas de .medidor. Todo en N * --u: crece con el tamaño.
+
+   Tinta mientras vas bien; ROSA a partir del 25 % y la cifra en rojo de
+   estado (la barra rosa del canto izquierdo se quito el 27/09). Sin
+   @keyframes: en el juego se paran.  */
+.caja { bottom: calc(var(--caja-y) + var(--nec-sube, 0px)); }
+
+.necesidades {
+    position: absolute;
+    left: var(--caja-x);
+    bottom: var(--caja-y);
+    width: var(--caja-w);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: calc(5 * var(--u)) calc(9 * var(--u)) calc(5 * var(--u)) calc(6 * var(--u));
+    border-radius: calc(9 * var(--u));
+    background: rgba(var(--arc-t-papel1), 0.94);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 calc(10 * var(--u)) calc(24 * var(--u)) rgba(0, 0, 0, 0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    pointer-events: none;
+    transform-origin: 0 100%;
+    transition: opacity 0.3s ease, transform 0.5s var(--ogn-ease);
+}
+.necesidades[hidden],
+.necesidades.quitada { display: none !important; }   /* ajuste «Comida y agua: no» */
+
+/*  Tapada por otra pantalla (Apartar) o con el menu de pausa: se funde. */
+.necesidades.apartado,
+.necesidades.pausa {
+    opacity: 0;
+    transform: translateY(1.2vh);
+}
+
+/*  Las dos mitades, separadas por una raya de 1 px. */
+.nec { flex: 1; min-width: 0; display: flex; align-items: center; gap: calc(5 * var(--u)); }
+.nec + .nec {
+    margin-left: calc(7 * var(--u)); padding-left: calc(7 * var(--u));
+    border-left: 1px solid rgba(var(--arc-t-linea), 0.2);
+}
+
+/*  El icono en la pastilla inclinada de la marcha, en tinta: el rosa lleno
+    se reserva para cuando hace falta comer o beber. */
+.nec__ico {
+    flex: none;
+    display: grid; place-items: center;
+    width: calc(15 * var(--u)); height: calc(14 * var(--u));
+    border-radius: calc(4 * var(--u));
+    transform: skewX(-10deg);
+    background: rgba(var(--arc-t-hueco), 0.08);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    color: var(--ink);
+    transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.nec__ico svg { width: calc(9 * var(--u)); height: calc(9 * var(--u)); transform: skewX(10deg); }
+
+.nec__k {
+    flex: none; font-weight: 700; font-size: calc(7.5 * var(--u)); line-height: 1;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4);
+}
+.nec__celdas { flex: 1; min-width: 0; display: flex; gap: calc(1.5 * var(--u)); }
+.nec__celdas i {
+    flex: 1; height: calc(4.5 * var(--u)); border-radius: calc(1.5 * var(--u)); transform: skewX(-10deg);
+    background: rgba(var(--arc-t-linea), 0.2);
+    transition: background 0.3s ease;
+}
+.nec__celdas i.on { background: var(--arc-tinta2, #6b6352); }
+.nec__v {
+    flex: none; min-width: calc(19 * var(--u)); text-align: right;
+    font-style: italic; font-weight: 800; font-size: calc(10 * var(--u)); line-height: 1;
+    color: var(--ink); font-variant-numeric: tabular-nums;
+    transition: color 0.3s ease;
+}
+
+/*  Por debajo del 25 %: rosa. */
+.nec.bajo .nec__ico {
+    background: linear-gradient(180deg, #df2f63 0%, var(--accent-mid) 100%);
+    box-shadow: 0 calc(1.5 * var(--u)) 0 #a80c3f;
+    color: #fff;
+}
+.nec.bajo .nec__celdas i.on { background: var(--accent-mid); }
+.nec.bajo .nec__v { color: var(--arc-estado-bad, #b3123f); }
+
+/*  Por debajo del 10 % ya NO hay barra rosa en el canto izquierdo: el
+    usuario la quito (27/09). Lo rosa del icono y la cifra ya lo dicen. */
+
+/*  En la redonda iba estrechada al ancho de la tarjeta del coche. Desde el
+    25/09 la linea solo sale en la redonda cuando el mapa NO esta (con el mapa,
+    comida y agua van en el aro: .en-aro), asi que lleva su ancho de siempre:
+    estrechada a la redonda de 0,58 el texto no cabia y se montaba. */
+
+/* ══ El minimapa EN PIEZAS (de serie desde el 25/09) ═════════════════════
+
+   Copia del mockup del usuario (25/09, «replicalo pixel perfect»), que
+   eligio despues de ver cinco diseños de comida y agua (se quedo «barra»;
+   linea, pastillas, pegada y aro se borraron). Medido
+   sobre la imagen: sus 950 px de ancho son las 232 u de la caja, asi que
+   1 u = 4,1 px del mockup. Clase .piezas en la caja (index.html; solo la
+   cuadrada: la redonda sigue con su aro) y data-v="barra" en .necesidades.
+   Quitando las dos se vuelve al marco de una pieza de antes.
+
+   Las piezas, de arriba abajo, con 4,5 u de aire y 9 u de radio:
+     brujula    20 u   E | cinta | 78° y el cielo
+     calle      18 u   pin rosa, calle, | barrio, › (debajo de la brujula, fuera del mapa)
+     mapa       lo de siempre, marco limpio
+     coche      60 u   velocidad a la izquierda (32 u), | y tres renglones
+                de 14 u: icono, nombre, pista fina y cifra
+     comida     19 u   icono en circulo, nombre, pista fina y cifra, | agua
+
+   Letra (Barlow Condensed): rotulos 8,4 u en versales espaciadas; cifras
+   10,5 u cursiva 800; la calle 10,5 u; el barrio 7 u; titulares 12 u. La calle va DERECHA, no en cursiva.
+   Las pistas son finas (3 u): gasolina en rosa, motor y chapa en verde,
+   comida en tinta, y todo en rosa por debajo del aviso.  */
+:root {
+    --pz-r: calc(9 * var(--u));
+    --pz-r2: calc(3.4 * var(--u));
+    --pz-gap: calc(4.5 * var(--u));
+    --pz-papel: rgba(var(--arc-t-papel1), 0.95);
+    --pz-sombra: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                 0 calc(8 * var(--u)) calc(20 * var(--u)) rgba(0, 0, 0, 0.3);
+    --pz-raya: rgba(var(--arc-t-linea), 0.22);
+    --pz-pista: rgba(var(--arc-t-hueco), 0.1);
+    --pz-rosa: linear-gradient(90deg, #df2f63 0%, var(--accent-mid) 100%);
+    --pz-verde: #4fd69c;
+}
+
+/*  Lo que solo existe en este diseño. */
+.medidor__ico, .brujula__sep, .brujula__cielo, .cuentakm__ico, .calle__pin, .calle__mas { display: none; }
+
+/* ── Las piezas ─────────────────────────────────────────────────────────── */
+.caja.piezas:not(.redonda) {
+    gap: var(--pz-gap);
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+.caja.piezas:not(.redonda) .brujula,
+.caja.piezas:not(.redonda).en-coche .piso {
+    background: var(--pz-papel);
+    box-shadow: var(--pz-sombra);
+    border-radius: var(--pz-r);
+}
+
+/* ── La brujula: 20 u ───────────────────────────────────────────────────── */
+.caja.piezas:not(.redonda) .brujula {
+    box-sizing: border-box;
+    height: calc(20 * var(--u));
+    padding: 0 calc(7 * var(--u)) 0 calc(10 * var(--u));
+    gap: calc(6 * var(--u));
+}
+.caja.piezas:not(.redonda) .brujula__rumbo { min-width: calc(9 * var(--u)); font-size: calc(12 * var(--u)); }
+.caja.piezas:not(.redonda) .brujula__sep {
+    display: block; flex: none; width: 1px; height: calc(10 * var(--u)); background: var(--pz-raya);
+}
+.caja.piezas:not(.redonda) .cinta { height: calc(11 * var(--u)); }
+.caja.piezas:not(.redonda) .cinta__m { font-size: calc(7.5 * var(--u)); line-height: calc(11 * var(--u)); }
+.caja.piezas:not(.redonda) .cinta__aguja { width: calc(2 * var(--u)); margin-left: calc(-1 * var(--u)); border-radius: calc(1 * var(--u)); }
+.caja.piezas:not(.redonda) .grados {
+    min-width: 0;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: italic; font-weight: 800; font-size: calc(12 * var(--u));
+    color: var(--ink);
+}
+.caja.piezas:not(.redonda) .brujula__cielo {
+    display: grid; place-items: center; flex: none;
+    width: calc(10 * var(--u)); height: calc(10 * var(--u)); color: var(--ink-4);
+}
+.brujula__cielo svg { width: 100%; height: 100%; }
+
+/* ── El mapa ────────────────────────────────────────────────────────────── */
+.caja.piezas:not(.redonda) .ventana {
+    border-radius: var(--pz-r);
+    box-shadow: 0 calc(8 * var(--u)) calc(20 * var(--u)) rgba(0, 0, 0, 0.3);
+}
+/*  El canto de papel del mapa, por ENCIMA de las teselas (como en la redonda). */
+.caja.piezas:not(.redonda) .ventana::after {
+    content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    border-radius: var(--pz-r);
+    box-shadow: inset 0 0 0 calc(1.2 * var(--u)) rgba(var(--arc-t-papel1), 0.9);
+}
+
+/*  Las chapas de encima del mapa: km (14 u) y testigos (14,5 u), rectas. */
+.caja.piezas:not(.redonda) .cuentakm {
+    top: calc(4.4 * var(--u)); left: calc(4.4 * var(--u));
+    height: calc(13.7 * var(--u)); padding: 0 calc(6 * var(--u)) 0 calc(5 * var(--u));
+    gap: calc(3.5 * var(--u));
+    border-radius: var(--pz-r2); transform: none;
+    background: rgba(var(--arc-t-papel1), 0.94);
+    box-shadow: 0 calc(1 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.18);
+}
+.caja.piezas:not(.redonda) .cuentakm__ico { display: grid; place-items: center; width: calc(7 * var(--u)); height: calc(7 * var(--u)); color: var(--ink); }
+.cuentakm__ico svg { width: 100%; height: 100%; }
+.caja.piezas:not(.redonda) .cuentakm > span {
+    transform: none;
+    font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 800;
+    font-size: calc(9 * var(--u)); font-variant-numeric: tabular-nums;
+}
+.caja.piezas:not(.redonda) .testigos { top: calc(4.4 * var(--u)); right: calc(4.4 * var(--u)); gap: calc(3 * var(--u)); }
+.caja.piezas:not(.redonda) .testigo {
+    width: calc(14.5 * var(--u)); height: calc(14.5 * var(--u));
+    border-radius: calc(3 * var(--u)); transform: none;
+    box-shadow: 0 calc(1 * var(--u)) calc(4 * var(--u)) rgba(0, 0, 0, 0.18);
+}
+.caja.piezas:not(.redonda) .testigo svg { width: calc(8.5 * var(--u)); height: calc(8.5 * var(--u)); transform: none; }
+
+/* ── La calle: fuera del mapa, debajo de la brújula (18 u) ────────────── */
+.caja.piezas:not(.redonda) .sitio {
+    box-sizing: border-box;
+    height: calc(18 * var(--u));
+    display: flex;
+    align-items: center;
+    gap: calc(5 * var(--u));
+    padding: 0 calc(7 * var(--u)) 0 calc(8 * var(--u));
+    border-radius: var(--pz-r);
+    background: var(--pz-papel);
+    box-shadow: var(--pz-sombra);
+    line-height: 1;
+    position: relative;
+    z-index: 6;
+    margin: 0;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
+/* En el modo piezas la calle se queda siempre debajo de la brújula; .sobre en la ventana se apaga */
+.caja.piezas:not(.redonda) .sobre {
+    display: none !important;
+}
+
+.caja.piezas:not(.redonda):not(.en-coche) .piso {
+    display: none !important;
+}
+
+.caja.piezas:not(.redonda) .sitio__acento { display: none; }
+
+.caja.piezas:not(.redonda) .calle__pin {
+    display: grid; place-items: center; flex: none;
+    width: calc(8 * var(--u)); height: calc(8 * var(--u)); color: var(--accent-mid);
+}
+
+.caja.piezas:not(.redonda) .calle__mas {
+    display: grid; place-items: center; flex: none; margin-left: auto;
+    width: calc(7 * var(--u)); height: calc(7 * var(--u)); color: var(--ink-4);
+}
+
+.calle__pin svg, .calle__mas svg { width: 100%; height: 100%; }
+
+.caja.piezas:not(.redonda) .sitio__calle {
+    flex: 0 1 auto; min-width: 0;
+    font-style: normal; font-weight: 700; font-size: calc(10.5 * var(--u)); letter-spacing: 0.04em;
+    color: var(--ink); text-shadow: none;
+    text-transform: uppercase;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.caja.piezas:not(.redonda) .sitio__zona {
+    flex: 0 1 auto; min-width: 0; max-width: 40%;
+    padding-left: calc(5 * var(--u)); border-left: 1px solid var(--pz-raya);
+    font-weight: 600; font-size: calc(7 * var(--u)); letter-spacing: 0.16em;
+    color: var(--ink-4); text-shadow: none;
+    line-height: calc(10 * var(--u));
+    text-transform: uppercase;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.caja.piezas:not(.redonda) .sitio__zona:empty {
+    display: none;
+    border-left: none;
+    padding-left: 0;
+}
+
+.caja.piezas:not(.redonda) .sitio__dist {
+    flex: none;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-size: calc(8.5 * var(--u));
+    font-weight: 800;
+    line-height: 1;
+    color: var(--ink);
+    padding: calc(2 * var(--u)) calc(5 * var(--u));
+    border-radius: calc(3 * var(--u));
+    background: var(--pz-pista);
+    border: 1px solid var(--pz-raya);
+    white-space: nowrap;
+}
+
+.caja.piezas:not(.redonda) .sitio__dist[hidden] {
+    display: none !important;
+}
+
+/* ── El coche: 60 u ─────────────────────────────────────────────────────── */
+.caja.piezas:not(.redonda) .conduccion {
+    box-sizing: border-box;
+    height: calc(60 * var(--u));
+    display: grid; grid-template-columns: calc(77 * var(--u)) 1fr;
+    align-items: stretch; gap: 0;
+    padding: calc(4.4 * var(--u)) calc(3.2 * var(--u)) calc(4.4 * var(--u)) 0;
+}
+/*  La velocidad: la cifra grande arriba y, debajo, la marcha con «KM/H» a
+    su lado, todo CENTRADO en su columna (26/09). Antes la marcha iba a la
+    derecha de la cifra en la misma fila y alineada a la izquierda: en 77 u no
+    caben tres cifras más la marcha (pasando de 100 se le montaba encima), y
+    con un «0» todo se quedaba pegado a la izquierda. */
+.caja.piezas:not(.redonda) .vel {
+    box-sizing: border-box; width: auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: calc(4 * var(--u));
+    padding: 0 calc(4 * var(--u)) calc(6 * var(--u));
+    border-right: 1px solid var(--pz-raya);
+    transform: none;
+}
+.caja.piezas:not(.redonda) .vel__lado {
+    display: flex; flex-direction: row; align-items: center; gap: calc(5 * var(--u));
+    transform: none;
+}
+.caja.piezas:not(.redonda) .vel__n {
+    font-weight: 900; font-size: calc(32 * var(--u)); line-height: 0.78; letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.caja.piezas:not(.redonda) .marcha {
+    width: calc(17 * var(--u)); height: calc(12 * var(--u)); padding: 0;
+    display: grid; place-items: center;
+    border-radius: calc(3 * var(--u)); font-size: calc(10 * var(--u));
+    box-sizing: border-box;
+}
+.caja.piezas:not(.redonda) .vel__u {
+    font-size: calc(8 * var(--u)); line-height: 1; letter-spacing: 0.24em; color: var(--ink-4);
+}
+/*  El nitroso, la pista fina bajo la velocidad. */
+.caja.piezas:not(.redonda) .nos {
+    position: absolute; z-index: 2;
+    left: calc(11 * var(--u)); width: calc(55 * var(--u)); bottom: calc(6 * var(--u));
+    height: calc(3 * var(--u)); border-radius: calc(1.5 * var(--u));
+}
+
+/*  Los tres renglones: 14 u, papel con canto, 4,3 u entre ellos. */
+.caja.piezas:not(.redonda) .medidores {
+    display: flex; flex-direction: column; justify-content: space-between;
+    margin-left: calc(8.5 * var(--u)); gap: 0;
+}
+.caja.piezas:not(.redonda) .medidor {
+    box-sizing: border-box; height: calc(14.2 * var(--u));
+    display: flex; align-items: center; gap: 0;
+    padding: 0 calc(5 * var(--u)) 0 0;
+    border-radius: var(--pz-r2); overflow: hidden;
+    background: rgba(var(--arc-t-papel1), 0.9);
+    box-shadow: inset 0 0 0 1px var(--pz-raya);
+}
+.caja.piezas:not(.redonda) .medidor__ico {
+    display: grid; place-items: center; flex: none;
+    width: calc(18 * var(--u)); height: 100%;
+    background: rgba(var(--arc-t-hueco), 0.045);
+    box-shadow: inset -1px 0 0 rgba(var(--arc-t-linea), 0.14);
+    color: var(--ink);
+}
+.caja.piezas:not(.redonda) .medidor__ico svg { width: calc(8 * var(--u)); height: calc(8 * var(--u)); }
+.caja.piezas:not(.redonda) .medidor__k {
+    flex: none; width: calc(27 * var(--u)); box-sizing: border-box; padding-left: calc(5 * var(--u));
+    font-weight: 700; font-size: calc(8.4 * var(--u)); letter-spacing: 0.12em; color: var(--ink-4);
+}
+
+/* ══ La pista fina: la misma en el coche y en comida/agua ═══════════════ */
+.caja.piezas:not(.redonda) .medidor__celdas,
+.necesidades[data-v="barra"] .nec__celdas {
+    position: relative; flex: 1; min-width: 0;
+    display: block; height: calc(3 * var(--u));
+    margin: 0 calc(5 * var(--u));
+    border-radius: calc(1.5 * var(--u));
+    background: var(--pz-pista);
+    overflow: hidden;
+}
+.caja.piezas:not(.redonda) .medidor__celdas i,
+.necesidades[data-v="barra"] .nec__celdas i { display: none; }
+.caja.piezas:not(.redonda) .medidor__celdas::before,
+.necesidades[data-v="barra"] .nec__celdas::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: calc(var(--p, 1) * 100%); border-radius: inherit;
+    background: rgba(38, 34, 26, 0.68);
+    transition: width 0.4s var(--ogn-ease);
+}
+.caja.piezas:not(.redonda) #mGas .medidor__celdas::before,
+.caja.piezas:not(.redonda) .medidor.bajo .medidor__celdas::before,
+.necesidades[data-v="barra"] .nec.bajo .nec__celdas::before { background: var(--pz-rosa); }
+.caja.piezas:not(.redonda) .medidor--coche:not(.bajo) .medidor__celdas::before { background: var(--pz-verde); }
+.necesidades[data-v="barra"] .nec.bajo .nec__celdas { background: rgba(224, 7, 79, 0.12); }
+
+.caja.piezas:not(.redonda) .medidor__v,
+.necesidades[data-v="barra"] .nec__v {
+    flex: none; min-width: calc(17 * var(--u)); text-align: right;
+    font-style: italic; font-weight: 800; font-size: calc(10.5 * var(--u)); line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── Comida y agua: 19 u ────────────────────────────────────────────────── */
+.necesidades[data-v="barra"] {
+    box-sizing: border-box;
+    height: calc(19 * var(--u));
+    padding: 0 calc(6 * var(--u));
+    gap: 0;
+    border-radius: var(--pz-r);
+    background: var(--pz-papel);
+    box-shadow: var(--pz-sombra);
+}
+.necesidades[data-v="barra"] .nec {
+    flex: 1; min-width: 0; height: 100%;
+    display: flex; align-items: center; gap: 0;
+    padding: 0; background: none; border-radius: 0;
+}
+.necesidades[data-v="barra"] .nec + .nec { margin: 0; padding: 0; border: 0; }
+.necesidades[data-v="barra"] .nec + .nec::before {
+    content: ''; flex: none; width: 1px; height: calc(10 * var(--u));
+    margin: 0 calc(6 * var(--u)); background: var(--pz-raya);
+}
+.necesidades[data-v="barra"] .nec__ico {
+    flex: none; display: grid; place-items: center;
+    width: calc(13.4 * var(--u)); height: calc(13.4 * var(--u));
+    border-radius: 50%; transform: none;
+    background: rgba(var(--arc-t-hueco), 0.07);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.16);
+    color: var(--ink);
+}
+.necesidades[data-v="barra"] .nec__ico svg { width: calc(7.5 * var(--u)); height: calc(7.5 * var(--u)); transform: none; }
+.necesidades[data-v="barra"] .nec.bajo .nec__ico { background: var(--pz-rosa); box-shadow: 0 calc(1 * var(--u)) calc(3 * var(--u)) rgba(224, 7, 79, 0.35); color: #fff; }
+.necesidades[data-v="barra"] .nec__k {
+    flex: none; padding-left: calc(6 * var(--u));
+    font-weight: 700; font-size: calc(8.4 * var(--u)); line-height: 1;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-4);
+}
+.necesidades[data-v="barra"] .nec__celdas { margin: 0 calc(5 * var(--u)) 0 calc(6 * var(--u)); }
+.necesidades[data-v="barra"] .nec__v { color: var(--ink); }
+.necesidades[data-v="barra"] .nec.bajo .nec__v { color: var(--arc-estado-bad, #b3123f); }
+
+/* ══ La redonda con cápsula (25/09) ══════════════════════════════════════
+
+    Diseño del lienzo «HUD redondo», propuesta D. A pie solo se ve el
+    círculo; al subir al coche, la cápsula sale de DETRÁS del círculo hacia
+    la derecha, del mismo alto que el aro (262 u = el bisel de lado a lado).
+    La tarjeta de media luna de debajo y la tira del nitroso se quedan sin
+    pintar en la redonda: todo va en la cápsula.
+
+    La cápsula nace en el centro del círculo: 131 u desde la izquierda de la
+    caja (262 / 2) y 131 u desde arriba (el hueco de la brújula, 27 u, más el
+    radio del mapa, 104 u).
+
+    Solo transiciones, sin @keyframes (en el juego se paran). La regla base
+    es la SALIDA (rápida, sin escalones) y la de .coche-dentro la ENTRADA:
+    primero se estira, después entran las piezas escalonadas (--d).  */
+
+.capsula { display: none; }
+
+.caja.redonda .conduccion,
+.caja.redonda .nos { display: none !important; }
+
+.caja.redonda .capsula {
+    --cap-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --cap-rebote: cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    z-index: 0;
+    left: calc(131 * var(--u));
+    top: calc(131 * var(--u));
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    width: calc(116 * var(--u));
+    height: calc(62 * var(--u));
+    padding: 0 calc(53 * var(--u)) 0 calc(154 * var(--u));
+    border-radius: 0 999px 999px 0;
+    overflow: hidden;
+    background: rgba(var(--arc-t-papel1), 0.96);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))),
+                0 calc(12 * var(--u)) calc(32 * var(--u)) rgba(0, 0, 0, 0.4);
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: width 0.34s var(--cap-ease) 0.06s, height 0.3s var(--cap-ease) 0.06s, opacity 0.1s 0.38s;
+}
+.caja.redonda.coche-dentro .capsula {
+    width: calc(470 * var(--u));
+    height: calc(262 * var(--u));
+    opacity: 1;
+    transition: width 0.6s var(--cap-ease), height 0.5s var(--cap-ease) 0.08s, opacity 0.05s;
+}
+
+/*  El mapa, el aro y la calle por encima de la cápsula.  */
+.caja.redonda .ventana { z-index: 1; }
+
+.capsula [hidden] { display: none !important; }
+
+/*  Las piezas: entran desde la izquierda, cada una con su retardo.  */
+.cap-entra {
+    opacity: 0;
+    transform: translateX(calc(-21 * var(--u)));
+    transition: opacity 0.12s, transform 0.12s;
+}
+.caja.redonda.coche-dentro .cap-entra {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.3s var(--d), transform 0.55s var(--cap-ease) var(--d);
+}
+
+.cap-fila { display: flex; align-items: flex-end; gap: calc(11.5 * var(--u)); flex: none; }
+.cap-vel { display: flex; align-items: flex-end; gap: calc(6 * var(--u)); }
+.cap-vel__n {
+    min-width: calc(70 * var(--u));
+    text-align: right;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(67 * var(--u));
+    line-height: 0.78;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+}
+.cap-vel__u {
+    font-weight: 700;
+    font-size: calc(12.5 * var(--u));
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+.cap-marcha {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(41.6 * var(--u));
+    height: calc(41.6 * var(--u));
+    border-radius: calc(12.7 * var(--u));
+    background: linear-gradient(180deg, #df2f63 0%, var(--accent-mid) 100%);
+    box-shadow: 0 calc(3.5 * var(--u)) 0 #a80c3f;
+    color: #fff;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800;
+    font-size: calc(20.8 * var(--u));
+    transform: scale(0) rotate(-20deg);
+    transition: transform 0.15s;
+}
+.caja.redonda.coche-dentro .cap-marcha { transform: none; transition: transform 0.5s var(--cap-rebote) 0.4s; }
+
+.cap-km {
+    margin-left: auto;
+    align-self: center;
+    display: flex;
+    align-items: baseline;
+    gap: calc(4.6 * var(--u));
+    height: calc(25.4 * var(--u));
+    line-height: calc(25.4 * var(--u));
+    padding: 0 calc(10.4 * var(--u));
+    border-radius: calc(9.2 * var(--u));
+    background: rgba(var(--arc-t-linea), 0.07);
+}
+.cap-km b { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight:800; font-size: calc(15 * var(--u)); color: var(--ink); }
+.cap-km span,
+.cap-k {
+    font-weight: 700;
+    font-size: calc(12.5 * var(--u));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+}
+
+/*  Las revoluciones: 18 celdas; las tres últimas, la zona roja, en rosa.  */
+.cap-rpm { display: flex; gap: calc(2.3 * var(--u)); height: calc(4.6 * var(--u)); margin-top: calc(11.6 * var(--u)); flex: none; }
+.cap-rpm i { flex: 1; border-radius: calc(2.3 * var(--u)); background: rgba(var(--arc-t-linea), 0.13); transition: background 0.08s; }
+.cap-rpm i.on { background: var(--ink); }
+.cap-rpm i.on.roja { background: var(--accent-mid); }
+
+.cap-barras { display: flex; flex-direction: column; gap: calc(10.4 * var(--u)); margin-top: calc(16 * var(--u)); flex: none; }
+.cap-barra { display: flex; align-items: center; gap: calc(9.2 * var(--u)); }
+.cap-barra .cap-k { width: calc(50 * var(--u)); flex: none; }
+.cap-pista { flex: 1; height: calc(8 * var(--u)); border-radius: calc(3.5 * var(--u)); background: rgba(var(--arc-t-linea), 0.13); overflow: hidden; }
+.cap-pista i { display: block; height: 100%; width: 0; border-radius: calc(3.5 * var(--u)); background: linear-gradient(90deg, #df2f63, var(--accent-mid)); transition: width 0.4s var(--ogn-ease); }
+.cap-v {
+    flex: none;
+    width: calc(44 * var(--u));
+    text-align: right;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(15.5 * var(--u));
+    line-height: 1;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+}
+.cap-v.bajo { color: var(--accent-mid); }
+
+/*  Testigos: tinta = encendido, tinta tenue = apagado, rosa lleno = aviso
+    (el cinturón sin poner).  */
+.cap-testigos { display: flex; align-items: center; gap: calc(7 * var(--u)); margin-top: calc(16 * var(--u)); flex: none; }
+.cap-t {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(34.7 * var(--u));
+    height: calc(25.4 * var(--u));
+    border-radius: calc(9.2 * var(--u));
+    background: rgba(var(--arc-t-linea), 0.07);
+    color: var(--ink);
+}
+.cap-t svg { width: calc(16 * var(--u)); height: calc(16 * var(--u)); }
+.cap-t.apagado { color: rgba(var(--arc-t-linea), 0.3); }
+.cap-t.mal { background: linear-gradient(180deg, #df2f63 0%, var(--accent-mid) 100%); box-shadow: 0 calc(2.3 * var(--u)) 0 #a80c3f; color: #fff; }
+
+.cap-nos {
+    display: flex;
+    align-items: center;
+    gap: calc(7 * var(--u));
+    height: calc(25.4 * var(--u));
+    padding: 0 calc(10.4 * var(--u));
+    border-radius: calc(9.2 * var(--u));
+    background: rgba(var(--arc-t-linea), 0.07);
+    color: var(--ink);
+}
+.cap-nos svg { width: calc(14 * var(--u)); height: calc(14 * var(--u)); }
+.cap-nos .cap-pista { flex: none; width: calc(46 * var(--u)); height: calc(5.8 * var(--u)); }
+.cap-nos .cap-pista i { background: linear-gradient(90deg, #5fb4ff, #1d7fd6); }
+.cap-nos .cap-v { width: auto; font-size: calc(12.7 * var(--u)); }
+.cap-nos.activo { box-shadow: 0 0 0 calc(1.5 * var(--u)) #35a6ff; }
+.cap-nos.bloqueado { opacity: 0.5; }
+
+/*  Comida y agua en el aro: un surco fino dentro de su pieza, que se llena
+    de abajo arriba.  */
+.bisel__nec.sin-dato,
+.bisel__nec.quitada { display: none; }
+.bisel__surco,
+.bisel__carga { fill: none; stroke-width: 4; stroke-linecap: round; }
+.bisel__surco { stroke: rgba(var(--arc-t-linea), 0.13); }
+.bisel__carga { stroke: var(--accent-mid); stroke-dasharray: 100 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.6s var(--ogn-ease); }
+.bisel__nec-ico path { fill: none; stroke: var(--accent-mid); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/*  La linea de comida y agua de abajo sobra mientras van en el aro.  */
+.necesidades.en-aro { display: none !important; }
+
+/*  El piso de abajo mide siempre lo de la calle (39 u, el hueco del arco):
+    en coche la tarjeta de debajo no se pinta, y sin esto la caja encogía y
+    el círculo —anclado por abajo— bajaba de golpe al subir al coche.  */
+.caja.redonda .piso { height: calc(39 * var(--u)) !important; }
+
+/* ══ PEGATINA: el minimapa con el estilo del logo «Origen Los Santos» ═════
+
+   En Origen y en Nación (05/10: la misma interfaz; en Nación el repintado
+   de la marca pone el naranja en lugar del rosa). Lienzo:
+   https://claude.ai/artifact/22bWjdPaPKczsV5aGM1bQW, propuesta B.
+
+   Del logo: papel blanco, canto negro grueso y sombra DURA (sin difuminar),
+   el rosa de «LOS SANTOS» y el barrio escrito a brocha. Va blanco: es una
+   pegatina, no un cristal. Solo la forma cuadrada.
+
+   No cambia ninguna ALTURA de las piezas (los cantos van por dentro, con
+   border-box): medirNecSube y el encaje siguen midiendo lo mismo.
+   Para quitarlo: borrar este bloque y las dos familias (Knewave, Oxanium)
+   del <link> de index.html.  */
+html .caja.piezas:not(.redonda),
+html .necesidades[data-v="barra"] {
+    --peg-rosa: #d81b55;
+    --peg-negro: #0b0b0d;
+    --peg-canto: 1.5px;  /* canto fino (06/10), igual que el resto del servidor */
+    --peg-sombra: calc(2.8 * var(--u)) calc(2.8 * var(--u)) 0 var(--peg-negro);
+    --peg-r: calc(7 * var(--u));
+    --ink: var(--peg-negro);
+    --ink-4: var(--peg-negro);
+    --pz-papel: #c4c6ca;
+    --pz-raya: var(--peg-negro);
+}
+
+/* ── Las piezas: papel, canto y sombra ──────────────────────────────────── */
+html .caja.piezas:not(.redonda) .brujula,
+html .caja.piezas:not(.redonda) .sitio,
+html .caja.piezas:not(.redonda).en-coche .piso,
+html .necesidades[data-v="barra"] .nec {
+    background: #c4c6ca;
+    border: var(--peg-canto) solid var(--peg-negro);
+    border-radius: var(--peg-r);
+    box-shadow: var(--peg-sombra);
+}
+
+/* ── La brujula: rumbo en rosa, cinta, y grados y cielo en negro ────────── */
+html .caja.piezas:not(.redonda) .brujula {
+    position: relative;
+    padding: 0;
+    gap: 0;
+    overflow: hidden;
+    /*  El papel de debajo ya va rosa a la izquierda y negro a la derecha: en
+        las esquinas redondeadas asomaba un arco blanco junto al canto. */
+    /*  Y un filo negro de 1 px arriba y abajo: el canto mide 2,56 px a 1080p y
+        la fila partida entre el canto y los bloques dejaba ver el papel, una
+        raya blanca de punta a punta (medido en el juego, 03/10). */
+    background:
+        linear-gradient(var(--peg-negro), var(--peg-negro)) top / 100% 1px no-repeat,
+        linear-gradient(var(--peg-negro), var(--peg-negro)) bottom / 100% 1px no-repeat,
+        linear-gradient(90deg, var(--peg-rosa) 0, var(--peg-rosa) calc(24 * var(--u)), #c4c6ca calc(24 * var(--u)), #c4c6ca calc(100% - 36 * var(--u)), var(--peg-negro) calc(100% - 36 * var(--u)));
+}
+html .caja.piezas:not(.redonda) .brujula__sep { display: none; }
+/*  El bloque rosa, con el canto derecho en diagonal. Va en un ::before y no
+    en el propio rumbo para no tumbar tambien la letra. */
+html .caja.piezas:not(.redonda) .brujula::before {
+    /*  Un pixel por fuera, arriba y abajo: el canto mide 2,2 u, que rara vez
+        es un numero entero de pixeles, y el papel blanco de la caja asomaba
+        como una raya fina por encima del rosa y del negro. */
+    content: ''; position: absolute; top: -1px; bottom: -1px;
+    left: calc(-6 * var(--u)); width: calc(34 * var(--u));
+    background: var(--peg-rosa);
+    border-right: var(--peg-canto) solid var(--peg-negro);
+    transform: skewX(-14deg);
+}
+html .caja.piezas:not(.redonda) .brujula__rumbo {
+    position: relative; flex: none;
+    width: calc(26 * var(--u)); min-width: 0; text-align: center;
+    color: var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .cinta {
+    margin: 0 calc(7 * var(--u)) 0 calc(9 * var(--u));
+}
+/*  Las marcas de la cinta, en negro: el gris de serie se pierde en el blanco. */
+html .caja.piezas:not(.redonda) .cinta__m { color: rgba(11, 11, 13, 0.6); }
+html .caja.piezas:not(.redonda) .cinta__m--cardinal { color: var(--peg-negro); }
+html .caja.piezas:not(.redonda) .grados,
+html .caja.piezas:not(.redonda) .brujula__cielo {
+    align-self: stretch; height: auto; margin: -1px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--peg-negro); color: #fff;
+}
+html .caja.piezas:not(.redonda) .grados {
+    /*  Los 3 u de arriba bajan la cifra: Oxanium se dibuja alta en su renglon. */
+    padding: calc(3 * var(--u)) calc(4 * var(--u)) 0 calc(7 * var(--u));
+    font-family: 'Oxanium', 'Barlow Condensed', sans-serif;
+    font-style: normal; font-weight: 800; font-size: calc(11 * var(--u));
+    line-height: 1; transform: none;
+}
+html .caja.piezas:not(.redonda) .brujula__cielo {
+    width: calc(16 * var(--u)); padding-right: calc(6 * var(--u)); box-sizing: border-box;
+    margin-right: -1px;
+}
+html .caja.piezas:not(.redonda) .brujula__cielo svg {
+    width: calc(10 * var(--u)); height: calc(10 * var(--u));
+}
+
+/* ── La calle, y el barrio a brocha asomando por la derecha ─────────────── */
+html .caja.piezas:not(.redonda) .calle__pin { color: var(--peg-rosa); }
+html .caja.piezas:not(.redonda) .calle__pin svg {
+    stroke: var(--peg-negro); stroke-width: 2; stroke-linejoin: round; overflow: visible;
+}
+html .caja.piezas:not(.redonda) .calle__mas { display: none; }
+html .caja.piezas:not(.redonda) .sitio__calle { font-style: italic; }
+html .caja.piezas:not(.redonda) .sitio__zona {
+    /*  Un barrio largo («Canales de Vespucci») tapaba la calle: como mucho
+        media barra, y el resto en puntos suspensivos. El relleno, con su
+        margen negativo, es el sitio del contorno y de la sombra dentro del
+        recorte. */
+    flex: 0 1 auto; max-width: 50%; overflow: hidden; text-overflow: ellipsis;
+    margin: calc(-5 * var(--u)) calc(-3 * var(--u)) calc(-5 * var(--u)) auto;
+    padding: calc(5 * var(--u)) calc(4 * var(--u)) calc(5 * var(--u)) calc(3 * var(--u)); border: 0;
+    font-family: 'Knewave', 'Barlow Condensed', cursive;
+    font-weight: 400; font-style: normal;
+    font-size: calc(13 * var(--u)); line-height: 1; letter-spacing: 0;
+    text-transform: none;
+    color: var(--peg-rosa);
+    transform: translateY(calc(-3 * var(--u))) rotate(-5deg);
+    text-shadow:
+        calc(1.2 * var(--u)) 0 var(--peg-negro), calc(-1.2 * var(--u)) 0 var(--peg-negro),
+        0 calc(1.2 * var(--u)) var(--peg-negro), 0 calc(-1.2 * var(--u)) var(--peg-negro),
+        calc(1 * var(--u)) calc(1 * var(--u)) var(--peg-negro), calc(-1 * var(--u)) calc(1 * var(--u)) var(--peg-negro),
+        calc(1 * var(--u)) calc(-1 * var(--u)) var(--peg-negro), calc(-1 * var(--u)) calc(-1 * var(--u)) var(--peg-negro),
+        calc(2.4 * var(--u)) calc(2.8 * var(--u)) 0 var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .sitio__dist {
+    background: #c4c6ca; border: calc(1.2 * var(--u)) solid var(--peg-negro);
+}
+
+/* ── El mapa: marco blanco entre dos cantos negros ──────────────────────── */
+html .caja.piezas:not(.redonda) .ventana {
+    border-radius: calc(11 * var(--u));
+    box-shadow: 3px 3px 0 var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .ventana::after {
+    border-radius: calc(11 * var(--u));
+    box-shadow: inset 0 0 0 var(--peg-canto) var(--peg-negro),
+                inset 0 0 0 calc(5.6 * var(--u)) #c4c6ca,
+                inset 0 0 0 calc(5.6 * var(--u) + 1.5px) var(--peg-negro);
+}
+/*  Las chapas de encima del mapa, por dentro del marco. */
+html .caja.piezas:not(.redonda) .cuentakm {
+    top: calc(10.5 * var(--u)); left: calc(10.5 * var(--u));
+    background: #c4c6ca; border: calc(1.4 * var(--u)) solid var(--peg-negro);
+    box-shadow: calc(1.6 * var(--u)) calc(1.6 * var(--u)) 0 var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .testigos {
+    top: calc(10.5 * var(--u)); right: calc(10.5 * var(--u));
+}
+html .caja.piezas:not(.redonda) .testigo {
+    border: calc(1.4 * var(--u)) solid var(--peg-negro);
+    box-shadow: calc(1.6 * var(--u)) calc(1.6 * var(--u)) 0 var(--peg-negro);
+}
+
+/* ── El coche ───────────────────────────────────────────────────────────── */
+html .caja.piezas:not(.redonda) .vel {
+    border-right: var(--peg-canto) solid var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .medidor {
+    background: #dcdde0; box-shadow: inset 0 0 0 calc(1.2 * var(--u)) var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .medidor__ico {
+    background: var(--peg-negro); color: #fff; box-shadow: none;
+}
+
+/* ── Las pistas: con canto, rosa la que avisa o manda, negra la otra ───── */
+html .caja.piezas:not(.redonda) .medidor__celdas,
+html .necesidades[data-v="barra"] .nec__celdas {
+    box-sizing: border-box; height: calc(6 * var(--u));
+    border: calc(1.3 * var(--u)) solid var(--peg-negro);
+    border-radius: calc(3 * var(--u));
+    background: #dcdde0;
+}
+html .caja.piezas:not(.redonda) .medidor__celdas::before,
+html .necesidades[data-v="barra"] .nec__celdas::before {
+    border-radius: 0; background: var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) #mGas .medidor__celdas::before,
+html .caja.piezas:not(.redonda) .medidor.bajo .medidor__celdas::before,
+html .necesidades[data-v="barra"] #alertaComida .nec__celdas::before,
+html .necesidades[data-v="barra"] .nec.bajo .nec__celdas::before {
+    background: var(--peg-rosa);
+}
+html .necesidades[data-v="barra"] .nec.bajo .nec__celdas { background: #dcdde0; }
+html .caja.piezas:not(.redonda) .medidor__v,
+html .necesidades[data-v="barra"] .nec__v {
+    font-family: 'Oxanium', 'Barlow Condensed', sans-serif;
+    font-style: normal; font-weight: 800; font-size: calc(9.5 * var(--u));
+    color: var(--peg-negro);
+}
+
+/* ── Comida y agua: dos pegatinas sueltas ───────────────────────────────── */
+html .necesidades[data-v="barra"] {
+    padding: 0; gap: var(--pz-gap);
+    background: transparent; box-shadow: none; border-radius: 0;
+}
+html .necesidades[data-v="barra"] .nec {
+    box-sizing: border-box;
+    padding: 0 calc(5 * var(--u)) 0 calc(7 * var(--u));
+}
+html .necesidades[data-v="barra"] .nec + .nec::before { display: none; }
+html .necesidades[data-v="barra"] .nec__ico { display: none; }
+html .necesidades[data-v="barra"] .nec__k {
+    padding-left: 0; font-style: italic; color: var(--peg-negro);
+}
+html .necesidades[data-v="barra"] .nec.bajo .nec__v { color: var(--peg-rosa); }
+
+/* ── La distancia al destino (04/10) ─────────────────────────────────────────
+   Salia TRES veces: en esta chapa de encima del mapa (sin el estilo: inclinada,
+   translucida y en letra de maquina), repetida junto al nombre del barrio y,
+   al ir en coche, pegada debajo del cuentakilometros del vehiculo, que se
+   confundia con ella. Se queda UNA: esta chapa, en rosa con tinta negra (el
+   cuentakilometros es blanco), recta, con canto y sombra dura y la cifra en
+   Oxanium. La de al lado del barrio se esconde. */
+html .sitio .sitio__dist { display: none !important; }
+
+html .caja.piezas:not(.redonda) .destinokm {
+    left: calc(10.5 * var(--u)); top: calc(10.5 * var(--u));
+    height: calc(15 * var(--u)); padding: 0 calc(6 * var(--u)); gap: calc(3.5 * var(--u));
+    border-radius: calc(4.5 * var(--u)); transform: none;
+    background: #d81b55; border: calc(1.4 * var(--u)) solid var(--peg-negro);
+    box-shadow: calc(1.6 * var(--u)) calc(1.6 * var(--u)) 0 var(--peg-negro);
+    color: #000;
+}
+/* En coche va debajo del cuentakilometros, con su hueco. */
+html .caja.piezas:not(.redonda).en-coche .destinokm { top: calc(30 * var(--u)); }
+html .caja.piezas:not(.redonda) .destinokm svg { transform: none; width: calc(8.5 * var(--u)); height: calc(8.5 * var(--u)); color: #000; }
+html .caja.piezas:not(.redonda) .destinokm > span {
+    transform: none;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(8.5 * var(--u));
+    color: #000;
+}
+
+/* ── El cuentakilometros (06/10) ─────────────────────────────────────────────
+   Era la unica chapa de encima del mapa que no estaba pasada: papel gris
+   perla y la cifra en Barlow cursiva, al lado de una distancia al destino ya
+   en pegatina. Ahora es su pareja: el mismo canto, sombra dura y radio, del
+   alto de los testigos de enfrente (14,5 u, misma fila), papel BLANCO (la
+   pieza va dentro del marco gris) con tinta negra y la cifra en Oxanium
+   recta, como todas las cifras del estilo. El rosa se lo queda el destino. */
+html .caja.piezas:not(.redonda) .cuentakm {
+    box-sizing: border-box;
+    height: calc(14.5 * var(--u)); padding: 0 calc(6 * var(--u)) 0 calc(5 * var(--u));
+    gap: calc(3.5 * var(--u));
+    border-radius: calc(4.5 * var(--u));
+    background: #dcdde0; color: var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .cuentakm__ico {
+    width: calc(8 * var(--u)); height: calc(8 * var(--u)); color: var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .cuentakm > span {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal; font-weight: 800; font-size: calc(8.5 * var(--u));
+    letter-spacing: 0; color: var(--peg-negro);
+}
+
+/* ── El micro entre la comida y el agua (04/10) ──────────────────────────────
+   En las dos marcas: origen_hud ya no pinta su pastilla del micro. */
+.nec-voz { display: none; }
+
+html .necesidades[data-v="barra"] .nec-voz {
+    flex: none; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; gap: calc(2.4 * var(--u));
+    width: calc(24 * var(--u)); align-self: stretch;
+    background: #c4c6ca; color: #0b0b0d;
+    /*  Pieza pequeña: canto fino como el resto y la sombra a la mitad (con la de las
+        pastillas grandes, 2,8 u, se comía el micro). */
+    border: var(--peg-canto) solid #0b0b0d; border-radius: calc(6 * var(--u));
+    box-shadow: calc(1.4 * var(--u)) calc(1.4 * var(--u)) 0 #0b0b0d;
+    transition: background 0.08s linear;
+}
+html .necesidades[data-v="barra"] .nec-voz svg {
+    width: calc(15 * var(--u)); height: calc(11.2 * var(--u)); flex: none;
+}
+/*  El alcance va en el propio dibujo: el micro solo (susurro), con una onda
+    a cada lado (normal) o con dos (grito). Sin rayas al lado: el icono queda
+    centrado en su pieza. */
+html .nec-voz .o1, html .nec-voz .o2 { display: none; }
+html .nec-voz[data-nivel="2"] .o1,
+html .nec-voz[data-nivel="3"] .o1,
+html .nec-voz[data-nivel="3"] .o2 { display: inline; }
+/*  Hablando: rosa con tinta negra. Por radio: negro con tinta blanca. */
+html .necesidades[data-v="barra"] .nec-voz.hablando { background: #d81b55; }
+html .necesidades[data-v="barra"] .nec-voz.hablando.radio { background: #0b0b0d; color: #fff; }
+/*  Las dos pastillas ceden el sitio: mismo ancho total que antes. */
+html .necesidades[data-v="barra"] .nec { min-width: 0; padding: 0 calc(4 * var(--u)) 0 calc(5.5 * var(--u)); }
+html .necesidades[data-v="barra"] .nec .nec__celdas { margin: 0 calc(3.5 * var(--u)) 0 calc(4 * var(--u)); min-width: calc(14 * var(--u)); }
+
+/* ── El micro sin comida ni agua (12/10) ─────────────────────────────────────
+   Con el ajuste «Comida y agua: no» se escondia la linea entera y el micro
+   con ella. El micro no se quita nunca: se quedan fuera las dos barras y el
+   va solo a la esquina de abajo a la derecha de la PANTALLA (fijo: no sigue
+   al minimapa si se recoloca). El minimapa sigue bajando a su esquina,
+   porque medirNecSube cuenta la linea como oculta. */
+html .necesidades[data-v="barra"].quitada:not([hidden]) {
+    display: flex !important;
+    left: auto; right: 1.852vh; bottom: 1.852vh;
+    width: auto;
+    transform-origin: 100% 100%;
+}
+html .necesidades[data-v="barra"].quitada .nec { display: none; }
+/*  Solo, va CUADRADO (17 u de lado, pequeño: 12/10 «ocupa mucho»): entre las barras era mas ancho que alto. */
+html .necesidades[data-v="barra"].quitada { height: calc(17 * var(--u)); }
+html .necesidades[data-v="barra"].quitada .nec-voz {
+    width: calc(17 * var(--u));
+    border-width: calc(1.6 * var(--u)); border-radius: calc(5 * var(--u));
+    box-shadow: calc(2 * var(--u)) calc(2 * var(--u)) 0 #0b0b0d;
+}
+html .necesidades[data-v="barra"].quitada .nec-voz svg { width: calc(11 * var(--u)); height: calc(8.2 * var(--u)); }
+
+
+/* ══ PEGATINA en la REDONDA (06/10) ══════════════════════════════════════
+   La pegatina de arriba era solo para la cuadrada, y la redonda —que el
+   jugador elige en Ajustes— seguia con el papel crema, las sombras
+   difuminadas y los rosas en degradado. Ahora va igual que la cuadrada:
+   aro gris perla con canto negro fino y sombra dura, piezas grises con
+   tinta negra, rosa plano con tinta negra y cifras en Oxanium. Las medidas
+   no cambian: solo colores, cantos y sombras. */
+html .caja.redonda {
+    --ink: #0b0b0d;
+    --ink-4: #44444a;
+    --accent-mid: #d81b55;
+}
+/* El aro del mapa: gris, canto negro por fuera y sombra dura. */
+html .caja.redonda .ventana {
+    box-shadow: 0 0 0 var(--aro) #c4c6ca,
+                0 0 0 calc(var(--aro) + 1.5px) #0b0b0d,
+                calc(2.8 * var(--u)) calc(2.8 * var(--u)) 0 calc(var(--aro) + 1.5px) #0b0b0d;
+}
+html .caja.redonda .ventana::after { box-shadow: inset 0 0 0 1.5px #0b0b0d; }
+/* El bisel (la brujula y la calle sobre el arco): franja gris con canto. */
+html .caja.redonda .bisel { filter: drop-shadow(calc(2.4 * var(--u)) calc(2.4 * var(--u)) 0 #0b0b0d); }
+html .caja.redonda .bisel__franja { stroke: #c4c6ca; }
+html .caja.redonda .bisel__canto { stroke: #0b0b0d; stroke-width: 24px; }
+html .caja.redonda .bisel__m { fill: #44444a; }
+html .caja.redonda .bisel__m--cardinal { fill: #0b0b0d; }
+html .caja.redonda .bisel__m--punto { fill: rgba(11, 11, 13, 0.6); }
+html .caja.redonda .bisel__m.on,
+html .caja.redonda .bisel__aguja,
+html .caja.redonda .bisel__rumbo { fill: #d81b55; }
+html .caja.redonda .bisel__grados { font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-weight: 800; fill: #0b0b0d; }
+html .caja.redonda .bisel__surco { stroke: #dcdde0; }
+html .caja.redonda .bisel__carga { stroke: #d81b55; }
+html .caja.redonda .bisel__nec-ico path { stroke: #0b0b0d; }
+/* Lo que va encima del mapa en la redonda (la calle al ir en coche). */
+html .caja.redonda .sobre {
+    background: #c4c6ca;
+    box-shadow: inset 0 0 0 1.5px #0b0b0d, calc(2 * var(--u)) calc(2 * var(--u)) 0 #0b0b0d;
+}
+/* La capsula del coche: panel gris con canto y sombra dura. */
+html .caja.redonda .capsula {
+    background: #c4c6ca;
+    box-shadow: inset 0 0 0 1.5px #0b0b0d, calc(2.8 * var(--u)) calc(2.8 * var(--u)) 0 #0b0b0d;
+}
+html .caja.redonda .cap-vel__n { color: #0b0b0d; }
+html .caja.redonda .cap-marcha {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #0b0b0d, calc(1.6 * var(--u)) calc(1.6 * var(--u)) 0 #0b0b0d;
+    color: #000;
+    font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-weight: 800;
+}
+html .caja.redonda .cap-km,
+html .caja.redonda .cap-t,
+html .caja.redonda .cap-nos {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #0b0b0d;
+    color: #0b0b0d;
+}
+html .caja.redonda .cap-km b { font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-weight: 800; color: #0b0b0d; }
+html .caja.redonda .cap-t.apagado { color: rgba(11, 11, 13, 0.4); }
+html .caja.redonda .cap-t.mal { background: #d81b55; box-shadow: inset 0 0 0 1.5px #0b0b0d; color: #000; }
+html .caja.redonda .cap-rpm i { background: #dcdde0; box-shadow: inset 0 0 0 1px #0b0b0d; }
+html .caja.redonda .cap-rpm i.on { background: #0b0b0d; }
+html .caja.redonda .cap-rpm i.on.roja { background: #d81b55; }
+html .caja.redonda .cap-pista { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #0b0b0d; }
+html .caja.redonda .cap-pista i { background: #0b0b0d; }
+html .caja.redonda #capGas .cap-pista i { background: #d81b55; }
+html .caja.redonda .cap-nos .cap-pista i { background: #0b0b0d; }
+html .caja.redonda .cap-nos.activo { box-shadow: inset 0 0 0 1.5px #0b0b0d, 0 0 0 calc(1.5 * var(--u)) #d81b55; }
+html .caja.redonda .cap-v { font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-style: normal; color: #0b0b0d; }
+html .caja.redonda .cap-v.bajo { color: #b3123f; }
+
+/* >>> BRUJULA SIN RENDIJAS (06/10): el canto, pegado a la caja, dejaba una fila de pixel entre el canto y los
+   bloques (raya clara bajo los grados y la diagonal del rumbo sin llegar abajo). Ahora la caja no lleva borde
+   (el mismo hueco va de relleno), el fondo y los bloques llegan hasta el filo, y el canto es una capa ENCIMA
+   de todo (::after) que mide lo mismo que el de antes. */
+html .caja.piezas:not(.redonda) .brujula {
+    border: 0;
+    padding: var(--peg-canto);
+    background: linear-gradient(90deg, var(--peg-rosa) 0, var(--peg-rosa) calc(24 * var(--u)), #c4c6ca calc(24 * var(--u)), #c4c6ca calc(100% - 36 * var(--u)), var(--peg-negro) calc(100% - 36 * var(--u)));
+}
+html .caja.piezas:not(.redonda) .brujula::before { top: -3px; bottom: -3px; }
+html .caja.piezas:not(.redonda) .brujula::after {
+    content: ''; position: absolute; inset: 0; z-index: 5; pointer-events: none;
+    border: var(--peg-canto) solid var(--peg-negro); border-radius: inherit;
+}
+html .caja.piezas:not(.redonda) .grados,
+html .caja.piezas:not(.redonda) .brujula__cielo { margin: calc(-1 * var(--peg-canto) - 1px) 0; }
+html .caja.piezas:not(.redonda) .brujula__cielo { margin-right: calc(-1 * var(--peg-canto) - 1px); }
+/* <<< FIN BRUJULA SIN RENDIJAS */
+
+/* >>> SEGUNDA PASADA (06/10, tarde)
+   - Cinta de la brujula: desde que comparte franja con el rumbo y los grados es estrecha, y el
+     difuminado de los bordes (18 % por lado) se comia los cardinales: la O y la N salian casi
+     blancas. Se difumina solo la punta.
+   - La marcha: pastilla rosa en degradado con letra blanca y sombra granate (tema viejo).
+     Ahora rosa liso, tinta negra y canto fino, como el resto de chapas.
+   - El nitroso: degradado azul electrico. Ahora tinta negra sobre su pista, como en la redonda;
+     encendido, el canto rosa en vez del brillo azul. */
+html .caja.piezas:not(.redonda) .cinta {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+html .caja.piezas:not(.redonda) .marcha {
+    transform: none;
+    background: var(--peg-rosa);
+    box-shadow: inset 0 0 0 1.5px var(--peg-negro);
+    color: var(--peg-negro);
+    font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-style: normal;
+}
+html .caja.piezas:not(.redonda) .marcha > span { transform: none; }
+html .caja.piezas:not(.redonda) .nos {
+    background-color: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1px var(--peg-negro);
+}
+html .caja.piezas:not(.redonda) .nos.activo { box-shadow: inset 0 0 0 1px var(--peg-negro), 0 0 0 1.5px var(--peg-rosa); }
+html .caja.piezas:not(.redonda) .cinta__m { font-weight: 800; font-size: calc(8.5 * var(--u)); }
+html .caja.piezas:not(.redonda) .cinta__m:not(.cinta__m--cardinal) { color: rgba(11, 11, 13, 0.75); }
+/* <<< FIN SEGUNDA PASADA */
+
+/* >>> CIFRAS CENTRADAS (06/10): los km del cuentakilometros iban 1 px altos en su chapa y 2 px por encima del icono. */
+html .caja.piezas:not(.redonda) .cuentakm > span { padding-top: 3px; }
+/* <<< FIN CIFRAS CENTRADAS */

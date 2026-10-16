@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Car Lift</title>
+    <style>
+        :root {
+            --accent: rgb(236, 132, 118);
+            --panel: rgba(16, 18, 23, 0.94);
+            --raised: rgba(255, 255, 255, 0.06);
+            --raised-hover: rgba(255, 255, 255, 0.12);
+            --line: rgba(255, 255, 255, 0.09);
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: transparent;
+            color: var(--text);
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            user-select: none;
+        }
+
+        #lift {
+            position: absolute;
+            left: 50%;
+            bottom: 7vh;
+            transform: translateX(-50%);
+            width: 320px;
+            padding: 18px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .hint {
+            margin-top: 3px;
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+
+        .levels {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .level-text {
+            font-size: 12px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .bars {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 4px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--line);
+        }
+
+        .bar.on {
+            background: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .wide {
+            grid-column: 1 / -1;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 12px;
+            font: inherit;
+            font-size: 14px;
+            color: var(--text);
+            background: var(--raised);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            outline: none;
+            cursor: pointer;
+            transition: background 0.12s, filter 0.12s, transform 0.06s;
+        }
+
+        button:hover {
+            background: var(--raised-hover);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        button.primary {
+            color: #111;
+            font-weight: 600;
+            background: var(--accent);
+            border-color: transparent;
+        }
+
+        button.primary:hover {
+            filter: brightness(1.08);
+        }
+
+        kbd {
+            padding: 1px 5px;
+            font-family: inherit;
+            font-size: 11px;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+        }
+
+        button.primary kbd {
+            color: rgba(0, 0, 0, 0.6);
+            border-color: rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div id="lift" hidden>
+        <div class="head">
+            <div>
+                <div class="title">Car Lift</div>
+                <div class="hint" id="hint"></div>
+            </div>
+            <div class="levels">
+                <span class="level-text" id="level-text"></span>
+                <div class="bars" id="bars"></div>
+            </div>
+        </div>
+        <div class="grid">
+            <button data-button="2"><span>&#9650; Up</span><kbd>W</kbd></button>
+            <button data-button="3"><span>&#9660; Down</span><kbd>S</kbd></button>
+            <button class="primary wide" id="park" data-button="1"><span>Park here</span><kbd>Enter</kbd></button>
+            <button class="primary wide" id="take-out" data-button="4"><span>Take out</span><kbd>Enter</kbd></button>
+            <button class="wide" data-exit><span id="close-label">Cancel</span><kbd>Esc</kbd></button>
+        </div>
+    </div>
+
+    <script>
+        (() => {
+            const resource = typeof GetParentResourceName === "function" ? GetParentResourceName() : "car-lift";
+            const lift = document.getElementById("lift");
+            const hint = document.getElementById("hint");
+            const levelText = document.getElementById("level-text");
+            const bars = document.getElementById("bars");
+            const park = document.getElementById("park");
+            const takeOut = document.getElementById("take-out");
+            const closeLabel = document.getElementById("close-label");
+            let mode = null;
+
+            const post = (name, payload) =>
+                fetch(`https://${resource}/${name}`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json; charset=UTF-8" },
+                    body: JSON.stringify(payload),
+                })
+                    .then((response) => response.json())
+                    .catch(() => null);
+
+            const setLevel = (level, levels) => {
+                if (!Number.isInteger(levels) || levels < 1) {
+                    return;
+                }
+                bars.replaceChildren(
+                    ...Array.from({ length: levels }, (_, i) => {
+                        const bar = document.createElement("div");
+                        bar.className = i + 1 === level ? "bar on" : "bar";
+                        return bar;
+                    })
+                );
+                levelText.textContent = Number.isInteger(level) ? `Level ${level} / ${levels}` : "";
+            };
+
+            const show = (message) => {
+                mode = message.mode === "put" || message.mode === "get" ? message.mode : null;
+                const color = message.color;
+                if (Array.isArray(color) && color.length >= 3) {
+                    lift.style.setProperty("--accent", `rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+                }
+                park.hidden = mode === "get";
+                takeOut.hidden = mode === "put";
+                closeLabel.textContent = mode === "get" ? "Close" : "Cancel";
+                hint.textContent =
+                    mode === "put" ? "Pick a level for your car" : mode === "get" ? "Pick the car to take out" : "";
+                bars.replaceChildren();
+                levelText.textContent = "";
+                setLevel(message.level, message.levels);
+                lift.hidden = false;
+            };
+
+            const press = (button) => {
+                post("buttonClick", button).then((result) => {
+                    if (result && typeof result === "object") {
+                        setLevel(result.level, result.levels);
+                    }
+                });
+            };
+
+            const exit = () => post("exit", {});
+
+            window.addEventListener("message", (event) => {
+                const message = event.data;
+                if (!message || message.action !== "setShow") {
+                    return;
+                }
+                if (message.data) {
+                    show(message);
+                } else {
+                    lift.hidden = true;
+                    mode = null;
+                }
+            });
+
+            lift.addEventListener("click", (event) => {
+                const button = event.target.closest("button");
+                if (!button) {
+                    return;
+                }
+                button.blur();
+                if (button.hasAttribute("data-exit")) {
+                    exit();
+                } else {
+                    press(Number(button.dataset.button));
+                }
+            });
+
+            window.addEventListener("keydown", (event) => {
+                if (lift.hidden || event.repeat) {
+                    return;
+                }
+                switch (event.key) {
+                    case "Escape":
+                    case "Backspace":
+                        exit();
+                        break;
+                    case "ArrowUp":
+                    case "w":
+                    case "W":
+                        press(2);
+                        break;
+                    case "ArrowDown":
+                    case "s":
+                    case "S":
+                        press(3);
+                        break;
+                    case "Enter":
+                        if (mode === "put") {
+                            press(1);
+                        } else if (mode === "get") {
+                            press(4);
+                        }
+                        break;
+                    default:
+                        return;
+                }
+                event.preventDefault();
+            });
+        })();
+    </script>
+</body>
+</html>
