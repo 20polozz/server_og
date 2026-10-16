@@ -1,0 +1,348 @@
+{
+    "nui": {
+        "individual": "Individual",
+        "group": "Group",
+
+        "main": {
+            "title": "Gang Wars",
+
+            "create": {
+                "title": "Create",
+                "description": "Create and customise your own lobby, you will need to have access to this option."
+            },
+            "play": {
+                "title": "Play",
+                "description": "Join us and enjoy the thrill of being the best and win unique prizes!"
+            },
+            "ranking": {
+                "title": "Ranking",
+                "description": "See the global ranking of the players."
+            }
+        },
+        "create": {
+            "title": "Create a Lobby",
+
+            "presetsTitle": "Preset lobbies",
+            "dataTitle": "Lobby Data",
+
+            "inputs": {
+                "name": {
+                    "title": "Lobby Name",
+                    "placeholder": "Name"
+                },
+                "radius": {
+                    "title": "Radius of the lobby",
+                    "placeholder": "Radius"
+                },
+                "coords": {
+                    "title": "Coords",
+                    "placeholder": "Coords"
+                },
+                "preview": {
+                    "title": "Preview image",
+                    "placeholder": "Image URL"
+                },
+                "startedIn": {
+                    "title": "Time to start lobby (Minutes)",
+                    "placeholder": "Time to start (Minutes)"
+                },
+                "minPlayers": {
+                    "title": "Min players to start",
+                    "placeholder": "Players amount"
+                },
+                "lobbyPassword": {
+                    "title": "Lobby Password",
+                    "placeholder": "Password"
+                },
+                "startTimes": {
+                    "title": "Start times (Scheduler)",
+                    "placeholder": "Example: 12:30, 10:18: 09:10, 23:00"
+                },
+                "sendMessage": {
+                    "title": "Message",
+                    "placeholder": "Message"
+                }
+            },
+            "sliders": {
+                "gameMode": {
+                    "title": "Game Mode",
+                    "individual": "Individual",
+                    "group": "Group"
+                },
+                "zoneSpeed": {
+                    "title": "Zone speed",
+                    "slow": "Slow",
+                    "normal": "Normal",
+                    "fast": "Fast"
+                },
+                "visibility": {
+                    "title": "Visibility",
+                    "public": "Public",
+                    "private": "Private"
+                },
+                "scheduler": {
+                    "title": "Scheduler",
+                    "enabled": "Enabled",
+                    "disabled": "Disabled"
+                },
+                "message": {
+                    "title": "Message",
+                    "enabled": "Enabled",
+                    "disabled": "Disabled"
+                },
+                "weather": {
+                    "title": "Weather"
+                },
+                "time": {
+                    "title": "Time",
+                    "day": "Day",
+                    "night": "Night"
+                }
+            },
+
+            "initialKit": {
+                "title": "Initial Kit",
+                "description": "Select the kit that will be automatically generated at the start of the lobby, which will be available to players at the start of the game.",
+                "placeholder": "Item name"
+            },
+            "rewards": {
+                "title": "Rewards",
+                "description": "At the end of the game, rewards will be selected to be awarded to players based on their performance, such as points.",
+                "placeholder": "Item name"
+            },
+
+            "no_items": "No items",
+
+            "start": "Start"
+        },
+
+        "ranking": {
+            "title": "Global Ranking",
+            "description": "Top players",
+            "search": "Search...",
+
+            "table": {
+                "position": "Pos.",
+                "name": "Name",
+                "prestige": "Prestige",
+                "level": "Level",
+                "wins": "Wins",
+                "loses": "Losses",
+                "kd": "KD",
+                "kills": "Kills",
+                "headshots": "Headshots"
+            },
+            "no_stats": "No ranking stats available",
+            "page": "Page",
+
+            "tabs": {
+                "global": "Global",
+                "gangs": "Gangs"
+            },
+
+            "gangs": {
+                "title": "Gangs ranking",
+                "description": "Top gang leaders",
+
+                "title-list": "Gangs list",
+                "no_stats": "No gangs stats available",
+                "no_data": "No data"
+            }
+        },
+        "playerlobby": {
+            "edit": "Edit profile",
+            "profile": {
+                "prestige": "Prestige",
+                "points": "Points",
+                "current": "Current",
+                "next": "Next"
+            },
+            "missions": {
+                "title": "Missions",
+                "daily": "Daily",
+                "weekly": "Weekly",
+                "no_missions": "No missions available"
+            },
+            "rewards": {
+                "title": "Rewards",
+                "description": "Step into the heart of urban warfare with the new <strong>Gangwar Origen Battle Pass</strong>. \n    Unlock exclusive outfits and weapons as you take on intense challenges at every level. Show your skills and claim your place in the streets!",
+                "claim": "Claim",
+                "claimed": "Claimed",
+                "level": "Level",
+                "locked": "Locked"
+            },
+            "stats": {
+                "title": "Statistics",
+                "headshots": "Headshots",
+                "deaths": "Deaths",
+                "kills": "Kills",
+                "damage": "Damage",
+                "wins": "Wins",
+                "games_played": "Games played",
+                "kd": "KD",
+                "long_shot": "Long shot"
+            },
+            "searchgame": "Search lobby"
+        },
+        "serverList": {
+            "title": "FIND LOBBY",
+            "description": "Game lobbies",
+            "join": "Join",
+            "search": "Search...",
+
+            "table": {
+                "server": "Server",
+                "host": "Host",
+                "weapon": "Weapon",
+                "mode": "Mode",
+                "status": "Status",
+                "visibility": "Visibility",
+                "players": "Players",
+
+                "public": "Public",
+                "private": "Private",
+
+                "no_servers": "No servers found"
+            },
+            "join_server": "Join server"
+        },
+        "serverLobby": {
+            "title": "PREGAME LOBBY",
+            "ready": "Players count:",
+
+            "lobby": "Lobby",
+            "settings": "Settings",
+            "stats": "Statistics",
+
+            "gameInfo": {
+                "weather": "Weather",
+                "time": "Time",
+                "gameMode": "Game Mode",
+                "weapon": "Weapon",
+
+                "stats": {
+                    "winners": "Top winners",
+                    "ranking": "Rankings",
+                    "no_stats": "No results found",
+
+                    "table": {
+                        "place": "Pos.",
+                        "username": "Username",
+                        "time": "Time",
+                        "level": "Level"
+                    }
+                }
+            },
+
+            "playerlist": {
+                "title": "Player list",
+                "search": "Search...",
+
+                "table": {
+                    "name": "Name",
+                    "level": "Level",
+                    "status": "Status",
+
+                    "ready": "Ready",
+                    "not_ready": "Not ready",
+                    "cancel": "Cancel",
+                    "no_players": "No players found"
+                },
+
+                "kick": "Kick",
+                "type_message": "Type your message..."
+            }
+        },
+
+        "friends": {
+            "search": "Search...",
+            "online": "Players online",
+            "offline": "Players offline",
+            "no_results": "No results found",
+            "no_friends": "No friends found"
+        },
+
+        "levelUp": {
+            "title": "New level",
+            "current_level": "Current level",
+            "next_level": "Next level"
+        },
+
+        "claim_reward": {
+            "title": "Reward",
+            "continue": "Continue"
+        },
+
+        "modals": {
+            "confirm": "Confirm",
+            "cancel": "Cancel",
+
+            "request_friend": {
+                "title": "Friend request",
+                "placeholder": "Identifier or player ID"
+            },
+            "request_password": {
+                "title": "Lobby password",
+                "placeholder": "Password"
+            },
+            "edit_profile": {
+                "title": "Edit profile",
+                "image": "Profile image",
+                "banner": "Profile banner"
+            },
+            "claim_code": {
+                "title": "Claim code",
+                "placeholder": "Code"
+            }
+        },
+
+        "notifications": {
+            "error": {
+                "title": "Error",
+                "already_in_war": "This player is already in war",
+                "already_in_team": "This player is already other team",
+                "no_code": "No valid code entered",
+                "already_premium": "You are already premium"
+            },
+            "success": {
+                "title": "Success",
+                "lobby_started": "Lobby started successfully!",
+                "friend_invited": "Friend invited successfully!",
+                "friend_added": "Friend added successfully!",
+                "friend_removed": "Friend removed successfully!",
+                "reward_claimed": "Reward claimed successfully!"
+            },
+        "info": {
+            "title": "Information"
+        },
+        "not_enough_players": "The game was cancelled: not enough players to start.",
+
+            "team_request": {
+                "title": "Request to join a team",
+                "description": "%s has invited you to join his team.",
+                "accept": "Accept",
+                "decline": "Decline",
+
+                "accepted": "You have accepted the invitation!",
+                "declined": "You have declined the invitation!"
+            }
+        },
+        "hud": {
+            "stages": "Stage %s"
+        }
+    },
+    "general": {},
+    "notifications": {
+        "error": {},
+        "success": {},
+        "info": {
+            "create_code": "Code created: %s"
+        }
+    },
+    "drawtext": {},
+    "commands": {
+        "create_code": {
+            "help": "Generate unique id (For rewards)"
+        }
+    }
+}

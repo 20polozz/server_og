@@ -1,0 +1,1700 @@
+/* Las fuentes ya NO se piden desde aqui: el CEF de FiveM no carga el @import
+   de una hoja y la pantalla salia con la tipografia del sistema. Van en un
+   <link> de index.html, que es la unica forma que funciona en el juego. */
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    /* La tinta de un rotulo de acento: el rosa de texto de la pegatina. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+
+/* Barlow y Barlow Condensed: las del tema «HUD Arcade», el del inventario.
+   Las usan las dos pantallas: la del herido y la del sanitario. */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+html, body {
+    width: calc(100vw / var(--ogn-escala, 1));
+    height: calc(100vh / var(--ogn-escala, 1));
+    background: transparent !important;
+    background-color: transparent !important;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    width: calc(100vw / var(--ogn-escala, 1));
+    height: calc(100vh / var(--ogn-escala, 1));
+    background: transparent !important;
+    background-color: transparent !important;
+    position: relative;
+    pointer-events: none;
+}
+
+[v-cloak] {
+    display: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ESTADO VITAL · tema «HUD Arcade»
+
+   El mismo que el inventario: cristal crema, acento rosa #df2f63, Barlow
+   Condensed cursiva para lo que se reconoce y Barlow para lo que se lee, y
+   bloques inclinados 10 grados. Dos piezas despegadas del canto derecho
+   —columna de 560 y riel de 58— con 10 px entre ellas.
+
+   Las reglas cuelgan de .arc-capa, que llevan las dos pantallas: la del herido
+   (.arc-capa) y la del sanitario (#diagnosis-container, más abajo).
+
+   Nada de backdrop-filter: en el CEF de FiveM el desenfoque sale como una
+   banda negra detrás del panel. El cristal es solo el degradado
+   semitransparente, igual que en el inventario.
+
+   La copia de antes está en copias/origen_ambulancejob-antes-arcade.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.arc-capa {
+    --v-accent: #d81b55;
+    --v-accent-mid: #d81b55;
+    --v-accent-deep: #000;
+    --v-hot: #b3123f;
+    --v-ok: #166b3b;
+    --v-ink: #0b0b0d;
+    --v-ink-2: #44444a;
+    --v-ink-3: #55555c;
+    --v-ink-4: #73737c;
+    --v-glass: #c4c6ca;
+    --v-skew: skewX(-10deg);
+    --v-unskew: skewX(10deg);
+    --v-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --v-text: "Barlow", "Segoe UI", sans-serif;
+    --v-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    --v-margen-x: 14px;
+    --v-margen-y: 14px;
+    --v-riel: 58px;
+    --v-hueco: var(--v-margen-x);
+    --v-col: 560px;
+    --v-pad: 20px;
+
+    /* Todo va en px, como el inventario, y la columna necesita ~1004 px de
+       alto. En pantallas más bajas script.js pone --v-zoom por debajo de 1 y
+       la capa entera se escala desde la esquina de arriba a la derecha: mide
+       la pantalla dividida por la escala, y al encoger la ocupa justa. Con
+       `zoom` no: los hijos se colocaban mal según la versión del navegador. */
+    position: fixed;
+    inset: auto;
+    top: 0;
+    right: 0;
+    left: auto;
+    bottom: auto;
+    width: calc(calc(100vw / var(--ogn-escala, 1)) / var(--v-zoom, 1));
+    height: calc(calc(100vh / var(--ogn-escala, 1)) / var(--v-zoom, 1));
+    transform: scale(var(--v-zoom, 1));
+    transform-origin: top right;
+    background: none;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    box-shadow: none;
+    color: var(--v-ink);
+    display: block;
+
+    /* El contenedor no se come ningún clic: solo las dos piezas. */
+    pointer-events: none;
+}
+
+/* Barlow en caja normal para todo; cada rótulo pide la condensada. */
+.arc-capa,
+.arc-capa * {
+    font-family: var(--v-text) !important;
+    text-transform: none;
+}
+
+.arc-capa svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.arc-capa button {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+}
+
+.arc-capa .mono {
+    font-family: var(--v-mono) !important;
+    font-size: 11.5px;
+    font-variant-numeric: tabular-nums;
+}
+.arc-capa .mono.big { font-size: 20px; color: var(--v-ink); }
+.arc-capa .hot { color: var(--v-hot); }
+.arc-capa .ok,
+.arc-capa .mono.big.ok { color: var(--v-ok); }
+
+.arc-capa kbd {
+    flex: none;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    background: var(--v-ink-4);
+    color: #fff;
+}
+
+/* ── Las dos piezas ──────────────────────────────────────────────────────── */
+.arc-capa .vital-panel,
+.arc-capa .vital-riel {
+    position: absolute;
+    top: var(--v-margen-y);
+    bottom: var(--v-margen-y);
+    box-sizing: border-box;
+    background: var(--v-glass);
+    border-radius: 16px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 30px 70px rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+    transition:
+        transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease;
+}
+
+.arc-capa .vital-panel {
+    right: calc(var(--v-margen-x) + var(--v-riel) + var(--v-hueco));
+    width: var(--v-col);
+    max-width: calc(calc(100vw / var(--ogn-escala, 1)) - var(--v-margen-x) * 2 - var(--v-riel) - var(--v-hueco));
+    border-top: 4px solid var(--v-accent);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Todo lo de dentro va a su alto natural; lo único que cede si no cabe es
+   el registro (ver .vital-registro). */
+.arc-capa .vital-panel > * { flex: none; }
+
+.arc-capa .vital-riel {
+    right: var(--v-margen-x);
+    width: var(--v-riel);
+    padding: 13px 0 15px;
+    border-top: 4px solid rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Vista libre: las dos piezas salen por el canto y dejan la pantalla. */
+.arc-capa.vista-libre .vital-panel,
+.arc-capa.vista-libre .vital-riel {
+    transform: translateX(calc(100% + 120px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ── Cabecera ────────────────────────────────────────────────────────────── */
+.arc-capa .vital-head {
+    padding: 16px var(--v-pad) 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.arc-capa .vital-head__izq {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.arc-capa .vital-badge {
+    width: 42px;
+    height: 42px;
+    flex: none;
+    border-radius: 9px;
+    transform: var(--v-skew);
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--v-accent-deep);
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+.arc-capa .vital-badge svg { transform: var(--v-unskew); stroke-width: 2.2; }
+
+.arc-capa .vital-h1 {
+    margin: 0;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 0.86;
+    text-transform: uppercase;
+    color: var(--v-ink);
+}
+
+.arc-capa .vital-sub {
+    margin: 2px 0 0;
+    font-family: var(--v-cond) !important;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.arc-capa .vital-estado {
+    flex: none;
+    border-radius: 8px;
+    padding: 7px 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #d81b55;
+    box-shadow: 0 4px 0 var(--v-accent-deep);
+    color: #fff;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+.arc-capa .vital-estado span { font-family: inherit !important; text-transform: inherit; }
+.arc-capa .vital-estado i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--arc-fondo1, #fff);
+    animation: vital-latido 1.4s ease-in-out infinite;
+}
+
+@keyframes vital-latido {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+/* ── Las cuatro cifras ───────────────────────────────────────────────────── */
+.arc-capa .vital-cifras {
+    margin: 14px var(--v-pad) 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.arc-capa .vital-cifra {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    padding: 9px 11px 10px;
+}
+
+.arc-capa .vital-cifra strong {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: var(--v-ink);
+}
+.arc-capa .vital-cifra strong.bad { color: var(--v-hot); }
+.arc-capa .vital-cifra strong.good { color: var(--v-ok); }
+
+.arc-capa .vital-cifra span {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+
+/* ── Rótulos de sección ──────────────────────────────────────────────────── */
+.arc-capa .vital-regla {
+    margin: 16px var(--v-pad) 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.arc-capa .vital-regla.tight { margin-top: 14px; }
+
+.arc-capa .vital-regla h3,
+.arc-capa .vital-regla h4 {
+    margin: 0;
+    flex: none;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--v-ink);
+}
+
+.arc-capa .vital-regla h4 {
+    font-style: normal;
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+    color: var(--v-ink-3);
+}
+
+.arc-capa .vital-regla i {
+    flex: 1;
+    min-width: 20px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--v-accent) 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, rgba(255, 255, 255, calc(0 * var(--arc-vf))) 100%);
+}
+
+.arc-capa .vital-regla span:not(.mono) {
+    flex: none;
+    max-width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+.arc-capa .vital-regla span.hot { color: var(--v-hot); }
+
+/* ── Celdas: la cuenta atrás y la gravedad de cada lesión ────────────────── */
+.arc-capa .celdas { display: flex; gap: 2px; }
+
+.arc-capa .celda {
+    flex: 1;
+    height: 6px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+}
+.arc-capa .celda.on { background: var(--v-accent-mid); }
+
+.arc-capa .celdas.sesgo.grande { margin: 8px var(--v-pad) 0; gap: 3px; }
+.arc-capa .celdas.sesgo.grande .celda {
+    height: 9px;
+    border-radius: 3px;
+    transform: var(--v-skew);
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf)));
+    transition: background 0.3s ease;
+}
+.arc-capa .celdas.sesgo.grande .celda.on { background: var(--v-accent-mid); }
+
+/* ── El parte: silueta y lista ───────────────────────────────────────────── */
+.arc-capa .vital-parte {
+    margin: 10px var(--v-pad) 0;
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.arc-capa .vital-figura {
+    flex: none;
+    width: 150px;
+    position: relative;
+    border-radius: 11px;
+    padding: 10px 6px;
+    background: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+}
+
+.arc-capa .vital-figura__lienzo { position: relative; }
+
+.arc-capa .vital-figura__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* Las marcas se colocan en % sobre la caja de la imagen (ver ZONAS en
+   script.js), no sobre la caja con su relleno: por eso van dentro de un
+   rectángulo que calca el de la imagen. */
+.arc-capa .vital-marca {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    padding: 0;
+    transition: width 0.18s ease, height 0.18s ease, box-shadow 0.18s ease;
+}
+
+.arc-capa .vital-heridas {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.arc-capa .vital-vacio {
+    margin: 0;
+    border-radius: 10px;
+    padding: 12px 13px;
+    background: rgba(255, 255, 255, calc(0.4 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--v-ink-2);
+}
+
+.arc-capa .vital-herida {
+    display: block;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--v-ink);
+    transition: background 0.18s ease;
+}
+.arc-capa .vital-herida:hover { background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf))); }
+
+.arc-capa .vital-herida.on {
+    background: rgba(216, 27, 85, 0.9);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    color: #fff;
+}
+
+.arc-capa .vital-herida__top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.arc-capa .vital-herida__zona {
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.arc-capa .vital-herida__pct {
+    flex: none;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    font-variant-numeric: tabular-nums;
+    color: var(--v-hot);
+}
+
+.arc-capa .vital-herida__det {
+    display: block;
+    margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+
+.arc-capa .vital-herida .celdas { margin-top: 7px; }
+.arc-capa .vital-herida.on .vital-herida__pct,
+.arc-capa .vital-herida.on .vital-herida__det { color: #fff; }
+.arc-capa .vital-herida.on .celda { background: rgba(0, 0, 0, 0.25); }
+.arc-capa .vital-herida.on .celda.on { background: var(--arc-fondo1, #fff); }
+
+.arc-capa .vital-resto {
+    padding: 2px 4px;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+
+/* ── Dónde estás ─────────────────────────────────────────────────────────── */
+.arc-capa .vital-lugar {
+    margin: 9px var(--v-pad) 0;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    padding: 10px 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.arc-capa .vital-lugar__calle {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--v-cond) !important;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: var(--v-ink);
+}
+.arc-capa .vital-lugar .mono { flex: none; color: var(--v-ink-3); }
+
+/* ── Registro ────────────────────────────────────────────────────────────────
+   Lo único que cede cuando no cabe todo. Va en column-reverse con los apuntes
+   al revés en el DOM: así lo que se corta son los viejos, por arriba. */
+.arc-capa .vital-panel > .vital-registro {
+    flex: 0 1 auto;
+    min-height: 31px;
+}
+
+.arc-capa .vital-registro {
+    margin: 9px var(--v-pad) 0;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3px;
+    overflow: hidden;
+}
+
+.arc-capa .vital-registro__fila {
+    flex: none;
+    display: flex;
+    align-items: baseline;
+    gap: 11px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, calc(0.4 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    padding: 7px 11px;
+}
+.arc-capa .vital-registro__fila .mono { flex: none; color: var(--v-ink-3); }
+.arc-capa .vital-registro__fila .mono.hot { color: var(--v-hot); }
+.arc-capa .vital-registro__fila .mono.ok { color: var(--v-ok); }
+
+.arc-capa .vital-registro__texto {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    color: var(--v-ink-2);
+}
+
+/* Lo que sobre de alto va aquí, y las acciones quedan pegadas abajo. */
+.arc-capa .vital-panel > .vital-hueco { flex: 1 1 0; min-height: 0; }
+
+/* ── Acciones ────────────────────────────────────────────────────────────── */
+.arc-capa .vital-accion {
+    position: relative;
+    overflow: hidden;
+    margin: 14px var(--v-pad) 0;
+    border-radius: 11px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+.arc-capa .vital-accion:not(:disabled):hover { filter: brightness(1.04); }
+.arc-capa .vital-accion:not(:disabled):active { transform: translateY(2px); }
+.arc-capa .vital-accion:disabled { cursor: default; }
+
+.arc-capa .vital-accion__cuerpo {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.arc-capa .vital-accion__lbl {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.arc-capa .vital-accion__sub {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.arc-capa .vital-accion kbd,
+.arc-capa .vital-accion svg,
+.arc-capa .vital-accion > .mono { position: relative; flex: none; }
+
+.arc-capa .auxilio {
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(var(--arc-t-papel2), 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--v-ink);
+}
+.arc-capa .auxilio .vital-accion__sub { color: var(--v-ink-4); }
+
+/* Aviso mandado: verde, porque es algo que está funcionando. */
+.arc-capa .auxilio.on {
+    background: linear-gradient(90deg, rgba(31, 143, 78, 0.92), rgba(74, 183, 120, 0.75));
+    box-shadow: 0 5px 0 #146636;
+    color: #fff;
+}
+.arc-capa .auxilio.on .vital-accion__sub { color: #fff; }
+.arc-capa .auxilio.on kbd { background: var(--arc-fondo1, #fff); color: #146636; }
+
+.arc-capa .reaparecer {
+    margin-top: 8px;
+    background: #d81b55;
+    box-shadow: 0 6px 0 var(--v-accent-deep);
+    color: #fff;
+}
+.arc-capa .reaparecer .vital-accion__sub { color: #fff; }
+.arc-capa .reaparecer kbd { background: var(--arc-fondo1, #fff); color: var(--v-accent-deep); }
+
+/* Aún no se puede: el mismo bloque, apagado, con la cuenta en el subtítulo. */
+.arc-capa .reaparecer.bloqueada {
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.6 * var(--arc-vf))), rgba(var(--arc-t-papel3), 0.55));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.3);
+    color: var(--v-ink-3);
+}
+.arc-capa .reaparecer.bloqueada .vital-accion__sub { color: var(--v-ink-4); }
+.arc-capa .reaparecer.bloqueada kbd { background: var(--v-ink-4); color: #fff; }
+
+/* El aguante: la barra que cruza el botón mientras se mantiene. */
+.arc-capa .vital-accion__aguante {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: #d81b55;
+    pointer-events: none;
+}
+
+/* ── La nota ─────────────────────────────────────────────────────────────── */
+.arc-capa .vital-nota {
+    display: block;
+    margin: 8px var(--v-pad) 0;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    padding: 11px 13px;
+    cursor: text;
+}
+.arc-capa .vital-nota:focus-within { box-shadow: inset 0 0 0 2px rgba(223, 47, 99, 0.55); }
+
+.arc-capa .vital-nota__k {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-hot);
+}
+
+.arc-capa .vital-nota input {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    border: 0;
+    background: none;
+    outline: none;
+    color: var(--v-ink);
+    user-select: text;
+    font-family: var(--v-cond) !important;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+}
+.arc-capa .vital-nota input::placeholder { color: #73737c; }
+
+/* ── Pie ─────────────────────────────────────────────────────────────────── */
+.arc-capa .vital-libre {
+    margin: 12px var(--v-pad) 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arc-capa .vital-libre span {
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.arc-capa .vital-pie {
+    margin: 10px var(--v-pad) 16px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--arc-tinta3, #44444a);
+}
+
+/* ── Riel ────────────────────────────────────────────────────────────────── */
+.arc-capa .vital-riel__btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.45 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    display: grid;
+    place-items: center;
+    color: var(--v-ink-4);
+    text-align: center;
+}
+
+.arc-capa .vital-riel__btn.on {
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--v-accent-deep);
+    color: #fff;
+}
+
+
+/* El nombre sale al pasar el ratón, hacia la columna. */
+.arc-capa .vital-riel__tip {
+    position: absolute;
+    right: calc(100% + 14px);
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    padding: 6px 10px;
+    border-radius: 7px;
+    background: var(--v-ink);
+    color: #fff;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+}
+.arc-capa .vital-riel__btn:hover .vital-riel__tip { opacity: 1; }
+
+.arc-capa .vital-riel__hueco { flex: 1; min-height: 16px; }
+
+.arc-capa .vital-riel__rotulo {
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* ── Aviso de la vista libre ─────────────────────────────────────────────── */
+.arc-capa .vista-aviso {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    border-radius: 12px;
+    border-top: 3px solid var(--v-accent);
+    background: var(--v-glass);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 18px 40px rgba(0, 0, 0, 0.4);
+    white-space: nowrap;
+}
+
+.arc-capa .vista-aviso__texto {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--v-ink-3);
+}
+
+.arc-capa .vista-aviso__texto b {
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.04em;
+    color: var(--v-ink);
+}
+
+.vista-aviso-enter-active,
+.vista-aviso-leave-active {
+    transition: opacity 0.24s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arc-capa .vista-aviso-enter,
+.arc-capa .vista-aviso-leave-to {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+}
+
+/* ── Entrada y salida ────────────────────────────────────────────────────── */
+/* El contenedor no se mueve: solo le da a Vue una duración que esperar
+   (0.99 para que haya algo que transicionar) mientras las piezas entran. */
+.arc-capa.slide-fade-enter,
+.arc-capa.slide-fade-leave-to { opacity: 0.99; transform: scale(var(--v-zoom, 1)); }
+
+.arc-capa.slide-fade-enter-active,
+.arc-capa.slide-fade-leave-active { transition: opacity 0.45s linear; }
+
+.arc-capa.slide-fade-enter-active .vital-panel,
+.arc-capa.slide-fade-enter-active .vital-riel,
+.arc-capa.slide-fade-leave-active .vital-panel,
+.arc-capa.slide-fade-leave-active .vital-riel {
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+}
+
+.arc-capa.slide-fade-enter .vital-panel,
+.arc-capa.slide-fade-leave-to .vital-panel,
+.arc-capa.slide-fade-enter .vital-riel,
+.arc-capa.slide-fade-leave-to .vital-riel {
+    opacity: 0;
+    transform: translateX(40px);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DIAGNÓSTICO MÉDICO · tema «HUD Arcade» (lado del sanitario)
+
+   La misma capa que ESTADO VITAL —columna y riel despegados del canto—, más
+   estrecha (520) y con sus piezas propias: pestañas inclinadas, estado
+   general, acciones, botiquín y pie de tres botones. Lo que comparte con la
+   pantalla del herido (cabecera, cifras, silueta, lesiones, registro) sale de
+   las reglas de arriba.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.arc-capa.medico { --v-col: 520px; }
+
+.arc-capa .vital-h1.medico-h1 { font-size: 27px; line-height: 0.9; }
+.arc-capa.medico .vital-sub,
+.arc-capa .medico-sub {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+}
+
+.arc-capa .vital-head.medico-head { align-items: center; }
+.arc-capa .medico-head .vital-head__izq { flex: 1; }
+.arc-capa .medico-head .vital-head__izq > div:last-child { min-width: 0; }
+.arc-capa .medico-sub {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* El estado en verde cuando el paciente respira: es algo que funciona. */
+.arc-capa .vital-estado.ok {
+    background: linear-gradient(180deg, #4ab778, #1f8f4e);
+    box-shadow: 0 4px 0 #146636;
+}
+
+/* ── Pestañas ────────────────────────────────────────────────────────────── */
+.arc-capa .medico-tabs {
+    margin: 13px var(--v-pad) 0;
+    display: flex;
+    gap: 5px;
+}
+
+.arc-capa .medico-tab {
+    flex: 1;
+    min-width: 0;
+    transform: var(--v-skew);
+    border-radius: 9px;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(var(--arc-t-papel2), 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--v-ink-2);
+}
+.arc-capa .medico-tab > * { transform: var(--v-unskew); }
+.arc-capa .medico-tab span {
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.arc-capa .medico-tab em {
+    font-style: normal;
+    font-family: var(--v-mono) !important;
+    font-size: 11px;
+    color: var(--v-ink-4);
+}
+.arc-capa .medico-tab:not(.on):hover { filter: brightness(1.04); }
+.arc-capa .medico-tab.on {
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--v-accent-deep);
+    color: #fff;
+}
+.arc-capa .medico-tab.on em { color: #fff; }
+
+/* ── Cifras: rótulo arriba, dato y nota ──────────────────────────────────── */
+.arc-capa.medico .vital-cifras { margin-top: 12px; gap: 5px; }
+
+.arc-capa .medico-cifra__lbl {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+.arc-capa.medico .vital-cifra strong { margin-top: 3px; font-size: 20px; }
+.arc-capa.medico .vital-cifra .medico-cifra__nota {
+    margin-top: 3px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+.arc-capa .medico-cifra__nota.bad { color: var(--v-hot); }
+.arc-capa .medico-cifra__nota.good { color: var(--v-ok); }
+
+/* ── Estado general ──────────────────────────────────────────────────────── */
+.arc-capa .medico-general {
+    margin: 10px var(--v-pad) 0;
+    border-radius: 11px;
+    padding: 11px 13px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+.arc-capa .medico-general.ok {
+    background: linear-gradient(90deg, rgba(31, 143, 78, 0.92), rgba(74, 183, 120, 0.75));
+    box-shadow: 0 6px 0 #146636;
+}
+.arc-capa .medico-general > div:first-child { flex: 1; min-width: 0; }
+
+.arc-capa .medico-general__k {
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+.arc-capa .medico-general__v {
+    margin-top: 3px;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.arc-capa .medico-causa {
+    flex: none;
+    max-width: 45%;
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.26);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    padding: 6px 10px;
+    text-align: center;
+}
+.arc-capa .medico-causa span {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+.arc-capa .medico-causa strong {
+    display: block;
+    margin-top: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* Los rótulos pequeños del sanitario: h4 en gris, raya de 2 px. */
+.arc-capa.medico .vital-regla { margin-top: 14px; gap: 10px; }
+.arc-capa.medico .vital-regla h4 { font-size: 11px; letter-spacing: 0.18em; }
+.arc-capa.medico .vital-regla i { height: 2px; }
+
+/* ── Acciones ────────────────────────────────────────────────────────────── */
+.arc-capa .medico-acciones {
+    margin: 8px var(--v-pad) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.arc-capa .medico-accion {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    width: 100%;
+    border-radius: 11px;
+    padding: 12px 13px;
+    color: var(--v-ink);
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    transition: filter 0.15s ease, transform 0.1s ease, background 0.15s ease;
+}
+.arc-capa .medico-accion:not(:disabled):hover { background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf))); }
+.arc-capa .medico-accion:not(:disabled):active { transform: translateY(2px); }
+.arc-capa .medico-accion:disabled { cursor: default; }
+
+.arc-capa .medico-accion.rcp {
+    color: #fff;
+    background: #d81b55;
+    box-shadow: 0 6px 0 var(--v-accent-deep);
+}
+.arc-capa .medico-accion.rcp:not(:disabled):hover { filter: brightness(1.06); background: #d81b55; }
+.arc-capa .medico-accion.ok {
+    color: #fff;
+    background: linear-gradient(90deg, rgba(31, 143, 78, 0.92), rgba(74, 183, 120, 0.75));
+    box-shadow: 0 5px 0 #146636;
+}
+.arc-capa .medico-accion.falta { opacity: 0.8; }
+
+.arc-capa .medico-accion__icono {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border-radius: 9px;
+    transform: var(--v-skew);
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+    color: var(--v-hot);
+}
+.arc-capa .medico-accion__icono svg { transform: var(--v-unskew); stroke-width: 2.4; }
+.arc-capa .medico-accion.ok .medico-accion__icono { color: #146636; }
+.arc-capa .medico-accion__icono.plain {
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    color: #55555c;
+}
+
+.arc-capa .medico-accion__cuerpo { flex: 1; min-width: 0; }
+.arc-capa .medico-accion__lbl {
+    display: block;
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.arc-capa .medico-accion__sub {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--v-ink-4);
+}
+.arc-capa .medico-accion.rcp .medico-accion__sub,
+.arc-capa .medico-accion.ok .medico-accion__sub { color: #fff; }
+
+.arc-capa .medico-tag {
+    flex: none;
+    border-radius: 6px;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--v-accent-deep);
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+.arc-capa .medico-accion.ok .medico-tag { color: #146636; }
+.arc-capa .medico-tag.plain { background: rgba(var(--arc-t-linea), 0.18); color: var(--arc-tinta3, #44444a); }
+
+/* ── Nota del paciente ───────────────────────────────────────────────────── */
+.arc-capa .medico-nota {
+    margin: 12px var(--v-pad) 0;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    padding: 11px 13px;
+}
+.arc-capa .medico-nota__k {
+    font-family: var(--v-cond) !important;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--v-hot);
+}
+.arc-capa .medico-nota p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--v-ink-2);
+    user-select: text;
+}
+
+/* ── Lesiones del lado del sanitario ─────────────────────────────────────── */
+.arc-capa.medico .vital-parte { margin-top: 12px; }
+.arc-capa.medico .vital-figura { width: 140px; }
+
+.arc-capa .medico-herida__trata {
+    display: block;
+    margin-top: 6px;
+    font-family: var(--v-cond) !important;
+    font-weight: 600;
+    font-size: 13.5px;
+    color: var(--arc-tinta3, #44444a);
+}
+.arc-capa .vital-herida.on .medico-herida__trata { color: #fff; }
+.arc-capa .medico-herida__trata b { font-family: inherit !important; font-weight: 700; }
+.arc-capa .medico-herida__trata .falta { color: var(--v-hot); }
+.arc-capa .vital-herida.on .medico-herida__trata .falta { color: #fff; text-decoration: underline; }
+
+/* El botón de tratar la seleccionada: lleno solo si llevas lo que pide. */
+.arc-capa .medico-tratar { margin-top: 10px; }
+
+/* ── Botiquín ────────────────────────────────────────────────────────────── */
+.arc-capa .medico-kit {
+    margin: 8px var(--v-pad) 0;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.arc-capa .medico-kit__it {
+    border-radius: 9px;
+    padding: 8px 11px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+.arc-capa .medico-kit__it.vacio { opacity: 0.55; }
+.arc-capa .medico-kit__it i { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+.arc-capa .medico-kit__it span {
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.arc-capa .medico-kit__it em {
+    font-style: normal;
+    font-family: var(--v-mono) !important;
+    font-size: 11px;
+    color: var(--v-ink-4);
+}
+
+/* ── Pie: tres botones inclinados ────────────────────────────────────────── */
+.arc-capa .medico-pie {
+    padding: 13px var(--v-pad);
+    display: flex;
+    gap: 7px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), rgba(255, 255, 255, calc(0.3 * var(--arc-vf))));
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+}
+
+.arc-capa .medico-pie__btn {
+    flex: 1;
+    min-width: 0;
+    transform: var(--v-skew);
+    border-radius: 9px;
+    padding: 11px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(var(--arc-t-papel2), 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--v-ink-2);
+    transition: filter 0.15s ease, transform 0.1s ease;
+}
+.arc-capa .medico-pie__btn > * { transform: var(--v-unskew); }
+.arc-capa .medico-pie__btn span {
+    font-family: var(--v-cond) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+.arc-capa .medico-pie__btn:not(:disabled):hover { filter: brightness(1.05); }
+.arc-capa .medico-pie__btn:not(:disabled):active { transform: var(--v-skew) translateY(2px); }
+.arc-capa .medico-pie__btn:disabled { opacity: 0.6; cursor: default; }
+
+.arc-capa .medico-pie__btn.lleno {
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--v-accent-deep);
+    color: #fff;
+}
+.arc-capa .medico-pie__btn.lleno kbd { background: var(--arc-fondo1, #fff); color: var(--v-accent-deep); }
+
+/* ══ PEGATINA: Estado vital y Diagnóstico con el estilo del logo ═══════════
+
+   Es la pareja de origen_inventory/source-ui/src/assets/styles/pegatina.css:
+   mismas reglas y mismos colores.
+
+   Papel, canto negro, sombra dura, rosa con tinta NEGRA para lo encendido,
+   nada inclinado. El verde sigue siendo un ESTADO (aviso mandado, paciente
+   estable): no se vuelve rosa.
+
+   Los cantos son box-shadow, no border: no cambian ninguna medida. Para
+   quitarlo: borrar este bloque y las dos familias (Knewave, Oxanium) del
+   <link> de index.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+html .arc-capa {
+    --v-accent: #d81b55;
+    --v-accent-mid: #d81b55;
+    --v-accent-deep: #000;
+    --v-hot: #b3123f;
+    --v-ok: #0b4a26;
+    --v-ink: #0b0b0d;
+    --v-ink-2: #0b0b0d;
+    --v-ink-3: #44444a;
+    --v-ink-4: #55555c;
+    --v-glass: linear-gradient(#dcdde0, #dcdde0);
+    /* Nada inclinado. */
+    --v-skew: skewX(0deg);
+    --v-unskew: skewX(0deg);
+    --v-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --v-brocha: "Knewave", "Barlow Condensed", cursive;
+
+    /*  Cada pieza lleva por FUERA su canto (4) y su sombra (7), y la de al
+        lado su canto: con 10 px se pisaban. Va el aire del riel al canto. */
+    --v-hueco: var(--v-margen-x);
+    /*  Las medidas de todos los menús de riel: riel de 64 y columna
+        clamp(420px, 31vw, 548px), la del inventario. */
+    --v-riel: 64px;
+    --v-col: clamp(420px, 31vw, 548px);
+
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 255, 255, 255;
+    --arc-t-papel2: 255, 255, 255;
+    --arc-t-papel3: 255, 255, 255;
+    --arc-fondo1: #fff;
+    --arc-tinta3: #44444a;
+}
+
+html .arc-capa.medico { --v-col: clamp(420px, 31vw, 548px); }
+
+/* ── Las dos piezas: columna y riel ─────────────────────────────────── */
+html .arc-capa .vital-panel,
+html .arc-capa .vital-riel {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+/* ── Teclas y cifras ────────────────────────────────────────────────── */
+html .arc-capa kbd {
+    background: #0b0b0d;
+    font-family: var(--v-cifra) !important;
+    font-weight: 800;
+    color: #fff;
+    padding: 3px 8px 1px; /* Oxanium sube la letra: la baja al centro */
+}
+html .arc-capa .mono.big,
+html .arc-capa .vital-cifra strong,
+html .arc-capa .vital-herida__pct {
+    font-family: var(--v-cifra) !important;
+    font-style: normal;
+    font-weight: 800;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html .arc-capa .vital-badge {
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+
+/*  El rotulo de debajo del titulo, a brocha, como «Mochila personal» en el
+    inventario. Solo en la pantalla del herido, que es un texto fijo; en la
+    del sanitario esa linea son datos del paciente y se queda como esta.
+    Mide lo que media (15 px de renglon): la letra crece, la caja no. */
+html .arc-capa:not(.medico) .vital-sub {
+    height: 15px;
+    margin-left: 4px;
+    overflow: visible;
+    font-family: var(--v-brocha) !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 15px;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+/*  En la pantalla del sanitario la linea de debajo del titulo son los datos
+    del paciente (nombre, ID, tiempo en el suelo), que no salen en ningun otro
+    sitio: se quedan. La brocha va entre el titulo y esa linea, en un ::after
+    del titulo con el texto de su data-brocha; todos los menus del riel llevan
+    la suya. */
+html .arc-capa.medico .vital-h1[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    width: max-content;
+    height: 17px;
+    margin: 6px 0 4px 10px;
+    font-family: var(--v-brocha) !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+html .arc-capa .vital-estado {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .arc-capa .vital-estado i { background: #000; }
+html .arc-capa .vital-estado.ok {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b4a26;
+}
+html .arc-capa .vital-estado.ok i { background: #0b4a26; }
+
+/* ── Cifras, rotulos y celdas ───────────────────────────────────────── */
+html .arc-capa .vital-cifra { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+
+html .arc-capa .vital-regla h3,
+html .arc-capa .vital-regla h4 { color: #0b0b0d; }
+html .arc-capa .vital-regla i { border-radius: 2px; background: #d81b55; }
+
+/*  Pista blanca con anillo fino; el relleno, rosa: aqui todo es aviso (la
+    cuenta atras y la gravedad de la lesion). */
+html .arc-capa .celda,
+html .arc-capa .celdas.sesgo.grande .celda { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .celda.on,
+html .arc-capa .celdas.sesgo.grande .celda.on { background: #d81b55; }
+
+/* ── El parte ───────────────────────────────────────────────────────── */
+html .arc-capa .vital-figura { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+/*  El vacio, en negro: el negro va DENTRO del papel. */
+html .arc-capa .vital-vacio { background: #0b0b0d; box-shadow: none; color: #fff; }
+
+html .arc-capa .vital-herida { border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .arc-capa .vital-herida:hover { background: #e6e7ea; }
+html .arc-capa .vital-herida.on,
+html .arc-capa .vital-herida.on:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; color: #0b0b0d; }
+html .arc-capa .vital-herida.on .vital-herida__pct { color: #b3123f; }
+html .arc-capa .vital-herida.on .vital-herida__det { color: #44444a; }
+html .arc-capa .vital-herida.on .celda { background: #dcdde0; }
+html .arc-capa .vital-herida.on .celda.on { background: #d81b55; }
+html .arc-capa .vital-herida.on .medico-herida__trata { color: #44444a; }
+html .arc-capa .vital-herida.on .medico-herida__trata .falta { color: #b3123f; }
+
+html .arc-capa .vital-lugar,
+html .arc-capa .vital-registro__fila { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Acciones ───────────────────────────────────────────────────────── */
+html .arc-capa .auxilio {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .arc-capa .auxilio.on {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b4a26;
+}
+html .arc-capa .auxilio.on .vital-accion__sub { color: #0b4a26; }
+html .arc-capa .auxilio.on kbd { background: #0b4a26; color: #fff; }
+
+html .arc-capa .reaparecer {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .arc-capa .reaparecer .vital-accion__sub { color: #000; }
+html .arc-capa .reaparecer kbd { background: #000; color: #fff; }
+html .arc-capa .reaparecer.bloqueada {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #9a9aa3;
+    color: #73737c;
+}
+html .arc-capa .reaparecer.bloqueada .vital-accion__sub { color: #73737c; }
+html .arc-capa .reaparecer.bloqueada kbd { background: #73737c; color: #fff; }
+html .arc-capa .vital-accion__aguante { background: rgba(0, 0, 0, 0.28); }
+html .arc-capa .auxilio:not(:disabled):active,
+html .arc-capa .reaparecer:not(:disabled):active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── La nota ────────────────────────────────────────────────────────── */
+html .arc-capa .vital-nota { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .arc-capa .vital-nota:focus-within { box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html .arc-capa .vital-nota input::placeholder { color: #55555c; }
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html .arc-capa .vital-riel__btn { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .arc-capa .vital-riel__btn:hover { background: #2a2a30; }
+html .arc-capa .vital-riel__btn.on,
+html .arc-capa .vital-riel__btn.on:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .arc-capa .vital-riel__tip { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .arc-capa .vital-riel__rotulo { color: #0b0b0d; }
+
+/* ── Aviso de la vista libre ────────────────────────────────────────── */
+html .arc-capa .vista-aviso {
+    border-top-color: #dcdde0;
+    background: #dcdde0;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+/* ══ Diagnóstico (lado del sanitario) ═════════════════════════════════ */
+html .arc-capa .medico-tab {
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .arc-capa .medico-tab em { font-family: var(--v-cifra) !important; font-weight: 800; color: #55555c; }
+html .arc-capa .medico-tab:not(.on):hover { background: #e6e7ea; }
+html .arc-capa .medico-tab.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .arc-capa .medico-tab.on em { color: #000; }
+
+html .arc-capa .medico-general {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .arc-capa .medico-general.ok {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b4a26;
+}
+html .arc-capa .medico-causa { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .arc-capa .medico-causa strong { color: #0b0b0d; }
+
+html .arc-capa .medico-accion {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .arc-capa .medico-accion:not(:disabled):hover { background: #e6e7ea; }
+html .arc-capa .medico-accion:not(:disabled):active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .medico-accion.rcp,
+html .arc-capa .medico-accion.rcp:not(:disabled):hover { background: #d81b55; filter: none; color: #000; }
+html .arc-capa .medico-accion.rcp:not(:disabled):hover { background: #df2f63; }
+html .arc-capa .medico-accion.ok,
+html .arc-capa .medico-accion.ok:not(:disabled):hover { background: #dcdde0; color: #0b4a26; }
+html .arc-capa .medico-accion.rcp .medico-accion__sub { color: #000; }
+html .arc-capa .medico-accion.ok .medico-accion__sub { color: #0b4a26; }
+
+/*  El icono de la fila: chapa negra con el icono blanco. */
+html .arc-capa .medico-accion__icono { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .arc-capa .medico-accion.ok .medico-accion__icono { background: #0b4a26; color: #fff; }
+html .arc-capa .medico-accion__icono.plain { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+
+html .arc-capa .medico-tag { background: #0b0b0d; color: #fff; }
+html .arc-capa .medico-accion.ok .medico-tag { background: #0b4a26; color: #fff; }
+html .arc-capa .medico-tag.plain { background: #dcdde0; color: #44444a; }
+
+html .arc-capa .medico-nota,
+html .arc-capa .medico-kit__it { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .medico-kit__it i { box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .medico-kit__it em { font-family: var(--v-cifra) !important; font-weight: 800; }
+
+html .arc-capa .medico-pie { background: none; box-shadow: inset 0 1.5px 0 #000; }
+html .arc-capa .medico-pie__btn {
+    border-radius: 11px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html .arc-capa .medico-pie__btn:not(:disabled):hover { background: #e6e7ea; filter: none; }
+html .arc-capa .medico-pie__btn:not(:disabled):active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .medico-pie__btn.lleno,
+html .arc-capa .medico-pie__btn.lleno:not(:disabled):hover { background: #d81b55; color: #000; }
+html .arc-capa .medico-pie__btn.lleno:not(:disabled):hover { background: #df2f63; }
+html .arc-capa .medico-pie__btn.lleno kbd { background: #000; color: #fff; }
+/* «Pedir refuerzo» tocaba el canto derecho: aire por los lados y letra algo más justa. */
+html .arc-capa .medico-pie__btn { padding: 11px 8px; gap: 6px; }
+html .arc-capa .medico-pie__btn span { font-size: 15px; letter-spacing: 0.04em; }
+
+
+
+/* El nombre de la marca en el riel: Nación en Nación. */
+.solo-nacion { display: none; }
+html[data-marca="nacion"] .solo-nacion { display: inline; }
+html[data-marca="nacion"] .solo-origen { display: none; }
+.arc-capa .vital-riel__rotulo :is(.solo-origen, .solo-nacion) { font: inherit !important; letter-spacing: inherit; text-transform: inherit; color: inherit; }
+
+
+/* 07/10: barras de una pieza (antes celdas): pista gris con canto, relleno rosa. */
+html .arc-capa .barra { display: block; position: relative; height: 10px; border-radius: 999px; overflow: hidden; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .arc-capa .barra > i { display: block; height: 100%; border-radius: 999px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; transition: width 0.3s ease; }
+html .arc-capa .barra.grande { margin: 8px var(--v-pad) 0; }
+html .arc-capa .vital-herida .barra { margin-top: 7px; }
+
+/* ══ 07/10 · El aviso de la vista libre, en la BARRA DE ABAJO ═════════════
+   Copia de las medidas del kit origen_map/kit/barra-abajo.css (HTML a pelo:
+   no se puede importar al compilar; si cambia una medida allí, cambia aquí).
+   Una sola línea fina abajo al centro, la misma pieza que la barra de teclas
+   de origen_hud: panel gris con canto negro, la tecla en chapa negra con la
+   letra blanca en Oxanium y el texto en Barlow Condensed cursiva. */
+:root {
+    --bab-u: min(calc(100vh / 1080), calc(100vw / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-titulo: calc(var(--bab-u) * 20);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+html .arc-capa .vista-aviso {
+    bottom: var(--bab-abajo);
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    gap: var(--bab-hueco-tecla);
+    width: max-content;
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    border-top: 0;
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    color: #0b0b0d;
+}
+html .arc-capa .vista-aviso kbd {
+    box-sizing: border-box;
+    min-width: var(--bab-tecla-min);
+    padding: var(--bab-tecla-pad);
+    border: 0;
+    border-radius: var(--bab-tecla-radio);
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+    font-family: var(--bab-cifra) !important;
+    font-style: normal;
+    font-weight: 800;
+    font-size: var(--bab-tecla);
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+html .arc-capa .vista-aviso__texto {
+    align-items: center;
+    gap: var(--bab-hueco);
+    font-family: var(--bab-rotulo) !important;
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: #0b0b0d;
+}
+/*  «Vista libre» hace de rótulo; el resto, tras un filete negro. */
+html .arc-capa .vista-aviso__texto b {
+    min-height: var(--bab-filete-alto);
+    display: inline-flex;
+    align-items: center;
+    padding-right: var(--bab-hueco);
+    border-right: 1.5px solid #000;
+    font-family: var(--bab-rotulo) !important;
+    font-size: var(--bab-titulo);
+    line-height: 1;
+    letter-spacing: 0.01em;
+}

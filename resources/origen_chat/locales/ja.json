@@ -1,0 +1,110 @@
+{
+    "nui": {
+        "input-placeholder": "メッセージ...",
+        "find-emoji": "絵文字を検索...",
+        "skin-tone": "肌の色",
+        "smileys-people": "絵文字と人々",
+        "animals-nature": "動物と自然",
+        "food-drink": "食べ物と飲み物",
+        "activities": "活動",
+        "travel-places": "旅行と場所",
+        "objects": "オブジェクト",
+        "symbols": "シンボル",
+        "flags": "旗",
+        "recent": "最近",
+        "settings_title": "チャットの編集",
+        "main-color": "メインカラー",
+        "main-color-description": "チャットのメインカラーを変更",
+        "position": "位置",
+        "position-description": "チャットの位置を変更",
+        "size": "サイズ",
+        "size-description": "チャットのサイズを変更",
+        "size-small": "小",
+        "size-medium": "中",
+        "size-large": "大",
+        "save": "保存",
+        "close": "閉じる"
+    },
+    "notifications": {
+        "error": {
+            "self-message": "自分自身にメッセージを送信することはできません",
+            "no-permission": "このコマンドを使用する権限がありません",
+            "no-grade-level": "このコマンドを使用するための学年レベルがありません"
+        },
+        "success": {},
+        "info": {}
+    },
+    "commands": {
+        "chat": {
+            "description": "チャットを開く"
+        },
+        "me": {
+            "description": "周囲のプレイヤーにメッセージを送信",
+            "message": "ME • %s"
+        },
+        "do": {
+            "description": "周囲のプレイヤーにメッセージを送信",
+            "message": "DO • %s"
+        },
+        "ooc": {
+            "description": "周囲のプレイヤーにメッセージを送信",
+            "message": "OOC • %s"
+        },
+        "msg": {
+            "description": "特定のプレイヤーにメッセージを送信",
+            "message": "メッセージ宛 • %s",
+            "message-from": "%s からのメッセージ • %s"
+        },
+        "proximity": {
+            "params": {
+                "message": "送信するメッセージ"
+            }
+        },
+        "global": {
+            "params": {
+                "message": "すべてのプレイヤーにメッセージを送信"
+            }
+        },
+        "ptp": {
+            "params": {
+                "target": "対象プレイヤーのサーバーID",
+                "message": "送信するメッセージ"
+            }
+        },
+        "announcement": {
+            "description": "すべてのプレイヤーにメッセージを送信",
+            "message": "お知らせ"
+        },
+        "lspd": {
+            "description": "すべてのプレイヤーにメッセージを送信",
+            "message": "LSPD • %s"
+        },
+        "ems": {
+            "description": "すべてのプレイヤーにメッセージを送信",
+            "message": "EMS • %s"
+        },
+        "announce-lspd": {
+            "description": "すべてのプレイヤーにメッセージを送信",
+            "message": "LSPD お知らせ"
+        },
+        "announce-ems": {
+            "description": "すべてのプレイヤーにメッセージを送信",
+            "message": "EMS お知らせ"
+        },
+        "global-announcement": {
+            "params": {
+                "message": "すべてのプレイヤーにメッセージを送信"
+            }
+        },
+        "job-to-job": {
+            "params": {
+                "message": "送信するメッセージ"
+            }
+        },
+        "job-to-global": {
+            "params": {
+                "message": "送信するメッセージ"
+            }
+        }
+    }
+}

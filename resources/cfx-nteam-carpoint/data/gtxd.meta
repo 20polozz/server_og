@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMapParentTxds>
+ <txdRelationships>
+  <Item>
+   <parent>nteam_carpoint_txd1</parent>
+   <child>nteam_carpoint_txd</child>
+  </Item>
+  <Item>
+   <parent>nteam_carpoint_txd2</parent>
+   <child>nteam_carpoint_txd1</child>
+  </Item>
+  <Item>
+   <parent>nteam_carpoint_txd3</parent>
+   <child>nteam_carpoint_txd2</child>
+  </Item>
+  <Item>
+   <parent>nteam_carpoint_txd4</parent>
+   <child>nteam_carpoint_txd3</child>
+  </Item>
+ </txdRelationships>
+</CMapParentTxds>

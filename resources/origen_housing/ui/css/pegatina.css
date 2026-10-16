@@ -1,0 +1,1720 @@
+/* ══ PEGATINA: las viviendas y los hoteles con el estilo del logo ═════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   recurso se queda con el estilo «HUD Arcade» de style.css, hotels.css
+   y vivienda.css. Es la pareja de
+   origen_inventory/source-ui/src/assets/styles/pegatina.css y de
+   origen_admin/.../pegatina.css: mismas reglas y mismos colores, para que
+   el riel no cambie de aspecto al pasar de un menú a otro.
+
+   Papel blanco, canto negro grueso, sombra dura, rosa con tinta NEGRA para
+   lo encendido, nada inclinado. El negro va DENTRO del papel (botones del
+   riel, chapas de icono, vacíos), nunca de fondo de una pieza con canto
+   negro.
+
+   Va en fichero aparte y enlazado EL ÚLTIMO en index.html: no reescribe
+   nada, pisa con más peso (`#app` delante de cada pieza). Para quitarlo:
+   borrar este fichero, su <link> y las dos familias (Knewave, Oxanium) del
+   <link> de Google Fonts.
+
+   Los cantos son box-shadow, no border: no cambia ninguna medida. Donde la
+   pieza YA traía un borde de 1 px (los cuadros de pago, las fichas del
+   panel de administración) ese borde se pinta de negro y el anillo de
+   sombra pone el resto del grosor.
+
+   Tres familias de pantallas:
+     1. Los menús laterales `rp-` (tu vivienda, decorar, recepción,
+        habitación, comprar una casa) y sus cuadros `rp-modal-`.
+     2. El panel de administración (la tablet `ogn-`): riel, cabecera,
+        fichas, mapa, formularios y barra de cifras.
+     3. Lo suelto: cuadros `c-modal` que monta el JS, ascensor, avisos,
+        ayuda de teclas, selector de interiores y lista de casas.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+/*  Con esto cambia la mayor parte: las tres hojas pintan casi todo con
+    --arc-*, --ogn-* e --inv-*. Van en `html:root`: ellas los declaran en `:root`, que pesa más que
+    `html` a secas; con `html:root` gana esta hoja. */
+html:root {
+    /*  Cada pieza lleva por fuera su canto (4) y su sombra (7), y la de al
+        lado su canto: con 10 px se pisaban; va el aire del riel al canto (07/10). --inv-riel-total
+        sale de este. */
+    --inv-hueco: var(--inv-margen-x);
+
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    --arc-fondo1: #dcdde0;
+    --arc-fondo2: #c4c6ca;
+    --arc-fondo3: #c4c6ca;
+    --arc-tinta1: #0b0b0d;
+    --arc-tinta2: #0b0b0d;
+    --arc-tinta3: #44444a;
+    --arc-accent-texto: #b3123f;
+
+    --ogn-bg: #dcdde0;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #b3123f;
+    --ogn-acc-pale: #d81b55;
+    --ogn-acc-deep: #000;
+    --ogn-acc-texto: #b3123f;
+    --ogn-acc-grad: linear-gradient(#d81b55, #d81b55);
+    --ogn-grad: linear-gradient(#d81b55, #d81b55);
+    --ogn-grad-hi: linear-gradient(#d81b55, #d81b55);
+    --ogn-veil: linear-gradient(#dcdde0, #dcdde0);
+    --ogn-surface: rgba(11, 11, 13, 0.06);
+    --ogn-surface-hi: #e6e7ea;
+    --ogn-surface-on: #dcdde0;
+    --ogn-sunken: #dcdde0;
+    --ogn-line: #000;
+    --ogn-line-soft: #000;
+    --ogn-line-hi: #000;
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #0b0b0d;
+    --ogn-t3: #44444a;
+    --ogn-t4: #55555c;
+    --ogn-bad: #b3123f;
+    /*  Nada inclinado: el `::before` de las chapas sale recto. */
+    --ogn-skew: skewX(0deg);
+    --ogn-unskew: skewX(0deg);
+    /*  El relieve de un botón pasa a ser canto y sombra dura. */
+    --ogn-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --ogn-relieve-on: inset 0 0 0 1.5px #000;
+    --ogn-relieve-bajo: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --ogn-relieve-min: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    /*  Las sombras difuminadas, fuera. No puede ser `none`: van dentro de
+        listas con comas. */
+    --ogn-sombra: 0 0 0 0 transparent;
+    --ogn-sombra-alta: 2px 2px 0 #000;
+    --bg-dark: linear-gradient(#dcdde0, #dcdde0);
+    --bg-panel: linear-gradient(#dcdde0, #dcdde0);
+
+    --inv-acc: #d81b55;
+    --inv-acc-hi: #d81b55;
+    --inv-acc-deep: #b3123f;
+    --inv-acc-rgb: 216, 27, 85;
+    --inv-grad: linear-gradient(#d81b55, #d81b55);
+    --inv-grad-hi: linear-gradient(#d81b55, #d81b55);
+    --inv-t1: #0b0b0d;
+    --inv-t2: #0b0b0d;
+    --inv-t3: #44444a;
+    --inv-t4: #55555c;
+    --inv-bad: #b3123f;
+    --inv-linea: rgba(11, 11, 13, 0.35);
+    --inv-ranura: rgba(11, 11, 13, 0.06);
+    --inv-relleno: #dcdde0;
+    --inv-cristal: linear-gradient(#dcdde0, #dcdde0);
+    --inv-relieve: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --inv-relieve-on: inset 0 0 0 1.5px #000;
+    --rp-canto: #000;
+
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --peg-brocha: "Knewave", "Barlow Condensed", cursive;
+}
+
+/* ══ 1 · LOS MENÚS LATERALES ══════════════════════════════════════════ */
+
+/* ── Las dos piezas: columna y riel ─────────────────────────────────── */
+html #app .rp-col,
+html #app .rp-riel {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html #app .rp-riel__marca-caja { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #d81b55; }
+html #app .rp-riel__marca-caja::after { background: #000; }
+html #app .rp-riel__btn { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .rp-riel__btn:hover { background: #2a2a30; color: #fff; }
+html #app .rp-riel__btn.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+/*  El globo trae un borde de verdad a la izquierda (3 px): se pinta de negro
+    y el anillo pone los otros tres lados. */
+html #app .rp-riel__tip {
+    transform: translateY(-50%) translateX(4px);
+    border-left-color: #000;
+    background: #dcdde0;
+    box-shadow: inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000, inset -2.5px 0 0 #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .rp-riel__btn:hover .rp-riel__tip { transform: translateY(-50%) translateX(0); }
+html #app .rp-riel__marca { color: #0b0b0d; }
+html #app .rp-riel__badge { background: #dcdde0; box-shadow: 0 0 0 1.5px #000; font-family: var(--peg-cifra); font-weight: 800; color: #000; }
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html #app .rp-badge { transform: rotate(-5deg); background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-badge i { transform: none; }
+html #app .rp-cab__t { color: #0b0b0d; }
+html #app .rp-cab__sub2,
+html #app .rp-cab__nombre,
+html #app .rp-cab__sub { color: #44444a; }
+/*  El contador, en Oxanium. Es más ancha que la condensada: baja de cuerpo
+    y el renglón se queda en los 27 px que medía. */
+html #app .rp-cuenta__v { font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 24px; line-height: 27px; color: #0b0b0d; }
+html #app .rp-cuenta__v span { color: #55555c; }
+html #app .rp-cuenta__k { color: #44444a; }
+
+/*  La brocha, una sola y solo en «Decorar»: ahí el subtítulo es un rótulo
+    («Tu vivienda»). En las demás pantallas el subtítulo son datos (el
+    nombre de la casa, el número) y se queda como está. Mide lo que medía
+    (17 px de renglón): la letra crece, la caja no. */
+html #app .mb .rp-cab__sub2 {
+    align-self: flex-start;
+    height: 17px;
+    margin-left: 4px;
+    overflow: visible;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-transform: none;
+    text-overflow: clip;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+/* ── Etiquetas de estado ────────────────────────────────────────────── */
+/*  Libre en papel, ocupada en negro, tuya en rosa. El cerrojo de una puerta
+    usa las mismas dos (abierta = libre, cerrada = ocupada). */
+html #app .rp-tag { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .rp-tag.available { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .rp-tag.rented { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .rp-tag.es-mia { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+
+/* ── Rótulos con filete ─────────────────────────────────────────────── */
+html #app .rp-rotulo { color: #0b0b0d; }
+html #app .rp-rotulo::after { border-radius: 2px; background: #d81b55; }
+html #app .vv-barra__t { color: #0b0b0d; }
+html #app .vv-kicker { color: #b3123f; }
+html #app .vv-etq,
+html #app .vv-nota { color: #44444a; }
+
+/* ── Celdas de datos (no se pulsan: anillo sin sombra) ──────────────── */
+html #app .rp-dato { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-dato b { font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 17px; line-height: 22px; }
+html #app .rp-dato i { color: #44444a; }
+
+/* ── Filas ──────────────────────────────────────────────────────────── */
+html #app .rp-fila,
+html #app .rp-check,
+html #app .rp-volver { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .rp-fila:hover,
+html #app .rp-check:hover,
+html #app .rp-volver:hover { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .rp-fila:active,
+html #app .rp-check:active,
+html #app .rp-volver:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  La que solo informa: anillo, sin sombra y sin hundirse. */
+html #app .rp-fila.is-mudo,
+html #app .rp-fila.is-mudo:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-fila.is-mudo:active { transform: none; box-shadow: inset 0 0 0 1.5px #000; }
+/*  Lo elegido. */
+html #app .rp-fila.on,
+html #app .rp-fila.on:hover,
+html #app .rp-check.on,
+html #app .rp-check.on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .rp-fila.on:active,
+html #app .rp-check.on:active { transform: none; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .rp-fila__ico { background-color: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .rp-fila.on .rp-fila__ico { background-color: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .rp-fila.on .rp-fila__ico .fa-lightbulb { color: #000; }
+/*  La miniatura de un estilo de interior es una foto: solo el marco. */
+html #app .rp-fila__ico.vv-miniatura,
+html #app .rp-fila.on .rp-fila__ico.vv-miniatura { box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-fila__n { color: #0b0b0d; }
+html #app .rp-fila__m { color: #44444a; }
+html #app .rp-precio { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html #app .rp-check__txt { color: #0b0b0d; }
+html #app .rp-check__ok { color: #b3123f; }
+html #app .vv-flecha { color: #0b0b0d; }
+html #app .rp-aviso { color: #0b0b0d; }
+/*  El vacío: el negro dentro del papel. */
+html #app .rp-vacio { background: #0b0b0d; box-shadow: none; color: #fff; }
+/*  La foto del garaje no se toca: solo su marco. */
+html #app .rp-foto { box-shadow: 0 0 0 1.5px #000; }
+
+/* ── El pie y sus botones ───────────────────────────────────────────── */
+html #app .rp-pie { background: none; box-shadow: inset 0 1.5px 0 #000; }
+/*  Las chapas las pinta el `::before` de style.css con --sg-bg / --sg-sh;
+    con --ogn-skew a 0 ya sale recto. */
+html #app .rp-btn { border-radius: 11px; --sg-bg: #dcdde0; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .rp-btn:hover { --sg-bg: #e6e7ea; color: #0b0b0d; }
+html #app .rp-btn.es-mala:hover { --sg-bg: #d81b55; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-confirmar { border-radius: 11px; --sg-bg: #d81b55; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #000; }
+html #app .rp-confirmar:hover { --sg-bg: #d81b55; color: #000; }
+html #app .rp-confirmar:disabled,
+html #app .rp-confirmar:disabled:hover { --sg-bg: #d81b55; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-btn:active,
+html #app .rp-confirmar:active { transform: translate(2px, 2px); }
+html #app .rp-confirmar:disabled:active { transform: none; }
+html #app .rp-kbd { background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; font-size: 12px; color: #fff; }
+html #app .rp-confirmar .rp-kbd { background: #000; color: #fff; }
+/*  El del carrito trae fondo y borde propios, que taparían la chapa. */
+html #app .rp-btn-carrito,
+html #app .rp-btn-carrito:hover { background: none; border-color: transparent; color: #0b0b0d; }
+
+/* ── Tu vivienda ────────────────────────────────────────────────────── */
+html #app .vv-ampliar,
+html #app .vv-anadir { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .vv-ampliar:hover,
+html #app .vv-anadir:hover { background: #e6e7ea; color: #0b0b0d; }
+html #app .vv-ampliar:active,
+html #app .vv-anadir:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-col.is-ancho .vv-sec { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-mas,
+html #app .vv-mini { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .vv-mas:hover,
+html #app .vv-mini:hover { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .vv-mini.es-mala:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .vv-mas:active,
+html #app .vv-mini:active { transform: none; }
+/*  El interruptor de una luz: pista blanca con anillo, bola negra. */
+html #app .vv-interruptor { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-interruptor i { background: #0b0b0d; box-shadow: none; }
+html #app .vv-interruptor.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-interruptor.on i { background: #000; }
+/*  Los colores de una luz son muestras: solo el marco. */
+html #app .vv-color { box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-color.on { box-shadow: inset 0 0 0 1.5px #000, 0 0 0 1.5px #fff, 0 0 0 5px #d81b55; }
+html #app .vv-color:active { transform: none; }
+html #app .vv-campo { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .vv-campo:focus { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .vv-cuadro { background-color: #0b0b0d; box-shadow: inset 0 0 0 1.5px #000; color: #9a9aa3; }
+html #app .vv-celebra { background: #dcdde0; }
+html #app .vv-celebra__k { color: #0b0b0d; }
+html #app .vv-celebra__n { color: #b3123f; }
+/*  Los cupos de una casa MLO (traían borde de 1 px). */
+html #app .rp-mlo-cupo-card { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-mlo-cupo-info i,
+html #app .rp-mlo-cupo-nom { color: #0b0b0d; }
+html #app .rp-mlo-cupo-val { color: #55555c; }
+html #app .rp-btn-cupo { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .rp-btn-cupo:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html #app .rp-btn-cupo:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Decorar · los muebles ──────────────────────────────────────────── */
+html #app .mb-cat,
+html #app .mb-obj { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .mb-cat:hover,
+html #app .mb-obj:hover { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .mb-cat:active,
+html #app .mb-obj:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .mb-obj.on,
+html #app .mb-obj.on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .mb-obj.on:active { transform: none; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .mb-cat__n { color: #0b0b0d; }
+html #app .mb-cat__c { font-family: var(--peg-cifra); font-weight: 800; color: #55555c; }
+html #app .mb-obj__p { background: #0b0b0d; box-shadow: none; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+
+/* ── Los cuadros de pago (carrito, comprar mueble, punto MLO) ───────── */
+/*  De serie son negros, con bordes de 1 px de verdad: el
+    borde se pinta de negro y el anillo pone el resto del canto. */
+html #app .rp-modal-panel { background: #dcdde0; border-color: #000; border-radius: 20px; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+html #app .rp-modal-cab { background: none; border-bottom-color: #000; box-shadow: inset 0 -2px 0 #000; }
+html #app .rp-modal-badge { transform: rotate(-5deg); background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-modal-t { color: #0b0b0d; }
+html #app .rp-modal-sub,
+html #app .rp-metodo-etq { color: #44444a; }
+html #app .rp-modal-close { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .rp-modal-close:hover { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .rp-modal-close:active { transform: none; }
+html #app .rp-modal-pie { background: none; border-top-color: #000; box-shadow: inset 0 2px 0 #000; }
+html #app .rp-mueble-preview { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-mueble-preview img { filter: none; }
+html #app .rp-mueble-precio { background: #0b0b0d; border-color: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html #app .rp-metodo-btn,
+html #app .rp-mlo-tipo-btn { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .rp-metodo-btn:hover,
+html #app .rp-mlo-tipo-btn:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html #app .rp-metodo-btn:active,
+html #app .rp-mlo-tipo-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-metodo-btn.on,
+html #app .rp-metodo-btn.on:hover,
+html #app .rp-mlo-tipo-btn.on,
+html #app .rp-mlo-tipo-btn.on:hover { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-mlo-tipo-btn b { color: #0b0b0d; }
+html #app .rp-mlo-tipo-btn small { color: #55555c; }
+html #app .rp-mlo-tipo-btn.on b,
+html #app .rp-mlo-tipo-btn.on small { color: #000; }
+html #app .rp-mlo-limite-aviso { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 2px #d81b55; }
+html #app .rp-mlo-limite-txt { color: #0b0b0d; }
+html #app .rp-mlo-limite-txt i { color: #b3123f; }
+html #app .rp-btn-cupo-modal { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .rp-btn-cupo-modal:hover { background: #d81b55; border-color: #000; }
+html #app .rp-btn-cupo-modal:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-carrito-aviso { background: #dcdde0; border-left-color: #d81b55; color: #0b0b0d; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html #app .rp-carrito-aviso i { color: #b3123f; }
+html #app .rp-carrito-lista::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html #app .rp-carrito-item { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-carrito-item:hover { background: #e6e7ea; border-color: #000; }
+html #app .rp-carrito-orden { font-family: var(--peg-cifra); font-weight: 800; color: #55555c; }
+html #app .rp-carrito-thumb { background: #0b0b0d; border-color: #0b0b0d; }
+html #app .rp-carrito-nombre { color: #0b0b0d; }
+html #app .rp-carrito-modelo { color: #55555c; }
+html #app .rp-carrito-precio { background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html #app .rp-carrito-del { background: transparent; box-shadow: none; color: #0b0b0d; }
+html #app .rp-carrito-del:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .rp-carrito-del:active { transform: none; }
+html #app .rp-carrito-resumen { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .rp-carrito-resumen-fila { color: #44444a; }
+html #app .rp-carrito-resumen-fila.total { border-top-color: #000; color: #0b0b0d; }
+html #app .rp-carrito-resumen-fila.total b { font-family: var(--peg-cifra); font-weight: 800; }
+
+/* ══ 2 · EL PANEL DE ADMINISTRACIÓN (la tablet) ═══════════════════════ */
+/*  A pantalla completa: detrás, el velo oscuro (entre zona y zona no se ve el juego) y, encima, las zonas en
+    papel con su canto. Entre zona y zona hay 1,2vh (13 px a 1080) y aquí no
+    hay variable de hueco, así que el canto de fuera es de 3 y la sombra de
+    4: caben. Lo que va DENTRO de una caja que rueda (fichas, bloques del
+    formulario) lleva el canto por dentro, o la caja lo recortaría. */
+html #app .ogn-stage__veil { background: #b9bbc0; }
+html #app .ogn-rail,
+html #app .ogn-head,
+html #app .ogn-bar__cell { background: #dcdde0; border-color: transparent; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+
+/* ── Riel ───────────────────────────────────────────────────────────── */
+html #app .ogn-rail__mark { transform: rotate(-5deg); background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .ogn-rail__it { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .ogn-rail__it:hover { background: #2a2a30; color: #fff; }
+html #app .ogn-rail__it.is-on,
+html #app .ogn-rail__it.is-on:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .ogn-rail__it.is-mudo:hover { background: #0b0b0d; color: #fff; }
+/*  La barrita de «estás aquí» sobra: el botón encendido ya es rosa. */
+html #app .ogn-rail__bar { background: transparent; }
+html #app .ogn-rail__state,
+html #app .ogn-rail__foot.is-on .ogn-rail__state { color: #0b0b0d; }
+html #app .ogn-tip {
+    border-left-color: #000;
+    background: #dcdde0;
+    box-shadow: inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000, inset -2.5px 0 0 #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html #app .ogn-kicker { color: #b3123f; }
+html #app .ogn-h2 { color: #0b0b0d; }
+html #app .ogn-search { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .ogn-search:focus-within { box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html #app .ogn-search i { color: #0b0b0d; }
+/*  El campo de dentro heredaba la caja de un `input` cualquiera: dos cajas,
+    una dentro de otra. */
+html #app .ogn-search input,
+html #app .ogn-search input:focus { border-color: transparent; background: transparent; box-shadow: none; color: #0b0b0d; }
+html #app .ogn-btn { --sg-bg: #dcdde0; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .ogn-btn:hover { --sg-bg: #e6e7ea; color: #0b0b0d; }
+html #app .ogn-btn--ghost,
+html #app .ogn-btn--ghost:hover:not(:disabled) { color: #0b0b0d; }
+html #app .ogn-btn--ghost:hover:not(:disabled) { --sg-bg: #e6e7ea; }
+html #app .ogn-btn--solid,
+html #app .ogn-btn--solid:hover:not(:disabled) { --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #000; }
+html #app .ogn-btn--solid { --sg-bg: #d81b55; }
+html #app .ogn-btn--solid:hover:not(:disabled) { --sg-bg: #d81b55; }
+html #app .ogn-btn:active { transform: translate(2px, 2px); }
+
+/* ── Barra de cifras ────────────────────────────────────────────────── */
+html #app .ogn-bar__label { color: #44444a; }
+html #app .ogn-bar__value { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html #app .hs-pager__btn { --sg-bg: #dcdde0; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .hs-pager__btn:hover { --sg-bg: #e6e7ea; color: #0b0b0d; }
+html #app .hs-pager__btn:active { transform: translate(2px, 2px); }
+html #app .hs-pager__btn.is-mudo:hover { --sg-bg: #dcdde0; color: #0b0b0d; }
+html #app .hs-pager__btn.is-mudo:active { transform: none; }
+
+/* ── Fichas de casa y de hotel ──────────────────────────────────────── */
+/*  Traen borde de 1 px: negro, más 2 de anillo. Sin sombra dura: la rejilla
+    rueda dentro de una caja que la recortaría en la última columna. */
+html #app .hotel-card,
+html #app .hotel-card:hover { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .hotel-card:hover { background: #e6e7ea; }
+/*  La barra rosa del canto izquierdo taparía el anillo. */
+html #app .hotel-card::before { background: transparent; }
+html #app .hotel-card .indicator .icon,
+html #app .hotel-card .indicator span { color: #44444a; }
+html #app .hotel-card:hover .indicator .icon { color: #b3123f; }
+html #app .hotel-card .label-section .label-text,
+html #app .hotel-card .stat-value { color: #0b0b0d; }
+html #app .hotel-card .stat-icon { color: #0b0b0d; }
+html #app .hotel-card .stat-label { color: #44444a; }
+html #app .hotel-card .card-actions { border-top-color: #000; background: none; box-shadow: inset 0 2px 0 #000; }
+/*  Al pasar por encima el botón se pone NEGRO: así el anillo de la ficha,
+    que le pasa por debajo, no se corta. */
+html #app .hotel-card .action-btn { border-right-color: #000; background: none; box-shadow: none; color: #0b0b0d; }
+html #app .hotel-card .action-btn:hover { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .hotel-card .action-btn:active { transform: none; background: #2a2a30; box-shadow: none; color: #fff; }
+html #app .hotel-card .action-btn.delete { color: #b3123f; }
+html #app .hotel-card .action-btn.delete:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color:#000; }
+
+/* ── El mapa ────────────────────────────────────────────────────────── */
+/*  Las teselas tapan cualquier sombra de dentro: el canto va en un
+    `::after` por encima, que no recoge clics. */
+html #app #housing-admin-map { border-color: #000; background: #c4c6ca; box-shadow: none; }
+html #app #housing-admin-map::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1.5px #000;
+    pointer-events: none;
+}
+html #app .map-house-marker .marker-circle { border-color: #000; box-shadow: 2px 2px 0 #000; }
+html #app .map-house-marker.marker-available .marker-circle { background: #dcdde0; color: #0b0b0d; }
+html #app .map-house-marker.marker-rented .marker-circle { background: #d81b55; color: #000; }
+html #app .map-house-marker:hover .marker-circle { border-color: #000; box-shadow: 2px 2px 0 #000; }
+html #app .map-selected-house-panel { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .btn-close-panel-x { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .btn-close-panel-x:hover { background: #0b0b0d; border-color: #000; color: #fff; }
+html #app .panel-compact-header { border-bottom-color: #000; box-shadow: inset 0 -2px 0 #000; }
+html #app .hotel-name { color: #b3123f; }
+html #app .room-number-compact i { color: #44444a; }
+html #app .room-number-compact span { color: #0b0b0d; }
+/*  Las dos tarjetas de la ficha llevan el color escrito en el propio
+    elemento (style=""), pensado para un fondo negro: solo se les gana con
+    !important. */
+html #app .details-card,
+html #app .map-keys-card { background: #dcdde0 !important; border-color: #000 !important; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .detail-item,
+html #app .keys-card-header { border-bottom-color: rgba(11, 11, 13, 0.25) !important; }
+html #app .keys-card-header i,
+html #app .key-holder-item i.fa-user-circle { color: #0b0b0d !important; }
+html #app .key-holder-item { background: #e6e7ea !important; border-color: #000 !important; }
+html #app .detail-label { color: #44444a; }
+html #app .detail-value { color: #0b0b0d; }
+html #app .badge-owner { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .btn-action-icon,
+html #app .btn-action-icon.delete { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .btn-action-icon:hover { background: #0b0b0d; border-color: #000; box-shadow: none; color: #fff; }
+html #app .btn-action-icon.delete:hover { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html #app .map-selected-house-panel .actions-grid .action-btn,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete { background: #dcdde0; color: #b3123f; }
+html #app .map-selected-house-panel .actions-grid .action-btn i,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete i { background: none; color: #0b0b0d; }
+html #app .map-selected-house-panel .actions-grid .action-btn:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html #app .map-selected-house-panel .actions-grid .action-btn:hover i { background: none; color: #0b0b0d; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover { background: #d81b55; border-color: #000; color:#000; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover i { background: none; border-color: transparent; color: #000; }
+html #app .map-selected-house-panel .actions-grid .action-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Formularios (crear hotel, crear habitación) ────────────────────── */
+html #app .form-section { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .form-section h3 { color: #0b0b0d; }
+html #app .form-section h3::after { height: 3px; background: #d81b55; }
+html #app .form-section .badge { background: #0b0b0d; box-shadow: none; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html #app .form-control,
+html #app .form-group input.form-control,
+html #app .form-group select.form-control { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .form-control:hover { border-color: #000; }
+html #app .form-control:focus,
+html #app .form-group input.form-control:focus,
+html #app .form-group select.form-control:focus { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .field-hint { color: #44444a; }
+html #app .rental-option .duration { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .add-room-form { background: #e6e7ea; border-color: #000; }
+html #app .room-preview { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .room-preview .room-number { color: #0b0b0d; }
+html #app .room-preview .room-ipl { color: #44444a; }
+html #app .room-preview .room-nodoor,
+html #app .room-preview .room-status.available { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .room-preview .room-status.rented { background: #0b0b0d; box-shadow: none; color: #fff; }
+/*  Colocar con el láser: se queda con su borde de puntos, en negro. */
+html #app .btn-placement { background: #dcdde0; border-color: #000; box-shadow: none; color: #0b0b0d; }
+html #app .btn-placement:hover { background: #ffd6e4; border-color: #d81b55; color: #b3123f; }
+html #app .coords-display { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .coord-label { color: #44444a; }
+html #app .coord-value { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html #app .btn-action { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .btn-action:hover { background: #0b0b0d; border-color: #000; box-shadow: none; color: #fff; }
+html #app .btn-action.danger,
+html #app .btn-action.danger:hover { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #b3123f; }
+html #app .btn-action.danger:hover { background: #d81b55; color: #000; }
+/*  El que confirma y el que cancela, de formulario y de cuadro: la pieza
+    lleva su fondo y el `::before` de la chapa se apaga. */
+html #app .btn-confirm,
+html #app .c-modal .btn-confirm,
+html #app .btn-confirm.w-100 { --sg-bg: transparent; --sg-sh: 0 0 0 0 transparent; --sg-sh-on: 0 0 0 0 transparent; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .btn-confirm:hover,
+html #app .c-modal .btn-confirm:hover,
+html #app .btn-confirm.w-100:hover { --sg-bg: transparent; background: #d81b55; color: #000; }
+html #app .btn-cancel,
+html #app .c-modal .btn-cancel,
+html #app .btn-cancel.w-100 { --sg-bg: transparent; --sg-sh: 0 0 0 0 transparent; --sg-sh-on: 0 0 0 0 transparent; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .btn-cancel:hover,
+html #app .c-modal .btn-cancel:hover,
+html #app .btn-cancel.w-100:hover { --sg-bg: transparent; background: #e6e7ea; color: #0b0b0d; }
+html #app .btn-confirm:active,
+html #app .c-modal .btn-confirm:active,
+html #app .btn-confirm.w-100:active,
+html #app .btn-cancel:active,
+html #app .c-modal .btn-cancel:active,
+html #app .btn-cancel.w-100:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  El interruptor de «activar blip». */
+html #app .checkbox-label { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .checkbox-label:hover { background: #e6e7ea; border-color: #000; color: #0b0b0d; }
+html #app .checkbox-label::before { border-color: #000; background: #dcdde0; }
+html #app .checkbox-label::after { background: #0b0b0d; }
+/*  Cada :has() en su regla: el Chromium 103 del juego no lo entiende y
+    tiraría la lista entera. */
+html #app .checkbox-label:has(input:checked)::before { border-color: #000; background: #d81b55; }
+html #app .checkbox-label:has(input:checked)::after { background: #000; }
+/*  El desplegable propio. */
+html #app .ogn-select__control { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .ogn-select__control:hover { background: #e6e7ea; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .ogn-select__control--on,
+html #app .ogn-select__control--on:hover { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; color: #0b0b0d; }
+html #app .ogn-select__panel { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .ogn-select__option { color: #0b0b0d; }
+html #app .ogn-select__option:hover { background: #e6e7ea; color: #0b0b0d; }
+html #app .ogn-select__option--on,
+html #app .ogn-select__option--on:hover { background: #ffd6e4; box-shadow: none; color: #b3123f; }
+html #app .ogn-select__vacio { color: #55555c; }
+
+/* ══ 3 · LO SUELTO ════════════════════════════════════════════════════ */
+
+/* ── Los cuadros que monta el JS (crear casa, puerta, llaves…) ──────── */
+html #app .modal-content { background: #c4c6ca; border-top-color: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html #app .modal-header { border-bottom-color: #000 !important; }
+html #app .modal-footer { border-top-color: #000; background: none; }
+html #app .c-modal .title,
+html #app .modal-body { color: #0b0b0d; }
+html #app .modal-body h4,
+html #app .modal-body h5,
+html #app .create-house .desc { color: #44444a; }
+html #app .c-modal .option { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .c-modal .option:hover { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .c-modal .option.active,
+html #app .c-modal .option.active:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .c-modal .option.active i { color: #000; }
+html #app .c-modal .btn-modal,
+html #app .c-modal .btn-modal.btn-danger { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .c-modal .btn-modal.btn-danger { background: #dcdde0; color: #b3123f; }
+html #app .c-modal .btn-modal:hover,
+html #app .c-modal .btn-modal.btn-danger:hover { background: #d81b55; color: #000; }
+html #app .c-modal .btn-modal.btn-danger:hover { background: #d81b55; color: #000; }
+html #app .c-modal .btn-modal:active,
+html #app .c-modal .btn-modal.btn-danger:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .c-modal .btn-modal.btn-secondary-modal { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; color: #0b0b0d !important; }
+html #app .c-modal .btn-modal.btn-secondary-modal:hover { background: #e6e7ea !important; color: #0b0b0d !important; }
+html #app .box-option,
+html #app .nearby-players .box-option { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d !important; }
+html #app .box-option i { color: #0b0b0d; }
+html #app .nearby-players .box-option:hover { background: #e6e7ea; border-color: #000; }
+html #app .nearby-players .box-option.selected,
+html #app .nearby-players .box-option.active { background: #dcdde0 !important; border-color: #d81b55 !important; box-shadow: inset 0 0 0 2px #d81b55 !important; color: #0b0b0d !important; }
+html #app .nearby-players .box-option .player-id-badge { background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html #app .nearby-players .box-option.selected .player-id-badge,
+html #app .nearby-players .box-option.active .player-id-badge { background: #d81b55; color: #000; }
+html #app .nearby-players .box-option .player-check-icon { color: #0b0b0d; }
+html #app .nearby-players .box-option.selected .player-check-icon,
+html #app .nearby-players .box-option.active .player-check-icon { color: #b3123f; }
+html #app .nearby-selection-bar { border-bottom-color: #000; }
+html #app .btn-select-all { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .btn-select-all:hover { background: #e6e7ea; color: #0b0b0d; }
+html #app .holder-item { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .holder-name { color: #0b0b0d; }
+/*  Los interruptores del cuadro de crear casa. */
+html #app .slider { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1px #000; }
+html #app .slider:before { background: #0b0b0d; }
+html #app input:checked + .slider { background: #d81b55; border-color: #000; }
+html #app input:checked + .slider:before { background: #000; }
+
+/* ── El ascensor ────────────────────────────────────────────────────── */
+html #app .elevator-container,
+html #app .houses,
+html #app .controls-container .controls { background: #c4c6ca; border-top-color: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html #app .elevator-container .title,
+html #app .houses .title { color: #0b0b0d; }
+html #app .elevator-container .title::after,
+html #app .houses .title::after { background: #d81b55; }
+html #app .elevator-container .elevator-button,
+html #app .elevator-container .elevator-button:hover:not(.selected) { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .elevator-container .elevator-button:hover:not(.selected) { background: #e6e7ea; }
+html #app .elevator-container .elevator-button span,
+html #app .elevator-container .elevator-button:hover:not(.selected) span { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html #app .elevator-container .elevator-button.selected { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .elevator-container .elevator-button.selected span { color: #000; }
+
+/* ── Avisos, rótulo de modo y ayuda de teclas ───────────────────────── */
+html #app .notifications .notification { background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+html #app .notifications .notification .name { color: #0b0b0d; }
+html #app .notifications .notification .message { color: #44444a; }
+html #app .title_h,
+html #app .creation-selector .content .title { background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+html #app .title_h h4 { color: #0b0b0d; }
+html #app .controls-container .title { background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 2px 2px 0 2.5px #000; color: #0b0b0d !important; }
+html #app .controls-container .controls .control .key { background: #0b0b0d; box-shadow: none; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html #app .controls-container .controls .control .desc { color: #0b0b0d; }
+html #app .loading-object { color: #0b0b0d; }
+
+/* ── El selector de interiores ──────────────────────────────────────── */
+html #app .creation-selector .content .item { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .creation-selector .content .item.selected { background: #dcdde0; border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .creation-selector .content .item .house_name { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .creation-selector .content .arrow { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+
+/* ── La lista de casas ──────────────────────────────────────────────── */
+html #app .houses .list .house { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .houses .list .house:hover { background: #e6e7ea; border-color: #000; }
+html #app .houses .list .house > .d-flex:first-child > i,
+html #app .houses .list .house:hover > .d-flex:first-child > i,
+html #app .houses .list .house.selected > .d-flex:first-child > i { color: #0b0b0d; }
+html #app .houses .list .house .info { color: #44444a; }
+html #app .houses .list .house .info .name { color: #0b0b0d; }
+html #app .houses .list .house .btn-action { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .houses .list .house .btn-action i { color: #0b0b0d; }
+html #app .houses .list .house .btn-action:hover { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .houses .list .house .btn-action:hover i { color: #000; }
+html #app .houses .no-houses { color: #44444a; }
+
+/* ══ 2 bis · EL PANEL DE ADMINISTRACIÓN, REPASO VISUAL (04/10) ═════════
+   El usuario lo vio en el juego: «está fatal: los botones de la izquierda,
+   las cards, todo». La primera pasada (bloque 2) solo cambió colores sobre
+   el armazón de la tablet; esta rehace las piezas para que el panel se lea
+   como los menús de riel del servidor:
+
+   - La barra izquierda es EL riel (64 px, placa y botones de 44, uno cada
+     51, rótulo vertical), no una columna de botones pegados.
+   - Las zonas (riel, cabecera, contenido y pie) son PANELES gris perla
+     #dcdde0 con canto de 4 y sombra dura de 7; lo de dentro (fichas,
+     contadores, campos) es papel blanco. El fondo de la página, un gris
+     frío más claro, de la misma familia: nada de crema.
+   - Cabecera: placa girada, entradilla en chapa negra, título en rótulo
+     grande y UN rótulo a brocha (data-brocha en el <h2>).
+   - Fichas: chapa negra para el tipo, título en dos renglones (no se corta
+     con «…»), los datos en una bandeja gris con la etiqueta en rótulo y el
+     valor a la derecha, el precio en chapa Oxanium y TRES botones de
+     verdad abajo (borrar, en rosa).
+   - Pie: contadores en Oxanium grande y un paginador con botones iguales.
+
+   Aquí SÍ se cambian medidas, y van en px como el riel de los menús
+   laterales (el panel entero ya se escala con --ogn-escala en 2K/4K).
+   Las piezas que solo existen para esto (placa de cabecera, estado vacío)
+   nacen ocultas en index.html y se enseñan desde aquí con !important: en
+   Nación no se ven. */
+
+/* ── El fondo y el reparto ──────────────────────────────────────────── */
+html #app .ogn-stage { --ogn-rail: 64px; }
+/*  Velo oscuro a pantalla completa (como el de la autoescuela): entre panel
+    y panel no se ve el juego. */
+html #app .ogn-stage__veil { background: #b9bbc0; }
+/*  Canto (4) y sombra (7) van por fuera de cada panel: entre dos hacen
+    falta 24 px para que se vea aire, y a la derecha y abajo el margen
+    tiene que dejar sitio a la sombra. */
+html #app .ogn-frame { padding: 18px 28px 28px 108px; gap: 24px; }
+/*  La caja del contenido recortaba el canto de los paneles de dentro; cada
+    uno rueda ya por su cuenta. */
+html #app .ogn-content { overflow: visible; }
+html #app .ogn-rail,
+html #app .ogn-head,
+html #app .ogn-bar,
+html #app .scripts-grid-container,
+html #app .hotel-creation-content,
+html #app .map-selected-house-panel {
+    border: 0;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+
+/* ── El riel: el mismo de los menús laterales, a la izquierda ───────── */
+html #app .ogn-rail { left: 20px; top: 18px; bottom: 28px; width: 64px; padding: 14px 0 16px; justify-content: flex-start; }
+html #app .ogn-rail__top { flex: 1 1 auto; gap: 0; }
+/*  La placa del panel de gestión: rosa, icono negro, canto fino y girada,
+    la misma de todos los paneles de gestión del servidor (la del inventario),
+    con su filete corto debajo. */
+html #app .ogn-rail__mark {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    padding: 0;
+    border-radius: 12px;
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-size: 19px;
+    line-height: 1;
+    color: #000;
+}
+html #app .ogn-rail__mark::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+/*  Sin las dos rayas de arriba y abajo, y sin recortar: la sombra dura del
+    botón encendido sale 3 px por fuera. */
+html #app .ogn-rail__nav { width: auto; padding: 7px 0 0; gap: 7px; border: 0; overflow: visible; }
+html #app .ogn-rail__it { width: 44px; height: 44px; padding: 0; border-radius: 10px; background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .ogn-rail__it i { font-size: 20px; line-height: 1; }
+html #app .ogn-rail__it:hover { background: #2a2a30; color: #fff; }
+html #app .ogn-rail__it.is-on,
+html #app .ogn-rail__it.is-on:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+/*  Con un formulario abierto los otros dos no llevan a ninguna parte:
+    apagados con forma de botón, no transparentes. */
+html #app .ogn-rail__it.is-mudo,
+html #app .ogn-rail__it.is-mudo:hover { opacity: 1; background: #c3c6cc; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #8a8d94; cursor: default; }
+html #app .ogn-rail__bar { display: none; }
+html #app .ogn-rail__foot { opacity: 1; gap: 0; }
+html #app .ogn-rail__dot { display: none; }
+html #app .ogn-rail__state,
+html #app .ogn-rail__foot.is-on .ogn-rail__state {
+    transform: rotate(180deg);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #0b0b0d;
+}
+html #app .ogn-tip { left: 100px; padding: 7px 12px 6px; font-size: 14px; letter-spacing: 0.08em; }
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html #app .ogn-head { min-height: 88px; padding: 14px 20px; gap: 18px; justify-content: flex-start; }
+html #app .ogn-head__placa {
+    display: grid !important;
+    place-items: center;
+    flex: none;
+    width: 52px;
+    height: 52px;
+    margin-left: 4px;
+    border-radius: 14px;
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-size: 22px;
+    line-height: 1;
+    color: #000;
+}
+html #app .ogn-head__title { flex: 1 1 auto; align-items: flex-start; gap: 6px; }
+/*  La entradilla, en chapa negra: dice en qué panel estás. */
+html #app .ogn-kicker {
+    padding: 2px 8px 1px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html #app .ogn-h2 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    overflow: visible;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 36px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+/*  La brocha, una sola por pantalla: rosa, contorno negro en ocho
+    direcciones y sombra dura, girada 3 grados (la de «Mochila personal»). */
+html #app .ogn-h2::after {
+    content: attr(data-brocha);
+    flex: none;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 26px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  Buscador y botones, del mismo alto y a la misma línea. */
+html #app .ogn-head__right { gap: 14px; padding-right: 4px; }
+html #app .ogn-search { width: 320px; height: 44px; padding: 0 14px; gap: 10px; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .ogn-search:focus-within { box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html #app .ogn-search i { flex: none; font-size: 15px; color: #0b0b0d; }
+html #app .ogn-search input,
+html #app .ogn-search input:focus {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #0b0b0d;
+}
+html #app .ogn-search input::placeholder { font-weight: 500; letter-spacing: 0; color: #73737c; }
+html #app .ogn-head .ogn-btn { display: inline-flex; align-items: center; height: 44px; padding: 0 18px; gap: 9px; border-radius: 12px; font-size: 17px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; }
+html #app .ogn-head .ogn-btn i { font-size: 14px; }
+
+/* ── El contenido: un panel con las fichas dentro ───────────────────── */
+/*  Rueda la rejilla, no el panel: así las fichas se cortan en el margen
+    de dentro y no contra el canto. */
+html #app .scripts-grid-container { display: flex; flex-direction: column; padding: 18px 12px 18px 18px; overflow: hidden; }
+html #app .hotels-grid { flex: 0 1 auto; min-height: 0; padding-right: 6px; overflow-y: auto; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+html #app .scripts-grid-container .pg-vacio { margin-right: 6px; }
+html #app .hotels-grid::-webkit-scrollbar,
+html #app .hotel-creation-content > .creation-body::-webkit-scrollbar { width: 8px; }
+html #app .hotels-grid::-webkit-scrollbar-track,
+html #app .hotel-creation-content > .creation-body::-webkit-scrollbar-track { border-radius: 4px; background: #c9ccd1; }
+html #app .hotels-grid::-webkit-scrollbar-thumb,
+html #app .hotel-creation-content > .creation-body::-webkit-scrollbar-thumb { border-radius: 4px; background: #0b0b0d; }
+
+/* ── Fichas de casa y de hotel ──────────────────────────────────────── */
+/*  No se pulsan (lo que se pulsa son sus botones): anillo sin sombra. */
+html #app .hotel-card,
+html #app .hotel-card:hover {
+    height: auto;
+    padding: 14px;
+    gap: 10px;
+    border: 0;
+    border-radius: 14px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    cursor: default;
+}
+html #app .hotel-card::before { display: none; }
+html #app .hotel-card .icon-section { padding: 0; }
+html #app .hotel-card .indicator { gap: 8px; }
+html #app .hotel-card .indicator .icon-container { width: 28px; height: 28px; border-radius: 8px; background: #0b0b0d; }
+html #app .hotel-card .indicator .icon,
+html #app .hotel-card:hover .indicator .icon { font-size: 13px; color: #fff; }
+html #app .hotel-card .indicator span { font-style: italic; font-weight: 800; font-size: 15px; line-height: 1; letter-spacing: 0.06em; color: #44444a; }
+html #app .hotel-card .label-section { padding: 0; }
+/*  El nombre entero, en dos renglones si hace falta: «North Rockford
+    Drive 1 | …» se cortaba a la mitad. */
+html #app .hotel-card .label-section .label-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-size: 25px;
+    line-height: 26px;
+    white-space: normal;
+    text-overflow: clip;
+    color: #0b0b0d;
+}
+html #app .hotel-card .card-content { gap: 12px; }
+/*  Los datos, en su bandeja: etiqueta en rótulo a la izquierda, valor a la
+    derecha, todas las filas del mismo alto. */
+html #app .hotel-card .card-stats { flex: none; margin-top: auto; padding: 4px 10px; gap: 0; border-radius: 10px; background: #c4c6ca; }
+html #app .hotel-card .stat-item { grid-template-columns: 16px auto minmax(0, 1fr); align-items: center; gap: 8px; min-height: 36px; padding: 0; }
+html #app .hotel-card .stat-icon { font-size: 12px; text-align: center; color: #0b0b0d; }
+html #app .hotel-card .stat-label { font-style: italic; font-weight: 800; font-size: 15px; line-height: 1; letter-spacing: 0.04em; color: #44444a; }
+html #app .hotel-card .stat-value { justify-self: end; max-width: 100%; font-size: 15px; line-height: 20px; text-align: right; color: #0b0b0d; }
+/*  El propietario se copia al pulsarlo: es un botón pequeño, no un enlace
+    subrayado. El subrayado y el icono van escritos en el propio elemento. */
+html #app .hotel-card .stat-value.btn-sound {
+    padding: 3px 8px 2px;
+    border-radius: 7px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-family: var(--peg-cifra);
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none !important;
+}
+html #app .hotel-card .stat-value.btn-sound:hover { background: #ffd6e4; }
+html #app .hotel-card .stat-value.btn-sound:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .hotel-card .stat-value.btn-sound i { margin-left: 5px !important; font-size: 11px !important; opacity: 1 !important; }
+html #app .hotel-card.es-casa .stat-item:nth-child(2) .stat-value:not(.btn-sound) { font-family: var(--ogn-rotulo); font-style: italic; font-weight: 700; font-size: 16px; color: #73737c; }
+html #app .hotel-card .stat-value.price {
+    padding: 3px 9px 2px;
+    border-radius: 7px;
+    background: #0b0b0d;
+    font-family: var(--peg-cifra);
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: #fff;
+}
+html #app .hotel-card.es-hotel .stat-value { font-family: var(--peg-cifra); font-weight: 800; font-size: 17px; }
+/*  Tres botones de verdad, con su hueco; borrar, el de peligro. */
+html #app .hotel-card .card-actions { gap: 9px; margin-top: 0; padding: 0 2px 2px 0; border: 0; background: none; box-shadow: none; }
+html #app .hotel-card .action-btn,
+html #app .hotel-card .action-btn:last-child {
+    height: 38px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html #app .hotel-card .action-btn i { font-size: 15px; }
+html #app .hotel-card .action-btn:hover { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .hotel-card .action-btn.delete,
+html #app .hotel-card .action-btn.delete:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #b3123f; }
+html #app .hotel-card .action-btn.delete:hover { background: #d81b55; color: #000; }
+html #app .hotel-card .action-btn:active,
+html #app .hotel-card .action-btn.delete:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Sin casas / sin resultados ─────────────────────────────────────── */
+html #app .pg-vacio {
+    display: flex !important;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 240px;
+    border: 2.5px dashed #0b0b0d;
+    border-radius: 14px;
+    background: #c4c6ca;
+    text-align: center;
+}
+html #app .pg-vacio__ico { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 6px; border-radius: 14px; background: #0b0b0d; font-size: 22px; color: #fff; }
+html #app .pg-vacio__t { font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 26px; line-height: 1; text-transform: uppercase; color: #0b0b0d; }
+html #app .pg-vacio__d { font-family: var(--ogn-texto); font-weight: 500; font-size: 15px; color: #44444a; }
+
+/* ── El pie: contadores y paginador ─────────────────────────────────── */
+html #app .ogn-bar { padding: 12px; gap: 12px; }
+html #app .ogn-bar__cell {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    height: 54px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html #app .ogn-bar__label { overflow: visible; font-style: italic; font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.05em; color: #44444a; }
+html #app .ogn-bar__value { overflow: visible; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 26px; line-height: 1; letter-spacing: 0; color: #0b0b0d; }
+html #app .hs-pager__row { gap: 10px; }
+html #app .hs-pager__row .ogn-bar__value { flex: none; min-width: 72px; font-size: 20px; }
+html #app .hs-pager__btn { width: 34px; height: 34px; border-radius: 10px; font-size: 13px; --sg-bg: #dcdde0; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; --sg-sh-on: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .hs-pager__btn:hover { --sg-bg: #e6e7ea; color: #0b0b0d; }
+/*  Sin página a la que ir: gris, con forma de botón, canto gris y sin
+    sombra (antes era el mismo botón al 35 %, una mancha sin borde). */
+html #app .hs-pager__btn.is-mudo,
+html #app .hs-pager__btn.is-mudo:hover { opacity: 1; --sg-bg: #e3e5e8; --sg-sh: inset 0 0 0 1.5px #9a9aa3; --sg-sh-on: inset 0 0 0 1.5px #9a9aa3; color: #9a9aa3; cursor: default; }
+
+/* ── Formularios (hotel nuevo, editar hotel, habitación nueva) ──────── */
+/*  El panel gris rueda; cada bloque es una hoja blanca con su canto. */
+html #app .hotel-creation-content { padding: 18px 12px 18px 18px; gap: 18px; overflow: hidden; }
+html #app .hotel-creation-content > .creation-body { flex: 1 1 auto; min-height: 0; padding-right: 6px; gap: 18px; overflow-y: auto; }
+html #app .form-section { padding: 18px 20px 20px; border: 0; border-radius: 14px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .form-section h3 {
+    margin: 0 0 16px;
+    padding-bottom: 11px;
+    gap: 10px;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: #0b0b0d;
+}
+html #app .form-section h3::after { height: 4px; border-radius: 2px; background: #d81b55; }
+html #app .form-section .badge { padding: 3px 9px 2px; border-radius: 7px; background: #0b0b0d; box-shadow: none; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 14px; letter-spacing: 0; color: #fff; }
+html #app .ogn-stage .form-group { margin-bottom: 16px; }
+html #app .form-section > .form-group:last-child,
+html #app .form-row .form-group { margin-bottom: 0; }
+html #app .form-row { gap: 18px; }
+html #app .ogn-stage .form-group label:not(.checkbox-label):not(.checkbox-clean) { margin-bottom: 7px; font-style: italic; font-weight: 800; font-size: 15px; line-height: 1; letter-spacing: 0.04em; color: #44444a; }
+/*  Los campos: papel con anillo, todos de 44 de alto. */
+html #app .ogn-stage .form-control,
+html #app .ogn-stage .form-group input.form-control,
+html #app .ogn-stage .form-group select.form-control,
+html #app .rental-option input.form-control {
+    height: 44px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    font-size: 16px;
+    color: #0b0b0d;
+}
+html #app .ogn-stage .form-control:focus,
+html #app .ogn-stage .form-group input.form-control:focus,
+html #app .ogn-stage .form-group select.form-control:focus,
+html #app .rental-option input.form-control:focus { border: 0; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; outline: none; }
+html #app .ogn-stage .form-control::placeholder { font-weight: 500; color: #9a9aa3; }
+html #app .field-hint { margin: 8px 0 0; font-family: var(--ogn-texto); font-weight: 500; font-size: 14px; line-height: 1.35; color: #55555c; }
+/*  Colocar con el láser: es un botón (abre el láser en el mundo), no una
+    zona de trazos. */
+html #app .btn-placement,
+html #app .btn-placement:hover {
+    width: calc(100% - 3px);
+    height: 46px;
+    padding: 0 18px;
+    gap: 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: #0b0b0d;
+}
+html #app .btn-placement:hover { background: #ffd6e4; }
+html #app .btn-placement:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .btn-placement i { font-size: 16px; }
+html #app .coords-display { min-height: 46px; padding: 0 8px 0 14px; gap: 8px; border: 0; border-radius: 10px; background: #c4c6ca; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .coords-values { gap: 7px; }
+html #app .coord-label { font-style: italic; font-weight: 800; font-size: 15px; letter-spacing: 0; color: #44444a; }
+html #app .coord-value { margin-right: 10px; font-family: var(--peg-cifra); font-weight: 800; font-size: 16px; color: #0b0b0d; }
+html #app .ogn-stage .btn-action,
+html #app .ogn-stage .btn-action:hover { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: 13px; color: #0b0b0d; }
+html #app .ogn-stage .btn-action:hover { background: #e6e7ea; }
+html #app .ogn-stage .btn-action:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  Las tarifas: tipo, precio y la duración en chapa. */
+html #app .rental-options { gap: 10px; margin-bottom: 16px; }
+html #app .rental-option { gap: 10px; }
+html #app .rental-option .duration { display: grid; place-items: center; flex: none; min-width: 110px; height: 44px; padding: 0 12px; border-radius: 10px; background: #0b0b0d; box-shadow: none; font-family: var(--peg-cifra); font-weight: 800; font-size: 15px; letter-spacing: 0; color: #fff; }
+/*  El interruptor. La hoja de serie lo enciende con :has(), que el
+    Chromium 103 del juego no entiende: el estado va también en la clase
+    `is-on` que pone index.html. */
+html #app .ogn-stage .checkbox-label,
+html #app .ogn-stage .checkbox-label:hover { padding: 0 14px 0 12px; height: 40px; gap: 10px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-style: italic; font-weight: 800; font-size: 15px; letter-spacing: 0.04em; color: #0b0b0d; }
+html #app .ogn-stage .checkbox-label:hover { background: #e6e7ea; }
+html #app .ogn-stage .checkbox-label::before { width: 36px; height: 20px; border: 0; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .ogn-stage .checkbox-label::after { left: 17px; width: 10px; height: 10px; background: #0b0b0d; }
+html #app .ogn-stage .checkbox-label.is-on::before { border: 0; background: #d81b55; }
+html #app .ogn-stage .checkbox-label.is-on::after { transform: translateY(-50%) translateX(16px); background: #000; }
+/*  Añadir una habitación: una bandeja gris dentro de la hoja. */
+html #app .add-room-form { margin-bottom: 16px; padding: 16px; border: 0; border-radius: 12px; background: #c4c6ca; }
+html #app .add-room-form .btn-confirm.w-100,
+html #app .add-room-form .btn-confirm.w-100:hover { width: calc(100% - 3px); height: 44px; padding: 0 18px; border-radius: 10px; font-size: 17px; }
+html #app .rooms-preview { gap: 8px; }
+html #app .room-preview { min-height: 46px; padding: 0 10px 0 14px; gap: 12px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .room-preview .room-number { min-width: 150px; font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 18px; text-transform: uppercase; color: #0b0b0d; }
+html #app .room-preview .room-ipl { font-family: var(--ogn-texto); font-weight: 600; font-size: 15px; color: #44444a; }
+html #app .room-preview .room-nodoor,
+html #app .room-preview .room-status { padding: 4px 9px 3px; border-radius: 7px; font-style: italic; font-weight: 800; font-size: 14px; line-height: 1; letter-spacing: 0.04em; }
+html #app .room-preview .room-nodoor { background: #c4c6ca; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #55555c; }
+html #app .room-preview .room-status.available { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html #app .room-preview .room-status.rented { background: #0b0b0d; box-shadow: none; color: #fff; }
+html #app .room-preview .room-actions { gap: 8px; }
+/*  El desplegable de interiores, a la medida de los campos. */
+html #app .ogn-select__control,
+html #app .ogn-select__control:hover { min-height: 44px; padding: 0 14px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--ogn-texto); font-weight: 600; font-size: 16px; letter-spacing: 0; text-transform: none; color: #0b0b0d; }
+html #app .ogn-select__control:hover { background: #e6e7ea; }
+html #app .ogn-select__control--on,
+html #app .ogn-select__control--on:hover { border: 0; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html #app .ogn-select__value { font-family: var(--ogn-texto); font-style: normal; font-weight: 600; font-size: 16px; letter-spacing: 0; text-transform: none; color: #0b0b0d; }
+html #app .ogn-select__panel { border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .ogn-select__option { font-family: var(--ogn-texto); font-weight: 600; font-size: 15px; letter-spacing: 0; text-transform: none; }
+
+/* ── El mapa ────────────────────────────────────────────────────────── */
+html #app .map-view-container { gap: 24px; overflow: visible; }
+/*  El mar de las teselas es de este azul: con el fondo crema, al alejar
+    el mapa quedaba un cuadro azul flotando en un papel. */
+html #app #housing-admin-map,
+html #app #housing-admin-map.leaflet-container { border: 0; border-radius: 20px; background: #0fa8d2 !important; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html #app #housing-admin-map::after { display: none; }
+html #app #housing-admin-map .leaflet-control-zoom a,
+html #app #housing-admin-map .leaflet-control-zoom a:hover {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 10px !important;
+    background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important;
+    font-size: 20px !important;
+    color: #0b0b0d !important;
+}
+html #app #housing-admin-map .leaflet-control-zoom a:hover { background: #e6e7ea !important; }
+html #app #housing-admin-map .leaflet-control-zoom a + a { margin-top: 8px; }
+html #app #housing-admin-map .leaflet-bottom.leaflet-right .leaflet-control-zoom { margin: 0 16px 16px 0; }
+html #app .map-house-marker .marker-circle { border: 1.5px solid #000; box-shadow: 2px 2px 0 #000; }
+html #app .map-house-marker.marker-available .marker-circle { background: #dcdde0; color: #0b0b0d; }
+html #app .map-house-marker.marker-rented .marker-circle { background: #d81b55; color: #000; }
+
+/*  La ficha de la casa elegida: panel gris, piezas blancas. Los estilos
+    de dentro van escritos en el propio elemento (style=""), pensados para
+    un fondo negro: solo se les gana con !important. */
+html #app .map-selected-house-panel { width: 440px; overflow: visible; }
+html #app .map-selected-house-panel .panel-compact-header { padding: 18px 64px 12px 18px; border: 0; box-shadow: none; }
+html #app .map-selected-house-panel .hotel-name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: normal;
+    color: #0b0b0d;
+}
+html #app .map-selected-house-panel .room-number-compact { gap: 8px !important; margin-top: 8px !important; }
+html #app .map-selected-house-panel .room-number-compact i { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: #0b0b0d; font-size: 13px; color: #fff; }
+html #app .map-selected-house-panel .room-number-compact span { font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 20px; line-height: 1; letter-spacing: 0; color: #0b0b0d; }
+html #app .map-selected-house-panel .btn-close-panel-x,
+html #app .map-selected-house-panel .btn-close-panel-x:hover { top: 18px !important; right: 18px !important; display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: 15px; color: #0b0b0d; }
+html #app .map-selected-house-panel .btn-close-panel-x:hover { background: #e6e7ea; }
+html #app .map-selected-house-panel .btn-close-panel-x:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html #app .map-selected-house-panel .panel-compact-body { padding: 4px 18px 18px !important; gap: 14px !important; }
+html #app .map-selected-house-panel .details-card,
+html #app .map-selected-house-panel .map-keys-card { padding: 6px 14px !important; gap: 0 !important; border: 0 !important; border-radius: 12px !important; background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .map-selected-house-panel .map-keys-card { padding: 12px 14px 14px !important; gap: 10px !important; }
+html #app .map-selected-house-panel .detail-item { min-height: 42px; padding: 0 !important; border-bottom: 2px solid #c4c6ca !important; }
+html #app .map-selected-house-panel .detail-item:last-child { border-bottom: 0 !important; }
+html #app .map-selected-house-panel .detail-label { font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: #44444a; }
+html #app .map-selected-house-panel .detail-value { font-family: var(--ogn-texto); font-weight: 600; font-size: 16px; color: #0b0b0d; }
+html #app .map-selected-house-panel .detail-item:first-child .detail-value { padding: 3px 9px 2px; border-radius: 7px; background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; font-size: 15px; color: #fff; }
+html #app .map-selected-house-panel .detail-item:nth-child(2) .detail-value { font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 17px; text-transform: uppercase; }
+html #app .map-selected-house-panel .detail-value.btn-sound { padding: 3px 8px 2px; border-radius: 7px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-cifra); font-weight: 800; font-size: 13px; text-decoration: none !important; }
+html #app .map-selected-house-panel .detail-value.btn-sound:hover { background: #ffd6e4; }
+html #app .map-selected-house-panel .detail-value.btn-sound i { margin-left: 5px !important; font-size: 11px !important; opacity: 1 !important; }
+html #app .map-selected-house-panel .btn-action-icon,
+html #app .map-selected-house-panel .btn-action-icon.delete,
+html #app .map-selected-house-panel .btn-action-icon:hover { display: grid; place-items: center; flex: none; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: 13px; color: #0b0b0d; }
+html #app .map-selected-house-panel .btn-action-icon:hover { background: #e6e7ea; }
+html #app .map-selected-house-panel .btn-action-icon.delete { background: #dcdde0; color: #b3123f; }
+html #app .map-selected-house-panel .btn-action-icon.delete:hover { background: #d81b55; color: #000; }
+html #app .map-selected-house-panel .btn-action-icon.delete:hover { background: #d81b55; }
+html #app .map-selected-house-panel .btn-action-icon:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  «Gestión de llaves»: rótulo con su filete rosa, como los de sección. */
+html #app .map-selected-house-panel .keys-card-header { padding-bottom: 9px !important; border-bottom: 4px solid #d81b55 !important; }
+html #app .map-selected-house-panel .keys-card-header > div { gap: 8px !important; font-style: italic; font-weight: 800; font-size: 19px !important; line-height: 1; letter-spacing: 0.02em; color: #0b0b0d !important; }
+html #app .map-selected-house-panel .keys-card-header > div i { font-size: 15px !important; color: #0b0b0d !important; }
+html #app .map-selected-house-panel .keys-list { gap: 7px !important; max-height: 250px !important; padding: 0 3px 3px 0 !important; }
+html #app .map-selected-house-panel .key-holder-item { min-height: 46px; padding: 0 9px 0 11px !important; border: 0 !important; border-radius: 10px !important; background: #c4c6ca !important; }
+html #app .map-selected-house-panel .key-holder-item i.fa-user-circle { font-size: 20px !important; color: #0b0b0d !important; }
+html #app .map-selected-house-panel .key-holder-item > div:first-child { gap: 10px !important; }
+html #app .map-selected-house-panel .key-holder-item > div:first-child span:first-child { font-family: var(--ogn-texto); font-weight: 700 !important; font-size: 15px !important; line-height: 18px; color: #0b0b0d !important; }
+html #app .map-selected-house-panel .key-holder-item > div:first-child span:last-child { font-family: var(--peg-cifra); font-weight: 800; font-size: 11px !important; line-height: 14px; color: #55555c !important; }
+html #app .map-selected-house-panel .badge-owner { padding: 4px 9px 3px; border-radius: 7px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 14px; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; color: #000; }
+html #app .map-selected-house-panel .keys-list > div:not(.key-holder-item) { padding: 16px 0 !important; border-radius: 10px; background: #c4c6ca; font-family: var(--ogn-rotulo) !important; font-style: italic; font-weight: 800; font-size: 16px !important; letter-spacing: 0.04em; color: #55555c !important; }
+/*  Las tres acciones: botones de verdad; borrar, el de peligro. */
+html #app .map-selected-house-panel .actions-grid { gap: 10px !important; padding: 0 3px 3px 0; }
+html #app .map-selected-house-panel .actions-grid .action-btn,
+html #app .map-selected-house-panel .actions-grid .action-btn:hover,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover {
+    flex-direction: row;
+    height: 44px;
+    padding: 0 8px;
+    gap: 8px;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: #0b0b0d;
+}
+html #app .map-selected-house-panel .actions-grid .action-btn.delete { background: #dcdde0; color: #b3123f; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover { background: #d81b55; color: #000; }
+html #app .map-selected-house-panel .actions-grid .action-btn i,
+html #app .map-selected-house-panel .actions-grid .action-btn:hover i,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete i,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover i { background: none; border: 0; font-size: 14px; color: inherit; }
+html #app .map-selected-house-panel .actions-grid .action-btn:hover { background: #e6e7ea; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete { background: #dcdde0; color: #b3123f; }
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:hover { background: #d81b55; color:#000; }
+html #app .map-selected-house-panel .actions-grid .action-btn:active,
+html #app .map-selected-house-panel .actions-grid .action-btn.delete:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Los cuadros (crear y editar casa, borrar, dueño, llaves) ───────── */
+html #app .c-modal { background: rgba(11, 11, 13, 0.55); }
+html #app .modal-content { border: 0; border-radius: 20px !important; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+/*  El título, con su filete rosa macizo debajo en vez de una raya de 1 px. */
+html #app .modal-header { margin: 0 24px; padding: 20px 0 12px !important; border-bottom: 4px solid #d81b55 !important; }
+html #app .c-modal .title { margin: 0; font-size: 32px; line-height: 1; color: #0b0b0d; }
+html #app .modal-body { padding: 16px 24px 20px; font-family: var(--ogn-texto); font-weight: 600; font-size: 18px; line-height: 1.35; color: #0b0b0d; }
+html #app .modal-body p { margin: 0; font-family: var(--ogn-texto); font-weight: 600; font-size: 16px !important; line-height: 1.35; color: #44444a !important; }
+html #app .modal-body p strong { font-family: var(--peg-cifra); font-weight: 800; font-size: 15px; color: #0b0b0d; }
+html #app .modal-body > p { margin: 4px 0 0; font-family: var(--ogn-texto); font-weight: 600; font-size: 18px !important; line-height: 1.35; color: #0b0b0d; }
+html #app .modal-footer { flex-wrap: nowrap; padding: 14px 27px 23px 24px; gap: 10px; border-top: 0; background: none; }
+html #app .modal-footer > * { margin: 0; }
+html #app .modal-footer > .d-flex { gap: 10px !important; }
+html #app .modal-body .ogn-label { display: block; margin-bottom: 7px; font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; color: #0b0b0d; }
+html #app .modal-body .form-group { margin-bottom: 0; }
+html #app .modal-body h4,
+html #app .modal-body h5 { margin-bottom: 7px; font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; color: #0b0b0d; }
+html #app .create-house .desc,
+html #app .modal-body .desc { display: block; font-family: var(--ogn-texto); font-weight: 500; font-size: 14px; line-height: 1.3; color: #55555c; }
+html #app .modal-body .form-control,
+html #app .modal-body input.form-control { height: 44px; padding: 0 14px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--ogn-texto); font-weight: 600; font-size: 16px; }
+html #app .modal-body .form-control:focus,
+html #app .modal-body input.form-control:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+/*  Las fichas de elección: pestañas pequeñas, la elegida en rosa. */
+html #app .c-modal .option,
+html #app .c-modal .option:hover,
+html #app .c-modal .option.active,
+html #app .c-modal .option.active:hover { height: 40px; margin: 0 10px 3px 0; padding: 0 14px; border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-style: italic; font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.04em; }
+html #app .c-modal .option i { font-size: 14px; }
+html #app .c-modal .option span { margin-left: 8px; }
+html #app .c-modal .option:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  Los interruptores. */
+html #app .c-modal .switch { width: 44px; height: 24px; }
+html #app .c-modal .slider { border: 0; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .c-modal .slider:before { left: 6px; bottom: 6px; width: 12px; height: 12px; background: #0b0b0d; }
+html #app .c-modal input:checked + .slider { border: 0; background: #d81b55; }
+html #app .c-modal input:checked + .slider:before { transform: translateX(20px); background: #000; }
+html #app .c-modal .box-option { height: 44px; padding: 0 14px; gap: 10px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .c-modal .box-option input,
+html #app .c-modal .box-option input:focus { flex: 1; min-width: 0; height: 100%; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; outline: none; }
+html #app .c-modal .box-option input { font-family: var(--ogn-texto); font-weight: 600; font-size: 16px; }
+html #app .c-modal .holder-item { min-height: 46px; margin-bottom: 7px !important; padding: 0 9px 0 12px; border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html #app .c-modal .holder-name { font-family: var(--ogn-texto); font-weight: 600; font-size: 15px; color: #0b0b0d; }
+html #app .c-modal .btn-action.danger,
+html #app .c-modal .btn-action.danger:hover { width: auto; min-width: 32px; padding: 0 9px; gap: 7px; background: #dcdde0; font-family: var(--ogn-rotulo); font-style: italic; font-weight: 800; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: #b3123f; }
+html #app .c-modal .btn-action.danger:hover { background: #d81b55; color: #000; }
+html #app .c-modal .btn-action.danger i { font-size: 13px; }
+/*  Los dos botones del pie, del mismo alto. */
+html #app .c-modal .btn-modal,
+html #app .c-modal .btn-cancel,
+html #app .c-modal .btn-confirm { flex: none; height: 44px; padding: 0 16px; white-space: nowrap; border-radius: 12px; font-size: 17px; line-height: 1; letter-spacing: 0.02em; }
+
+/* ── De paso, en «Tu vivienda» (menú del jugador) ───────────────────── */
+/*  La chapa del icono de cada fila (llaves, puertas…) salía en blanco con
+    el icono blanco: el tema le pone un degradado de papel como imagen de
+    fondo y tapaba el negro de la regla de arriba. Las miniaturas de los
+    cuadros sí usan la imagen de fondo: esas no se tocan. */
+html #app .rp-fila__ico:not(.vv-miniatura) { background-image: none; }
+/* ══ fin del repaso visual del panel de administración ═══════════════ */
+
+/* ══ 1 bis · LOS MENÚS DEL JUGADOR, REPASO VISUAL (04/10) ══════════════
+   Tu vivienda, decorar, recepción, habitación y comprar, al lado de los
+   menús de banda y de crew ya aprobados. Lo que se arregla en todos:
+     · bajo el título, el rótulo a brocha (el nombre de la casa o del hotel,
+       o el estado de la habitación) en vez de letra fina espaciada;
+     · contadores y datos en tarjetas: etiqueta arriba en rótulo gris,
+       cifra en Oxanium;
+     · rótulos de sección con filete rosa macizo;
+     · chapas de estado, botones pequeños y texto de fila en rótulo (cursiva
+       800), sin letra espaciada;
+     · el vacío, un hueco gris a trazos (antes una barra negra maciza);
+     · el pie sin filete a sangre, y el botón apagado en gris con forma de
+       botón (antes un rosa lavado).
+   El riel no se toca. Va después de «3 · Lo suelto» y de «2 bis» para
+   ganarles a igual peso.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Lo que solo existe con la pegatina ─────────────────────────────── */
+/*  En index.html nacen con `style="display: none"`: Nación no los ve. */
+html #app .rp-datos.peg-solo { display: grid !important; }
+html #app .rp-rotulo.peg-solo { display: flex !important; }
+html #app .peg-fuera { display: none; }
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html #app .rp-cab { align-items: flex-start; gap: 14px; padding: 2px 2px 0; }
+html #app .rp-badge { margin-top: 2px; }
+html #app .rp-cab__t { font-size: 40px; line-height: 0.9; }
+/*  El rótulo a brocha de «Decorar» pasa a todas las cabeceras con
+    subtítulo (tu vivienda, comprar): el mismo de «Mochila personal». */
+html #app .rp-cab__sub2,
+html #app .mb .rp-cab__sub2 {
+    align-self: flex-start;
+    max-width: 100%;
+    height: 22px;
+    margin: 7px 0 0 4px;
+    padding: 0 8px 4px 2px;
+    overflow: visible;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: none;
+    text-overflow: clip;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  Recepción y habitación no traen subtítulo: la brocha sale del
+    `data-brocha` del <h1> (el nombre del hotel; el estado de la habitación). */
+html #app .rp-cab__t[data-brocha] { display: flex; flex-direction: column; align-items: flex-start; overflow: visible; }
+html #app .rp-cab__t[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    height: 22px;
+    margin: 8px 0 0 4px;
+    padding-right: 8px;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0;
+    text-transform: capitalize;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  Lo de la derecha (hotel, plazo, precio): chapas negras, no letra fina.
+    El estado ya lo dice la brocha. */
+html #app .rp-cab__meta { flex: none; max-width: 46%; gap: 5px; padding-top: 3px; }
+html #app .rp-cab__nombre,
+html #app .rp-cab__sub {
+    max-width: 100%;
+    padding: 3px 9px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.15;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #fff;
+}
+html #app .rp-cab__sub:empty { display: none; }
+html #app .rp-cab__t[data-brocha] ~ .rp-cab__meta .rp-tag { display: none; }
+/*  El contador de la derecha, en su tarjeta (la «Reputación» de la crew). */
+html #app .rp-cuenta { flex-direction: column-reverse; align-items: flex-end; min-width: 76px; padding: 6px 11px 5px; border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .rp-cuenta__v { font-size: 22px; line-height: 24px; }
+html #app .rp-cuenta__k { font-style: italic; font-weight: 800; font-size: 12px; line-height: 1.1; letter-spacing: 0.03em; color: #55555c; }
+
+/* ── Tarjetas de datos: etiqueta arriba, cifra debajo ───────────────── */
+html #app .rp-datos { gap: 9px; }
+html #app .rp-dato { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 3px; min-height: 56px; padding: 8px 12px 8px; border-radius: 11px; }
+html #app .rp-dato b { font-size: 17px; line-height: 20px; color: #0b0b0d; text-transform: uppercase; white-space: normal; overflow: visible; }
+html #app .rp-dato b.available { color: #146636; }
+html #app .rp-dato b.rented { color: #0b0b0d; }
+html #app .rp-dato b.es-mia { color: #b3123f; }
+html #app .rp-dato i { margin: 0; font-style: italic; font-weight: 800; font-size: 12.5px; line-height: 1.1; letter-spacing: 0.03em; color: #55555c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Rótulos de sección: cursiva 800 y filete macizo ────────────────── */
+html #app .rp-rotulo { margin-top: 4px; font-size: 19px; letter-spacing: 0.03em; }
+html #app .rp-rotulo::after { height: 4px; border-radius: 2px; background: #d81b55; }
+/*  El de la lista de la recepción lleva la cuenta a la derecha. */
+html #app .rp-rotulo[data-cuenta]::before { content: attr(data-cuenta); display: block; position: static; order: 2; width: auto; height: auto; padding: 2px 8px; border-radius: 6px; background: #0b0b0d; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: 12px; line-height: 1.2; letter-spacing: 0; color: #fff; }
+/*  La barra de «Tu vivienda» y de «Decorar»: el mismo rótulo, con su
+    filete hasta los botones. */
+html #app .vv-barra { gap: 9px; margin-top: 2px; }
+html #app .vv-barra__t { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; font-size: 19px; line-height: 1; letter-spacing: 0.03em; white-space: nowrap; }
+html #app .vv-barra__t::after { content: ''; flex: 1; min-width: 12px; height: 4px; border-radius: 2px; background: #d81b55; }
+html #app .vv-ampliar { padding: 6px 11px; border-radius: 9px; font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 14px; line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; }
+html #app .vv-etq { font-style: italic; font-weight: 800; font-size: 14px; letter-spacing: 0.03em; color: #0b0b0d; }
+html #app .vv-kicker { font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 0.03em; }
+html #app .vv-nota,
+html #app .rp-aviso { font-family: var(--ogn-texto, "Barlow", sans-serif); font-weight: 600; font-size: 14px; line-height: 1.35; color: #0b0b0d; }
+
+/* ── Filas ──────────────────────────────────────────────────────────── */
+html #app .rp-lista { gap: 9px; }
+html #app .rp-cuerpo { gap: 11px; padding: 0 5px 6px 2px; margin: 0 -5px -6px -2px; }
+html #app .rp-fila__n { font-size: 16.5px; letter-spacing: 0.01em; }
+html #app .rp-fila__m { font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 13px; line-height: 1.15; letter-spacing: 0.03em; text-transform: uppercase; color: #55555c; }
+html #app .rp-precio { font-size: 16px; }
+/*  Las chapas de estado: libre en verde pálido, ocupada en negro, tuya en rosa. */
+html #app .rp-tag { padding: 4px 10px 3px; border-radius: 7px; font-style: italic; font-weight: 800; font-size: 13px; line-height: 1.15; letter-spacing: 0.03em; }
+html #app .rp-tag.available { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b4a26; }
+html #app .vv-cerrojo.available { background: #dcdde0; color: #0b0b0d; }
+/*  La casilla: una caja de verdad a la derecha, rosa con el visto negro. */
+html #app .rp-check { padding: 9px 12px 9px 14px; }
+html #app .rp-check__txt { flex: 1; order: 1; text-align: left; font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 15px; letter-spacing: 0.03em; text-transform: uppercase; }
+html #app .rp-check__ok { order: 2; flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 7px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-size: 12px; color: transparent; opacity: 1; }
+html #app .rp-check.on .rp-check__ok { background: #d81b55; color: #000; }
+html #app .rp-volver { font-size: 15px; letter-spacing: 0.03em; color: #0b0b0d; }
+/*  «Dar llave», «Crear puerta»…: un botón con canto y sombra. */
+html #app .vv-anadir { padding: 10px; border-radius: 11px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 16px; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; }
+html #app .vv-anadir:active { box-shadow: inset 0 0 0 1.5px #000; }
+html #app .vv-mini,
+html #app .vv-mas { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html #app .vv-mini:hover,
+html #app .vv-mas:hover { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html #app .vv-mini.es-mala:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html #app .vv-mini:active,
+html #app .vv-mas:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  El vacío: un hueco gris a trazos con el texto en rótulo. */
+html #app .rp-vacio { padding: 20px 16px; border: 2.5px dashed #8d9198; border-radius: 12px; background: #c4c6ca; box-shadow: none; font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 15px; line-height: 1.25; letter-spacing: 0.03em; text-transform: uppercase; color: #55555c; }
+
+/* ── El pie ─────────────────────────────────────────────────────────── */
+/*  Sin filete a sangre: los botones, con el mismo margen que lo demás. */
+html #app .rp-pie { margin: 8px 0 0; padding: 0 3px 3px 0; background: none; box-shadow: none; }
+html #app .rp-acciones { gap: 10px; }
+html #app .rp-btn,
+html #app .rp-confirmar { min-height: 44px; padding: 9px 10px; font-size: 17px; letter-spacing: 0.04em; }
+html #app .rp-pie > .rp-confirmar { width: 100%; }
+html #app .rp-btn:disabled,
+html #app .rp-confirmar:disabled { opacity: 1; }
+html #app .rp-btn:disabled,
+html #app .rp-btn:disabled:hover,
+html #app .rp-confirmar:disabled,
+html #app .rp-confirmar:disabled:hover { --sg-bg: #d3d6da; --sg-sh: inset 0 0 0 1.5px #8d9198; color: #8d9198; cursor: default; }
+html #app .rp-btn:disabled:active { transform: none; }
+/*  El de peligro (abandonar): pieza gris con letra rosa; rosa al pasar. Nada de rojo (07/10). */
+html #app .rp-btn.es-mala { --sg-bg: #dcdde0; --sg-sh: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #b3123f; }
+html #app .rp-btn.es-mala:hover { --sg-bg: #d81b55; color: #000; }
+
+/* ── Decorar ────────────────────────────────────────────────────────── */
+html #app .mb-cat__n { font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+
+/* ── Los cuadros de pago y los diálogos ─────────────────────────────── */
+/*  El cuadro, en gris perla como el panel; lo de dentro, blanco. Sin rayas
+    de canto a canto en cabecera y pie. */
+html #app .rp-modal-panel { background: #c4c6ca; }
+html #app .rp-modal-cab { border-bottom: 0; box-shadow: none; }
+html #app .rp-modal-pie { border-top: 0; box-shadow: none; }
+html #app .rp-modal-sub,
+html #app .rp-metodo-etq { font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; color: #55555c; }
+html #app .rp-modal-close { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+/*  «Dar llave»: la barra de selección sin raya fina y el botón apagado en gris. */
+html #app .nearby-selection-bar { border-bottom: 0; font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+/*  El de «Dar llaves» se apaga con una opacidad en línea (script.js). */
+html #app .c-modal #btn-give-keys[style*="0.7"] { opacity: 1 !important; background: #d3d6da; box-shadow: inset 0 0 0 1.5px #8d9198; color: #8d9198; }
+html #app .c-modal .btn-modal:disabled,
+html #app .c-modal .btn-modal:disabled:hover { opacity: 1; background: #d3d6da; box-shadow: inset 0 0 0 1.5px #8d9198; color: #8d9198; }
+
+/* ── Lo suelto sobre el juego, en gris perla ────────────────────────── */
+/*  El aviso, el rótulo de modo y la ayuda de teclas flotan sobre el juego:
+    contenedor gris perla, como el inventario; lo blanco, lo de dentro. */
+html #app .notifications .notification,
+html #app .title_h,
+html #app .creation-selector .content .title,
+html #app .controls-container .title { background: #c4c6ca; }
+/*  Sus títulos, en rótulo (antes letra fina espaciada). */
+html #app .elevator-container .title,
+html #app .houses .title { font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 19px; line-height: 1.1; letter-spacing: 0.03em; text-transform: uppercase; }
+html #app .elevator-container .title::after,
+html #app .houses .title::after { height: 4px; border-radius: 2px; }
+html #app .controls-container .title { font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 14px; letter-spacing: 0.03em; }
+html #app .controls-container .controls .control .desc { font-family: var(--inv-rotulo); font-style: italic; font-weight: 800; font-size: 14px; letter-spacing: 0.03em; text-transform: uppercase; }
+html #app .houses .list .house .btn-action { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+/* ══ fin del repaso visual de los menús del jugador ═══════════════════ */
+
+/* ── TRES FILAS DE FICHAS (04/10) ───────────────────────────────────────
+    La rejilla tiene el alto del panel: sin esto las filas ENCOGÍAN para
+    caber y los botones de cada ficha salían cortados (hoteles). Cada fila
+    mide lo que su ficha, y la ficha va más prieta para que entren tres
+    filas de cinco sin rueda. */
+html #app .hotels-grid { grid-auto-rows: max-content; align-content: start; gap: 14px; }
+html #app .scripts-grid-container { padding: 14px 8px 14px 14px; }
+html #app .hotel-card,
+html #app .hotel-card:hover { padding: 11px 12px 12px; gap: 7px; }
+html #app .hotel-card .card-content { gap: 8px; }
+html #app .hotel-card .label-section .label-text { font-size: 23px; line-height: 24px; }
+html #app .hotel-card .card-stats { padding: 2px 10px; }
+html #app .hotel-card .stat-item { min-height: 30px; }
+html #app .hotel-card .action-btn,
+html #app .hotel-card .action-btn:last-child { height: 34px; }
+
+
+/*  El filete de debajo de la placa iba girado con ella y a 4 px del primer
+    boton: derecho y con aire, como en el resto de paneles de gestion. */
+html #app .ogn-rail__mark { margin-bottom: 22px; }
+html #app .ogn-rail__mark::after { bottom: -15px; transform: translateX(-50%) rotate(5deg); }
+
+/* ── Cifras centradas (06/10) ───────────────────────────────────────────────
+   Teclas del aviso de controles y la chapa negra de la cabecera de recepción:
+   la letra quedaba 1 px alta (6 arriba / 8 abajo). El icono de copiar de la
+   chapa del propietario quedaba 1 px por debajo del texto. */
+html #app .controls-container .controls .control .key { padding-top: calc(0.2vh / var(--ogn-escala, 1) + 1px); padding-bottom: calc(0.2vh / var(--ogn-escala, 1) - 1px); }
+html #app .rp-cab__sub { padding: 4px 9px 2px; }
+html #app .hotel-card .stat-value.btn-sound i { position: relative; top: -1px; }
+
+/* ══ LA BARRA DE ABAJO (07/10) ══════════════════════════════════════════
+   Copia de origen_map/kit/barra-abajo.css (las interfaces Vite la importan
+   al compilar; esta página es HTML a pelo): si cambia una medida allí,
+   cambia aquí también. La unidad vale 1 px a 1920x1080, encoge en
+   pantallas más estrechas y, con la escala de >1080p, va dividida como el
+   resto de vh/vw de la página. */
+:root {
+    --bab-u: min(calc(100vh / var(--ogn-escala, 1) / 1080), calc(100vw / var(--ogn-escala, 1) / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-placa: calc(var(--bab-u) * 28);
+    --bab-placa-radio: calc(var(--bab-u) * 8);
+    --bab-placa-icono: calc(var(--bab-u) * 15);
+    --bab-titulo: calc(var(--bab-u) * 20);
+    --bab-titulo-max: calc(var(--bab-u) * 260);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-tecla-icono: calc(var(--bab-u) * 13);
+    --bab-dato: calc(var(--bab-u) * 12.5);
+    --bab-dato-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 8) calc(var(--bab-u) * 3);
+    --bab-dato-radio: calc(var(--bab-u) * 7);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/*  Los controles del editor de muebles (y de las cámaras): la barra de abajo
+    del servidor, en UNA línea fina centrada. Antes el rótulo iba en una
+    pastilla encima de las teclas (dos pisos); ahora va delante, con la placa
+    rosa, y un filete negro lo separa de las teclas. Pisa a las reglas de
+    arriba de esta hoja y de style.css (de ahí la clase doble). */
+html #app .controls-container.controls-container {
+    left: 50%;
+    right: auto;
+    bottom: var(--bab-abajo);
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--bab-hueco);
+    width: max-content;
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    white-space: nowrap;
+}
+html #app .controls-container.controls-container .title {
+    display: flex;
+    align-items: center;
+    gap: var(--bab-hueco);
+    margin: 0;
+    padding: 0 calc(var(--bab-u) * 3) 0 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-titulo);
+    line-height: 1;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: #0b0b0d !important;
+}
+html #app .controls-container.controls-container .title::before {
+    content: "\25C7";
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: var(--bab-placa);
+    height: var(--bab-placa);
+    border-radius: var(--bab-placa-radio);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+    font-style: normal;
+    font-size: var(--bab-placa-icono);
+    transform: rotate(-5deg);
+}
+html #app .controls-container.controls-container .controls {
+    flex-wrap: nowrap;
+    gap: var(--bab-hueco);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+html #app .controls-container.controls-container .title + .controls {
+    min-height: var(--bab-filete-alto);
+    padding-left: var(--bab-hueco);
+    border-left: 1.5px solid #000;
+}
+html #app .controls-container.controls-container .control { gap: var(--bab-hueco-tecla); }
+/*  La tecla y el gesto del ratón: chapa negra con la letra (o el dibujo) en
+    blanco y Oxanium. */
+html #app .controls-container.controls-container .control .key,
+html #app .controls-container.controls-container .control .mouse {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: auto;
+    min-width: var(--bab-tecla-min);
+    margin: 0;
+    padding: var(--bab-tecla-pad);
+    border: 0;
+    border-radius: var(--bab-tecla-radio);
+    background: #0b0b0d;
+    box-shadow: none;
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: var(--bab-tecla);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #fff;
+}
+html #app .controls-container.controls-container .control .key i { font-size: var(--bab-tecla-icono); }
+html #app .controls-container.controls-container .control .mouse img {
+    width: var(--bab-tecla-icono);
+    height: var(--bab-tecla-icono);
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+html #app .controls-container.controls-container .control .desc {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+    white-space: nowrap;
+}

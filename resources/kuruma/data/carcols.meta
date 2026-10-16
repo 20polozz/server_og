@@ -1,0 +1,2428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+    <Item>
+      <kitName>52368_kurumar_modkit</kitName>
+      <id value="52368" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>kurumar_bon1</modelName>
+          <modShopLabel>kurumar_bon1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_a</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_bon2</modelName>
+          <modShopLabel>kurumar_bon2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_a</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_bon3</modelName>
+          <modShopLabel>kurumar_bon3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_a</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_bon4</modelName>
+          <modShopLabel>kurumar_bon4</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_a</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_sunroof1</modelName>
+          <modShopLabel>kurumar_sunroof1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_g</Item>
+          <Item>misc_v</Item>
+		      </turnOffBones> 
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_sunroof2</modelName>
+          <modShopLabel>kurumar_sunroof2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_g</Item>
+          <Item>misc_v</Item>
+		      </turnOffBones> 
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_spoil1</modelName>
+          <modShopLabel>kurumar_spoil1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>kurumar_spoil2</modelName>
+          <modShopLabel>kurumar_spoil2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>kurumar_spoil3</modelName>
+          <modShopLabel>kurumar_spoil3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>kurumar_spoil4</modelName>
+          <modShopLabel>kurumar_spoil4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>kurumar_cage1</modelName>
+          <modShopLabel>kurumar_cage1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_cage2</modelName>
+          <modShopLabel>kurumar_cage2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>	
+        <Item>
+          <modelName>kurumar_mirror1a</modelName>
+          <modShopLabel>kurumar_mirror1a</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_mirror1b</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+      </Item>	
+        <Item>
+          <modelName>kurumar_mirror2a</modelName>
+          <modShopLabel>kurumar_mirror2a</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_mirror2b</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+      </Item>	
+        <Item>
+          <modelName>kurumar_mirror3a</modelName>
+          <modShopLabel>kurumar_mirror3a</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_mirror3b</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+      </Item>	
+        <Item>
+          <modelName>kurumar_bodykit1</modelName>
+          <modShopLabel>kurumar_bodykit1</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_kitarch1a</Item>
+          <Item>kurumar_kitarch1b</Item>
+          </linkedModels>
+          <turnOffBones>
+         	<Item>misc_m</Item>
+          <Item>misc_k</Item>
+          <Item>misc_j</Item>
+          <Item>misc_i</Item>
+		      </turnOffBones>  
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_bodykit2</modelName>
+          <modShopLabel>kurumar_bodykit2</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_kitarch2a</Item>
+          <Item>kurumar_kitarch2b</Item>
+          </linkedModels>
+          <turnOffBones>
+         	<Item>misc_m</Item>
+          <Item>misc_k</Item>
+          <Item>misc_j</Item>
+          <Item>misc_i</Item>
+		      </turnOffBones>  
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_bodykit3</modelName>
+          <modShopLabel>kurumar_bodykit3</modShopLabel>
+          <linkedModels>
+          <Item>kurumar_kitarch3a</Item>
+          <Item>kurumar_kitarch3b</Item>
+          </linkedModels>
+          <turnOffBones>
+         	<Item>misc_m</Item>
+          <Item>misc_k</Item>
+          <Item>misc_j</Item>
+          <Item>misc_i</Item>
+		      </turnOffBones>  
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_bodykit4</modelName>
+          <modShopLabel>kurumar_bodykit4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_m</Item>
+          <Item>misc_k</Item>
+          <Item>misc_j</Item>
+          <Item>misc_i</Item>
+		      </turnOffBones>  
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket1</modelName>
+          <modShopLabel>kurumar_bucket1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>kurumar_bucket2</modelName>
+          <modShopLabel>kurumar_bucket2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket3</modelName>
+          <modShopLabel>kurumar_bucket3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket4</modelName>
+          <modShopLabel>kurumar_bucket4</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket5</modelName>
+          <modShopLabel>kurumar_bucket5</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket6</modelName>
+          <modShopLabel>kurumar_bucket6</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket7</modelName>
+          <modShopLabel>kurumar_bucket7</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket8</modelName>
+          <modShopLabel>kurumar_bucket8</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket9</modelName>
+          <modShopLabel>kurumar_bucket9</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket10</modelName>
+          <modShopLabel>kurumar_bucket10</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket11</modelName>
+          <modShopLabel>kurumar_bucket11</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket12</modelName>
+          <modShopLabel>kurumar_bucket12</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket13</modelName>
+          <modShopLabel>kurumar_bucket13</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_bucket14</modelName>
+          <modShopLabel>kurumar_bucket14</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_dash1</modelName>
+          <modShopLabel>kurumar_dash1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_p</Item>
+		      </turnOffBones> 
+          <type>VMT_INTERIOR2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel1</modelName>
+          <modShopLabel>kurumar_stwheel1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel2</modelName>
+          <modShopLabel>kurumar_stwheel2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel3</modelName>
+          <modShopLabel>kurumar_stwheel3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>kurumar_stwheel4</modelName>
+          <modShopLabel>kurumar_stwheel4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel5</modelName>
+          <modShopLabel>kurumar_stwheel5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel6</modelName>
+          <modShopLabel>kurumar_stwheel6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel7</modelName>
+          <modShopLabel>kurumar_stwheel7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel8</modelName>
+          <modShopLabel>kurumar_stwheel8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel9</modelName>
+          <modShopLabel>kurumar_stwheel9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel10</modelName>
+          <modShopLabel>kurumar_stwheel10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel11</modelName>
+          <modShopLabel>kurumar_stwheel11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel12</modelName>
+          <modShopLabel>kurumar_stwheel12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel13</modelName>
+          <modShopLabel>kurumar_stwheel13</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel14</modelName>
+          <modShopLabel>kurumar_stwheel14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel15</modelName>
+          <modShopLabel>kurumar_stwheel15</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_stwheel16</modelName>
+          <modShopLabel>kurumar_stwheel16</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_speak1</modelName>
+          <modShopLabel>kurumar_speak1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_speak2</modelName>
+          <modShopLabel>kurumar_speak2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_speak3</modelName>
+          <modShopLabel>kurumar_speak3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_speak4</modelName>
+          <modShopLabel>kurumar_speak4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>kurumar_speak5</modelName>
+          <modShopLabel>kurumar_speak5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_antenna1</modelName>
+          <modShopLabel>kurumar_antenna1</modShopLabel> 
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_rspoil1</modelName>
+          <modShopLabel>kurumar_rspoil1</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_sunstrip1</modelName>
+          <modShopLabel>kurumar_sunstrip1</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_sunstrip2</modelName>
+          <modShopLabel>kurumar_sunstrip2</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_rscoop1</modelName>
+          <modShopLabel>kurumar_rscoop1</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust1</modelName>
+          <modShopLabel>kurumar_exhauust1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust2</modelName>
+          <modShopLabel>kurumar_exhauust2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust3</modelName>
+          <modShopLabel>kurumar_exhauust3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust4</modelName>
+          <modShopLabel>kurumar_exhauust4</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust5</modelName>
+          <modShopLabel>kurumar_exhauust5</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust6</modelName>
+          <modShopLabel>kurumar_exhauust6</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust7</modelName>
+          <modShopLabel>kurumar_exhauust7</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust8</modelName>
+          <modShopLabel>kurumar_exhauust8</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust9</modelName>
+          <modShopLabel>kurumar_exhauust9</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust10</modelName>
+          <modShopLabel>kurumar_exhauust10</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust11</modelName>
+          <modShopLabel>kurumar_exhauust11</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust12</modelName>
+          <modShopLabel>kurumar_exhauust12</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust13</modelName>
+          <modShopLabel>kurumar_exhauust13</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust14</modelName>
+          <modShopLabel>kurumar_exhauust14</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust15</modelName>
+          <modShopLabel>kurumar_exhauust15</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust16</modelName>
+          <modShopLabel>kurumar_exhauust16</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust17</modelName>
+          <modShopLabel>kurumar_exhauust17</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust18</modelName>
+          <modShopLabel>kurumar_exhauust18</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust19</modelName>
+          <modShopLabel>kurumar_exhauust19</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>
+        <Item>
+          <modelName>kurumar_exhauust20</modelName>
+          <modShopLabel>kurumar_exhauust20</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_l</Item>
+            <Item>exhaust</Item>
+            <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace1</modelName>
+          <modShopLabel>kurumar_brace1</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace2</modelName>
+          <modShopLabel>kurumar_brace2</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace3</modelName>
+          <modShopLabel>kurumar_brace3</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace4</modelName>
+          <modShopLabel>kurumar_brace4</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace5</modelName>
+          <modShopLabel>kurumar_brace5</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace6</modelName>
+          <modShopLabel>kurumar_brace6</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace7</modelName>
+          <modShopLabel>kurumar_brace7</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace8</modelName>
+          <modShopLabel>kurumar_brace8</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace9</modelName>
+          <modShopLabel>kurumar_brace9</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace10</modelName>
+          <modShopLabel>kurumar_brace10</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace11</modelName>
+          <modShopLabel>kurumar_brace11</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_brace12</modelName>
+          <modShopLabel>kurumar_brace12</modShopLabel> 
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges1</modelName>
+          <modShopLabel>kurumar_gauges1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges2</modelName>
+          <modShopLabel>kurumar_gauges2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges3</modelName>
+          <modShopLabel>kurumar_gauges3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges4</modelName>
+          <modShopLabel>kurumar_gauges4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges5</modelName>
+          <modShopLabel>kurumar_gauges5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges6</modelName>
+          <modShopLabel>kurumar_gauges6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges7</modelName>
+          <modShopLabel>kurumar_gauges7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges8</modelName>
+          <modShopLabel>kurumar_gauges8</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges9</modelName>
+          <modShopLabel>kurumar_gauges9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges10</modelName>
+          <modShopLabel>kurumar_gauges10</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges11</modelName>
+          <modShopLabel>kurumar_gauges11</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges12</modelName>
+          <modShopLabel>kurumar_gauges12</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges13</modelName>
+          <modShopLabel>kurumar_gauges13</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges14</modelName>
+          <modShopLabel>kurumar_gauges14</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+            <Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>kurumar_gauges15</modelName>
+          <modShopLabel>kurumar_gauges15</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>			
+      </visibleMods>
+      <linkMods>
+        <Item>
+          <modelName>kurumar_kitarch1a</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_kitarch1b</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+        <modelName>kurumar_kitarch2a</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_kitarch2b</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+        <modelName>kurumar_kitarch3a</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_kitarch3b</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_mirror1b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_mirror2b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>kurumar_mirror3b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>			
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+				<Item>
+          <identifier />
+          <modifier value="5" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+      </statMods>
+      <slotNames />
+      <liveryNames>
+      </liveryNames>
+    </Item>
+  </Kits>
+</CVehicleModelInfoVarGlobal>

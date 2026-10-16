@@ -1,0 +1,3025 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+      <Item>
+      <kitName>804_gbnexusrr_modkit</kitName>
+      <id value="804" />	 	  
+      <kitType>MKT_SPORT</kitType>
+	  <visibleMods>
+	  <!--FRONT BUMPERS-->
+		<Item>
+          <modelName>gbnexusrr_misc_f_0_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_01</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_0_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_02</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_12</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_14</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_16</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_18</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_19</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_20</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_21</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_22</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_23</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPER_24</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_canard_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+	  <!--FRONT WIDEBODIES-->
+		<Item>
+          <modelName>gbnexusrr_misc_f_0_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_01</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_0_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_02</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_3</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_5</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_7</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_stock</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_11</modShopLabel>
+          <linkedModels>
+			<Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_stock</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_13</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_1_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_15</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_17</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_2_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_19</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_type_s</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_21</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_f_3_type_s_p</modelName>
+          <modShopLabel>NEXUSRR_FBUMPERWIDE_23</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_f_universal</Item>
+			<Item>gbnexusrr_fender_f_type_s</Item>
+			<Item>gbnexusrr_fender_f_dside</Item>
+			<Item>gbnexusrr_fender_f_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_f</Item>
+			<Item>misc_y</Item>
+			<Item>misc_w</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--REAR BUMPERS-->
+		<Item>
+          <modelName>gbnexusrr_misc_r_1_stock</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_2_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_3_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_4_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_5_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_6_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_7_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_8_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_9_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_10_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+	  <!--REAR WIDEBODIES-->
+		<Item>
+          <modelName>gbnexusrr_misc_r_0_stock</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_0</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_stock</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_1_stock</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_stock</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_2_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_3_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_3</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_4_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_4</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_5_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_5</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_6_gt</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_6</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_gt</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_gt</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_7_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_7</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_8_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_8</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_9_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_r_10_race</modelName>
+          <modShopLabel>NEXUSRR_RBUMPERWIDE_10</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_q_race</Item>
+			<Item>gbnexusrr_fender_r_universal</Item>
+			<Item>gbnexusrr_fender_r_race</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_q</Item>
+			<Item>platelight</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--DOOR HANDLES-->
+		<Item>
+          <modelName>gbnexusrr_misc_c_1_dside</modelName>
+          <modShopLabel>NEXUSRR_DHANDLES_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_d_1_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_c_2_dside</modelName>
+          <modShopLabel>NEXUSRR_DHANDLES_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_d_2_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--MIRRORS-->
+		<Item>
+          <modelName>gbnexusrr_misc_a_1_dside</modelName>
+          <modShopLabel>NEXUSRR_MIRRORS_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_b_1_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_a_2_dside</modelName>
+          <modShopLabel>NEXUSRR_MIRRORS_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_misc_b_2_pside</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--FUEL CELL-->
+		<Item>
+          <modelName>gbnexusrr_fuel_cell</modelName>
+          <modShopLabel>NEXUSRR_FUELCELL_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--SKIRTS-->
+		<Item>
+          <modelName>gbnexusrr_misc_s_1</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_2</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_3</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_4</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_5</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_6</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_s_7</modelName>
+          <modShopLabel>NEXUSRR_SKIRT_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--SPLITTERS-->
+		<Item>
+          <modelName>gbnexusrr_splitter_1</modelName>
+          <modShopLabel>NEXUSRR_SPLITTER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_splitter_2</modelName>
+          <modShopLabel>NEXUSRR_SPLITTER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_splitter_3</modelName>
+          <modShopLabel>NEXUSRR_SPLITTER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_splitter_4</modelName>
+          <modShopLabel>NEXUSRR_SPLITTER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_splitter_5</modelName>
+          <modShopLabel>NEXUSRR_SPLITTER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--SPOILERS-->
+		<Item>
+          <modelName>gbnexusrr_spoiler_1</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_spoiler_1_pt2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_2</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbnexusrr_spoiler_2_pt2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_3</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_4</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_5</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_6</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_7</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_8</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_spoiler_9</modelName>
+          <modShopLabel>NEXUSRR_SPOILER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--ROOFS-->
+		<Item>
+          <modelName>gbnexusrr_misc_t_1</modelName>
+          <modShopLabel>NEXUSRR_ROOF_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_t_2</modelName>
+          <modShopLabel>NEXUSRR_ROOF_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--HOODS-->
+		<Item>
+          <modelName>gbnexusrr_misc_h_1</modelName>
+          <modShopLabel>NEXUSRR_HOOD_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_2</modelName>
+          <modShopLabel>NEXUSRR_HOOD_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_3</modelName>
+          <modShopLabel>NEXUSRR_HOOD_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_4</modelName>
+          <modShopLabel>NEXUSRR_HOOD_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_5</modelName>
+          <modShopLabel>NEXUSRR_HOOD_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_6</modelName>
+          <modShopLabel>NEXUSRR_HOOD_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_7</modelName>
+          <modShopLabel>NEXUSRR_HOOD_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_8</modelName>
+          <modShopLabel>NEXUSRR_HOOD_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_9</modelName>
+          <modShopLabel>NEXUSRR_HOOD_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_10</modelName>
+          <modShopLabel>NEXUSRR_HOOD_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_11</modelName>
+          <modShopLabel>NEXUSRR_HOOD_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbnexusrr_misc_h_12</modelName>
+          <modShopLabel>NEXUSRR_HOOD_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  
+	  <!--LIVERIES-->
+	    <Item>
+		  <modelName>gbnexusrr_livery_1</modelName>
+          <modShopLabel>NEXUSRR_LIV1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_2</modelName>
+          <modShopLabel>NEXUSRR_LIV2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_3</modelName>
+          <modShopLabel>NEXUSRR_LIV3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_4</modelName>
+          <modShopLabel>NEXUSRR_LIV4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_5</modelName>
+          <modShopLabel>NEXUSRR_LIV5</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_6</modelName>
+          <modShopLabel>NEXUSRR_LIV6</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_7</modelName>
+          <modShopLabel>NEXUSRR_LIV7</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_8</modelName>
+          <modShopLabel>NEXUSRR_LIV8</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_9</modelName>
+          <modShopLabel>NEXUSRR_LIV9</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_10</modelName>
+          <modShopLabel>NEXUSRR_LIV10</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>gbnexusrr_livery_11</modelName>
+          <modShopLabel>NEXUSRR_LIV11</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+	  </visibleMods>
+      <linkMods>
+			<Item>
+	          <modelName>gbnexusrr_spoiler_1_pt2</modelName>
+	          <bone>chassis</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_spoiler_2_pt2</modelName>
+	          <bone>chassis</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_b_1_pside</modelName>
+	          <bone>door_pside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_b_2_pside</modelName>
+	          <bone>door_pside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_d_1_pside</modelName>
+	          <bone>door_pside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_d_2_pside</modelName>
+	          <bone>door_pside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_q_gt</modelName>
+	          <bone>bumper_r</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_misc_q_race</modelName>
+	          <bone>bumper_r</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_r_universal</modelName>
+	          <bone>chassis</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_r_stock</modelName>
+	          <bone>bumper_r</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_r_gt</modelName>
+	          <bone>bumper_r</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_r_race</modelName>
+	          <bone>bumper_r</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_f_universal</modelName>
+	          <bone>chassis</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_f_stock</modelName>
+	          <bone>bumper_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_f_type_s</modelName>
+	          <bone>bumper_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_f_dside</modelName>
+	          <bone>door_dside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_fender_f_pside</modelName>
+	          <bone>door_pside_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_canard_1</modelName>
+	          <bone>bumper_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+			<Item>
+	          <modelName>gbnexusrr_canard_2</modelName>
+	          <bone>bumper_f</bone>
+	          <turnOffExtra value="false" />
+        	</Item>
+	  </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="5" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+         <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<!--<Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>-->
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+		<Item>
+          <slot>VMT_BUMPER_R</slot>
+          <name>Splitters</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_L</slot>
+          <name>Mirrors</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_R</slot>
+          <name>Door Handles</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS</slot>
+          <name>Fuel Cell</name>
+        </Item>
+		<Item>
+          <slot>VMT_EXHAUST</slot>
+          <name>Rear Bumpers and Widebodies</name>
+        </Item>
+		<Item>
+          <slot>VMT_BUMPER_F</slot>
+          <name>Front Bumpers and Widebodies</name>
+        </Item>
+      </slotNames>
+      <liveryNames />
+    </Item>
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

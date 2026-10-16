@@ -1,0 +1,2268 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 230, 231, 234;
+    --arc-t-papel2: 230, 231, 234;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ORIGEN CARBOOSTING · estilo claro «HUD Arcade»
+
+   Esta hoja va LA ÚLTIMA (después de style.css y de ogn-admin.css) y repinta
+   el recurso entero en papel crema: mismos selectores, otros valores. No
+   cambia la maquetación, ni la lógica, ni los textos.
+
+   ¿Por qué una hoja aparte y no editar style.css?
+   Porque style.scss está MUY desfasado (no contiene ninguna de las pantallas
+   actuales: ops-*, market-v2, ranking-v2, el aviso de contrato…). El .css es
+   el que manda. Teniendo la conversión aquí, si algún día alguien recompila
+   el SCSS solo se pierde lo que ya estaba perdido, no esto.
+
+   Reglas: nada de backdrop-filter (en la NUI pinta una banda negra); un solo
+   botón rosa por pantalla (el que confirma); el rosa no decora.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ══ 1 · Los tokens ═══════════════════════════════════════════════════════ */
+:root {
+    /* Los del estilo claro, tal cual vienen de origen_inventory/arcade.css */
+    --arc-accent: #df2f63;
+    --arc-accent-deep: #b3123f;
+    --arc-grad: linear-gradient(160deg, #df2f63 0%, #d81b55 100%);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #3b352a;
+    --arc-ink-3: #6b6352;
+    --arc-ink-4: #6f6857;
+    --arc-edge: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --arc-glass: linear-gradient(160deg, rgba(230, 231, 234, 0.9) 0%, rgba(230, 231, 234, 0.82) 45%, rgba(220, 221, 224, 0.88) 100%);
+    --arc-skew: skewX(-10deg);
+    --arc-unskew: skewX(10deg);
+    --arc-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --arc-text: "Barlow", "Segoe UI", sans-serif;
+    --arc-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /* Papel sólido: lo que se ve conduciendo no puede ser translúcido. */
+    --arc-paper: #e6e7ea;
+    --arc-paper-2: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    --arc-paper-3: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    --arc-sunken: rgba(var(--arc-t-relieve), 0.1);
+    --arc-line: rgba(var(--arc-t-relieve), 0.3);
+    --arc-line-soft: rgba(var(--arc-t-relieve), 0.18);
+    --arc-line-hi: rgba(var(--arc-t-relieve), 0.46);
+
+    /* Relieve: crema hacia arriba, canto de sombra abajo. */
+    --arc-relief: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.4);
+    --arc-relief-lg: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    --arc-relief-acc: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 3px 0 var(--arc-accent-deep);
+    --arc-relief-acc-lg: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 5px 0 var(--arc-accent-deep);
+    --arc-shadow: 0 18px 40px rgba(60, 50, 30, 0.28);
+
+    /* Datos: dos familias distinguibles entre sí, no todo rosa. */
+    --arc-vehicle: #1d4f8a;
+    --arc-vehicle-bg: rgba(29, 79, 138, 0.12);
+    --arc-vehicle-line: rgba(29, 79, 138, 0.38);
+    --arc-object: #6b2f8a;
+    --arc-object-bg: rgba(107, 47, 138, 0.12);
+    --arc-object-line: rgba(107, 47, 138, 0.38);
+
+    /* ── Los nombres de siempre, apuntando al estilo claro ─────────────── */
+    --ogn-rotulo: var(--arc-cond);
+    --ogn-texto: var(--arc-text);
+    --ogn-mono: var(--arc-mono);
+
+    --ogn-bg: #dcdde0;
+    --ogn-veil: var(--arc-paper);
+    --ogn-fg: var(--arc-ink);
+    --ogn-acc: var(--arc-accent);
+    --ogn-acc-rgb: 223, 47, 99;
+    --ogn-acc-soft: #ff4f80;
+    --ogn-acc-pale: var(--arc-accent-deep);
+    --ogn-acc-deep: var(--arc-accent-deep);
+
+    --ogn-surface: var(--arc-paper-3);
+    --ogn-surface-hi: var(--arc-paper-2);
+    --ogn-surface-on: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    --ogn-sunken: rgba(255, 255, 255, calc(0.66 * var(--arc-vf)));
+
+    --ogn-line: var(--arc-line);
+    --ogn-line-soft: var(--arc-line-soft);
+    --ogn-line-hi: var(--arc-line-hi);
+
+    --ogn-t1: var(--arc-ink);
+    --ogn-t2: var(--arc-ink-2);
+    --ogn-t3: var(--arc-ink-3);
+    --ogn-t4: #8a8270;
+
+    --ogn-ok: #0f5c31;
+    --ogn-warn: #8a5a00;
+    --ogn-bad: var(--arc-accent-deep);
+    --ogn-info: var(--arc-vehicle);
+
+    --ogn-r: 12px;
+    --ogn-r-zona: 12px;
+    --ogn-r-ctrl: 6px;
+    --ogn-r-pill: 6px;
+
+    /* Los viejos de todo, que el segundo :root de style.css devolvía al negro */
+    --main-background: var(--arc-paper-2);
+    --color-acent: var(--arc-line-hi);
+    --text-white: var(--arc-ink);
+    --primary-color: var(--arc-paper-2);
+    --bg-dark: var(--arc-paper);
+    --bg-panel: var(--arc-paper);
+    --border-color: var(--arc-line-hi);
+    --border-subtle: var(--arc-line);
+    --color-danger: var(--arc-accent-deep);
+}
+
+/* ══ 2 · La capa base ═════════════════════════════════════════════════════ */
+body {
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+}
+
+/* Los pesos que el fichero viejo imponía con !important ya están quitados de
+   style.css; aquí solo se fija el de los títulos. */
+.container .create-menu .management .header .title,
+.container .create-menu .management.management-v2 .header .title,
+.container .ranking-menu .ranking .header .title {
+    font-weight: 800;
+}
+
+*::-webkit-scrollbar {
+    width: calc(0.5vh / var(--ogn-escala, 1));
+    height: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:active {
+    background: rgba(var(--arc-t-relieve), 0.38);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover { background: rgba(var(--arc-t-relieve), 0.55); }
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track:hover,
+*::-webkit-scrollbar-track:active {
+    background: rgba(var(--arc-t-relieve), 0.12);
+    border-radius: 999px;
+}
+
+::selection {
+    background: rgba(223, 47, 99, 0.22);
+    color: var(--arc-ink);
+}
+
+/* El fondo del recurso: papel, no noche. */
+.container {
+    background: var(--arc-fondo2, #dcdde0);
+}
+
+.container .effects {
+    background:
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(255, 255, 255, calc(0 * var(--arc-vf))) 55%),
+        radial-gradient(circle at 82% 86%, rgba(223, 47, 99, 0.1), rgba(255, 255, 255, calc(0 * var(--arc-vf))) 55%),
+        linear-gradient(160deg, var(--arc-fondo1, #e6e7ea)) 0%, var(--arc-fondo2, #dcdde0) 55%, var(--arc-fondo2, #e4dbc8) 100%;
+}
+
+/* El rótulo de sección: cursiva 800 + la raya que se apaga. */
+.container .boosting.boosting-v2 .ops-title::after {
+    content: "";
+    flex: 1;
+    height: 2px;
+    margin-left: calc(0.8vh / var(--ogn-escala, 1));
+    background: linear-gradient(90deg, var(--arc-accent) 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, transparent 100%);
+}
+
+/* ══ 3 · El menú de contratos (lo que ve el jugador) ══════════════════════ */
+.container .boosting.boosting-v2 {
+    --hub-primary: var(--arc-line);
+    --hub-accent: var(--arc-line-hi);
+    --hub-panel: var(--arc-paper-2);
+    --hub-panel-2: var(--arc-paper-3);
+    --hub-border: var(--arc-line);
+    --hub-dashed: var(--arc-line-soft);
+    --hub-text-soft: var(--arc-ink-3);
+    --hub-text-main: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .ops-card {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+/* ── La ficha del agente ─────────────────────────────────────────────────── */
+.container .boosting.boosting-v2 .agent-card .agent-banner {
+    border: 1px solid var(--arc-line);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+}
+
+.container .boosting.boosting-v2 .agent-meta .profile-name .name-text {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .agent-meta .prestige-badge {
+    border-radius: var(--ogn-r-ctrl);
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.container .boosting.boosting-v2 .agent-stats .mini-stat {
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+}
+
+.container .boosting.boosting-v2 .agent-stats .mini-stat .k,
+.container .boosting.boosting-v2 .agent-ranks .rank-line span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .agent-stats .mini-stat strong,
+.container .boosting.boosting-v2 .agent-ranks .rank-line strong {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .boosting.boosting-v2 .agent-ranks {
+    background: var(--arc-paper-3);
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.container .boosting.boosting-v2 .agent-ranks .rank-line {
+    border-bottom: 1px solid var(--arc-line-soft);
+}
+
+/* ── Últimos movimientos ─────────────────────────────────────────────────── */
+.container .boosting.boosting-v2 .movement-card {
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+}
+
+.container .boosting.boosting-v2 .movement-type,
+.container .boosting.boosting-v2 .movement-id {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .movement-id {
+    font-family: var(--arc-mono);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+}
+
+.container .boosting.boosting-v2 .movement-name {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .movement-metrics .m {
+    background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+}
+
+.container .boosting.boosting-v2 .movement-metrics .m span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .movement-metrics .m strong {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ── El rótulo de cada bloque ────────────────────────────────────────────── */
+.container .boosting.boosting-v2 .ops-title {
+    display: flex;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) 0 calc(0.5vh / var(--ogn-escala, 1)) 0;
+    min-height: calc(3vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .ops-title iconify-icon {
+    color: var(--arc-accent);
+    flex: none;
+}
+
+.container .boosting.boosting-v2 .board-title {
+    align-items: center;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+}
+
+.container .boosting.boosting-v2 .board-title.split .ops-title { flex: 1; }
+
+/* El enlace al mercado: papel, no rosa (el rosa es el que confirma). */
+.container .boosting.boosting-v2 .market-inline {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    padding: calc(0.45vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    margin-right: calc(0.4vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    box-shadow: var(--arc-relief);
+    transform: var(--arc-skew);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.container .boosting.boosting-v2 .market-inline span {
+    display: inline-block;
+    transform: var(--arc-unskew);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--arc-ink-2);
+}
+
+.container .boosting.boosting-v2 .market-inline:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+/* ── La franja de arriba ─────────────────────────────────────────────────── */
+.container .boosting.boosting-v2 .ops-hud {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .boosting.boosting-v2 .ops-balance {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    transform: var(--arc-skew);
+    margin: 0 calc(0.6vh / var(--ogn-escala, 1));
+    cursor: pointer;
+}
+
+.container .boosting.boosting-v2 .ops-balance iconify-icon {
+    transform: var(--arc-unskew);
+    color: var(--arc-accent-texto);
+}
+
+.container .boosting.boosting-v2 .ops-balance span {
+    display: inline-block;
+    transform: var(--arc-unskew);
+    font-family: var(--arc-mono);
+    letter-spacing: 0.04em;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .boosting.boosting-v2 .ops-progress .progress-module {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.container .boosting.boosting-v2 .ops-progress .progress-type-icon {
+    border-radius: 5px;
+    border: 1px solid var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+    color: var(--arc-vehicle);
+}
+
+.container .boosting.boosting-v2 .ops-progress .progress-type-icon.vehicle {
+    color: var(--arc-vehicle);
+    background: var(--arc-vehicle-bg);
+    border-color: var(--arc-vehicle-line);
+}
+
+.container .boosting.boosting-v2 .ops-progress .progress-type-icon.object {
+    color: var(--arc-object);
+    background: var(--arc-object-bg);
+    border-color: var(--arc-object-line);
+}
+
+.container .boosting.boosting-v2 .ops-progress .rank-rail-current,
+.container .boosting.boosting-v2 .ops-progress .rank-rail-next {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--arc-ink-2);
+}
+
+.container .boosting.boosting-v2 .ops-progress .progressbar {
+    border: 1px solid var(--arc-line-soft);
+    background: rgba(var(--arc-t-relieve), 0.14);
+    border-radius: 999px;
+}
+
+.container .boosting.boosting-v2 .ops-progress .progress-module:first-child .progressbar .progress,
+.container .boosting.boosting-v2 .ops-progress .progress-module:last-child .progressbar .progress {
+    background: var(--arc-grad);
+}
+
+.container .boosting.boosting-v2 .ops-progress .xp-row span { color: var(--arc-ink-3); }
+.container .boosting.boosting-v2 .ops-progress .xp-row strong {
+    color: var(--arc-ink);
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Los dos botones de la franja: papel. El rosa de esta pantalla es el de
+   comprar en cada contrato. Fichar lleva color de estado, que eso sí es
+   un estado de verdad. */
+.container .boosting.boosting-v2 .ops-actions { gap: calc(1vh / var(--ogn-escala, 1)); }
+
+.container .boosting.boosting-v2 .ops-actions .hud-btn {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.02vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    transform: var(--arc-skew);
+    transition: box-shadow 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.container .boosting.boosting-v2 .ops-actions .hud-btn > * { transform: var(--arc-unskew); }
+
+.container .boosting.boosting-v2 .ops-actions .hud-btn iconify-icon { color: var(--arc-ink-3); }
+
+.container .boosting.boosting-v2 .ops-actions .hud-btn:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .boosting.boosting-v2 .ops-actions .queue-btn.is-off-duty {
+    background: rgba(15, 92, 49, 0.12);
+    border-color: rgba(15, 92, 49, 0.4);
+    color: #0f5c31;
+}
+
+.container .boosting.boosting-v2 .ops-actions .queue-btn.is-off-duty iconify-icon { color: #0f5c31; }
+
+.container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.38);
+    color: var(--arc-accent-texto);
+}
+
+.container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty iconify-icon { color: var(--arc-accent-texto); }
+
+/* ── Las fichas de contrato ──────────────────────────────────────────────── */
+.container .boosting.boosting-v2 .mission-card {
+    background: rgba(255, 255, 255, calc(0.86 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.25);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-vehicle {
+    border-color: var(--arc-vehicle-line);
+    border-left: 3px solid var(--arc-vehicle);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.25);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-object {
+    border-color: var(--arc-object-line);
+    border-left: 3px solid var(--arc-object);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.25);
+}
+
+.container .boosting.boosting-v2 .mission-card.disabled { opacity: 0.55; }
+
+.container .boosting.boosting-v2 .mission-head .type-chip {
+    border-radius: 5px;
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+}
+
+.container .boosting.boosting-v2 .mission-head .type,
+.container .boosting.boosting-v2 .mission-head .code,
+.container .boosting.boosting-v2 .mission-head .status {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-vehicle .mission-head .type { color: var(--arc-vehicle); }
+.container .boosting.boosting-v2 .mission-card.is-vehicle .mission-head .type-chip {
+    border-color: var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-object .mission-head .type { color: var(--arc-object); }
+.container .boosting.boosting-v2 .mission-card.is-object .mission-head .type-chip {
+    border-color: var(--arc-object-line);
+    background: var(--arc-object-bg);
+}
+
+.container .boosting.boosting-v2 .mission-head .code {
+    font-family: var(--arc-mono);
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.container .boosting.boosting-v2 .mission-head .status {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    color: var(--arc-ink-2);
+}
+
+.container .boosting.boosting-v2 .mission-head .ttl {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    color: var(--arc-ink);
+    font-family: var(--arc-mono);
+    letter-spacing: 0.02em;
+    font-variant-numeric: tabular-nums;
+}
+
+.container .boosting.boosting-v2 .mission-card.is-vehicle .mission-head .ttl,
+.container .boosting.boosting-v2 .mission-card.is-object .mission-head .ttl {
+    border-color: var(--arc-line-soft);
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .mission-name {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.005em;
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .mission-description {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .mission-focus .mission-kind-icon {
+    border-radius: 5px;
+    border: 1px solid var(--arc-line-soft);
+    background: var(--arc-paper-2);
+    color: var(--arc-ink-2);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-vehicle .mission-focus .mission-kind-icon {
+    background: var(--arc-vehicle-bg);
+    border-color: var(--arc-vehicle-line);
+    color: var(--arc-vehicle);
+}
+
+.container .boosting.boosting-v2 .mission-card.is-object .mission-focus .mission-kind-icon {
+    background: var(--arc-object-bg);
+    border-color: var(--arc-object-line);
+    color: var(--arc-object);
+}
+
+.container .boosting.boosting-v2 .mission-data .cell {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+}
+
+.container .boosting.boosting-v2 .mission-data .cell span,
+.container .boosting.boosting-v2 .mission-data .cell .k iconify-icon {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .mission-data .cell strong {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Los botones de la ficha: papel salvo el que confirma (comprar / empezar). */
+.container .boosting.boosting-v2 .mission-actions { gap: calc(0.55vh / var(--ogn-escala, 1)); }
+
+.container .boosting.boosting-v2 .mission-actions .action {
+    border-radius: 5px;
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.35);
+    transform: var(--arc-skew);
+    cursor: pointer;
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.container .boosting.boosting-v2 .mission-actions .action .icon {
+    transform: var(--arc-unskew);
+    color: var(--arc-ink-2);
+}
+
+.container .boosting.boosting-v2 .mission-actions .action:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 rgba(var(--arc-t-relieve), 0.35);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .boosting.boosting-v2 .mission-actions .action.strong {
+    background: var(--arc-grad);
+    border-color: var(--arc-accent-deep);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 2px 0 var(--arc-accent-deep);
+}
+
+.container .boosting.boosting-v2 .mission-actions .action.strong .icon { color: #fff; }
+
+.container .boosting.boosting-v2 .mission-actions .action.strong:hover {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 0 0 var(--arc-accent-deep);
+}
+
+/* Tirar el contrato es destructivo: rojo de estado, no papel. */
+.container .boosting.boosting-v2 .mission-actions .action.neutral {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.35);
+}
+
+.container .boosting.boosting-v2 .mission-actions .action.neutral .icon { color: var(--arc-accent-texto); }
+
+/* Los vacíos: una caja de papel con una frase en versales espaciadas. */
+.container .boosting.boosting-v2 .mission-empty-state {
+    opacity: 1;
+    margin: calc(0.3vh / var(--ogn-escala, 1));
+    border-radius: 10px;
+    border: 1px dashed var(--arc-line);
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+}
+
+.container .boosting.boosting-v2 .mission-empty-state iconify-icon { color: var(--arc-ink-4); opacity: 0.55; }
+
+.container .boosting.boosting-v2 .mission-empty-state span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--arc-ink-3);
+}
+
+.container .boosting.boosting-v2 .mission-empty-state small {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-4);
+}
+
+/* ══ 4 · El mercado ═══════════════════════════════════════════════════════ */
+.container .market.market-v2 .market-header {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .market.market-v2 .market-header .title {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .market.market-v2 .market-back-inline {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    transform: var(--arc-skew);
+    margin-right: calc(0.5vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.container .market.market-v2 .market-back-inline > * { transform: var(--arc-unskew); }
+
+.container .market.market-v2 .market-back-inline span {
+    display: inline-block;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.container .market.market-v2 .market-back-inline:hover {
+    opacity: 1;
+    border-color: var(--arc-line-hi);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .market.market-v2 .content .list,
+.container .market.market-v2 .content .no-contracts {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .market.market-v2 .content .no-contracts {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--arc-ink-3);
+}
+
+.container .market.market-v2 .content .no-contracts .icon { color: var(--arc-ink-4); }
+
+.container .market.market-v2 .content .list .item {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-left: 3px solid var(--arc-accent);
+    border-radius: 10px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.28);
+}
+
+.container .market.market-v2 .content .list .item::before {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--arc-ink-4);
+}
+
+.container .market.market-v2 .content .list .item .category {
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--arc-ink-2);
+}
+
+.container .market.market-v2 .content .list .item .name span {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.005em;
+    color: var(--arc-ink);
+}
+
+.container .market.market-v2 .content .list .item .tags .tag,
+.container .market.market-v2 .content .list .item .timer .tag {
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+}
+
+.container .market.market-v2 .content .list .item .tags .tag span,
+.container .market.market-v2 .content .list .item .timer .tag span {
+    font-family: var(--arc-mono);
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .market.market-v2 .content .list .item .tags .tag iconify-icon,
+.container .market.market-v2 .content .list .item .timer .tag iconify-icon { color: var(--arc-ink-3); }
+
+/* Comprar es el que confirma: rosa. Retirar la oferta propia, rojo. */
+.container .market.market-v2 .content .list .item .actions .action {
+    background: var(--arc-grad);
+    border: 1px solid var(--arc-accent-deep);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 3px 0 var(--arc-accent-deep);
+    padding: calc(0.42vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    transform: var(--arc-skew);
+    cursor: pointer;
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.container .market.market-v2 .content .list .item .actions .action .icon {
+    transform: var(--arc-unskew);
+    color: #fff;
+}
+
+.container .market.market-v2 .content .list .item .actions .action:hover {
+    transform: var(--arc-skew) translateY(2px);
+    opacity: 1;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 0 0 var(--arc-accent-deep);
+}
+
+/* Retirar la oferta propia es destructivo. Los dos botones son el mismo
+   elemento (v-if excluyentes), así que se distinguen por el icono; si el CEF
+   del juego no entendiera :has(), la regla se ignora entera y el botón se
+   queda rosa, que es lo que había. */
+.container .market.market-v2 .content .list .item .actions .action:has(iconify-icon[icon="mdi:trash-can-outline"]) {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.4);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(192, 10, 70, 0.35);
+}
+
+.container .market.market-v2 .content .list .item .actions .action:has(iconify-icon[icon="mdi:trash-can-outline"]) .icon {
+    color: var(--arc-accent-texto);
+}
+
+/* ══ 5 · El ranking ═══════════════════════════════════════════════════════ */
+.container .ranking-menu .ranking.ranking-v2 .header {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .header .title {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-title-group { gap: calc(1.2vh / var(--ogn-escala, 1)); }
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank,
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-pill {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.vehicle {
+    border-color: var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.vehicle iconify-icon { color: var(--arc-vehicle); }
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.object {
+    border-color: var(--arc-object-line);
+    background: var(--arc-object-bg);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.object iconify-icon { color: var(--arc-object); }
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank span,
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-pill span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-3);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-rank strong,
+.container .ranking-menu .ranking.ranking-v2 .ranking-self-pill strong {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-back-inline {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    transform: var(--arc-skew);
+    margin-right: calc(0.5vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-back-inline > * { transform: var(--arc-unskew); }
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-back-inline span {
+    display: inline-block;
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-2);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .ranking-back-inline:hover {
+    opacity: 1;
+    border-color: var(--arc-line-hi);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+    padding: calc(1.4vh / var(--ogn-escala, 1));
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .search-items {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--arc-ink-3);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .search-items .icon { color: var(--arc-ink-3); }
+
+.container .ranking-menu .ranking.ranking-v2 .content .search-items input {
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+    background: transparent;
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .search-items input::placeholder { color: var(--arc-ink-4); }
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th {
+    background: none;
+    border-bottom: 1px solid var(--arc-line);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--arc-ink-3);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr {
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:hover {
+    background: var(--arc-fondo1, #fff);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td {
+    font-family: var(--arc-mono);
+    color: var(--arc-ink-2);
+    font-variant-numeric: tabular-nums;
+    border-top: 1px solid var(--arc-line-soft);
+    border-bottom: 1px solid var(--arc-line-soft);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td:nth-child(2) {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td.xp-cell { color: var(--arc-ink); }
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    border-radius: 5px;
+    color: var(--arc-ink-2);
+    background: var(--arc-paper-2);
+    border: 1px solid var(--arc-line-soft);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill.vehicle {
+    border-color: var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+    color: var(--arc-vehicle);
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill.object {
+    border-color: var(--arc-object-line);
+    background: var(--arc-object-bg);
+    color: var(--arc-object);
+}
+
+/* El jugador, marcado con el acento: eso sí es "lo elegido". */
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self {
+    background: rgba(223, 47, 99, 0.1) !important;
+}
+
+.container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self td {
+    border-top-color: rgba(223, 47, 99, 0.32);
+    border-bottom-color: rgba(223, 47, 99, 0.32);
+    color: var(--arc-ink);
+}
+
+/* ══ 6 · El editor / admin de misiones ════════════════════════════════════ */
+.container .create-menu { background: var(--arc-fondo2, #dcdde0); }
+
+.container .create-menu .management { background: transparent; }
+
+.container .create-menu .management .header {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .create-menu .management .header .title,
+.container .create-menu .management.management-v2 .header .title {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.container .create-menu .management .header .button,
+.container .create-menu .management.management-v2 .header .button {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transform: var(--arc-skew);
+    transition: box-shadow 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.container .create-menu .management .header .button > * { transform: var(--arc-unskew); }
+
+.container .create-menu .management .header .button:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .create-menu .management .header .button .icon { color: var(--arc-ink-3); }
+
+.container .create-menu .management .content {
+    background: var(--arc-glass);
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.95));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r);
+    box-shadow: var(--arc-shadow);
+}
+
+.container .create-menu .management .management-topbar { border-bottom: 1px solid var(--arc-line); }
+
+.container .create-menu .management .content .search-items { color: var(--arc-ink-3); }
+
+.container .create-menu .management .content .search-items input {
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+    background: transparent;
+}
+
+.container .create-menu .management .content .search-items input::placeholder,
+.container .create-menu .management .content .search-items input::-moz-placeholder { color: var(--arc-ink-4); }
+
+.container .create-menu .filter-chip {
+    background: rgba(255, 255, 255, calc(0.88 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--arc-ink-3);
+    transform: var(--arc-skew);
+    margin: 0 calc(0.2vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.container .create-menu .filter-chip:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+}
+
+.container .create-menu .filter-chip.active,
+.container .create-menu .filter-chip.active:hover {
+    background: rgba(223, 47, 99, 0.12);
+    border-color: rgba(223, 47, 99, 0.45);
+    color: var(--arc-accent-texto);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(192, 10, 70, 0.35);
+}
+
+.container .create-menu .management .content .contract-list table th {
+    border-bottom: 1px solid var(--arc-line);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--arc-ink-3);
+}
+
+.container .create-menu .management .content .contract-list table tbody tr {
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf)));
+}
+
+.container .create-menu .management .content .contract-list table tbody td {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--arc-ink-2);
+    border-top: 1px solid var(--arc-line-soft);
+    border-bottom: 1px solid var(--arc-line-soft);
+}
+
+.container .create-menu .management .content .contract-list table tbody td:first-child {
+    border-left: 1px solid var(--arc-line-soft);
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .create-menu .management .content .contract-list table tbody td:last-child { border-right: 1px solid var(--arc-line-soft); }
+
+.container .create-menu .management .content .contract-list table tbody tr:hover td {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line);
+}
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--arc-ink-2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.3);
+    transform: var(--arc-skew);
+    margin: 0 calc(0.15vh / var(--ogn-escala, 1));
+}
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action .icon { transform: var(--arc-unskew); }
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 rgba(var(--arc-t-relieve), 0.3);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+/* Borrar es destructivo: rojo de estado. */
+.container .create-menu .management .content .contract-list table tbody td.actions .action:last-child { color: var(--arc-accent-texto); }
+.container .create-menu .management .content .contract-list table tbody td.actions .action:last-child:hover {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.35);
+    color: var(--arc-accent-texto);
+}
+
+.container .create-menu .contract-type-pill {
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+    background: var(--arc-paper-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-2);
+}
+
+.container .create-menu .contract-type-pill.vehicle {
+    border-color: var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+    color: var(--arc-vehicle);
+}
+
+.container .create-menu .contract-type-pill.object {
+    border-color: var(--arc-object-line);
+    background: var(--arc-object-bg);
+    color: var(--arc-object);
+}
+
+/* ══ 7 · Los diálogos ═════════════════════════════════════════════════════ */
+.modal-container { background: rgba(46, 40, 28, 0.55); }
+
+.modal-container .modal,
+.modal-container .modal.profile-media-modal,
+.modal-container .modal.contract-editor-modal {
+    background: var(--arc-glass) !important;
+    background-color: var(--arc-fondo1, rgba(230, 231, 234, 0.96)) !important;
+    border: 1px solid var(--arc-line) !important;
+    border-top: 4px solid var(--arc-accent) !important;
+    border-radius: var(--ogn-r) !important;
+    box-shadow: var(--arc-shadow) !important;
+}
+
+.modal-container .modal .title,
+.modal-container .modal.profile-media-modal .title {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--arc-line);
+    box-shadow: none;
+    text-shadow: none;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--arc-ink);
+}
+
+.modal-container .modal .body p,
+.modal-container .modal .body p.subtitle {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-2);
+}
+
+.modal-container .modal .body p.info {
+    font-family: var(--arc-mono);
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-container .modal .footer { border-top: 1px solid var(--arc-line); background: none; }
+
+/* Un solo botón rosa: el que confirma. */
+.modal-container .modal .footer .confirm {
+    background: var(--arc-grad);
+    border: 1px solid var(--arc-accent-deep);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief-acc-lg);
+    color: #fff;
+    font-family: var(--arc-cond);
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transform: var(--arc-skew);
+    margin: 0 calc(0.5vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.modal-container .modal .footer .confirm:hover {
+    background: var(--arc-grad);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 2px 0 var(--arc-accent-deep);
+    transform: var(--arc-skew) translateY(3px);
+}
+
+/* Lo destructivo, en rojo de estado. */
+.modal-container .modal.cancel-contract-modal .footer .confirm,
+.modal-container .modal.decline-saved-modal .footer .confirm {
+    background: #b3123f;
+    border-color: #8c0733;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.3 * var(--arc-vf))), 0 5px 0 #8c0733;
+}
+
+.modal-container .modal .footer .cancel,
+.modal-container .modal .footer .pay {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief-lg);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transform: var(--arc-skew);
+    margin: 0 calc(0.5vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.modal-container .modal .footer .cancel:hover,
+.modal-container .modal .footer .pay:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.45);
+    transform: var(--arc-skew) translateY(3px);
+}
+
+.modal-container .modal .footer .confirm.disabled,
+.modal-container .modal .footer .cancel.disabled,
+.modal-container .modal .footer .pay.disabled { opacity: 0.4; }
+
+/* Los campos */
+.modal-container .modal .input {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.modal-container .modal .input:focus-within {
+    border-color: var(--arc-accent);
+    box-shadow: 0 0 0 2px rgba(223, 47, 99, 0.14);
+}
+
+.modal-container .modal .input input,
+.modal-container .modal .input textarea,
+.modal-container .modal .input select {
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+    background: transparent;
+}
+
+.modal-container .modal .input input[type="number"] {
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-container .modal .input input::placeholder,
+.modal-container .modal .input textarea::placeholder { color: var(--arc-ink-4); }
+
+.modal-container .modal .input .icon { color: var(--arc-ink-3); }
+
+.modal-container .modal .input.disabled { opacity: 0.45; }
+
+/* Los desplegables propios */
+.modal-container .modal .input.searchable-select .selected-value {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--arc-ink);
+}
+
+.modal-container .modal .input.searchable-select .select-arrow { color: var(--arc-ink-3); }
+
+.modal-container .modal .input.searchable-select.open { border-color: rgba(223, 47, 99, 0.5); }
+
+.modal-container .modal .dropdown-panel {
+    background: var(--arc-paper) !important;
+    border: 1px solid var(--arc-line) !important;
+    border-radius: var(--ogn-r-zona) !important;
+    box-shadow: var(--arc-shadow) !important;
+}
+
+.modal-container .modal .dropdown-panel > input {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+}
+
+.modal-container .modal .dropdown-panel > input::placeholder { color: var(--arc-ink-4); }
+
+.modal-container .modal .dropdown-option {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--arc-ink-2);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.modal-container .modal .dropdown-option:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--arc-line);
+    color: var(--arc-ink);
+}
+
+.modal-container .modal .dropdown-option.custom-model-option { color: var(--arc-accent-texto); }
+
+/* La rejilla del contrato */
+.modal-container .modal.contract-editor-modal .body .co-cell,
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-cell,
+.modal-container .modal.contract-editor-modal .body .co-toggle {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+/* La franja de abajo del editor va pegada (sticky): su degradado tapaba con
+   negro lo que pasa por debajo. Ahora tapa con crema. */
+.modal-container .modal.contract-editor-modal .body .contract-options-row {
+    background: linear-gradient(180deg, rgba(230, 231, 234, 0), var(--arc-fondo1, rgba(230, 231, 234, 0.97)) 28%);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-label,
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-label {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    color: var(--arc-ink-3);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-val,
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-val {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-top: 1px solid var(--arc-line-soft);
+    border-bottom: 1px solid var(--arc-line-soft);
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--arc-ink-3);
+    box-shadow: var(--arc-relief);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle.active,
+.modal-container .modal.contract-editor-modal .body .co-toggle.active:hover {
+    background: rgba(223, 47, 99, 0.12);
+    border-color: rgba(223, 47, 99, 0.45);
+    color: var(--arc-accent-texto);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-arrow,
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-arrow {
+    color: var(--arc-ink-2);
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    cursor: pointer;
+}
+
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-arrow:hover {
+    background: rgba(223, 47, 99, 0.12);
+    border-color: rgba(223, 47, 99, 0.45);
+    color: var(--arc-accent-texto);
+}
+
+/* Los ajustes */
+.modal-container .modal.settings-modal .title.settings-title .settings-title-sub {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-4);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn,
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-2);
+    transform: var(--arc-skew);
+    margin: 0 calc(0.2vh / var(--ogn-escala, 1));
+    transition: box-shadow 0.15s ease, transform 0.15s ease, background 0.15s ease;
+}
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn > *,
+.modal-container .modal.settings-modal .body .inline-modal-btn > *,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn > * { transform: var(--arc-unskew); }
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn:hover,
+.modal-container .modal.settings-modal .body .inline-modal-btn:hover,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn.active,
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn.active:hover {
+    background: rgba(223, 47, 99, 0.12);
+    border-color: rgba(223, 47, 99, 0.45);
+    color: var(--arc-accent-texto);
+}
+
+.modal-container .modal.settings-modal .body .inline-modal-btn.danger,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn.danger {
+    color: var(--arc-accent-texto);
+    border-color: rgba(192, 10, 70, 0.35);
+    background: rgba(192, 10, 70, 0.08);
+}
+
+.modal-container .modal.settings-modal .body .settings-editor-row {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.modal-container .modal.settings-modal .body .settings-field > span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--arc-ink-3);
+}
+
+.modal-container .modal.settings-modal .body .settings-field input {
+    border-bottom: 1px solid var(--arc-line);
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    color: var(--arc-ink);
+    background: none;
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-container .modal.settings-modal .body .settings-field input:focus { border-bottom-color: var(--arc-accent); }
+
+/* El diálogo de punto nuevo */
+.modal-container .npd-overlay,
+.container .npd-overlay { background: rgba(46, 40, 28, 0.6); }
+
+.modal-container .npd-modal,
+.container .npd-modal {
+    background: var(--arc-paper);
+    border: 1px solid var(--arc-line);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: var(--ogn-r-zona);
+    box-shadow: var(--arc-shadow);
+}
+
+.modal-container .npd-header,
+.container .npd-header {
+    border-bottom: 1px solid var(--arc-line);
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+}
+
+.modal-container .npd-header iconify-icon,
+.container .npd-header iconify-icon { color: var(--arc-accent); }
+
+.modal-container .npd-hint,
+.container .npd-hint {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-3);
+}
+
+.container .npd-input,
+.modal-container .npd-input {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+    outline: none;
+}
+
+.container .npd-input:focus,
+.modal-container .npd-input:focus { border-color: var(--arc-accent); }
+
+.container .npd-input::placeholder,
+.modal-container .npd-input::placeholder { color: var(--arc-ink-4); }
+
+.modal-container .npd-footer,
+.container .npd-footer { border-top: 1px solid var(--arc-line); }
+
+.container .npd-btn,
+.modal-container .npd-btn {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transform: var(--arc-skew);
+    margin: 0 calc(0.4vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.container .npd-btn > *,
+.modal-container .npd-btn > * { transform: var(--arc-unskew); }
+
+.container .npd-btn.confirm,
+.modal-container .npd-btn.confirm {
+    background: var(--arc-grad);
+    border-color: var(--arc-accent-deep);
+    box-shadow: var(--arc-relief-acc);
+    color: #fff;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.container .npd-btn:hover,
+.modal-container .npd-btn:hover { transform: var(--arc-skew) translateY(2px); }
+
+/* ══ 8 · El HUD del rastreador ════════════════════════════════════════════
+   Se ve conduciendo: crema SÓLIDO detrás del texto, cifras en Share Tech
+   Mono con tabular-nums y arriba del todo, sin tapar el centro. */
+.tracker-container {
+    background: var(--arc-fondo1, #e6e7ea);
+    border: 1px solid rgba(var(--arc-t-relieve), 0.45);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.3vh / var(--ogn-escala, 1));
+}
+
+.tracker-container .tracker {
+    font-family: var(--arc-mono);
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.tracker-container .tracker span {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    color: var(--arc-accent-texto);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ══ 9 · El aviso de contrato entrante ════════════════════════════════════
+   También se ve conduciendo: papel sólido, nada translúcido. */
+.incoming-contract-popup {
+    background: var(--arc-fondo1, #e6e7ea);
+    border: 1px solid rgba(var(--arc-t-relieve), 0.45);
+    border-top: 4px solid var(--arc-accent);
+    border-radius: 12px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    padding: calc(1vh / var(--ogn-escala, 1));
+}
+
+.incoming-contract-popup .incoming-timer {
+    background: rgba(var(--arc-t-relieve), 0.2);
+    border-radius: 999px;
+}
+
+.incoming-contract-popup .incoming-timer .incoming-timer-fill { background: var(--arc-grad); }
+
+.incoming-contract-popup .contact-avatar {
+    border-radius: 6px;
+    background: rgba(223, 47, 99, 0.12);
+    border: 1px solid rgba(223, 47, 99, 0.4);
+}
+
+.incoming-contract-popup .contact-avatar iconify-icon { color: var(--arc-accent-texto); }
+
+.incoming-contract-popup .contact-name {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    letter-spacing: 0.02em;
+    color: var(--arc-ink);
+}
+
+.incoming-contract-popup .contact-sub {
+    font-family: var(--arc-text);
+    font-size: calc(0.88vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-3);
+}
+
+.incoming-contract-popup .incoming-body {
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 8px;
+}
+
+.incoming-contract-popup .incoming-title {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.incoming-contract-popup .incoming-desc {
+    font-family: var(--arc-text);
+    font-size: calc(0.88vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-3);
+}
+
+.incoming-contract-popup .incoming-metrics .m {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: 5px;
+}
+
+.incoming-contract-popup .incoming-metrics .m span {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(0.7vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    color: var(--arc-ink-3);
+}
+
+.incoming-contract-popup .incoming-metrics .m strong {
+    font-family: var(--arc-mono);
+    font-weight: 400;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    color: var(--arc-ink);
+    font-variant-numeric: tabular-nums;
+}
+
+.incoming-contract-popup .incoming-actions { gap: calc(0.8vh / var(--ogn-escala, 1)); padding: 0 calc(0.2vh / var(--ogn-escala, 1)); }
+
+.incoming-contract-popup .incoming-actions button {
+    min-height: calc(3vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.14em;
+    transform: var(--arc-skew);
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+}
+
+.incoming-contract-popup .incoming-actions .accept {
+    background: var(--arc-grad);
+    border: 1px solid var(--arc-accent-deep);
+    box-shadow: var(--arc-relief-acc);
+    color: #fff;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.incoming-contract-popup .incoming-actions .deny {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+}
+
+.incoming-contract-popup .incoming-actions button:hover {
+    transform: var(--arc-skew) translateY(2px);
+    border-color: var(--arc-line-hi);
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+}
+
+.incoming-contract-popup .incoming-actions .accept:hover {
+    background: var(--arc-grad);
+    border-color: var(--arc-accent-deep);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 1px 0 var(--arc-accent-deep);
+}
+
+.incoming-contract-popup .incoming-hint {
+    font-family: var(--arc-text);
+    font-size: calc(0.85vh / var(--ogn-escala, 1));
+    color: var(--arc-ink-3);
+}
+
+.incoming-contract-popup .incoming-hint strong {
+    font-family: var(--arc-cond);
+    font-weight: 800;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.1em;
+    color: var(--arc-accent-texto);
+}
+
+/* ══ 10 · Los avisos ══════════════════════════════════════════════════════ */
+.container .notifications .list .notification {
+    background: var(--arc-fondo1, #e6e7ea) !important;
+    border: 1px solid var(--arc-line) !important;
+    border-left: 4px solid var(--arc-line-hi) !important;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(60, 50, 30, 0.3) !important;
+    color: var(--arc-ink) !important;
+}
+
+.container .notifications .list .notification .content .info .name {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    color: var(--arc-ink);
+}
+
+.container .notifications .list .notification .content .info .message {
+    font-family: var(--arc-text);
+    font-weight: 500;
+    opacity: 1;
+    color: var(--arc-ink-2);
+}
+
+.container .notifications .list .notification.success {
+    background: var(--arc-fondo1, #e6e7ea) !important;
+    border-color: var(--arc-line) !important;
+    border-left-color: #0f5c31 !important;
+    color: var(--arc-ink) !important;
+}
+
+.container .notifications .list .notification.success .content .icon { color: #0f5c31; }
+
+.container .notifications .list .notification.info {
+    background: var(--arc-fondo1, #e6e7ea) !important;
+    border-color: var(--arc-line) !important;
+    border-left-color: var(--arc-vehicle) !important;
+    color: var(--arc-ink) !important;
+}
+
+.container .notifications .list .notification.info .content .icon { color: var(--arc-vehicle); }
+
+.container .notifications .list .notification.error {
+    background: var(--arc-fondo1, #e6e7ea) !important;
+    border-color: var(--arc-line) !important;
+    border-left-color: var(--arc-accent-deep) !important;
+    color: var(--arc-ink) !important;
+}
+
+.container .notifications .list .notification.error .content .icon { color: var(--arc-accent-texto); }
+
+/* ══ 11 · Los que pesan más ═══════════════════════════════════════════════
+   Estas piezas ya venían escritas con cadenas más largas (`.management-v2`,
+   `.input.searchable-select`, `.profile-media-modal`…), así que pesan más que
+   las reglas de arriba. Se repiten aquí con la misma cadena para que ganen. */
+
+/* ── Cabecera del administrador ─────────────────────────────────────────── */
+.container .create-menu .management.management-v2 .header .button {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    transform: var(--arc-skew);
+    margin: 0 calc(0.2vh / var(--ogn-escala, 1));
+}
+
+.container .create-menu .management.management-v2 .header .button:hover {
+    opacity: 1;
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.4);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+.container .create-menu .management.management-v2 .header .button .icon { color: var(--arc-ink-3); }
+
+/* ── Filtros ────────────────────────────────────────────────────────────── */
+.container .create-menu .management.management-v2 .content .contract-filters .filter-chip {
+    background: rgba(255, 255, 255, calc(0.88 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief);
+    color: var(--arc-ink-3);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    transform: var(--arc-skew);
+    margin: 0 calc(0.2vh / var(--ogn-escala, 1));
+}
+
+.container .create-menu .management.management-v2 .content .contract-filters .filter-chip:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+}
+
+.container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active {
+    background: rgba(223, 47, 99, 0.12);
+    border-color: rgba(223, 47, 99, 0.5);
+    color: var(--arc-accent-texto);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(192, 10, 70, 0.35);
+}
+
+/* ── La tabla de contratos ──────────────────────────────────────────────── */
+.container .create-menu .management.management-v2 .content .contract-list table tbody tr {
+    background: rgba(255, 255, 255, calc(0.55 * var(--arc-vf)));
+    border: 1px solid transparent;
+    color: var(--arc-ink-2);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf)));
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: rgba(223, 47, 99, 0.3);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td {
+    border-bottom: 1px solid var(--arc-line-soft);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td:first-child {
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    color: var(--arc-ink);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody tr.is-vehicle td:first-child {
+    border-left: 3px solid var(--arc-vehicle);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody tr.is-object td:first-child {
+    border-left: 3px solid var(--arc-object);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td .contract-type-pill {
+    border: 1px solid var(--arc-line-soft);
+    background: var(--arc-paper-2);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td .contract-type-pill.vehicle {
+    border-color: var(--arc-vehicle-line);
+    background: var(--arc-vehicle-bg);
+    color: var(--arc-vehicle);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td .contract-type-pill.object {
+    border-color: var(--arc-object-line);
+    background: var(--arc-object-bg);
+    color: var(--arc-object);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.3);
+    color: var(--arc-ink-2);
+    transform: var(--arc-skew);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:hover {
+    opacity: 1;
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 rgba(var(--arc-t-relieve), 0.3);
+    transform: var(--arc-skew) translateY(2px);
+}
+
+/* Borrar, en rojo de estado. */
+.container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child {
+    color: var(--arc-accent-texto);
+    border-color: rgba(192, 10, 70, 0.3);
+}
+
+.container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.4);
+    color: var(--arc-accent-texto);
+}
+
+/* ── Los desplegables del editor ────────────────────────────────────────── */
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .selected-value {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--arc-ink);
+}
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .select-arrow { color: var(--arc-ink-3); }
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-option {
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--arc-ink-2);
+}
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-option:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--arc-ink);
+}
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-option.custom-model-option {
+    color: var(--arc-accent-texto);
+    border: 1px dashed rgba(223, 47, 99, 0.45);
+    background: rgba(223, 47, 99, 0.08);
+}
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-option.custom-model-option:hover {
+    background: rgba(223, 47, 99, 0.16);
+}
+
+/* ── Diálogos con pie propio ────────────────────────────────────────────── */
+.modal-container .modal.profile-media-modal .footer,
+.modal-container .modal.start-contract-modal .footer {
+    background: none;
+    border-top: 1px solid var(--arc-line);
+}
+
+.modal-container .modal.profile-media-modal .footer .confirm,
+.modal-container .modal.start-contract-modal .footer .confirm {
+    background: var(--arc-grad);
+    border: 1px solid var(--arc-accent-deep);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief-acc-lg);
+    color: #fff;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    transform: var(--arc-skew);
+}
+
+.modal-container .modal.profile-media-modal .footer .confirm:hover,
+.modal-container .modal.start-contract-modal .footer .confirm:hover {
+    background: var(--arc-grad);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.45 * var(--arc-vf))), 0 2px 0 var(--arc-accent-deep);
+    transform: var(--arc-skew) translateY(3px);
+}
+
+.modal-container .modal.profile-media-modal .footer .cancel,
+.modal-container .modal.start-contract-modal .footer .cancel,
+.modal-container .modal.start-contract-modal .footer .pay {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--arc-relief-lg);
+    color: var(--arc-ink-2);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    transform: var(--arc-skew);
+}
+
+.modal-container .modal.profile-media-modal .footer .cancel:hover,
+.modal-container .modal.start-contract-modal .footer .cancel:hover,
+.modal-container .modal.start-contract-modal .footer .pay:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.45);
+    transform: var(--arc-skew) translateY(3px);
+}
+
+/* ══ 12 · Remates ═════════════════════════════════════════════════════════ */
+
+/* La foto y el banner son el producto: solo el marco. */
+.container .boosting.boosting-v2 .profile-photo {
+    border: 2px solid rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    box-shadow: 0 0 0 1px var(--arc-line), 0 6px 14px rgba(60, 50, 30, 0.28);
+}
+
+.container .boosting.boosting-v2 .profile-photo-wrapper:hover .profile-photo {
+    box-shadow: 0 0 0 1px var(--arc-line-hi), 0 8px 18px rgba(60, 50, 30, 0.34);
+}
+
+.container .boosting.boosting-v2 .agent-banner .banner-overlay {
+    background: linear-gradient(180deg, rgba(var(--arc-t-papel1), 0) 45%, var(--arc-fondo1, rgba(230, 231, 234, 0.55)) 100%);
+}
+
+.container .boosting.boosting-v2 .agent-banner .edit-banner-btn,
+.container .boosting.boosting-v2 .profile-banner .edit-banner-btn {
+    position: absolute;
+    top: calc(0.7vh / var(--ogn-escala, 1));
+    right: calc(0.7vh / var(--ogn-escala, 1));
+    width: calc(3vh / var(--ogn-escala, 1));
+    height: calc(3vh / var(--ogn-escala, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ogn-r-ctrl);
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border: 1px solid var(--arc-line);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.35);
+    color: var(--arc-ink-2);
+    z-index: 5;
+    cursor: pointer;
+}
+
+.container .boosting.boosting-v2 .agent-banner .edit-banner-btn:hover,
+.container .boosting.boosting-v2 .profile-banner .edit-banner-btn:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+}
+
+.container .boosting.boosting-v2 .edit-photo-overlay {
+    background: var(--arc-fondo1, rgba(230, 231, 234, 0.72));
+}
+
+.container .boosting.boosting-v2 .edit-photo-overlay iconify-icon { color: var(--arc-ink); }
+
+/* La chapa del rango sobre la foto: aquí el rosa sí es «lo que eres», no un
+   botón; se queda en papel con el canto rosa para no competir con el que
+   confirma. */
+.container .boosting.boosting-v2 .level-badge {
+    background: var(--arc-fondo1, #fff);
+    border: 1px solid var(--arc-accent);
+    box-shadow: 0 2px 0 rgba(192, 10, 70, 0.4);
+    color: var(--arc-accent-texto);
+    font-family: var(--arc-cond);
+    font-weight: 800;
+    font-style: italic;
+}
+
+.container .boosting.boosting-v2 .agent-meta .profile-name .edit-name {
+    opacity: 0.5;
+    filter: invert(1) contrast(0.85);
+}
+
+.container .boosting.boosting-v2 .agent-meta .profile-name .edit-name:hover { opacity: 0.9; }
+
+/* Los dos bloques de los ajustes */
+.modal-container .modal.settings-modal .body .settings-type-block {
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+}
+
+.modal-container .modal.settings-modal .body .settings-type-block.vehicle {
+    border-color: var(--arc-vehicle-line);
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    border-top: 3px solid var(--arc-vehicle);
+}
+
+.modal-container .modal.settings-modal .body .settings-type-block.object {
+    border-color: var(--arc-object-line);
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    border-top: 3px solid var(--arc-object);
+}
+
+/* El cuadro viejo de categorías (#cSettings) sigue existiendo en la hoja
+   antigua con fondos negros: si algún día se abre, que no salga en negro. */
+#cSettings td.class,
+#cSettings td input {
+    background-color: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    color: var(--arc-ink);
+    text-shadow: none;
+    font-family: var(--arc-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ══ 13 · Los últimos que pesaban más ═════════════════════════════════════ */
+
+/* Los interruptores del editor (VIN scratch, prop robable…) */
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-toggle {
+    border: 1px solid var(--arc-line-soft);
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.3);
+    color: var(--arc-ink-3);
+    font-family: var(--arc-cond);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-toggle:hover {
+    background: var(--arc-fondo1, #fff);
+    border-color: var(--arc-line-hi);
+    color: var(--arc-ink);
+}
+
+.modal-container .modal.contract-editor-modal .body .contract-options-row .co-toggle.active {
+    border-color: rgba(223, 47, 99, 0.45);
+    background: rgba(223, 47, 99, 0.12);
+    color: var(--arc-accent-texto);
+}
+
+/* El buscador dentro del desplegable */
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-panel {
+    background: var(--arc-paper);
+    border: 1px solid var(--arc-line);
+    border-radius: var(--ogn-r-zona);
+}
+
+.modal-container .modal.contract-editor-modal .body .input.searchable-select .dropdown-panel input {
+    background: rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--arc-ink);
+    font-family: var(--arc-text);
+}
+
+/* Los <select> nativos que quedan sueltos */
+.modal-container .modal.contract-editor-modal .body .input select option {
+    background: var(--arc-fondo1, #e6e7ea);
+    color: var(--arc-ink);
+}
+
+/* Los campos del diálogo de foto y banner */
+.modal-container .modal.profile-media-modal .body .input {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    border: 1px solid var(--arc-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+}
+
+.modal-container .modal.profile-media-modal .body .input .icon { color: var(--arc-ink-3); }
+
+.modal-container .modal.profile-media-modal .body .input input {
+    font-family: var(--arc-text);
+    color: var(--arc-ink);
+}
+
+.modal-container .modal.profile-media-modal .body .input input::placeholder { color: var(--arc-ink-4); }
+
+/* El aviso de tirar un contrato guardado */
+.modal-container .modal.decline-saved-modal .body p {
+    font-family: var(--arc-text);
+    color: var(--arc-ink-2);
+}

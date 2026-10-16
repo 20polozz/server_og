@@ -1,0 +1,1098 @@
+/* ══ PEGATINA: los contratos (carboosting) con el estilo del logo ═════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   recurso se queda como en arcade.css. Es la pareja de
+   origen_inventory/source-ui/src/assets/styles/pegatina.css: mismas reglas
+   y mismos colores. Ver .claude/skills/origen-pegatina/SKILL.md.
+
+   Va LA ÚLTIMA (después de style.css, ogn-admin.css y arcade.css). No
+   reescribe nada: redefine los tokens de arcade.css y pisa las piezas con
+   más peso. Para quitarlo: borrar este fichero, su <link> y las dos
+   familias (Knewave, Oxanium) del <link> de fuentes de index.html.
+
+   Papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   negra para lo encendido y lo que confirma, nada inclinado.
+
+   Los cantos son box-shadow (más el borde de 1 px que ya traía cada pieza,
+   que solo cambia de color): no se mueve ninguna medida. La única medida
+   que cambia es el hueco entre paneles, a 20 px, porque el canto (4) y la
+   sombra (7) van por fuera y con los 1,2 vh de serie se pisaban; aquí no
+   hay variable de hueco, así que va en el gap de cada rejilla.
+
+   Sin color-mix, sin backdrop-filter y sin @keyframes: CEF 103.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens de día ───────────────────────────────────────────────────────── */
+/*  html:root y no html a secas: la hoja base declara estos mismos tokens
+    en :root, que pesa mas, y la pegatina se ignoraba en silencio. */
+html:root {
+    --arc-t-relieve: 0, 0, 0;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #e6e7ea;
+    --arc-accent: #d81b55;
+    /*  El «rosa hondo» era el borde y el canto de abajo de lo rosa: negro. */
+    --arc-accent-deep: #000;
+    --arc-accent-texto: #b3123f;
+    --arc-grad: #d81b55;
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #73737c;
+    --arc-glass: #dcdde0;
+    --arc-paper: #dcdde0;
+    --arc-paper-2: #dcdde0;
+    --arc-paper-3: #dcdde0;
+    --arc-fondo1: #dcdde0;
+    --arc-fondo2: #dcdde0;
+    --arc-line: #000;
+    --arc-line-soft: #000;
+    --arc-line-hi: #000;
+    /*  Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+    /*  Con el borde negro de 1 px que ya lleva cada pieza: canto de 3 y de 4. */
+    --arc-relief: inset 0 0 0 2px #000, 3px 3px 0 #000;
+    --arc-relief-lg: inset 0 0 0 2px #000, 3px 3px 0 #000;
+    --arc-relief-acc: inset 0 0 0 2px #000, 3px 3px 0 #000;
+    --arc-relief-acc-lg: inset 0 0 0 2px #000, 3px 3px 0 #000;
+    --arc-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    /*  Las dos familias de dato: vehículo en negro, objeto en rosa. */
+    --arc-vehicle: #0b0b0d;
+    --arc-vehicle-bg: #dcdde0;
+    --arc-vehicle-line: #000;
+    --arc-object: #b3123f;
+    --arc-object-bg: #ffd6e4;
+    --arc-object-line: #000;
+
+    --ogn-bg: #dcdde0;
+    --ogn-veil: #dcdde0;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #df2f63;
+    --ogn-acc-pale: #b3123f;
+    --ogn-acc-deep: #000;
+    --ogn-acc-texto: #b3123f;
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #0b0b0d;
+    --ogn-t3: #44444a;
+    --ogn-t4: #73737c;
+    --ogn-bad: #b3123f;
+    --ogn-info: #0b0b0d;
+    --color-danger: #b3123f;
+    --ogn-r: 20px;
+    --ogn-r-zona: 14px;
+    --ogn-r-ctrl: 10px;
+    --ogn-r-pill: 10px;
+}
+
+/* ── El fondo y el hueco entre paneles ───────────────────────────────────── */
+html .container,
+html .container .create-menu { background: #dcdde0; }
+html .container .effects { background: none; }
+html .modal-container,
+html .modal-container .npd-overlay,
+html .container .npd-overlay { background: rgba(11, 11, 13, 0.6); }
+html .container .boosting.boosting-v2 .ops-shell,
+html .container .boosting.boosting-v2 .ops-sidebar,
+html .container .boosting.boosting-v2 .ops-main,
+html .container .boosting.boosting-v2 .ops-board,
+html .container .market.market-v2,
+html .container .ranking-menu .ranking.ranking-v2 { gap: 20px; }
+/*  En el editor el hueco entre cabecera y tabla es un margen, no un gap. */
+html .container .create-menu .management.management-v2 .content { margin-top: 20px; }
+/*  Las dos columnas partían el alto en porcentajes (60/40 y 50/50) MÁS el
+    hueco, así que ya se salían por abajo lo que midiera el hueco; con 20 px
+    la sombra del último panel se iba fuera. En fr el hueco se descuenta. */
+html .container .boosting.boosting-v2 .ops-sidebar { grid-template-rows: minmax(0, 3fr) minmax(0, 2fr); }
+html .container .boosting.boosting-v2 .ops-board { grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); }
+
+/* ── Paneles ─────────────────────────────────────────────────────────────── */
+html:root .container .boosting.boosting-v2 .ops-hud,
+html:root .container .market.market-v2 .market-header,
+html:root .container .ranking-menu .ranking.ranking-v2 .header,
+html .container .create-menu .management.management-v2 .header,
+html:root .container .boosting.boosting-v2 .ops-card,
+html:root .container .market.market-v2 .content .list,
+html:root .container .market.market-v2 .content .no-contracts,
+html:root .container .ranking-menu .ranking.ranking-v2 .content,
+html .container .create-menu .management.management-v2 .content { background: #dcdde0; border-radius: 20px; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+/*  Solo el color del borde: los diálogos que arcade.css no alcanza llevan 1 px
+    arriba y no 4, y el ancho no se toca. */
+html .modal-container .modal.modal { background: #dcdde0 !important; border-color: #000 !important; border-top-color: #d81b55 !important; border-radius: 20px !important; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important; }
+html .modal-container .npd-modal,
+html .container .npd-modal { background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+/*  Lo que se ve conduciendo: el rastreador y el aviso de contrato. */
+html .tracker-container,
+html .incoming-contract-popup { background: #dcdde0; border-left-color: #000; border-right-color: #000; border-bottom-color: #000; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html .tracker-container .tracker { color: #0b0b0d; }
+html .tracker-container .tracker span { color: #b3123f; }
+
+/* ── Rótulos y filetes ───────────────────────────────────────────────────── */
+html .container .boosting.boosting-v2 .ops-title::after { height: 3px; border-radius: 2px; background: #d81b55; }
+html .container .boosting.boosting-v2 .ops-title iconify-icon { color: #d81b55; }
+/*  El título de los diálogos: filete rosa macizo en vez de la raya gris.
+    Con box-shadow, que el borde de 1 px no puede engordar sin mover nada. */
+html:root .modal-container .modal.modal .title { background: none !important; border-bottom-color: transparent !important; box-shadow: inset 0 -3px 0 #d81b55 !important; color: #0b0b0d; }
+html .modal-container .modal#cSettings.settings-modal .title { background: none !important; }
+html .modal-container .npd-header,
+html .container .npd-header { border-bottom-color: transparent; box-shadow: inset 0 -3px 0 #d81b55; color: #0b0b0d; }
+html:root .modal-container .modal.modal .footer { background: none; border-top-color: #000; }
+html:root .modal-container .modal.modal .body p,
+html .modal-container .modal.modal .body p.subtitle { color: #0b0b0d; }
+html .container .boosting.boosting-v2 .agent-stats .mini-stat strong,
+html .container .boosting.boosting-v2 .agent-ranks .rank-line strong,
+html .container .boosting.boosting-v2 .movement-id,
+html .container .boosting.boosting-v2 .movement-metrics .m strong,
+html:root .container .boosting.boosting-v2 .ops-balance span,
+html .container .boosting.boosting-v2 .ops-progress .xp-row strong,
+html .container .boosting.boosting-v2 .mission-head .ttl,
+html .container .boosting.boosting-v2 .mission-data .cell strong,
+html .container .market.market-v2 .content .list .item .tags .tag span,
+html .container .market.market-v2 .content .list .item .timer .tag span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank strong,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill strong,
+html .tracker-container .tracker,
+html .tracker-container .tracker span,
+html .incoming-contract-popup .incoming-metrics .m strong,
+html .modal-container .modal.modal .body .co-val,
+html .modal-container .modal.modal .body .contract-options-row .co-val,
+html .modal-container .modal.modal .body p.info { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; font-weight: 800; }
+
+/* ── Lo que se pulsa ─────────────────────────────────────────────────────── */
+html .container .boosting.boosting-v2 .market-inline,
+html .container .boosting.boosting-v2 .ops-balance,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn,
+html .container .market.market-v2 .market-back-inline,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline,
+html .container .create-menu .management.management-v2 .header .button,
+html .container .create-menu .filter-chip,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip,
+html .modal-container .modal.modal .footer .cancel,
+html .modal-container .modal.modal .footer .pay,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn,
+html .modal-container .modal.modal .body .inline-modal-btn,
+html .modal-container .modal.modal .body .co-toggle,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle,
+html .container .npd-btn,
+html .modal-container .npd-btn,
+html .incoming-contract-popup .incoming-actions .deny { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; transform: none; }
+html .container .boosting.boosting-v2 .market-inline:hover,
+html .container .boosting.boosting-v2 .ops-balance:hover,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn:hover,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn:hover,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn:hover,
+html .container .market.market-v2 .market-back-inline:hover,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline:hover,
+html .container .create-menu .management.management-v2 .header .button:hover,
+html .container .create-menu .filter-chip:hover,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip:hover,
+html .modal-container .modal.modal .footer .cancel:hover,
+html .modal-container .modal.modal .footer .pay:hover,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn:hover,
+html .modal-container .modal.modal .body .inline-modal-btn:hover,
+html .modal-container .modal.modal .body .co-toggle:hover,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle:hover,
+html .container .npd-btn:hover,
+html .modal-container .npd-btn:hover,
+html .incoming-contract-popup .incoming-actions .deny:hover { background: #e6e7ea; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; transform: none; opacity: 1; }
+html .container .boosting.boosting-v2 .market-inline:active,
+html .container .boosting.boosting-v2 .ops-balance:active,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn:active,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn:active,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn:active,
+html .container .market.market-v2 .market-back-inline:active,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline:active,
+html .container .create-menu .management.management-v2 .header .button:active,
+html .container .create-menu .filter-chip:active,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip:active,
+html .modal-container .modal.modal .footer .cancel:active,
+html .modal-container .modal.modal .footer .pay:active,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn:active,
+html .modal-container .modal.modal .body .inline-modal-btn:active,
+html .modal-container .modal.modal .body .co-toggle:active,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle:active,
+html .container .npd-btn:active,
+html .modal-container .npd-btn:active,
+html .incoming-contract-popup .incoming-actions .deny:active { box-shadow: inset 0 0 0 1.5px #000; transform: translate(2px, 2px); }
+html .container .boosting.boosting-v2 .mission-actions .action,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; transform: none; }
+html .container .boosting.boosting-v2 .mission-actions .action:hover,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:hover { background: #e6e7ea; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; transform: none; opacity: 1; }
+html .container .boosting.boosting-v2 .mission-actions .action:active,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:active { box-shadow: inset 0 0 0 1.5px #000; transform: translate(2px, 2px); }
+html .container .boosting.boosting-v2 .market-inline .icon,
+html .container .boosting.boosting-v2 .market-inline iconify-icon,
+html .container .boosting.boosting-v2 .market-inline span,
+html .container .boosting.boosting-v2 .ops-balance .icon,
+html .container .boosting.boosting-v2 .ops-balance iconify-icon,
+html:root .container .boosting.boosting-v2 .ops-balance span,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn .icon,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn iconify-icon,
+html .container .boosting.boosting-v2 .ops-actions .hud-btn span,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn .icon,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn iconify-icon,
+html .container .boosting.boosting-v2 .agent-banner .edit-banner-btn span,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn .icon,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn iconify-icon,
+html .container .boosting.boosting-v2 .profile-banner .edit-banner-btn span,
+html .container .market.market-v2 .market-back-inline .icon,
+html .container .market.market-v2 .market-back-inline iconify-icon,
+html:root .container .market.market-v2 .market-back-inline span,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline .icon,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline iconify-icon,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline span,
+html .container .create-menu .management.management-v2 .header .button .icon,
+html .container .create-menu .management.management-v2 .header .button iconify-icon,
+html .container .create-menu .management.management-v2 .header .button span,
+html .container .create-menu .filter-chip .icon,
+html .container .create-menu .filter-chip iconify-icon,
+html .container .create-menu .filter-chip span,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip .icon,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip iconify-icon,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip span,
+html .modal-container .modal.modal .footer .cancel .icon,
+html .modal-container .modal.modal .footer .cancel iconify-icon,
+html .modal-container .modal.modal .footer .cancel span,
+html .modal-container .modal.modal .footer .pay .icon,
+html .modal-container .modal.modal .footer .pay iconify-icon,
+html .modal-container .modal.modal .footer .pay span,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn .icon,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn iconify-icon,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn span,
+html .modal-container .modal.modal .body .inline-modal-btn .icon,
+html .modal-container .modal.modal .body .inline-modal-btn iconify-icon,
+html .modal-container .modal.modal .body .inline-modal-btn span,
+html .modal-container .modal.modal .body .co-toggle .icon,
+html .modal-container .modal.modal .body .co-toggle iconify-icon,
+html .modal-container .modal.modal .body .co-toggle span,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle .icon,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle iconify-icon,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle span,
+html .container .npd-btn .icon,
+html .container .npd-btn iconify-icon,
+html .container .npd-btn span,
+html .modal-container .npd-btn .icon,
+html .modal-container .npd-btn iconify-icon,
+html .modal-container .npd-btn span,
+html .incoming-contract-popup .incoming-actions .deny .icon,
+html .incoming-contract-popup .incoming-actions .deny iconify-icon,
+html .incoming-contract-popup .incoming-actions .deny span,
+html .container .boosting.boosting-v2 .mission-actions .action .icon,
+html .container .boosting.boosting-v2 .mission-actions .action iconify-icon,
+html .container .boosting.boosting-v2 .mission-actions .action span,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action .icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action iconify-icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action span { color: #0b0b0d; }
+/*  Las flechas del editor van pegadas a su cifra: canto fino y sin sombra. */
+html .modal-container .modal.modal .body .co-arrow,
+html .modal-container .modal.modal .body .contract-options-row .co-arrow { background: #dcdde0; border-color: #000; color: #0b0b0d; }
+html .modal-container .modal.modal .body .co-arrow:hover,
+html .modal-container .modal.modal .body .contract-options-row .co-arrow:hover { background: #d81b55; border-color: #000; color: #000; }
+
+/* ── Encendido y el que confirma: rosa con tinta negra ───────────────────── */
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty,
+html .container .create-menu .filter-chip.active,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active,
+html .modal-container .modal.modal .body .co-toggle.active,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active,
+html .modal-container .modal.modal .footer .confirm,
+html .container .npd-btn.confirm,
+html .modal-container .npd-btn.confirm,
+html .incoming-contract-popup .incoming-actions .accept { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty:hover,
+html .container .create-menu .filter-chip.active:hover,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active:hover,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active:hover,
+html .modal-container .modal.modal .body .co-toggle.active:hover,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active:hover,
+html .modal-container .modal.modal .footer .confirm:hover,
+html .container .npd-btn.confirm:hover,
+html .modal-container .npd-btn.confirm:hover,
+html .incoming-contract-popup .incoming-actions .accept:hover { background: #df2f63; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; transform: none; opacity: 1; }
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty:active,
+html .container .create-menu .filter-chip.active:active,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active:active,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active:active,
+html .modal-container .modal.modal .body .co-toggle.active:active,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active:active,
+html .modal-container .modal.modal .footer .confirm:active,
+html .container .npd-btn.confirm:active,
+html .modal-container .npd-btn.confirm:active,
+html .incoming-contract-popup .incoming-actions .accept:active { box-shadow: inset 0 0 0 1.5px #000; transform: translate(2px, 2px); }
+html .container .boosting.boosting-v2 .mission-actions .action.strong,
+html .container .market.market-v2 .content .list .item .actions .action { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .container .boosting.boosting-v2 .mission-actions .action.strong:hover,
+html .container .market.market-v2 .content .list .item .actions .action:hover { background: #df2f63; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; transform: none; opacity: 1; }
+html .container .boosting.boosting-v2 .mission-actions .action.strong:active,
+html .container .market.market-v2 .content .list .item .actions .action:active { box-shadow: inset 0 0 0 1.5px #000; transform: translate(2px, 2px); }
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty .icon,
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty iconify-icon,
+html .container .boosting.boosting-v2 .ops-actions .queue-btn.is-on-duty span,
+html .container .create-menu .filter-chip.active .icon,
+html .container .create-menu .filter-chip.active iconify-icon,
+html .container .create-menu .filter-chip.active span,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active .icon,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active iconify-icon,
+html .container .create-menu .management.management-v2 .content .contract-filters .filter-chip.active span,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active .icon,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active iconify-icon,
+html .modal-container .modal.modal .body .settings-actions .settings-tab-btn.active span,
+html .modal-container .modal.modal .body .co-toggle.active .icon,
+html .modal-container .modal.modal .body .co-toggle.active iconify-icon,
+html .modal-container .modal.modal .body .co-toggle.active span,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active .icon,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active iconify-icon,
+html .modal-container .modal.modal .body .contract-options-row .co-toggle.active span,
+html .modal-container .modal.modal .footer .confirm .icon,
+html .modal-container .modal.modal .footer .confirm iconify-icon,
+html .modal-container .modal.modal .footer .confirm span,
+html .container .npd-btn.confirm .icon,
+html .container .npd-btn.confirm iconify-icon,
+html .container .npd-btn.confirm span,
+html .modal-container .npd-btn.confirm .icon,
+html .modal-container .npd-btn.confirm iconify-icon,
+html .modal-container .npd-btn.confirm span,
+html .incoming-contract-popup .incoming-actions .accept .icon,
+html .incoming-contract-popup .incoming-actions .accept iconify-icon,
+html .incoming-contract-popup .incoming-actions .accept span,
+html .container .boosting.boosting-v2 .mission-actions .action.strong .icon,
+html .container .boosting.boosting-v2 .mission-actions .action.strong iconify-icon,
+html .container .boosting.boosting-v2 .mission-actions .action.strong span,
+html .container .market.market-v2 .content .list .item .actions .action .icon,
+html .container .market.market-v2 .content .list .item .actions .action iconify-icon,
+html .container .market.market-v2 .content .list .item .actions .action span { color: #000; }
+/*  Lo destructivo que no es el botón que confirma (tirar, borrar): papel
+    con la tinta rosa, y rosa entero al pasar. Si fuera rosa de serie habría
+    dos botones rosas en cada ficha. */
+html .container .boosting.boosting-v2 .mission-actions .action.neutral,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child,
+html .modal-container .modal.modal .body .inline-modal-btn.danger { background: #dcdde0; border-color: #000; color: #b3123f; }
+/* (07/10) quitado el rojo vivo #ff4438 que pisaba el gris de peligro de arriba */
+html .container .boosting.boosting-v2 .mission-actions .action.neutral .icon,
+html .container .boosting.boosting-v2 .mission-actions .action.neutral iconify-icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child .icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child iconify-icon,
+html .modal-container .modal.modal .body .inline-modal-btn.danger .icon,
+html .modal-container .modal.modal .body .inline-modal-btn.danger iconify-icon { color: #b3123f; }
+html .container .boosting.boosting-v2 .mission-actions .action.neutral:hover,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover,
+html .modal-container .modal.modal .body .inline-modal-btn.danger:hover { background: #d81b55; border-color: #000; color: #000; }
+
+html .container .boosting.boosting-v2 .mission-actions .action.neutral:hover .icon,
+html .container .boosting.boosting-v2 .mission-actions .action.neutral:hover iconify-icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover .icon,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover iconify-icon,
+html .modal-container .modal.modal .body .inline-modal-btn.danger:hover .icon,
+html .modal-container .modal.modal .body .inline-modal-btn.danger:hover iconify-icon { color: #000; }
+/*  Retirar la oferta propia. Regla aparte: el CEF 103 no entiende :has() y
+    tira la regla entera; entonces el botón se queda rosa, como en arcade.css. */
+html .container .market.market-v2 .content .list .item .actions .action:has(iconify-icon[icon="mdi:trash-can-outline"]) { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .container .market.market-v2 .content .list .item .actions .action:has(iconify-icon[icon="mdi:trash-can-outline"]) .icon { color: #b3123f; }
+html .modal-container .modal.modal .footer .confirm.disabled,
+html .modal-container .modal.modal .footer .cancel.disabled,
+html .modal-container .modal.modal .footer .pay.disabled { opacity: 0.4; }
+
+/* ── Tarjetas, teselas y chapas ──────────────────────────────────────────── */
+html .container .boosting.boosting-v2 .agent-meta .prestige-badge,
+html .container .boosting.boosting-v2 .agent-stats .mini-stat,
+html .container .boosting.boosting-v2 .agent-ranks,
+html .container .boosting.boosting-v2 .movement-card,
+html .container .boosting.boosting-v2 .ops-progress .progress-module,
+html .container .boosting.boosting-v2 .mission-card,
+html .container .boosting.boosting-v2 .mission-card.is-vehicle,
+html .container .boosting.boosting-v2 .mission-card.is-object,
+html:root .container .market.market-v2 .content .list .item,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill,
+html .modal-container .modal.modal .body .co-cell,
+html .modal-container .modal.modal .body .contract-options-row .co-cell,
+html .modal-container .modal.modal .body .settings-editor-row,
+html .modal-container .modal.modal .body .settings-type-block,
+html .incoming-contract-popup .incoming-body { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .container .boosting.boosting-v2 .movement-metrics .m,
+html .container .boosting.boosting-v2 .mission-head .type-chip,
+html .container .boosting.boosting-v2 .mission-head .status,
+html .container .boosting.boosting-v2 .mission-head .ttl,
+html .container .boosting.boosting-v2 .mission-data .cell,
+html:root .container .market.market-v2 .content .list .item .category,
+html:root .container .market.market-v2 .content .list .item .tags .tag,
+html:root .container .market.market-v2 .content .list .item .timer .tag,
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill,
+html .container .create-menu .contract-type-pill,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td .contract-type-pill,
+html .incoming-contract-popup .incoming-metrics .m { background: #dcdde0; border-color: #000; box-shadow: none; color: #0b0b0d; }
+/*  Vehículo en negro, objeto en rosa: la banda de la izquierda y la chapa. */
+html .container .boosting.boosting-v2 .mission-card.is-vehicle { border-left-color: #0b0b0d; }
+html .container .boosting.boosting-v2 .mission-card.is-object { border-left-color: #d81b55; }
+html:root .container .market.market-v2 .content .list .item { border-left-color: #d81b55; }
+html .container .boosting.boosting-v2 .mission-card.is-object .mission-head .type-chip,
+html .container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill.object,
+html .container .create-menu .contract-type-pill.object,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td .contract-type-pill.object,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.object { background: #dcdde0; border-color: #000; color: #0b0b0d; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+html .container .boosting.boosting-v2 .mission-card.is-vehicle .mission-head .type,
+html .container .boosting.boosting-v2 .mission-card.is-object .mission-head .type { color: #0b0b0d; }
+html .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.vehicle iconify-icon,
+html .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.object iconify-icon { color: #0b0b0d; }
+html .container .boosting.boosting-v2 .ops-progress .progress-type-icon,
+html .container .boosting.boosting-v2 .ops-progress .progress-type-icon.vehicle,
+html .container .boosting.boosting-v2 .ops-progress .progress-type-icon.object,
+html .container .boosting.boosting-v2 .mission-focus .mission-kind-icon,
+html .container .boosting.boosting-v2 .mission-card.is-vehicle .mission-focus .mission-kind-icon,
+html .container .boosting.boosting-v2 .mission-card.is-object .mission-focus .mission-kind-icon { background: #0b0b0d; border-color: #0b0b0d; color: #fff; }
+html .container .boosting.boosting-v2 .ops-progress .progress-type-icon.object,
+html .container .boosting.boosting-v2 .mission-card.is-object .mission-focus .mission-kind-icon { background: #d81b55; border-color: #000; color: #000; }
+/*  El vacío: negro DENTRO del papel. */
+html:root .container .boosting.boosting-v2 .mission-empty-state { background: #0b0b0d; border-color: #0b0b0d; }
+html:root .container .boosting.boosting-v2 .mission-empty-state iconify-icon { color: #fff; opacity: 1; }
+html:root .container .boosting.boosting-v2 .mission-empty-state span { color: #fff; }
+html:root .container .boosting.boosting-v2 .mission-empty-state small { color: #55555c; }
+
+/* ── La ficha del agente ─────────────────────────────────────────────────── */
+html .container .boosting.boosting-v2 .agent-card .agent-banner { border-color: #000; box-shadow: none; }
+html .container .boosting.boosting-v2 .agent-banner .banner-overlay { background: none; }
+html .container .boosting.boosting-v2 .profile-photo { border-color: #fff; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html .container .boosting.boosting-v2 .profile-photo-wrapper:hover .profile-photo { box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html .container .boosting.boosting-v2 .level-badge { background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .container .boosting.boosting-v2 .edit-photo-overlay { background: rgba(255, 255, 255, 0.82); }
+html:root .container .boosting.boosting-v2 .agent-ranks .rank-line { border-bottom-color: rgba(11, 11, 13, 0.35); }
+
+/* ── Barras: pista blanca con anillo, relleno rosa ───────────────────────── */
+html .container .boosting.boosting-v2 .ops-progress .progressbar { height: 10px; border: 0; border-radius: 999px; overflow: hidden; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .container .boosting.boosting-v2 .ops-progress .progress-module:first-child .progressbar .progress,
+html .container .boosting.boosting-v2 .ops-progress .progress-module:last-child .progressbar .progress { background: #d81b55; border-radius: 999px; box-shadow: none; }
+html .incoming-contract-popup .incoming-timer { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .incoming-contract-popup .incoming-timer .incoming-timer-fill { background: #d81b55; }
+/*  La placa del aviso: rosa, girada, icono negro. */
+html .incoming-contract-popup .contact-avatar { transform: rotate(-5deg); background: #d81b55; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .incoming-contract-popup .contact-avatar iconify-icon { color: #000; }
+html .incoming-contract-popup .incoming-hint strong { color: #b3123f; }
+
+/* ── Buscadores y campos ─────────────────────────────────────────────────── */
+html .container .ranking-menu .ranking.ranking-v2 .content .search-items,
+html .container .create-menu .management.management-v2 .content .search-items { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .container .ranking-menu .ranking.ranking-v2 .content .search-items .icon,
+html .container .ranking-menu .ranking.ranking-v2 .content .search-items input,
+html .container .create-menu .management.management-v2 .content .search-items .icon,
+html .container .create-menu .management.management-v2 .content .search-items input { color: #0b0b0d; }
+html .modal-container .modal.modal .input.input.input,
+html .container .npd-input,
+html .modal-container .npd-input { background: #dcdde0; border-color: #000; box-shadow: inset 0 0 0 1.5px #000; }
+html .modal-container .modal.modal .input.input.input:focus-within,
+html .modal-container .modal.modal .input.input.input.searchable-select.open,
+html .container .npd-input:focus,
+html .modal-container .npd-input:focus { border-color: #d81b55; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .modal-container .modal.modal .input.input input,
+html .modal-container .modal.modal .input.input textarea,
+html .modal-container .modal.modal .input.input select,
+html .modal-container .modal.modal .input.input.searchable-select .selected-value { color: #0b0b0d; }
+html .modal-container .modal.modal .input.input .icon,
+html .modal-container .modal.modal .input.input.searchable-select .select-arrow { color: #0b0b0d; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-panel,
+html .modal-container .modal.modal .dropdown-panel { background: #dcdde0 !important; border: 1px solid #000 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-panel input,
+html .modal-container .modal.modal .dropdown-panel > input { background: #dcdde0; border-color: #000; color: #0b0b0d; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-option,
+html .modal-container .modal.modal .dropdown-option { color: #0b0b0d; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-option:hover,
+html .modal-container .modal.modal .dropdown-option:hover { background: #ffd6e4; color: #0b0b0d; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-option.custom-model-option { background: #dcdde0; border-color: #d81b55; color: #b3123f; }
+html .modal-container .modal.modal .body .input.searchable-select .dropdown-option.custom-model-option:hover { background: #ffd6e4; }
+html .modal-container .modal.modal .body .contract-options-row { background: linear-gradient(180deg, rgba(220, 221, 224, 0), #dcdde0 28%); }
+html .modal-container .modal.modal .body .settings-type-block.vehicle,
+html .modal-container .modal.modal .body .settings-type-block.object { border-color: #000; }
+html .modal-container .modal.modal .body .settings-type-block.object { border-top-color: #d81b55; }
+html .modal-container .modal#cSettings.settings-modal td.class { background: #dcdde0 !important; border: 1px solid #000 !important; color: #0b0b0d !important; }
+html .modal-container .modal#cSettings.settings-modal thead th { background: #dcdde0 !important; border: 1px solid #000 !important; }
+
+/* ── Tablas: ranking y lista de contratos ────────────────────────────────── */
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th,
+html .container .create-menu .management.management-v2 .content .contract-list table th { border-bottom: 1px solid #000; box-shadow: inset 0 -2px 0 #000; color: #0b0b0d; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr { background: #dcdde0; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:nth-child(even),
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr:nth-child(even) { background: #e6e7ea; }
+html .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:hover,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover { background: #e6e7ea; border-color: #000; }
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td { background: #e6e7ea; border-color: rgba(11, 11, 13, 0.3); }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td,
+html .container .create-menu .management.management-v2 .content .contract-list table tbody td { border-top-color: rgba(11, 11, 13, 0.3); border-bottom-color: rgba(11, 11, 13, 0.3); }
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr.is-vehicle td:first-child { border-left-color: #0b0b0d; }
+html .container .create-menu .management.management-v2 .content .contract-list table tbody tr.is-object td:first-child { border-left-color: #d81b55; }
+/*  El jugador en el ranking: «lo elegido». */
+html .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55 !important; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self td { border-top-color: #d81b55; border-bottom-color: #d81b55; color: #0b0b0d; }
+html .container .create-menu .management.management-v2 .management-topbar { border-bottom-color: #000; }
+
+/* ── Avisos ──────────────────────────────────────────────────────────────── */
+html .container .notifications .list .notification,
+html .container .notifications .list .notification.success,
+html .container .notifications .list .notification.info,
+html .container .notifications .list .notification.error { background: #dcdde0 !important; border-color: #000 !important; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important; color: #0b0b0d !important; }
+html .container .notifications .list .notification.success { border-left-color: #0f5c31 !important; }
+html .container .notifications .list .notification.error { border-left-color: #d81b55 !important; }
+html .container .notifications .list .notification.error .content .icon { color: #b3123f; }
+
+
+/* ══ PANEL DE ADMINISTRACION · REPASO VISUAL (04/10) ══════════════════════
+   La gestion de contratos (.create-menu) y sus cuadros, iguales que el
+   resto de paneles de administracion: suelo oscuro, zonas gris perla con
+   canto 4 y sombra dura 7, cabecera con chapa + rotulo + brocha, tabla de
+   cabecera negra y filas blancas con canto, un solo tipo de campo y de
+   boton, borrar en rojo y cifras en Oxanium. No lleva riel: no tiene
+   secciones.
+
+   OJO AL PESO: todo el bloque lleva dos «:is(#_, html)» pegados al <html>:
+   no cambian a quien apunta el selector (el id #_ no existe; el html si) y
+   le dan el peso de dos ids, asi gana siempre a las reglas de arriba.
+   ════════════════════════════════════════════════════════════════════ */
+html:root:is(#_, html):is(#_, html) {
+    --peg-u: calc(1vh / var(--ogn-escala, 1));
+    --peg-rojo: #d81b55;
+    --peg-rojo-2: #df2f63;
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --peg-brocha: "Knewave", "Barlow Condensed", cursive;
+    --peg-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --peg-texto: "Barlow", "Segoe UI", sans-serif;
+}
+
+/* ── El armazon ─────────────────────────────────────────────────────── */
+html:root:is(#_, html):is(#_, html) .container .create-menu { background: rgba(11, 11, 13, 0.86); }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 { gap: 20px; padding: calc(var(--peg-u) * 1.6) calc(var(--peg-u) * 2) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 1.6); }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content { margin: 0; border: 0; border-radius: 20px; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+
+/* ── La cabecera ────────────────────────────────────────────────────── */
+/*  Entradilla en chapa negra y brocha bajo el titulo: salen de aqui (un
+    ::before y un ::after), asi que en Nación no existen. */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header { flex: none; align-items: center; height: auto; min-height: 0; max-height: none; overflow: visible; padding: calc(var(--peg-u) * 1.5) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 1.7); }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .header .header-left { display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--peg-u) * 0.7); }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .header .header-left::before { content: 'Origen Carboosting'; padding: 3px 9px 2px; border-radius: 6px; background: #0b0b0d; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); line-height: 1.25; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .header .title { display: block; overflow: visible; height: auto; max-height: none; margin: 0; padding-right: 6px; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 3.4); line-height: 0.95; letter-spacing: 0.005em; text-transform: uppercase; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .header .title::after {
+    content: 'Encargos sobre ruedas';
+    position: static;
+    display: block;
+    height: auto;
+    background: none;
+    width: fit-content;
+    margin: calc(var(--peg-u) * 1) 0 0 calc(var(--peg-u) * 0.7);
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(var(--peg-u) * 2.1);
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  A la derecha, tres botones del mismo alto; crear, rosa con tinta negra. */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .header-actions { gap: calc(var(--peg-u) * 1.3); padding: 0 4px 0 0; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button { box-sizing: border-box; height: calc(var(--peg-u) * 4.2); gap: calc(var(--peg-u) * 0.7); padding: 0 calc(var(--peg-u) * 1.6); border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); letter-spacing: 0.03em; text-transform: uppercase; color: #0b0b0d; transform: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button span { font: inherit; letter-spacing: inherit; color: inherit; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button:hover { background: #e6e7ea; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button:first-child { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button:first-child:hover { background: #df2f63; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .header .button .icon { font-size: calc(var(--peg-u) * 1.9); color: inherit; }
+
+/* ── Buscador y filtros ─────────────────────────────────────────────── */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content { padding: 0; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .management-topbar { position: relative; gap: calc(var(--peg-u) * 1.3); margin: 0; padding: calc(var(--peg-u) * 1.8) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 1.5); border: 0; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management .management-topbar::after { content: ''; position: absolute; left: calc(var(--peg-u) * 2.2); right: calc(var(--peg-u) * 2.2); bottom: 0; height: 4px; border-radius: 2px; background: #d81b55; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items { box-sizing: border-box; height: calc(var(--peg-u) * 3.8); margin: 0; padding: 0 calc(var(--peg-u) * 1.2); border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items:focus-within { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items .icon { font-size: calc(var(--peg-u) * 1.8); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items input,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items input::placeholder { font-family: var(--peg-texto); font-style: normal; font-weight: 600; font-size: calc(var(--peg-u) * 1.5); letter-spacing: 0; text-transform: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items input { color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .search-items input::placeholder { opacity: 1; color: #73737c; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .contract-filters { gap: calc(var(--peg-u) * 0.9); padding: 0 3px 3px 0; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .filter-chip,
+html:root:is(#_, html):is(#_, html) .container .create-menu .filter-chip:hover { box-sizing: border-box; height: calc(var(--peg-u) * 3.8); padding: 0 calc(var(--peg-u) * 1.4); border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.45); letter-spacing: 0.03em; color: #0b0b0d; transform: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .filter-chip:hover { background: #e6e7ea; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .filter-chip.active,
+html:root:is(#_, html):is(#_, html) .container .create-menu .filter-chip.active:hover { background: #d81b55; color: #000; }
+
+/* ── La tabla: cabecera negra, filas blancas con canto ──────────────── */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list { box-sizing: border-box; width: 100%; margin: 0; padding: calc(var(--peg-u) * 0.6) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 2); border: 0; border-radius: 0; background: none; box-shadow: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table { border-collapse: separate; border-spacing: 0 calc(var(--peg-u) * 0.9); background: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table thead,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table thead tr { background: none; box-shadow: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table th { padding: calc(var(--peg-u) * 1) calc(var(--peg-u) * 0.8) calc(var(--peg-u) * 0.9); border: 0; background: #0b0b0d; box-shadow: none; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table th:first-child { padding-left: calc(var(--peg-u) * 1.4); border-radius: 10px 0 0 10px; text-align: left; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table th:last-child { border-radius: 0 10px 10px 0; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover { border: 0; background: none; box-shadow: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td { padding: calc(var(--peg-u) * 1.1) calc(var(--peg-u) * 0.8); border: 0; border-radius: 0; background: #dcdde0; box-shadow: inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: calc(var(--peg-u) * 1.4); letter-spacing: 0; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td { background: #e6e7ea; }
+/*  El nombre, en rotulo y entero; categoria, arma y dificultad, texto. */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td:first-child,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td:first-child { padding-left: calc(var(--peg-u) * 1.4); border: 0; border-radius: 12px 0 0 12px; box-shadow: inset 2.5px 0 0 #000, inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-size: calc(var(--peg-u) * 1.7); line-height: 1.05; letter-spacing: 0.01em; text-align: left; text-transform: uppercase; white-space: normal; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td:nth-child(3),
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td:nth-child(5),
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td:nth-child(6) { font-family: var(--peg-texto); font-weight: 600; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td:nth-child(5) { font-size: calc(var(--peg-u) * 1.25); color: #44444a; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions,
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td.actions { gap: calc(var(--peg-u) * 0.8); padding-right: calc(var(--peg-u) * 1.4); border-radius: 0 12px 12px 0; box-shadow: inset -2.5px 0 0 #000, inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000; }
+/*  Las acciones: botones de verdad con hueco; borrar, en rojo. */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action { width: calc(var(--peg-u) * 3.2); height: calc(var(--peg-u) * 3.2); border: 0; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; transform: none; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:hover { background: #e6e7ea; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child { background: #dcdde0; color: #b3123f; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child .icon { color: #b3123f; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action:last-child:hover .icon { color: #000; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody td.actions .action .icon { font-size: calc(var(--peg-u) * 1.7); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .contract-type-pill { gap: calc(var(--peg-u) * 0.5); padding: calc(var(--peg-u) * 0.3) calc(var(--peg-u) * 0.9) calc(var(--peg-u) * 0.2); border: 0; border-radius: 7px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.03em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .create-menu .contract-type-pill.object { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+/*  Sin contratos: hueco gris con canto a trazos, no una fila mas. */
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr td[colspan],
+html:root:is(#_, html):is(#_, html) .container .create-menu .management.management-v2 .content .contract-list table tbody tr:hover td[colspan] { padding: calc(var(--peg-u) * 5) calc(var(--peg-u) * 2); border-radius: 12px; background: #dcdde0; box-shadow: none; outline: 1.5px dashed #9a9aa3; outline-offset: -2.5px; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); letter-spacing: 0.03em; text-align: center; text-transform: uppercase; color: #44444a; }
+
+
+/* ── Los cuadros del administrador ──────────────────────────────────── */
+/*  Crear/editar contrato, categorias, dar monedas, mandar y borrar. (Los
+    tres ultimos comparten clase con el de enviar monedas del jugador, que
+    queda igual que ellos.) Tarjeta gris perla con canto 4 y sombra dura,
+    titulo en rotulo con filete rosa, un solo tipo de campo y, al pie,
+    cancelar en blanco y la accion en rosa. */
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) { border: 0 !important; border-radius: 20px !important; background: #c4c6ca !important; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .title { margin: 0 calc(var(--peg-u) * 2.2); padding: calc(var(--peg-u) * 2) 0 calc(var(--peg-u) * 1.3); border: 0; border-bottom: 4px solid #d81b55; background: none; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 2.5); line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .title::after,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .title::before { display: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .title.settings-title .settings-title-main { font: inherit; letter-spacing: inherit; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .title.settings-title .settings-title-sub { margin-top: calc(var(--peg-u) * 0.4); font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.03em; text-transform: uppercase; color: #55555c; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .body { padding: calc(var(--peg-u) * 1.6) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 1.2); background: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .body p { font-family: var(--peg-texto); font-weight: 500; font-size: calc(var(--peg-u) * 1.5); line-height: 1.5; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input:hover { box-sizing: border-box; min-height: calc(var(--peg-u) * 3.8); border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; transform: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input:focus-within,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input.searchable-select.open { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input.disabled { opacity: 1; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input .icon { font-size: calc(var(--peg-u) * 1.8); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input input,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input textarea,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input input::placeholder,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input textarea::placeholder { font-family: var(--peg-texto); font-style: normal; font-weight: 600; font-size: calc(var(--peg-u) * 1.5); letter-spacing: 0; text-transform: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input input,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input textarea { color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input input[type="number"] { font-family: var(--peg-cifra); font-weight: 800; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input input::placeholder,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input textarea::placeholder { font-family: var(--peg-texto); font-weight: 500; opacity: 1; color: #73737c; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .input.searchable-select .selected-value { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.5); letter-spacing: 0.02em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .dropdown-panel { border: 0; border-radius: 12px; background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .dropdown-panel > input { border: 0; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--peg-texto); font-weight: 600; font-size: calc(var(--peg-u) * 1.4); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .dropdown-option { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.45); letter-spacing: 0.03em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .dropdown-option:hover { background: #ffd6e4; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn:hover { padding: calc(var(--peg-u) * 0.6) calc(var(--peg-u) * 1); opacity: 1 !important; border: 0 !important; border-radius: 9px; background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.03em; color: #0b0b0d !important; transform: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn:hover { background: #e6e7ea !important; }
+/* peligro: pieza gris con letra rosa tinta; rosa entero al pasar */
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn.danger { background: #dcdde0 !important; color: #b3123f !important; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn.danger:hover { background: #d81b55 !important; color: #000 !important; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn:disabled,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .inline-modal-btn:disabled:hover { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #9a9aa3 !important; color: #9a9aa3 !important; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-cell { border: 0; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-label { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.03em; color: #55555c; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-val { border: 0; background: #dcdde0; box-shadow: none; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-arrow,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-arrow:hover { border: 0; border-radius: 8px; background: #0b0b0d; box-shadow: none; color: #fff; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-toggle,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-toggle:hover { border: 0; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.03em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-toggle.active,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .co-toggle.active:hover { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-tab-btn,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-tab-btn:hover { border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.45); letter-spacing: 0.03em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-tab-btn.active,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-tab-btn.active:hover { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-actions { padding: 0 3px 3px 0; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-editor-list { gap: calc(var(--peg-u) * 1); background: none; border: 0; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-editor-row { border: 0; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-field > span { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.03em; text-transform: uppercase; color: #55555c; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-field input { box-sizing: border-box; height: calc(var(--peg-u) * 3.4); padding: 0 calc(var(--peg-u) * 1); border: 0; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--peg-cifra); font-weight: 800; font-size: calc(var(--peg-u) * 1.4); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-field.lg input { font-family: var(--peg-texto); font-weight: 600; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-field input:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-row-actions { gap: calc(var(--peg-u) * 0.7); padding: 0 3px 3px 0; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-type-block,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-sections,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .settings-table-wrap { border: 0; background: none; box-shadow: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer { gap: calc(var(--peg-u) * 1.2); padding: calc(var(--peg-u) * 0.8) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 2.2); border: 0; background: none; box-shadow: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .cancel,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .confirm,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .pay { min-width: calc(var(--peg-u) * 13); padding: calc(var(--peg-u) * 1.1) calc(var(--peg-u) * 1.8); border: 0; border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.55); letter-spacing: 0.03em; text-transform: uppercase; opacity: 1; transform: none; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .cancel,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .cancel:hover { order: -1; background: #dcdde0; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .cancel:hover { background: #e6e7ea; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .confirm,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .pay { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .confirm:hover,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .pay:hover { background: #df2f63; color: #000; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .confirm.disabled,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .confirm.disabled:hover,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .pay.disabled,
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer .pay.disabled:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #9a9aa3; cursor: default; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal:is(.contract-editor-modal, .settings-modal, .send-coins-modal:not(.modal--jugador)) .footer button:active:not(.disabled) { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .modal-container { background: rgba(11, 11, 13, 0.66); }
+/*  El cuadro pequeño de punto nuevo, encima del editor. */
+html:root:is(#_, html):is(#_, html) .container .npd-modal { border: 0; border-radius: 16px; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .npd-header { border-bottom: 4px solid #d81b55; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .npd-footer { border-top: 0; background: none; }
+html:root:is(#_, html):is(#_, html) .container .npd-input { border: 0; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .npd-btn { border: 0; border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .npd-btn.confirm { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .npd-btn.cancel { order: -1; background: #dcdde0; }
+
+/*  El cuadro de categorias media 150vh de ancho y se salia de la pantalla
+    por la derecha: se le pone tope. */
+html:root:is(#_, html):is(#_, html) .modal-container .modal.settings-modal { box-sizing: border-box; width: min(calc(var(--peg-u) * 150), calc(100vw / var(--ogn-escala, 1) - calc(var(--peg-u) * 12))) !important; max-width: none !important; max-height: calc(100vh / var(--ogn-escala, 1) - calc(var(--peg-u) * 10)) !important; margin: auto; }
+html:root:is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-main { gap: calc(var(--peg-u) * 0.8); font-size: calc(var(--peg-u) * 2.5); }
+html:root:is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-main iconify-icon { color: #0b0b0d; }
+
+/* ══ fin del repaso de los paneles de administracion ══ */
+
+/* ── Fondo y paneles ─────────────────────────────────────────────────────── */
+
+/* ── Lo que se pulsa: gris liso, sin canto ───────────────────────────────── */
+/*  Los botones principales neutros de los diálogos: blanco roto, tinta negra. */
+
+/* ── Encendido y el que confirma ─────────────────────────────────────────── */
+
+/* ── Tarjetas, teselas y chapas ──────────────────────────────────────────── */
+
+/* ── La ficha del agente ─────────────────────────────────────────────────── */
+
+/* ── Barras ──────────────────────────────────────────────────────────────── */
+
+/* ── Buscadores y campos ─────────────────────────────────────────────────── */
+
+/* ── Tablas ──────────────────────────────────────────────────────────────── */
+
+/* ── Avisos ──────────────────────────────────────────────────────────────── */
+
+
+/* ══ FLECOS DE LOS CUADROS DEL ADMINISTRADOR (04/10) ══════════════════════
+   Tres cosas que quedaron del repaso de arriba:
+   1. «Eliminar contrato» confirmaba en rosa: comparte .send-coins-modal:not(.modal--jugador) con
+      los cuadros de dar monedas y mandar contrato. La plantilla le pone
+      ahora .modal--peligro y aqui su boton va en ROJO.
+   2. El titulo del cuadro de categorias salia diminuto (heredaba la letra
+      de un rotulo pequeño): va del tamaño de los demas titulos.
+   3. En «Crear contrato», la fila de categoria / dificultad / VIN llevaba
+      una franja blanca detras de las tres tarjetas: fuera.
+   ════════════════════════════════════════════════════════════════════ */
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.modal--peligro .footer .confirm { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.modal--peligro .footer .confirm:hover { background: #df2f63; color: #000; }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title { font-family: var(--peg-rotulo, "Barlow Condensed", sans-serif); font-style: italic; font-weight: 800; text-transform: uppercase; }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-main { display: flex; align-items: center; font-size: calc(var(--peg-u) * 3); line-height: 1.05; letter-spacing: 0.01em; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-main span { font: inherit; letter-spacing: inherit; text-transform: uppercase; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-main iconify-icon { font-size: calc(var(--peg-u) * 2.6); }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.settings-modal .title.settings-title .settings-title-sub { font-size: calc(var(--peg-u) * 1.5); }
+html:root:is(#_, html):is(#_, html):is(#_, html) .modal-container .modal.contract-editor-modal .body .contract-options-row { border: 0; background: none; box-shadow: none; }
+/* ══ fin de los flecos de los cuadros del administrador ══ */
+
+/* [REPASO-HUD 05/10 · principio] */
+/* ══ REPASO VISUAL (05/10) · LA TABLET DEL JUGADOR ═══════════════════════
+   Criterio del minimapa: las tarjetas grandes (.ops-card, .ops-hud) son el
+   contenedor y van en gris perla; lo de dentro, blanco. Los vacíos eran
+   una losa negra maciza: pasan a hueco gris a trazos. Rótulos en Barlow
+   Condensed cursiva 800 sin espaciar, cifras en Oxanium 800 y filetes
+   rosa macizos en vez de rayas de 1 px. Solo de día. */
+html:root .container .boosting.boosting-v2 .ops-hud,
+html:root .container .boosting.boosting-v2 .ops-card { background: #c4c6ca; }
+html:root .container .boosting.boosting-v2 :is(.mini-stat, .agent-ranks, .progress-module, .ops-balance) { background: #dcdde0; }
+/*  Los vacíos. */
+html:root .container .boosting.boosting-v2 .mission-empty-state { background: #dcdde0; border: 1.5px dashed #73737c; border-radius: 12px; }
+html:root .container .boosting.boosting-v2 .mission-empty-state iconify-icon { color: #a9a9b2; opacity: 1; }
+html:root .container .boosting.boosting-v2 .mission-empty-state span {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+    font-size: calc(2vh / var(--ogn-escala, 1)); color: #0b0b0d;
+}
+html:root .container .boosting.boosting-v2 .mission-empty-state small { color: #55555c; }
+/*  Rótulos. */
+html:root .container .boosting.boosting-v2 :is(.mini-stat .k, .mini-stat span, .rank-line span, .rank-line .k, .prestige-badge, .prestige-badge span, .market-inline, .ops-actions .hud-btn, .ops-actions .hud-btn span, .rank-rail, .rank-rail-current) {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+}
+html:root .container .boosting.boosting-v2 :is(.mini-stat .k, .mini-stat span, .rank-line span, .rank-line .k) { font-size: calc(1.45vh / var(--ogn-escala, 1)); color: #44444a; }
+html:root .container .boosting.boosting-v2 :is(.prestige-badge, .prestige-badge span, .market-inline, .ops-actions .hud-btn, .ops-actions .hud-btn span) { font-size: calc(1.45vh / var(--ogn-escala, 1)); }
+html:root .container .boosting.boosting-v2 :is(.mini-stat strong, .rank-line strong, .ops-balance span) {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0;
+}
+html:root .container .boosting.boosting-v2 .mini-stat strong { font-size: calc(2.2vh / var(--ogn-escala, 1)); }
+html:root .container .boosting.boosting-v2 .rank-line strong { font-size: calc(1.8vh / var(--ogn-escala, 1)); }
+html:root .container .boosting.boosting-v2 .ops-balance span { font-size: calc(1.6vh / var(--ogn-escala, 1)); }
+/*  Las líneas de rango: raya negra de 2 px, no gris de 1. */
+html:root .container .boosting.boosting-v2 .agent-ranks .rank-line { border-bottom: 1.5px solid #0b0b0d; }
+html:root .container .boosting.boosting-v2 .agent-ranks .rank-line:last-child { border-bottom: 0; }
+/*  Títulos de tarjeta: el filete rosa, macizo de 4 px. */
+html:root .container .boosting.boosting-v2 :is(.ops-title, .board-title) { font-size: calc(1.9vh / var(--ogn-escala, 1)); }
+html:root .container .boosting.boosting-v2 :is(.ops-title, .board-title)::after { height: 4px; border-radius: 2px; background: #d81b55; }
+/* [REPASO-HUD 05/10 · fin] */
+
+/* [REPASO VISUAL 3 · 06/10 · principio] */
+/* ══ REPASO VISUAL 3 (06/10) · MERCADO, RANKING Y DIÁLOGOS DEL JUGADOR ═════
+   Mercado y clasificación, llenos y vacíos. Mismo criterio que la tablet de arriba: el panel en gris
+   perla, lo de dentro blanco con canto; rótulos en Barlow Condensed cursiva
+   800 sin espaciar (iban a 0,14–0,18 em) y cifras en Oxanium 800 (la tabla
+   iba en Oxanium 800). La tabla pierde la losa gris del fondo y lleva
+   cabecera negra. Solo de día. */
+html:root .container .market.market-v2 .market-header,
+html:root .container .market.market-v2 .content .list,
+html:root .container .market.market-v2 .content .no-contracts,
+html:root .container .ranking-menu .ranking.ranking-v2 .header,
+html:root .container .ranking-menu .ranking.ranking-v2 .content { background: #c4c6ca; }
+/*  Rótulos sueltos: «Volver», las chapas de categoría y de rango, la
+    cabecera de la tabla y el vacío. */
+html:root .container .market.market-v2 .market-back-inline span,
+html:root .container .market.market-v2 .content .list .item .category,
+html:root .container .market.market-v2 .content .no-contracts span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill span,
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th,
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+}
+/*  La marca «CONTRACT» de cada oferta (sale de un ::before de style.css). */
+html:root .container .market.market-v2 .content .list .item::before {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+    font-size: calc(1.15vh / var(--ogn-escala, 1)); color: #a9a9b2;
+}
+html:root .container .market.market-v2 .market-back-inline span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-back-inline span { font-size: calc(1.5vh / var(--ogn-escala, 1)); color: #0b0b0d; }
+html:root .container .market.market-v2 .content .no-contracts span { font-size: calc(2vh / var(--ogn-escala, 1)); color: #0b0b0d; }
+html:root .container .market.market-v2 .content .no-contracts .icon { color: #a9a9b2; opacity: 1; }
+/*  Las ofertas: tarjeta blanca con canto y sombra, como las de la bolsa. */
+html:root .container .market.market-v2 .content .list .item { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .container .market.market-v2 .content .list .item .name span { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.01em; color: #0b0b0d; }
+/*  Chapas de dentro: canto de 2 px, no raya de 1. */
+html:root .container .market.market-v2 .content .list .item .category,
+html:root .container .market.market-v2 .content .list .item .tags .tag,
+html:root .container .market.market-v2 .content .list .item .timer .tag,
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill { border-color: transparent; border-radius: 7px; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .market.market-v2 .content .list .item .category { font-size: calc(1.2vh / var(--ogn-escala, 1)); color: #0b0b0d; }
+html:root .container .market.market-v2 .content .list .item .tags .tag .icon,
+html:root .container .market.market-v2 .content .list .item .timer .tag .icon { color: #0b0b0d; }
+/*  Ranking: las chapas de la cabecera. */
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill { border-color: transparent; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank span,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill span { font-size: calc(1.25vh / var(--ogn-escala, 1)); color: #44444a; }
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank strong,
+html:root .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill strong { font-size: calc(1.5vh / var(--ogn-escala, 1)); }
+/*  La tabla: sin losa gris, cabecera negra y filas blancas con canto. */
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list { background: transparent; border-color: transparent; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th { background: #0b0b0d; border-color: #0b0b0d; box-shadow: none; color: #fff; font-size: calc(1.3vh / var(--ogn-escala, 1)); }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th:first-child { border-radius: 9px 0 0 9px; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table th:last-child { border-radius: 0 9px 9px 0; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr,
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:nth-child(even) { background: #dcdde0; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td { border-top: 1.5px solid #000; border-bottom: 1.5px solid #000; border-left: 0; border-right: 0; font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; letter-spacing: 0; color: #0b0b0d; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td:first-child { border-left: 1.5px solid #000; border-radius: 9px 0 0 9px; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td:last-child { border-right: 1.5px solid #000; border-radius: 0 9px 9px 0; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td:nth-child(2) { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.01em; }
+/*  «No hay datos»: hueco gris, no una fila blanca suelta. */
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody td[colspan] { border: 1.5px dashed #73737c; border-radius: 9px; background: #dcdde0; font-family: "Barlow Condensed", sans-serif; font-style: italic; font-size: calc(1.8vh / var(--ogn-escala, 1)); padding: calc(1.6vh / var(--ogn-escala, 1)); }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self td { border-top-color: #d81b55; border-bottom-color: #d81b55; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self td:first-child { border-left-color: #d81b55; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self td:last-child { border-right-color: #d81b55; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr:hover td { background: #e6e7ea; }
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table tbody tr.is-self:hover td { background: #ffd6e4; }
+/*  Sin hueco entre celdas de la misma fila (se veía el gris del panel como
+    una raya entre cada dato); el hueco entre filas se queda. */
+html:root .container .ranking-menu .ranking.ranking-v2 .content .ranking-list table { border-spacing: 0 calc(0.6vh / var(--ogn-escala, 1)); }
+/*  El título del mercado, del mismo tamaño que el del ranking. */
+html:root .container .market.market-v2 .market-header .title { font-size: calc(2.4vh / var(--ogn-escala, 1)); color: #0b0b0d; }
+/*  Diálogos del jugador (comprar, vender, ofrecer, descartar, entregar,
+    nombre, foto, banner…). Cada uno traía su tamaño de título y de botón:
+    todos iguales; sin la raya de canto a canto encima del pie; y el botón
+    apagado gris con forma de botón y sin sombra, no un rosa lavado. */
+html:root .modal-container .modal.modal .title,
+html:root .modal-container .modal.modal .title span {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+    font-size: calc(2.2vh / var(--ogn-escala, 1)); color: #0b0b0d;
+}
+html:root .modal-container .modal.modal .footer { border-top-color: transparent; }
+html:root .modal-container .modal.modal .footer button {
+    font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; letter-spacing: 0.02em;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+}
+html:root .modal-container .modal.modal .footer button.disabled,
+html:root .modal-container .modal.modal .footer button.disabled:hover {
+    opacity: 1; background: #dcdde0; border-color: transparent; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #a9a9b2; transform: none;
+}
+html:root .modal-container .modal.modal .body p { font-size: calc(1.8vh / var(--ogn-escala, 1)); line-height: 1.35; }
+/*  La lista del mercado medía el 100 % MÁS su relleno (content-box) y se
+    salía por la derecha: el canto y la sombra quedaban cortados. */
+html:root .container .market.market-v2 .content .list { box-sizing: border-box; }
+/*  La marca de cada tarjeta venía en inglés («CONTRACT», en style.css). */
+html:root .container .market.market-v2 .content .list .item::before,
+html .container .boosting.boosting-v2 .right-content-column .contracts .contract::before,
+html .container .boosting.boosting-v2 .right-content-column .cajetinContratos .contratoCajetin::before { content: "CONTRATO"; }
+/*  «Transferir monedas» es un diálogo del JUGADOR, pero comparte la clase
+    .send-coins-modal con los del admin (mandar contrato, dar monedas,
+    borrar) y se llevaba su aspecto. Lleva .modal--jugador en index.html y
+    las reglas del admin lo excluyen con :not(.modal--jugador). */
+/* [REPASO VISUAL 3 · 06/10 · fin] */
+
+/* >>> CLARO · CANTO FINO (05/10): aqui las piezas llevaban el borde de 1px de la hoja vieja ademas del anillo de 1.5px: 2.5px de canto.
+   Fuera el borde (transparente): queda el anillo fino, como en el resto. La raya de tipo de la ficha de contrato (a la izquierda) se queda. */
+html:root body:not(#_a):not(#_b):not(#_c) :is(button.cancel, button.confirm, .hud-btn, .action, .agent-ranks, .edit-banner-btn, .level-badge, .market-back-inline, .market-inline, .mini-stat, .movement-card, .ops-balance, .prestige-badge, .progress-module, .ranking-back-inline, .search-items) { border-color: transparent !important; border-width: 0 !important; }
+html:root body:not(#_a):not(#_b):not(#_c) .mission-card { border-top-color: transparent !important; border-right-color: transparent !important; border-bottom-color: transparent !important; }
+html:root body:not(#_a):not(#_b):not(#_c) .container :is(.content, .header, .market-header, .no-contracts, .ops-card, .ops-hud), html:root body:not(#_a):not(#_b):not(#_c) .profile-photo { border-color: transparent !important; }
+html:root body:not(#_a):not(#_b):not(#_c) .modal-container .modal.modal { border-right-color: transparent !important; border-bottom-color: transparent !important; border-left-color: transparent !important; }
+/*  2a pasada (06/10): con el borde transparente de 1 px, el fondo de la pieza asomaba por FUERA del anillo
+    (que es inset): una rendija clara alrededor de cada boton. Sin ancho de borde, el anillo es el canto. */
+/* <<< FIN CLARO · CANTO FINO */
+
+/* >>> NACION · SIN MORADO (05/10): en Nacion los contratos de «objeto» salian morados (#6b2f8a, y bordes lila #de7eff
+   escritos a mano en style.css). En Origen ese tipo va en el color de la marca (rosa): aqui, el de la marca de Nacion.
+   Se apunta al acento del recurso (rosa en la hoja; marca.js lo repinta a naranja). El de «vehiculo» (azul) se queda. */
+html[data-marca="nacion"]:not(#_) { --arc-object: var(--arc-accent-texto); --arc-object-bg: rgba(223, 47, 99, 0.12); --arc-object-line: rgba(223, 47, 99, 0.4); }
+html[data-marca="nacion"]:not(#_) .container .ranking-menu .ranking.ranking-v2 .ranking-self-rank.object,
+html[data-marca="nacion"]:not(#_) .container .ranking-menu .ranking.ranking-v2 .ranking-self-pill.object,
+html[data-marca="nacion"]:not(#_) .container .ranking-menu .ranking.ranking-v2 .content .ranking-list .rank-pill.object,
+html[data-marca="nacion"]:not(#_) .container .boosting.boosting-v2 .mission-card.is-object,
+html[data-marca="nacion"]:not(#_) .container .boosting.boosting-v2 .mission-card.is-object .mission-head .type-chip,
+html[data-marca="nacion"]:not(#_) .container .boosting.boosting-v2 .mission-card.is-object .mission-head .ttl,
+html[data-marca="nacion"]:not(#_) .container .boosting.boosting-v2 .mission-card.is-object .mission-focus .mission-kind-icon { border-color: var(--arc-object-line); }
+html[data-marca="nacion"]:not(#_) .container .boosting.boosting-v2 .mission-card.is-object { border-left-color: var(--arc-object); }
+/* <<< FIN NACION · SIN MORADO */
+
+/*  El boosting, el mercado y la clasificacion ocupan la pantalla: detras va
+    el velo de la casa, como en el editor (antes un papel casi blanco).
+    Las tarjetas grandes van en el gris de panel. */
+html:root:is(#_, html):is(#_, html) .container { background: #b9bbc0; }
+/*  Sin foto de perfil: la silueta en una pieza gris (antes una imagen de
+    relleno de internet con «400 × 400»). */
+html:root .container .boosting.boosting-v2 .profile-photo--vacia { display: grid; place-items: center; background: #dcdde0; color: #55555c; font-size: 4vh; }
+html:root .container .boosting.boosting-v2 .agent-banner { background-color: #dcdde0; }
+
+/* >>> GESTION DE CONTRATOS · PLANTILLA DE ADMIN (06/10) ════════════════════
+   La gestion (index.html, .create-menu.cba) va con el armazon de todos los
+   paneles de administracion (origen_autoescuela .aep-*, origen_gym OgnShell):
+   fondo gris liso a pantalla completa, riel a la izquierda (placa, secciones,
+   nombre en vertical y piloto), cabecera con chapa + rotulo + brocha, una
+   zona con los filtros en una fila y la tabla desplazable, y la barra de
+   cifras abajo. Clases propias (cba-*): no hereda nada de la gestion vieja. */
+html:root:is(#_, html):is(#_, html) .container .create-menu.cba { position: absolute; inset: 0; width: auto; height: auto; z-index: 5; background: none; color: #0b0b0d; font-family: var(--peg-texto); font-size: calc(var(--peg-u) * 1.4); line-height: 1.4; -webkit-font-smoothing: antialiased; }
+html:root:is(#_, html):is(#_, html) .container .cba * { box-sizing: border-box; }
+html:root:is(#_, html):is(#_, html) .container .cba button { margin: 0; border: 0; outline: none; cursor: pointer; font: inherit; color: inherit; }
+html:root:is(#_, html):is(#_, html) .container .cba iconify-icon { flex: none; display: inline-flex; align-items: center; justify-content: center; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-fondo { position: absolute; inset: 0; background: #b9bbc0; }
+
+/* ── El riel ─────────────────────────────────────────────────────────── */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel { position: absolute; left: calc(var(--peg-u) * 1.2); top: calc(var(--peg-u) * 1.4); bottom: calc(var(--peg-u) * 1.4); z-index: 2; width: 64px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 14px 0 16px; border-radius: 20px; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__placa { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 11px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; font-size: 22px; transform: rotate(-5deg); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__raya { flex: none; width: 22px; height: 3px; border-radius: 2px; background: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__nav { flex: none; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__it { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: 11px; background: #0b0b0d; box-shadow: 2px 2px 0 #000; color: #fff; font-size: 20px; transition: background 0.14s ease; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__it:hover { background: #2a2a30; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__it.is-on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__it:active { transform: translate(2px, 2px); box-shadow: none; }
+/*  El nombre de cada boton sale a la derecha al pasar el raton. */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__pista { position: absolute; left: calc(100% + 14px); top: 50%; transform: translateY(-50%); padding: 5px 10px 4px; border-radius: 8px; background: #0b0b0d; box-shadow: 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: 14px; line-height: 1.2; letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; color: #fff; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.12s ease; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__it:hover .cba-riel__pista { opacity: 1; visibility: visible; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__medio { flex: 1; min-height: 0; display: flex; align-items: center; overflow: hidden; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__palabra,
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__estado { writing-mode: vertical-rl; white-space: nowrap; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__palabra { transform: rotate(180deg); font-size: 15px; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__pie { flex: none; display: flex; flex-direction: column; align-items: center; gap: calc(var(--peg-u) * 1); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__punto { width: 7px; height: 7px; border-radius: 50%; background: #9a9aa3; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__pie.is-on .cba-riel__punto { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-riel__estado { transform: rotate(180deg); font-size: 13px; color: #44444a; }
+
+/* ── El marco: cabecera, zona y barra ────────────────────────────────── */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-marco { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; gap: 20px; min-height: 0; padding: calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.4) calc(64px + var(--peg-u) * 1.2 + 20px); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-cab { flex: none; display: flex; align-items: center; gap: calc(var(--peg-u) * 1.8); padding: calc(var(--peg-u) * 1.5) calc(var(--peg-u) * 2.4) calc(var(--peg-u) * 1.7); border-radius: 20px; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-cab__placa { flex: none; display: grid; place-items: center; width: calc(var(--peg-u) * 5.4); height: calc(var(--peg-u) * 5.4); border-radius: 12px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; font-size: calc(var(--peg-u) * 2.6); transform: rotate(-5deg); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-cab__titulo { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: calc(var(--peg-u) * 0.7); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-chapa { padding: 3px 9px 2px; border-radius: 6px; background: #0b0b0d; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); line-height: 1.25; letter-spacing: 0.07em; text-transform: uppercase; white-space: nowrap; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-h2 { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 calc(var(--peg-u) * 1.6); margin: 0; padding-right: 6px; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 3.4); line-height: 0.95; letter-spacing: 0.005em; text-transform: uppercase; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-h2[data-brocha]::after { content: attr(data-brocha); font-family: var(--peg-brocha); font-style: normal; font-weight: 400; font-size: calc(var(--peg-u) * 2.1); line-height: 1.1; letter-spacing: 0; text-transform: none; white-space: nowrap; color: #d81b55; transform: rotate(-3deg); transform-origin: left center; text-shadow: 1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000, 1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000, 3px 3.5px 0 #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-cab__der { flex: none; display: flex; align-items: center; gap: calc(var(--peg-u) * 1.2); padding: 0 3px 3px 0; }
+
+/*  El buscador y los botones: piezas grises de canto fino. */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-buscar { display: flex; align-items: center; gap: calc(var(--peg-u) * 0.8); width: calc(var(--peg-u) * 30); height: calc(var(--peg-u) * 4.2); margin: 0; padding: 0 calc(var(--peg-u) * 1.3); border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #55555c; font-size: calc(var(--peg-u) * 1.7); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-buscar:focus-within { box-shadow: inset 0 0 0 1.5px #000, 0 0 0 2px #d81b55; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-buscar input { flex: 1; min-width: 0; height: 100%; padding: 0; border: 0; outline: none; background: none; font-family: var(--peg-texto); font-weight: 600; font-size: calc(var(--peg-u) * 1.5); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-buscar input::placeholder { color: #73737c; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn { display: inline-flex; align-items: center; justify-content: center; gap: calc(var(--peg-u) * 0.7); height: calc(var(--peg-u) * 4.2); padding: 0 calc(var(--peg-u) * 1.6); border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d; transition: background 0.14s ease; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn iconify-icon { font-size: calc(var(--peg-u) * 2); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn:hover { background: #e6e7ea; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn--rosa { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-btn--rosa:hover { background: #df2f63; }
+
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona { flex: 1; min-height: 0; display: flex; flex-direction: column; border-radius: 20px; background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; overflow: hidden; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cab { position: relative; flex: none; display: flex; align-items: center; justify-content: space-between; gap: calc(var(--peg-u) * 2); padding: calc(var(--peg-u) * 1.6) calc(var(--peg-u) * 2.4) calc(var(--peg-u) * 1.6); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cab::after { content: ""; position: absolute; left: calc(var(--peg-u) * 2.4); right: calc(var(--peg-u) * 2.4); bottom: 0; height: 4px; border-radius: 2px; background: #d81b55; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cuenta { flex: none; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.4); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; color: #44444a; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cuerpo { flex: 1; min-height: 0; overflow: auto; padding: calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 2.4) calc(var(--peg-u) * 2); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cuerpo::-webkit-scrollbar { width: 8px; height: 8px; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cuerpo::-webkit-scrollbar-track { background: transparent; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-zona__cuerpo::-webkit-scrollbar-thumb { border-radius: 4px; background: #0b0b0d; }
+
+/*  Los filtros: una sola fila; si no caben, se desplazan de lado sin barra. */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabs { flex: 0 1 auto; min-width: 0; display: flex; flex-wrap: nowrap; align-items: center; gap: calc(var(--peg-u) * 0.9); padding: 0 3px 3px 0; overflow-x: auto; scrollbar-width: none; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabs::-webkit-scrollbar { display: none; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab { flex: none; display: inline-flex; align-items: center; gap: calc(var(--peg-u) * 0.7); height: calc(var(--peg-u) * 3.8); padding: 0 calc(var(--peg-u) * 1.3); border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.5); line-height: 1; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab iconify-icon { font-size: calc(var(--peg-u) * 1.8); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab:hover { background: #ffe3ec; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab.active { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab b { padding: 2px 6px 1px; border-radius: 5px; background: #0b0b0d; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; font-size: calc(var(--peg-u) * 1.2); line-height: 1.3; color: #fff; }
+
+/*  La tabla: cabecera negra fija arriba y filas en pieza gris. */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla { width: 100%; min-width: 1180px; border-collapse: separate; border-spacing: 0 calc(var(--peg-u) * 0.9); margin-top: calc(var(--peg-u) * -0.9); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla th { position: sticky; top: calc(var(--peg-u) * -1.4); z-index: 1; padding: calc(var(--peg-u) * 1.1) calc(var(--peg-u) * 1); background: #0b0b0d; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); line-height: 1.1; letter-spacing: 0.04em; text-transform: uppercase; text-align: center; white-space: nowrap; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla th:first-child { border-radius: 10px 0 0 10px; text-align: left; padding-left: calc(var(--peg-u) * 1.6); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla th:last-child { border-radius: 0 10px 10px 0; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla td { padding: calc(var(--peg-u) * 1) calc(var(--peg-u) * 1); background: #dcdde0; box-shadow: inset 0 1.5px 0 #000, inset 0 -1.5px 0 #000; font-family: var(--peg-texto); font-weight: 600; font-size: calc(var(--peg-u) * 1.45); line-height: 1.25; text-align: center; white-space: nowrap; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla td:first-child { border-radius: 10px 0 0 10px; box-shadow: inset 1.5px 1.5px 0 #000, inset 0 -1.5px 0 #000; padding-left: calc(var(--peg-u) * 1.6); text-align: left; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla td:last-child { border-radius: 0 10px 10px 0; box-shadow: inset -1.5px 1.5px 0 #000, inset 0 -1.5px 0 #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla tr:hover td { background: #e6e7ea; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla td.cba-col-nombre { max-width: 0; width: 26%; overflow: hidden; text-overflow: ellipsis; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.7); letter-spacing: 0.01em; text-transform: uppercase; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla .cba-cifra { font-family: var(--peg-cifra); font-weight: 800; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla .cba-arma { color: #44444a; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tipo { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px 2px; border-radius: 7px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); line-height: 1.25; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tipo.is-objeto { background: #0b0b0d; box-shadow: none; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-clase { display: inline-grid; place-items: center; min-width: 28px; padding: 2px 7px 1px; border-radius: 6px; background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; font-size: calc(var(--peg-u) * 1.3); line-height: 1.3; color: #fff; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-acciones { display: flex; justify-content: center; gap: calc(var(--peg-u) * 0.8); padding: 0 3px 3px 0; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-accion { display: grid; place-items: center; width: calc(var(--peg-u) * 3.6); height: calc(var(--peg-u) * 3.6); padding: 0; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; font-size: calc(var(--peg-u) * 1.8); color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-accion:hover { background: #ffe3ec; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-accion--rojo { background: #dcdde0; color: #b3123f; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-accion--rojo:hover { background: #d81b55; color: #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-accion:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+html:root:is(#_, html):is(#_, html) .container .cba .cba-vacio { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--peg-u) * 1.2); min-height: 100%; padding: calc(var(--peg-u) * 3.4) calc(var(--peg-u) * 2.2); border-radius: 12px; background: #dcdde0; outline: 2px dashed #73737c; outline-offset: -2.5px; text-align: center; color: #73737c; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-vacio > iconify-icon { font-size: calc(var(--peg-u) * 4.4); }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-vacio__t { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.9); letter-spacing: 0.03em; text-transform: uppercase; color: #44444a; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-vacio__p { font-weight: 500; font-size: calc(var(--peg-u) * 1.4); color: #55555c; }
+
+html:root:is(#_, html):is(#_, html) .container .cba .cba-barra { flex: none; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 20px; padding: 0 3px 3px 0; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-barra__celda { display: flex; flex-direction: column; justify-content: center; gap: calc(var(--peg-u) * 0.2); min-width: 0; padding: calc(var(--peg-u) * 0.9) calc(var(--peg-u) * 2.2) calc(var(--peg-u) * 1.1); border-radius: 16px; background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-barra__r { font-family: var(--peg-rotulo); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #55555c; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-barra__c { font-family: var(--peg-cifra); font-weight: 800; font-size: calc(var(--peg-u) * 2.5); line-height: 1.1; color: #0b0b0d; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-barra__c small { font-size: 0.55em; color: #55555c; }
+/* <<< FIN GESTION DE CONTRATOS */
+
+/*  Repaso 06/10 (2a pasada): la raya rosa del rotulo de «Bolsa de contratos» medía 0 (el rotulo no crecia); y el texto de los vacios, legible. */
+html:root:is(#_, html):is(#_, html) .container .boosting.boosting-v2 .board-title:not(.split) .ops-title { flex: 1 1 0%; }
+
+/* cifras centradas (06/10): el contador de las pestañas y la cabecera negra de la tabla dejaban la letra 1 px alta. */
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tab b { padding: 3px 6px 0; }
+html:root:is(#_, html):is(#_, html) .container .cba .cba-tabla th { padding-top: calc(var(--peg-u) * 1.1 + 1px); padding-bottom: calc(var(--peg-u) * 1.1 - 1px); }

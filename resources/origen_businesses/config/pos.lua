@@ -1,0 +1,30 @@
+Config.POS = {
+    Model = 'p_till_01_s',
+    Models = {
+        'p_till_01_s',
+        'prop_till_01',
+        'prop_till_01_dam',
+        'prop_till_02',
+    },
+    ModelLabels = {
+        p_till_01_s = 'TPV de sobremesa',
+        prop_till_01 = 'Caja registradora',
+        prop_till_01_dam = 'Caja registradora dañada',
+        prop_till_02 = 'Caja registradora compacta',
+    },
+    TextureName = 'ah_bm_pos_bar',
+    TextureDictionaries = {
+        'p_till_01_s',
+        'prop_till_01',
+        'prop_till_01_dam',
+        'prop_till_02',
+    },
+    CustomerRadius = 8.0,
+    InteractionDistance = 2.0,
+    AutoInteractionDistance = 1.7,
+    BusinessRadius = 50.0,
+    SpawnDistance = 35.0,
+    MaxOrderItems = 20,
+    MaxItemQuantity = 50,
+    CursorSensitivity = 100.0,
+}

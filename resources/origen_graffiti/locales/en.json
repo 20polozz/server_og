@@ -1,0 +1,117 @@
+{
+  "notify": {
+    "cannot_erase":       "You can't erase this graffiti.",
+    "no_tag_to_erase":    "There's no graffiti to erase.",
+    "session_ended":      "The session has already ended.",
+    "too_few_strokes":    "Be more creative! Your graffiti needs more detail before it can be saved.",
+    "spray_depleted":     "Your spray ran out! Use another one to continue.",
+    "eraser_depleted":    "Your eraser ran out!",
+    "zone_limit_reached": "Cannot start: this area already hit its limit (%s graffitis within %sm)."
+  },
+
+  "keymapping": {
+    "save":       "Graffiti: Save",
+    "suspend":    "Graffiti: Suspend / change color",
+    "cancel":     "Graffiti: Cancel and discard",
+    "canvas_out": "Graffiti: Push canvas out from wall",
+    "canvas_in":  "Graffiti: Pull canvas into wall"
+  },
+
+  "textui": {
+    "shop": "[E] Graffiti Shop"
+  },
+
+  "shop": {
+    "blip_label":    "Graffiti Shop",
+    "no_cash":       "Not enough cash. You need $%s.",
+    "payment_error": "Error processing payment.",
+    "no_space":      "No space in your inventory. Your money has been refunded.",
+    "partial_space": "Only had space for %s of %s items. $%s has been refunded."
+  },
+
+  "admin": {
+    "no_permission": "You don't have permission to use this panel."
+  },
+
+  "nui": {
+    "hud": {
+      "saving":        "Saving graffiti...",
+      "erase_tag":     "Erasing graffiti",
+      "erase_hint":    "Hold left click · C to cancel",
+      "color":         "Color",
+      "spray":         "Spray",
+      "eraser":        "Eraser",
+      "confirm_point": "Confirm point",
+      "cancel":        "Cancel",
+      "paint":         "Paint",
+      "size":          "Size",
+      "save":          "Save",
+      "suspend":       "Suspend",
+      "erase":         "Erase",
+      "canvas_out":    "Push canvas out",
+      "canvas_in":     "Pull canvas in"
+    },
+
+    "join": {
+      "title":   "Someone is painting",
+      "message": "There's an active session nearby. You can join the current graffiti or start a new one.",
+      "join":    "Join the graffiti",
+      "new":     "New graffiti",
+      "cancel":  "Cancel"
+    },
+
+    "shop": {
+      "title":    "Graffiti Shop",
+      "subtitle": "Select an item and confirm your purchase",
+      "cancel":   "Cancel",
+      "buy":      "Buy",
+      "buying":   "Buying...",
+
+      "quantity": {
+        "subtitle":   "Select quantity",
+        "unit_price": "Unit price",
+        "total":      "Total to pay",
+        "units":      "units",
+        "confirm":    "Confirm purchase",
+        "cancel":     "Cancel"
+      },
+
+      "color": {
+        "title":    "Spray Color",
+        "subtitle": "Choose the color you want to buy",
+        "swatches": "Quick colors",
+        "confirm":  "Buy this color",
+        "back":     "Back"
+      }
+    },
+
+    "admin": {
+      "header": {
+        "title":    "Admin Panel",
+        "subtitle": "Graffiti management",
+        "total":    "Total"
+      },
+      "list": {
+        "loading":    "Loading graffiti...",
+        "empty":      "No graffiti registered",
+        "no_results": "No results for"
+      },
+      "item": {
+        "copy":     "Copy identifier",
+        "copied":   "Copied",
+        "teleport": "Teleport",
+        "delete":   "Delete"
+      },
+      "search": {
+        "placeholder": "Search by ID or creator..."
+      },
+      "confirm": {
+        "title":    "Delete graffiti",
+        "message":  "Are you sure you want to delete graffiti %s? This action cannot be undone.",
+        "cancel":   "Cancel",
+        "confirm":  "Delete",
+        "deleting": "Deleting..."
+      }
+    }
+  }
+}

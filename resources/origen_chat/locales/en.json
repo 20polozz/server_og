@@ -1,0 +1,125 @@
+{
+    "nui": {
+        "input-placeholder": "Message...",
+        "find-emoji": "Find emoji...",
+        "skin-tone": "Skin tone",
+        "smileys-people": "Smileys and People",
+        "animals-nature": "Animals and Nature",
+        "food-drink": "Food and Drink",
+        "activities": "Activities",
+        "travel-places": "Travel and Places",
+        "objects": "Objects",
+        "symbols": "Symbols",
+        "flags": "Flags",
+        "recent": "Recent",
+        "settings_title": "Edit chat",
+        "main-color": "Main Color",
+        "main-color-description": "Change the main color of the chat",
+        "position": "Position",
+        "position-description": "Change the position of the chat",
+        "size": "Size",
+        "size-description": "Change the size of the chat",
+        "size-small": "Small",
+        "size-medium": "Medium",
+        "size-large": "Large",
+        "save": "Save",
+        "close": "Close",
+        "settings_kicker": "Settings",
+        "settings_sub": "How and where the chat shows",
+        "settings_nada": "Nothing to change",
+        "settings_salir": "Esc to close"
+    },
+    "notifications": {
+        "error": {
+            "self-message": "You can't send a message to yourself",
+            "no-permission": "You don't have permission to use this command",
+            "no-grade-level": "You don't have the required grade level to use this command"
+        },
+        "success": {},
+        "info": {}
+    },
+    "commands": {
+        "chat": {
+            "description": "Open the chat"
+        },
+        "me": {
+            "description": "Send a message to the players in your radius",
+            "message": "ME • %s"
+        },
+        "do": {
+            "description": "Send a message to the players in your radius",
+            "message": "DO • %s"
+        },
+        "ooc": {
+            "description": "Send a message to the players in your radius",
+            "message": "OOC • %s"
+        },
+        "msg": {
+            "description": "Send a message to a specific player",
+            "message": "MSG TO • %s",
+            "message-from": "MSG FROM %s • %s"
+        },
+        "proximity": {
+            "params": {
+                "message": "Message to send"
+            }
+        },
+        "global": {
+            "params": {
+                "message": "Send a message to all players"
+            }
+        },
+        "ptp": {
+            "params": {
+                "target": "Target player's server id",
+                "message": "Message to send"
+            }
+        },
+        "announcement": {
+            "description": "Send a message to all players",
+            "message": "ANNOUNCEMENT"
+        },
+        "lspd": {
+            "description": "Send a message to all players",
+            "message": "LSPD • %s"
+        },
+        "ems": {
+            "description": "Send a message to all players",
+            "message": "EMS • %s"
+        },
+        "announce-lspd": {
+            "description": "Send a message to all players",
+            "message": "LSPD ANNOUNCEMENT"
+        },
+        "announce-ems": {
+            "description": "Send a message to all players",
+            "message": "EMS ANNOUNCEMENT"
+        },
+        "global-announcement": {
+            "params": {
+                "message": "Send a message to all players"
+            }
+        },
+        "job-to-job": {
+            "params": {
+                "message": "Message to send"
+            }
+        },
+        "job-to-global": {
+            "params": {
+                "message": "Message to send"
+            }
+        },
+        "dados": {
+            "description": "Roll a dice from 1 to 6",
+            "message": "DICE • %s",
+            "result": "Has rolled a %s"
+        },
+        "suerte": {
+            "description": "Try your luck",
+            "message": "LUCK • %s",
+            "good": "Today is your lucky day!",
+            "bad": "It seems today is not your day..."
+        }
+    }
+}

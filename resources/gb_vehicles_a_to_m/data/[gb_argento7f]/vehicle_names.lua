@@ -1,0 +1,75 @@
+Citizen.CreateThread(function()
+AddTextEntry("ARGENTO7F", "Argento 7F")
+
+AddTextEntry("ARGENTO7F_LIV1", "Red Duality")
+AddTextEntry("ARGENTO7F_LIV2", "Green Duality")
+AddTextEntry("ARGENTO7F_LIV3", "Blue Duality")
+AddTextEntry("ARGENTO7F_LIV4", "Black Duality")
+AddTextEntry("ARGENTO7F_LIV5", "Oblique Red")
+AddTextEntry("ARGENTO7F_LIV6", "Oblique Yellow")
+AddTextEntry("ARGENTO7F_LIV7", "Oblique Gray")
+AddTextEntry("ARGENTO7F_LIV8", "Oblique Silver")
+AddTextEntry("ARGENTO7F_LIV9", "Obey Team")
+AddTextEntry("ARGENTO7F_LIV10", "Black Race Stripe")
+AddTextEntry("ARGENTO7F_LIV11", "Red Race Stripe")
+AddTextEntry("ARGENTO7F_LIV12", "White Race Stripe")
+AddTextEntry("ARGENTO7F_LIV13", "Yellow Race Stripe")
+AddTextEntry("ARGENTO7F_LIV14", "Blue Race Stripe")
+AddTextEntry("ARGENTO7F_LIV15", "Black Speedlines")
+AddTextEntry("ARGENTO7F_LIV16", "Gray Speedlines")
+AddTextEntry("ARGENTO7F_LIV17", "White Speedlines")
+AddTextEntry("ARGENTO7F_LIV18", "Red Speedlines")
+AddTextEntry("ARGENTO7F_LIV19", "Yellow Speedlines")
+AddTextEntry("ARGENTO7F_LIV20", "Blue Speedlines")
+AddTextEntry("ARGENTO7F_LIV21", "Street Style")
+AddTextEntry("ARGENTO7F_LIV22", "Obey Team Monochrome")
+AddTextEntry("ARGENTO7F_LIV23", "Badger Geometric")
+AddTextEntry("ARGENTO7F_LIV24", "Geometric Camo")
+AddTextEntry("ARGENTO7F_LIV25", "Technik Black")
+AddTextEntry("ARGENTO7F_LIV26", "Technik White")
+
+AddTextEntry("ARGENTO7F_EXHAUST_1", "Titanium Exhaust")
+AddTextEntry("ARGENTO7F_EXHAUST_2", "Racing Exhaust")
+
+AddTextEntry("ARGENTO7F_SPOILER_1", "Black Lip Spoiler")
+AddTextEntry("ARGENTO7F_SPOILER_2", "Secondary Paint Lip Spoiler")
+AddTextEntry("ARGENTO7F_SPOILER_3", "Carbon Lip Spoiler")
+
+AddTextEntry("ARGENTO7F_SKIRT_1", "Secondary Paint Skirt")
+AddTextEntry("ARGENTO7F_SKIRT_2", "Carbon Skirt")
+
+AddTextEntry("ARGENTO7F_MIRRORS_1", "Secondary Paint Mirrors")
+AddTextEntry("ARGENTO7F_MIRRORS_2", "Carbon Mirrors")
+
+AddTextEntry("ARGENTO7F_HOOD_1", "Carbon Hood")
+
+AddTextEntry("ARGENTO7F_TRIM_1", "Black Trim")
+
+AddTextEntry("ARGENTO7F_ROOF_0", "Delete Flush Rails")
+AddTextEntry("ARGENTO7F_ROOF_1", "Carbon Roof")
+AddTextEntry("ARGENTO7F_ROOF_2", "Carbon Roof without Rails")
+
+AddTextEntry("ARGENTO7F_RBUMPER_1", "Vented Rear Bumper w/ Carbon Fiber Diffuser (Silver)")
+AddTextEntry("ARGENTO7F_RBUMPER_2", "Vented Rear Bumper w/ Carbon Fiber Diffuser (Secondary)")
+AddTextEntry("ARGENTO7F_RBUMPER_3", "Vented Rear Bumper w/ Carbon Fiber Diffuser")
+AddTextEntry("ARGENTO7F_RBUMPER_4", "Rear Bumper w/ Carbon Fiber Diffuser (Secondary)")
+AddTextEntry("ARGENTO7F_RBUMPER_5", "Rear Bumper w/ Carbon Fiber Diffuser")
+
+AddTextEntry("ARGENTO7F_FBUMPER_1", "Blacked Out Front Bumper")
+AddTextEntry("ARGENTO7F_FBUMPER_2", "Carbon Top Front Bumper")
+AddTextEntry("ARGENTO7F_FBUMPER_3", "Black Top Front Bumper")
+AddTextEntry("ARGENTO7F_FBUMPER_4", "Black Bottom Front Bumper")
+
+AddTextEntry("ARGENTO7F_FBUMPERVENTS_1", "Secondary Paint Bumper Vent")
+AddTextEntry("ARGENTO7F_FBUMPERVENTS_2", "Chrome Bumper Vent")
+
+AddTextEntry("ARGENTO7F_FBUMPERTRIM_1", "Secondary Paint Bumper Trim")
+AddTextEntry("ARGENTO7F_FBUMPERTRIM_2", "Carbon Bumper Trim")
+AddTextEntry("ARGENTO7F_FBUMPERTRIM_3", "Chrome Bumper Trim")
+
+AddTextEntry("ARGENTO7F_FBUMPERGRILLES_1", "Secondary Paint Grille")
+AddTextEntry("ARGENTO7F_FBUMPERGRILLES_2", "Dechromed Grille")
+
+AddTextEntry("ARGENTO7F_PLATE_0", "Delete Front Plate")
+AddTextEntry("ARGENTO7F_PLATE_1", "Euro Plates")
+end)

@@ -1,0 +1,45 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #c00a46;
+    --ogn-acc-texto: #c00a46;
+}
+
+
+.headbag {display: none;}
+
+
+body {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0px;
+    overflow: hidden;
+  }
+  
+  img {
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+  }

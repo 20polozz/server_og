@@ -1,0 +1,30 @@
+Citizen.CreateThread(function()
+
+AddTextEntry("GBHIDVE", "Deliver-E")
+	
+AddTextEntry("GBHIDVE_LIVERY_1", "Mirage Delivery")
+AddTextEntry("GBHIDVE_LIVERY_2", "Himalaya Delivery")
+AddTextEntry("GBHIDVE_LIVERY_3", "Tinkle Mobile Technology")
+AddTextEntry("GBHIDVE_LIVERY_4", "Hijak Mobile Services - Summer")
+AddTextEntry("GBHIDVE_LIVERY_5", "Hijak Mobile Services - Winter")
+AddTextEntry("GBHIDVE_LIVERY_6", "GoPostal")
+AddTextEntry("GBHIDVE_LIVERY_7", "PostOP Couriers")
+AddTextEntry("GBHIDVE_LIVERY_8", "United States Post")
+AddTextEntry("GBHIDVE_LIVERY_9", "Marlowe Vineyard")
+AddTextEntry("GBHIDVE_LIVERY_10", "eCola")
+AddTextEntry("GBHIDVE_LIVERY_11", "Alpha Mail Couriers")
+
+AddTextEntry("GBHIDVE_BOX_1", "Mixed Boxes")
+AddTextEntry("GBHIDVE_BOX_2", "YouTool Boxes")
+AddTextEntry("GBHIDVE_BOX_3", "Craft Supplies Boxes")
+AddTextEntry("GBHIDVE_BOX_4", "USP Boxes")
+AddTextEntry("GBHIDVE_BOX_5", "PostOP Boxes")
+AddTextEntry("GBHIDVE_BOX_6", "Medium Boxes")
+AddTextEntry("GBHIDVE_BOX_7", "TruckYou Boxes")
+AddTextEntry("GBHIDVE_BOX_8", "Postal Boxes")
+AddTextEntry("GBHIDVE_BOX_9", "Himalaya Boxes")
+AddTextEntry("GBHIDVE_BOX_10", "Remove Shelves")
+
+AddTextEntry("GBHIDVE_BADGE_1", "Remove Badges")
+
+end)

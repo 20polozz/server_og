@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>ORIGEN · Bingo · pantalla</title>
+<!--  La pantalla del bingo: la pinta un navegador sin ventana (DUI) y el
+      cliente la pega encima del panel y de las pantallas de pared con
+      DrawTexturedPoly. Mide 1600 × 900 justos (16:9, como las pantallas).
+      No coge ratón ni teclado: solo escucha lo que le manda client.lua.  -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Knewave&family=Oxanium:wght@800&display=swap">
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<style>
+/*  Pegatina: panel gris, piezas gris claro, canto negro, sombra dura.
+    Nación cambia el rosa por su naranja (los valores de kit/marca.js).  */
+:root {
+    --rosa: #d81b55;
+    --rosa-texto: #b3123f;
+    --panel: #c4c6ca;
+    --pieza: #dcdde0;
+    --negro: #0b0b0d;
+    --cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --rotulo: "Barlow Condensed", sans-serif;
+    --brocha: "Knewave", "Barlow Condensed", cursive;
+}
+html[data-marca="nacion"] { --rosa: rgb(255, 146, 48); --rosa-texto: rgb(227, 108, 0); }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1600px; height: 900px; overflow: hidden; background: #8f9196; }
+body { font-family: var(--rotulo); color: var(--negro); }
+
+.marco {
+    position: absolute; inset: 22px;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    grid-template-rows: 110px 1fr 128px;
+    gap: 22px;
+}
+
+.pieza {
+    background: var(--panel);
+    border-radius: 26px;
+    box-shadow: 0 0 0 3px #000, 6px 6px 0 3px #000;
+}
+
+/* ── Cabecera ─────────────────────────────────────────────────────── */
+.cab {
+    grid-column: 1 / 3;
+    display: flex; align-items: center; gap: 28px;
+    padding: 0 34px;
+}
+.titulo {
+    font: 400 84px/1 var(--brocha);
+    color: var(--rosa);
+    transform: rotate(-3deg);
+    text-shadow: 3px 0 #000, -3px 0 #000, 0 3px #000, 0 -3px #000, 2px 2px #000, -2px -2px #000, 2px -2px #000, -2px 2px #000, 6px 6px 0 #000;
+}
+.estado {
+    margin-left: auto;
+    padding: 14px 26px 12px;
+    border-radius: 16px;
+    background: var(--negro);
+    color: #fff;
+    font: italic 800 46px/1 var(--rotulo);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+.estado b { font: 800 46px/1 var(--cifra); font-style: normal; color: var(--rosa); }
+
+/* ── La bola (izquierda) ──────────────────────────────────────────── */
+.izq {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+    padding: 24px;
+}
+.bola {
+    width: 330px; height: 330px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--rosa);
+    box-shadow: inset 0 0 0 5px #000, 9px 9px 0 #000;
+    transform: rotate(-5deg);
+    transition: transform .25s ease;
+}
+.bola span {
+    width: 210px; height: 210px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: #e6e7ea;
+    box-shadow: inset 0 0 0 4px #000;
+    font: 800 128px/1 var(--cifra);
+}
+.bola.es-nueva { transform: rotate(-5deg) scale(1.06); }
+.antes { display: flex; gap: 14px; }
+.antes span {
+    width: 74px; height: 74px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--pieza);
+    box-shadow: inset 0 0 0 3px #000, 3px 3px 0 #000;
+    font: 800 34px/1 var(--cifra);
+}
+.leyenda { font: italic 800 34px/1 var(--rotulo); text-transform: uppercase; letter-spacing: .05em; }
+.leyenda b { font: 800 34px/1 var(--cifra); font-style: normal; }
+
+/*  En venta, la cuenta atrás en lugar de la bola.  */
+.cuenta { font: 800 150px/1 var(--cifra); letter-spacing: -.02em; }
+.sub { font: italic 800 38px/1.1 var(--rotulo); text-transform: uppercase; text-align: center; letter-spacing: .04em; }
+.sub em { font-style: normal; color: var(--rosa-texto); }
+
+/* ── El tablero del 1 al 90 ───────────────────────────────────────── */
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 9px;
+    padding: 20px 24px 24px 20px;
+}
+.tablero span {
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: var(--pieza);
+    box-shadow: inset 0 0 0 2.5px #000;
+    font: 800 40px/1 var(--cifra);
+    color: #73737c;
+}
+.tablero span.es-salida { background: var(--negro); color: #fff; box-shadow: inset 0 0 0 2.5px #000, 3px 3px 0 #000; }
+.tablero span.es-ultima { background: var(--rosa); color: #000; box-shadow: inset 0 0 0 2.5px #000, 3px 3px 0 #000; }
+
+/* ── Abajo: premios y cartones ───────────────────────────────────── */
+.pie {
+    grid-column: 1 / 3;
+    display: grid; grid-template-columns: 1fr 1fr 360px; gap: 22px;
+    padding: 18px 22px 20px 18px;
+}
+.dato {
+    display: flex; flex-direction: column; justify-content: center; gap: 6px;
+    padding: 0 24px;
+    border-radius: 16px;
+    background: var(--pieza);
+    box-shadow: inset 0 0 0 2.5px #000;
+    min-width: 0;
+}
+.dato i { font: 800 26px/1 var(--rotulo); font-style: normal; letter-spacing: .18em; text-transform: uppercase; color: #44444a; }
+.dato b { font: 800 48px/1 var(--cifra); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dato.es-cantada { background: var(--rosa); }
+.dato.es-cantada i { color: #000; }
+.dato.es-cantada b { font: italic 800 42px/1 var(--rotulo); text-transform: uppercase; }
+
+/* ── El resultado, encima de todo ───────────────────────────────── */
+.fin {
+    position: absolute; inset: 120px 160px;
+    display: none; flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    background: var(--panel);
+    border-radius: 30px;
+    box-shadow: 0 0 0 4px #000, 10px 10px 0 4px #000;
+    text-align: center;
+}
+.fin.es-visible { display: flex; }
+.fin h1 {
+    font: 400 170px/1 var(--brocha);
+    color: var(--rosa);
+    transform: rotate(-4deg);
+    text-shadow: 4px 0 #000, -4px 0 #000, 0 4px #000, 0 -4px #000, 3px 3px #000, -3px -3px #000, 3px -3px #000, -3px 3px #000, 9px 9px 0 #000;
+}
+.fin .quien { font: italic 800 62px/1.05 var(--rotulo); text-transform: uppercase; padding: 0 40px; }
+.fin .cuanto { font: 800 64px/1 var(--cifra); }
+.fin .luego { font: italic 800 34px/1 var(--rotulo); text-transform: uppercase; color: #44444a; }
+</style>
+</head>
+<body>
+<div class="marco">
+    <header class="cab pieza">
+        <span class="titulo">Bingo</span>
+        <span id="estado" class="estado">Cargando…</span>
+    </header>
+
+    <section id="izq" class="izq pieza"></section>
+    <section id="tablero" class="tablero pieza"></section>
+
+    <footer class="pie pieza">
+        <div id="linea" class="dato"><i>Línea</i><b>–</b></div>
+        <div id="bingo" class="dato"><i>Bingo</i><b>–</b></div>
+        <div id="vendidos" class="dato"><i>Cartones</i><b>0</b></div>
+    </footer>
+</div>
+
+<div id="fin" class="fin">
+    <h1>¡Bingo!</h1>
+    <div id="fin-quien" class="quien"></div>
+    <div id="fin-cuanto" class="cuanto"></div>
+    <div id="fin-luego" class="luego"></div>
+</div>
+
+<script>
+(function () {
+    var juego = null, desfase = 0, ultimaVista = null;
+    var $ = function (id) { return document.getElementById(id) };
+
+    // El tablero se monta una vez; luego solo cambian las clases.
+    var celdas = [];
+    for (var n = 1; n <= 90; n++) {
+        var s = document.createElement('span');
+        s.textContent = n;
+        $('tablero').appendChild(s);
+        celdas[n] = s;
+    }
+
+    function miles(n) { return String(Math.floor(n || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') }
+    function mmss(s) {
+        s = Math.max(0, Math.floor(s));
+        return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }
+    function ahora() { return Date.now() / 1000 + desfase }
+    function nombres(l) {
+        if (!l || !l.length) return '';
+        if (l.length <= 2) return l.join(' y ');
+        return l.slice(0, 2).join(', ') + ' y ' + (l.length - 2) + ' más';
+    }
+
+    function pintar() {
+        var j = juego;
+        if (!j) return;
+        var bolas = j.bolas || [];
+        var ultima = bolas.length ? bolas[bolas.length - 1] : null;
+        var set = {};
+        bolas.forEach(function (b) { set[b] = true });
+        for (var n = 1; n <= 90; n++) {
+            celdas[n].className = n === ultima ? 'es-ultima' : (set[n] ? 'es-salida' : '');
+        }
+
+        var izq = $('izq');
+        if (j.estado === 'venta') {
+            var q = j.empieza - ahora();
+            $('estado').innerHTML = 'Venta abierta';
+            izq.innerHTML = '<span class="sub">Próxima partida</span><span class="cuenta">' + mmss(q) + '</span>' +
+                '<span class="sub">Cartón <em>' + miles(j.precio) + ' $</em><br>en la taquilla</span>';
+            ultimaVista = null;
+        } else {
+            $('estado').innerHTML = j.estado === 'jugando' ? 'Bola <b>' + bolas.length + '</b> de 90' : 'Terminada';
+            var antes = bolas.slice(-6, -1).reverse().map(function (b) { return '<span>' + b + '</span>' }).join('');
+            var nueva = ultima !== ultimaVista;
+            izq.innerHTML = '<div class="bola' + (nueva ? ' es-nueva' : '') + '"><span>' + (ultima || '–') + '</span></div>' +
+                '<div class="antes">' + antes + '</div>' +
+                '<span class="leyenda">Han salido <b>' + bolas.length + '</b></span>';
+            if (nueva) {
+                ultimaVista = ultima;
+                setTimeout(function () { var b = izq.querySelector('.bola'); if (b) b.classList.remove('es-nueva') }, 400);
+            }
+        }
+
+        var L = $('linea'), B = $('bingo');
+        if (j.linea) {
+            L.className = 'dato es-cantada';
+            L.innerHTML = '<i>Línea · ' + miles(j.linea.importe) + ' $</i><b>' + nombres(j.linea.nombres) + '</b>';
+        } else {
+            L.className = 'dato';
+            L.innerHTML = '<i>Línea</i><b>' + miles(j.premios.linea) + ' $</b>';
+        }
+        if (j.bingo) {
+            B.className = 'dato es-cantada';
+            B.innerHTML = '<i>Bingo · ' + miles(j.bingo.importe) + ' $</i><b>' + nombres(j.bingo.nombres) + '</b>';
+        } else {
+            B.className = 'dato';
+            B.innerHTML = '<i>Bingo</i><b>' + miles(j.premios.bingo) + ' $</b>';
+        }
+        $('vendidos').innerHTML = '<i>Cartones</i><b>' + j.vendidos + '</b>';
+
+        var fin = $('fin');
+        if (j.estado === 'resultado' && j.bingo) {
+            fin.className = 'fin es-visible';
+            $('fin-quien').textContent = nombres(j.bingo.nombres);
+            $('fin-cuanto').textContent = miles(j.bingo.importe) + ' $';
+            $('fin-luego').textContent = 'Siguiente partida en ' + mmss((j.siguiente || j.empieza) - ahora());
+        } else {
+            fin.className = 'fin';
+        }
+    }
+
+    window.addEventListener('message', function (ev) {
+        var m = ev.data;
+        if (typeof m === 'string') { try { m = JSON.parse(m) } catch (e) { return } }
+        if (!m) return;
+        if (m.marca) document.documentElement.dataset.marca = m.marca;
+        if (m.ahora) desfase = m.ahora - Date.now() / 1000;
+        if (m.juego) { juego = m.juego; pintar(); }
+    });
+
+    // La cuenta atrás corre sola entre mensaje y mensaje.
+    setInterval(function () { if (juego && juego.estado !== 'jugando') pintar() }, 1000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+  <AnimRateSets />
+  <ClipSetMaps>
+    <Item type="CClipSetMap">
+      <Name>ENTRY_CLIPSET_MAP_BOAT_DINGHY5_REAR_LEFT</Name>
+      <Maps>
+        <Item>
+          <ClipSetId>clipset@veh@boat@dinghy@rds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@boat@dinghy@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@helicopter@swift2@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@helicopter@swift2@rps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@plane@alkonost@front@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@plane@alkonost@front@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@plane@alkonost@front@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@plane@alkonost@front@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@plane@alkonost@common@enter_exit</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@common@in_water@ds</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>anim@veh@std@technical@aqua@turret_left@align_onveh</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>anim@veh@std@technical@aqua@turret_left@align_onvehjack</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@boat@dinghy5@front_turret@enter_exit_left</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@boat@dinghy5@front_turret@enter_exit_left</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@common@in_water@ps</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>anim@veh@std@technical@aqua@turret_right@align_onveh</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>anim@veh@std@technical@aqua@turret_right@align_onvehjack</ClipSetId>
+          <VarClipSetId>CommonVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@boat@dinghy5@front_turret@enter_exit_right</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@boat@dinghy5@front_turret@enter_exit_right</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@std@barrage@rear@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@squaddie@rps@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@helicopter@seasparrow2@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@helicopter@seasparrow2@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@helicopter@seasparrow2@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@helicopter@seasparrow2@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@rds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@rps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@rps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ds@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ps@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rds@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rps@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@toreador@rps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@slamtruck@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@slamtruck@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@slamtruck@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@slamtruck@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@van@btype2@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@van@btype2@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@van@btype2@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@van@btype2@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@squaddie@rds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@squaddie@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@squaddie@rps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@squaddie@rps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@front@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@front@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@front@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@front@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@rear@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@rear@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@bike@quad@verus@rear@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@jeep@winky@rds@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@vetir@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@vetir@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@vetir@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@truck@vetir@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@gokart@generic@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@gokart@generic@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@gokart@generic@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@gokart@generic@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@gokart@generic@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@std@issi3@ds@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@weevil@ds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@weevil@ds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>anim@veh@std@issi3@ps@base</ClipSetId>
+          <VarClipSetId>InsideVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@weevil@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@anim@veh@car@weevil@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+      </Maps>
+    </Item>
+  </ClipSetMaps>
+  <VehicleCoverBoundOffsetInfos>
+    <Item type="CVehicleCoverBoundOffsetInfo">
+      <Name>ANNIHILATOR2_COVER_OFFSET_INFO</Name>
+      <ExtraSideOffset value="0.100000" />
+      <ExtraForwardOffset value="1.100000" />
+      <ExtraBackwardOffset value="0.000000" />
+      <ExtraZOffset value="1.000000" />
+      <CoverBoundInfos>
+        <Item>
+          <Name>NOSE</Name>
+          <Position x="0.007500" y="4.547500" z="0.100000" />
+          <Length value="1.470000" />
+          <Width value="1.665000" />
+          <Height value="1.800000" />
+          <ActiveBoundExclusions>
+            <Item>BODY</Item>
+            <Item>TAIL</Item>
+          </ActiveBoundExclusions>
+        </Item>
+        <Item>
+          <Name>HARDPOINTS</Name>
+          <Position x="-0.000000" y="3.325000" z="0.140000" />
+          <Length value="1.195000" />
+          <Width value="2.155000" />
+          <Height value="1.800000" />
+          <ActiveBoundExclusions>
+            <Item>BODY</Item>
+            <Item>TAIL</Item>
+          </ActiveBoundExclusions>
+        </Item>
+        <Item>
+          <Name>HARDPOINTS_1</Name>
+          <Position x="0.000000" y="1.865000" z="0.190000" />
+          <Length value="1.835000" />
+          <Width value="2.595000" />
+          <Height value="1.800000" />
+          <ActiveBoundExclusions>
+            <Item>BODY</Item>
+            <Item>TAIL</Item>
+          </ActiveBoundExclusions>
+        </Item>
+        <Item>
+          <Name>Door</Name>
+          <Position x="-0.005000" y="-0.090000" z="0.517500" />
+          <Length value="2.255000" />
+          <Width value="1.880000" />
+          <Height value="0.290000" />
+          <ActiveBoundExclusions>
+            <Item>NOSE</Item>
+            <Item>HARDPOINTS</Item>
+          </ActiveBoundExclusions>
+        </Item>
+        <Item>
+          <Name>BODY</Name>
+          <Position x="0.000000" y="-2.400000" z="0.430000" />
+          <Length value="2.380000" />
+          <Width value="2.715000" />
+          <Height value="1.780000" />
+          <ActiveBoundExclusions>
+            <Item>NOSE</Item>
+            <Item>HARDPOINTS</Item>
+          </ActiveBoundExclusions>
+        </Item>
+        <Item>
+          <Name>TAIL</Name>
+          <Position x="0.000000" y="-5.692500" z="0.450000" />
+          <Length value="4.180000" />
+          <Width value="2.390000" />
+          <Height value="1.780000" />
+          <ActiveBoundExclusions>
+            <Item>NOSE</Item>
+            <Item>HARDPOINTS</Item><Item>
+          <Name>Front</Name>
+          <Position x="-0.012000" y="1.562500" z="-0.650000" />
+          <Length value="0.625000" />
+          <Width value="1.415000" />
+          <Height value="1.700000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>MIDDLE</Name>
+          <Position x="0.018000" y="0.445000" z="-0.650000" />
+          <Length value="1.665000" />
+          <Width value="2.305000" />
+          <Height value="1.700000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>REAR</Name>
+          <Position x="0.018000" y="-0.670000" z="-1.130000" />
+          <Length value="0.675000" />
+          <Width value="2.095000" />
+          <Height value="0.585000" />
+          <ActiveBoundExclusions />
+        </Item><Item>
+          <Name>Front</Name>
+          <Position x="0.000000" y="1.800000" z="0.000000" />
+          <Length value="1.800000" />
+          <Width value="2.400000" />
+          <Height value="2.100000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>MIDDLE</Name>
+          <Position x="0.000000" y="0.150000" z="0.000000" />
+          <Length value="1.450000" />
+          <Width value="2.400000" />
+          <Height value="2.100000" />
+          <ActiveBoundExclusions />
+        </Item><Item>
+          <Name>Front</Name>
+          <Position x="0.000000" y="1.800000" z="0.000000" />
+          <Length value="1.820000" />
+          <Width value="2.400000" />
+          <Height value="1.105000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>MIDDLE</Name>
+          <Position x="0.000000" y="0.150000" z="0.000000" />
+          <Length value="4.500000" />
+          <Width value="2.400000" />
+          <Height value="1.095000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>REAR</Name>
+          <Position x="0.000000" y="-1.000000" z="-0.300000" />
+          <Length value="3.385000" />
+          <Width value="2.400000" />
+          <Height value="1.690000" />
+          <ActiveBoundExclusions />
+        </Item><Item>
+          <Name>Front</Name>
+          <Position x="0.000000" y="2.250000" z="0.000000" />
+          <Length value="1.700000" />
+          <Width value="2.400000" />
+          <Height value="2.100000" />
+          <ActiveBoundExclusions />
+        </Item>
+        <Item>
+          <Name>REAR</Name>
+          <Position x="0.000000" y="-1.000000" z="-0.300000" />
+          <Length value="4.800000" />
+          <Width value="2.400000" />
+          <Height value="1.600000" />
+          <ActiveBoundExclusions />
+        </Item><Item>
+          <LocationType>DRIVER_SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN</PointType>
+          <Position x="0.444000" y="-1.059000" z="0.539000" />
+          <Heading value="-0.428000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>DRIVER_SEAT_RELATIVE</LocationType>
+          <PointType>GET_OUT</PointType>
+          <Position x="0.144000" y="-0.865000" z="-0.679000" />
+          <Heading value="2.500000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item><Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN</PointType>
+          <Position x="0.000000" y="-0.200000" z="0.100000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>ENTITY_RELATIVE</LocationType>
+          <PointType>CLIMB_UP_FIXUP_POINT</PointType>
+          <Position x="-0.360000" y="1.700000" z="1.300000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_OUT</PointType>
+          <Position x="0.000000" y="0.000000" z="0.500000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>ON_BOARD_JACK</PointType>
+          <Position x="0.000000" y="-0.400000" z="0.000000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item><Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN</PointType>
+          <Position x="0.320000" y="-0.600000" z="0.625000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN_2</PointType>
+          <Position x="-1.330000" y="0.185000" z="0.007000" />
+          <Heading value="-1.694000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN_3</PointType>
+          <Position x="-1.020000" y="0.242000" z="1.178000" />
+          <Heading value="-2.670000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN_4</PointType>
+          <Position x="-0.881000" y="-0.621000" z="0.624000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_OUT</PointType>
+          <Position x="-0.450000" y="-0.400000" z="0.625000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item><Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_IN</PointType>
+          <Position x="0.000000" y="-0.200000" z="0.100000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>ENTITY_RELATIVE</LocationType>
+          <PointType>CLIMB_UP_FIXUP_POINT</PointType>
+          <Position x="0.360000" y="1.700000" z="1.300000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>GET_OUT</PointType>
+          <Position x="0.000000" y="-0.000000" z="0.500000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+        <Item>
+          <LocationType>SEAT_RELATIVE</LocationType>
+          <PointType>ON_BOARD_JACK</PointType>
+          <Position x="0.000000" y="-0.400000" z="0.000000" />
+          <Heading value="0.000000" />
+          <Pitch value="0.000000" />
+          <BoneName />
+        </Item>
+      </ExtraVehiclePoints>
+    </Item>
+  </VehicleExtraPointsInfos>
+  <DrivebyWeaponGroups />
+  <VehicleDriveByAnimInfos>
+    <Item type="CVehicleDriveByAnimInfo">
+      <Name>JEEP_WINKY_DB_ANIM_INFO_ONE_HANDED_DS</Name>
+      <WeaponGroup ref="DRIVEBY_DEFAULT_ONE_HANDED" />
+      <DriveByClipSet>clipset@anim@veh@drivebyjeep@winky@ds</DriveByClipSet>
+      <FirstPersonDriveByClipSet>driveby@first_person@driver@1h</FirstPersonDriveByClipSet>
+      <AltFirstPersonDriveByClipSets>
+        <Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@passenger_right_handed@smg</ClipSet>
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@passenger_rear_right_handed@smg</ClipSet>
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@driver@smg</ClipSet>
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_COMPACTRIFLE</Item>
+            <Item>WEAPON_MICROSMG</Item>
+            <Item>WEAPON_SMG_MK2</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@passenger_right_handed@smg</ClipSet>
+        </Item>
+        <Item>
+          <Weapons>
+            <Item>WEAPON_DBSHOTGUN</Item>
+            <Item>WEAPON_SAWNOFFSHOTGUN</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@bike@passenger@sawnoff</ClipSet>
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@driver@smg</ClipSet>
+        </Item>
+      </AltFirstPersonDriveByClipSets>
+      <RestrictedDriveByClipSet />
+      <VehicleMeleeClipSet />
+      <FirstPersonVehicleMeleeClipSet />
+      <Network>STD_CAR_DRIVEBY</Network>
+      <UseOverrideAngles value="false" />
+      <OverrideAnglesInThirdPersonOnly value="false" />
+      <OverrideMinAimAngle value="0.000000" />
+      <OverrideMaxAimAngle value="0.000000" />
+      <OverrideMinRestrictedAimAngle value="0.000000" />
+      <OverrideMaxRestrictedAimAngle value="0.000000" />
+    </Item>
+    <Item type="CVehicleDriveByAnimInfo">
+      <Name>STD_WEEVIL_DB_ANIM_INFO_ONE_HANDED_PS</Name>
+      <WeaponGroup ref="DRIVEBY_DEFAULT_ONE_HANDED" />
+      <DriveByClipSet>clipset@anim@veh@drivebycar@weevil@ps</DriveByClipSet>
+      <FirstPersonDriveByClipSet>driveby@first_person@passenger_left_handed@1h</FirstPersonDriveByClipSet>
+      <AltFirstPersonDriveByClipSets>
+        <Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@driver@smg</ClipSet>
+        </Item>
+      </AltFirstPersonDriveByClipSets>
+      <RestrictedDriveByClipSet />
+      <VehicleMeleeClipSet />
+      <FirstPersonVehicleMeleeClipSet />
+      <Network>STD_CAR_DRIVEBY</Network>
+      <UseOverrideAngles value="false" />
+      <OverrideAnglesInThirdPersonOnly value="false" />
+      <OverrideMinAimAngle value="0.000000" />
+      <OverrideMaxAimAngle value="0.000000" />
+      <OverrideMinRestrictedAimAngle value="0.000000" />
+      <OverrideMaxRestrictedAimAngle value="0.000000" />
+    </Item>
+    <Item type="CVehicleDriveByAnimInfo">
+      <Name>TRUCK_VETIR_DB_ANIM_INFO_ONE_HANDED_PS</Name>
+      <WeaponGroup ref="DRIVEBY_DEFAULT_ONE_HANDED" />
+      <DriveByClipSet>clipset@anim@veh@drivebytruck@vetir@front@@ps</DriveByClipSet>
+      <FirstPersonDriveByClipSet>driveby@first_person@passenger_left_handed@1h</FirstPersonDriveByClipSet>
+      <AltFirstPersonDriveByClipSets>
+        <Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@driver@smg</ClipSet>
+        </Item>
+      </AltFirstPersonDriveByClipSets>
+      <RestrictedDriveByClipSet />
+      <VehicleMeleeClipSet />
+      <FirstPersonVehicleMeleeClipSet />
+      <Network>STD_CAR_DRIVEBY</Network>
+      <UseOverrideAngles value="false" />
+      <OverrideAnglesInThirdPersonOnly value="false" />
+      <OverrideMinAimAngle value="0.000000" />
+      <OverrideMaxAimAngle value="0.000000" />
+      <OverrideMinRestrictedAimAngle value="0.000000" />
+      <OverrideMaxRestrictedAimAngle value="0.000000" />
+    </Item>
+    <Item type="CVehicleDriveByAnimInfo">
+      <Name>SLAMTRUCK_DB_ANIM_INFO_ONE_HANDED_PS</Name>
+      <WeaponGroup ref="DRIVEBY_DEFAULT_ONE_HANDED" />
+      <DriveByClipSet>drive_by@riot_van_ps</DriveByClipSet>
+      <FirstPersonDriveByClipSet>driveby@first_person@passenger_left_handed@1h</FirstPersonDriveByClipSet>
+      <AltFirstPersonDriveByClipSets>
+        <Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item><Item>SIDE_LEFT</Item><Item>SIDE_RIGHT</Item><Item>SIDE_LEFT</Item><Item>SIDE_RIGHT</Item><Item>
+          <ExplosionTag>EXP_TAG_SUBMARINE_BIG</ExplosionTag>
+          <PositionAtPetrolTank value="false" />
+          <PositionInBoundingBox value="false" />
+          <DelayTimeMs value="1100" />
+          <Scale value="1.000000" />
+          <PositionOffset x="0.000000" y="-3.000000" z="6.500000" />
+        </Item>
+        <Item>
+          <ExplosionTag>EXP_TAG_SUBMARINE_BIG</ExplosionTag>
+          <PositionAtPetrolTank value="false" />
+          <PositionInBoundingBox value="false" />
+          <DelayTimeMs value="100" />
+          <Scale value="1.000000" />
+          <PositionOffset x="0.000000" y="20.000000" z="8.000000" />
+        </Item>
+        <Item>
+          <ExplosionTag>EXP_TAG_SUBMARINE_BIG</ExplosionTag>
+          <PositionAtPetrolTank value="false" />
+          <PositionInBoundingBox value="false" />
+          <DelayTimeMs value="600" />
+          <Scale value="1.000000" />
+          <PositionOffset x="0.000000" y="41.000000" z="2.500000" />
+        </Item>
+        <Item>
+          <ExplosionTag>EXP_TAG_SUBMARINE_BIG</ExplosionTag>
+          <PositionAtPetrolTank value="false" />
+          <PositionInBoundingBox value="false" />
+          <DelayTimeMs value="1550" />
+          <Scale value="1.000000" />
+          <PositionOffset x="0.000000" y="-26.000000" z="5.000000" />
+        </Item>
+        <Item>
+          <ExplosionTag>EXP_TAG_SUBMARINE_BIG</ExplosionTag>
+          <PositionAtPetrolTank value="false" />
+          <PositionInBoundingBox value="false" />
+          <DelayTimeMs value="2000" />
+          <Scale value="1.000000" />
+          <PositionOffset x="0.000000" y="-48.000000" z="3.000000" />
+        </Item>
+      </ExplosionData>
+      <AdditionalPartVelocityMinAngle value="0.000000" />
+      <AdditionalPartVelocityMaxAngle value="0.000000" />
+      <AdditionalPartVelocityMinMagnitude value="0.000000" />
+      <AdditionalPartVelocityMaxMagnitude value="0.000000" />
+      <VehicleExplosionLODs>
+        <Item>
+          <Radius value="0.000000" />
+          <PartDeletionChance value="0.000000" />
+        </Item>
+        <Item>
+          <Radius value="5.910000" />
+          <PartDeletionChance value="0.400000" />
+        </Item>
+        <Item>
+          <Radius value="8.360000" />
+          <PartDeletionChance value="0.800000" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_LEFT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_FROGGER_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_RIGHT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_FROGGER_REAR_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_HELI_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_HELI_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_LEFT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_REAR_LEFT2" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_RIGHT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_ANNIHILATOR2_REAR_RIGHT2" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_BIKE_FRONT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BIKE_MANCHEZ2_FRONT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BIKE_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BIKE_DIRT_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BIKE_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BIKE_DIRT_FRONT_RIGHT" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_BOAT_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BOAT_DINGHY_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_BOAT_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BOAT_DINGHY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_BOAT_DINGHY5_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BOAT_DINGHY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_BOAT_DINGHY5_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BOAT_DINGHY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_BOAT_DINGHY5_FRONT_TURRET" />
+          <SeatAnimInfo ref="SEAT_ANIM_DINGHY5_FRONT_TURRET" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY_REARCLIMB_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY_REARCLIMB_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY_REARCLIMB_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY_REARCLIMB_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_TURRET_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_TURRET_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_TURRET_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_TURRET_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_TURRET_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_TURRET_FRONT_LEFT_CLIMBUP" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BOAT_DINGHY5_TURRET_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BOAT_DINGHY5_TURRET_FRONT_RIGHT_CLIMBUP" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_WINKY_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_WINKY_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_WINKY_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_WINKY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_WINKY_REAR" />
+          <SeatAnimInfo ref="SEAT_ANIM_WINKY_REAR" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_JEEP_WINKY_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_JEEP_WINKY_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_JEEP_WINKY_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_JEEP_WINKY_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_JEEP_WINKY_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_JEEP_WINKY_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_JEEP_WINKY_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_JEEP_WINKY_REAR_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseVanOpenDoorBlendParams UseDoorOscillation NoArmIkOnInsideCloseDoor UseLeanSteerAnims UseFinerAlignTolerance</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="NULL" />
+      <HandsUpClipSetId>busted_vehicle_std</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="3.000000" />
+      <BodyLeanXApproachSpeed value="10.000000" />
+      <BodyLeanXSmallDelta value="0.100000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@van@ds@idle_a</Item>
+        <Item>clipset@veh@van@ds@idle_b</Item>
+        <Item>clipset@veh@van@ds@idle_c</Item>
+        <Item>clipset@veh@van@ds@idle_d</Item>
+        <Item>clipset@veh@van@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_LOW_TOREADOR_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_TOREADOR_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_LOW_TOREADOR_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_TOREADOR_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_TOREADOR_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_TOREADOR_REAR_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_LOW_TOREADOR_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_TOREADOR_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_LOW_TOREADOR_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_TOREADOR_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_TOREADOR_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_TOREADOR_REAR_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims NoArmIkOnInsideCloseDoor NoArmIkOnOutsideCloseDoor UseLeanSteerAnims UseSteeringWheelIk UseFinerAlignTolerance AutomaticCloseDoor</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="STD_LOW_ANIM_RATE_SET" />
+      <HandsUpClipSetId>busted_vehicle_low</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="15.000000" />
+      <BodyLeanXApproachSpeed value="1.000000" />
+      <BodyLeanXSmallDelta value="0.400000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@low@ds@idle_a</Item>
+        <Item>clipset@veh@low@ds@idle_b</Item>
+        <Item>clipset@veh@low@ds@idle_c</Item>
+        <Item>clipset@veh@low@ds@idle_d</Item>
+        <Item>clipset@veh@low@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_JET_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_JET_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_NO_SHUFFLE_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_NO_SHUFFLE_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_LEFT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_RIGHT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_LEFT_2" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_RIGHT_2" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_LEFT_3" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_NO_SHUFFLE_RIGHT_3" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_TITAN_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_PLANE_ALKONOST_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_PLANE_ALKONOST_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_EXTRA_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_EXTRA_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_EXTRA_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_EXTRA_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_EXTRA_LEFT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_EXTRA_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_MP_ALKONOST_WARP_REAR_EXTRA_RIGHT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_PLANE_ALKONOST_REAR_EXTRA_RIGHT" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_VAN_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SLAMTRUCK_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_VAN_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SLAMTRUCK_FRONT_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_VAN_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SLAMTRUCK_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_VAN_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SLAMTRUCK_FRONT_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseVanOpenDoorBlendParams UseDoorOscillation UseLeanSteerAnims UseLowerDoorBlockTest</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="NULL" />
+      <HandsUpClipSetId>busted_vehicle_van</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.006700" y="0.330000" z="0.270000" />
+      <MaxXAcceleration value="4.000000" />
+      <BodyLeanXApproachSpeed value="5.000000" />
+      <BodyLeanXSmallDelta value="0.300000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@van@ds@idle_a</Item>
+        <Item>clipset@veh@van@ds@idle_b</Item>
+        <Item>clipset@veh@van@ds@idle_c</Item>
+        <Item>clipset@veh@van@ds@idle_d</Item>
+        <Item>clipset@veh@van@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SQUADDIE_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SQUADDIE_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_SQUADDIE_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SQUADDIE_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_SQUADDIE_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SQUADDIE_REAR_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SQUADDIE_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SQUADDIE_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SQUADDIE_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SQUADDIE_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SQUADDIE_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_SQUADDIE_REAR_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseVanOpenDoorBlendParams UseDoorOscillation UseLeanSteerAnims UseFinerAlignTolerance</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="NULL" />
+      <HandsUpClipSetId>busted_vehicle_std</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="4.000000" />
+      <BodyLeanXApproachSpeed value="5.000000" />
+      <BodyLeanXSmallDelta value="0.300000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@van@ds@idle_a</Item>
+        <Item>clipset@veh@van@ds@idle_b</Item>
+        <Item>clipset@veh@van@ds@idle_c</Item>
+        <Item>clipset@veh@van@ds@idle_d</Item>
+        <Item>clipset@veh@van@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@van@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_TRUCK_VETIR_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_TRUCK_VETIR_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_LEFT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_RIGHT_1" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_LEFT_2" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_RIGHT_2" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_LEFT_3" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_EXTRA_RIGHT_3" />
+          <SeatAnimInfo ref="SEAT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_TRUCK_VETIR_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_TRUCK_VETIR_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BARRACKS_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_BARRACKS_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_LEFT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_RIGHT_1" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_LEFT_2" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_RIGHT_2" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_LEFT_3" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_EXTRA_RIGHT_3" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_BARRACKS_REAR_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseLeanSteerAnims UseFinerAlignTolerance</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="NULL" />
+      <HandsUpClipSetId>busted_vehicle_truck</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="4.000000" />
+      <BodyLeanXApproachSpeed value="5.000000" />
+      <BodyLeanXSmallDelta value="0.300000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@truck@ds@idle_a</Item>
+        <Item>clipset@veh@truck@ds@idle_b</Item>
+        <Item>clipset@veh@truck@ds@idle_c</Item>
+        <Item>clipset@veh@truck@ds@idle_d</Item>
+        <Item>clipset@veh@truck@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@truck@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@truck@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@truck@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_PLANE_MAMMATUS_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_HELI_SEASPARROW2_FRONT_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_SEASPARROW2_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_HELI_SEASPARROW2_FRONT_RIGHT" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_SINGLE_FRONT" />
+          <SeatAnimInfo ref="SEAT_ANIM_QUAD_VERUS_FRONT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_QUAD_VERUS_REAR" />
+          <SeatAnimInfo ref="SEAT_ANIM_QUAD_VERUS_REAR" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SINGLE_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_QUAD_VERUS_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SINGLE_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_QUAD_VERUS_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_QUAD_VERUS_REAR" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_QUAD_VERUS_REAR" />
+        </Item><Item>
+          <SeatInfo ref="SEAT_VETO_FRONT" />
+          <SeatAnimInfo ref="SEAT_ANIM_VETO_FRONT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_VETO_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_VETO_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_VETO_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_VETO_FRONT_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseLeanSteerAnims UseSteeringWheelIk</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="STD_LOW_ANIM_RATE_SET" />
+      <HandsUpClipSetId>busted_vehicle_low</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="15.000000" />
+      <BodyLeanXApproachSpeed value="10.000000" />
+      <BodyLeanXSmallDelta value="0.400000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@low@ds@idle_a</Item>
+        <Item>clipset@veh@low@ds@idle_b</Item>
+        <Item>clipset@veh@low@ds@idle_c</Item>
+        <Item>clipset@veh@low@ds@idle_d</Item>
+        <Item>clipset@veh@low@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_STD_WEEVIL_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_STD_WEEVIL_FRONT_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_WEEVIL_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_WEEVIL_FRONT_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseDoorOscillation UseLeanSteerAnims UseSteeringWheelIk UseFinerAlignTolerance</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="STD_LOW_ANIM_RATE_SET" />
+      <HandsUpClipSetId>busted_vehicle_std</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="4.000000" />
+      <BodyLeanXApproachSpeed value="5.000000" />
+      <BodyLeanXSmallDelta value="0.300000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@std@ds@idle_a</Item>
+        <Item>clipset@veh@std@ds@idle_b</Item>
+        <Item>clipset@veh@std@ds@idle_c</Item>
+        <Item>clipset@veh@std@ds@idle_d</Item>
+        <Item>clipset@veh@std@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@std@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@std@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@std@ds@hit_wheel@idle_c</Item><Item>
+          <SeatInfo ref="SEAT_LOW_ITALIRSX_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_ITALIRSX_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_LOW_ITALIRSX_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_LOW_ITALIRSX_FRONT_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_LOW_ITALIRSX_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_LOW_ITALIRSX_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_LOW_FRONT_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseDoorOscillation UseLeanSteerAnims UseSteeringWheelIk</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+      <AnimRateSet ref="STD_LOW_ANIM_RATE_SET" />
+      <HandsUpClipSetId>busted_vehicle_low</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+      <MaxXAcceleration value="15.000000" />
+      <BodyLeanXApproachSpeed value="10.000000" />
+      <BodyLeanXSmallDelta value="0.400000" />
+      <LookBackApproachSpeedScale value="1.000000" />
+      <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@low@ds@idle_a</Item>
+        <Item>clipset@veh@low@ds@idle_b</Item>
+        <Item>clipset@veh@low@ds@idle_c</Item>
+        <Item>clipset@veh@low@ds@idle_d</Item>
+        <Item>clipset@veh@low@ds@idle_e</Item>
+      </FirstPersonAdditiveIdleClipSets>
+      <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_a</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_b</Item>
+        <Item>clipset@veh@low@ds@hit_wheel@idle_c</Item><Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="80.000000" y="150.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.120000" />
+            <AngleToBlendInOffset x="30.000000" y="150.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="150.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="150.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.050000" />
+            <AngleToBlendInOffset x="50.000000" y="186.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="95.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.080000" />
+            <AngleToBlendInOffset x="50.000000" y="95.000000" />
+          </Item><Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="50.000000" y="186.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="95.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.080000" />
+            <AngleToBlendInOffset x="50.000000" y="95.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-6.000000" y="-16.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="150.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="60.000000" y="150.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.120000" />
+            <AngleToBlendInOffset x="30.000000" y="150.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="150.000000" />
+          </Item><Item>
+            <Offset value="-0.300000" />
+            <AngleToBlendInOffset x="40.000000" y="165.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.090000" />
+            <AngleToBlendInOffset x="5.000000" y="50.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-17.000000" y="10.000000" />
+        <AngleToBlendInExtraPitch x="5.000000" y="70.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.090000" />
+            <AngleToBlendInOffset x="30.000000" y="90.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="195.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.090000" />
+            <AngleToBlendInOffset x="30.000000" y="90.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="20.000000" />
+        <AngleToBlendInExtraPitch x="30.000000" y="90.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="40.000000" y="165.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="5.000000" y="50.000000" />
+          </Item><Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="100.000000" y="190.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.010000" />
+            <AngleToBlendInOffset x="100.000000" y="190.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.125000" />
+            <AngleToBlendInOffset x="-90.000000" y="10.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="20.000000" />
+        <AngleToBlendInExtraPitch x="25.000000" y="50.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="100.000000" y="150.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.125000" />
+            <AngleToBlendInOffset x="-90.000000" y="10.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="70.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-3.000000" y="-11.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.350000" />
+            <AngleToBlendInOffset x="5.000000" y="50.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.080000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item><Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="70.000000" y="125.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.170000" />
+            <AngleToBlendInOffset x="40.000000" y="125.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.020000" />
+            <AngleToBlendInOffset x="30.000000" y="90.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-20.000000" y="5.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="125.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.020000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="50.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.020000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="50.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="-11.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="0.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="70.000000" y="125.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="40.000000" y="125.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="-0.480000" />
+            <AngleToBlendInOffset x="40.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.250000" />
+            <AngleToBlendInOffset x="40.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.020000" />
+            <AngleToBlendInOffset x="10.000000" y="40.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="10.000000" />
+        <AngleToBlendInExtraPitch x="5.000000" y="50.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.300000" />
+            <AngleToBlendInOffset x="70.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="70.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.035000" />
+            <AngleToBlendInOffset x="70.000000" y="170.000000" />
+          </Item><Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="40.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="40.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.035000" />
+            <AngleToBlendInOffset x="0.100000" y="40.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-3.000000" y="-4.000000" />
+        <AngleToBlendInExtraPitch x="170.000000" y="110.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.400000" />
+            <AngleToBlendInOffset x="55.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="40.000000" y="170.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.015000" />
+            <AngleToBlendInOffset x="0.000000" y="55.000000" />
+          </Item><Item>
+            <Offset value="-0.400000" />
+            <AngleToBlendInOffset x="60.000000" y="160.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="45.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.120000" />
+            <AngleToBlendInOffset x="20.000000" y="60.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-20.000000" y="10.000000" />
+        <AngleToBlendInExtraPitch x="50.000000" y="160.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.120000" />
+            <AngleToBlendInOffset x="20.000000" y="60.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-2.000000" y="2.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="80.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.400000" />
+            <AngleToBlendInOffset x="60.000000" y="160.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.170000" />
+            <AngleToBlendInOffset x="45.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.120000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item><Item>
+            <Offset value="-0.250000" />
+            <AngleToBlendInOffset x="0.000000" y="140.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="45.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.010000" />
+            <AngleToBlendInOffset x="15.000000" y="60.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-20.000000" y="2.000000" />
+        <AngleToBlendInExtraPitch x="5.000000" y="55.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="0.000000" />
+        <AngleToBlendInExtraPitch x="15.000000" y="90.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item><Item>
+            <Offset value="-0.050000" />
+            <AngleToBlendInOffset x="120.000000" y="140.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="45.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.010000" />
+            <AngleToBlendInOffset x="15.000000" y="60.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-20.000000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="90.000000" y="140.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="50.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.020000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item><Item>
+            <Offset value="-0.050000" />
+            <AngleToBlendInOffset x="120.000000" y="140.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="45.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.010000" />
+            <AngleToBlendInOffset x="15.000000" y="60.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-20.000000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="90.000000" y="140.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="40.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.020000" />
+            <AngleToBlendInOffset x="0.000000" y="50.000000" />
+          </Item><Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="70.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-5.000000" y="2.000000" />
+        <AngleToBlendInExtraPitch x="50.000000" y="120.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.020000" />
+            <AngleToBlendInOffset x="50.000000" y="80.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="140.000000" />
+          </Item><Item>
+            <Offset value="-0.020000" />
+            <AngleToBlendInOffset x="50.000000" y="80.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="140.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-3.000000" y="-17.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="120.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="70.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="120.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="100.000000" y="140.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.250000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="10.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="70.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="100.000000" y="140.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="0.000000" y="140.000000" />
+          </Item><Item>
+            <Offset value="-0.050000" />
+            <AngleToBlendInOffset x="5.000000" y="50.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.100000" />
+            <AngleToBlendInOffset x="25.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-12.000000" y="5.000000" />
+        <AngleToBlendInExtraPitch x="30.000000" y="80.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="-0.130000" />
+            <AngleToBlendInOffset x="0.000000" y="45.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.100000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.130000" />
+            <AngleToBlendInOffset x="0.000000" y="45.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.100000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-12.000000" y="5.000000" />
+        <AngleToBlendInExtraPitch x="30.000000" y="80.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="-0.050000" />
+            <AngleToBlendInOffset x="0.000000" y="80.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.230000" />
+            <AngleToBlendInOffset x="50.000000" y="105.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="60.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="-13.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="105.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item><Item>
+            <Offset value="0.050000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.150000" />
+            <AngleToBlendInOffset x="45.000000" y="90.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-7.500000" y="-5.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="60.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="60.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="50.000000" y="105.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.040000" />
+            <AngleToBlendInOffset x="0.000000" y="60.000000" />
+          </Item><Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="100.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.150000" />
+            <AngleToBlendInOffset x="100.000000" y="135.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="0.000000" y="30.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-15.000000" y="15.000000" />
+        <AngleToBlendInExtraPitch x="0.000000" y="30.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.400000" />
+            <AngleToBlendInOffset x="0.000000" y="135.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.025000" />
+            <AngleToBlendInOffset x="100.000000" y="135.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.300000" />
+            <AngleToBlendInOffset x="0.000000" y="30.000000" />
+          </Item><Item>
+            <Offset value="-0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="30.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.000000" />
+            <AngleToBlendInOffset x="0.000000" y="0.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="30.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="0.000000" />
+        <AngleToBlendInExtraPitch x="10.000000" y="180.000000" />
+      </DataLeft>
+      <DataRight>
+        <Offsets>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="20.000000" />
+          </Item>
+          <Item>
+            <Offset value="-0.300000" />
+            <AngleToBlendInOffset x="0.000000" y="180.000000" />
+          </Item>
+          <Item>
+            <Offset value="0.200000" />
+            <AngleToBlendInOffset x="0.000000" y="30.000000" />
+          </Item>
+        </Offsets>
+        <ExtraRelativePitch x="-10.000000" y="0.000000" />
+        <AngleToBlendInExtraPitch x="10.000000" y="180.000000" />
+      </DataRight>
+      <WheelClipInfo>
+        <HeadingLimitsLeft x="0.380000" y="0.430000" />
+        <HeadingLimitsRight x="0.480000" y="0.530000" />
+        <PitchLimits x="0.470000" y="0.530000" />
+        <PitchOffset x="0.000000" y="0.050000" />
+        <WheelAngleLimits x="-0.700000" y="0.000000" />
+        <WheelAngleOffset x="0.010000" y="0.040000" />
+        <MaxWheelOffsetY value="0.170000" />
+        <WheelClipLerpInRate value="0.150000" />
+        <WheelClipLerpOutRate value="0.180000" />
+      </WheelClipInfo>
+    </Item>
+  </FirstPersonDriveByLookAroundData>
+</CVehicleMetadataMgr>

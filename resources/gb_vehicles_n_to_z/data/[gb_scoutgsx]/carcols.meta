@@ -1,0 +1,2525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+  	<Item>
+      <kitName>731_gbscoutgsx_modkit</kitName>
+      <id value="731" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>	  
+        <!--LIVERIES-->
+		<Item>
+          <modelName>gbscoutgsx_livery_1</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_2</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_3</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_4</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_5</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_6</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_7</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_8</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_9</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_10</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_11</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_12</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_13</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_livery_14</modelName>
+          <modShopLabel>GBSCOUTGSX_LIVERY_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--MIRRORS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_1_dside_pla_1</modelName>
+          <modShopLabel>GBSCOUTGSX_MIRROR_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbscoutgsx_misc_2_pside_pla_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_1_dside_pain_2</modelName>
+          <modShopLabel>GBSCOUTGSX_MIRROR_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbscoutgsx_misc_2_pside_pain_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--HOOD LETTERS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_h_1</modelName>
+          <modShopLabel>GBSCOUTGSX_HLETTERS_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_h_null</modelName>
+          <modShopLabel>GBSCOUTGSX_HLETTERS_NULL</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROOF PROPS-->
+		<Item>
+          <modelName>gbscoutgsx_roof_prop_1</modelName>
+          <modShopLabel>GBSCOUTGSX_ROOFPROP_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_roof_prop_2</modelName>
+          <modShopLabel>GBSCOUTGSX_ROOFPROP_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROOFS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_r_0</modelName>
+          <modShopLabel>GBSCOUTGSX_ROOF_0</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<!--<Item>misc_t</Item>-->
+			<Item>misc_m</Item>
+			<Item>misc_i</Item>
+			<!--<Item>extra_11</Item>-->
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_r_1</modelName>
+          <modShopLabel>GBSCOUTGSX_ROOF_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbscoutgsx_misc_t_1</Item>
+			<Item>gbscoutgsx_extra_11_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_t</Item>
+			<Item>misc_m</Item>
+			<Item>misc_i</Item>
+			<!--<Item>extra_11</Item>-->
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_r_2</modelName>
+          <modShopLabel>GBSCOUTGSX_ROOF_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbscoutgsx_misc_t_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+			<Item>misc_t</Item>
+			<!--<Item>misc_m</Item>-->
+			<Item>extra_ten</Item>
+			<!--<Item>extra_11</Item>-->
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--EXHAUSTS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_e_1</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_2</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_3</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_4</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_5</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_6</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_e_7</modelName>
+          <modShopLabel>GBSCOUTGSX_EXHAUST_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+			<Item>exhaust_3</Item>
+			<Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--SIDE STEPS-->
+		<Item>
+          <modelName>gbscoutgsx_skirt_1</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_skirt_2</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_skirt_3</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_skirt_4</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_skirt_5</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_skirt_6</modelName>
+          <modShopLabel>GBSCOUTGSX_SKIRT_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--HOODS-->
+		<Item>
+          <modelName>gbscoutgsx_bonnet_1</modelName>
+          <modShopLabel>GBSCOUTGSX_HOOD_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_bonnet_2</modelName>
+          <modShopLabel>GBSCOUTGSX_HOOD_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_bonnet_3</modelName>
+          <modShopLabel>GBSCOUTGSX_HOOD_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_bonnet_4</modelName>
+          <modShopLabel>GBSCOUTGSX_HOOD_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_bonnet_5</modelName>
+          <modShopLabel>GBSCOUTGSX_HOOD_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--TRUNK STEPS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_o_1</modelName>
+          <modShopLabel>GBSCOUTGSX_TSTEP_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_o_2</modelName>
+          <modShopLabel>GBSCOUTGSX_TSTEP_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_o_3</modelName>
+          <modShopLabel>GBSCOUTGSX_TSTEP_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--GRILLES-->
+		<Item>
+          <modelName>gbscoutgsx_misc_g_1</modelName>
+          <modShopLabel>GBSCOUTGSX_GRILLE_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_g_2</modelName>
+          <modShopLabel>GBSCOUTGSX_GRILLE_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--BULLBARS-->
+		<Item>
+          <modelName>gbscoutgsx_bullbar_1</modelName>
+          <modShopLabel>GBSCOUTGSX_BULLBAR_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--DOOR DECORATIONS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_a_1</modelName>
+          <modShopLabel>GBSCOUTGSX_DDECO_1</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_b_1</Item>
+			<Item>gbscoutgsx_misc_c_1</Item>
+			<Item>gbscoutgsx_misc_d_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_a_2</modelName>
+          <modShopLabel>GBSCOUTGSX_DDECO_2</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_b_2</Item>
+			<Item>gbscoutgsx_misc_c_2</Item>
+			<Item>gbscoutgsx_misc_d_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_a_3</modelName>
+          <modShopLabel>GBSCOUTGSX_DDECO_3</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_b_3</Item>
+			<Item>gbscoutgsx_misc_c_3</Item>
+			<Item>gbscoutgsx_misc_d_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--FENDERS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_f_main_1</modelName>
+          <modShopLabel>GBSCOUTGSX_FENDER_1</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_w_1</Item>
+			<Item>gbscoutgsx_misc_x_1</Item>
+			<Item>gbscoutgsx_misc_y_1</Item>
+			<Item>gbscoutgsx_misc_z_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+			<Item>misc_y</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_f_main_2</modelName>
+          <modShopLabel>GBSCOUTGSX_FENDER_2</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_w_2</Item>
+			<Item>gbscoutgsx_misc_x_2</Item>
+			<Item>gbscoutgsx_misc_y_2</Item>
+			<Item>gbscoutgsx_misc_z_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+			<Item>misc_y</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_f_main_3</modelName>
+          <modShopLabel>GBSCOUTGSX_FENDER_3</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_w_3</Item>
+			<Item>gbscoutgsx_misc_x_3</Item>
+			<Item>gbscoutgsx_misc_y_3</Item>
+			<Item>gbscoutgsx_misc_z_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+			<Item>misc_y</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_f_main_4</modelName>
+          <modShopLabel>GBSCOUTGSX_FENDER_4</modShopLabel>
+          <linkedModels>
+			<Item>gbscoutgsx_misc_w_4</Item>
+			<Item>gbscoutgsx_misc_x_4</Item>
+			<Item>gbscoutgsx_misc_y_4</Item>
+			<Item>gbscoutgsx_misc_z_4</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+			<Item>misc_y</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--REAR BUMPERS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_p_stock_1</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_stock_2</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_stock_3</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_stock_4</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_p_offroad_1</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_offroad_2</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_offroad_3</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_p_sport_1</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_sport_2</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_sport_3</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_sport_4</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_p_sport_5</modelName>
+          <modShopLabel>GBSCOUTGSX_RBUMPER_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--FRONT BUMPERS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_q_stock_1</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_stock_2</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_stock_3</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_stock_4</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_stock_5</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_1</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_2</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_3</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_4</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_5</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_offroad_6</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_1</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_2</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_3</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_4</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_5</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_q_sport_6</modelName>
+          <modShopLabel>GBSCOUTGSX_FBUMPER_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+	</visibleMods>
+	<linkMods>
+		<!--MIRRORS - LINKS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_2_pside_pla_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_2_pside_pain_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--ROOFS - LINKS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_t_1</modelName>
+          <bone>boot</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_extra_11_1</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--DOOR DECOS - LINKS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_b_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_c_1</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_d_1</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_b_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_c_2</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_d_2</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_b_3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_c_3</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_d_3</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--FENDERS - LINKS-->
+		<Item>
+          <modelName>gbscoutgsx_misc_w_1</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_x_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_y_1</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_z_1</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_w_2</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_x_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_y_2</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_z_2</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_w_3</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_x_3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_y_3</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_z_3</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbscoutgsx_misc_w_4</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_x_4</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_y_4</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbscoutgsx_misc_z_4</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="90" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="120" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="160" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="135" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="200" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+   		<Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+		<Item>
+          <slot>VMT_CHASSIS</slot>
+          <name>Mirrors</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>Hood Letters</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>Roof Accessories</name>
+        </Item>
+		<Item>
+          <slot>VMT_ROOF</slot>
+          <name>Roof</name>
+        </Item>
+		<Item>
+          <slot>VMT_EXHAUST</slot>
+          <name>Exhausts</name>
+        </Item>
+		<Item>
+          <slot>VMT_SKIRT</slot>
+          <name>Side Steps</name>
+        </Item>
+		<Item>
+          <slot>VMT_BONNET</slot>
+          <name>Hoods</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>Trunk Steps</name>
+        </Item>
+		<Item>
+          <slot>VMT_GRILL</slot>
+          <name>Grilles</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>Bullbar</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_L</slot>
+          <name>Door Decoration</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_R</slot>
+          <name>Fenders</name>
+        </Item>
+		<Item>
+          <slot>VMT_BUMPER_R</slot>
+          <name>Rear Bumpers</name>
+        </Item>
+		<Item>
+          <slot>VMT_BUMPER_F</slot>
+          <name>Front Bumpers</name>
+        </Item>
+      </slotNames>     	
+      <liveryNames />
+    </Item>
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

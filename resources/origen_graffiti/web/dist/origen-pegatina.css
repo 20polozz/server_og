@@ -1,0 +1,582 @@
+/* ══ PEGATINA: el graffiti con el estilo del logo «Origen Los Santos» ════
+
+   Es NUESTRA. La interfaz del graffiti viene compilada y sin fuente
+   (assets/index-*.css); esta hoja va enlazada DESPUÉS en index.html y la
+   repinta entera sin tocar el compilado. El día que se actualice el
+   recurso, se vuelve a enlazar y ya está.
+
+   El único estilo del servidor: panel gris #c4c6ca, piezas gris claro
+   #dcdde0, canto negro fino, sombra dura, rosa #d81b55 con tinta negra en
+   lo que confirma y lo elegido. Ver la skill origen-pegatina.
+
+   «html:root» delante gana a «.clase[data-v-…]» del compilado. Los cantos
+   son box-shadow (el borde de 1 px de serie va transparente): no cambian
+   ninguna medida.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+html:root {
+    --ogn-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ogn-texto: "Barlow", "Segoe UI", sans-serif;
+    --ogn-acc: #d81b55;
+    --ogn-acc-soft: #d81b55;
+    --ogn-acc-deep: #b3123f;
+    --ogn-acc-pale: #ffd6e4;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-fg: #0b0b0d;
+    --ogn-surface: #dcdde0;
+    --ogn-surface-hi: #f1f1ee;
+    --ogn-surface-on: #ffd6e4;
+    --ogn-line: #000;
+    --ogn-line-hi: #000;
+    --ogn-line-soft: rgba(11, 11, 13, 0.35);
+    --border-subtle: rgba(11, 11, 13, 0.35);
+    --text-primary: #0b0b0d;
+    --text-secondary: #44444a;
+    --text-muted: #55555c;
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/* ── Velos ──────────────────────────────────────────────────────────── */
+/*  El panel de admin ocupa la pantalla: velo de los paneles de gestión.
+    Las ventanas pequeñas (tienda, unirse, cantidad, color) un velo suave. */
+html:root .panel-overlay { background: #b9bbc0; }
+html:root :is(.modal-overlay, .shop-overlay, .qty-overlay, .picker-overlay, .preview-overlay) { background: rgba(11, 11, 13, 0.55); }
+
+/* ── Paneles ────────────────────────────────────────────────────────── */
+html:root :is(.admin-panel, .modal, .shop-modal, .qty-modal, .picker-modal, .hud-bar) {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html:root .hud-bar { border-radius: 14px; }
+html:root .admin-header { border-bottom: 3px solid #d81b55; }
+html:root .panel-list { border-right: 1.5px solid #000; }
+html:root :is(.divider, .hud-divider) { background: rgba(11, 11, 13, 0.35); }
+
+/* ── Rótulos y textos ───────────────────────────────────────────────── */
+html:root :is(.header-title, .modal-title, .shop-title, .qty-title, .picker-title) {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: #0b0b0d;
+}
+html:root :is(.header-subtitle, .modal-message, .shop-subtitle, .qty-subtitle, .picker-subtitle, .item-desc, .item-date, .item-creator, .unit-label, .qty-label-unit, .total-label, .counter-label, .swatches-label, .hud-label, .hud-key-row span, .hud-erase-hint, .empty-state) { color: #44444a; }
+html:root :is(.item-id, .item-label, .unit-value, .hud-value, .hud-saving-text) { color: #0b0b0d; }
+html:root :is(.counter-value, .price-amount, .total-value, .qty-number, .hud-dur-pct, .hud-erase-pct, .unit-value) {
+    font-family: var(--peg-cifra);
+    font-weight: 800;
+    color: #0b0b0d;
+}
+
+/* ── Placas de cabecera: rosa con el icono negro, girada ────────────── */
+html:root :is(.header-icon-box, .modal-icon-box, .shop-icon-box, .qty-icon-box, .picker-icon-box) {
+    background: #d81b55;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+    transform: rotate(-5deg);
+}
+
+/* ── Piezas que se pulsan ───────────────────────────────────────────── */
+html:root :is(.btn-close, .btn-close-header, .preview-close, .action-btn, .ctrl-btn, .btn-new, .btn-cancel, .qty-btn, .shop-item, .list-item, .header-counter, .search-toolbar, .hex-wrapper, .total-row, .item-thumb, .item-icon-box) {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+/*  Lo que no se pulsa: canto sin sombra. */
+html:root :is(.header-counter, .search-toolbar, .hex-wrapper, .total-row, .item-thumb, .item-icon-box) { box-shadow: inset 0 0 0 1.5px #000; }
+html:root :is(.btn-close, .btn-close-header, .preview-close, .action-btn, .ctrl-btn, .btn-new, .btn-cancel, .qty-btn, .shop-item, .list-item, .btn-back):hover {
+    background: #f1f1ee;
+    border-color: transparent;
+    color: #0b0b0d;
+}
+html:root :is(.btn-close, .btn-close-header, .action-btn, .ctrl-btn, .btn-new, .btn-cancel, .qty-btn, .btn-join, .btn-buy, .btn-confirm):active { transform: translate(2px, 2px); }
+/*  Cancelar y volver sin caja de serie: texto. */
+html:root .btn-back { background: transparent; box-shadow: none; color: #44444a; }
+html:root .btn-cancel[class] { color: #0b0b0d; }
+
+/* ── Lo que confirma: rosa con tinta negra ──────────────────────────── */
+html:root :is(.btn-join, .btn-buy, .btn-confirm, .ctrl-btn--active) {
+    background: #d81b55;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    color: #000;
+}
+html:root :is(.btn-join, .btn-buy, .btn-confirm):hover { background: #d81b55; border-color: transparent; color: #000; }
+html:root :is(.btn-buy, .btn-confirm):disabled { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #9a9aa3; color: #73737c; }
+/*  Peligro: borrar. Pieza gris con la letra rosa oscura; al pasar, rosa
+    con tinta negra. El rojo vivo queda solo para estados. */
+html:root .action-btn--danger { background: #dcdde0; color: #b3123f; }
+html:root .action-btn--danger:hover { background: #d81b55; color: #000; }
+
+/* ── Lo elegido: pieza gris con canto rosa fino ─────────────────────── */
+html:root :is(.shop-item.is-selected, .list-item--selected) {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55;
+}
+
+/* ── Campos ─────────────────────────────────────────────────────────── */
+html:root :is(input, .hex-input) { color: #0b0b0d; }
+html:root input::placeholder { color: #55555c; }
+html:root :is(.search-icon, .hex-hash, .copy-btn, .thumb-placeholder) { color: #55555c; }
+html:root .copy-btn:hover { color: #0b0b0d; }
+
+/* ── HUD de pintar: teclas y barras ─────────────────────────────────── */
+html:root kbd {
+    background: #0b0b0d;
+    border-color: transparent;
+    font-family: var(--peg-cifra);
+    font-weight: 800;
+    color: #fff;
+}
+html:root :is(.hud-dur-track, .hud-progress-track) { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root :is(.hud-dur-fill, .hud-progress-fill) { background: #0b0b0d; }
+html:root .hud-dur-fill--medium { background: #55555c; }
+html:root .hud-dur-fill--low { background: #d81b55; }
+html:root .hud-color-swatch { border-color: transparent; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html:root .hud-brush--erase :is(.hud-label, .hud-value) { color: #55555c; }
+
+/* ── Mapa del admin ─────────────────────────────────────────────────── */
+html:root .graffiti-map { border-color: transparent; box-shadow: inset 0 0 0 1.5px #000; }
+html:root [class] .gta-preview {
+    background: #c4c6ca;
+    border-color: transparent;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root [class] :is(.gta-preview-id) { color: #0b0b0d; }
+html:root [class] :is(.gta-preview-creator, .gta-preview-date) { color: #44444a; }
+html:root [class] :is(.preview-img, .preview-img--empty) { background: #dcdde0; }
+html:root [class] .graffiti-cluster-icon {
+    background: #d81b55;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root [class] .graffiti-cluster-icon span { font-family: var(--peg-cifra); font-weight: 800; color: #000; }
+
+/* ── Barras de desplazamiento ───────────────────────────────────────── */
+html:root ::-webkit-scrollbar-track { background: transparent; }
+html:root ::-webkit-scrollbar-thumb { background: rgba(11, 11, 13, 0.35); }
+html:root ::-webkit-scrollbar-thumb:hover { background: #d81b55; }
+
+/* ── Zoom del mapa (Leaflet) ────────────────────────────────────────── */
+html:root [class] .leaflet-bar { border: 0; box-shadow: 0 0 0 1.5px #000, 2px 2px 0 1.5px #000; border-radius: 10px; }
+html:root [class] .leaflet-bar a,
+html:root [class] .leaflet-bar a:hover {
+    background-color: #dcdde0;
+    border-bottom-color: #000;
+    color: #0b0b0d;
+}
+html:root [class] .leaflet-bar a:hover { background-color: #f1f1ee; }
+/*  El compilado los pinta con !important: aquí también. */
+html:root [class] .leaflet-control-zoom a {
+    background: #dcdde0 !important;
+    border: 0 !important;
+    box-shadow: inset 0 0 0 1px rgba(11, 11, 13, 0.35) !important;
+    color: #0b0b0d !important;
+}
+
+/* ══ El panel de admin con la plantilla de los admins (06/10, tarde) ══════
+   Como el del gimnasio (origen_gym, AdminGym/OgnShell), sin tocar el
+   compilado: fondo gris liso a pantalla completa; riel flotante a la
+   izquierda (la caja y el nombre en vertical son el ::before/::after del
+   velo; la placa rosa y su raya, los del panel); cabecera en zona con la
+   placa, la entradilla en chapa negra, el título grande y la brocha a su
+   lado; la lista y el mapa, cada uno en su zona; el total baja a la barra
+   de datos. */
+html:root { --gf-riel: 64px; --gf-m: 1.4vh; --gf-izq: calc(var(--gf-riel) + 1.2vh + 20px); --gf-barra: 7.2vh; }
+html:root .panel-overlay::before {
+    content: ""; position: fixed; z-index: 1;
+    left: 1.2vh; top: var(--gf-m); bottom: var(--gf-m); width: var(--gf-riel);
+    border-radius: 20px; background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .panel-overlay::after {
+    content: "Origen Graffiti"; position: fixed; z-index: 2;
+    left: calc(1.2vh + var(--gf-riel) / 2); top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800;
+    font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d;
+    pointer-events: none;
+}
+html:root .admin-panel[class] {
+    position: fixed; z-index: 3;
+    top: var(--gf-m); right: var(--gf-m); bottom: var(--gf-m); left: var(--gf-izq);
+    width: auto; height: auto; max-width: none;
+    gap: 20px; overflow: visible;
+    background: transparent; border-radius: 0; box-shadow: none; outline: 0;
+}
+/*  La placa del riel, arriba: rosa, girada, con el bote de espray. */
+html:root .admin-panel[class]::before {
+    content: ""; position: fixed;
+    left: calc(1.2vh + (var(--gf-riel) - 44px) / 2); top: calc(var(--gf-m) + 16px);
+    width: 44px; height: 44px; border-radius: 12px; transform: rotate(-5deg);
+    background: #d81b55 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01'/%3E%3Crect width='4' height='4' x='15' y='5'/%3E%3Cpath d='m19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2'/%3E%3Cpath d='m13 14 8-2M13 19l8-2'/%3E%3C/svg%3E") center / 22px 22px no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+/*  Y su raya debajo, como la del riel de OgnShell. */
+html:root .admin-panel[class]::after {
+    content: ""; position: fixed;
+    left: calc(1.2vh + (var(--gf-riel) - 22px) / 2); top: calc(var(--gf-m) + 74px);
+    width: 22px; height: 2px; border-radius: 2px; background: #0b0b0d;
+}
+/*  La cabecera, en zona. */
+html:root .admin-header[class] {
+    position: relative; justify-content: space-between;
+    padding: 1.1vh 2.2vh 1.3vh; border: 0; border-radius: 20px;
+    background: #c4c6ca; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .admin-header .header-left[class] { gap: 18px; }
+html:root .admin-header .header-icon-box[class] {
+    width: 52px; height: 52px; margin-left: 4px; border-radius: 14px; font-size: 24px;
+}
+html:root .admin-header .header-icon-box[class] svg { width: 24px; height: 24px; }
+html:root .admin-header .header-title-group[class] { flex-direction: column-reverse; align-items: flex-start; gap: 0.6vh; }
+html:root .admin-header .header-subtitle[class] {
+    padding: 0.28vh 0.9vh 0.32vh; border-radius: 6px; background: #0b0b0d; color: #fff;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800;
+    font-size: 1.2vh; line-height: 1.3; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;
+}
+html:root .admin-header .header-title[class] { position: relative; font-size: 3.5vh; line-height: 1; letter-spacing: 0.01em; }
+html:root .admin-header .header-title[class]::after {
+    content: "Muros con firma"; position: absolute; left: calc(100% + 1.6vh); top: 50%; margin-top: -0.9vh;
+    font-family: "Knewave", "Barlow Condensed", cursive; font-style: normal; font-weight: 400;
+    font-size: 1.95vh; line-height: 1; letter-spacing: 0; text-transform: none; white-space: nowrap;
+    color: #d81b55; transform: rotate(-3deg); transform-origin: left center; pointer-events: none;
+    text-shadow: 1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000, 1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000, 3px 3.5px 0 #000;
+}
+html:root .admin-header .btn-close-header[class] { width: 4.2vh; height: 4.2vh; border-radius: 10px; font-size: 2vh; }
+/*  El total, a la barra de datos de abajo (una ficha a lo ancho). */
+html:root .admin-header .header-counter[class] {
+    position: fixed; left: var(--gf-izq); right: var(--gf-m); bottom: var(--gf-m); height: var(--gf-barra);
+    box-sizing: border-box; align-items: flex-start; justify-content: center; gap: 0.2vh;
+    padding: 1vh 2vh 1.1vh; border-radius: 16px;
+    background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .admin-header .counter-label[class] { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800; font-size: 1.3vh; letter-spacing: 0.05em; color: #44444a; }
+html:root .admin-header .counter-value[class] { font-size: 2.6vh; line-height: 1; letter-spacing: 0; }
+/*  La lista y el mapa: dos zonas, por encima de la barra. */
+html:root .admin-panel .panel-body[class] {
+    grid-template-columns: 40vh 1fr; gap: 20px; overflow: visible;
+    margin-bottom: calc(var(--gf-barra) + 20px);
+}
+html:root .admin-panel :is(.panel-list, .panel-map)[class] {
+    min-height: 0; border: 0; border-radius: 20px; background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .admin-panel .panel-list[class] { padding: 1.4vh 1.4vh 0.6vh; }
+html:root .admin-panel .panel-map[class] { padding: 1.2vh; }
+html:root .admin-panel .graffiti-map[class] { border-radius: 12px; }
+/*  Las filas de la lista, que se lean. */
+html:root .admin-panel .search-toolbar[class] { padding: 0.9vh 1.1vh; border-radius: 10px; }
+html:root .admin-panel .search-toolbar input { font-size: 1.4vh; }
+html:root .admin-panel .list-item[class] { border-radius: 12px; padding: 0.8vh 0.9vh; }
+html:root .admin-panel .item-id[class] { font-family: var(--peg-cifra); font-weight: 800; font-size: 1.4vh; }
+html:root .admin-panel :is(.item-date, .item-creator)[class] { font-size: 1.2vh; }
+
+/* ══ Menús cortos en formato MENÚ PEQUEÑO (07/10) ═════════════════════════
+   La tienda, la cantidad, el color y «Alguien está pintando» salían en
+   mitad de la pantalla. Van como los diálogos del servidor (org-menu,
+   skill origen-dialogo): columna de 440 px y riel de 64 px pegado al canto,
+   juntos a media altura a la derecha, sin velo.
+
+   Sin tocar el compilado: el velo de cada uno (que es fixed y flex) encoge
+   hasta su contenido y se coloca a media altura a la derecha; la ventana es
+   la columna y el riel lo pintan el ::before (la caja, con la pieza del
+   icono y su raya) y el ::after (el nombre en vertical, abajo). Se reconoce
+   el «Alguien está pintando» por su scope: el diálogo de borrar del admin
+   usa la misma clase y se queda centrado (va dentro del panel de admin). */
+html:root :is(.shop-overlay, .qty-overlay, .picker-overlay, .modal-overlay[data-v-de2ee12b]) {
+    top: 50%; right: 1.2vh; bottom: auto; left: auto;
+    max-height: calc(100vh - 2.8vh);
+    transform: translateY(-50%);
+    align-items: stretch; justify-content: flex-end; gap: 20px;
+    background: transparent;
+}
+/*  Mientras se elige cantidad o color, la tienda se aparta: el diálogo
+    nuevo ocupa su sitio (van antes que ella en el DOM). */
+html:root :is(.qty-overlay, .picker-overlay) ~ .shop-overlay { visibility: hidden; }
+
+/*  El riel: caja gris con la pieza del icono (rosa) y su raya debajo. */
+html:root :is(.shop-overlay, .qty-overlay, .picker-overlay, .modal-overlay[data-v-de2ee12b])::before {
+    content: ""; order: 2; flex: none; align-self: stretch;
+    width: 64px; min-height: 300px; border-radius: 20px;
+    background: #c4c6ca url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='80' viewBox='0 0 64 80'%3E%3Crect x='12' y='18' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='10.75' y='16.75' width='41.5' height='41.5' rx='9.25' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Cg transform='translate(19.5 25.5)' fill='none' stroke='%23d81b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01'/%3E%3Crect width='4' height='4' x='15' y='5'/%3E%3Cpath d='m19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2'/%3E%3Cpath d='m13 14 8-2M13 19l8-2'/%3E%3C/g%3E%3Crect x='21' y='71' width='22' height='2' rx='1' fill='%23000'/%3E%3C/svg%3E") center top / 64px 80px no-repeat;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    pointer-events: none;
+}
+/*  El nombre del riel, abajo y en vertical («Nación Graffiti» en Nación). */
+html:root :is(.shop-overlay, .qty-overlay, .picker-overlay, .modal-overlay[data-v-de2ee12b])::after {
+    content: "Origen Graffiti"; position: absolute; right: 32px; bottom: 16px;
+    transform: translateX(50%) rotate(180deg); writing-mode: vertical-rl;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800;
+    font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d;
+    pointer-events: none;
+}
+html[data-marca="nacion"]:root :is(.panel-overlay, .shop-overlay, .qty-overlay, .picker-overlay, .modal-overlay[data-v-de2ee12b])::after { content: "Nación Graffiti"; }
+
+/*  La columna: 440 px, alto justo; lo que no quepa se desplaza dentro. */
+html:root :is(.shop-modal, .qty-modal, .picker-modal, .modal[data-v-de2ee12b])[class] {
+    flex: none; width: 440px; max-width: none; max-height: calc(100vh - 2.8vh);
+    box-sizing: border-box; padding: 14px 20px 18px; gap: 12px;
+    overflow-x: hidden; overflow-y: auto;
+}
+
+/*  Cabecera: placa rosa de 44, título grande, renglón gris y el filete rosa. */
+html:root :is(.shop-icon-box, .qty-icon-box, .picker-icon-box, .modal[data-v-de2ee12b] .modal-icon-box)[class] {
+    width: 44px; height: 44px; border-radius: 10px; font-size: 20px;
+}
+html:root :is(.shop-title, .qty-title, .picker-title, .modal[data-v-de2ee12b] .modal-title)[class] {
+    font-size: 26px; line-height: 0.95; letter-spacing: 0.01em;
+}
+html:root :is(.shop-subtitle, .qty-subtitle, .picker-subtitle, .modal[data-v-de2ee12b] .modal-message)[class] {
+    margin-top: 3px; font-family: "Barlow", "Segoe UI", sans-serif; font-weight: 500;
+    font-size: 14px; line-height: 1.35; letter-spacing: 0; color: #44444a;
+}
+html:root .shop-modal .header-left[class], html:root .qty-header[class], html:root .picker-header[class] { gap: 14px; }
+html:root :is(.shop-header, .qty-header) + .divider[class] { height: 3px; border-radius: 2px; background: #d81b55; }
+html:root .picker-header[class] { padding-bottom: 12px; border-bottom: 3px solid #d81b55; }
+html:root :is(.shop-modal, .qty-modal) .btn-close-header[class] { width: 34px; height: 34px; border-radius: 10px; font-size: 16px; }
+
+/*  «Alguien está pintando»: placa a la izquierda del texto, como cabecera,
+    y los botones debajo del filete. */
+html:root .modal[data-v-de2ee12b][class] {
+    display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; row-gap: 0;
+    align-items: center;
+}
+html:root .modal[data-v-de2ee12b] .modal-body[class] { align-items: flex-start; text-align: left; gap: 0; }
+html:root .modal[data-v-de2ee12b] .modal-actions[class] {
+    grid-column: 1 / -1; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 3px solid #d81b55;
+}
+
+/*  La tienda: una sola columna de filas, que se lean. */
+html:root .shop-modal .items-grid[class] {
+    grid-template-columns: 1fr; gap: 6px; max-height: none;
+    padding: 0 4px 4px 0; overflow: visible;
+}
+html:root .shop-item[class] { gap: 10px; padding: 7px 12px 7px 8px; border-radius: 12px; }
+html:root .shop-item .item-icon-box[class] { width: 34px; height: 34px; border-radius: 9px; font-size: 16px; }
+html:root .shop-item .item-label[class] {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800;
+    font-size: 17px; letter-spacing: 0.02em; color: #0b0b0d;
+}
+html:root .shop-item .color-dot[class] { width: 11px; height: 11px; border-color: #000; }
+html:root .shop-item .item-desc[class] { font-size: 13px; letter-spacing: 0; }
+html:root .shop-item .price-amount[class] { font-size: 16px; }
+
+/*  Botones del pie: Cancelar gris, Comprar/Confirmar rosa; letra que se lea. */
+html:root :is(.shop-footer, .qty-footer)[class] { gap: 10px; }
+html:root :is(.shop-modal, .qty-modal, .picker-modal, .modal[data-v-de2ee12b]) :is(.btn-cancel, .btn-buy, .btn-confirm, .btn-join, .btn-new, .btn-back)[class] {
+    height: 42px; border-radius: 12px;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-style: italic; font-weight: 800;
+    font-size: 16px; letter-spacing: 0.04em;
+}
+html:root :is(.shop-modal, .qty-modal) .btn-cancel[class] { padding: 0 18px; }
+html:root .modal[data-v-de2ee12b] .btn-cancel[class] {
+    background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .modal[data-v-de2ee12b] .btn-cancel[class]:hover { background: #f1f1ee; }
+
+/*  Cantidad y color: cifras y rótulos a tamaño de menú. */
+html:root .qty-modal .qty-btn[class] { width: 38px; height: 38px; border-radius: 10px; font-size: 16px; }
+html:root .qty-modal .qty-number[class] { font-size: 40px; }
+html:root .qty-modal :is(.qty-label-unit, .unit-label, .total-label)[class] { font-size: 13px; }
+html:root .qty-modal :is(.unit-value, .total-value)[class] { font-size: 16px; }
+html:root .qty-modal .total-row[class] { padding: 10px 12px; border-radius: 10px; }
+html:root .picker-modal .swatches-label[class] { font-size: 12px; }
+html:root .picker-modal .sv-area[class] { height: 200px; }
+/*  «Volver» del color, como Cancelar: pieza gris (de serie era solo texto). */
+html:root .picker-modal .btn-back[class] { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html:root .picker-modal .btn-back[class]:hover { background: #f1f1ee; }
+html:root .picker-modal .hex-wrapper[class] { height: 38px; padding: 0 12px; border-radius: 10px; }
+html:root .picker-modal :is(.hex-hash, .hex-input)[class] { font-size: 15px; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* ── 07/10 · barra de pintar: letra de la casa, en una línea ────────── */
+html:root .hud-root[class] :is(.hud-key-row span, .hud-label, .hud-erase-hint, .hud-saving-text) {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
+    font-size: 1.15vh !important;
+}
+html:root .hud-root[class] .hud-value {
+    font-family: "Barlow", "Segoe UI", sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+}
+html:root .hud-root[class] :is(kbd, .hud-dur-pct, .hud-erase-pct) {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
+}
+html:root .hud-root[class] kbd {
+    height: 2.3vh !important;
+    font-size: 1.05vh !important;
+    background: #0b0b0d !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 6px !important;
+    box-shadow: 1.5px 1.5px 0 #000 !important;
+}
+html:root .hud-root[class] .hud-keys { flex-wrap: nowrap !important; white-space: nowrap !important; }
+
+/* ══ La barra de pintar con las medidas del KIT (07/10, tarde) ═══════════
+   Es la barra de abajo del servidor (origen_map/kit/barra-abajo.css): mismo
+   alto, radio, canto, hueco del suelo, chapas de tecla y piezas de dato que
+   la de colocar props o la de teclas de origen_hud. Esta interfaz viene
+   compilada y sin fuente: copia de las variables del kit aquí.
+   Todo en UNA línea: el rótulo de cada dato va a la izquierda de su valor
+   (antes iba encima, dos renglones), los tramos separados por un filete
+   negro y las barras de spray y de borrado de una pieza, en rosa. */
+html:root {
+    --bab-u: min(calc(100vh / 1080), calc(100vw / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-dato: calc(var(--bab-u) * 12.5);
+    --bab-dato-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 8) calc(var(--bab-u) * 3);
+    --bab-dato-radio: calc(var(--bab-u) * 7);
+}
+html:root .hud-root[class] { bottom: var(--bab-abajo); }
+html:root .hud-root[class] .hud-bar {
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    gap: var(--bab-hueco);
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    border: 0;
+    border-radius: var(--bab-radio);
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    white-space: nowrap;
+}
+/*  Cada dato en una fila: rótulo y valor. */
+html:root .hud-root[class] :is(.hud-spray-info, .hud-color, .hud-spray-dur, .hud-spray-dur-header, .hud-brush, .hud-erase, .hud-erase-header, .hud-saving, .hud-keys, .hud-key-row) {
+    flex-direction: row;
+    align-items: center;
+    min-width: 0;
+}
+html:root .hud-root[class] :is(.hud-color, .hud-spray-dur, .hud-spray-dur-header, .hud-brush, .hud-erase, .hud-erase-header, .hud-key-row) { gap: var(--bab-hueco-tecla); }
+html:root .hud-root[class] :is(.hud-spray-info, .hud-keys) { gap: var(--bab-hueco); }
+html:root .hud-root[class] .hud-divider {
+    width: 1.5px;
+    height: var(--bab-filete-alto);
+    background: #000;
+}
+html:root .hud-root[class] :is(.hud-key-row span, .hud-label, .hud-erase-hint, .hud-saving-text) {
+    font-size: var(--bab-texto) !important;
+    line-height: 1;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root .hud-root[class] .hud-erase-hint { color: #44444a; }
+/*  Los valores (pincel, % de spray, % borrado) en su pieza clara. */
+html:root .hud-root[class] :is(.hud-value, .hud-dur-pct, .hud-erase-pct) {
+    box-sizing: border-box;
+    min-width: calc(var(--bab-u) * 40);
+    padding: var(--bab-dato-pad);
+    border-radius: var(--bab-dato-radio);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    font-size: var(--bab-dato) !important;
+    line-height: 1;
+    letter-spacing: 0 !important;
+    text-align: center;
+    color: #0b0b0d;
+}
+html:root .hud-root[class] .hud-color-swatch {
+    width: calc(var(--bab-u) * 22);
+    height: calc(var(--bab-u) * 22);
+    border: 0;
+    border-radius: var(--bab-dato-radio);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+/*  Barras de una pieza: pista gris con canto, redonda, relleno rosa; ni
+    negro, ni gris, ni parpadeo cuando queda poco: lo dice la cifra. */
+html:root .hud-root[class] :is(.hud-dur-track, .hud-progress-track) {
+    width: calc(var(--bab-u) * 90);
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .hud-root[class] .hud-progress-track { width: calc(var(--bab-u) * 160); }
+html:root .hud-root[class] :is(.hud-dur-fill, .hud-dur-fill--medium, .hud-dur-fill--low, .hud-progress-fill) {
+    border-radius: 999px;
+    background: #d81b55;
+    animation: none;
+}
+/*  Las teclas: la chapa del kit. */
+html:root .hud-root[class] kbd {
+    box-sizing: border-box;
+    height: auto !important;
+    min-width: var(--bab-tecla-min);
+    padding: var(--bab-tecla-pad) !important;
+    border-radius: var(--bab-tecla-radio) !important;
+    box-shadow: none !important;
+    font-size: var(--bab-tecla) !important;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* ══ 08/10: rótulo a brocha en la tienda y sus diálogos ══════════════════
+   El compilado no tiene fuente que tocar: la frase va en el content de un
+   ::after del bloque de texto de cada cabecera (columna flex), con `order`
+   para que quede ENTRE el título y el renglón gris, en flujo (empuja, no
+   pisa). Uno por pantalla: cantidad y color esconden la tienda. Rosa
+   literal: en Nación lo repinta la marca. */
+html:root :is(.shop-modal .header-text, .qty-title-block, .picker-title-block, .modal[data-v-de2ee12b] .modal-body)[class]::after {
+    order: 1;
+    display: block;
+    margin: 5px 0 3px 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html:root .shop-modal .header-text[class]::after { content: "Arte callejero"; }
+html:root .qty-title-block[class]::after { content: "¿Cuántos botes?"; }
+html:root .picker-title-block[class]::after { content: "Dale color"; }
+html:root .modal[data-v-de2ee12b] .modal-body[class]::after { content: "Lata en mano"; }
+html:root :is(.shop-subtitle, .qty-subtitle, .picker-subtitle, .modal[data-v-de2ee12b] .modal-message)[class] { order: 2; }

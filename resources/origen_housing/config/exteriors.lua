@@ -1,0 +1,20 @@
+Config.Exteriors = {
+    [1] = { label = 'Exterior 1', model = 'lf_house_01_' },
+    [2] = { label = 'Exterior 2', model = 'lf_house_04_' },
+    [3] = { label = 'Exterior 3', model = 'lf_house_05_' },
+    [4] = { label = 'Exterior 4', model = 'lf_house_07_' },
+    [5] = { label = 'Exterior 5', model = 'lf_house_08_' },
+    [6] = { label = 'Exterior 6', model = 'lf_house_09_' },
+    [7] = { label = 'Exterior 7', model = 'lf_house_10_' },
+    [8] = { label = 'Exterior 8', model = 'lf_house_11_' },
+    [9] = { label = 'Exterior 9', model = 'lf_house_13_' },
+    [10] = { label = 'Exterior 10', model = 'lf_house_14_' },
+    [11] = { label = 'Exterior 11', model = 'lf_house_15_' },
+    [12] = { label = 'Exterior 12', model = 'lf_house_16_' },
+    [13] = { label = 'Exterior 13', model = 'lf_house_17_' },
+    [14] = { label = 'Exterior 14', model = 'lf_house_18_' },
+    [15] = { label = 'Exterior 15', model = 'lf_house_19_' },
+    [16] = { label = 'Exterior 16', model = 'lf_house_20_' },
+    [17] = { label = 'Department', model = 'db_apart_10_' },
+    [18] = { label = 'Container', model = 'prop_container_01mb' }
+}

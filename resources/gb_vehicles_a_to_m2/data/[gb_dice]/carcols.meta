@@ -1,0 +1,5222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CVehicleModelInfoVarGlobal>
+  <Kits>
+  	<Item>
+      <kitName>3615_gbdice_modkit</kitName>
+      <id value="3615" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>	  
+        <!--LIVERIES-->
+		<Item>
+          <modelName>gbdice_liv_1</modelName>
+          <modShopLabel>GBDICE_LIV1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_2</modelName>
+          <modShopLabel>GBDICE_LIV2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_3</modelName>
+          <modShopLabel>GBDICE_LIV3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_4</modelName>
+          <modShopLabel>GBDICE_LIV4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_5</modelName>
+          <modShopLabel>GBDICE_LIV5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_6</modelName>
+          <modShopLabel>GBDICE_LIV6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_7</modelName>
+          <modShopLabel>GBDICE_LIV7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_8</modelName>
+          <modShopLabel>GBDICE_LIV8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_9</modelName>
+          <modShopLabel>GBDICE_LIV9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_10</modelName>
+          <modShopLabel>GBDICE_LIV10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_11</modelName>
+          <modShopLabel>GBDICE_LIV11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_liv_12</modelName>
+          <modShopLabel>GBDICE_LIV12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Front Bumper-->
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_cooler_1</modelName>
+          <modShopLabel>GBDICE_COOLER1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_COOL</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_intercooler_1</modelName>
+          <modShopLabel>GBDICE_INTCOOLER1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_INTC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_split_1</modelName>
+          <modShopLabel>GBDICE_SPLIT1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1b</modelName>
+          <modShopLabel>GBDICE_BUMF1B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_1</modelName>
+          <modShopLabel>GBDICE_SPLIT1B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1b</modelName>
+          <modShopLabel>GBDICE_BUMF1BB</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_1</modelName>
+          <modShopLabel>GBDICE_SPLIT1C</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1b</modelName>
+          <modShopLabel>GBDICE_BUMF1BC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_SPLT2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2A_COOL</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2a</Item>
+			<Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2A_INTC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2a</Item>
+			<Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_1</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_SPLT2B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2B_COOL</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2b</Item>
+			<Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT2B_INTC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_2b</Item>
+			<Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_1</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_SPLT3A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3A_COOL</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3a</Item>
+			<Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3A_INTC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3a</Item>
+			<Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_1</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_SPLT3B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3B_COOL</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3b</Item>
+			<Item>gbdice_cooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_SPLT3B_INTC</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_split_3b</Item>
+			<Item>gbdice_intercooler_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>extra_1</Item>
+			<Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_barf_1a</modelName>
+          <modShopLabel>GBDICE_BARF1A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF1A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_1a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF1A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_1a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_1b</modelName>
+          <modShopLabel>GBDICE_BARF1B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF1B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_1b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF1B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_1b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_barf_2a</modelName>
+          <modShopLabel>GBDICE_BARF2A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_2a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_2a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_2b</modelName>
+          <modShopLabel>GBDICE_BARF2B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF2B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_2b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF2B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_2b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_barf_3a</modelName>
+          <modShopLabel>GBDICE_BARF3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF3A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_3a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF3A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_3a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_3b</modelName>
+          <modShopLabel>GBDICE_BARF3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF3B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_3b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF3B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_3b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_barf_4a</modelName>
+          <modShopLabel>GBDICE_BARF4A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF4A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_4a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF4A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_4a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_4b</modelName>
+          <modShopLabel>GBDICE_BARF4B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_1a</modelName>
+          <modShopLabel>GBDICE_BUMF1A_BF4B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_4b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2a</modelName>
+          <modShopLabel>GBDICE_BUMF2A_BF4B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_barf_4b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_2b</modelName>
+          <modShopLabel>GBDICE_BUMF2B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_2c</modelName>
+          <modShopLabel>GBDICE_BUMF2C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_3a</modelName>
+          <modShopLabel>GBDICE_BUMF3A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_3b</modelName>
+          <modShopLabel>GBDICE_BUMF3B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumf_4a</modelName>
+          <modShopLabel>GBDICE_BUMF4A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_4b</modelName>
+          <modShopLabel>GBDICE_BUMF4B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_4c</modelName>
+          <modShopLabel>GBDICE_BUMF4C</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumf_4d</modelName>
+          <modShopLabel>GBDICE_BUMF4D</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_intercooler_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_s</Item>
+			<Item>misc_x</Item>
+			<Item>extra_2</Item>
+			<Item>extra_1</Item>
+			<Item>extralight_1</Item>
+			<Item>extralight_2</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Grilles-->
+		<Item>
+          <modelName>gbdice_grille_1a</modelName>
+          <modShopLabel>GBDICE_GRILL1A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_1b</modelName>
+          <modShopLabel>GBDICE_GRILL1B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_2</modelName>
+          <modShopLabel>GBDICE_GRILL2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_3a</modelName>
+          <modShopLabel>GBDICE_GRILL3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_3b</modelName>
+          <modShopLabel>GBDICE_GRILL3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_4</modelName>
+          <modShopLabel>GBDICE_GRILL4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_5a</modelName>
+          <modShopLabel>GBDICE_GRILL5A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_5b</modelName>
+          <modShopLabel>GBDICE_GRILL5B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_6a</modelName>
+          <modShopLabel>GBDICE_GRILL6A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_6b</modelName>
+          <modShopLabel>GBDICE_GRILL6B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_7a</modelName>
+          <modShopLabel>GBDICE_GRILL7A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_7b</modelName>
+          <modShopLabel>GBDICE_GRILL7B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_8a</modelName>
+          <modShopLabel>GBDICE_GRILL8A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_8b</modelName>
+          <modShopLabel>GBDICE_GRILL8B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_grille_9</modelName>
+          <modShopLabel>GBDICE_GRILL9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Headlights-->
+		<Item>
+          <modelName>gbdice_hll_1</modelName>
+          <modShopLabel>GBDICE_HL1</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_hlr_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>headlight_l</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hll_2</modelName>
+          <modShopLabel>GBDICE_HL2</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_hlr_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>headlight_l</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hll_3</modelName>
+          <modShopLabel>GBDICE_HL3</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_hlr_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>headlight_l</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hll_4</modelName>
+          <modShopLabel>GBDICE_HL4</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_hlr_4</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_q</Item>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>headlight_l</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Badge-->
+		<Item>
+          <modelName>gbdice_badgef_1</modelName>
+          <modShopLabel>GBDICE_BADGEF1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_badgef_2</modelName>
+          <modShopLabel>GBDICE_BADGEF2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_badgef_3</modelName>
+          <modShopLabel>GBDICE_BADGEF3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_badgef_4</modelName>
+          <modShopLabel>GBDICE_BADGEF4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_badgef_5</modelName>
+          <modShopLabel>GBDICE_BADGEF5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Bonnet-->
+		<Item>
+          <modelName>gbdice_bon_1a</modelName>
+          <modShopLabel>GBDICE_BON1A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_1b</modelName>
+          <modShopLabel>GBDICE_BON1B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_1c</modelName>
+          <modShopLabel>GBDICE_BON1C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_2a</modelName>
+          <modShopLabel>GBDICE_BON2A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_2b</modelName>
+          <modShopLabel>GBDICE_BON2B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_3a</modelName>
+          <modShopLabel>GBDICE_BON3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_3b</modelName>
+          <modShopLabel>GBDICE_BON3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_4a</modelName>
+          <modShopLabel>GBDICE_BON4A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_4b</modelName>
+          <modShopLabel>GBDICE_BON4B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_4c</modelName>
+          <modShopLabel>GBDICE_BON4C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_5a</modelName>
+          <modShopLabel>GBDICE_BON5A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bon_5b</modelName>
+          <modShopLabel>GBDICE_BON5B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Wiper Shield-->
+		<Item>
+          <modelName>gbdice_wshield_1</modelName>
+          <modShopLabel>GBDICE_WSHD1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_k</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wshield_2a</modelName>
+          <modShopLabel>GBDICE_WSHD2A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wshield_2b</modelName>
+          <modShopLabel>GBDICE_WSHD2B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wshield_3a</modelName>
+          <modShopLabel>GBDICE_WSHD3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wshield_3b</modelName>
+          <modShopLabel>GBDICE_WSHD3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wshield_4</modelName>
+          <modShopLabel>GBDICE_WSHD4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Sunstrip-->
+		<Item>
+          <modelName>gbdice_sstrip_1</modelName>
+          <modShopLabel>GBDICE_SSTRIP1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_sstrip_2</modelName>
+          <modShopLabel>GBDICE_SSTRIP2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_sstrip_3</modelName>
+          <modShopLabel>GBDICE_SSTRIP3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Roof-->
+		<Item>
+          <modelName>gbdice_roof_1a</modelName>
+          <modShopLabel>GBDICE_ROOF1A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_1b</modelName>
+          <modShopLabel>GBDICE_ROOF1B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_1c</modelName>
+          <modShopLabel>GBDICE_ROOF1C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_1d</modelName>
+          <modShopLabel>GBDICE_ROOF1D</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_2</modelName>
+          <modShopLabel>GBDICE_ROOF2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_3</modelName>
+          <modShopLabel>GBDICE_ROOF3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_4</modelName>
+          <modShopLabel>GBDICE_ROOF4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_roof_5</modelName>
+          <modShopLabel>GBDICE_ROOF5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Mirrors-->
+		<Item>
+          <modelName>gbdice_mirl_1</modelName>
+          <modShopLabel>GBDICE_MIR1</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_2a</modelName>
+          <modShopLabel>GBDICE_MIR2A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_2a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_2b</modelName>
+          <modShopLabel>GBDICE_MIR2B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_2b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_3</modelName>
+          <modShopLabel>GBDICE_MIR3</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_4</modelName>
+          <modShopLabel>GBDICE_MIR4</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_4</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_5</modelName>
+          <modShopLabel>GBDICE_MIR5</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_5</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_6a</modelName>
+          <modShopLabel>GBDICE_MIR6A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_6a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirl_6b</modelName>
+          <modShopLabel>GBDICE_MIR6B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_mirr_6b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Deflectors-->
+		<Item>
+          <modelName>gbdice_defl_1</modelName>
+          <modShopLabel>GBDICE_DEFL1</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_defr_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_4</Item>
+			<Item>extra_6</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_defl_2</modelName>
+          <modShopLabel>GBDICE_DEFL2</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_defr_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_4</Item>
+			<Item>extra_6</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_defl_3</modelName>
+          <modShopLabel>GBDICE_DEFL3</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_defr_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>extra_4</Item>
+			<Item>extra_6</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Bed-->
+		<Item>
+          <modelName>gbdice_bed_1</modelName>
+          <modShopLabel>GBDICE_BED1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_2</modelName>
+          <modShopLabel>GBDICE_BED2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_5</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_3</modelName>
+          <modShopLabel>GBDICE_BED3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_6</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_4</modelName>
+          <modShopLabel>GBDICE_BED4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_4</modelName>
+          <modShopLabel>GBDICE_BED4B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_5</modelName>
+          <modShopLabel>GBDICE_BED5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_6</modelName>
+          <modShopLabel>GBDICE_BED6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_7</modelName>
+          <modShopLabel>GBDICE_BED7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_8a</modelName>
+          <modShopLabel>GBDICE_BED8A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8b</modelName>
+          <modShopLabel>GBDICE_BED8B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8c</modelName>
+          <modShopLabel>GBDICE_BED8C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8d</modelName>
+          <modShopLabel>GBDICE_BED8D</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8e</modelName>
+          <modShopLabel>GBDICE_BED8E</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8f</modelName>
+          <modShopLabel>GBDICE_BED8F</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_8g</modelName>
+          <modShopLabel>GBDICE_BED8G</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_9</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9a</modelName>
+          <modShopLabel>GBDICE_BED9A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_11</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9b</modelName>
+          <modShopLabel>GBDICE_BED9B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_11</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s1</modelName>
+          <modShopLabel>GBDICE_BED9S1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s1</modelName>
+          <modShopLabel>GBDICE_BED9S1_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s1</modelName>
+          <modShopLabel>GBDICE_BED9S1_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s2</modelName>
+          <modShopLabel>GBDICE_BED9S2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s2</modelName>
+          <modShopLabel>GBDICE_BED9S2_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s2</modelName>
+          <modShopLabel>GBDICE_BED9S2_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s3</modelName>
+          <modShopLabel>GBDICE_BED9S3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s3</modelName>
+          <modShopLabel>GBDICE_BED9S3_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s3</modelName>
+          <modShopLabel>GBDICE_BED9S3_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s4</modelName>
+          <modShopLabel>GBDICE_BED9S4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s4</modelName>
+          <modShopLabel>GBDICE_BED9S4_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s4</modelName>
+          <modShopLabel>GBDICE_BED9S4_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s5</modelName>
+          <modShopLabel>GBDICE_BED9S5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s5</modelName>
+          <modShopLabel>GBDICE_BED9S5_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s5</modelName>
+          <modShopLabel>GBDICE_BED9S5_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_12</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_9s6</modelName>
+          <modShopLabel>GBDICE_BED9S6_9A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_13</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9s6</modelName>
+          <modShopLabel>GBDICE_BED9S6_9B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_bed_9b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_13</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_10a</modelName>
+          <modShopLabel>GBDICE_BED10A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_10b</modelName>
+          <modShopLabel>GBDICE_BED10B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_10c</modelName>
+          <modShopLabel>GBDICE_BED10C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_10d</modelName>
+          <modShopLabel>GBDICE_BED10D</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_11</modelName>
+          <modShopLabel>GBDICE_BED11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_12a</modelName>
+          <modShopLabel>GBDICE_BED12A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_14</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_12b</modelName>
+          <modShopLabel>GBDICE_BED12B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_14</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_12c</modelName>
+          <modShopLabel>GBDICE_BED12C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+			<Item>misc_i</Item>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_15</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_13</modelName>
+          <modShopLabel>GBDICE_BED13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_16</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Skirts-->
+		<Item>
+          <modelName>gbdice_skirts_1</modelName>
+          <modShopLabel>GBDICE_SKIRT1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_2</modelName>
+          <modShopLabel>GBDICE_SKIRT2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_3a</modelName>
+          <modShopLabel>GBDICE_SKIRT3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_3b</modelName>
+          <modShopLabel>GBDICE_SKIRT3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_3c</modelName>
+          <modShopLabel>GBDICE_SKIRT3C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_4a</modelName>
+          <modShopLabel>GBDICE_SKIRT4A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_4b</modelName>
+          <modShopLabel>GBDICE_SKIRT4B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirts_5a</modelName>
+          <modShopLabel>GBDICE_SKIRT5A</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_5a</Item>
+			<Item>gbdice_skirtsr_5a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_5b</modelName>
+          <modShopLabel>GBDICE_SKIRT5B</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_5a</Item>
+			<Item>gbdice_skirtsr_5a</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_5c</modelName>
+          <modShopLabel>GBDICE_SKIRT5C</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_5c</Item>
+			<Item>gbdice_skirtsr_5c</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_5d</modelName>
+          <modShopLabel>GBDICE_SKIRT5D</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_5c</Item>
+			<Item>gbdice_skirtsr_5c</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirts_6</modelName>
+          <modShopLabel>GBDICE_SKIRT6</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_6</Item>
+			<Item>gbdice_skirtsr_6</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_j</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_7</modelName>
+          <modShopLabel>GBDICE_SKIRT7</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_7</Item>
+			<Item>gbdice_skirtsr_7</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_j</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_8</modelName>
+          <modShopLabel>GBDICE_SKIRT8</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_8</Item>
+			<Item>gbdice_skirtsr_8</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_j</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirts_9</modelName>
+          <modShopLabel>GBDICE_SKIRT9</modShopLabel>
+          <linkedModels>
+		    <Item>gbdice_skirtsl_9</Item>
+			<Item>gbdice_skirtsr_9</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_j</Item>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--Skirts-->
+		<Item>
+          <modelName>gbdice_wakaba</modelName>
+          <modShopLabel>GBDICE_WAKA</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_spare0</modelName>
+          <modShopLabel>GBDICE_SPARE0</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_wakaba</modelName>
+          <modShopLabel>GBDICE_WAKA2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumr_1</modelName>
+          <modShopLabel>GBDICE_BUMR1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_2a</modelName>
+          <modShopLabel>GBDICE_BUMR2A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_2b</modelName>
+          <modShopLabel>GBDICE_BUMR2B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_2c</modelName>
+          <modShopLabel>GBDICE_BUMR2C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumr_3a</modelName>
+          <modShopLabel>GBDICE_BUMR3A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_3b</modelName>
+          <modShopLabel>GBDICE_BUMR3B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_3c</modelName>
+          <modShopLabel>GBDICE_BUMR3C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumr_4a</modelName>
+          <modShopLabel>GBDICE_BUMR4A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_4b</modelName>
+          <modShopLabel>GBDICE_BUMR4B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bumr_5a</modelName>
+          <modShopLabel>GBDICE_BUMR5A</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_5b</modelName>
+          <modShopLabel>GBDICE_BUMR5B</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bumr_5c</modelName>
+          <modShopLabel>GBDICE_BUMR5C</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	</visibleMods>
+	<linkMods>
+		<Item>
+          <modelName>gbdice_cooler_1</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_1</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_2a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_2b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_3a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_split_3b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_intercooler_1</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_intercooler_2</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_barf_1a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_1b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_2a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_2b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_3a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_3b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_4a</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_barf_4b</modelName>
+          <bone>bumper_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_hlr_1</modelName>
+          <bone>headlight_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hlr_2</modelName>
+          <bone>headlight_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hlr_3</modelName>
+          <bone>headlight_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_hlr_4</modelName>
+          <bone>headlight_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_mirr_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_2a</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_2b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_4</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_5</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_6a</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_mirr_6b</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_defr_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_defr_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_defr_3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_bed_2</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9a</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_bed_9b</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_5a</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_5a</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_5c</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_5c</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_6</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_6</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_7</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_7</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_8</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_8</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<Item>
+          <modelName>gbdice_skirtsl_9</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbdice_skirtsr_9</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="90" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="120" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="160" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="135" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="200" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+   		<Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+		<Item>
+          <slot>VMT_SPOILER</slot>
+          <name>Bed</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_L</slot>
+          <name>Mirrors</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_R</slot>
+          <name>Deflectors</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>Headlight Glass</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>Front Badge</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>Wiper Shield</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>Sunstrip</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR4</slot>
+          <name>Rear Accessories</name>
+        </Item>
+      </slotNames>     	
+      <liveryNames />
+    </Item>
+  </Kits>
+
+</CVehicleModelInfoVarGlobal>

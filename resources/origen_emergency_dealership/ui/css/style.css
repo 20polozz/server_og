@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,700;1,800&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oxanium:wght@600;700;800&display=swap');
+
+:root {
+  /* Tokens de estilo Pegatina (Origen Network) */
+  --tb-rot: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --tb-cifra: 'Oxanium', 'Barlow Condensed', sans-serif;
+  --tb-perla: #dcdde0;
+  --tb-blanco: #ffffff;
+  --tb-negro: #0b0b0d;
+  --tb-azul: #2f8cff;
+  --tb-azul-tinta: #0a5fd6;
+  --tb-palido: #d6e8ff;
+  --tb-tinta-3: #44444a;
+  --tb-tinta-4: #55555c;
+  --tb-tinta-5: #73737c;
+  --tb-canto: 0 0 0 2px #000, 5px 5px 0 #000;
+  --tb-canto-interno: inset 0 0 0 1.5px #000, 2.5px 2.5px 0 #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+  font-family: var(--tb-rot);
+}
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Gris liso, un tono por debajo de la tarjeta (sin foto de fondo). */
+  background: #9a9ca1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+}
+
+.loading-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Fondo táctico con foto temática policial (SAPD), viñeta cinematográfica y halo azul */
+.ls-backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ls-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  filter: brightness(0.65) contrast(1.1) saturate(1.15);
+  transform: scale(1.02);
+  transition: transform 7s ease-out;
+}
+
+.loading-screen:not(.is-hidden) .ls-bg-img {
+  transform: scale(1.07);
+}
+
+.ls-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(6, 7, 10, 0.4) 0%, rgba(6, 7, 10, 0.78) 75%, rgba(6, 7, 10, 0.95) 100%);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.7);
+}
+
+.ls-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 3.5vh 3.5vh;
+  opacity: 0.55;
+}
+
+.ls-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 95vh;
+  height: 65vh;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, rgba(47, 140, 255, 0.22) 0%, rgba(47, 140, 255, 0.03) 50%, transparent 75%);
+  pointer-events: none;
+}
+
+/* Tarjeta central en estilo Pegatina (Gris perla con cantos negros duros) */
+.ls-card {
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 68vh);
+  background: var(--tb-perla);
+  border-radius: 2vh;
+  padding: 3.2vh 3.8vh 2.8vh;
+  box-shadow: 0 0 0 2px #000, 5px 5px 0 #000, 0 2vh 5vh rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.8vh;
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--tb-negro);
+}
+
+.loading-screen.is-hidden .ls-card {
+  transform: scale(0.96);
+}
+
+/* Chapa superior */
+.ls-top-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8vh;
+  background: var(--tb-blanco);
+  box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+  border-radius: 0.8vh;
+  padding: 0.5vh 1.4vh;
+}
+
+.ls-dot {
+  width: 0.9vh;
+  height: 0.9vh;
+  border-radius: 50%;
+  background: var(--tb-azul);
+  box-shadow: 0 0 0 1.5px #000, 0 0 6px rgba(47, 140, 255, 0.8);
+  animation: lsPulse 1.4s ease-in-out infinite;
+}
+
+.ls-tag {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.2vh;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tb-negro);
+}
+
+/* Icono central (placa girada -5°) */
+.ls-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.4vh 0;
+}
+
+.ls-icon-ring {
+  position: absolute;
+  width: 8.2vh;
+  height: 8.2vh;
+  border-radius: 50%;
+  border: 2px dashed rgba(11, 11, 13, 0.28);
+  animation: lsSpin 16s linear infinite;
+}
+
+.ls-icon-box {
+  width: 6.4vh;
+  height: 6.4vh;
+  background: var(--tb-azul);
+  border-radius: 1.4vh;
+  box-shadow: inset 0 0 0 1.5px #000, 3px 3px 0 #000;
+  transform: rotate(-5deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+.ls-icon-box svg {
+  width: 3.5vh;
+  height: 3.5vh;
+  fill: currentColor;
+}
+
+/* Headings */
+.ls-headings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4vh;
+}
+
+.ls-title {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 3vh;
+  line-height: 1.02;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--tb-negro);
+}
+
+.ls-subtitle {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.55vh;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--tb-azul-tinta);
+}
+
+.ls-message {
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.25vh;
+  line-height: 1.4;
+  color: var(--tb-tinta-3);
+  max-width: 54vh;
+  margin-top: 0.2vh;
+  font-weight: 500;
+}
+
+/* Fila de metadatos (tarjeta blanca interior con canto negro) */
+.ls-meta-row {
+  width: 100%;
+  background: var(--tb-blanco);
+  border-radius: 1.2vh;
+  box-shadow: inset 0 0 0 1.5px #000, 2.5px 2.5px 0 #000;
+  padding: 1.1vh 1.4vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 0.4vh;
+}
+
+.ls-meta-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3vh;
+}
+
+.ls-meta-label {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.05vh;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--tb-tinta-5);
+}
+
+.ls-meta-val {
+  font-family: var(--tb-cifra);
+  font-weight: 800;
+  font-size: 1.35vh;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--tb-negro);
+}
+
+.ls-meta-sep {
+  width: 1.5px;
+  height: 2.4vh;
+  background: #000000;
+}
+
+/* Barra de progreso */
+.ls-progress-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7vh;
+  margin-top: 0.4vh;
+}
+
+.ls-progress-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ls-status-text {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1.25vh;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--tb-negro);
+}
+
+.ls-percent {
+  font-family: var(--tb-cifra);
+  font-weight: 800;
+  font-size: 1.45vh;
+  line-height: 1;
+  color: var(--tb-azul-tinta);
+}
+
+.ls-progress-track {
+  width: 100%;
+  height: 1.1vh;
+  background: var(--tb-blanco);
+  box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+  border-radius: 0.7vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.ls-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: var(--tb-azul);
+  box-shadow: inset 0 0 0 1px #000;
+  border-radius: 0.4vh;
+  position: relative;
+  transition: width 0.18s ease-out;
+}
+
+.ls-progress-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: lsShimmer 1.5s infinite;
+}
+
+/* Footer / Tip */
+.ls-footer {
+  display: flex;
+  align-items: center;
+  gap: 1vh;
+  margin-top: 0.2vh;
+}
+
+.ls-badge-mini {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 800;
+  font-size: 1vh;
+  line-height: 1;
+  background: var(--tb-negro);
+  color: #ffffff;
+  padding: 0.35vh 0.75vh;
+  border-radius: 0.5vh;
+  box-shadow: 2px 2px 0 #000;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.ls-tip {
+  font-family: var(--tb-rot);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15vh;
+  line-height: 1;
+  color: var(--tb-tinta-4);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Animaciones */
+@keyframes lsPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+@keyframes lsSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lsShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}

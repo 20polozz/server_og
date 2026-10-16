@@ -1,0 +1,401 @@
+<!doctype html>
+<!--
+    EL LIENZO DE CARTELES Y VALLAS
+
+    Pinta el contenido de un cartel de local o de una valla publicitaria. Se
+    usa dos veces con el mismo código, para que lo que se edita sea lo que
+    sale en la calle:
+
+      · en el juego, dentro de un navegador DUI cuya textura se pega en la
+        pared (source/client/carteles.lua, SendDuiMessage);
+      · en el panel, como vista previa dentro de un <iframe> (postMessage).
+
+    Mensaje: { lienzo: 1, accion: 'pintar', contenido, negocio, logo, ancho, alto }
+
+    ancho/alto son los METROS del rectángulo. La página se maqueta en un
+    lienzo virtual con esa proporción y luego se estira al tamaño de la
+    ventana: en el DUI la ventana es cuadrada (o 2:1) y la textura se vuelve a
+    estirar al pegarla, así que las dos deformaciones se anulan y el texto sale
+    derecho en la pared.
+
+    Es un fichero suelto (public/), sin Vue ni compilado: el DUI lo abre por
+    su dirección y no conviene que cambie de nombre en cada build.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lienzo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600;700&family=Oxanium:wght@800&family=Pacifico&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" />
+<!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+     con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+     medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+     (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+     de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+<style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3TmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3Tmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+
+    #marco {
+        position: absolute;
+        left: 0; top: 0;
+        transform-origin: 0 0;
+        overflow: hidden;
+        font-family: 'Barlow', system-ui, sans-serif;
+        color: var(--tinta);
+        background: var(--fondo);
+    }
+
+    /* ── Temas ──────────────────────────────────────────────────────── */
+    .t-crema   { --fondo: #f3ead8; --tinta: #2b1e14; --suave: #7b6552; --acento: #c2361f; --raya: rgba(43,30,20,.22); --tit: 'Playfair Display', Georgia, serif; }
+    .t-pizarra { --fondo: #1e2622; --tinta: #f2f1e8; --suave: #b9c0b5; --acento: #f5d565; --raya: rgba(242,241,232,.28); --tit: 'Caveat', cursive; }
+    .t-neon    { --fondo: #0c0717; --tinta: #ffffff; --suave: #b9a8d8; --acento: #ff2d95; --raya: rgba(45,226,255,.35); --tit: 'Pacifico', cursive; }
+    .t-madera  { --fondo: #6e4427; --tinta: #fff3df; --suave: #f1d5ad; --acento: #ffcb63; --raya: rgba(255,243,223,.3); --tit: 'Barlow Condensed', sans-serif; }
+    .t-rosa    { --fondo: #fff5f8; --tinta: #1b1420; --suave: #6c5d6f; --acento: #e0074f; --raya: rgba(224,7,79,.25); --tit: 'Barlow Condensed', sans-serif; }
+    .t-noche   { --fondo: #0f1522; --tinta: #eaf0fb; --suave: #9fb0cc; --acento: #6fb1ff; --raya: rgba(111,177,255,.3); --tit: 'Barlow Condensed', sans-serif; }
+
+    .t-pizarra #fondo { background:
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.07), transparent 60%),
+        radial-gradient(ellipse at 80% 90%, rgba(255,255,255,.05), transparent 55%); }
+    .t-pizarra #marco, .t-pizarra { }
+    .t-madera #fondo { background:
+        repeating-linear-gradient(90deg, rgba(0,0,0,.08) 0 3px, transparent 3px 46px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 17px),
+        linear-gradient(180deg, #7a4b2b, #5c3820); }
+    .t-crema #fondo { background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.6), transparent 70%); }
+    .t-neon #fondo { background:
+        radial-gradient(circle at 15% 20%, rgba(255,45,149,.18), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(45,226,255,.16), transparent 45%); }
+    .t-rosa #fondo { background:
+        linear-gradient(100deg, transparent 0 62%, rgba(224,7,79,.08) 62% 74%, transparent 74%),
+        linear-gradient(100deg, transparent 0 78%, rgba(224,7,79,.14) 78% 82%, transparent 82%); }
+    .t-noche #fondo { background:
+        radial-gradient(ellipse at 20% 0%, rgba(111,177,255,.18), transparent 60%); }
+
+    #fondo { position: absolute; inset: 0; }
+    #borde {
+        position: absolute; inset: calc(var(--u) * 14);
+        border: calc(var(--u) * 3) solid var(--raya);
+        border-radius: calc(var(--u) * 10);
+        pointer-events: none;
+    }
+    .t-neon #borde { border-color: #2de2ff; box-shadow: 0 0 calc(var(--u)*18) #2de2ff, inset 0 0 calc(var(--u)*18) rgba(45,226,255,.6); }
+    .t-rosa #borde { border: none; border-left: calc(var(--u)*16) solid var(--acento); border-radius: 0; inset: 0; }
+
+    #contenido {
+        position: absolute;
+        inset: calc(var(--u) * 44);
+        display: flex;
+        flex-direction: column;
+        font-size: calc(var(--u) * 30 * var(--k));
+    }
+
+    /* ── Menú ──────────────────────────────────────────────────────── */
+    .cab { display: flex; align-items: center; gap: 0.8em; margin-bottom: 0.6em; }
+    .cab--centro { flex-direction: column; text-align: center; gap: 0.35em; }
+    .logo {
+        width: 3.4em; height: 3.4em; flex: none;
+        border-radius: 50%; object-fit: cover;
+        background: rgba(255,255,255,.4);
+        box-shadow: 0 0 0 0.12em var(--acento);
+    }
+    .tit {
+        font-family: var(--tit);
+        font-weight: 800;
+        font-size: 2.6em;
+        line-height: 1;
+        color: var(--tinta);
+        letter-spacing: 0.01em;
+    }
+    .t-neon .tit { font-weight: 400; line-height: 1.3; color: #fff; text-shadow: 0 0 0.15em #ff2d95, 0 0 0.4em #ff2d95, 0 0 0.8em #ff2d95; }
+    .t-rosa .tit, .t-noche .tit, .t-madera .tit { text-transform: uppercase; font-style: italic; }
+    .t-pizarra .tit { font-weight: 700; font-size: 3em; }
+    .sub {
+        font-size: 1em; font-weight: 600;
+        letter-spacing: 0.22em; text-transform: uppercase;
+        color: var(--acento);
+        margin-top: 0.25em;
+    }
+    .t-neon .sub { color: #2de2ff; text-shadow: 0 0 0.4em #2de2ff; margin-top: 0.55em; }
+
+    .lineas { flex: 1; min-height: 0; column-gap: 1.6em; }
+    .lineas.dos { column-count: 2; }
+    .sec {
+        break-inside: avoid;
+        margin: 0.7em 0 0.25em;
+        font-family: var(--tit);
+        font-size: 1.35em; font-weight: 800;
+        color: var(--acento);
+        border-bottom: 0.08em solid var(--raya);
+        padding-bottom: 0.1em;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    .t-pizarra .sec, .t-neon .sec { text-transform: none; }
+    .t-neon .sec { font-weight: 400; color: #2de2ff; text-shadow: 0 0 0.4em #2de2ff; border-color: rgba(45,226,255,.35); }
+    .sec:first-child, .grupo:first-child .sec { margin-top: 0; }
+    /* Un título de sección nunca se queda solo al pie de una columna. */
+    .grupo { break-inside: avoid; }
+    .l { break-inside: avoid; padding: 0.28em 0; }
+    .l__fila { display: flex; align-items: baseline; gap: 0.4em; }
+    .l__n { font-weight: 700; font-size: 1.08em; }
+    .l__pts { flex: 1; border-bottom: 0.1em dotted var(--raya); transform: translateY(-0.25em); min-width: 1em; }
+    .l__p { font-weight: 800; font-size: 1.12em; color: var(--acento); white-space: nowrap; font-family: 'Barlow Condensed', sans-serif; }
+    .t-neon .l__p { color: #ff5fb0; text-shadow: 0 0 0.3em #ff2d95; }
+    .l__d { font-size: 0.8em; color: var(--suave); margin-top: 0.1em; line-height: 1.25; }
+    .pie {
+        margin-top: 0.6em;
+        text-align: center;
+        font-size: 0.85em; font-weight: 600;
+        color: var(--suave);
+        letter-spacing: 0.06em;
+    }
+    .vacio { flex: 1; display: grid; place-items: center; color: var(--suave); font-size: 1.1em; font-style: italic; }
+
+    /* ── Anuncio (vallas) ─────────────────────────────────────────── */
+    .anu { flex: 1; display: flex; align-items: center; gap: 1.2em; min-height: 0; }
+    .anu .logo { width: 7em; height: 7em; box-shadow: 0 0 0 0.18em var(--acento); }
+    .anu__txt { flex: 1; min-width: 0; }
+    .anu .tit { font-size: 5em; }
+    .anu .sub { font-size: 1.6em; margin-top: 0.45em; }
+    .anu__pie { font-size: 1.3em; margin-top: 0.8em; color: var(--suave); font-weight: 600; }
+    .anu__cinta {
+        display: inline-block;
+        margin-top: 0.9em;
+        padding: 0.3em 1.2em 0.3em 1em;
+        background: var(--acento); color: #fff;
+        font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic;
+        font-size: 1.4em; letter-spacing: 0.06em; text-transform: uppercase;
+        clip-path: polygon(0.5em 0, 100% 0, calc(100% - 0.5em) 100%, 0 100%);
+    }
+    .t-pizarra .anu__cinta, .t-madera .anu__cinta { color: #1b1410; }
+
+    /* ── Imagen ────────────────────────────────────────────────────── */
+    .img { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .img--cubrir { object-fit: cover; }
+    .img--contener { object-fit: contain; }
+
+    /* ── Libre (valla sin alquilar) ─────────────────────────────────
+       Es un cartel de la casa, no de un negocio: va en pegatina clara como
+       las interfaces (papel gris, canto negro fino, rosa con tinta negra). */
+    .libre {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+        padding: 0 calc(var(--u) * 90);
+        background: #c4c6ca;
+        box-shadow: inset 0 0 0 calc(var(--u) * 6) #000;
+        color: #0b0b0d;
+        font-size: calc(var(--u) * 44);
+    }
+    .libre__k { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic; letter-spacing: 0.12em; font-size: 1.5em; color: #b3123f; }
+    .libre__t { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-style: italic; text-transform: uppercase; font-size: 6.2em; line-height: 0.95; margin: 0.12em 0 0.2em; }
+    .libre__s { font-size: 1.6em; font-weight: 600; color: #44444a; }
+    .libre__p {
+        margin-top: 0.9em;
+        padding: 0.25em 0.9em;
+        border-radius: 0.3em;
+        background: #d81b55;
+        color: #0b0b0d;
+        box-shadow: inset 0 0 0 calc(var(--u) * 4) #000, calc(var(--u) * 8) calc(var(--u) * 8) 0 #000;
+        font-family: 'Oxanium', 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 2em;
+    }
+</style>
+</head>
+<body>
+<div id="marco" class="t-crema">
+    <div id="fondo"></div>
+    <div id="borde"></div>
+    <div id="contenido"></div>
+</div>
+
+<script>
+(function () {
+    var marco = document.getElementById('marco')
+    var caja = document.getElementById('contenido')
+    var ultimo = null
+
+    // Alto del lienzo virtual: todo se mide en `--u` (1 = 1/1000 del alto).
+    var BASE = 1000
+
+    function esc(t) {
+        return String(t == null ? '' : t)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+    }
+
+    // Solo imágenes por https: lo demás se ignora (el servidor ya filtra).
+    function url(u) {
+        return (typeof u === 'string' && /^https:\/\/[^\s"'<>]+$/.test(u)) ? u : ''
+    }
+
+    function colocar(ancho, alto) {
+        var prop = (ancho > 0 && alto > 0) ? ancho / alto : 1.5
+        prop = Math.max(0.3, Math.min(6, prop))
+        var vw = Math.round(BASE * prop), vh = BASE
+        marco.style.width = vw + 'px'
+        marco.style.height = vh + 'px'
+        marco.style.setProperty('--u', '1px')
+        var W = window.innerWidth || vw, H = window.innerHeight || vh
+        marco.style.transform = 'scale(' + (W / vw) + ',' + (H / vh) + ')'
+        return prop
+    }
+
+    function htmlMenu(c, d, prop) {
+        var logo = c.logo !== false && url(d.logo)
+        var lineas = Array.isArray(c.lineas) ? c.lineas : []
+        var normales = lineas.filter(function (l) { return !l.s }).length
+        var dos = lineas.length > 7 && prop >= 1.1
+
+        var h = '<div class="cab' + (prop < 1.05 ? ' cab--centro' : '') + '">'
+        if (logo) h += '<img class="logo" src="' + esc(logo) + '" alt="" />'
+        h += '<div>'
+        h += '<div class="tit">' + esc(c.titulo || d.negocio || '') + '</div>'
+        if (c.subtitulo) h += '<div class="sub">' + esc(c.subtitulo) + '</div>'
+        h += '</div></div>'
+
+        if (!lineas.length) {
+            h += '<div class="vacio">La carta, pronto</div>'
+        } else {
+            // Cada sección con su primer plato en un bloque que no se parte.
+            h += '<div class="lineas' + (dos ? ' dos' : '') + '">'
+            var abierto = false
+            lineas.forEach(function (l, i) {
+                if (l.s) {
+                    if (abierto) h += '</div>'
+                    h += '<div class="grupo"><div class="sec">' + esc(l.n) + '</div>'
+                    abierto = true
+                    return
+                }
+                h += '<div class="l"><div class="l__fila"><span class="l__n">' + esc(l.n) + '</span>'
+                if (l.p) h += '<span class="l__pts"></span><span class="l__p">' + esc(l.p) + '</span>'
+                h += '</div>'
+                if (l.d) h += '<div class="l__d">' + esc(l.d) + '</div>'
+                h += '</div>'
+                if (abierto) { h += '</div>'; abierto = false }
+            })
+            if (abierto) h += '</div>'
+            h += '</div>'
+        }
+        if (c.pie) h += '<div class="pie">' + esc(c.pie) + '</div>'
+        return h
+    }
+
+    function htmlAnuncio(c, d) {
+        var logo = c.logo !== false && url(d.logo)
+        var h = '<div class="anu">'
+        if (logo) h += '<img class="logo" src="' + esc(logo) + '" alt="" />'
+        h += '<div class="anu__txt">'
+        h += '<div class="tit">' + esc(c.titulo || d.negocio || '') + '</div>'
+        if (c.subtitulo) h += '<div class="sub">' + esc(c.subtitulo) + '</div>'
+        if (c.pie) h += '<div class="anu__pie">' + esc(c.pie) + '</div>'
+        if (d.negocio && c.titulo && c.titulo !== d.negocio) h += '<div class="anu__cinta">' + esc(d.negocio) + '</div>'
+        h += '</div></div>'
+        return h
+    }
+
+    function htmlLibre(c) {
+        var precio = Number(c.precio) || 0
+        var h = '<div class="libre">'
+        h += '<div class="libre__k">ESPACIO PUBLICITARIO</div>'
+        h += '<div class="libre__t">Tu anuncio aquí</div>'
+        h += '<div class="libre__s">Alquílalo desde el panel de tu negocio · Publicidad</div>'
+        if (precio > 0) h += '<div class="libre__p">' + precio.toLocaleString('es-ES') + ' $ / día</div>'
+        h += '</div>'
+        return h
+    }
+
+    /* La letra más grande que quepa: se empieza grande (un cartel con tres
+       platos tiene que leerse desde la puerta) y se encoge hasta que cabe. */
+    function cabe() {
+        return caja.scrollHeight <= caja.clientHeight + 1 && caja.scrollWidth <= caja.clientWidth + 1
+    }
+    function ajustar() {
+        var alto = 2.2, bajo = 0.35, k = alto
+        marco.style.setProperty('--k', k)
+        if (cabe()) return
+        // Búsqueda a medias: ocho pasadas bastan para no notar el escalón.
+        for (var i = 0; i < 8; i++) {
+            k = (alto + bajo) / 2
+            marco.style.setProperty('--k', k)
+            if (cabe()) bajo = k; else alto = k
+        }
+        marco.style.setProperty('--k', bajo)
+    }
+
+    function pintar(d) {
+        ultimo = d
+        var c = (d && d.contenido) || {}
+        var prop = colocar(Number(d.ancho), Number(d.alto))
+
+        var tema = typeof c.tema === 'string' ? c.tema : 'crema'
+        marco.className = 't-' + tema.replace(/[^a-z]/g, '')
+
+        var fondo = document.getElementById('fondo')
+        var borde = document.getElementById('borde')
+        fondo.innerHTML = ''
+        borde.style.display = ''
+        caja.style.display = ''
+        caja.className = ''
+
+        if (c.modo === 'imagen') {
+            var src = url(c.imagen)
+            borde.style.display = 'none'
+            caja.style.display = 'none'
+            if (src) fondo.innerHTML = '<img class="img img--' + (c.ajuste === 'contener' ? 'contener' : 'cubrir') + '" src="' + esc(src) + '" alt="" />'
+            return
+        }
+        if (c.modo === 'libre') {
+            borde.style.display = 'none'
+            caja.style.display = 'none'
+            fondo.innerHTML = htmlLibre(c)
+            marco.style.setProperty('--k', 1)
+            return
+        }
+
+        caja.innerHTML = c.modo === 'anuncio' ? htmlAnuncio(c, d) : htmlMenu(c, d, prop)
+        ajustar()
+        // Las fuentes y el logo llegan después y cambian lo que ocupa.
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustar)
+        Array.prototype.forEach.call(caja.querySelectorAll('img'), function (im) { im.addEventListener('load', ajustar) })
+    }
+
+    window.addEventListener('message', function (e) {
+        var d = e.data
+        if (typeof d === 'string') { try { d = JSON.parse(d) } catch (err) { return } }
+        if (!d || d.lienzo !== 1) return
+        if (d.accion === 'pintar') pintar(d)
+    })
+
+    window.addEventListener('resize', function () { if (ultimo) pintar(ultimo) })
+
+    // Para verlo en el navegador: lienzo.html?prueba=menu|anuncio|libre|imagen
+    var prueba = /[?&]prueba=([a-z]+)/.exec(location.search)
+    if (prueba) {
+        var tema = (/[?&]tema=([a-z]+)/.exec(location.search) || [])[1] || 'crema'
+        var ejemplos = {
+            menu: { ancho: 1.6, alto: 1.1, negocio: 'Burger Shot', contenido: { modo: 'menu', tema: tema, titulo: 'Burger Shot', subtitulo: 'La carta', pie: 'Precios con impuestos incluidos', lineas: [
+                { n: 'Hamburguesas', s: true },
+                { n: 'Heart Stopper', p: '12 $', d: 'Doble de carne, queso y beicon' },
+                { n: 'Bleeder', p: '9 $', d: 'La clásica de la casa' },
+                { n: 'Money Shot', p: '10 $' },
+                { n: 'Bebidas', s: true },
+                { n: 'eCola', p: '3 $' },
+                { n: 'Sprunk', p: '3 $' },
+                { n: 'Batido de fresa', p: '5 $', d: 'Con nata' },
+                { n: 'Postres', s: true },
+                { n: 'Donut glaseado', p: '2 $' },
+            ] } },
+            anuncio: { ancho: 10, alto: 5, negocio: 'Burger Shot', contenido: { modo: 'anuncio', tema: tema, titulo: '2x1 en hamburguesas', subtitulo: 'Todos los martes', pie: 'Vespucci Blvd · Abierto 24 h' } },
+            libre: { ancho: 10, alto: 5, contenido: { modo: 'libre', precio: 2500 } },
+            imagen: { ancho: 10, alto: 5, contenido: { modo: 'imagen', imagen: 'https://picsum.photos/1200/600', ajuste: 'cubrir' } },
+        }
+        if (ejemplos[prueba[1]]) pintar(Object.assign({ lienzo: 1 }, ejemplos[prueba[1]]))
+    }
+})()
+</script>
+</body>
+</html>

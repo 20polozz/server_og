@@ -1,0 +1,827 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   origen_AlbumCards · capa «pegatina» (07/10)
+
+   La NUI del álbum viene compilada sin fuente (assets/index-*.css/js), con
+   el estilo viejo oscuro (Orbitron/Manrope, paneles negros al 85 %). Esta
+   hoja se carga DESPUÉS de la compilada (html/index.html) y la pisa: panel
+   gris #c4c6ca, piezas #dcdde0, rosa #d81b55 con tinta negra, canto negro
+   y sombra dura. No mueve nada: solo colores, cantos y letra.
+
+   Los selectores empiezan por «html:root» para ganar a los estilos con
+   scope de los .vue ([data-v-…], peso de dos clases). Los cantos van con
+   box-shadow para no cambiar medidas. Los cromos (la imagen de la carta)
+   no se tocan: son dibujo, no interfaz.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ────────────────────────────────────────────────────────── */
+html:root {
+    --ogn-rotulo: "Barlow Condensed", sans-serif;
+    --ogn-texto: "Barlow", sans-serif;
+    --font-title: "Barlow Condensed", sans-serif;
+    --font-body: "Barlow", sans-serif;
+    --font-body-light: "Barlow", sans-serif;
+
+    --ogn-bg: #c4c6ca;
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 216, 27, 85;
+    --ogn-acc-soft: #d81b55;
+    --ogn-acc-pale: #ffd6e4;
+    --ogn-acc-deep: #b3123f;
+
+    --ogn-surface: #dcdde0;
+    --ogn-surface-hi: #f1f1ee;
+    --ogn-surface-on: #dcdde0;
+    --ogn-sunken: rgba(0, 0, 0, 0.06);
+
+    --ogn-line: rgba(0, 0, 0, 0.25);
+    --ogn-line-soft: rgba(0, 0, 0, 0.15);
+    --ogn-line-hi: #000;
+
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #44444a;
+    --ogn-t3: #55555c;
+    --ogn-t4: #73737c;
+
+    --ogn-r: 12px;
+
+    --primary-color: #dcdde0;
+    --color-acent: #000;
+    --text-white: #0b0b0d;
+    --bg-dark: #c4c6ca;
+    --bg-panel: #c4c6ca;
+    --border-color: #000;
+    --border-subtle: #000;
+    --color-danger: #b3123f;
+}
+
+html:root * { accent-color: #d81b55; }
+
+/* ── Letra: rótulos en Barlow Condensed cursiva 800 ────────────────── */
+html:root #app h1,
+html:root #app h2,
+html:root #app h3,
+html:root #app h4,
+html:root #app h5,
+html:root #app h6 {
+    font-style: italic;
+    font-weight: 800 !important;
+    color: #0b0b0d;
+}
+
+/* ── Fondo detrás del menú: un velo suave, sin partículas ──────────── */
+html:root .bg-gradient { background: rgba(0, 0, 0, 0.25); }
+html:root .bg-particles,
+html:root .particle { display: none; }
+html:root .bg-wrapper:after { background: none; }
+
+/* ── Barras de desplazamiento ──────────────────────────────────────── */
+html:root *::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.08); }
+html:root *::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html:root *::-webkit-scrollbar-thumb:hover { background: #44444a; }
+
+/* ── Panel ─────────────────────────────────────────────────────────── */
+html:root .panel {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Botones de la casa ────────────────────────────────────────────── */
+html:root .btn-primary,
+html:root .btn-success {
+    background: #d81b55;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .btn-primary:hover,
+html:root .btn-success:hover {
+    background: #d81b55;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 3px 3px 0 #000;
+}
+html:root .btn-danger {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #b3123f;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .btn-danger:hover {
+    background: #f1f1ee;
+    border-color: transparent;
+}
+html:root .btn-primary:active,
+html:root .btn-success:active,
+html:root .btn-danger:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* ── Campos ────────────────────────────────────────────────────────── */
+html:root input,
+html:root select,
+html:root textarea {
+    background-color: #dcdde0;
+    border-color: #000;
+    color: #0b0b0d;
+    box-shadow: 2px 2px 0 #000;
+}
+html:root input:focus,
+html:root select:focus,
+html:root textarea:focus {
+    background-color: #f1f1ee;
+    border-color: #000;
+    box-shadow: inset 0 0 0 1px #d81b55, 2px 2px 0 #000;
+}
+html:root input::placeholder,
+html:root textarea::placeholder { color: #73737c; }
+html:root select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+}
+html:root select option { background: #dcdde0; color: #0b0b0d; }
+
+html:root .section-title { color: #0b0b0d; }
+html:root .section-title svg { color: #b3123f; }
+
+/* ══ EL LIBRO (.content-wrapper.album-wrapper) ═════════════════════════ */
+
+/* Cabecera */
+html:root .album-header {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .header-icon-box {
+    background: #d81b55;
+    border-color: transparent;
+    color: #0b0b0d;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+}
+html:root .album-header .header-title { color: #0b0b0d; font-style: italic; font-weight: 800 !important; }
+html:root .header-sub { color: #44444a; }
+html:root .stat-chip-label { color: #55555c; }
+html:root .stat-chip-value,
+html:root .progress-pct {
+    color: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+    font-style: normal;
+}
+/* Barras de progreso: patrón único (pista gris con canto por dentro, 10px,
+   relleno rosa de una pieza). */
+html:root .progress-bar,
+html:root .intro-progress-bar {
+    height: 10px;
+    background: #dcdde0;
+    border: 0;
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1.5px #000;
+    overflow: hidden;
+}
+html:root .progress-fill,
+html:root .intro-progress-fill {
+    background: var(--ogn-acc, #d81b55);
+    border-radius: 999px;
+}
+html:root .trade-btn {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #0b0b0d;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .trade-btn:hover {
+    background: #f1f1ee;
+    border-color: transparent;
+    color: #0b0b0d;
+}
+
+/* Tapas y hojas */
+html:root .album-book {
+    filter: none;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .album-page--left,
+html:root .album-page--right {
+    background: #dcdde0;
+    border-color: #000;
+}
+html:root .album-page--left { border-radius: 20px 0 0 20px; }
+html:root .album-page--right { border-radius: 0 20px 20px 0; }
+html:root .album-page:before {
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 4.2vh, rgba(0, 0, 0, 0.05) 4.2vh, rgba(0, 0, 0, 0.05) 4.4vh);
+}
+html:root .flap-content { background: #dcdde0; border-color: #000; }
+html:root .flap-content.is-left { border-radius: 20px 0 0 20px; }
+html:root .flap-content.is-right { border-radius: 0 20px 20px 0; }
+html:root .seam-line { background: rgba(0, 0, 0, 0.25); }
+
+/* Lomo */
+html:root .album-spine {
+    background: #c4c6ca;
+    box-shadow: inset 1.5px 0 0 #000, inset -1.5px 0 0 #000;
+}
+html:root .spine-text { color: #44444a; }
+html:root .ring {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .ring:before { background: transparent; }
+
+/* Portada */
+html:root .cover--front {
+    background: #d81b55;
+    border-radius: 20px 0 0 20px;
+}
+html:root .cover-lines {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+}
+html:root .cover-shimmer { display: none; }
+html:root .cover-emboss {
+    background: #dcdde0;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .cover-icon-wrap {
+    background: #d81b55;
+    border-color: transparent;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+}
+html:root .cover-icon { color: #0b0b0d; }
+html:root .cover-title {
+    color: #0b0b0d;
+    font-style: italic;
+    font-weight: 800 !important;
+    text-shadow: none;
+}
+html:root .cover-subtitle { color: #44444a; }
+
+/* Página de entrada */
+html:root .intro-icon-box {
+    background: #d81b55;
+    border-color: transparent;
+    color: #0b0b0d;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+}
+html:root .intro-title { color: #0b0b0d; font-style: italic; font-weight: 800 !important; }
+html:root .intro-stat-value {
+    color: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+}
+html:root .intro-stat-label,
+html:root .intro-pct,
+html:root .intro-hint,
+html:root .page-num { color: #55555c; }
+html:root .intro-stat-sep { color: #73737c; }
+html:root .intro-divider { background: #d81b55; height: 3px; }
+html:root .page-header,
+html:root .page-footer { border-color: rgba(0, 0, 0, 0.25); }
+html:root .dot {
+    background: transparent;
+    border-color: #000;
+}
+html:root .dot.dot--filled { background: #0b0b0d; }
+
+/* Huecos de los cromos */
+html:root .sleeve {
+    border-color: rgba(0, 0, 0, 0.45);
+    box-shadow: none;
+}
+html:root .sleeve:hover { box-shadow: 2px 2px 0 #000; }
+html:root .slot--empty .sleeve {
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+html:root .slot--locked .sleeve {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+}
+html:root .slot-empty-label { color: rgba(0, 0, 0, 0.15); }
+html:root .locked-card-number {
+    color: rgba(0, 0, 0, 0.22);
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+    text-shadow: none;
+}
+
+/* Navegación entre páginas */
+html:root .nav-btn {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .nav-btn:hover:not(:disabled) {
+    background: #f1f1ee;
+    border-color: transparent;
+    color: #0b0b0d;
+}
+html:root .nav-btn:disabled { opacity: 0.4; }
+html:root .nav-dots {
+    background: #dcdde0;
+    border-color: transparent;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .spread-dot {
+    background: transparent;
+    border-color: #000;
+}
+html:root .spread-dot.active {
+    background: #d81b55;
+    border-color: #000;
+}
+
+/* Menú del clic derecho sobre un cromo */
+html:root .custom-context-menu {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .custom-context-menu button { color: #0b0b0d; border-radius: 8px; }
+html:root .custom-context-menu button:hover {
+    background: #dcdde0;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+
+/* Cromos: la letra de la carta va sobre el dibujo, se queda clara */
+html:root .album-card .card-type-bar { color: #fff; }
+html:root .card-quantity-badge {
+    background: #d81b55;
+    color: #0b0b0d;
+    border-color: transparent;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+/* ══ ABRIR SOBRE (.pack-wrapper) ═══════════════════════════════════════ */
+html:root .pack-title,
+html:root .pack-subtitle {
+    background: #dcdde0;
+    color: #0b0b0d;
+    text-shadow: none;
+    padding: 0.4vh 1.4vh;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .pack-subtitle { color: #44444a; }
+html:root .pack-card-front { background: #dcdde0; border-color: #000; }
+html:root .pack-card-back {
+    background: #d81b55;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 3px 3px 0 #000;
+}
+html:root .pack-icon { color: #0b0b0d; }
+
+/* ══ INTERCAMBIO (.trade-wrapper) ══════════════════════════════════════ */
+html:root .view-container {
+    background: rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+html:root .modal-box {
+    background: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html:root .modal-header { border-bottom: 3px solid #d81b55; }
+html:root .modal-header h2 { color: #0b0b0d; }
+html:root .player-item {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .player-item:hover { background: #f1f1ee; border-color: transparent; }
+html:root .p-name { color: #0b0b0d; }
+html:root .p-id { color: #55555c; }
+html:root .btn-cancel {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #b3123f;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .trade-system-root .btn-success {
+    background: #d81b55;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .loading-icon,
+html:root .waiting-text,
+html:root .request-text { color: #0b0b0d; }
+
+html:root .trade-side {
+    background: #c4c6ca;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root .trade-side.accepted {
+    border-color: transparent;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000, inset 0 0 0 3px #d81b55;
+}
+html:root .side-header { border-bottom: 3px solid #d81b55; }
+html:root .partner-name { color: #0b0b0d; font-style: italic; font-weight: 800; }
+html:root .status-badge {
+    background: #d81b55;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .status-badge.waiting { background: #dcdde0; color: #44444a; }
+html:root .money-offer,
+html:root .money-offer-input {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .money-offer-input.locked { background: #dcdde0; }
+html:root .money-offer,
+html:root .money-offer-input input {
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+}
+html:root .money-offer-input input {
+    color: #0b0b0d;
+    background: transparent;
+    box-shadow: none;
+}
+html:root .input-label { color: #55555c; }
+html:root .max-label { color: #73737c; }
+html:root .offer-slot {
+    background: transparent;
+    border-color: rgba(0, 0, 0, 0.25);
+}
+html:root .btn-ready {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .btn-ready.is-ready { background: #d81b55; color: #0b0b0d; }
+html:root .trade-logo {
+    background: #d81b55;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 3px 3px 0 #000;
+}
+html:root .trade-timer {
+    background: #dcdde0;
+    padding: 1vh 2.4vh;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .timer-val {
+    color: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+}
+html:root .timer-lbl { color: #55555c; }
+
+html:root .inventory-drawer {
+    background: #c4c6ca;
+    border-top-color: #000;
+    box-shadow: 0 -1.5px 0 #000;
+}
+html:root .drawer-header { border-bottom-color: rgba(0, 0, 0, 0.25); }
+html:root .drawer-title { color: #44444a; }
+html:root .search-box {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .search-box input {
+    color: #0b0b0d;
+    background: transparent;
+    box-shadow: none;
+}
+html:root .inv-name { color: #0b0b0d; }
+html:root .inv-qty-badge {
+    background: #d81b55;
+    color: #0b0b0d;
+    border-color: transparent;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .inv-qty {
+    color: #b3123f;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+}
+
+/* ══ TIENDA (.shop-container) ══════════════════════════════════════════ */
+html:root .shop-container { background: #c4c6ca !important; }
+html:root .shop-header { border-bottom: 3px solid #d81b55; }
+html:root .shop-header .header-title svg { color: #b3123f; }
+html:root .shop-header .header-title h2 { color: #0b0b0d; }
+html:root .close-btn {
+    background: #dcdde0;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .close-btn:hover { background: #f1f1ee; color: #0b0b0d; }
+html:root .shop-items { padding-right: 4px; padding-bottom: 4px; }
+html:root .shop-item {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .shop-item:hover { background: #f1f1ee; border-color: transparent; }
+html:root .shop-item .item-icon {
+    background: #c4c6ca;
+    border-color: transparent;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .shop-item .item-name { color: #0b0b0d; }
+html:root .item-desc { color: #55555c; }
+html:root .price-val {
+    color: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif !important;
+    font-weight: 800;
+}
+html:root .currency-tag {
+    background: #0b0b0d;
+    color: #fff;
+    border-color: transparent;
+}
+html:root .empty-state { color: #55555c; }
+
+/* Cromo de muestra a la derecha */
+html:root .showcase-label {
+    background: #dcdde0;
+    color: #0b0b0d;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+/* ══ ADMIN (.admin-panel-wrapper, a pantalla completa) ═════════════════ */
+html:root .admin-panel-wrapper {
+    background: #c4c6ca !important;
+    box-shadow: none;
+}
+/* Dentro del panel de admin, las cajas son piezas */
+html:root .admin-panel-wrapper .panel {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .sidebar { padding-right: 6px; padding-bottom: 4px; }
+html:root .tab-selector {
+    background: #dcdde0;
+    border-color: transparent;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .tab-selector button { color: #44444a; border-radius: 8px; }
+html:root .tab-selector button:hover { background: #f1f1ee; color: #0b0b0d; }
+html:root .tab-selector button.active {
+    background: #d81b55;
+    color: #0b0b0d;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .form-title { color: #0b0b0d; border-bottom: 3px solid #d81b55; }
+html:root .input-group label { color: #44444a; }
+html:root .input-hint { color: #73737c; }
+html:root .card-list-container {
+    background: transparent;
+    border-color: transparent;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .list-content { padding-right: 6px; }
+html:root .list-item {
+    background: #dcdde0;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .list-item:hover { opacity: 1; background: #f1f1ee; }
+html:root .icon-box {
+    background: #0b0b0d;
+    border-color: transparent;
+    color: #fff;
+}
+html:root .list-item .item-name { color: #0b0b0d; }
+html:root .item-sub { color: #55555c; }
+html:root .icon-btn { color: #44444a; }
+html:root .icon-btn:hover { color: #0b0b0d; }
+html:root .icon-btn.danger:hover { color: #b3123f; background: #f1f1ee; }
+html:root .icon-btn:after {
+    background: #dcdde0;
+    color: #0b0b0d;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root .preview-panel { border-color: transparent; }
+html:root .album-mini-icon {
+    background: #c4c6ca;
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .album-preview-cover {
+    border-color: #000;
+    box-shadow: 3px 3px 0 #000;
+}
+html:root .cover-label { color: #fff; }
+html:root .coord-item {
+    background: #dcdde0;
+    border-color: #000;
+    box-shadow: 2px 2px 0 #000;
+}
+html:root .coord-item input { box-shadow: none; }
+html:root .coord-label { color: #55555c; }
+html:root .placeholder-icon.large { color: rgba(0, 0, 0, 0.15); }
+
+/* ══ Peligro (07/10): pieza gris con letra rosa oscura; al pasar, rosa con
+   tinta negra (el rojo vivo queda para estados). ══════════════════════════ */
+html:root .btn-danger:hover {
+    background: #d81b55;
+    color: #0b0b0d;
+}
+html:root .icon-btn.danger:hover { color: #0b0b0d; background: #d81b55; }
+
+/* ══ MENÚ PEQUEÑO (07/10): la tienda y los diálogos cortos del intercambio
+   (elegir jugador, esperando, petición) ═════════════════════════════════
+   Como los diálogos del servidor (org-menu, skill origen-dialogo): columna
+   de 440 px y riel de 64 px pegado al canto, juntos a media altura a la
+   derecha. Sin tocar el compilado: la columna es la caja que ya había y el
+   riel lo dibujan su ::after (la caja con la pieza del icono y su raya) y
+   su ::before (el nombre en vertical, abajo), colgados por fuera. */
+html:root .main-container.no-bg { padding-right: calc(1.2vh + 64px + 1.2vh); }
+html:root .trade-system-root > .view-container {
+    justify-content: flex-end;
+    padding-right: calc(1.2vh + 64px + 1.2vh);
+    box-sizing: border-box;
+    background: transparent;
+}
+html:root .shop-container.panel,
+html:root .trade-system-root > .view-container > .modal-box {
+    position: relative;
+    width: 440px;
+    min-height: 300px;
+    max-height: calc(100vh - 2.8vh);
+    box-sizing: border-box;
+    overflow: visible;
+}
+html:root .shop-container.panel::after,
+html:root .trade-system-root > .view-container > .modal-box::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: calc(100% + 1.2vh);
+    width: 64px;
+    border-radius: 20px;
+    background: #c4c6ca url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='80' viewBox='0 0 64 80'%3E%3Crect x='12' y='18' width='44' height='44' rx='10' fill='%23000'/%3E%3Crect x='10.75' y='16.75' width='41.5' height='41.5' rx='9.25' fill='%23dcdde0' stroke='%23000' stroke-width='1.5'/%3E%3Cg transform='translate(20 26)' fill='none' stroke='%23d81b55' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3C/g%3E%3Crect x='21' y='71' width='22' height='2' rx='1' fill='%23000'/%3E%3C/svg%3E") center top / 64px 80px no-repeat;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    pointer-events: none;
+}
+html:root .shop-container.panel::before,
+html:root .trade-system-root > .view-container > .modal-box::before {
+    content: "Origen Álbum";
+    position: absolute;
+    left: calc(100% + 1.2vh + 32px);
+    bottom: 16px;
+    z-index: 1;
+    transform: translateX(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+    pointer-events: none;
+}
+html[data-marca="nacion"]:root .shop-container.panel::before,
+html[data-marca="nacion"]:root .trade-system-root > .view-container > .modal-box::before { content: "Nación Álbum"; }
+
+/*  Letra a tamaño de menú (de serie iba en 1 vh). */
+html:root .shop-container .shop-header .header-title h2,
+html:root .trade-system-root .modal-header h2 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+html:root .shop-container .shop-header .header-title svg,
+html:root .trade-system-root .modal-header svg { font-size: 22px; color: #b3123f; }
+html:root .shop-container .close-btn { width: 34px; height: 34px; border-radius: 10px; font-size: 16px; }
+html:root .shop-container .shop-item { border-radius: 12px; }
+html:root .shop-container .item-icon { width: 40px; height: 40px; border-radius: 10px; font-size: 20px; }
+html:root .shop-container .item-name {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+}
+html:root .shop-container .item-desc { font-size: 12px; }
+html:root .shop-container .price-val { font-size: 16px; }
+html:root .shop-container .currency-tag { font-size: 11px; }
+html:root .shop-container .buy-btn {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 10px;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+}
+html:root .shop-container .empty-state span { font-size: 14px; }
+html:root .trade-system-root > .view-container .p-name {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+}
+html:root .trade-system-root > .view-container .p-id { font-size: 12px; }
+html:root .trade-system-root > .view-container .player-item { border-radius: 12px; }
+html:root .trade-system-root > .view-container :is(.waiting-text, .request-text) { font-size: 16px; }
+html:root .trade-system-root > .view-container :is(.btn-cancel, .btn-success) {
+    min-height: 42px;
+    border-radius: 12px;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+/*  Cancelar no es peligro: pieza gris con tinta negra; Rechazar igual. */
+html:root .trade-system-root .btn-cancel { color: #0b0b0d; }
+html:root .trade-system-root .btn-cancel:hover { background: #f1f1ee; }
+html:root .trade-system-root .request-actions > * { flex: 1; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }
+
+/* 07/10 · el título de la tienda («QUIOSCO DE VESPUCCI») en rótulo de la casa. */
+html:root .shop-header .header-title h2[class],
+html:root .shop-header .header-title h2 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.01em !important;
+    font-size: 2.1vh !important;
+    text-transform: uppercase;
+}
+html:root .album-header .header-title[class] {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* ── Rótulo a brocha bajo el título (08/10) ──────────────────────────────
+   La tienda del quiosco y el «elige con quién cambiar» llevaban el título
+   solo, sin la segunda línea a brocha del resto de menús. La NUI viene
+   compilada sin fuente, así que la frase va en el ::after del h2, EN FLUJO
+   (display:block) para que empuje lo de debajo y no pise nada. Se anulan la
+   cursiva y las mayúsculas del título. Rosa literal: en Nación lo repinta
+   kit/marca.js. El libro del álbum no la lleva: su cabecera es una banda
+   de una línea con las cifras al lado. */
+html:root .shop-container .shop-header .header-title h2::after,
+html:root .trade-system-root .modal-header h2::after {
+    display: block;
+    margin: 6px 0 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal; font-weight: 400;
+    font-size: 20px; line-height: 1; letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  La de la tienda va en vh, como su título (2,1 vh). */
+html:root .shop-container .shop-header .header-title h2::after { content: "Sobres calentitos"; font-size: 1.9vh; }
+html:root .trade-system-root .modal-header h2::after { content: "Sile, nole"; }

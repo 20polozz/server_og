@@ -1,0 +1,4056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+  	<Item>
+      <kitName>670_gbbisonstx_modkit</kitName>
+      <id value="670" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>bisonstx_liv1</modelName>
+          <modShopLabel>BISONSTX_LIV1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv2</modelName>
+          <modShopLabel>BISONSTX_LIV2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv3</modelName>
+          <modShopLabel>BISONSTX_LIV3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv4</modelName>
+          <modShopLabel>BISONSTX_LIV4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv5</modelName>
+          <modShopLabel>BISONSTX_LIV5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv6</modelName>
+          <modShopLabel>BISONSTX_LIV6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv7</modelName>
+          <modShopLabel>BISONSTX_LIV7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv8</modelName>
+          <modShopLabel>BISONSTX_LIV8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv9</modelName>
+          <modShopLabel>BISONSTX_LIV9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv10</modelName>
+          <modShopLabel>BISONSTX_LIV10</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv11</modelName>
+          <modShopLabel>BISONSTX_LIV11</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv12</modelName>
+          <modShopLabel>BISONSTX_LIV12</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv13</modelName>
+          <modShopLabel>BISONSTX_LIV13</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv14</modelName>
+          <modShopLabel>BISONSTX_LIV14</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv15</modelName>
+          <modShopLabel>BISONSTX_LIV15</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv16</modelName>
+          <modShopLabel>BISONSTX_LIV16</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv17</modelName>
+          <modShopLabel>BISONSTX_LIV17</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv18</modelName>
+          <modShopLabel>BISONSTX_LIV18</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv19</modelName>
+          <modShopLabel>BISONSTX_LIV19</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv20</modelName>
+          <modShopLabel>BISONSTX_LIV20</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv21</modelName>
+          <modShopLabel>BISONSTX_LIV21</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv22</modelName>
+          <modShopLabel>BISONSTX_LIV22</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_liv23</modelName>
+          <modShopLabel>BISONSTX_LIV23</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_bumf0s1</modelName>
+          <modShopLabel>BISONSTX_BUMF0S1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	 
+        <Item>
+          <modelName>bisonstx_bumf0s2</modelName>
+          <modShopLabel>BISONSTX_BUMF0S2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	 
+        <Item>
+          <modelName>bisonstx_bumf0s3</modelName>
+          <modShopLabel>BISONSTX_BUMF0S3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0a</modelName>
+          <modShopLabel>BISONSTX_BUMF0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0as1</modelName>
+          <modShopLabel>BISONSTX_BUMF0AS1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0as2</modelName>
+          <modShopLabel>BISONSTX_BUMF0AS2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0as3</modelName>
+          <modShopLabel>BISONSTX_BUMF0AS3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0b</modelName>
+          <modShopLabel>BISONSTX_BUMF0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0bs1</modelName>
+          <modShopLabel>BISONSTX_BUMF0BS1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0bs2</modelName>
+          <modShopLabel>BISONSTX_BUMF0BS2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf0bs3</modelName>
+          <modShopLabel>BISONSTX_BUMF0BS3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf1</modelName>
+          <modShopLabel>BISONSTX_BUMF1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf1s1</modelName>
+          <modShopLabel>BISONSTX_BUMF1S1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf1s2</modelName>
+          <modShopLabel>BISONSTX_BUMF1S2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf1s3</modelName>
+          <modShopLabel>BISONSTX_BUMF1S3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf2</modelName>
+          <modShopLabel>BISONSTX_BUMF2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf2a</modelName>
+          <modShopLabel>BISONSTX_BUMF2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf2b</modelName>
+          <modShopLabel>BISONSTX_BUMF2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf3</modelName>
+          <modShopLabel>BISONSTX_BUMF3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf3a</modelName>
+          <modShopLabel>BISONSTX_BUMF3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_bumf3b</modelName>
+          <modShopLabel>BISONSTX_BUMF3B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf4</modelName>
+          <modShopLabel>BISONSTX_BUMF4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf4a</modelName>
+          <modShopLabel>BISONSTX_BUMF4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf4b</modelName>
+          <modShopLabel>BISONSTX_BUMF4B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf5</modelName>
+          <modShopLabel>BISONSTX_BUMF5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf6</modelName>
+          <modShopLabel>BISONSTX_BUMF6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumf7</modelName>
+          <modShopLabel>BISONSTX_BUMF7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_f</Item>
+          <Item>extralight_1</Item>
+          <Item>extralight_4</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bbar1</modelName>
+          <modShopLabel>BISONSTX_BBAR1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bbar2</modelName>
+          <modShopLabel>BISONSTX_BBAR2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bbar2a</modelName>
+          <modShopLabel>BISONSTX_BBAR2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_3</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bbar3</modelName>
+          <modShopLabel>BISONSTX_BBAR3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_2</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bbar3a</modelName>
+          <modShopLabel>BISONSTX_BBAR3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>bumper_f</bone>
+          <collisionBone>mod_col_3</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr0a</modelName>
+          <modShopLabel>BISONSTX_BUMR0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr0b</modelName>
+          <modShopLabel>BISONSTX_BUMR0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr0bs1</modelName>
+          <modShopLabel>BISONSTX_BUMR0BS1</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_rclad0</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr1</modelName>
+          <modShopLabel>BISONSTX_BUMR1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr2</modelName>
+          <modShopLabel>BISONSTX_BUMR2</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_rclad2</Item>
+          <Item>bisonstx_badge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          <Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr2</modelName>
+          <modShopLabel>BISONSTX_BUMR2A</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_rclad2</Item>
+          <Item>bisonstx_badge</Item>
+          <Item>bisonstx_wbar</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          <Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr2</modelName>
+          <modShopLabel>BISONSTX_BUMR2B</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_rclad2a</Item>
+          <Item>bisonstx_badge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          <Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bumr2</modelName>
+          <modShopLabel>BISONSTX_BUMR2C</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_rclad2a</Item>
+          <Item>bisonstx_wbar</Item>
+          <Item>bisonstx_badge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>bumper_r</Item>
+          <Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed1</modelName>
+          <modShopLabel>BISONSTX_BED1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed1a</modelName>
+          <modShopLabel>BISONSTX_BED1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed2</modelName>
+          <modShopLabel>BISONSTX_BED2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed2a</modelName>
+          <modShopLabel>BISONSTX_BED2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed3</modelName>
+          <modShopLabel>BISONSTX_BED3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4</modelName>
+          <modShopLabel>BISONSTX_BED4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4c1</modelName>
+          <modShopLabel>BISONSTX_BED4C1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4c2</modelName>
+          <modShopLabel>BISONSTX_BED4C2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4c3</modelName>
+          <modShopLabel>BISONSTX_BED4C3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4a</modelName>
+          <modShopLabel>BISONSTX_BED4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4ac1</modelName>
+          <modShopLabel>BISONSTX_BED4AC1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4ac2</modelName>
+          <modShopLabel>BISONSTX_BED4AC2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4ac3</modelName>
+          <modShopLabel>BISONSTX_BED4AC3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4b</modelName>
+          <modShopLabel>BISONSTX_BED4B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4bc1</modelName>
+          <modShopLabel>BISONSTX_BED4BC1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4bc2</modelName>
+          <modShopLabel>BISONSTX_BED4BC2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4bc3</modelName>
+          <modShopLabel>BISONSTX_BED4BC3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed6</modelName>
+          <modShopLabel>BISONSTX_BED6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_6</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4c</modelName>
+          <modShopLabel>BISONSTX_BED4C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4cc1</modelName>
+          <modShopLabel>BISONSTX_BED4CC1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4cc2</modelName>
+          <modShopLabel>BISONSTX_BED4CC2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed4cc3</modelName>
+          <modShopLabel>BISONSTX_BED4CC3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_4</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_bed5</modelName>
+          <modShopLabel>BISONSTX_BED5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_7</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5a</modelName>
+          <modShopLabel>BISONSTX_BED5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5b</modelName>
+          <modShopLabel>BISONSTX_BED5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5c</modelName>
+          <modShopLabel>BISONSTX_BED5C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5d</modelName>
+          <modShopLabel>BISONSTX_BED5D</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5e</modelName>
+          <modShopLabel>BISONSTX_BED5E</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5f</modelName>
+          <modShopLabel>BISONSTX_BED5F</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5g</modelName>
+          <modShopLabel>BISONSTX_BED5G</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_8</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_bed5h</modelName>
+          <modShopLabel>BISONSTX_BED5H</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_j</Item>
+          <Item>extra_1</Item>
+          <Item>extra_2</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_5</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood1</modelName>
+          <modShopLabel>BISONSTX_HOOD1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood1a</modelName>
+          <modShopLabel>BISONSTX_HOOD1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood1b</modelName>
+          <modShopLabel>BISONSTX_HOOD1B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood2</modelName>
+          <modShopLabel>BISONSTX_HOOD2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood2a</modelName>
+          <modShopLabel>BISONSTX_HOOD2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood2b</modelName>
+          <modShopLabel>BISONSTX_HOOD2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood3</modelName>
+          <modShopLabel>BISONSTX_HOOD3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood3a</modelName>
+          <modShopLabel>BISONSTX_HOOD3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood3b</modelName>
+          <modShopLabel>BISONSTX_HOOD3B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood4</modelName>
+          <modShopLabel>BISONSTX_HOOD4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood4a</modelName>
+          <modShopLabel>BISONSTX_HOOD4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_hood5</modelName>
+          <modShopLabel>BISONSTX_HOOD5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood5a</modelName>
+          <modShopLabel>BISONSTX_HOOD5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood5b</modelName>
+          <modShopLabel>BISONSTX_HOOD5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood6</modelName>
+          <modShopLabel>BISONSTX_HOOD6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood6a</modelName>
+          <modShopLabel>BISONSTX_HOOD6A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood6b</modelName>
+          <modShopLabel>BISONSTX_HOOD6B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood6c</modelName>
+          <modShopLabel>BISONSTX_HOOD6C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hood7</modelName>
+          <modShopLabel>BISONSTX_HOOD7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_gframe1</modelName>
+          <modShopLabel>BISONSTX_GFRAME1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_a</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_gframe2</modelName>
+          <modShopLabel>BISONSTX_GFRAME2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_a</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_gframe3</modelName>
+          <modShopLabel>BISONSTX_GFRAME3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_a</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_gframe4</modelName>
+          <modShopLabel>BISONSTX_GFRAME4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_a</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_grill0a</modelName>
+          <modShopLabel>BISONSTX_GRILL0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill0b</modelName>
+          <modShopLabel>BISONSTX_GRILL0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill0c</modelName>
+          <modShopLabel>BISONSTX_GRILL0C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_grill0d</modelName>
+          <modShopLabel>BISONSTX_GRILL0D</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill0e</modelName>
+          <modShopLabel>BISONSTX_GRILL0E</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>			
+        <Item>
+          <modelName>bisonstx_grill1</modelName>
+          <modShopLabel>BISONSTX_GRILL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill1a</modelName>
+          <modShopLabel>BISONSTX_GRILL1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2</modelName>
+          <modShopLabel>BISONSTX_GRILL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2a</modelName>
+          <modShopLabel>BISONSTX_GRILL2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2b</modelName>
+          <modShopLabel>BISONSTX_GRILL2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2c</modelName>
+          <modShopLabel>BISONSTX_GRILL2C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2d</modelName>
+          <modShopLabel>BISONSTX_GRILL2D</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2e</modelName>
+          <modShopLabel>BISONSTX_GRILL2E</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill2f</modelName>
+          <modShopLabel>BISONSTX_GRILL2F</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill3</modelName>
+          <modShopLabel>BISONSTX_GRILL3</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill3a</modelName>
+          <modShopLabel>BISONSTX_GRILL3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill4</modelName>
+          <modShopLabel>BISONSTX_GRILL4</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill4a</modelName>
+          <modShopLabel>BISONSTX_GRILL4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill5</modelName>
+          <modShopLabel>BISONSTX_GRILL5</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill5a</modelName>
+          <modShopLabel>BISONSTX_GRILL5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill6</modelName>
+          <modShopLabel>BISONSTX_GRILL6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill7</modelName>
+          <modShopLabel>BISONSTX_GRILL7</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill7a</modelName>
+          <modShopLabel>BISONSTX_GRILL7A</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_grill7b</modelName>
+          <modShopLabel>BISONSTX_GRILL7B</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_grill7c</modelName>
+          <modShopLabel>BISONSTX_GRILL7C</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_hoodbadge</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_aerial1</modelName>
+          <modShopLabel>BISONSTX_AERIAL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_aerial2</modelName>
+          <modShopLabel>BISONSTX_AERIAL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_aerial3</modelName>
+          <modShopLabel>BISONSTX_AERIAL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_aerial4</modelName>
+          <modShopLabel>BISONSTX_AERIAL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_roof0a</modelName>
+          <modShopLabel>BISONSTX_ROOF0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof0b</modelName>
+          <modShopLabel>BISONSTX_ROOF0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof0c</modelName>
+          <modShopLabel>BISONSTX_ROOF0C</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof1</modelName>
+          <modShopLabel>BISONSTX_ROOF1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof1a</modelName>
+          <modShopLabel>BISONSTX_ROOF1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof1b</modelName>
+          <modShopLabel>BISONSTX_ROOF1B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof1c</modelName>
+          <modShopLabel>BISONSTX_ROOF1C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof2</modelName>
+          <modShopLabel>BISONSTX_ROOF2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof2a</modelName>
+          <modShopLabel>BISONSTX_ROOF2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_roof2b</modelName>
+          <modShopLabel>BISONSTX_ROOF2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_rtrim1</modelName>
+          <modShopLabel>BISONSTX_RTRIM1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_rtrim2</modelName>
+          <modShopLabel>BISONSTX_RTRIM2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_strip1</modelName>
+          <modShopLabel>VTC_SN_1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_strip2</modelName>
+          <modShopLabel>BISONSTX_STRIP2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_strip3</modelName>
+          <modShopLabel>BISONSTX_STRIP3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_mirl1</modelName>
+          <modShopLabel>BISONSTX_MIR1</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_mirr1</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_mirl2</modelName>
+          <modShopLabel>BISONSTX_MIR2</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_mirr2</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_mirl3</modelName>
+          <modShopLabel>BISONSTX_MIR3</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_mirr3</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_d</Item>
+          <Item>misc_e</Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt1</modelName>
+          <modShopLabel>BISONSTX_SKIRT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt1a</modelName>
+          <modShopLabel>BISONSTX_SKIRT1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt2</modelName>
+          <modShopLabel>BISONSTX_SKIRT2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt2a</modelName>
+          <modShopLabel>BISONSTX_SKIRT2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt2b</modelName>
+          <modShopLabel>BISONSTX_SKIRT2B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_skirt3</modelName>
+          <modShopLabel>BISONSTX_SKIRT3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_clad1</modelName>
+          <modShopLabel>BISONSTX_CLAD1</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_clad1l</Item>
+          <Item>bisonstx_clad1r</Item>
+          <Item>bisonstx_clad1lf</Item>
+          <Item>bisonstx_clad1rf</Item>
+          <Item>bisonstx_badgel</Item>
+          <Item>bisonstx_badger</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_m</Item>
+          <Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_clad2</modelName>
+          <modShopLabel>BISONSTX_CLAD2</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_clad2l</Item>
+          <Item>bisonstx_clad2r</Item>
+          <Item>bisonstx_clad2lf</Item>
+          <Item>bisonstx_clad2rf</Item>
+          <Item>bisonstx_badgel</Item>
+          <Item>bisonstx_badger</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_m</Item>
+          <Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_clad3</modelName>
+          <modShopLabel>BISONSTX_CLAD3</modShopLabel>
+          <linkedModels>
+          <Item>bisonstx_clad1l</Item>
+          <Item>bisonstx_clad1r</Item>
+          <Item>bisonstx_clad1lf</Item>
+          <Item>bisonstx_clad1rf</Item>
+          <Item>bisonstx_badgel</Item>
+          <Item>bisonstx_badger</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_m</Item>
+          <Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_seat1</modelName>
+          <modShopLabel>BISONSTX_SEAT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_seat2</modelName>
+          <modShopLabel>SMOD_BSEAT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_seat3</modelName>
+          <modShopLabel>SMOD_BSEAT9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_fcap</modelName>
+          <modShopLabel>BISONSTX_FCAP</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hpins1</modelName>
+          <modShopLabel>VTC_HACC_1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hpins2</modelName>
+          <modShopLabel>VTC_HACC_2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_hpins3</modelName>
+          <modShopLabel>VTC_HACC_3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_hpins3a</modelName>
+          <modShopLabel>VTC_HACC_4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_hpins3b</modelName>
+          <modShopLabel>VTC_HACC_5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_hpins3c</modelName>
+          <modShopLabel>VTC_HACC_6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS5</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_exh1a</modelName>
+          <modShopLabel>BISONSTX_EXH1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_exh1</modelName>
+          <modShopLabel>BISONSTX_EXH1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_exh2a</modelName>
+          <modShopLabel>BISONSTX_EXH2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>bisonstx_exh2</modelName>
+          <modShopLabel>BISONSTX_EXH2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_exh3</modelName>
+          <modShopLabel>BISONSTX_EXH3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>		
+        <Item>
+          <modelName>bisonstx_exh4</modelName>
+          <modShopLabel>BISONSTX_EXH4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_exh4a</modelName>
+          <modShopLabel>BISONSTX_EXH4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_exh4b</modelName>
+          <modShopLabel>BISONSTX_EXH4B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_b</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+        <Item>
+          <modelName>bisonstx_eng1</modelName>
+          <modShopLabel>BISONSTX_ENG1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+          <Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY2 </type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+	</visibleMods>
+	<linkMods>
+		<Item>
+          <modelName>bisonstx_wbar</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_rclad0</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_rclad2</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_rclad2a</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_hoodbadge</modelName>
+          <bone>bonnet</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad1l</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad1r</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad1lf</modelName>
+          <bone>wing_lf</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad1rf</modelName>
+          <bone>wing_rf</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad2l</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad2r</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad2lf</modelName>
+          <bone>wing_lf</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_clad2rf</modelName>
+          <bone>wing_rf</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_badge</modelName>
+          <bone>boot</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_badgel</modelName>
+          <bone>door_dside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_badger</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_mirr1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_mirr2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+		<Item>
+          <modelName>bisonstx_mirr3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>	
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="90" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="120" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="160" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="135" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="200" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+   		<Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+		<Item>
+          <slot>VMT_SPOILER</slot>
+          <name>TOP_STXBED</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_L</slot>
+          <name>TOP_STXGRI</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_R</slot>
+          <name>TOP_MIR</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>TOP_STXRT</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>TOP_SUNST</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>TOP_STXPIN</name>
+        </Item>
+		<Item>
+          <slot>VMT_ENGINEBAY2</slot>
+          <name>TOP_STXPP</name>
+        </Item>
+		<Item>
+          <slot>VMT_DOOR_L</slot>
+          <name>TOP_STXCAP</name>
+        </Item>
+		<Item>
+          <slot>VMT_PLTVANITY</slot>
+          <name>TOP_BULL</name>
+        </Item>
+      </slotNames>    
+      <liveryNames />
+    </Item>
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

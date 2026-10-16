@@ -1,0 +1,750 @@
+/* ══ ORIGEN · el MENÚ PEQUEÑO de las viviendas, en PEGATINA ══════════════
+
+   «Mis casas», el carrito de muebles, comprar un mueble y añadir un punto
+   del MLO. Antes eran cuadros centrados con velo oscuro (o una lista crema
+   sin riel abajo a la derecha); ahora son el formato DIÁLOGO del servidor
+   (skill origen-dialogo), copiado de org-menu/html/style.css:
+
+   - Dos piezas a la derecha y a MEDIA ALTURA: la columna (440 px) y el riel
+     de 64 px pegado al canto, separadas lo mismo que despegadas del borde (1.2vh).
+   - El riel mide lo que la columna (mínimo 300 px): la placa con el icono
+     arriba y el nombre «Origen Viviendas» abajo. Sin botón de silencio: ese
+     solo va en el inventario.
+   - La columna mide lo que su contenido; si no cabe, se desplaza el cuerpo y
+     la cabecera y el pie se quedan quietos.
+   - Entra deslizándose desde la derecha y sale por donde vino.
+
+   Mientras uno está abierto, el menú grande de debajo (Tu vivienda o
+   Decorar) se aparta por la derecha (`.esta-tapado`) y vuelve al cerrarlo:
+   dos piezas en el mismo canto, una encima de otra, se leen como un fallo.
+
+   Piel pegatina: panel #c4c6ca, piezas #dcdde0, canto negro y sombra dura,
+   rosa #d81b55 con tinta negra. Nación es esto mismo en naranja: lo repinta
+   la marca, aquí no se escribe. Los botones del pie son los `rp-btn` /
+   `rp-confirmar` de los menús laterales (ya en pegatina): la misma pieza en
+   todas las pantallas del recurso.
+
+   Nada de backdrop-filter, :has(), color-mix() ni @keyframes (CEF 103).
+   ══════════════════════════════════════════════════════════════════════ */
+
+.oc {
+    --o-riel: 64px;
+    --o-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --o-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --o-hueco: var(--o-margen-x);
+    --o-col: 440px;
+    --o-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-tinta-3: #55555c;
+    --peg-rosa: #d81b55;
+    --peg-rosa-texto: #b3123f;
+    --peg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-anillo: inset 0 0 0 1.5px #000;
+
+    --o-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --o-texto: "Barlow", "Segoe UI", sans-serif;
+    --o-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+
+    position: fixed;
+    inset: 0;
+    /* Por encima de los menús laterales (.rp, 1000), que se quedan debajo. */
+    z-index: 1001;
+    pointer-events: none;
+    font-family: var(--o-texto);
+    color: var(--peg-tinta);
+}
+
+/*  Un recogedor de clics invisible: pinchar fuera cierra, como en los
+    menús laterales. Nada de velo oscuro: el juego se sigue viendo. */
+.oc-velo {
+    position: absolute;
+    inset: 0;
+    background: none;
+    pointer-events: auto;
+}
+
+/* ── El armazón: columna + riel, a media altura ─────────────────────── */
+.oc-caja {
+    position: fixed;
+    top: 50%;
+    right: var(--o-margen-x);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    display: flex;
+    align-items: stretch;
+    gap: var(--o-hueco);
+    transform: translateY(-50%);
+    pointer-events: auto;
+}
+
+/*  Vue 2: las clases de partida son `-enter` y `-leave-to`. La raíz se
+    desvanece (y le da a Vue la duración); la caja entra desde el canto. */
+.oc-enter-active,
+.oc-leave-active {
+    transition: opacity 0.26s ease;
+}
+
+.oc-enter,
+.oc-leave-to {
+    opacity: 0;
+}
+
+.oc-enter-active .oc-caja,
+.oc-leave-active .oc-caja {
+    transition: transform 0.26s var(--o-ease);
+}
+
+.oc-enter .oc-caja,
+.oc-leave-to .oc-caja {
+    transform: translate(calc(100% + var(--o-margen-x) + 6px), -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .oc-enter-active .oc-caja,
+    .oc-leave-active .oc-caja { transition: none; }
+    .oc-enter .oc-caja,
+    .oc-leave-to .oc-caja { transform: translateY(-50%); }
+}
+
+/* ── La columna ─────────────────────────────────────────────────────── */
+.oc-col {
+    flex: none;
+    width: var(--o-col);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+.oc-cab {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    padding: 14px 22px 15px;
+}
+
+/*  El filete rosa macizo bajo el título. */
+.oc-cab::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+/*  La placa del título: rosa, icono negro, un pelo girada. */
+.oc-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    color: #000;
+    font-size: 19px;
+}
+
+.oc-cab__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.oc-cab__k {
+    display: block;
+    font-family: var(--o-cond);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--peg-rosa-texto);
+}
+
+.oc-cab__t {
+    display: block;
+    margin: 3px 0 0;
+    padding-right: 4px;
+    font-family: var(--o-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 29px;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+.oc-cab__sub {
+    display: block;
+    margin-top: 5px;
+    font-family: var(--o-texto);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--peg-tinta-2);
+    overflow-wrap: anywhere;
+}
+
+/* ── El cuerpo: lo único que se desplaza ────────────────────────────────
+   Relleno de sobra a la derecha y abajo: es el aire de la sombra dura de
+   cada pieza, que el recorte de la columna cortaría. */
+.oc-cuerpo {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px 18px 22px;
+}
+
+.oc-cuerpo::-webkit-scrollbar {
+    width: 6px;
+}
+
+.oc-cuerpo::-webkit-scrollbar-track {
+    margin: 10px 0;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.oc-cuerpo::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--peg-tinta);
+}
+
+/*  Lo de dentro trae sus propios rótulos («Método de pago:»): sin márgenes
+    sueltos, el hueco lo pone el cuerpo. */
+.oc-cuerpo > * {
+    flex: none;
+}
+
+/* ── El pie: las teclas y los dos botones ───────────────────────────── */
+.oc-pie {
+    position: relative;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 20px 16px 22px;
+}
+
+.oc-pie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 1.5px;
+    background: #000;
+}
+
+/*  Los botones en rejilla de dos (la hoja de los menús laterales los pone
+    en fila flexible, y con tres no caben). El que lleva `es-ancha` ocupa la
+    fila entera: el que paga en el carrito, o «Seguir» cuando va solo. */
+.oc-pie .rp-acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.oc-pie .rp-acciones > * {
+    min-width: 0;
+}
+
+.oc-pie .rp-acciones > .es-ancha {
+    grid-column: 1 / -1;
+}
+
+.oc-teclas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+}
+
+.oc-tecla {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--o-cond);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-2);
+}
+
+.oc-tecla kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 3px 7px 2px;
+    border-radius: 6px;
+    background: var(--peg-tinta);
+    box-shadow: none;
+    font-family: var(--o-cifra);
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* ── Filas (Mis casas) ───────────────────────────────────────────────── */
+.oc-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.oc-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 8px 10px 8px 8px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-anillo);
+    color: var(--peg-tinta);
+}
+
+/*  La chapa del icono: negra con el dibujo blanco. */
+.oc-fila__ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--peg-tinta);
+    color: #fff;
+    font-size: 16px;
+}
+
+.oc-fila__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.oc-fila__n {
+    font-family: var(--o-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.oc-fila__m {
+    font-family: var(--o-texto);
+    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 1.3;
+    color: var(--peg-tinta-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*  «Sin domótica»: no se puede gestionar a distancia. Chapa negra, no rosa:
+    es un dato, no un aviso. */
+.oc-fila__tag {
+    align-self: flex-start;
+    margin-top: 3px;
+    padding: 2px 7px 1px;
+    border-radius: 5px;
+    background: var(--peg-tinta);
+    font-family: var(--o-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 11.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.oc-fila__acc {
+    flex: none;
+    display: flex;
+    gap: 8px;
+    padding: 0 2px 2px 0;
+}
+
+.oc-mini {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    outline: none;
+    color: var(--peg-tinta);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.14s ease;
+}
+
+.oc-mini:hover {
+    background: var(--peg-rosa);
+    color: #000;
+}
+
+.oc-mini:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+/*  El vacío: un hueco gris a trazos con el texto en rótulo. */
+.oc-vacio {
+    margin: 0;
+    padding: 20px 16px;
+    border: 2.5px dashed #8d9198;
+    border-radius: 12px;
+    background: none;
+    text-align: center;
+    font-family: var(--o-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-3);
+}
+
+/* ══ EL RIEL ══════════════════════════════════════════════════════════════
+   El mismo de todos los menús, al píxel: 64 de ancho, relleno 14/16, placa
+   de 44 con su filete de 22 × 2. Sin pestañas: la placa dice de qué va el
+   diálogo y abajo va el nombre. */
+.oc-riel {
+    flex: none;
+    align-self: stretch;
+    min-height: 300px;
+    width: var(--o-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+.oc-riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-rosa);
+    font-size: 19px;
+}
+
+.oc-riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.oc-riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--o-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--peg-tinta);
+}
+
+/* ══ EL MENÚ GRANDE DE DEBAJO, APARTADO ══════════════════════════════════
+   Con un diálogo pequeño abierto encima, «Tu vivienda» y «Decorar» salen
+   por la derecha, como al cerrarse, y vuelven al cerrar el diálogo. Siguen
+   montados: lo que hubiera elegido en ellos no se pierde. */
+.rp.vv > .rp-col,
+.rp.vv > .rp-riel,
+.rp.mb > .rp-col,
+.rp.mb > .rp-riel {
+    transition: transform 0.26s var(--o-ease, cubic-bezier(0.16, 1, 0.3, 1)), opacity 0.2s ease;
+}
+
+.rp.esta-tapado > .rp-col {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(calc(100% + var(--inv-riel-total)));
+}
+
+.rp.esta-tapado > .rp-riel {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(calc(100% + var(--inv-margen-x)));
+}
+
+.rp.esta-tapado > .rp-velo {
+    pointer-events: none;
+}
+
+/* ── Lo elegido dentro de un diálogo pequeño ───────────────────────────
+   «Efectivo / Banco» y «Almacén / Vestidor» son una elección, no el botón
+   que confirma: pieza gris con anillo y sombra rosas. Rosa lleno solo en el
+   que confirma, abajo. */
+html #app .oc .rp-metodo-btn.on,
+html #app .oc .rp-metodo-btn.on:hover,
+html #app .oc .rp-mlo-tipo-btn.on,
+html #app .oc .rp-mlo-tipo-btn.on:hover {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 2px #d81b55, 3px 3px 0 #d81b55;
+    color: #0b0b0d;
+}
+
+html #app .oc .rp-mlo-tipo-btn.on b { color: #0b0b0d; }
+html #app .oc .rp-mlo-tipo-btn.on small { color: #55555c; }
+html #app .oc .rp-metodo-btn.on i,
+html #app .oc .rp-mlo-tipo-btn.on i { color: #b3123f; }
+
+/* ══ LOS CUADROS DE jQUERY COMO MENÚ PEQUEÑO (07/10) ════════════════════
+   «Dar llave», «Añadir puerta» y «Editar puerta» salen de OpenModal con
+   `chico` (script.js): el mismo armazón `.oc`, con `.c-modal` para que
+   CloseModal los encuentre. Sin velo oscuro y sin el z-index del cuadro
+   centrado. Entran y salen por el canto con `esta-dentro`. */
+html #app .c-modal.oc-jq {
+    z-index: 1001;
+    background: none;
+}
+
+.oc-jq .oc-caja {
+    transform: translate(calc(100% + var(--o-margen-x) + 6px), -50%);
+    transition: transform 0.26s var(--o-ease);
+}
+
+.oc-jq.esta-dentro .oc-caja {
+    transform: translateY(-50%);
+}
+
+.oc-jq.oc-saliendo .oc-caja,
+.oc-jq.oc-saliendo .oc-velo {
+    pointer-events: none;
+}
+
+/*  Los jugadores cercanos: sin el alto fijo del cuadro centrado, el que
+    se desplaza es el cuerpo. */
+html #app .oc .nearby-players {
+    min-width: 0;
+    max-height: none;
+}
+
+html #app .oc .nearby-players .col-12 {
+    padding: 0;
+}
+
+/*  Formulario de la puerta. */
+.oc-puerta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.oc-tipos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 3px 3px 0;
+}
+
+html #app .oc .oc-tipos .option,
+html #app .oc .oc-tipos .option:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 0;
+    height: 44px;
+    margin: 0;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+
+html #app .oc .oc-tipos .option span { margin: 0; }
+
+/*  La elegida: anillo y sombra rosas, no rosa lleno (eso es del que confirma). */
+html #app .oc .oc-tipos .option.active,
+html #app .oc .oc-tipos .option.active:hover {
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 2px #d81b55, 3px 3px 0 #d81b55;
+    color: #0b0b0d;
+}
+
+html #app .oc .oc-tipos .option.active i { color: #b3123f; }
+
+.oc-distancia {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.oc-distancia input {
+    flex: none;
+    width: 110px;
+}
+
+.oc-distancia span {
+    font-family: var(--o-texto);
+    font-weight: 500;
+    font-size: 13.5px;
+    color: var(--peg-tinta-2);
+}
+
+/* ══ EL ASCENSOR ═════════════════════════════════════════════════════════
+   Una rejilla de plantas de tres en fondo. La planta en la que estás va
+   con el anillo rosa (lo elegido), no en rosa lleno. */
+.oc-plantas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 0 3px 3px 0;
+}
+
+.oc-planta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    height: 72px;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    outline: none;
+    color: var(--peg-tinta);
+    cursor: pointer;
+    transition: background 0.14s ease;
+}
+
+.oc-planta b {
+    font-family: var(--o-cifra);
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1;
+}
+
+.oc-planta small {
+    font-family: var(--o-cond);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-3);
+}
+
+.oc-planta:hover {
+    background: #e6e7ea;
+}
+
+.oc-planta:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+.oc-planta.on,
+.oc-planta.on:hover {
+    background: var(--peg-pieza);
+    box-shadow: inset 0 0 0 2px var(--peg-rosa), 3px 3px 0 var(--peg-rosa);
+    cursor: default;
+}
+
+.oc-planta.on small { color: var(--peg-rosa-texto); }
+
+/*  El estado de la habitación (Libre / Tuya / Ocupada) en la cabecera. */
+.oc-cab > .rp-tag {
+    flex: none;
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+/*  08/10: el rótulo a brocha bajo el título del menú pequeño (ascensor, mis
+    casas, comprar, muebles, puntos). EN FLUJO, en bloque: empuja el renglón
+    gris en vez de pisarlo. Rosa literal: en Nación lo repinta la marca. */
+.oc .oc-cab__t[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    margin: 5px 0 3px 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}

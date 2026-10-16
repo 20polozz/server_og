@@ -1,0 +1,5759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+  	<Item>
+      <kitName>734_gbromulus_modkit</kitName>
+      <id value="734" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>	  
+        <!--LIVERIES-->
+		<Item>
+          <modelName>gbromulus_livery_1</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_2</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_3</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_4</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_5</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_6</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_7</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_8</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_9</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_10</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_livery_11</modelName>
+          <modShopLabel>GBROMULUS_LIVERY_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--FRONT BUMPERS-->
+		<Item>
+          <modelName>gbromulus_bumper_f_1</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_2</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_3</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_4</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_5</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_6</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_7</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_8</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_9</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_10</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_11</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_12</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_13</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_14</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_15</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_16</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_17</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_18</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_18</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_19</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_19</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_20</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_20</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_21</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_21</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_22</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_22</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_23</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_23</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_24</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_24</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_25</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_25</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_26</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_26</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_27</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_27</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_28</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_28</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_29</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_29</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_30</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_30</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_31</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_31</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_32</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_32</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_33</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_33</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_34</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_34</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_35</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_35</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_36</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_36</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_37</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_37</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_38</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_38</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_39</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_39</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_40</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_40</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_41</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_41</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_42</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_42</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_43</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_43</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_44</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_44</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_45</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_45</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_46</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_46</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_47</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_47</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_48</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_48</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_49</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_49</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_50</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_50</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<!--<Item>
+          <modelName>gbromulus_bumper_f_51</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_51</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_bumper_f_52</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_52</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_53</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_53</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_54</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_54</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_f_null</modelName>
+          <modShopLabel>GBROMULUS_FBUMPER_55</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--REAR BUMPERS-->
+		<Item>
+          <modelName>gbromulus_bumper_r_1</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_2</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_2_body_bayshore</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_3</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_3</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_3_body_bayshore</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_4</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_4</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_5</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_5</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_6</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_6</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_7</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_7</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_8</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_8</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_9</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_4-9_body_chemical-x</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_10</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_11</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_12</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_13</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_13</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_13-14_body_x-flow</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_14</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_14</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_13-14_body_x-flow</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_15</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_15</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_15-16_body_alien</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_16</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_16</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_15-16_body_alien</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_x</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_17</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_17</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_17-18_body_gt-apex</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_18</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_18</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_17-18_body_gt-apex</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_19</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_19</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_19-20_gt-apex_b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_20</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_20</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_19-20_gt-apex_b</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_21_body_rocket</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_21</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_21_diffuser_rocket</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_x</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_21_body_rocket</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_22</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<Item>misc_x</Item>
+			<Item>misc_q</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_21_body_rocket</modelName>
+          <modShopLabel>GBROMULUS_RBUMPER_23</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_bumper_r_21_diffuser_rocket</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bumper_r</Item>
+			<!--<Item>misc_q</Item>-->
+			<Item>misc_x</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--SKIRTS-->
+		<Item>
+          <modelName>gbromulus_misc_s_r_1</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_2</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_3</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_4</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_5</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_6</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_7</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_8</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_9</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_10</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_11</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_12</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_13</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_14</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_15</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_16</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_17</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_s_r_18</modelName>
+          <modShopLabel>GBROMULUS_SKIRT_18</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--FRONT FENDERS-->
+		<Item>
+          <modelName>gbromulus_fender_f_1_addon</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_2_addon</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_3</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_4</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_5_addon</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_6_addon</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_7</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_8</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_f_9</modelName>
+          <modShopLabel>GBROMULUS_FFENDER_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_f</Item>
+          </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--REAR FENDERS-->
+		<Item>
+          <modelName>gbromulus_fender_r_1</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_r_2</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_r_3</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_r_4</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_r_5</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_fender_r_6</modelName>
+          <modShopLabel>GBROMULUS_RFENDER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--HOODS-->
+		<Item>
+          <modelName>gbromulus_bonnet_1</modelName>
+          <modShopLabel>GBROMULUS_HOOD_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_2</modelName>
+          <modShopLabel>GBROMULUS_HOOD_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_3</modelName>
+          <modShopLabel>GBROMULUS_HOOD_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_4</modelName>
+          <modShopLabel>GBROMULUS_HOOD_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_5</modelName>
+          <modShopLabel>GBROMULUS_HOOD_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_6</modelName>
+          <modShopLabel>GBROMULUS_HOOD_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_7</modelName>
+          <modShopLabel>GBROMULUS_HOOD_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_8</modelName>
+          <modShopLabel>GBROMULUS_HOOD_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_9</modelName>
+          <modShopLabel>GBROMULUS_HOOD_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_10</modelName>
+          <modShopLabel>GBROMULUS_HOOD_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_11</modelName>
+          <modShopLabel>GBROMULUS_HOOD_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_12</modelName>
+          <modShopLabel>GBROMULUS_HOOD_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_13</modelName>
+          <modShopLabel>GBROMULUS_HOOD_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_14</modelName>
+          <modShopLabel>GBROMULUS_HOOD_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_15</modelName>
+          <modShopLabel>GBROMULUS_HOOD_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_16</modelName>
+          <modShopLabel>GBROMULUS_HOOD_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_17</modelName>
+          <modShopLabel>GBROMULUS_HOOD_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_18</modelName>
+          <modShopLabel>GBROMULUS_HOOD_18</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_19</modelName>
+          <modShopLabel>GBROMULUS_HOOD_19</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_20</modelName>
+          <modShopLabel>GBROMULUS_HOOD_20</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_21</modelName>
+          <modShopLabel>GBROMULUS_HOOD_21</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_22</modelName>
+          <modShopLabel>GBROMULUS_HOOD_22</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_23</modelName>
+          <modShopLabel>GBROMULUS_HOOD_23</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_24</modelName>
+          <modShopLabel>GBROMULUS_HOOD_24</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bonnet_25</modelName>
+          <modShopLabel>GBROMULUS_HOOD_25</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--EXHAUSTS-->
+		<Item>
+          <modelName>gbromulus_misc_e_1</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_2</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_3</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_4</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_5</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_6</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_7</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_8</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_9</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_10</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_11</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_e_12</modelName>
+          <modShopLabel>GBROMULUS_EXHAUST_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_e</Item>
+			<Item>exhaust</Item>
+			<Item>exhaust_2</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--REAR PANELS-->
+		<Item>
+          <modelName>gbromulus_misc_p_1</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_2</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_3</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_4</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_5</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_6</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_7</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_8</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_p_9</modelName>
+          <modShopLabel>GBROMULUS_RPANELS_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--TAIL LIGHT TRIMS-->
+		<Item>
+          <modelName>gbromulus_misc_n_1</modelName>
+          <modShopLabel>GBROMULUS_TLTRIM_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_n_2</modelName>
+          <modShopLabel>GBROMULUS_TLTRIM_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_n_3</modelName>
+          <modShopLabel>GBROMULUS_TLTRIM_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_n_4</modelName>
+          <modShopLabel>GBROMULUS_TLTRIM_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--TAIL LIGHT HOUSINGS-->
+		<Item>
+          <modelName>gbromulus_misc_m_1</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_m_2</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_m_3</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_m_4</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_m_5</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_misc_m_6</modelName>
+          <modShopLabel>GBROMULUS_TLHOUSING_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_m</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		
+		<!--MIRRORS-->
+		<Item>
+          <modelName>gbromulus_misc_1_dside_1</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_2</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_3</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_3</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_3</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_4</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_4</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_4</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_5</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_5</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_5</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_6</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_6</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_6</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_7</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_7</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_7</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_8</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_8</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_8</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_1_dside_9</modelName>
+          <modShopLabel>GBROMULUS_MIRROR_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_misc_2_pside_9</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_2</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--SPOILERS-->
+		<Item>
+          <modelName>gbromulus_wing_1</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_2</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_3</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_4</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_5</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_6</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_7</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_8</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_9</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_9</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_wing_10_link</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_11</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_12</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_13</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_14</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_15</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_16</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_17</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_18</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_18</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_19</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_19</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_20</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_20</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_21</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_21</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wing_22</modelName>
+          <modShopLabel>GBROMULUS_SPOILER_22</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--HEADLIGHTS-->
+		<Item>
+          <modelName>gbromulus_misc_h_1</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_y</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_2</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_y</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_3</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_y</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--HEADLIGHTS - FIXED-->
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_4</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_5</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_6</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_7</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_8</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_h_fixed_9</modelName>
+          <modShopLabel>GBROMULUS_HEADLIGHT_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_y</Item>
+			<Item>misc_h</Item>
+			<Item>misc_o</Item>
+			<Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROOFS-->
+		<Item>
+          <modelName>gbromulus_misc_t_hardtop_1</modelName>
+          <modShopLabel>GBROMULUS_ROOF_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_t_hardtop_2</modelName>
+          <modShopLabel>GBROMULUS_ROOF_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROOFS - TARGA TOPS-->
+		<Item>
+          <modelName>gbromulus_misc_t_targa_1</modelName>
+          <modShopLabel>GBROMULUS_ROOF_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_t_targa_2</modelName>
+          <modShopLabel>GBROMULUS_ROOF_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_misc_t_targa_3</modelName>
+          <modShopLabel>GBROMULUS_ROOF_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_misc_t_targa_4</modelName>
+          <modShopLabel>GBROMULUS_ROOF_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_misc_t_targa_5</modelName>
+          <modShopLabel>GBROMULUS_ROOF_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>gbromulus_misc_t_targa_6</modelName>
+          <modShopLabel>GBROMULUS_ROOF_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_t</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--WIND DEFLECTORS-->
+		<Item>
+          <modelName>gbromulus_wind_deflector_dside_1</modelName>
+          <modShopLabel>GBROMULUS_WINDDEF_1</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_wind_deflector_pside_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wind_deflector_dside_2</modelName>
+          <modShopLabel>GBROMULUS_WINDDEF_2</modShopLabel>
+          <linkedModels>
+		    <Item>gbromulus_wind_deflector_pside_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>door_dside_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--FRONT BADGES-->
+		<Item>
+          <modelName>gbromulus_misc_a_1</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_a_2</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_a_3</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<!--<Item>
+          <modelName>gbromulus_misc_a_4</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_a_5</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_a_6</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_a_7</modelName>
+          <modShopLabel>GBROMULUS_FBADGE_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_f</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		
+		<!--REAR BADGES-->
+		<Item>
+          <modelName>gbromulus_misc_c_1</modelName>
+          <modShopLabel>GBROMULUS_RBADGE_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_c</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR2</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_c_1</modelName>
+          <modShopLabel>GBROMULUS_RBADGE_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR2</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_c_null</modelName>
+          <modShopLabel>GBROMULUS_RBADGE_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR2</type>
+          <bone>boot</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROCKSTAR ADAPTED COMPONENTS: START-->
+		<!--STEERING WHEELS-->
+		<Item>
+          <modelName>gbromulus_misc_w_1</modelName>
+          <modShopLabel>GBROMULUS_SWHEEL_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_w_2</modelName>
+          <modShopLabel>GBROMULUS_SWHEEL_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_w_3</modelName>
+          <modShopLabel>GBROMULUS_SWHEEL_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROOF - ROCKSTAR-->
+		<Item>
+          <modelName>gbromulus_roof_tires</modelName>
+          <modShopLabel>GBROMULUS_ROOF_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--GAUGES-->
+		<Item>
+          <modelName>gbromulus_gauge</modelName>
+          <modShopLabel>GBROMULUS_GAUGE_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR3</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--INTERCOOLERS-->
+		<Item>
+          <modelName>gbromulus_intercooler_1</modelName>
+          <modShopLabel>GBROMULUS_INTERCOOLER_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_intercooler_2</modelName>
+          <modShopLabel>GBROMULUS_INTERCOOLER_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--SEATS-->
+		<Item>
+          <modelName>gbromulus_seat_1</modelName>
+          <modShopLabel>GBROMULUS_SEAT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_seat_2</modelName>
+          <modShopLabel>GBROMULUS_SEAT_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_seat_3</modelName>
+          <modShopLabel>GBROMULUS_SEAT_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_r</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--STRUT BRACES-->
+		<Item>
+          <modelName>gbromulus_strut_brace_1</modelName>
+          <modShopLabel>GBROMULUS_SBRACES_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY1</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_strut_brace_2</modelName>
+          <modShopLabel>GBROMULUS_SBRACES_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_l</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY1</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--INTERIOR-->
+		<Item>
+          <modelName>gbromulus_drift_interior</modelName>
+          <modShopLabel>GBROMULUS_DRIFTINT_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item>misc_k</Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROLLCAGES-->
+		<Item>
+          <modelName>gbromulus_rollcage_1</modelName>
+          <modShopLabel>GBROMULUS_ROLLCAGE_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_rollcage_2</modelName>
+          <modShopLabel>GBROMULUS_ROLLCAGE_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_INTERIOR5</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<!--ROCKSTAR ADAPTED COMPONENTS: END-->
+		
+		<!--TOTAL: 233 | 28 REMAINING-->
+		
+	</visibleMods>
+	<linkMods>
+		<!--REAR BUMPERS - LINKS-->
+		<Item>
+          <modelName>gbromulus_bumper_r_2_body_bayshore</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_3_body_bayshore</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_4-9_body_chemical-x</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_13-14_body_x-flow</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_15-16_body_alien</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_17-18_body_gt-apex</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_19-20_gt-apex_b</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_bumper_r_21_diffuser_rocket</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--MIRRORS - LINKS-->
+		<Item>
+          <modelName>gbromulus_misc_2_pside_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_4</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_5</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_6</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_7</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_8</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_misc_2_pside_9</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--SPOILERS - LINKS-->
+		<Item>
+          <modelName>gbromulus_wing_10_link</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		
+		<!--MIRRORS - LINKS-->
+		<Item>
+          <modelName>gbromulus_wind_deflector_pside_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		<Item>
+          <modelName>gbromulus_wind_deflector_pside_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="90" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="120" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="160" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="135" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="200" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="30" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier />
+          <modifier value="70" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+   		<Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+		<Item>
+          <slot>VMT_BUMPER_F</slot>
+          <name>Front Bumpers</name>
+        </Item>
+		<Item>
+          <slot>VMT_BUMPER_R</slot>
+          <name>Rear Bumpers</name>
+        </Item>
+		<Item>
+          <slot>VMT_SKIRT</slot>
+          <name>Side Skirts</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_L</slot>
+          <name>Front Fenders</name>
+        </Item>
+		<Item>
+          <slot>VMT_WING_R</slot>
+          <name>Rear Fenders</name>
+        </Item>
+		<Item>
+          <slot>VMT_BONNET</slot>
+          <name>Hoods</name>
+        </Item>
+		<Item>
+          <slot>VMT_EXHAUST</slot>
+          <name>Exhausts</name>
+        </Item>
+		<Item>
+          <slot>VMT_TRUNK</slot>
+          <name>Rear Panels</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS</slot>
+          <name>Tail Light Trims</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>Tail Light Housings</name>
+        </Item>
+		<Item>
+          <slot>VMT_DOOR_L</slot>
+          <name>Mirrors</name>
+        </Item>
+		<Item>
+          <slot>VMT_SPOILER</slot>
+          <name>Rear Wings</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>Headlights</name>
+        </Item>
+		<Item>
+          <slot>VMT_ROOF</slot>
+          <name>Roofs</name>
+        </Item>
+		<Item>
+          <slot>VMT_DOOR_L</slot>
+          <name>Wind Deflectors</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR1</slot>
+          <name>Front Badges</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR2</slot>
+          <name>Rear Badges</name>
+        </Item>
+		<Item>
+          <slot>VMT_STEERING</slot>
+          <name>Steering Wheels</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR3</slot>
+          <name>Gauges</name>
+        </Item>
+		<Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>Intercoolers</name>
+        </Item>
+		<Item>
+          <slot>VMT_SEATS</slot>
+          <name>Custom Seats</name>
+        </Item>
+		<Item>
+          <slot>VMT_ENGINEBAY1</slot>
+          <name>Strut Braces</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR4</slot>
+          <name>Interior Accessories</name>
+        </Item>
+		<Item>
+          <slot>VMT_INTERIOR5</slot>
+          <name>Rollcages</name>
+        </Item>
+      </slotNames>     	
+      <liveryNames />
+    </Item>
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

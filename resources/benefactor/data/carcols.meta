@@ -1,0 +1,1822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Lights />
+  <Kits>
+    <Item>
+      <kitName>754236_serrstr_modkit</kitName>
+      <id value="754236" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>serrstr_bonnet1</modelName>
+          <modShopLabel>serrstr_bonnet1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_bonnet2</modelName>
+          <modShopLabel>serrstr_bonnet2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_bonnet3</modelName>
+          <modShopLabel>serrstr_bonnet3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_bonnet4</modelName>
+          <modShopLabel>serrstr_bonnet4</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_bonnet5</modelName>
+          <modShopLabel>serrstr_bonnet5</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_bonnet6</modelName>
+          <modShopLabel>serrstr_bonnet6</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_d</Item>
+		      </turnOffBones> 
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_roof1</modelName>
+          <modShopLabel>serrstr_roof1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_roof2</modelName>
+          <modShopLabel>serrstr_roof2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_roof3</modelName>
+          <modShopLabel>serrstr_roof3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+         	<Item>misc_x</Item>
+		      </turnOffBones> 
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter1</modelName>
+          <modShopLabel>serrstr_splitter1</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter2</modelName>
+          <modShopLabel>serrstr_splitter2</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter3</modelName>
+          <modShopLabel>serrstr_splitter3</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter4</modelName>
+          <modShopLabel>serrstr_splitter4</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter5</modelName>
+          <modShopLabel>serrstr_splitter5</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter6</modelName>
+          <modShopLabel>serrstr_splitter6</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter7</modelName>
+          <modShopLabel>serrstr_splitter7</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter8</modelName>
+          <modShopLabel>serrstr_splitter8</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_splitter9</modelName>
+          <modShopLabel>serrstr_splitter9</modShopLabel> 
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser1</modelName>
+          <modShopLabel>serrstr_diffuser1</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser2</modelName>
+          <modShopLabel>serrstr_diffuser2</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser3</modelName>
+          <modShopLabel>serrstr_diffuser3</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser4</modelName>
+          <modShopLabel>serrstr_diffuser4</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser5</modelName>
+          <modShopLabel>serrstr_diffuser5</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser6</modelName>
+          <modShopLabel>serrstr_diffuser6</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser7</modelName>
+          <modShopLabel>serrstr_diffuser7</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser8</modelName>
+          <modShopLabel>serrstr_diffuser8</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_diffuser9</modelName>
+          <modShopLabel>serrstr_diffuser9</modShopLabel> 
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_c</Item>
+          <Item>misc_e</Item>
+          <Item>exhaust</Item>
+          <Item>exhaust_2</Item>
+          <Item>exhaust_3</Item>
+          <Item>exhaust_4</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <turnOffExtra value="false"/>
+          <disableBonnetCamera value="false"/>
+          <allowBonnetSlide value="true"/>
+          <weaponSlot value="-1"/>
+          <disableProjectileDriveby value="false"/>
+          <disableDriveby value="false"/>
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler1</modelName>
+          <modShopLabel>serrstr_spoiler1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler2</modelName>
+          <modShopLabel>serrstr_spoiler2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler3</modelName>
+          <modShopLabel>serrstr_spoiler3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler4</modelName>
+          <modShopLabel>serrstr_spoiler4</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler5</modelName>
+          <modShopLabel>serrstr_spoiler5</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_spoiler6</modelName>
+          <modShopLabel>serrstr_spoiler6</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>
+	  <Item>
+          <modelName>serrstr_skirts1</modelName>
+          <modShopLabel>serrstr_skirts1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+      <Item>
+          <modelName>serrstr_skirts2</modelName>
+          <modShopLabel>serrstr_skirts2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts3</modelName>
+          <modShopLabel>serrstr_skirts3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts4</modelName>
+          <modShopLabel>serrstr_skirts4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts5</modelName>
+          <modShopLabel>serrstr_skirts5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts6</modelName>
+          <modShopLabel>serrstr_skirts6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts7</modelName>
+          <modShopLabel>serrstr_skirts7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts8</modelName>
+          <modShopLabel>serrstr_skirts8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_skirts9</modelName>
+          <modShopLabel>serrstr_skirts9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_mirrord1</modelName>
+          <modShopLabel>serrstr_mirrord1</modShopLabel>
+          <linkedModels>
+          <Item>serrstr_mirrorp1</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_j</Item>
+          <Item>misc_k</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_mirrord2</modelName>
+          <modShopLabel>serrstr_mirrord2</modShopLabel>
+          <linkedModels>
+          <Item>serrstr_mirrorp2</Item>
+          </linkedModels>
+          <turnOffBones>
+          <Item>misc_j</Item>
+          <Item>misc_k</Item>
+          </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_swheel1</modelName>
+          <modShopLabel>serrstr_swheel1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_swheel2</modelName>
+          <modShopLabel>serrstr_swheel2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_swheel3</modelName>
+          <modShopLabel>serrstr_swheel3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_swheel4</modelName>
+          <modShopLabel>serrstr_swheel4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_rcanard1</modelName>
+          <modShopLabel>serrstr_rcanard1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+      </Item>	
+        <Item>
+          <modelName>serrstr_rcanard2</modelName>
+          <modShopLabel>serrstr_rcanard2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_rcanard3</modelName>
+          <modShopLabel>serrstr_rcanard3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_grill1</modelName>
+          <modShopLabel>serrstr_grill1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_grill2</modelName>
+          <modShopLabel>serrstr_grill2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+          <Item>misc_g</Item>
+          </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_arch1</modelName>
+          <modShopLabel>serrstr_arch1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_arch2</modelName>
+          <modShopLabel>serrstr_arch2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_arch3</modelName>
+          <modShopLabel>serrstr_arch3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler1</modelName>
+          <modShopLabel>serrstr_topspoiler1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler2</modelName>
+          <modShopLabel>serrstr_topspoiler2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler3</modelName>
+          <modShopLabel>serrstr_topspoiler3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler4</modelName>
+          <modShopLabel>serrstr_topspoiler4</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler5</modelName>
+          <modShopLabel>serrstr_topspoiler5</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_topspoiler6</modelName>
+          <modShopLabel>serrstr_topspoiler6</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_rooflight1</modelName>
+          <modShopLabel>serrstr_rooflight1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_rooflight2</modelName>
+          <modShopLabel>serrstr_rooflight2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_rooflight3</modelName>
+          <modShopLabel>serrstr_rooflight3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fcanards1</modelName>
+          <modShopLabel>serrstr_fcanards1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fcanards2</modelName>
+          <modShopLabel>serrstr_fcanards2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fcanards3</modelName>
+          <modShopLabel>serrstr_fcanards3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_louver1</modelName>
+          <modShopLabel>serrstr_louver1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_louver2</modelName>
+          <modShopLabel>serrstr_louver2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_louver3</modelName>
+          <modShopLabel>serrstr_louver3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fender1</modelName>
+          <modShopLabel>serrstr_fender1</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fender2</modelName>
+          <modShopLabel>serrstr_fender2</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>
+	  <Item>
+          <modelName>serrstr_fender3</modelName>
+          <modShopLabel>serrstr_fender3</modShopLabel>
+          <linkedModels/>
+		      <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_fddef1</modelName>
+          <modShopLabel>serrstr_fddef1</modShopLabel>
+          <linkedModels>
+          <Item>serrstr_fpdef1</Item>
+          <Item>serrstr_rddef1</Item>
+          <Item>serrstr_rpdef1</Item>
+          </linkedModels>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_fddef2</modelName>
+          <modShopLabel>serrstr_fddef2</modShopLabel>
+          <linkedModels>
+          <Item>serrstr_fpdef2</Item>
+          <Item>serrstr_rddef2</Item>
+          <Item>serrstr_rpdef2</Item>
+          </linkedModels>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>	
+        <Item>
+          <modelName>serrstr_fddef3</modelName>
+          <modShopLabel>serrstr_fddef3</modShopLabel>
+          <linkedModels>
+          <Item>serrstr_fpdef3</Item>
+          <Item>serrstr_rddef3</Item>
+          <Item>serrstr_rpdef3</Item>
+          </linkedModels>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+     </Item>			
+      </visibleMods>
+      <linkMods>
+        <Item>
+          <modelName>serrstr_mirrorp1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_mirrorp2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_fpdef1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rddef1</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rpdef1</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_fpdef2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rddef2</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rpdef2</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_fpdef3</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rddef3</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>
+		    <Item>
+          <modelName>serrstr_rpdef3</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+        </Item>			
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+				<Item>
+          <identifier />
+          <modifier value="5" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+      </statMods>
+      <slotNames />
+      <liveryNames>
+      </liveryNames>
+    </Item>
+  </Kits>
+   <Lights>
+
+   </Lights>
+</CVehicleModelInfoVarGlobal>

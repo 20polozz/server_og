@@ -1,0 +1,1179 @@
+/* ══ PEGATINA: el concesionario con el estilo del logo «Origen Los Santos» ══
+
+   El unico estilo de la pagina (Nacion la ve igual, con su naranja). Pisa
+   ogn.css, main.css, admin.css y concesionario.css. Es la pareja de origen_inventory/source-ui/src/assets/styles/
+   pegatina.css y de origen_admin/.../pegatina.css: mismas reglas y mismos
+   colores.
+
+   Panel gris, piezas gris claro, canto negro fino, sombra dura, rosa con tinta NEGRA para
+   lo encendido, nada inclinado.
+
+   Cubre todo lo que cuelga de html/index.html: el concesionario del jugador
+   (.dp), la firma de la compra, el panel de administracion (.ogn-*, .de-*),
+   sus dialogos, el modo de colocar puntos, la tarjeta de las fotos, la
+   prueba de conduccion, la financiacion, los dialogos viejos (.c-modal),
+   los avisos y el selector de color.
+
+   Los cantos son box-shadow, NO border: no cambian ninguna medida.
+
+   Para quitarlo: borrar este fichero, su <link> en index.html y las dos
+   familias (Knewave, Oxanium) del <link> de Google Fonts.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Los tokens ─────────────────────────────────────────────────────── */
+/*  Van en <html>, donde los declaran ogn.css y admin.css (:root): la pagina
+    entera es de este recurso. Con esto cambia la mayor parte; despues, las
+    piezas una a una. */
+/*  html:root y no html a secas: las hojas de serie declaran estos tokens
+    en :root, que pesa mas que html, y se quedaban los suyos. */
+html:root {
+    --peg-rosa: #d81b55;
+    --peg-negro: #0b0b0d;
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --peg-brocha: "Knewave", "Barlow Condensed", cursive;
+
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    /*  En las hojas originales no se declara: cada regla cae a su reserva
+        crema. Aqui es el papel al pasar el raton. */
+    --arc-fondo1: #e6e7ea;
+
+    --arc-accent: #d81b55;
+    --arc-accent-deep: #000;
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+    --ogn-acc-rgb: 216, 27, 85;
+    --arc-grad: linear-gradient(#d81b55, #d81b55);
+    --arc-ink: #0b0b0d;
+    --arc-ink-2: #0b0b0d;
+    --arc-ink-3: #44444a;
+    --arc-ink-4: #55555c;
+    --arc-edge: #c4c6ca;
+    /* Nada inclinado. */
+    --arc-skew: skewX(0deg);
+    --arc-unskew: skewX(0deg);
+
+    --arc-glass: #c4c6ca;
+    --arc-papel: #dcdde0;
+    --arc-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-canto-2: inset 0 0 0 1.5px #000;
+    --arc-canto-bajo: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --arc-hundido: inset 0 0 0 1.5px #000;
+    --arc-plato: inset 0 0 0 1.5px #000;
+
+    --ogn-bad: #b3123f;
+    --ogn-line: rgba(11, 11, 13, 0.35);
+    --ogn-line-soft: rgba(11, 11, 13, 0.2);
+    --ogn-line-hi: rgba(11, 11, 13, 0.6);
+    --ogn-r: 12px;
+    --ogn-r-zona: 20px;
+    --ogn-r-ctrl: 10px;
+    --ogn-r-pill: 10px;
+}
+
+/* ── Los huecos entre piezas ────────────────────────────────────────── */
+/*  Cada pieza lleva por FUERA su canto (4) y su sombra dura (7), y la de al
+    lado su canto: con los 10-15 px de serie se pisaban. Aqui no hay
+    variable de hueco: son los `gap` de los contenedores, y el relleno
+    izquierdo del marco, que es lo que separa el riel del resto. */
+html .dealership .dp { gap: var(--dp-margen-x); } /* 07/10: el mismo aire que del riel al canto */
+/*  El riel (58) + dos huecos de 20 + el margen: 10 px mas que de serie. */
+html .dp .dp-col { max-width: calc(calc(100vw / var(--ogn-escala, 1)) - 120px); }
+html .ogn-frame {
+    gap: 20px;
+    padding-left: calc(var(--ogn-rail) + calc(1.2vh / var(--ogn-escala, 1)) + 20px);
+}
+html .ogn-split,
+html .ogn-bar { gap: 20px; }
+/*  Estos tres recortan lo que sale de ellos, y el canto y la sombra de las
+    zonas van por fuera: se quedaban cortados a ras. Las zonas de dentro ya
+    miden lo que su hueco (min-height: 0), no hay nada mas que se salga. */
+html .ogn-content,
+html .ogn-split__list,
+html .ogn-split__detail { overflow: visible; }
+
+/* ── Barras de desplazamiento ───────────────────────────────────────── */
+html ::-webkit-scrollbar-thumb { background: #0b0b0d; }
+html ::-webkit-scrollbar-thumb:hover { background: #44444a; }
+
+/* ════════════════════════════════════════════════════════════════════
+   EL CONCESIONARIO DEL JUGADOR (.dp)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Las dos piezas: columna y riel ─────────────────────────────────── */
+html .dp .dp-col,
+html .dp .dp-riel {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html .dp .dp-cab__placa {
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .dp .dp-cab__placa svg { transform: none; }
+html .dp .dp-cab__placa--chica { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+/*  El precio es LA cifra de la pantalla. Oxanium es mas ancha que la
+    condensada: baja de 25 a 22 para caber en los mismos 190 px. */
+html .dp .dp-cab__cifra {
+    font-family: var(--peg-cifra);
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.2;
+}
+html .dp .dp-cab__sub { color: #44444a; }
+
+/*  La chapa de clase: A rosa, B negra, el resto papel con canto. */
+html .dp .dp-clase { transform: none; border-radius: 6px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .dp .dp-clase b { transform: none; font-family: var(--peg-cifra); font-style: normal; font-weight: 800; }
+html .dp .dp-clase--a { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .dp .dp-clase--b { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .dp .dp-clase--c { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+
+/* ── Las cuatro cifras ──────────────────────────────────────────────── */
+html .dp .dp-dato { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-dato__v small { color: #44444a; }
+
+/* ── Pestañas ───────────────────────────────────────────────────────── */
+html .dp .dp-tab { transform: none; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .dp .dp-tab span { transform: none; color: #0b0b0d; }
+html .dp .dp-tab:hover { background: #e6e7ea; }
+html .dp .dp-tab:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-tab--on,
+html .dp .dp-tab--on:hover { background: #d81b55; }
+html .dp .dp-tab--on span { color: #000; }
+
+/* ── Rotulos con filete ─────────────────────────────────────────────── */
+html .dp .dp-regla i { height: 3px; border-radius: 2px; background: #d81b55; }
+html .dp .dp-regla--suave i { height: 2px; background: rgba(11, 11, 13, 0.35); }
+html .dp .dp-regla__t { color: #0b0b0d; }
+html .dp .dp-regla__t--suave { color: #44444a; }
+html .dp .dp-regla__meta { font-family: var(--peg-cifra); font-weight: 800; letter-spacing: 0.08em; color: #44444a; }
+
+/* ── Catalogo ───────────────────────────────────────────────────────── */
+html .dp .dp-busca { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .dp .dp-busca:focus-within { box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html .dp .dp-busca input { color: #0b0b0d; }
+html .dp .dp-busca input::placeholder { color: #73737c; }
+/*  El negro va DENTRO del papel: el boton de ordenar es una chapa negra. */
+html .dp .dp-orden { transform: none; border-radius: 7px; background: #0b0b0d; box-shadow: none; color: #fff; }
+html .dp .dp-orden:hover { background: #2a2a30; }
+html .dp .dp-orden svg,
+html .dp .dp-orden span { transform: none; }
+
+html .dp .dp-marca { transform: none; border-radius: 9px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .dp .dp-marca span,
+html .dp .dp-marca em { transform: none; }
+html .dp .dp-marca span { color: #0b0b0d; }
+html .dp .dp-marca em { font-family: var(--peg-cifra); font-weight: 800; color: #55555c; }
+html .dp .dp-marca:hover { background: #e6e7ea; }
+html .dp .dp-marca:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-marca--on,
+html .dp .dp-marca--on:hover { background: #d81b55; }
+html .dp .dp-marca--on span,
+html .dp .dp-marca--on em { color: #000; }
+
+html .dp .dp-coche { border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-coche:hover { background: #e6e7ea; }
+html .dp .dp-coche--on,
+html .dp .dp-coche--on:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+/*  La bandeja de la foto se queda clara, para que se vea un coche oscuro.
+    Sin las rayas del fondo. */
+html .dp .dp-coche__foto { background: #c4c6ca; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-coche__foto::before { background-image: none; }
+html .dp .dp-coche__foto b { color: #55555c; }
+html .dp .dp-coche--on .dp-coche__foto { background: #dcdde0; }
+html .dp .dp-coche--on .dp-coche__foto b { color: #b3123f; }
+html .dp .dp-coche__nombre { color: #0b0b0d; }
+html .dp .dp-coche__precio { font-family: var(--peg-cifra); font-weight: 800; color: #44444a; }
+html .dp .dp-coche--on .dp-coche__precio { color: #0b0b0d; }
+html .dp .dp-chapita { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .dp .dp-chapita--bien { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .dp .dp-chapita--mal { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .dp .dp-vacio { color: #44444a; }
+
+/* ── Ficha ──────────────────────────────────────────────────────────── */
+html .dp .dp-barra__cab b { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html .dp .dp-barra__pista { height: 10px; border: 0; border-radius: 999px; overflow: hidden; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-barra__pista i { border-radius: 999px; background: var(--peg-rosa, #d81b55); }
+html .dp .dp-hoja { border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-hoja__fila span { color: #0b0b0d; }
+html .dp .dp-hoja__fila b { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+
+/* ── Color ──────────────────────────────────────────────────────────── */
+html .dp .dp-muestra { border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+/*  El anillo por FUERA: los dos tonos llenan la caja y taparian uno de
+    dentro. */
+html .dp .dp-muestra__caja { transform: none; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html .dp .dp-tono { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-tono:hover { background: #e6e7ea; transform: none; }
+html .dp .dp-tono i { transform: none; box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-tono span { color: #0b0b0d; }
+/*  --on lo pone Vue; de-tono--on, el script de la paleta al pulsar. */
+html .dp .dp-tono--on,
+html .dp .dp-tono--on:hover,
+html .dp .dp-tono.de-tono--on,
+html .dp .dp-tono.de-tono--on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .dp .dp-nota { border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+
+/* ── Aviso sobre el pie: peligro, rosa con tinta negra ──────────────── */
+html .dp .dp-aviso { border-radius: 11px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+
+/* ── Pie ────────────────────────────────────────────────────────────── */
+html .dp .dp-pie { box-shadow: inset 0 3px 0 #000; }
+html .dp .dp-btn { border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .dp .dp-btn kbd { background: #0b0b0d; font-family: var(--peg-cifra); font-weight: 800; color: #fff; }
+html .dp .dp-btn span { color: #0b0b0d; }
+html .dp .dp-btn:hover:not(:disabled) { background: #e6e7ea; }
+html .dp .dp-btn:active:not(:disabled) { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-btn:disabled { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #73737c; }
+html .dp .dp-btn:disabled span { color: #9a9aa3; }
+html .dp .dp-btn:disabled kbd { background: #9a9aa3; color: #fff; }
+html .dp .dp-btn.dp-btn--rosa:not(:disabled) { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .dp .dp-btn.dp-btn--rosa:hover:not(:disabled) { background: #df2f63; }
+html .dp .dp-btn.dp-btn--rosa:active:not(:disabled) { box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-btn.dp-btn--rosa:not(:disabled) span { color: #000; }
+html .dp .dp-btn.dp-btn--rosa:not(:disabled) kbd { background: #000; color: #fff; }
+
+/* ── Firmar la compra ───────────────────────────────────────────────── */
+html .dp .dp-velo { background: rgba(11, 11, 13, 0.55); }
+html .dp .dp-firma {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 18px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html .dp .dp-firma__cab { box-shadow: inset 0 -3px 0 #000; }
+html .dp .dp-metodo { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .dp .dp-metodo span { color: #0b0b0d; }
+html .dp .dp-metodo b { font-family: var(--peg-cifra); font-weight: 800; color: #44444a; }
+html .dp .dp-metodo:hover { background: #e6e7ea; }
+html .dp .dp-metodo:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .dp .dp-metodo--on,
+html .dp .dp-metodo--on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .dp .dp-metodo--on span,
+html .dp .dp-metodo--on b { color: #0b0b0d; }
+html .dp .dp-factura__fila { box-shadow: inset 0 -2px 0 rgba(11, 11, 13, 0.25); }
+html .dp .dp-factura__fila span { color: #0b0b0d; }
+html .dp .dp-factura__fila b { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html .dp .dp-factura__fila b.dp-suave { color: #55555c; }
+html .dp .dp-factura__fila--total { box-shadow: none; }
+html .dp .dp-factura__fila--total b { color: #b3123f; }
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html .dp .dp-riel__it { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .dp .dp-riel__it--on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .dp .dp-riel__marca { color: #0b0b0d; }
+
+/* ════════════════════════════════════════════════════════════════════
+   EL PANEL DE ADMINISTRACION (.ogn-*, .de-*)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Las zonas: riel, cabecera, paneles, mapa, pie de cifras, dialogos ─ */
+html .ogn-rail,
+html .ogn-head,
+html .ogn-panel,
+html .de-mapa,
+html .ogn-modal__card {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+/*  Las cuatro cifras del pie son piezas bajas: sombra algo mas corta. */
+html .ogn-bar__cell {
+    background: #dcdde0;
+    border-top-color: #dcdde0;
+    border-radius: 16px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html .ogn-bar__cell--btn:hover { background: #e6e7ea; }
+html .ogn-bar__label { color: #44444a; }
+html .ogn-bar__value { font-family: var(--peg-cifra); font-style: normal; font-weight: 800; color: #0b0b0d; }
+html .ogn-bar__value--accent { color: #b3123f; }
+/*  La caja del modo de colocar puntos es un .ogn-panel con degradado
+    propio. */
+html .de-creador__caja { background: #dcdde0; }
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html .ogn-rail__mark { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #d81b55; }
+html .ogn-rail__nav::before { background: #000; }
+html .ogn-rail__it { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .ogn-rail__it:hover { background: #2a2a30; color: #fff; }
+html .ogn-rail__it.is-on,
+html .ogn-rail__it.is-on:hover { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn-rail__word,
+html .ogn-rail__state,
+html .ogn-rail__foot.is-on .ogn-rail__state { color: #0b0b0d; }
+html .ogn-rail__dot { background: #9a9aa3; }
+html .ogn-rail__foot.is-on .ogn-rail__dot { background: #d81b55; box-shadow: 0 0 0 1.5px #000; }
+html .ogn-tip { transform: translateY(-50%); border-left-color: #000; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+
+/* ── Cabecera: el rotulo a brocha ───────────────────────────────────── */
+/*  «Panel de administracion», el unico de la pantalla. La caja mide lo
+    que media (un renglon de 1,25 vh a 1,5): la letra crece, la caja no. */
+html .ogn-head .ogn-kicker {
+    align-self: flex-start;
+    height: calc(1.875vh / var(--ogn-escala, 1));
+    overflow: visible;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(2vh / var(--ogn-escala, 1));
+    line-height: calc(1.875vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+html .ogn-h2 { color: #0b0b0d; }
+
+/* ── Cabeceras de zona y de dialogo: filete rosa macizo ─────────────── */
+html .ogn-panel__head { color: #0b0b0d; }
+html .ogn-panel__head::after,
+html .ogn-modal__head::after { border-radius: 2px; background: #d81b55; }
+html .ogn-panel__count { color: #44444a; }
+html .de-detalle__tabs::after,
+html .de-creador__tabs::after { background: #000; }
+html .ogn-modal__title { color: #0b0b0d; }
+html .ogn-modal__sub { color: #44444a; }
+html .ogn-modal__foot { background: none; box-shadow: inset 0 3px 0 #000; }
+
+/* ── Botones ────────────────────────────────────────────────────────── */
+html .ogn-btn { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-btn:hover:not(:disabled) { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-btn--ghost { color: #0b0b0d; }
+html .ogn-btn--quiet { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-btn--quiet:hover:not(:disabled) { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-btn--quiet:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  Primario y peligro: rosa con tinta negra. */
+html .ogn-btn--primary,
+html .ogn-btn--solid,
+html .ogn-btn--danger { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn-btn--danger { background: #dcdde0; color: #b3123f; }
+html .ogn-btn--primary:hover:not(:disabled),
+html .ogn-btn--solid:hover:not(:disabled),
+html .ogn-btn--danger:hover:not(:disabled) { background: #df2f63; color: #000; }
+html .ogn-btn--danger:hover:not(:disabled) { background: #d81b55; color: #0b0b0d; }
+html .ogn-btn--primary:active,
+html .ogn-btn--solid:active,
+html .ogn-btn--danger:active { box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-btn--quiet.ogn-btn--danger { box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .ogn-btn--quiet.ogn-btn--danger:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  Borrar: papel en reposo, rosa al pasar por encima. */
+html .ogn-btn.de-borrar:hover:not(:disabled) { background: #d81b55; color: #0b0b0d; }
+html .ogn-btn:disabled { box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-btn--quiet:disabled { box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Chapas ─────────────────────────────────────────────────────────── */
+html .ogn-chip { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn-chip--neutral,
+html .ogn-chip--warn { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn-chip--accent,
+html .ogn-chip--bad { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .ogn-chip--live { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .ogn-tabs__tab--on .ogn-chip { background: #000; box-shadow: none; color: #fff; }
+
+/* ── Filas y tarjetas ───────────────────────────────────────────────── */
+html .ogn-row,
+html .ogn-item,
+html .ogn-table__row { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn-item:hover,
+html .ogn-table__row:hover { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-item--on,
+html .ogn-table__row--on { background: #dcdde0; box-shadow: inset 0 0 0 2px #d81b55; }
+html .ogn-item--on:hover,
+html .ogn-table__row--on:hover { background: #ffe3ec; box-shadow: inset 0 0 0 2px #d81b55; }
+html .ogn-row__meta,
+html .ogn-item__meta { color: #44444a; }
+
+/* ── Campos, buscador, pestañas, interruptor, desplegable ───────────── */
+html .ogn-label,
+html .ogn-field__label,
+html .ogn-select__label,
+html .ogn-switch-row__label { color: #0b0b0d; }
+html .ogn-switch-row__hint { color: #55555c; }
+html .ogn-field__input { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn-field__input:hover { background: #e6e7ea; }
+html .ogn-field__input:focus { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .ogn-field__input::placeholder { color: #73737c; }
+
+html .ogn-search { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-search:focus-within { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html .ogn-search__icon { color: #0b0b0d; }
+html .ogn-search:focus-within .ogn-search__icon { color: #b3123f; }
+html .ogn-search__input { color: #0b0b0d; }
+html .ogn-search__input::placeholder { color: #73737c; }
+
+html .ogn-tabs__tab { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-tabs__tab:hover { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-tabs__tab:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-tabs__tab--on,
+html .ogn-tabs__tab--on:hover { background: #d81b55; color: #000; }
+html .de-cuenta { font-family: var(--peg-cifra); font-weight: 800; color: #44444a; }
+html .ogn-tabs__tab--on .de-cuenta { color: #000; }
+
+html .ogn-switch { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-switch--on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-switch__knob,
+html .ogn-switch--on .ogn-switch__knob { background: #0b0b0d; }
+
+html .ogn-select__control { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-select__control:hover { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-select__control:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-select__control--on,
+html .ogn-select__control--on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn-select__panel { border-top-color: #dcdde0; background: #dcdde0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; }
+html .ogn-select__option { color: #0b0b0d; }
+html .ogn-select__option:hover { background: #e6e7ea; color: #0b0b0d; }
+html .ogn-select__option--on,
+html .ogn-select__option--on:hover { background: #ffd6e4; color: #0b0b0d; }
+html .ogn-select__vacio { color: #55555c; }
+
+/* ── Estado vacio: el negro dentro del papel ────────────────────────── */
+html .ogn-empty { background: #0b0b0d; box-shadow: none; }
+html .ogn-empty__icon,
+html .ogn-empty__text { color: #fff; }
+
+/* ── Lo suyo del panel (.de-*) ──────────────────────────────────────── */
+html .de-nota { color: #44444a; }
+html .de-bloque,
+html .de-modal__der,
+html .de-fila,
+html .de-coche,
+html .de-cat-coche { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .de-fila:hover,
+html .de-coche:hover,
+html .de-cat-coche:hover { background: #e6e7ea; }
+/*  La cabecera de una categoria se pulsa (pliega y despliega). */
+html .de-cat__cab { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .de-cat__cab:hover { background: #e6e7ea; color: #0b0b0d; }
+html .de-cat__cab:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .de-cat-coche--on,
+html .de-cat-coche--on:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .de-cat-coche--puesto:hover { background: #dcdde0; }
+html .de-coche__img,
+html .de-cat-coche__img { background: #e6e7ea; box-shadow: inset 0 0 0 1.5px #000; }
+html .de-coche__m,
+html .de-cat-coche__m { color: #44444a; }
+html .de-coche__precio { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+
+html .de-mapa .leaflet-container { background: #e6e7ea; color: #0b0b0d; }
+html .de-mapa .leaflet-control-zoom a { background: #dcdde0; border-color: #000; color: #0b0b0d; }
+html .de-mapa .leaflet-control-zoom a:hover { background: #d81b55; color: #000; }
+
+/* ── Sacando fotos ──────────────────────────────────────────────────── */
+
+/* ════════════════════════════════════════════════════════════════════
+   LO DE main.css: prueba, financiacion, dialogos viejos, avisos, color
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── La prueba de conduccion ────────────────────────────────────────── */
+html .test-drive {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+html .test-drive .test-drive-header,
+html .test-drive .test-drive-timer .timer-label { color: #44444a; }
+html .test-drive .test-drive-header .tag { color: #0b0b0d; }
+html .test-drive .test-drive-timer .timer-display { font-family: var(--peg-cifra); font-weight: 800; color: #0b0b0d; }
+html .test-drive .test-drive-timer .timer-display.danger { color: #b3123f; }
+
+/*  Los avisos y la financiacion ya no van aqui: los avisos son de
+    origen_notify y la financiacion es un menu pequeño (css/dialogo.css). */
+
+/* ── Los dialogos viejos (.c-modal): borrar un concesionario o un coche ─ */
+/*  El original lleva !important en la caja; aqui tambien. */
+html .c-modal .modal-content {
+    background: #c4c6ca !important;
+    border-top: 4px solid #c4c6ca !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important;
+    color: #0b0b0d;
+}
+html .c-modal .title,
+html .c-modal .modal-body { color: #0b0b0d; }
+html .c-modal .modal-footer { border-top-color: #000 !important; }
+html .c-modal .btn-cancel,
+html .c-modal .btn-modal { color: #0b0b0d; }
+html .c-modal .btn-cancel::before,
+html .c-modal .btn-modal::before { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .c-modal .btn-cancel:hover::before,
+html .c-modal .btn-modal:hover::before { background: #e6e7ea; }
+html .c-modal .btn-cancel:active,
+html .c-modal .btn-modal:active { transform: translate(2px, 2px); }
+html .c-modal .btn-cancel:active::before,
+html .c-modal .btn-modal:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+/*  Confirmar un borrado es el boton de peligro del dialogo: rosa. */
+html .c-modal .modal-footer .btn-modal { color: #000; }
+html .c-modal .modal-footer .btn-modal::before { background: #d81b55; }
+html .c-modal .modal-footer .btn-modal:hover::before { background: #df2f63; }
+html .c-modal .btn-modal.btn-financing { color: #000; }
+html .c-modal .btn-modal.btn-financing::before { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .c-modal .btn-modal.btn-financing:hover::before { background: #df2f63; }
+html .c-modal .btn-modal.btn-financing:active::before { box-shadow: inset 0 0 0 1.5px #000; }
+html .c-modal .info-box { background-color: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+/*  La compra antigua (hoy se firma en .dp-firma): casi todo sale de los
+    tokens; a mano, la placa y el filete. */
+html .c-modal .purchase-modal-container .vehicle-info-section .vehicle-header .vehicle-icon { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .c-modal .purchase-modal-container .payment-section .section-title::after { border-radius: 2px; background: #d81b55; }
+html .c-modal .purchase-modal-container .payment-section .payment-methods-grid .payment-method-btn .payment-icon { background: #0b0b0d; box-shadow: none; }
+html .c-modal .purchase-modal-container .payment-section .payment-methods-grid .payment-method-btn .payment-icon i { color: #fff; }
+html .c-modal .purchase-modal-container .payment-section .payment-methods-grid .payment-method-btn:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .c-modal .purchase-modal-container .payment-section .payment-methods-grid .payment-method-btn:hover .payment-icon { background: #d81b55; }
+html .c-modal .purchase-modal-container .payment-section .payment-methods-grid .payment-method-btn:hover .payment-icon i { color: #000; }
+
+/* ── El selector de color (Coloris), que se monta en <body> ─────────── */
+html .clr-picker {
+    background: #dcdde0 !important;
+    border-top-color: #dcdde0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d !important;
+}
+html .clr-picker .clr-gradient,
+html .clr-picker .clr-hue,
+html .clr-picker .clr-alpha { box-shadow: inset 0 0 0 1.5px #000; }
+html .clr-picker .clr-marker { box-shadow: 0 0 0 1.5px #000; }
+html .clr-picker .clr-preview,
+html .clr-picker .clr-swatches button { box-shadow: inset 0 0 0 1.5px #000; }
+html .clr-picker input.clr-color,
+html .clr-picker input.clr-alpha,
+html .clr-picker input.clr-hue,
+html .clr-picker .clr-field input { background: #dcdde0 !important; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d !important; }
+html .clr-picker .clr-field input:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .clr-picker .clr-format { color: #44444a !important; }
+
+/* ══ PANEL DE ADMINISTRACION · REPASO VISUAL (04/10) ══════════════════════
+   Todos los paneles de administracion iguales: riel del servidor, cabecera
+   con chapa + rotulo + brocha, zonas gris perla con piezas blancas de canto
+   2.5, un solo tipo de campo, boton, interruptor y desplegable, borrar en
+   rojo, vacios en hueco gris a trazos y cifras en Oxanium.
+   ════════════════════════════════════════════════════════════════════ */
+
+/*  Lo comun a los paneles de administracion que usan el armazon .ogn-*
+    (riel, cabecera, zonas, campos, dialogos). Es el mismo bloque en
+    origen_dealership, origen_garages y org_parking: si se toca uno, se
+    tocan los tres. */
+
+/* ── Medida y tokens ────────────────────────────────────────────────── */
+/*  --peg-u es «un vh de la casa» (ya dividido por la escala de 2K/4K).
+    Las cifras dejan la monoespaciada: Oxanium, que solo viene en 800. */
+html {
+    --peg-u: calc(1vh / var(--ogn-escala, 1));
+    /*  Peligro (07/10): ya no es rojo. Pieza gris con letra rosa y, al
+        pasar por encima, rosa con tinta negra. */
+    --peg-rojo: #dcdde0;
+    --peg-rojo-2: #d81b55;
+}
+html .ogn-stage,
+html .ogn-modal,
+html .ogn-select__panel {
+    --arc-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --ogn-mono: "Oxanium", "Barlow Condensed", sans-serif;
+}
+html .ogn-mono { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; font-weight: 800; letter-spacing: 0.02em; }
+
+/* ── El riel: el mismo que el del servidor ──────────────────────────── */
+/*  64 de ancho, relleno 14/16, botones de 44 cada 51, placa de 44 girada
+    con 9 px debajo. La placa va en rosa (acento) con el icono negro. */
+html .ogn-rail { padding: 14px 0 16px; border-top: 4px solid #c4c6ca; }
+html .ogn-rail__mark {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    margin-bottom: 9px;
+    border-radius: 11px;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+    overflow: visible;
+    transform: rotate(-5deg);
+}
+html .ogn-rail__nav { gap: 7px; }
+html .ogn-rail__nav::before { width: 22px; height: 2px; margin: 2px 0 0; border-radius: 1px; background: #0b0b0d; }
+html .ogn-rail__it { border-radius: 10px; }
+html .ogn-rail__it svg { width: 20px; height: 20px; }
+/*  El rotulo vertical: letra de rotulo, que se lea. */
+html .ogn-rail__word { font-size: 15px; letter-spacing: 0.05em; color: #0b0b0d; }
+html .ogn-rail__state,
+html .ogn-rail__foot.is-on .ogn-rail__state { font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 0.05em; color: #44444a; }
+html .ogn-tip { font-size: 14px; letter-spacing: 0.03em; }
+
+/* ── La cabecera ────────────────────────────────────────────────────── */
+/*  Entradilla en chapa negra, titulo en rotulo grande y, DEBAJO, el rotulo
+    a brocha (el unico de la pantalla): sale del data-brocha del <h2>; sin
+    estas reglas el atributo no pinta nada, asi que en Nación no existe. */
+html .ogn-head { border-top: 4px solid #c4c6ca; padding-top: calc(var(--peg-u) * 1.5); padding-bottom: calc(var(--peg-u) * 1.7); }
+html .ogn-head__title { align-items: flex-start; gap: calc(var(--peg-u) * 0.7); }
+html .ogn-head .ogn-kicker {
+    align-self: flex-start;
+    height: auto;
+    padding: 3px 9px 2px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.3);
+    line-height: 1.25;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+    transform: none;
+    text-shadow: none;
+}
+html .ogn-head .ogn-h2 { font-size: calc(var(--peg-u) * 3.4); line-height: 0.95; letter-spacing: 0.005em; color: #0b0b0d; }
+html .ogn-head .ogn-h2[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    width: fit-content;
+    margin: calc(var(--peg-u) * 1) 0 0 calc(var(--peg-u) * 0.7);
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: calc(var(--peg-u) * 2.1);
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  A la derecha, todo del mismo alto: buscador, chapas y accion. */
+html .ogn-head__right { gap: calc(var(--peg-u) * 1.3); padding: 0 4px 0 0; }
+html .ogn-head__right .ogn-btn,
+html .ogn-head__right .ogn-search,
+html .ogn-head__right .ogn-select__control { box-sizing: border-box; height: calc(var(--peg-u) * 4.2); }
+html .ogn-head__right .ogn-btn { padding: 0 calc(var(--peg-u) * 1.6); font-size: calc(var(--peg-u) * 1.6); }
+html .ogn-head__right .ogn-search { min-width: calc(var(--peg-u) * 30); }
+html .ogn-head__right .ogn-chip { height: calc(var(--peg-u) * 4.2); box-sizing: border-box; padding: 0 calc(var(--peg-u) * 1.2); border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000; font-size: calc(var(--peg-u) * 1.5); }
+
+/* ── Zonas ──────────────────────────────────────────────────────────── */
+html .ogn-panel { border-top: 4px solid #c4c6ca; }
+html .ogn-panel__head { padding-bottom: calc(var(--peg-u) * 1.3); font-size: calc(var(--peg-u) * 2.1); letter-spacing: 0.01em; }
+html .ogn-panel__head::after,
+html .ogn-modal__head::after { height: 4px; border-radius: 2px; background: #d81b55; }
+html .ogn-panel__count { padding: 2px 8px 1px; border-radius: 6px; background: #0b0b0d; font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(var(--peg-u) * 1.25); letter-spacing: 0.02em; color: #fff; }
+
+/* ── Rotulo de seccion: letra de rotulo y filete rosa macizo ────────── */
+html .ogn-stage .ogn-label,
+html .ogn-modal .ogn-label {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--peg-u) * 1.1);
+    min-width: 0;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.75);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+html .ogn-stage .ogn-label::after,
+html .ogn-modal .ogn-label::after { content: ''; flex: 1; min-width: calc(var(--peg-u) * 2); height: 3px; border-radius: 2px; background: #d81b55; }
+
+/* ── Chapas ─────────────────────────────────────────────────────────── */
+html .ogn-chip {
+    padding: calc(var(--peg-u) * 0.3) calc(var(--peg-u) * 0.8) calc(var(--peg-u) * 0.2);
+    border-radius: 7px;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.3);
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+}
+/*  Las que son solo una cuenta: cifra. */
+html .ogn-panel__head .ogn-chip,
+html .ogn-chip--cifra { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; letter-spacing: 0.02em; }
+
+/* ── Botones: uno solo ──────────────────────────────────────────────── */
+html .ogn-btn { letter-spacing: 0.03em; }
+html .ogn-btn svg { flex: none; }
+/*  Peligro (borrar): pieza gris con letra rosa; rosa con tinta al pasar. */
+html .ogn-btn--danger { color: #b3123f; }
+html .ogn-btn--danger:hover:not(:disabled) { color: #0b0b0d; }
+html .ogn-btn--danger { background: var(--peg-rojo); }
+html .ogn-btn--danger:hover:not(:disabled) { background: var(--peg-rojo-2); }
+/*  El apagado: gris con forma de boton, canto gris y sin sombra. */
+html .ogn-btn:disabled,
+html .ogn-btn--primary:disabled,
+html .ogn-btn--solid:disabled,
+html .ogn-btn--danger:disabled { opacity: 1; background: transparent; box-shadow: inset 0 0 0 1.5px #73737c; color: #9a9aa3; cursor: default; }
+html .ogn-btn--quiet:disabled { box-shadow: inset 0 0 0 1.5px #73737c; }
+
+/* ── Campos: uno solo ───────────────────────────────────────────────── */
+html .ogn-field__label,
+html .ogn-select__label {
+    display: block;
+    height: auto;
+    font-family: var(--arc-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.35);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #55555c;
+}
+html .ogn-field__input {
+    height: calc(var(--peg-u) * 3.8);
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--arc-text);
+    font-weight: 600;
+    font-size: calc(var(--peg-u) * 1.5);
+    letter-spacing: 0;
+}
+html .ogn-field__input[type="number"] { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; letter-spacing: 0.02em; }
+html .ogn-field__input--area { height: auto; font-weight: 500; font-size: calc(var(--peg-u) * 1.45); line-height: 1.5; }
+html .ogn-field__input:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .ogn-field__input:disabled { opacity: 1; background: transparent; box-shadow: inset 0 0 0 1.5px #73737c; color: #73737c; }
+/*  El desplegable es un campo mas: mismo alto, mismo canto, sin sombra. */
+html .ogn-select__control,
+html .ogn-select__control:active { height: calc(var(--peg-u) * 3.8); border-radius: 10px; box-shadow: inset 0 0 0 1.5px #000; transform: none; }
+html .ogn-select__control--on,
+html .ogn-select__control--on:hover { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .ogn-select__value { letter-spacing: 0.02em; }
+/*  La lista va fija y sin coordenadas (asi no la recorta la caja), y su
+    sitio «natural» dentro de una columna flex es ARRIBA, encima del rotulo
+    y del propio campo. Se baja con un margen: rotulo + hueco + campo. */
+html .ogn-select__panel { border-top: 0; border-radius: 12px; min-width: calc(var(--peg-u) * 20); margin-top: calc(var(--peg-u) * 4.4); }
+html .ogn-select__label + .ogn-select__control + .ogn-select__panel { margin-top: calc(var(--peg-u) * 6.5); }
+html .ogn-select__option { font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+html .ogn-select__option--on::before { background: #d81b55; }
+html .ogn-select__vacio { font-style: italic; font-weight: 800; letter-spacing: 0.03em; }
+/*  El buscador. */
+html .ogn-search { box-sizing: border-box; min-height: calc(var(--peg-u) * 3.8); padding-top: 0; padding-bottom: 0; border-radius: 10px; }
+html .ogn-search__input,
+html .ogn-search__input::placeholder { font-family: var(--arc-text); font-weight: 600; font-size: calc(var(--peg-u) * 1.5); letter-spacing: 0; text-transform: none; }
+
+/* ── Interruptor: uno solo ──────────────────────────────────────────── */
+/*  Pista blanca con canto negro y punto negro; encendido, rosa. Cada
+    fila va en su hueco gris, para que se lea como una lista. */
+html .ogn-switch-row { padding: calc(var(--peg-u) * 0.85) calc(var(--peg-u) * 1.2); border-radius: 10px; background: #dcdde0; }
+html .ogn-switch-row__label { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.5); line-height: 1.2; letter-spacing: 0.02em; color: #0b0b0d; }
+html .ogn-switch-row__hint { font-size: calc(var(--peg-u) * 1.3); color: #55555c; }
+html .ogn-switch,
+html .ogn-switch--on { width: calc(var(--peg-u) * 4.4); height: calc(var(--peg-u) * 2.4); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn-switch__knob { left: calc(var(--peg-u) * 0.6); width: calc(var(--peg-u) * 1.2); height: calc(var(--peg-u) * 1.2); margin-top: calc(var(--peg-u) * -0.6); }
+html .ogn-switch--on .ogn-switch__knob { left: calc(100% - calc(var(--peg-u) * 1.8)); }
+
+/* ── Pestañas ───────────────────────────────────────────────────────── */
+html .ogn-tabs { gap: calc(var(--peg-u) * 0.9); }
+html .ogn-tabs__tab { font-size: calc(var(--peg-u) * 1.45); letter-spacing: 0.03em; }
+
+/* ── Filas y fichas de lista ────────────────────────────────────────── */
+/*  El nombre, entero: dos renglones antes que los puntos suspensivos. */
+html .ogn-item__name,
+html .ogn-row__name {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+}
+html .ogn-item__meta,
+html .ogn-row__meta { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.25); letter-spacing: 0.03em; color: #55555c; }
+html .ogn-item__meta.ogn-mono,
+html .ogn-row__meta.ogn-mono { font-style: normal; font-size: calc(var(--peg-u) * 1.2); letter-spacing: 0.02em; }
+html .ogn-list { gap: calc(var(--peg-u) * 0.9); padding: calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.4) calc(var(--peg-u) * 1.6); }
+
+/* ── Tablas: cabecera negra, filas blancas con canto ────────────────── */
+html .ogn-table__head { box-sizing: border-box; width: auto; margin: calc(var(--peg-u) * 1.2) calc(var(--peg-u) * 1.2) 0; border: 0; border-radius: 10px; background: #0b0b0d; }
+html .ogn-table__th { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.3); letter-spacing: 0.04em; color: #fff; }
+html .ogn-table__td--strong { letter-spacing: 0.01em; }
+
+/* ── Estado vacio: hueco gris con canto a trazos ────────────────────── */
+/*  El trazo es un outline hacia dentro: no cambia ninguna medida. */
+html .ogn-empty { background: #dcdde0; box-shadow: none; outline: 1.5px dashed #73737c; outline-offset: -1.5px; }
+/*  Solo en su zona: que llene el hueco, no una franja suelta arriba. */
+html .ogn-panel__body > .ogn-empty:only-child { box-sizing: border-box; min-height: 100%; }
+html .ogn-empty__icon { color: #73737c; }
+html .ogn-empty__text { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.6); line-height: 1.3; letter-spacing: 0.03em; color: #44444a; }
+
+/* ── El pie de cifras ───────────────────────────────────────────────── */
+html .ogn-bar__cell { border-top: 4px solid #dcdde0; padding-top: calc(var(--peg-u) * 0.9); padding-bottom: calc(var(--peg-u) * 1.1); }
+html .ogn-bar__label { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.04em; color: #55555c; }
+html .ogn-bar__value { font-size: calc(var(--peg-u) * 2.5); line-height: 1.1; letter-spacing: 0; }
+
+/* ── Dialogos ───────────────────────────────────────────────────────── */
+html .ogn-modal { background: rgba(11, 11, 13, 0.66); }
+html .ogn-modal__card { border-top: 4px solid #c4c6ca; }
+html .ogn-modal__title { font-size: calc(var(--peg-u) * 2.5); letter-spacing: 0.01em; }
+html .ogn-modal__sub { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.35); letter-spacing: 0.03em; color: #55555c; }
+/*  El pie, sin raya a sangre pegada a los botones. */
+html .ogn-modal__foot { background: none; box-shadow: none; gap: calc(var(--peg-u) * 1.2); padding-top: calc(var(--peg-u) * 0.6); }
+html .ogn-modal__foot .ogn-btn { min-width: calc(var(--peg-u) * 13); padding-top: calc(var(--peg-u) * 1.1); padding-bottom: calc(var(--peg-u) * 1.1); font-size: calc(var(--peg-u) * 1.55); }
+
+/* ── Lo suyo del concesionario (.de-*) ──────────────────────────────── */
+html .de-creador { --arc-cifra: "Oxanium", "Barlow Condensed", sans-serif; }
+/*  La raya negra bajo las pestañas sobraba: ya esta el filete rosa de la
+    cabecera de la zona justo encima. */
+html .de-detalle__tabs::after,
+html .de-creador__tabs::after { display: none; }
+html .de-detalle__tabs { padding-top: calc(var(--peg-u) * 1.3); padding-bottom: calc(var(--peg-u) * 0.4); }
+html .de-bloque { border-radius: 14px; padding: calc(var(--peg-u) * 1.7) calc(var(--peg-u) * 1.8) calc(var(--peg-u) * 1.8); }
+html .de-bloque__cab > .ogn-label { flex: 1 1 auto; font-size: calc(var(--peg-u) * 1.75); }
+html .de-nota { font-size: calc(var(--peg-u) * 1.4); line-height: 1.45; color: #44444a; }
+/*  La cuenta pegada a una pestaña o a un boton: chapa negra con cifra. */
+html .de-cuenta,
+html .ogn-tabs__tab--on .de-cuenta {
+    margin-left: calc(var(--peg-u) * 0.3);
+    padding: 1px 6px 0;
+    border-radius: 5px;
+    background: #0b0b0d;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: calc(var(--peg-u) * 1.15);
+    line-height: 1.35;
+    color: #fff;
+}
+/*  Los botones de una fila, con hueco: son botones, no una franja. */
+html .de-conce__acc,
+html .de-coche__acc,
+html .de-detalle__acc,
+html .de-acciones { gap: calc(var(--peg-u) * 0.9); }
+/*  Borrar: pieza gris con letra rosa; rosa con tinta al pasar. */
+html .ogn-btn.de-borrar { color: #b3123f; }
+html .ogn-btn.de-borrar:hover:not(:disabled) { color: #0b0b0d; }
+html .ogn-btn.de-borrar { background: var(--peg-rojo); }
+html .ogn-btn.de-borrar:hover:not(:disabled) { background: var(--peg-rojo-2); }
+/*  Una categoria: cabecera que se pulsa, y debajo sus coches. */
+html .de-cat { margin-top: calc(var(--peg-u) * 1.2); }
+html .de-cat__cab { border-radius: 10px; }
+html .de-cat__n { font-size: calc(var(--peg-u) * 1.7); letter-spacing: 0.02em; }
+html .de-cat__cab .ogn-chip { background: #0b0b0d; box-shadow: none; font-family: "Oxanium", "Barlow Condensed", sans-serif; font-style: normal; color: #fff; }
+html .de-fila { border-radius: 12px; padding: calc(var(--peg-u) * 1.3); align-items: flex-end; }
+html .de-fila__x { margin-bottom: 0; height: calc(var(--peg-u) * 3.8); box-sizing: border-box; }
+/*  La ficha de un coche: nombre entero, modelo y precio en cifra. */
+html .de-coche { border-radius: 12px; padding: calc(var(--peg-u) * 1.2); gap: calc(var(--peg-u) * 1.3); }
+html .de-coche__n,
+html .de-cat-coche__n { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; white-space: normal; line-height: 1.05; letter-spacing: 0.01em; }
+html .de-coche__m,
+html .de-cat-coche__m { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; font-size: calc(var(--peg-u) * 1.15); letter-spacing: 0.02em; color: #55555c; }
+html .de-coche__precio { font-size: calc(var(--peg-u) * 1.55); letter-spacing: 0; }
+html .de-coche__datos { gap: calc(var(--peg-u) * 0.6); }
+html .de-coche__img,
+html .de-cat-coche__img { border-radius: 9px; }
+/*  Las pestañas de los seis tipos de punto, a ras con el bloque de debajo. */
+html .ogn-tabs.de-hueco { margin-top: 0; padding: 0 0 calc(var(--peg-u) * 0.3); }
+
+/* ── El mapa: el hueco de fuera, del color del mar de las teselas ───── */
+/*  El original lleva !important (main.css); aqui tambien. */
+html .de-mapa .leaflet-container { background-color: #0ea8d2 !important; }
+html .de-mapa .leaflet-control-zoom { border: 0; box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000; border-radius: 8px; overflow: hidden; }
+html .de-mapa .leaflet-control-zoom a { font-style: normal; font-weight: 800; }
+
+/* ── El modo de colocar puntos ──────────────────────────────────────── */
+/*  La caja es una zona como las demas: gris perla, con las filas blancas
+    dentro. */
+html .de-creador__caja { background: #c4c6ca; }
+html .de-creador__tabs { padding-top: calc(var(--peg-u) * 1.4); }
+html .de-creador .ogn-list { padding: 0; overflow: visible; }
+html .de-tecla b { font-size: calc(var(--peg-u) * 1.2); letter-spacing: 0.03em; }
+html .de-tecla i { font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 1.4); letter-spacing: 0.03em; }
+
+
+/* ── Los dialogos de borrar (.c-modal) ──────────────────────────────── */
+/*  Como los demas dialogos: titulo en rotulo con su filete rosa, pregunta
+    en rotulo, y el pie sin raya a sangre, con «Cancelar» (papel) y despues
+    la accion; borrar, en rojo. */
+html .c-modal { background: rgba(11, 11, 13, 0.66); }
+html .c-modal .modal-content { border-top: 4px solid #c4c6ca !important; }
+html .c-modal .modal-header { position: relative; padding-bottom: calc(var(--peg-u) * 1.5); }
+html .c-modal .modal-header::after { content: ''; position: absolute; left: calc(var(--peg-u) * 2.2); right: calc(var(--peg-u) * 2.2); bottom: 0; height: 4px; border-radius: 2px; background: #d81b55; }
+html .c-modal .title { font-size: calc(var(--peg-u) * 2.5); letter-spacing: 0.01em; }
+html .c-modal .modal-body h2 { margin: 0 0 calc(var(--peg-u) * 0.8); font-family: var(--arc-cond); font-style: italic; font-weight: 800; font-size: calc(var(--peg-u) * 2.2); line-height: 1.1; letter-spacing: 0.01em; color: #0b0b0d; }
+html .c-modal .modal-body p { margin: 0; font-family: var(--arc-text); font-weight: 500; font-size: calc(var(--peg-u) * 1.45); line-height: 1.5; color: #44444a; }
+html .c-modal .modal-footer { justify-content: flex-end; gap: calc(var(--peg-u) * 1.4); margin-top: 0; border-top: 0 !important; }
+html .c-modal .modal-footer .btn-cancel { order: -1; }
+html .c-modal .modal-footer .btn-cancel,
+html .c-modal .modal-footer .btn-modal { min-width: calc(var(--peg-u) * 13); padding-top: calc(var(--peg-u) * 1.1); padding-bottom: calc(var(--peg-u) * 1.1); }
+html .c-modal .modal-footer .btn-modal[onclick*="delete"]::before { background: var(--peg-rojo); }
+html .c-modal .modal-footer .btn-modal[onclick*="delete"]:hover::before { background: var(--peg-rojo-2); }
+
+/* ══ fin del repaso de los paneles de administracion ══ */
+
+/* ══ EXPOSITOR · REPASO VISUAL (06/10) ═════════════════════════════════
+   El rotulo a brocha bajo el nombre del coche, como «Mochila personal» en
+   el inventario (el unico de la pantalla). Dice la categoria del coche
+   (o el concesionario si no hay ninguno elegido): sale del data-brocha de
+   .dp-cab__sub. La linea de datos (categoria · modelo · clase) se queda
+   oculta con visibility para no mover la altura de la cabecera: la clase
+   ya va en su chapa y el modelo en la Ficha. */
+html .dp .dp-cab__sub[data-brocha] {
+    position: relative;
+    overflow: visible;
+    visibility: hidden;
+}
+html .dp .dp-cab__sub[data-brocha]::after {
+    content: attr(data-brocha);
+    visibility: visible;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+/*  El velo del panel de administracion: el negro neutro de todos los paneles
+    a pantalla completa (ogn.css lo trae tostado). */
+html .ogn-stage .ogn-stage__veil { background: #b9bbc0; }
+
+/* Repaso 06/10: lo que desplaza dentro de una zona lleva su barra fina a la
+   vista (nada cortado a ciegas). */
+html .ogn-panel__body::-webkit-scrollbar { display: block; width: 5px; }
+html .ogn-panel__body::-webkit-scrollbar-track { background: transparent; }
+html .ogn-panel__body::-webkit-scrollbar-thumb { background: #0b0b0d; border-radius: 3px; }
+
+/* Repaso 06/10: el estado del pie del riel se lee de abajo arriba, como el
+   nombre del recurso (iba al reves que el). */
+html .ogn-stage .ogn-rail__state { transform: rotate(180deg); }
+
+/* ══ CIFRAS CENTRADAS (06/10) ══════════════════════════════════════════
+   Clase, iniciales de la foto, chapita de plazos, teclas del pie y el boton
+   de orden: con alturas de linea de 1,15-1,6 la letra quedaba 1-1,5 px alta
+   en su chapa. Linea 1 y el aire de arriba 1 px mayor (medido en pixel). */
+html .dp .dp-coche__foto b { line-height: 1; padding-top: 1px; }
+html .dp .dp-clase { padding: 4px 9px 3px; }
+html .dp .dp-clase--chica { padding: 3px 7px 2px; }
+html .dp .dp-clase b, html .dp .dp-clase--chica b { line-height: 1; }
+html .dp .dp-chapita { line-height: 1; padding: 3px 5px 2px; }
+html .dp .dp-btn kbd { display: inline-flex; align-items: center; justify-content: center; line-height: 1; padding: 3px 7px 2px; }
+html .dp .dp-orden { padding: 6px 10px 4px; }
+html .dp .dp-orden span { line-height: 1; }
+html .dp .dp-orden svg { flex: none; display: block; }
+
+/* ══ El menú pequeño dentro del concesionario (07/10) ══════════════════
+   La financiación (css/dialogo.css) se monta dentro de .dealership, cuya
+   regla `.dealership *` pone Barlow, relleno 0 y una transición a TODO lo de
+   dentro. Aquí se devuelve la letra heredada y se quita esa transición;
+   dialogo.css, que se carga después y pesa lo mismo, pone las suyas. */
+.dealership .odg * {
+    font-family: inherit;
+    transition: none;
+}
+
+/* ══ La placa de arriba del riel (07/10) ═══════════════════════════════
+   La del estándar (org-menu .riel__marca): pieza gris #dcdde0 con canto
+   negro, el dibujo en rosa, sin girar, y el filete negro corto debajo. El
+   rosa lleno es solo del botón elegido de un riel con pestañas. */
+html .dp .dp-riel__placa {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #d81b55;
+    transform: none;
+}
+html .dp .dp-riel__placa::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+html .dp .dp-riel__placa svg { width: 22px; height: 22px; }
+
+/* ══ La columna, apartada con la financiación abierta (07/10) ══════════
+   Como esta-tapado de origen_housing (ui/css/chico.css): con el menú pequeño
+   encima, la columna del concesionario sale por la derecha (por detrás del
+   riel, que se queda) y vuelve al cerrarlo. Sigue montada: no se pierde lo
+   elegido. El desplazamiento es su ancho + hueco + riel + margen. */
+html .dealership .dp > .dp-col {
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+html .dealership .dp.esta-tapado > .dp-col {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(calc(100% + 120px));
+}
+
+/* ══ LA BARRA DE ABAJO (07/10) ══════════════════════════════════════════
+   Copia de origen_map/kit/barra-abajo.css (las interfaces Vite la importan
+   al compilar; esta página es HTML a pelo): si cambia una medida allí,
+   cambia aquí también. La unidad vale 1 px a 1920x1080, encoge en
+   pantallas más estrechas y, con la escala de >1080p, va dividida como el
+   resto de vh/vw de la página. */
+:root {
+    --bab-u: min(calc(100vh / var(--ogn-escala, 1) / 1080), calc(100vw / var(--ogn-escala, 1) / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-placa: calc(var(--bab-u) * 28);
+    --bab-placa-radio: calc(var(--bab-u) * 8);
+    --bab-placa-icono: calc(var(--bab-u) * 15);
+    --bab-titulo: calc(var(--bab-u) * 20);
+    --bab-titulo-max: calc(var(--bab-u) * 260);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-tecla: calc(var(--bab-u) * 12);
+    --bab-tecla-min: calc(var(--bab-u) * 22);
+    --bab-tecla-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 7) calc(var(--bab-u) * 3);
+    --bab-tecla-radio: calc(var(--bab-u) * 6);
+    --bab-tecla-icono: calc(var(--bab-u) * 13);
+    --bab-dato: calc(var(--bab-u) * 12.5);
+    --bab-dato-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 8) calc(var(--bab-u) * 3);
+    --bab-dato-radio: calc(var(--bab-u) * 7);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+/*  Las teclas del modo de colocar puntos: la barra de abajo del servidor, en
+    UNA línea fina centrada (antes, botones sueltos sesgados que saltaban de
+    línea). Sin rótulo, como la de teclas del HUD: el panel del creador ya
+    dice qué se coloca. Las teclas en chapa negra con la letra blanca. */
+html .de-teclas.de-teclas {
+    left: 50%;
+    right: auto;
+    bottom: var(--bab-abajo);
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--bab-hueco);
+    width: max-content;
+    height: var(--bab-alto);
+    margin: 0;
+    padding: 0 var(--bab-pad);
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    white-space: nowrap;
+}
+html .de-teclas .de-tecla {
+    gap: var(--bab-hueco-tecla);
+    padding: 0;
+}
+html .de-teclas .de-tecla::before,
+html .de-teclas .de-tecla:first-child::before { content: none; }
+html .de-teclas .de-tecla b,
+html .de-teclas .de-tecla:first-child b {
+    box-sizing: border-box;
+    min-width: var(--bab-tecla-min);
+    padding: var(--bab-tecla-pad);
+    border-radius: var(--bab-tecla-radio);
+    background: #0b0b0d;
+    box-shadow: none;
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: var(--bab-tecla);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+}
+html .de-teclas .de-tecla i,
+html .de-teclas .de-tecla:first-child i {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+
+/* ══ Brocha de la financiación (08/10) ══════════════════════════════════
+   El menú pequeño de los plazos era la única pantalla del jugador sin
+   rótulo a brocha (la columna del concesionario se aparta al abrirlo, así
+   que sigue habiendo una sola). Va en flujo bajo el título, antes del
+   renglón, para que empuje y no pise. Aquí y no en dialogo.css porque esa
+   hoja es la misma en cuatro recursos. Rosa literal: en Nación lo repinta
+   kit/marca.js. */
+html .odg .odg-cab__t[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    margin: 6px 0 3px 2px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}

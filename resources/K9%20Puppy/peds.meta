@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CPedModelInfo__InitDataList>
+   <InitDatas>
+    <Item>
+      <Name>k9puppy</Name>
+      <PropsName>null</PropsName>
+      <ClipDictionaryName>creatures@pug@move</ClipDictionaryName>
+      <BlendShapeFileName>null</BlendShapeFileName>
+      <ExpressionSetName />
+      <ExpressionDictionaryName>A_C_Pug</ExpressionDictionaryName>
+      <ExpressionName>A_C_Pug</ExpressionName>
+      <Pedtype>ANIMAL</Pedtype>
+      <MovementClipSet>creatures@pug@move</MovementClipSet>
+      <StrafeClipSet>move_ped_strafing</StrafeClipSet>
+      <MovementToStrafeClipSet>move_ped_to_strafe</MovementToStrafeClipSet>
+      <InjuredStrafeClipSet>move_strafe_injured</InjuredStrafeClipSet>
+      <FullBodyDamageClipSet>dam_ko</FullBodyDamageClipSet>
+      <AdditiveDamageClipSet>dam_ad</AdditiveDamageClipSet>
+      <DefaultGestureClipSet>ANIM_GROUP_GESTURE_M_GENERIC</DefaultGestureClipSet>
+      <FacialClipsetGroupName>facial_clipset_group_gen_male</FacialClipsetGroupName>
+      <DefaultVisemeClipSet>ANIM_GROUP_VISEMES_M_LO</DefaultVisemeClipSet>
+      <SidestepClipSet>creatures@pug@step</SidestepClipSet>
+      <PoseMatcherName>pug</PoseMatcherName>
+      <PoseMatcherProneName>null</PoseMatcherProneName>
+      <GetupSetHash>NMBS_PUG_GETUPS</GetupSetHash>
+      <CreatureMetadataName>null</CreatureMetadataName>
+      <DecisionMakerName>SmallAnimal</DecisionMakerName>
+      <MotionTaskDataSetName>Retriever</MotionTaskDataSetName>
+      <DefaultTaskDataSetName>ANIMAL</DefaultTaskDataSetName>
+      <PedCapsuleName>pug</PedCapsuleName>
+      <PedLayoutName />
+      <PedComponentSetName />
+      <PedComponentClothName />
+      <PedIKSettingsName>STANDARD_DOG_IK</PedIKSettingsName>
+      <TaskDataName>DOG</TaskDataName>
+      <IsStreamedGfx value="true" />
+      <AmbulanceShouldRespondTo value="false" />
+      <CanRideBikeWithNoHelmet value="false" />
+      <CanSpawnInCar value="true" />
+      <IsHeadBlendPed value="false" />
+      <bOnlyBulkyItemVariations value="false" />
+      <RelationshipGroup>DOMESTIC_ANIMAL</RelationshipGroup>
+      <NavCapabilitiesName>STANDARD_QUADRUPED</NavCapabilitiesName>
+      <PerceptionInfo>DEFAULT_PERCEPTION</PerceptionInfo>
+      <DefaultBrawlingStyle>BS_DOG_SMALL</DefaultBrawlingStyle>
+      <DefaultUnarmedWeapon>WEAPON_SMALL_DOG</DefaultUnarmedWeapon>
+      <Personality>SMALL_DOG</Personality>
+      <CombatInfo>SCARED_ANIMAL</CombatInfo>
+      <VfxInfoName>VFXPEDINFO_DOG_CAT_GENERIC</VfxInfoName>
+      <AmbientClipsForFlee>FLEE</AmbientClipsForFlee>
+      <Radio1>RADIO_GENRE_PUNK</Radio1>
+      <Radio2>RADIO_GENRE_JAZZ</Radio2>
+      <FUpOffset value="0.000000" />
+      <RUpOffset value="0.000000" />
+      <FFrontOffset value="0.000000" />
+      <RFrontOffset value="0.147000" />
+      <MinActivationImpulse value="20.000000" />
+      <Stubble value="0.000000" />
+      <HDDist value="6.000000" />
+      <TargetingThreatModifier value="0.050000" />
+      <KilledPerceptionRangeModifer value="-1.000000" />
+      <Sexiness />
+      <Age value="0" />
+      <MaxPassengersInCar value="0" />
+      <ExternallyDrivenDOFs />
+      <PedVoiceGroup>MALE_BRAVE_PVG</PedVoiceGroup>
+      <AnimalAudioObject>ANIMAL_PARAMS_SMALLDOG</AnimalAudioObject>
+      <AbilityType>SAT_NONE</AbilityType>
+      <ThermalBehaviour>TB_COLD</ThermalBehaviour>
+      <SuperlodType>SLOD_KEEP_LOWEST</SuperlodType>
+      <ScenarioPopStreamingSlot>SCENARIO_POP_STREAMING_NORMAL</ScenarioPopStreamingSlot>
+      <DefaultSpawningPreference>DSP_NORMAL</DefaultSpawningPreference>
+      <DefaultRemoveRangeMultiplier value="1.000000" />
+      <AllowCloseSpawning value="false" />
+    </Item>
+   </InitDatas>
+</CPedModelInfo__InitDataList>

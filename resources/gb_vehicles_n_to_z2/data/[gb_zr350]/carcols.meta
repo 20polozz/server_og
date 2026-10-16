@@ -1,0 +1,4652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+    <Item>
+      <kitName>19367_gbzr350_modkit</kitName>
+      <id value="19367" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+		<!--LIVERIES-->
+		<Item>
+          <modelName>gbzr350_livery_1</modelName>
+          <modShopLabel>GBZR350_LIVERY_1</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_2</modelName>
+          <modShopLabel>GBZR350_LIVERY_2</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_3</modelName>
+          <modShopLabel>GBZR350_LIVERY_3</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_4</modelName>
+          <modShopLabel>GBZR350_LIVERY_4</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_5</modelName>
+          <modShopLabel>GBZR350_LIVERY_5</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_6</modelName>
+          <modShopLabel>GBZR350_LIVERY_6</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_7</modelName>
+          <modShopLabel>GBZR350_LIVERY_7</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_8</modelName>
+          <modShopLabel>GBZR350_LIVERY_8</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_9</modelName>
+          <modShopLabel>GBZR350_LIVERY_9</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_10</modelName>
+          <modShopLabel>GBZR350_LIVERY_10</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_11</modelName>
+          <modShopLabel>GBZR350_LIVERY_11</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_12</modelName>
+          <modShopLabel>GBZR350_LIVERY_12</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_13</modelName>
+          <modShopLabel>GBZR350_LIVERY_13</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_14</modelName>
+          <modShopLabel>GBZR350_LIVERY_14</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_15</modelName>
+          <modShopLabel>GBZR350_LIVERY_15</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_16</modelName>
+          <modShopLabel>GBZR350_LIVERY_16</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_livery_17</modelName>
+          <modShopLabel>GBZR350_LIVERY_17</modShopLabel>
+          <linkedModels>
+		    <Item></Item>
+		  </linkedModels>
+          <turnOffBones>
+			<Item></Item>
+          </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone />
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BREM</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_u</Item>
+          </turnOffBones>
+          <type>VMT_PLTVANITY</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_fendl0a</modelName>
+          <modShopLabel>GBZR350_FEND0A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_fendr0a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+			<Item>misc_t</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>extra_3</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_fendl1</modelName>
+          <modShopLabel>GBZR350_FEND1</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_fendr1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+			<Item>misc_t</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>extra_3</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_fendl1a</modelName>
+          <modShopLabel>GBZR350_FEND1A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_fendr1a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_s</Item>
+			<Item>misc_t</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>extra_3</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf0a</modelName>
+          <modShopLabel>GBZR350_BUMF0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf1</modelName>
+          <modShopLabel>GBZR350_BUMF1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf1a</modelName>
+          <modShopLabel>GBZR350_BUMF1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf2</modelName>
+          <modShopLabel>GBZR350_BUMF2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf3</modelName>
+          <modShopLabel>GBZR350_BUMF3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf4</modelName>
+          <modShopLabel>GBZR350_BUMF4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf5</modelName>
+          <modShopLabel>GBZR350_BUMF5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf5a</modelName>
+          <modShopLabel>GBZR350_BUMF5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf5b</modelName>
+          <modShopLabel>GBZR350_BUMF5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf5c</modelName>
+          <modShopLabel>GBZR350_BUMF5C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf6</modelName>
+          <modShopLabel>GBZR350_BUMF6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf7</modelName>
+          <modShopLabel>GBZR350_BUMF7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf7a</modelName>
+          <modShopLabel>GBZR350_BUMF7A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf8</modelName>
+          <modShopLabel>GBZR350_BUMF8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf9</modelName>
+          <modShopLabel>GBZR350_BUMF9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf9</modelName>
+          <modShopLabel>GBZR350_BUMF9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf9a</modelName>
+          <modShopLabel>GBZR350_BUMF9A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf9b</modelName>
+          <modShopLabel>GBZR350_BUMF9B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf9c</modelName>
+          <modShopLabel>GBZR350_BUMF9C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf10</modelName>
+          <modShopLabel>GBZR350_BUMF10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf11</modelName>
+          <modShopLabel>GBZR350_BUMF11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bumf11a</modelName>
+          <modShopLabel>GBZR350_BUMF11A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_c</Item>
+            <Item>misc_d</Item>
+            <Item>misc_e</Item>
+            <Item>misc_f</Item>
+            <Item>misc_z</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR0A</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr0a</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR0B</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr0b</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR2</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr2</Item>
+		  </linkedModels>
+          <turnOffBones />
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR3</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr3</Item>
+		  </linkedModels>
+          <turnOffBones />
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR3A</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr3a</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_null</modelName>
+          <modShopLabel>GBZR350_BUMR3B</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr3b</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh1_5</modelName>
+          <modShopLabel>GBZR350_BUMR1</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr1</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh4</modelName>
+          <modShopLabel>GBZR350_BUMR4</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr4</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh1_5</modelName>
+          <modShopLabel>GBZR350_BUMR5</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr5</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh6</modelName>
+          <modShopLabel>GBZR350_BUMR6</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr6</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh7</modelName>
+          <modShopLabel>GBZR350_BUMR7</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr7</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh8</modelName>
+          <modShopLabel>GBZR350_BUMR8</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr8</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_exh8a</modelName>
+          <modShopLabel>GBZR350_BUMR8A</modShopLabel>
+          <linkedModels>
+            <Item>gbzr350_bumr8</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>misc_v</Item>
+            <Item>misc_a</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood0a</modelName>
+          <modShopLabel>GBZR350_HOOD0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood1</modelName>
+          <modShopLabel>GBZR350_HOOD1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+			<Item>misc_y</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood1a</modelName>
+          <modShopLabel>GBZR350_HOOD1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+			<Item>misc_y</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood2</modelName>
+          <modShopLabel>GBZR350_HOOD2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+			<Item>misc_y</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood2a</modelName>
+          <modShopLabel>GBZR350_HOOD2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+			<Item>misc_y</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood3</modelName>
+          <modShopLabel>GBZR350_HOOD3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood3a</modelName>
+          <modShopLabel>GBZR350_HOOD3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood4</modelName>
+          <modShopLabel>GBZR350_HOOD4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood4a</modelName>
+          <modShopLabel>GBZR350_HOOD4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood5</modelName>
+          <modShopLabel>GBZR350_HOOD5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood5a</modelName>
+          <modShopLabel>GBZR350_HOOD5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood6</modelName>
+          <modShopLabel>GBZR350_HOOD6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_hood6a</modelName>
+          <modShopLabel>GBZR350_HOOD6A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hpin1</modelName>
+          <modShopLabel>GBZR350_HPIN1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin1a</modelName>
+          <modShopLabel>GBZR350_HPIN1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin2</modelName>
+          <modShopLabel>GBZR350_HPIN2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin2a</modelName>
+          <modShopLabel>GBZR350_HPIN2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin3</modelName>
+          <modShopLabel>GBZR350_HPIN3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin3a</modelName>
+          <modShopLabel>GBZR350_HPIN3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin4</modelName>
+          <modShopLabel>GBZR350_HPIN4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hpin4a</modelName>
+          <modShopLabel>GBZR350_HPIN4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_ICE</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+		<Item>
+          <modelName>gbzr350_mirl0a</modelName>
+          <modShopLabel>GBZR350_MIR0A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr0a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl1</modelName>
+          <modShopLabel>GBZR350_MIR1</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl1a</modelName>
+          <modShopLabel>GBZR350_MIR1A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr1a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl2</modelName>
+          <modShopLabel>GBZR350_MIR2</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr2</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl2a</modelName>
+          <modShopLabel>GBZR350_MIR2A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr2a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl3</modelName>
+          <modShopLabel>GBZR350_MIR3</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr3</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_mirl3a</modelName>
+          <modShopLabel>GBZR350_MIR3A</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_mirr3a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_w</Item>
+			<Item>misc_x</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_dtriml1</modelName>
+          <modShopLabel>GBZR350_DTRIM1</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_dtrimr1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+			<Item>misc_p</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_dtriml2</modelName>
+          <modShopLabel>GBZR350_DTRIM2</modShopLabel>
+          <linkedModels>
+          <Item>gbzr350_dtrimr2</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_o</Item>
+			<Item>misc_p</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel0a</modelName>
+          <modShopLabel>GBZR350_HLITEL0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel0b</modelName>
+          <modShopLabel>GBZR350_HLITEL0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_g</Item>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel0c</modelName>
+          <modShopLabel>GBZR350_HLITEL0C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_g</Item>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel1</modelName>
+          <modShopLabel>GBZR350_HLITEL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel1a</modelName>
+          <modShopLabel>GBZR350_HLITEL1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel2</modelName>
+          <modShopLabel>GBZR350_HLITEL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel2a</modelName>
+          <modShopLabel>GBZR350_HLITEL2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel3</modelName>
+          <modShopLabel>GBZR350_HLITEL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_g</Item>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+		<Item>
+          <modelName>gbzr350_hlitel3i</modelName>
+          <modShopLabel>GBZR350_HLITEL3I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3y</modelName>
+          <modShopLabel>GBZR350_HLITEL3Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3a</modelName>
+          <modShopLabel>GBZR350_HLITEL3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_g</Item>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hlitel3ai</modelName>
+          <modShopLabel>GBZR350_HLITEL3AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_g</Item>
+			<Item>misc_i</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>         
+		<Item>
+          <modelName>gbzr350_hlitel3ay</modelName>
+          <modShopLabel>GBZR350_HLITEL3AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3b</modelName>
+          <modShopLabel>GBZR350_HLITEL3B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3bi</modelName>
+          <modShopLabel>GBZR350_HLITEL3BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3by</modelName>
+          <modShopLabel>GBZR350_HLITEL3BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3c</modelName>
+          <modShopLabel>GBZR350_HLITEL3C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3ci</modelName>
+          <modShopLabel>GBZR350_HLITEL3CI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3cy</modelName>
+          <modShopLabel>GBZR350_HLITEL3CY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3d</modelName>
+          <modShopLabel>GBZR350_HLITEL3D</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3di</modelName>
+          <modShopLabel>GBZR350_HLITEL3DI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel3dy</modelName>
+          <modShopLabel>GBZR350_HLITEL3DY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel4</modelName>
+          <modShopLabel>GBZR350_HLITEL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4y</modelName>
+          <modShopLabel>GBZR350_HLITEL4Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4i</modelName>
+          <modShopLabel>GBZR350_HLITEL4I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel4a</modelName>
+          <modShopLabel>GBZR350_HLITEL4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4ay</modelName>
+          <modShopLabel>GBZR350_HLITEL4AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4ai</modelName>
+          <modShopLabel>GBZR350_HLITEL4AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel4b</modelName>
+          <modShopLabel>GBZR350_HLITEL4B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4by</modelName>
+          <modShopLabel>GBZR350_HLITEL4BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hlitel4bi</modelName>
+          <modShopLabel>GBZR350_HLITEL4BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5</modelName>
+          <modShopLabel>GBZR350_HLITEL5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5i</modelName>
+          <modShopLabel>GBZR350_HLITEL5I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5y</modelName>
+          <modShopLabel>GBZR350_HLITEL5Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5a</modelName>
+          <modShopLabel>GBZR350_HLITEL5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5ai</modelName>
+          <modShopLabel>GBZR350_HLITEL5AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5ay</modelName>
+          <modShopLabel>GBZR350_HLITEL5AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5b</modelName>
+          <modShopLabel>GBZR350_HLITEL5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5bi</modelName>
+          <modShopLabel>GBZR350_HLITEL5BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hlitel5by</modelName>
+          <modShopLabel>GBZR350_HLITEL5BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_g</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter0a</modelName>
+          <modShopLabel>GBZR350_HLITER0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter0b</modelName>
+          <modShopLabel>GBZR350_HLITER0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter0c</modelName>
+          <modShopLabel>GBZR350_HLITER0C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter1</modelName>
+          <modShopLabel>GBZR350_HLITER1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter1a</modelName>
+          <modShopLabel>GBZR350_HLITER1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter2</modelName>
+          <modShopLabel>GBZR350_HLITER2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter2a</modelName>
+          <modShopLabel>GBZR350_HLITER2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>misc_i</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter3</modelName>
+          <modShopLabel>GBZR350_HLITER3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+		<Item>
+          <modelName>gbzr350_hliter3i</modelName>
+          <modShopLabel>GBZR350_HLITER3I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3y</modelName>
+          <modShopLabel>GBZR350_HLITER3Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3a</modelName>
+          <modShopLabel>GBZR350_HLITER3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>gbzr350_hliter3ai</modelName>
+          <modShopLabel>GBZR350_HLITER3AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>         
+		<Item>
+          <modelName>gbzr350_hliter3ay</modelName>
+          <modShopLabel>GBZR350_HLITER3AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3b</modelName>
+          <modShopLabel>GBZR350_HLITER3B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3bi</modelName>
+          <modShopLabel>GBZR350_HLITER3BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3by</modelName>
+          <modShopLabel>GBZR350_HLITER3BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3c</modelName>
+          <modShopLabel>GBZR350_HLITER3C</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3ci</modelName>
+          <modShopLabel>GBZR350_HLITER3CI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3cy</modelName>
+          <modShopLabel>GBZR350_HLITER3CY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3d</modelName>
+          <modShopLabel>GBZR350_HLITER3D</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3di</modelName>
+          <modShopLabel>GBZR350_HLITER3DI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter3dy</modelName>
+          <modShopLabel>GBZR350_HLITER3DY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter4</modelName>
+          <modShopLabel>GBZR350_HLITER4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+ <Item>
+          <modelName>gbzr350_hliter4y</modelName>
+          <modShopLabel>GBZR350_HLITER4Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+ <Item>
+          <modelName>gbzr350_hliter4i</modelName>
+          <modShopLabel>GBZR350_HLITER4I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter4a</modelName>
+          <modShopLabel>GBZR350_HLITER4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+ <Item>
+          <modelName>gbzr350_hliter4ay</modelName>
+          <modShopLabel>GBZR350_HLITER4AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+ <Item>
+          <modelName>gbzr350_hliter4ai</modelName>
+          <modShopLabel>GBZR350_HLITER4AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter4b</modelName>
+          <modShopLabel>GBZR350_HLITER4B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hliter4by</modelName>
+          <modShopLabel>GBZR350_HLITER4BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+<Item>
+          <modelName>gbzr350_hliter4bi</modelName>
+          <modShopLabel>GBZR350_HLITER4BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5</modelName>
+          <modShopLabel>GBZR350_HLITER5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5i</modelName>
+          <modShopLabel>GBZR350_HLITER5I</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5y</modelName>
+          <modShopLabel>GBZR350_HLITER5Y</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5a</modelName>
+          <modShopLabel>GBZR350_HLITER5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5ai</modelName>
+          <modShopLabel>GBZR350_HLITER5AI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5ay</modelName>
+          <modShopLabel>GBZR350_HLITER5AY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5b</modelName>
+          <modShopLabel>GBZR350_HLITER5B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5bi</modelName>
+          <modShopLabel>GBZR350_HLITER5BI</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_hliter5by</modelName>
+          <modShopLabel>GBZR350_HLITER5BY</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_h</Item>
+            <Item>misc_j</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt0a</modelName>
+		  <modShopLabel>GBZR350_SKIRT0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt0b</modelName>
+		  <modShopLabel>GBZR350_SKIRT0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt1</modelName>
+		  <modShopLabel>GBZR350_SKIRT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt2</modelName>
+		  <modShopLabel>GBZR350_SKIRT2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt3</modelName>
+		  <modShopLabel>GBZR350_SKIRT3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_2</Item>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt3a</modelName>
+		  <modShopLabel>GBZR350_SKIRT3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_2</Item>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt4</modelName>
+		  <modShopLabel>GBZR350_SKIRT4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt5</modelName>
+		  <modShopLabel>GBZR350_SKIRT5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt6</modelName>
+		  <modShopLabel>GBZR350_SKIRT6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt7</modelName>
+		  <modShopLabel>GBZR350_SKIRT7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_2</Item>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_skirt8</modelName>
+		  <modShopLabel>GBZR350_SKIRT8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl0</modelName>
+		  <modShopLabel>GBZR350_SPL0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl1</modelName>
+		  <modShopLabel>GBZR350_SPL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl1a</modelName>
+		  <modShopLabel>GBZR350_SPL1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl2</modelName>
+		  <modShopLabel>GBZR350_SPL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl2a</modelName>
+		  <modShopLabel>GBZR350_SPL2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl3</modelName>
+		  <modShopLabel>GBZR350_SPL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl4</modelName>
+		  <modShopLabel>GBZR350_SPL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl5</modelName>
+		  <modShopLabel>GBZR350_SPL5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl5a</modelName>
+		  <modShopLabel>GBZR350_SPL5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl6</modelName>
+		  <modShopLabel>GBZR350_SPL6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl7</modelName>
+		  <modShopLabel>GBZR350_SPL7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl8</modelName>
+		  <modShopLabel>GBZR350_SPL8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl9</modelName>
+		  <modShopLabel>GBZR350_SPL9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl10</modelName>
+		  <modShopLabel>GBZR350_SPL10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl11</modelName>
+		  <modShopLabel>GBZR350_SPL11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl12</modelName>
+		  <modShopLabel>GBZR350_SPL12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl13</modelName>
+		  <modShopLabel>GBZR350_SPL13</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl14</modelName>
+		  <modShopLabel>GBZR350_SPL14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl15</modelName>
+		  <modShopLabel>GBZR350_SPL15</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl16</modelName>
+		  <modShopLabel>GBZR350_SPL16</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_spl17</modelName>
+		  <modShopLabel>GBZR350_SPL17</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_trunk1</modelName>
+		  <modShopLabel>GBZR350_TRUNK1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_1</Item>
+			<Item>misc_n</Item>
+			<Item>windscreen_r</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tail1</modelName>
+          <modShopLabel>GBZR350_TAIL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_l</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>bodyshell</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tail2</modelName>
+          <modShopLabel>GBZR350_TAIL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_l</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>bodyshell</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tail3</modelName>
+          <modShopLabel>GBZR350_TAIL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_l</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>bodyshell</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tail4</modelName>
+          <modShopLabel>GBZR350_TAIL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_l</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>bodyshell</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_stwheel11</modelName>
+          <modShopLabel>SMOD2_STEER11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_stwheel12</modelName>
+          <modShopLabel>SMOD2_STEER12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_sports1_smod</modelName>
+          <modShopLabel>SMOD_BSEAT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_b</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>gbzr350_bucketb2_smod</modelName>
+          <modShopLabel>SMOD_BSEAT6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_b</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>gbzr350_cage1</modelName>
+          <modShopLabel>SULTAN_CAGE1</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>gbzr350_cage2</modelName>
+          <modShopLabel>SULTAN_CAGE2</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_roof1</modelName>
+          <modShopLabel>GBZR350_ROOF1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_r</Item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tcover0a</modelName>
+          <modShopLabel>GBZR350_TCOVER0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>misc_k</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tcover1</modelName>
+          <modShopLabel>GBZR350_TCOVER1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>misc_k</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tcover2</modelName>
+          <modShopLabel>GBZR350_TCOVER2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>misc_k</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tcover3</modelName>
+          <modShopLabel>GBZR350_TCOVER3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>misc_k</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_tcover4</modelName>
+          <modShopLabel>GBZR350_TCOVER4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>misc_k</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>gbzr350_strip1</modelName>
+          <modShopLabel>GBZR350_STRIP1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+    </visibleMods>
+      <linkMods>
+		<Item>
+			<modelName>gbzr350_fendr0a</modelName>
+			<bone>extra_2</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_fendr1</modelName>
+			<bone>extra_2</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_fendr1a</modelName>
+			<bone>extra_2</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr0a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr1</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr1a</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr2</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr2a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr3</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_mirr3a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr0a</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr0b</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr1</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr2</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr3</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr3a</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr3b</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr4</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr5</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr6</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr7</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_bumr8</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_dtrimr1</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>gbzr350_dtrimr2</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="5" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+        <Item>
+          <slot>VMT_ICE</slot>
+          <name>TOP_CATCH</name>
+        </Item>
+        <Item>
+          <slot>VMT_EXHAUST</slot>
+          <name>TOP_ZR_BUMR</name>
+        </Item>
+        <Item>
+          <slot>VMT_PLTHOLDER</slot>
+          <name>TOP_SUNST</name>
+        </Item>
+        <Item>
+          <slot>VMT_PLTVANITY</slot>
+          <name>TOP_ZR_BREM</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>TOP_ZR_HLL</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>TOP_ZR_HLR</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>TOP_ZR_TCOVER</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>TOP_ZR_TAIL</name>
+        </Item>
+      </slotNames>
+      <liveryNames />
+    </Item>
+	
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

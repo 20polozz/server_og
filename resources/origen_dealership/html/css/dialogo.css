@@ -1,0 +1,926 @@
+/* ══ ORIGEN · el MENÚ PEQUEÑO (skill origen-dialogo), piel PEGATINA ═══════
+
+   El mismo armazón que org-menu y org-input, para las NUI propias de un
+   recurso: la columna (440 px) y el riel de 64 px pegado al canto derecho, a
+   MEDIA ALTURA, que entran juntos deslizándose desde la derecha y salen por
+   donde vinieron. El riel mide lo que la columna (mínimo 300 px): la placa
+   con el icono arriba y «Origen X» abajo. Sin botón de silencio: ese solo va
+   en el inventario.
+
+   Todas las clases cuelgan de `.odg` y llevan el prefijo `odg-` para no
+   cruzarse con las hojas de cada recurso (`.panel`, `.card`, `.item`…, que
+   sus pegatinas pisan con mucho peso).
+
+   El armazón:
+     <div class="odg" :class="{ 'esta-dentro': dentro }">
+       <section class="odg-col">
+         <header class="odg-cab"> placa · antetítulo · título · renglón </header>
+         <div class="odg-cuerpo"> … </div>          ← lo único que se desplaza
+         <footer class="odg-pie"> Cancelar · Confirmar </footer>
+       </section>
+       <nav class="odg-riel"> placa · nombre </nav>
+     </div>
+
+   Piel pegatina (skill origen-pegatina): panel #c4c6ca, piezas #dcdde0, canto
+   negro fino y sombra dura, rosa #d81b55 con tinta NEGRA, nada inclinado.
+   Nación es esto mismo en naranja: lo repinta la marca, aquí no se escribe.
+   Nada de backdrop-filter, :has(), color-mix() ni @keyframes (CEF 103).
+   Este fichero es el mismo en origen_banking, origen_blackmarket,
+   origen_customs y origen_dealership: si se toca, se toca en los cuatro.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.odg {
+    --odg-riel: 64px;
+    --odg-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --odg-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --odg-hueco: var(--odg-margen-x);
+    --odg-col: 440px;
+    --odg-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --odg-panel: #c4c6ca;
+    --odg-pieza: #dcdde0;
+    --odg-pieza-on: #e6e7ea;
+    --odg-tinta: #0b0b0d;
+    --odg-tinta-2: #44444a;
+    --odg-tinta-3: #55555c;
+    --odg-apagada: #73737c;
+    --odg-rosa: #d81b55;
+    --odg-rosa-on: #d81b55;
+    --odg-rosa-texto: #b3123f;
+    --odg-palido: #ffd6e4;
+    --odg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --odg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --odg-anillo: inset 0 0 0 1.5px #000;
+    --odg-elegido: inset 0 0 0 2px #d81b55, 3px 3px 0 #d81b55;
+
+    --odg-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --odg-texto: "Barlow", "Segoe UI", sans-serif;
+    --odg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /*  fixed y a media altura. Entra y sale entero, con la transformada: la
+        de fuera lleva siempre el -50% del centrado. */
+    position: fixed;
+    top: 50%;
+    right: var(--odg-margen-x);
+    max-height: calc(100vh - 2 * var(--odg-margen-y));
+    z-index: 9500;
+    display: flex;
+    align-items: stretch;
+    gap: var(--odg-hueco);
+    box-sizing: border-box;
+    font-family: var(--odg-texto);
+    color: var(--odg-tinta);
+    text-align: left;
+    pointer-events: none;
+    transform: translate(calc(100% + var(--odg-margen-x) + 6px), -50%);
+    opacity: 0;
+    transition: transform 0.26s var(--odg-ease), opacity 0.2s ease;
+}
+
+.odg *,
+.odg *::before,
+.odg *::after {
+    box-sizing: border-box;
+}
+
+.odg.esta-dentro {
+    transform: translateY(-50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*  La salida cuando la desmonta el padre: con <Transition leave-to-class=
+    "odg-sale" :duration="280"> la pantalla se queda montada lo que dura el
+    deslizamiento y sale por donde vino. Va después de .esta-dentro y con el
+    mismo peso, así que gana. */
+.odg.odg-sale {
+    transform: translate(calc(100% + var(--odg-margen-x) + 6px), -50%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .odg {
+        transform: translateY(-50%);
+        transition: opacity 0.15s ease;
+    }
+}
+
+/*  Los dibujos van a trazo: sobre gris, un icono relleno es una mancha. */
+.odg svg.odg-trazo {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* ── La columna: alto justo, como mucho la pantalla ──────────────────── */
+.odg .odg-col {
+    flex: none;
+    width: var(--odg-col);
+    max-height: calc(100vh - 2 * var(--odg-margen-y));
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    border: 0;
+    border-top: 4px solid var(--odg-panel);
+    border-radius: 20px;
+    background: var(--odg-panel);
+    box-shadow: var(--odg-canto-panel);
+    color: var(--odg-tinta);
+}
+
+/* ── La cabecera ─────────────────────────────────────────────────────── */
+.odg .odg-cab {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    padding: 14px 22px 15px;
+}
+
+/*  El filete rosa macizo bajo el título. */
+.odg .odg-cab::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--odg-rosa);
+}
+
+/*  La placa del título: rosa, icono negro, un pelo girada. */
+.odg .odg-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: var(--odg-rosa);
+    box-shadow: var(--odg-canto);
+    color: #000;
+}
+
+.odg .odg-cab__placa svg {
+    width: 21px;
+    height: 21px;
+}
+
+.odg .odg-cab__txt {
+    flex: 1;
+    min-width: 0;
+}
+
+.odg .odg-cab__k {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--odg-cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--odg-rosa-texto);
+}
+
+.odg .odg-cab__t {
+    display: block;
+    margin: 3px 0 0;
+    padding: 0 4px 0 0;
+    /*  Un nombre largo baja de línea (como en org-menu) en vez de cortarse. */
+    overflow-wrap: anywhere;
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 29px;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-cab__sub {
+    margin: 5px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--odg-texto);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--odg-tinta-2);
+}
+
+/*  La cifra de la cabecera (el importe, lo que queda): al canto derecho. */
+.odg .odg-cab__cifra {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    text-align: right;
+}
+
+.odg .odg-cab__cifra i {
+    font-family: var(--odg-cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--odg-tinta-3);
+}
+
+.odg .odg-cab__cifra b {
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--odg-tinta);
+}
+
+/* ── El cuerpo: lo único que se desplaza ─────────────────────────────────
+   Relleno de sobra a la derecha y abajo: es el aire de la sombra dura de
+   cada pieza, que el recorte de la columna cortaría. */
+.odg .odg-cuerpo {
+    flex: 0 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 20px 18px 22px;
+}
+
+.odg .odg-cuerpo::-webkit-scrollbar {
+    width: 6px;
+}
+
+.odg .odg-cuerpo::-webkit-scrollbar-track {
+    margin: 10px 0;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.odg .odg-cuerpo::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--odg-tinta);
+}
+
+/* ── Rótulo de grupo: texto negro y filete rosa macizo ───────────────── */
+.odg .odg-sec {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.odg .odg-sec__t {
+    flex: none;
+    padding-right: 3px;
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-sec__raya {
+    flex: 1;
+    min-width: 12px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--odg-rosa);
+}
+
+.odg .odg-sec__meta {
+    flex: none;
+    font-family: var(--odg-cond);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--odg-tinta-2);
+}
+
+/* ── Una fila que se elige ───────────────────────────────────────────── */
+.odg .odg-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.odg .odg-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 14px 8px 8px;
+    border: 0;
+    outline: none;
+    border-radius: 11px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-canto);
+    font: inherit;
+    text-align: left;
+    color: var(--odg-tinta);
+    cursor: pointer;
+    transition: box-shadow 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+}
+
+.odg .odg-fila:hover:not(:disabled):not(.is-on) {
+    background: var(--odg-pieza-on);
+}
+
+.odg .odg-fila.is-on {
+    box-shadow: var(--odg-elegido);
+}
+
+/*  Lo que no se puede elegir: apagada y sin sombra. */
+.odg .odg-fila:disabled,
+.odg .odg-fila.is-off {
+    opacity: 0.55;
+    box-shadow: var(--odg-anillo);
+    cursor: default;
+}
+
+/*  La fila que no se pulsa (un dato, una banda inscrita). */
+.odg .odg-fila.es-dato {
+    cursor: default;
+    box-shadow: var(--odg-anillo);
+}
+
+.odg .odg-fila.es-dato:hover {
+    background: var(--odg-pieza);
+}
+
+/*  La chapa del icono: negra con el dibujo blanco; elegida, rosa y negro. */
+.odg .odg-fila__i {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--odg-tinta);
+    color: #fff;
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 13px;
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.odg .odg-fila__i svg {
+    width: 17px;
+    height: 17px;
+}
+
+.odg .odg-fila.is-on .odg-fila__i {
+    background: var(--odg-rosa);
+    box-shadow: var(--odg-anillo);
+    color: #000;
+}
+
+.odg .odg-fila__txt,
+.odg .odg-fila__cifras {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-width: 0;
+}
+
+.odg .odg-fila__txt {
+    flex: 1;
+}
+
+.odg .odg-fila__cifras {
+    flex: none;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.odg .odg-fila__txt b {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 3px;
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-fila__txt i,
+.odg .odg-fila__cifras i {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--odg-texto);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 1.3;
+    color: var(--odg-tinta-2);
+}
+
+.odg .odg-fila__cifras b {
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-fila__cifras i {
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+}
+
+/*  Lo que falta (saldo, plazas): texto rosa de aviso. */
+.odg .es-falta {
+    color: var(--odg-rosa-texto) !important;
+}
+
+/* ── Una tarjeta que no se pulsa: un dato grande ─────────────────────── */
+.odg .odg-dato {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-width: 0;
+    padding: 11px 14px 10px;
+    border-radius: 12px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-anillo);
+}
+
+/*  Encendido de verdad (un mercado con dueño, lo que se va a pagar). */
+.odg .odg-dato.is-on {
+    background: var(--odg-palido);
+    box-shadow: inset 0 0 0 1.5px var(--odg-rosa);
+}
+
+.odg .odg-dato__k {
+    flex: none;
+    font-family: var(--odg-cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--odg-tinta-2);
+}
+
+.odg .odg-dato__v {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 3px;
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-dato__v.es-cifra {
+    padding-right: 0;
+    font-family: var(--odg-cifra);
+    font-style: normal;
+    font-size: 22px;
+    font-variant-numeric: tabular-nums;
+    text-transform: none;
+}
+
+.odg .odg-dato--grande {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.odg .odg-dato--grande .odg-dato__v.es-cifra {
+    font-size: 30px;
+}
+
+/* ── Chapas de elegir (importes, plazos) ─────────────────────────────── */
+.odg .odg-chips {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    padding: 0 3px 3px 0;
+}
+
+.odg .odg-chip {
+    min-width: 0;
+    margin: 0;
+    padding: 10px 6px 9px;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-canto);
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    color: var(--odg-tinta);
+    cursor: pointer;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.odg .odg-chip:hover:not(.is-on) {
+    background: var(--odg-pieza-on);
+}
+
+.odg .odg-chip.is-on {
+    box-shadow: var(--odg-elegido);
+}
+
+.odg .odg-chip:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--odg-anillo);
+}
+
+/*  Una etiqueta que no se pulsa (categoría, regla): gris con anillo. */
+.odg .odg-etis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.odg .odg-eti {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px 3px 8px;
+    border-radius: 6px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-anillo);
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--odg-tinta);
+}
+
+.odg .odg-eti svg {
+    width: 13px;
+    height: 13px;
+}
+
+.odg .odg-eti.es-negra {
+    background: var(--odg-tinta);
+    box-shadow: none;
+    color: #fff;
+}
+
+/* ── Un campo de escribir (el de org-input) ──────────────────────────── */
+.odg .odg-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.odg .odg-rotulo {
+    padding-left: 2px;
+    font-family: var(--odg-cond);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.15;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--odg-tinta-2);
+}
+
+.odg .odg-input {
+    width: 100%;
+    margin: 0;
+    padding: 10px 14px 9px;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-canto);
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--odg-tinta);
+    user-select: text;
+    transition: box-shadow 0.16s ease;
+}
+
+.odg .odg-input:focus {
+    box-shadow: var(--odg-elegido);
+}
+
+.odg .odg-input::placeholder {
+    opacity: 1;
+    color: var(--odg-apagada);
+}
+
+.odg .odg-input::-webkit-outer-spin-button,
+.odg .odg-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ── Texto de corrido y avisos ───────────────────────────────────────── */
+.odg .odg-nota {
+    margin: 0;
+    font-family: var(--odg-texto);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--odg-tinta-2);
+}
+
+.odg .odg-nota b,
+.odg .odg-nota strong {
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    color: var(--odg-tinta);
+}
+
+/*  Lo que hay que saber antes de confirmar: chapa con el anillo rosa. */
+.odg .odg-aviso {
+    margin: 0;
+    padding: 9px 12px 8px;
+    border-radius: 10px;
+    background: var(--odg-pieza);
+    box-shadow: inset 0 0 0 1.5px var(--odg-rosa), 2px 2px 0 var(--odg-rosa);
+    font-family: var(--odg-texto);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--odg-tinta);
+}
+
+/*  Pasos numerados: el número en la cifra, el texto de corrido. */
+.odg .odg-pasos {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.odg .odg-pasos li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--odg-texto);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--odg-tinta-2);
+}
+
+.odg .odg-pasos li > span {
+    flex: none;
+    display: grid;
+    place-items: center;
+    min-width: 26px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--odg-tinta);
+    font-family: var(--odg-cifra);
+    font-weight: 800;
+    font-size: 11px;
+    color: #fff;
+}
+
+/*  Barra de tiempo o de progreso: pista gris con anillo, relleno negro o rosa. */
+.odg .odg-barra {
+    position: relative;
+    display: block;
+    flex: none;
+    height: 10px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-anillo);
+}
+
+.odg .odg-barra > i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background: var(--odg-tinta);
+    transition: width 0.4s ease;
+}
+
+.odg .odg-barra.es-rosa > i {
+    background: var(--odg-rosa);
+}
+
+/* ── El pie: los botones ────────────────────────────────────────────── */
+.odg .odg-pie {
+    position: relative;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 20px 18px 22px;
+}
+
+.odg .odg-pie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 1.5px;
+    background: #000;
+}
+
+.odg .odg-botones {
+    display: flex;
+    gap: 10px;
+}
+
+.odg .odg-btn {
+    flex: none;
+    min-width: 0;
+    margin: 0;
+    padding: 12px 18px 11px;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-canto);
+    cursor: pointer;
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.odg .odg-btn > span {
+    display: block;
+    padding-right: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.odg .odg-btn:hover:not(:disabled) {
+    background: var(--odg-pieza-on);
+}
+
+/*  El que confirma: el único relleno rosa de la columna, con tinta negra. */
+.odg .odg-btn--pri {
+    flex: 1;
+    background: var(--odg-rosa);
+    font-size: 20px;
+}
+
+.odg .odg-btn--pri:hover:not(:disabled) {
+    background: var(--odg-rosa-on);
+}
+
+.odg .odg-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: var(--odg-anillo);
+}
+
+/*  Apagado: gris con el anillo apagado; no es un botón roto, es uno que aún
+    no tiene qué confirmar. */
+.odg .odg-btn:disabled {
+    cursor: default;
+    background: #cfd2d6;
+    box-shadow: inset 0 0 0 1.5px #9a9aa3;
+    color: #63636b;
+}
+
+/* ══ EL RIEL ══════════════════════════════════════════════════════════════
+   El mismo de todos los menús laterales, al píxel: 64 de ancho, relleno
+   14/16, placa de 44, filete de 22×2. Aquí no hay pestañas: la placa dice de
+   qué va el diálogo, y abajo el nombre. */
+.odg .odg-riel {
+    flex: none;
+    align-self: stretch;
+    min-height: 300px;
+    width: var(--odg-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    padding: 14px 0 16px;
+    border: 0;
+    border-top: 4px solid var(--odg-panel);
+    border-radius: 20px;
+    background: var(--odg-panel);
+    box-shadow: var(--odg-canto-panel);
+    color: var(--odg-tinta);
+}
+
+.odg .odg-riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: var(--odg-pieza);
+    box-shadow: var(--odg-canto);
+    color: var(--odg-rosa);
+}
+
+.odg .odg-riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.odg .odg-riel__marca svg {
+    width: 22px;
+    height: 22px;
+}
+
+.odg .odg-riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--odg-cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--odg-tinta);
+}
+
+/*  La financiación del concesionario sustituye a su columna (que se aparta
+    mientras tanto): mismo ancho que la columna y mismo alto, para que ocupe ese hueco
+    exacto junto al riel en vez de quedarse más estrecha. */
+.dealership .odg.dfin .odg-col {
+    width: clamp(420px, 31vw, 548px);
+    height: calc(100vh - 2 * var(--odg-margen-y));
+    max-height: calc(100vh - 2 * var(--odg-margen-y));
+}

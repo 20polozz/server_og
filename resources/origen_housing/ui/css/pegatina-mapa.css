@@ -1,0 +1,42 @@
+/* ══ PEGATINA · LOS MARCADORES DEL MAPA (04/10) — solo Origen ═══════════════
+   Las chinchetas de este mapa con la hechura de las de origen_map y del mapa
+   grande del inventario (.pm-pin): cabeza redonda rellena del color de su
+   ESTADO o TIPO, canto negro, punta abajo, sombra dura corta y el dibujo
+   dentro en negro. La elegida, en rosa, mas grande y con troquel blanco.
+   Los rotulos son chapas blancas con canto (Barlow Condensed cursiva 800).
+
+   Hoja aparte de pegatina.css a proposito (origen_housing): para no pisarse con
+   el repaso de los paneles. Todo cuelga de html:
+   en Nacion no entra ninguna regla. Lleva !important porque pisa estilos
+   con ambito de los componentes y reglas de la pegatina principal.
+   Generada con la receta comun; para quitarla, borrar el fichero y su import.
+
+   Viviendas: libre = verde, ocupada = ambar (lo que ya significaban).  */
+html #app .map-house-marker .marker-circle {
+    position: absolute !important; left: 4px !important; top: -10.4px !important; right: auto !important; bottom: auto !important; margin: 0 !important;
+    display: grid !important; place-items: center; padding: 0 !important;
+    width: 22px !important; height: 22px !important; min-width: 0 !important; box-sizing: border-box !important;
+    border: 2px solid #000 !important; border-radius: 50% !important;
+    background: #19e07f !important;
+    box-shadow: 2px 2.5px 0 #000 !important;
+    color: #0b0b0d !important; opacity: 1 !important; filter: none !important; outline: 0 !important;
+    overflow: visible !important; cursor: pointer;
+    transform: none; transform-origin: 50% 115%;
+    transition: transform 0.12s ease !important;
+}
+html #app .map-house-marker .marker-circle::after {
+    content: "" !important; position: absolute; display: block; top: calc(100% - 3px); left: 50%;
+    width: 7px; height: 7px; box-sizing: border-box;
+    background: inherit; border: 0 solid #000; border-right-width: 2px; border-bottom-width: 2px;
+    border-radius: 0 0 1px 0; box-shadow: none; opacity: 1;
+    transform: translateX(-50%) rotate(45deg);
+}
+html #app .map-house-marker .marker-circle:hover { transform: translateY(-2px) scale(1.12); }
+html #app .map-house-marker .marker-circle i {
+    position: relative; z-index: 1; display: block !important; width: 14px !important; height: 14px !important;
+    margin: 0 !important; padding: 0 !important; font-size: 13px !important; line-height: 14px !important; text-align: center;
+    color: #0b0b0d !important; filter: none !important;
+}
+
+html #app .map-house-marker.marker-rented .marker-circle { background: #ffc21a !important; }
+html #app .map-house-marker:hover .marker-circle { transform: translateY(-2px) scale(1.12); border-color: #000 !important; }

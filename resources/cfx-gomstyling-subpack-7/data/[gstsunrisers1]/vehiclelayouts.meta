@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleMetadataMgr>
+
+   <ClipSetMaps>
+    <Item type="CClipSetMap">
+      <Name>ENTRY_CLIPSET_MAP_SUNRS3_STD_FRONT_RIGHT</Name>
+      <Maps>
+        <Item>
+          <ClipSetId>clipset@veh@std@ps@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_zero@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_one@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_two@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_zero@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_one@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_two@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@std@rds@enter_exit</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_zero@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_one@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@break_in@0h@p_m_two@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_BreakInAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_zero@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags>IF_JackedPedExitsWillingly</InformationFlags>
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_one@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags />
+        </Item>
+        <Item>
+          <ClipSetId>clipset@veh@jacking@0h@p_m_two@</ClipSetId>
+          <VarClipSetId>EntryVarClipSet</VarClipSetId>
+          <ConditionFlags>CF_JackingAnims</ConditionFlags>
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@std@ps@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <ClipSetId>clipset@veh@std@rds@enter_exit</ClipSetId>
+          <VarClipSetId>ExitVarClipSet</VarClipSetId>
+          <ConditionFlags />
+          <InformationFlags />
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@passenger_right_handed@smg</ClipSet>
+        </Item><Item>
+          <Weapons>
+            <Item>WEAPON_MICROSMG</Item>
+          </Weapons>
+          <ClipSet>driveby@first_person@passenger_right_handed@smg</ClipSet>
+        </Item><Item>SIDE_LEFT</Item><Item>SIDE_RIGHT</Item><Item>
+          <SeatInfo ref="SEAT_SUNRS3_FRONT_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SUNRS3_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_SUNRS3_FRONT_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_SUNRS3_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_LEFT" />
+          <SeatAnimInfo ref="SEAT_ANIM_STANDARD_REAR_LEFT" />
+        </Item>
+        <Item>
+          <SeatInfo ref="SEAT_STANDARD_REAR_RIGHT" />
+          <SeatAnimInfo ref="SEAT_ANIM_STANDARD_REAR_RIGHT" />
+        </Item>
+      </Seats>
+      <EntryPoints>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SUNRS3_FRONT_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_STD_SUNRS3_FRONT_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_SUNRS3_FRONT_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_STD_SUNRS3_FRONT_RIGHT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_REAR_LEFT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_STANDARD_REAR_LEFT" />
+        </Item>
+        <Item>
+          <EntryPointInfo ref="ENTRY_POINT_STANDARD_REAR_RIGHT" />
+          <EntryPointAnimInfo ref="ENTRY_POINT_ANIM_STANDARD_REAR_RIGHT" />
+        </Item>
+      </EntryPoints>
+      <LayoutFlags>StreamAnims UseDoorOscillation UseLeanSteerAnims UseSteeringWheelIk UseFinerAlignTolerance</LayoutFlags>
+      <BicycleInfo ref="NULL" />
+	  <AnimRateSet ref="STD_LOW_ANIM_RATE_SET" />
+      <HandsUpClipSetId>busted_vehicle_std</HandsUpClipSetId>
+      <SteeringWheelOffset x="0.000000" y="0.350000" z="0.320000" />
+	  <MaxXAcceleration value="4.00000" />
+	  <BodyLeanXApproachSpeed value="5.00000" />
+	  <BodyLeanXSmallDelta value="0.30000" />
+	  <LookBackApproachSpeedScale value="1.00000" />
+	  <FirstPersonAdditiveIdleClipSets>
+        <Item>clipset@veh@std@ds@idle_a</Item>
+		<Item>clipset@veh@std@ds@idle_b</Item>
+		<Item>clipset@veh@std@ds@idle_c</Item>
+		<Item>clipset@veh@std@ds@idle_d</Item>
+		<Item>clipset@veh@std@ds@idle_e</Item>
+	  </FirstPersonAdditiveIdleClipSets>
+	  <FirstPersonRoadRageClipSets>
+        <Item>clipset@veh@std@ds@hit_wheel@idle_a</Item>
+		<Item>clipset@veh@std@ds@hit_wheel@idle_b</Item>
+		<Item>clipset@veh@std@ds@hit_wheel@idle_c</Item>
+	   </FirstPersonRoadRageClipSets>
+    </Item>
+  </VehicleLayoutInfos>
+</CVehicleMetadataMgr>

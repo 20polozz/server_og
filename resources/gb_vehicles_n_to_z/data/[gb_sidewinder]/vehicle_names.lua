@@ -1,0 +1,77 @@
+Citizen.CreateThread(function()
+	AddTextEntry("GBSIDEW", "Sidewinder")
+	
+	AddTextEntry("GBSIDEWINDER_NULL_1", "Delete Right Mirror")
+	AddTextEntry("GBSIDEWINDER_NULL_2", "Delete Both Mirrors")
+	AddTextEntry("GBSIDEWINDER_NULL_3", "Delete Mirrors and Door Handles")
+	
+	AddTextEntry("GBSIDEWINDER_ROOF_0", "No Roof Pins")
+	AddTextEntry("GBSIDEWINDER_ROOF_1", "Roll Hoop")
+	AddTextEntry("GBSIDEWINDER_ROOF_2", "Double Roll Hoop")
+	AddTextEntry("GBSIDEWINDER_ROOF_3", "Roll Bar")
+	AddTextEntry("GBSIDEWINDER_ROOF_4", "Vinyl Roof")
+	AddTextEntry("GBSIDEWINDER_ROOF_5", "Hard Top")
+	
+	AddTextEntry("GBSIDEWINDER_FBUMPER_0", "Delete Front Bumper")
+	AddTextEntry("GBSIDEWINDER_FBUMPER_1", "Front Tusks")
+	AddTextEntry("GBSIDEWINDER_FBUMPER_2", "Racing Front Bumper")
+	
+	AddTextEntry("GBSIDEWINDER_RBUMPER_0", "Delete Rear Bumper")
+	AddTextEntry("GBSIDEWINDER_RBUMPER_1", "Rear Tusks")
+	AddTextEntry("GBSIDEWINDER_RBUMPER_2", "Racing Rear Bumper")
+	
+	AddTextEntry("GBSIDEWINDER_EXHAUST_1", "Side Exhausts")
+	AddTextEntry("GBSIDEWINDER_EXHAUST_2", "Aftermarket Exhausts")
+	AddTextEntry("GBSIDEWINDER_EXHAUST_3", "Heated Exhausts")
+	AddTextEntry("GBSIDEWINDER_EXHAUST_4", "Classic Exhausts")
+	AddTextEntry("GBSIDEWINDER_EXHAUST_5", "Competition Exhausts")
+	
+	AddTextEntry("GBSIDEWINDER_GRILLE_0", "Delete Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_1", "Vertical Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_2", "Horizontal Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_3", "Mesh Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_4", "Clean Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_5", "Open Grille")
+	AddTextEntry("GBSIDEWINDER_GRILLE_6", "Competition Grille")
+	
+	AddTextEntry("GBSIDEWINDER_HOOD_1", "Classic Hood")
+	AddTextEntry("GBSIDEWINDER_HOOD_2", "Competition Hood")
+	
+	AddTextEntry("GBSIDEWINDER_FENDER_1", "Wide Fenders")
+	
+	AddTextEntry("GBSIDEWINDER_INTAKE_1", "Side Intakes")
+	AddTextEntry("GBSIDEWINDER_INTAKE_2", "Classic Intakes")
+	
+	AddTextEntry("GBSIDEWINDER_FASCIA_1", "Classic Fascia")
+	AddTextEntry("GBSIDEWINDER_FASCIA_2", "Competition Fascia")
+	
+	AddTextEntry("GBSIDEWINDER_SPOILER_1", "Competition Spoiler")
+	
+	AddTextEntry("GBSIDEWINDER_TAPES_1", "Headlight Tape")
+	AddTextEntry("GBSIDEWINDER_TAPES_2", "Cross Headlight Tape")
+	AddTextEntry("GBSIDEWINDER_TAPES_3", "Headlight Covers")
+	
+	AddTextEntry("GBSIDEWINDER_PLATE_0", "Delete Badge")
+	AddTextEntry("GBSIDEWINDER_PLATE_1", "European License Plate")
+	AddTextEntry("GBSIDEWINDER_PLATE_2", "Double European License Plates")
+	
+	AddTextEntry("GBSIDEWINDER_LIV1", "White Classic Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV2", "Black Classic Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV3", "Blue Classic Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV4", "Red Classic Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV5", "Gold Classic Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV6", "Black Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV7", "Blue Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV8", "Green Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV9", "Orange Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV10", "Red Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV11", "Silver Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV12", "White Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV13", "Yellow Modern Stripes")
+	AddTextEntry("GBSIDEWINDER_LIV14", "Race Ready")
+	AddTextEntry("GBSIDEWINDER_LIV15", "Heavy Flow")
+	AddTextEntry("GBSIDEWINDER_LIV16", "Globe Oil")
+	AddTextEntry("GBSIDEWINDER_LIV17", "American Racing")
+	AddTextEntry("GBSIDEWINDER_LIV18", "Racer 35")
+	AddTextEntry("GBSIDEWINDER_LIV19", "Racer 194")
+end)

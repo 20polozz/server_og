@@ -1,0 +1,1033 @@
+/* ══ EL MENU DEL JUGADOR EN RIEL (07/10) ═══════════════════════════════════
+
+   «El menú del boosting debería ser en riel y desplegarse como el de racing»
+   (el usuario, 07/10). Las medidas son las del riel de toda la casa (skill
+   origen-riel, la misma barra que origen_inventory y que el Racing Hub):
+   barra de 64 px en el canto derecho a 1,2 vh, columna de
+   clamp(420px, 31vw, 548px) a su izquierda con el MISMO aire que del riel al
+   canto, y el panel grande (la tablet de siempre) entre el canto izquierdo y
+   la barra. La piel es la pegatina (skill origen-pegatina): panel #c4c6ca,
+   piezas #dcdde0, canto negro y sombra dura, rosa con tinta negra.
+
+   El rosa va con los valores de la tabla de la pegatina: marca.js los conoce
+   y los pasa al naranja de Nación. Nada de color-mix, backdrop-filter ni
+   @keyframes nuevos (CEF 103). Las medidas de vh van divididas por
+   --ogn-escala, como el resto de la hoja: el body se escala por encima de 1080.
+   ════════════════════════════════════════════════════════════════════════ */
+
+html:root .container {
+    --cbr-u: calc(1vh / var(--ogn-escala, 1));
+    --cbr-margen-x: calc(var(--cbr-u) * 1.2);
+    --cbr-margen-y: calc(var(--cbr-u) * 1.4);
+    --cbr-hueco: var(--cbr-margen-x);
+    --cbr-riel: 64px;
+    --cbr-riel-total: calc(var(--cbr-margen-x) + var(--cbr-riel) + var(--cbr-hueco));
+    --cbr-col: clamp(420px, calc(31vw / var(--ogn-escala, 1)), 548px);
+    --cbr-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --cbr-texto: "Barlow", "Segoe UI", sans-serif;
+    --cbr-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --cbr-brocha: "Knewave", "Barlow Condensed", cursive;
+    --cbr-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --cbr-pieza: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+
+/* ── El juego se ve: fuera el fondo de la tablet ──────────────────────── */
+/*  En riel no hay velo: el menu se abre de pie en la calle. En el panel
+    grande tampoco: la vista ancha lleva su propia caja, como el hub de
+    carreras desplegado, y alrededor queda el juego. */
+/*  Con el peso de la regla del fondo de la pegatina (#b9bbc0), que si no gana. */
+html:root:is(#_, html):is(#_, html) .container.cbr-en-riel,
+html:root:is(#_, html):is(#_, html) .container.cbr-en-ancho { background: none; }
+html:root .container.cbr-en-riel > .effects,
+html:root .container.cbr-en-ancho > .effects { display: none; }
+
+/*  Pinchar fuera de la columna y de la barra cierra. */
+html:root .container .cbr-velo { position: fixed; inset: 0; z-index: 1; background: none; }
+
+/* ── La barra ─────────────────────────────────────────────────────────── */
+html:root .container .cbr-riel {
+    position: fixed;
+    top: var(--cbr-margen-y);
+    right: var(--cbr-margen-x);
+    bottom: var(--cbr-margen-y);
+    z-index: 30;
+    width: var(--cbr-riel);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*  Todo arriba y el rotulo al fondo con su margen automatico: con
+        space-between los botones se iban al centro. */
+    justify-content: flex-start;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: var(--cbr-canto);
+    font-family: var(--cbr-rotulo);
+}
+
+/*  La placa: el icono de la seccion encendida, con el filete corto debajo. */
+html:root .container .cbr-riel__placa {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: var(--cbr-pieza);
+    color: #d81b55;
+    font-size: 19px;
+}
+html:root .container .cbr-riel__placa::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+html:root .container .cbr-riel__btn {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+    font: inherit;
+    font-size: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+html:root .container .cbr-riel__btn:hover { background: #2a2a30; }
+html:root .container .cbr-riel__btn.on { background: #d81b55; box-shadow: var(--cbr-pieza); color: #000; cursor: default; }
+html:root .container .cbr-riel__btn:active { transform: translate(2px, 2px); }
+html:root .container .cbr-riel__btn.on:active { transform: none; }
+
+/*  El globito de la cifra, en la esquina. */
+html:root .container .cbr-riel__n {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: #d81b55;
+    box-shadow: 0 0 0 1.5px #000;
+    color: #000;
+    font-family: var(--cbr-cifra);
+    font-weight: 800;
+    font-style: normal;
+    font-size: 10px;
+    line-height: 1;
+    pointer-events: none;
+}
+html:root .container .cbr-riel__btn.on .cbr-riel__n { background: #dcdde0; }
+
+/*  El nombre sale hacia la columna al pasar por encima. */
+html:root .container .cbr-riel__tip {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%) translateX(4px);
+    padding: 7px 12px 6px;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: var(--cbr-canto);
+    color: #0b0b0d;
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+html:root .container .cbr-riel__btn:hover .cbr-riel__tip { opacity: 1; transform: translateY(-50%); }
+
+html:root .container .cbr-riel__raya { flex: none; width: 22px; height: 1px; margin: 4px 0; background: #000; }
+
+/*  El rotulo del pie, de abajo arriba. Alto fijo, como en todos los rieles. */
+html:root .container .cbr-riel__marca {
+    flex: none;
+    height: 140px;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+
+/* ── La columna ───────────────────────────────────────────────────────── */
+html:root .container .cbr {
+    position: fixed;
+    top: var(--cbr-margen-y);
+    bottom: var(--cbr-margen-y);
+    right: var(--cbr-riel-total);
+    z-index: 20;
+    width: var(--cbr-col);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: var(--cbr-canto);
+    color: #0b0b0d;
+    font-family: var(--cbr-texto);
+    font-size: 14px;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+}
+html:root .container .cbr * { box-sizing: border-box; }
+html:root .container .cbr button { margin: 0; border: 0; outline: none; font: inherit; color: inherit; cursor: pointer; }
+
+/*  Entra con 48 px de recorrido y su fundido, como las columnas del riel. */
+html:root .container .cbr-col-enter-active,
+html:root .container .cbr-col-leave-active { transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease; }
+html:root .container .cbr-col-enter,
+html:root .container .cbr-col-leave-to { transform: translateX(48px); opacity: 0; }
+
+/* Cabecera */
+html:root .container .cbr-cab {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px 16px;
+    box-shadow: inset 0 -3px 0 #d81b55;
+}
+html:root .container .cbr-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #d81b55;
+    box-shadow: var(--cbr-pieza);
+    color: #000;
+    font-size: 24px;
+    transform: rotate(-5deg);
+}
+html:root .container .cbr-cab__tit { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }
+html:root .container .cbr-cab__ante {
+    font-family: var(--cbr-rotulo);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #b3123f;
+}
+html:root .container .cbr-cab__h {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin: 0;
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 0.92;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+/*  La brocha, debajo del titulo: lo que se esta mirando. */
+html:root .container .cbr-cab__h[data-brocha]::after {
+    content: attr(data-brocha);
+    margin-top: 4px;
+    font-family: var(--cbr-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow: 1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000, 1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000, 3px 3.5px 0 #000;
+}
+/*  El saldo: pieza que se pulsa (transferir monedas). */
+html:root .container .cbr .cbr-saldo {
+    flex: none;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-right: 3px;
+    padding: 9px 13px 8px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: var(--cbr-pieza);
+}
+html:root .container .cbr .cbr-saldo:hover { background: #f1f1ee; }
+html:root .container .cbr .cbr-saldo:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr-saldo b { font-family: var(--cbr-cifra); font-weight: 800; font-size: 19px; line-height: 1; font-variant-numeric: tabular-nums; color: #0b0b0d; }
+html:root .container .cbr-saldo span { font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 0.06em; color: #b3123f; }
+
+/* Cuerpo: el unico que se desplaza (sin barra a la vista). */
+html:root .container .cbr-cuerpo {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /*  El relleno es tambien el aire de la sombra dura de las piezas. */
+    padding: 18px 20px 20px;
+}
+
+/* Pie: Cerrar y Panel grande */
+html:root .container .cbr-pie {
+    flex: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 14px 20px 18px;
+    box-shadow: inset 0 3px 0 #000;
+}
+
+/* ── Las piezas de dentro ─────────────────────────────────────────────── */
+html:root .container .cbr .cbr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 0 14px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: var(--cbr-pieza);
+    color: #0b0b0d;
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+html:root .container .cbr .cbr-btn iconify-icon { font-size: 17px; }
+html:root .container .cbr .cbr-btn:hover { background: #f1f1ee; }
+html:root .container .cbr .cbr-btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-btn--rosa { background: #d81b55; color: #000; }
+html:root .container .cbr .cbr-btn--rosa:hover { background: #df2f63; }
+html:root .container .cbr .cbr-btn--icono { width: 40px; padding: 0; }
+
+/*  El aviso de arriba de la bolsa. */
+html:root .container .cbr-nota {
+    margin: 0;
+    padding: 10px 14px;
+    border-radius: 11px;
+    background: #ffd6e4;
+    box-shadow: inset 0 0 0 1.5px #d81b55;
+    font-weight: 500;
+    font-size: 13px;
+    color: #0b0b0d;
+}
+html:root .container .cbr a { color: #b3123f; font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* La ficha de un contrato */
+html:root .container .cbr-ficha {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    margin-right: 3px;
+    padding: 13px 14px 14px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .container .cbr-ficha.apagada { opacity: 0.6; }
+html:root .container .cbr-ficha__cab { display: flex; align-items: center; gap: 12px; min-width: 0; }
+html:root .container .cbr-ficha__ico,
+html:root .container .cbr-fila__ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background: #0b0b0d;
+    color: #fff;
+    font-size: 21px;
+}
+html:root .container .cbr-ficha.es-objeto .cbr-ficha__ico { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html:root .container .cbr-ficha__nom,
+html:root .container .cbr-fila__nom { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+html:root .container .cbr-ficha__nom b,
+html:root .container .cbr-fila__nom b {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root .container .cbr-ficha__nom small,
+html:root .container .cbr-fila__nom small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+    font-size: 13px;
+    color: #55555c;
+}
+/*  El reloj de la oferta y el estado del contrato: chapas negras. */
+html:root .container .cbr-reloj,
+html:root .container .cbr-estado {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px 3px;
+    border-radius: 7px;
+    background: #0b0b0d;
+    color: #fff;
+    font-family: var(--cbr-cifra);
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+html:root .container .cbr-estado { font-family: var(--cbr-rotulo); font-style: italic; letter-spacing: 0.06em; text-transform: uppercase; }
+html:root .container .cbr-estado.es-vivo { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+
+/* La rejilla de datos: chapas sueltas, la cifra encima y el rotulo debajo */
+html:root .container .cbr-datos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+html:root .container .cbr-datos--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-right: 3px; }
+html:root .container .cbr-datos--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html:root .container .cbr-dato {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    padding: 8px 10px 7px;
+    border-radius: 8px;
+    background: #c4c6ca;
+    text-align: center;
+}
+html:root .container .cbr-datos--4 .cbr-dato { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr-dato b,
+html:root .container .cbr-dato i { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html:root .container .cbr-dato b { font-family: var(--cbr-cifra); font-weight: 800; font-size: 17px; line-height: 1.15; font-variant-numeric: tabular-nums; color: #0b0b0d; }
+html:root .container .cbr-dato b small { font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 12px; letter-spacing: 0.04em; color: #b3123f; }
+html:root .container .cbr-dato i { font-family: var(--cbr-rotulo); font-style: normal; font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #55555c; }
+
+html:root .container .cbr-ficha__acc { display: flex; justify-content: flex-end; gap: 9px; padding: 0 2px 2px 0; }
+html:root .container .cbr-ficha__acc .cbr-btn:not(.cbr-btn--icono) { flex: 1; }
+
+/* El vacio */
+html:root .container .cbr-vacio {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 30px 22px;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    text-align: center;
+    color: #44444a;
+}
+html:root .container .cbr-vacio iconify-icon { font-size: 34px; color: #0b0b0d; }
+html:root .container .cbr-vacio b { font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 19px; text-transform: uppercase; color: #0b0b0d; }
+html:root .container .cbr-vacio span { font-weight: 500; font-size: 13px; }
+
+/* Rotulo de bloque con su filete rosa */
+html:root .container .cbr-rotulo { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+html:root .container .cbr-rotulo span { flex: none; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 19px; letter-spacing: 0.05em; text-transform: uppercase; color: #0b0b0d; }
+html:root .container .cbr-rotulo::after { content: ''; flex: 1; height: 3px; border-radius: 2px; background: #d81b55; }
+
+/* Cola: la ficha del jugador */
+html:root .container .cbr-perfil { display: flex; align-items: center; gap: 14px; margin-right: 3px; padding: 12px 14px; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-perfil__foto {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #0b0b0d;
+    color: #fff;
+    font-size: 28px;
+}
+html:root .container .cbr-perfil__foto img { width: 100%; height: 100%; object-fit: cover; }
+html:root .container .cbr-perfil__nom { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+html:root .container .cbr-perfil__nom b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 24px; line-height: 1; text-transform: uppercase; }
+html:root .container .cbr-perfil__nom small { display: inline-flex; align-items: center; gap: 5px; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: #b3123f; }
+
+html:root .container .cbr-cola { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 11px; background: #c4c6ca; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr-cola.is-on { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root .container .cbr-cola__punto { flex: none; width: 10px; height: 10px; border-radius: 50%; background: #9a9aa3; box-shadow: 0 0 0 1.5px #000; }
+html:root .container .cbr-cola.is-on .cbr-cola__punto { background: #d81b55; }
+html:root .container .cbr-cola__txt { display: flex; flex-direction: column; gap: 1px; }
+html:root .container .cbr-cola__txt b { font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 17px; text-transform: uppercase; }
+html:root .container .cbr-cola__txt span { font-weight: 500; font-size: 13px; color: #44444a; }
+
+/* Rangos con su barra de una pieza */
+html:root .container .cbr-rango { display: flex; flex-direction: column; gap: 7px; }
+html:root .container .cbr-rango__cab { display: flex; align-items: center; gap: 8px; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 16px; text-transform: uppercase; }
+html:root .container .cbr-rango__cab iconify-icon { font-size: 18px; }
+html:root .container .cbr-rango__cab b { padding: 1px 8px; border-radius: 6px; background: #0b0b0d; color: #fff; font-family: var(--cbr-cifra); font-style: normal; font-size: 14px; }
+html:root .container .cbr-rango__cab em { margin-left: auto; font-style: italic; color: #55555c; font-size: 14px; }
+html:root .container .cbr-barra { position: relative; height: 12px; border-radius: 999px; overflow: hidden; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr-barra i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; transition: width 0.3s ease; }
+html:root .container .cbr-rango__pie { display: flex; justify-content: space-between; font-family: var(--cbr-cifra); font-weight: 800; font-size: 12px; color: #44444a; font-variant-numeric: tabular-nums; }
+
+/* El boton que confirma: unirse o salir de la cola */
+html:root .container .cbr .cbr-confirma {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 4px 3px 3px 0;
+    padding: 13px 16px 12px;
+    border-radius: 10px;
+    background: #d81b55;
+    box-shadow: var(--cbr-pieza);
+    color: #000;
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+html:root .container .cbr .cbr-confirma:hover { background: #df2f63; }
+html:root .container .cbr .cbr-confirma.es-salir { background: #dcdde0; }
+html:root .container .cbr .cbr-confirma.es-salir:hover { background: #f1f1ee; }
+html:root .container .cbr .cbr-confirma:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* Filas: ranking y movimientos */
+html:root .container .cbr-fila { flex: none; display: flex; align-items: center; gap: 12px; margin-right: 3px; padding: 9px 12px; border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr-fila.es-tuya { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root .container .cbr-fila__cifra { flex: none; display: flex; align-items: baseline; gap: 4px; }
+html:root .container .cbr-fila__cifra b { font-family: var(--cbr-cifra); font-weight: 800; font-size: 16px; font-variant-numeric: tabular-nums; }
+html:root .container .cbr-fila__cifra small { font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 12px; color: #b3123f; }
+html:root .container .cbr-pos { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: #0b0b0d; color: #fff; font-family: var(--cbr-cifra); font-weight: 800; font-size: 15px; }
+html:root .container .cbr-pos.es-podio { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html:root .container .cbr-fila__rangos { flex: none; display: flex; gap: 5px; }
+html:root .container .cbr-clase { display: inline-flex; align-items: center; gap: 3px; padding: 2px 7px; border-radius: 6px; background: #c4c6ca; box-shadow: inset 0 0 0 1.5px #000; font-family: var(--cbr-cifra); font-weight: 800; font-size: 13px; }
+html:root .container .cbr-clase iconify-icon { font-size: 13px; }
+
+/* El buscador: no se sesga, es un campo */
+html:root .container .cbr-buscar { flex: none; display: flex; align-items: center; gap: 10px; margin-right: 3px; padding: 0 14px; height: 44px; border-radius: 10px; background: #dcdde0; box-shadow: var(--cbr-pieza); color: #44444a; font-size: 17px; }
+html:root .container .cbr-buscar:focus-within { box-shadow: inset 0 0 0 2px #d81b55, 2px 2px 0 #000; }
+html:root .container .cbr-buscar input { flex: 1; min-width: 0; height: 100%; border: 0; outline: none; background: none; color: #0b0b0d; font-family: var(--cbr-rotulo); font-weight: 600; font-size: 17px; }
+html:root .container .cbr-buscar input::placeholder { color: #73737c; }
+
+/* ── El panel grande: la tablet de siempre, entre el canto y la barra ─── */
+/*  Las tres vistas anchas se encajan a la izquierda de la barra con su caja
+    de panel, como el hub de carreras desplegado; dentro no cambia nada. */
+html:root .container.cbr-en-ancho > .boosting.boosting-v2,
+html:root .container.cbr-en-ancho > .market.market-v2,
+html:root .container.cbr-en-ancho > .ranking-menu {
+    inset: auto;
+    top: var(--cbr-margen-y);
+    bottom: var(--cbr-margen-y);
+    left: var(--cbr-margen-x);
+    right: var(--cbr-riel-total);
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    /*  El fondo de la tablet de siempre (pegatina.css), ahora con su canto. */
+    background: #b9bbc0;
+    box-shadow: var(--cbr-canto);
+}
+html:root .container.cbr-en-ancho > .ranking-menu .ranking.ranking-v2 { background: none; }
+/*  «Reducir» en las cabeceras de la vista ancha: pieza gris, como sus vecinos. */
+/*  En el mercado y en la clasificacion la cabecera reparte con
+    space-between: se arrima a «Volver» con su margen automatico. */
+html:root .container .market-header .cbr-reducir,
+html:root .container .ranking-menu .header .cbr-reducir { margin-left: auto; margin-right: 12px; }
+html:root .container .cbr-reducir { white-space: nowrap; }
+
+/* ── Los diálogos del jugador, sobre la columna (07/10) ──────────────────
+   «A muchos menús les falta a la derecha la barra» (el usuario, 07/10). Con
+   el menú en riel, los diálogos (comprar, empezar, vender, enviar monedas,
+   cambiar nombre…) dejan de ir centrados en la pantalla: tapan la COLUMNA,
+   a media altura, pegados a la barra de siempre con el mismo aire. Así usan
+   el riel del menú (skill origen-dialogo). La gestión del admin va a
+   pantalla completa y no lleva esta clase: sus diálogos no se tocan. */
+html:root .container.cbr-en-riel > .modal-container,
+html:root .container.cbr-en-ancho > .modal-container,
+html:root .container.cbr-en-riel .modal-container,
+html:root .container.cbr-en-ancho .modal-container {
+    position: fixed;
+    inset: auto;
+    top: var(--cbr-margen-y);
+    bottom: var(--cbr-margen-y);
+    right: var(--cbr-riel-total);
+    left: auto;
+    width: var(--cbr-col);
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    padding: 0;
+    border-radius: 20px;
+    /*  Vela solo la columna que tapa; la barra queda a la vista. */
+    background: rgba(11, 11, 13, 0.6);
+}
+html:root .container.cbr-en-riel .modal-container .modal.modal,
+html:root .container.cbr-en-ancho .modal-container .modal.modal {
+    flex: 1 1 auto;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 100%;
+    margin: 0;
+    overflow-y: auto;
+    border-top: 4px solid #c4c6ca !important;
+    background: #c4c6ca !important;
+}
+
+/* ══ Lo que se ve conduciendo (07/10) ═══════════════════════════════════
+   «Hay un montón de cosas de muchos scripts que no están siguiendo el
+   estilo» (el usuario, 07/10): nada de pastillas sueltas ni avisos con su
+   propia forma mientras se juega.
+
+   1 · Los hackeos que quedan: era una pastilla arriba en el centro. Va en la
+       BARRA DE ABAJO del servidor, en una línea, con las medidas del kit
+       (origen_map/kit/barra-abajo.css; esta interfaz es HTML a pelo y lleva
+       la copia de las variables que usa, como origen_housing). */
+:root {
+    --bab-u: min(calc(100vh / 1080), calc(100vw / 1920));
+    --bab-alto: calc(var(--bab-u) * 46);
+    --bab-abajo: calc(var(--bab-u) * 26);
+    --bab-pad: calc(var(--bab-u) * 16);
+    --bab-radio: calc(var(--bab-u) * 14);
+    --bab-hueco: calc(var(--bab-u) * 14);
+    --bab-hueco-tecla: calc(var(--bab-u) * 6);
+    --bab-fondo: #c4c6ca;
+    --bab-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --bab-placa: calc(var(--bab-u) * 28);
+    --bab-placa-radio: calc(var(--bab-u) * 8);
+    --bab-placa-icono: calc(var(--bab-u) * 15);
+    --bab-texto: calc(var(--bab-u) * 14.5);
+    --bab-filete-alto: calc(var(--bab-u) * 24);
+    --bab-dato: calc(var(--bab-u) * 12.5);
+    --bab-dato-pad: calc(var(--bab-u) * 4) calc(var(--bab-u) * 8) calc(var(--bab-u) * 3);
+    --bab-dato-radio: calc(var(--bab-u) * 7);
+    --bab-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --bab-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+html:root .tracker-container.cbb {
+    position: fixed;
+    top: auto;
+    left: 50%;
+    bottom: var(--bab-abajo);
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--bab-hueco-tecla);
+    width: max-content;
+    min-width: 0;
+    max-width: none;
+    height: var(--bab-alto);
+    padding: 0 var(--bab-pad);
+    transform: translateX(-50%);
+    border: 0;
+    border-radius: var(--bab-radio);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    color: #0b0b0d;
+    white-space: nowrap;
+}
+html:root .tracker-container.cbb .cbb-placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: var(--bab-placa);
+    height: var(--bab-placa);
+    margin-right: calc(var(--bab-hueco) - var(--bab-hueco-tecla));
+    border-radius: var(--bab-placa-radio);
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+    font-size: var(--bab-placa-icono);
+}
+html:root .tracker-container.cbb .cbb-k {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root .tracker-container.cbb .cbb-v {
+    box-sizing: border-box;
+    min-width: calc(var(--bab-u) * 34);
+    padding: var(--bab-dato-pad);
+    border-radius: var(--bab-dato-radio);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--bab-cifra);
+    font-style: normal;
+    font-weight: 800;
+    font-size: var(--bab-dato);
+    line-height: 1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    color: #0b0b0d;
+}
+
+/* 2 · El aviso de contrato entrante: iba como tarjeta suelta a la derecha.
+       Va como MENÚ PEQUEÑO (skill origen-dialogo): la columna de 440 y el
+       riel de 64 a su derecha, del mismo alto, a media altura y separados
+       lo mismo que del canto (1,2 vh). El contenedor ya no pinta nada: el
+       panel es la columna. */
+html:root .incoming-contract-popup.cbi {
+    /*  Fuera de .container: las medidas del riel, aquí también. */
+    --cbr-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --cbr-hueco: var(--cbr-margen-x);
+    --cbr-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --cbr-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --cbr-canto: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    right: var(--cbr-margen-x);
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--cbr-hueco);
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+html:root .incoming-contract-popup.cbi .cbi-col {
+    box-sizing: border-box;
+    width: 440px;
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding: 18px 20px 18px 22px;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: var(--cbr-canto);
+    color: #0b0b0d;
+}
+/*  La cuenta atrás, barra de una pieza: pista gris con canto, relleno rosa. */
+html:root .incoming-contract-popup.cbi .incoming-timer {
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .incoming-contract-popup.cbi .incoming-timer .incoming-timer-fill {
+    border-radius: 999px;
+    background: #d81b55;
+}
+/*  La tecla del aviso, en chapa negra con la letra blanca. */
+html:root .incoming-contract-popup.cbi .incoming-hint strong {
+    display: inline-block;
+    min-width: 22px;
+    padding: 4px 7px 3px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--cbr-cifra);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    color: #fff;
+}
+html:root .incoming-contract-popup.cbi .incoming-actions { padding: 0 2px 2px 0; }
+/*  El riel: el mismo del menú pequeño, al píxel. */
+html:root .incoming-contract-popup.cbi .cbi-riel {
+    flex: none;
+    align-self: stretch;
+    box-sizing: border-box;
+    min-height: 300px;
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid #c4c6ca;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: var(--cbr-canto);
+    color: #0b0b0d;
+}
+html:root .incoming-contract-popup.cbi .cbi-riel__placa {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #d81b55;
+    font-size: 22px;
+}
+html:root .incoming-contract-popup.cbi .cbi-riel__placa::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+html:root .incoming-contract-popup.cbi .cbi-riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+
+/* ══ 08/10 · LA COLUMNA, COMO EL RACING HUB ═══════════════════════════════
+   Pedido: que la tablet de boosting sea «completamente» como la de racing.
+   - Cabecera: titulo fijo, la seccion a brocha y quien eres en chapas; el
+     saldo en su tarjeta (rotulo arriba, cifra abajo). Sin filete debajo.
+   - Las secciones, en una FILA DE PESTAÑAS (.cbr-vistas); el riel pasa a ser
+     el compartido de todos los menus (lo manda Lua, de origen_inventory).
+   - «Perfil»: portada, foto, nombre y chapas, cuatro cifras y la caja de
+     estadisticas, como «Piloto».
+   Las medidas son las del hub (origen_racing, pegatina.css: .coins,
+   .hub-chapas, .hub-saldo, .hub-vista). Todo cuelga de `.cbr` para ganar a
+   `.cbr button`, que resetea fuente y color.
+   ════════════════════════════════════════════════════════════════════ */
+html:root .container .cbr .cbr-cab { gap: 14px; padding: 18px 20px 0; box-shadow: none; }
+html:root .container .cbr .cbr-cab__placa { width: 50px; height: 50px; }
+html:root .container .cbr .cbr-cab__tit { gap: 0; }
+html:root .container .cbr .cbr-cab__h { font-size: 30px; line-height: 1.08; letter-spacing: 0.01em; }
+html:root .container .cbr .cbr-cab__sub { display: flex; align-items: center; min-width: 0; max-width: 100%; margin-top: 1px; }
+html:root .container .cbr .cbr-cab__brocha {
+    flex: none;
+    margin: 0 6px 0 9px;
+    font-family: var(--cbr-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 22px;
+    white-space: nowrap;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow: 1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000, 1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000, 3px 3.5px 0 #000;
+}
+
+/*  Las chapas: negras, cifra blanca. Solo se recorta la primera (el nombre). */
+html:root .container .cbr .cbr-chapas { display: flex; align-items: center; gap: 5px; min-width: 0; margin-top: 4px; overflow: hidden; }
+html:root .container .cbr .cbr-chapas b {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px 7px 1px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    font-family: var(--cbr-cifra);
+    font-style: normal;
+    font-weight: 800;
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+}
+html:root .container .cbr .cbr-chapas b + b { flex: 0 0 auto; }
+html:root .container .cbr .cbr-chapas b.es-rosa { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+
+/*  El saldo, en tarjeta: el rotulo arriba y la cifra debajo. */
+html:root .container .cbr .cbr-saldo { flex-direction: column; align-items: flex-end; justify-content: center; gap: 3px; margin-right: 3px; padding: 6px 11px 7px; border-radius: 11px; }
+html:root .container .cbr .cbr-saldo span { font-size: 12px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; color: #55555c; }
+html:root .container .cbr .cbr-saldo b { font-size: 22px; }
+
+/*  Las pestañas. */
+html:root .container .cbr .cbr-vistas { flex: none; display: flex; gap: 6px; padding: 14px 23px 3px 20px; }
+html:root .container .cbr .cbr-vista {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: #dcdde0;
+    box-shadow: var(--cbr-pieza);
+    font-family: var(--cbr-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+}
+html:root .container .cbr .cbr-vista__t { min-width: 0; overflow: hidden; text-overflow: ellipsis; padding-right: 2px; }
+html:root .container .cbr .cbr-vista:hover { background: #e6e7ea; }
+html:root .container .cbr .cbr-vista.on { background: #d81b55; color: #000; cursor: default; }
+html:root .container .cbr .cbr-vista:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-vista.on:active { transform: none; box-shadow: var(--cbr-pieza); }
+html:root .container .cbr .cbr-vista__n { flex: none; padding: 2px 6px 1px; border-radius: 5px; background: #0b0b0d; font-family: var(--cbr-cifra); font-style: normal; font-weight: 800; font-size: 11px; line-height: 14px; color: #fff; }
+
+html:root .container .cbr .cbr-cuerpo { padding: 14px 20px 20px; }
+
+/*  El pie, sin raya: Cerrar con su tecla y Panel grande. */
+html:root .container .cbr .cbr-pie { padding: 0 20px 18px; box-shadow: none; }
+html:root .container .cbr .cbr-tecla { padding: 2px 6px 1px; border-radius: 5px; background: #0b0b0d; font-family: var(--cbr-cifra); font-style: normal; font-weight: 800; font-size: 11px; line-height: 14px; color: #fff; }
+
+/*  La cola, dentro de Contratos: el boton va en la misma tarjeta. */
+html:root .container .cbr .cbr-cola .cbr-btn { flex: none; margin-left: auto; }
+
+/* ── Perfil ───────────────────────────────────────────────────────────── */
+html:root .container .cbr .cbr-fichap { flex: none; }
+html:root .container .cbr .cbr-banner {
+    position: relative;
+    height: 92px;
+    border-radius: 14px;
+    background: #0b0b0d center / cover no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root .container .cbr .cbr-banner__btn { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #dcdde0; box-shadow: var(--cbr-pieza); font-size: 16px; color: #0b0b0d; }
+html:root .container .cbr .cbr-banner__btn:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-ident { position: relative; display: flex; align-items: flex-end; gap: 12px; margin-top: -42px; padding: 0 3px 0 10px; }
+/*  La foto, redonda, montada sobre la portada; el aro gris la despega. */
+html:root .container .cbr .cbr-ident__foto { flex: none; display: grid; place-items: center; width: 80px; height: 80px; overflow: hidden; border-radius: 50%; background: #0b0b0d; box-shadow: 0 0 0 1.5px #000, 0 0 0 5px #c4c6ca; font-size: 34px; color: #fff; }
+html:root .container .cbr .cbr-ident__foto img { width: 100%; height: 100%; object-fit: cover; }
+html:root .container .cbr .cbr-ident__txt { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; height: 40px; }
+html:root .container .cbr .cbr-ident__txt .cbr-chapas { margin-top: 0; flex: 1; }
+html:root .container .cbr .cbr-ident__nom { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; padding-right: 4px; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 26px; line-height: 1.1; text-transform: uppercase; white-space: nowrap; color: #0b0b0d; }
+html:root .container .cbr .cbr-ident__txt .cbr-btn--icono { flex: none; width: 34px; min-height: 34px; }
+
+html:root .container .cbr .cbr-cifras { flex: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+html:root .container .cbr .cbr-cifra { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding: 8px 11px 9px; border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-cifra i { overflow: hidden; text-overflow: ellipsis; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 11px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; color: #55555c; }
+html:root .container .cbr .cbr-cifra b { font-family: var(--cbr-cifra); font-weight: 800; font-size: 20px; line-height: 1; font-variant-numeric: tabular-nums; color: #0b0b0d; }
+
+html:root .container .cbr .cbr-caja { flex: none; display: flex; flex-direction: column; gap: 9px; padding: 12px 14px 15px; border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-linea { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 10px; font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: #0b0b0d; }
+html:root .container .cbr .cbr-linea b { font-family: var(--cbr-cifra); font-style: normal; font-weight: 800; font-size: 14px; font-variant-numeric: tabular-nums; }
+html:root .container .cbr .cbr-btn--largo { justify-content: flex-start; width: 100%; margin-top: 4px; padding: 0 12px; }
+html:root .container .cbr .cbr-btn--largo span { flex: 1; text-align: left; }
+
+/* ══ 08/10 · EL PANEL GRANDE ES LA MISMA COLUMNA, ESTIRADA ════════════════
+   Como el Racing Hub: «Panel grande» no cambia de vista, estira la columna
+   hasta el canto izquierdo (se anima `left`) y parte el cuerpo en dos: tu
+   ficha a la izquierda y la seccion a la derecha. Las vistas anchas de antes
+   (.boosting-v2, .market-v2, .ranking-menu) ya no se usan para el jugador.
+   ════════════════════════════════════════════════════════════════════ */
+html:root .container .cbr {
+    width: auto;
+    left: calc(calc(100vw / var(--ogn-escala, 1)) - var(--cbr-riel-total) - var(--cbr-col));
+    transition: left 0.5s cubic-bezier(0.45, 0, 0.25, 1);
+}
+html:root .container .cbr.cbr--ancho { left: var(--cbr-margen-x); }
+
+/*  Las dos zonas del cuerpo. En pequeño solo hay una y el que se desplaza
+    es el cuerpo; en grande, cada zona por su cuenta. */
+html:root .container .cbr .cbr-lado,
+html:root .container .cbr .cbr-centro { flex: none; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+html:root .container .cbr .cbr-cuerpo--dos { display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 22px; overflow: hidden; }
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-lado,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro { min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 0 3px 3px 0; }
+
+/*  En grande, las fichas y las filas van en rejilla; lo que es de la lista
+    entera (cola, buscador, categorias, vacio, rotulos) ocupa todo el ancho. */
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro { display: grid; grid-template-columns: repeat(auto-fill, minmax(410px, 1fr)); grid-auto-rows: max-content; align-content: start; }
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-cola,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-buscar,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-cats,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-vacio,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-rotulo,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-nota,
+html:root .container .cbr .cbr-cuerpo--dos > .cbr-centro > .cbr-confirma { grid-column: 1 / -1; }
+
+/*  La cabecera en una fila: las pestañas suben a la derecha del titulo. */
+html:root .container .cbr.cbr--ancho { position: fixed; }
+html:root .container .cbr.cbr--ancho .cbr-cab { padding-bottom: 4px; }
+html:root .container .cbr.cbr--ancho .cbr-cab__tit { flex: 0 0 auto; max-width: 340px; }
+html:root .container .cbr.cbr--ancho .cbr-saldo { margin-left: auto; }
+html:root .container .cbr.cbr--ancho .cbr-vistas { position: absolute; top: 24px; left: 436px; right: 120px; justify-content: flex-end; gap: 9px; padding: 0 3px 3px 0; }
+html:root .container .cbr.cbr--ancho .cbr-vista { flex: 0 0 auto; padding: 0 14px; font-size: 15.5px; letter-spacing: 0.04em; }
+html:root .container .cbr.cbr--ancho .cbr-cuerpo { padding-top: 16px; }
+html:root .container .cbr.cbr--ancho .cbr-pie { grid-template-columns: 240px 240px; justify-content: end; }
+
+/*  El pie, con aire por arriba: la lista se corta antes de los botones y no
+    pegada a ellos. */
+html:root .container .cbr .cbr-cuerpo { padding-bottom: 8px; }
+html:root .container .cbr .cbr-pie { padding-top: 14px; }
+
+/* ── Las categorias de la clasificacion ───────────────────────────────── */
+html:root .container .cbr .cbr-cats { flex: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0 3px 3px 0; }
+html:root .container .cbr .cbr-cat { flex: 1 1 auto; height: 32px; padding: 0 10px; border-radius: 9px; background: #dcdde0; box-shadow: var(--cbr-pieza); font-family: var(--cbr-rotulo); font-style: italic; font-weight: 800; font-size: 13.5px; letter-spacing: 0.03em; text-transform: uppercase; white-space: nowrap; color: #0b0b0d; }
+html:root .container .cbr .cbr-cat:hover { background: #e6e7ea; }
+html:root .container .cbr .cbr-cat.on { background: #d81b55; color: #000; cursor: default; }
+html:root .container .cbr .cbr-cat:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root .container .cbr .cbr-cat.on:active { transform: none; box-shadow: var(--cbr-pieza); }
+

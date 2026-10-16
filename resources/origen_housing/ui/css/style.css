@@ -1,0 +1,4787 @@
+/* ══════════════════════════════════════════════════════════════
+   ORIGEN HOUSING · el estilo «HUD Arcade»
+   ══════════════════════════════════════════════════════════════
+
+   Esta hoja va DETRÁS de `ogn.css` (el kit de la tablet, que sale de
+   `kit/_armar-plain.py` y NO se edita a mano) y DELANTE de `hotels.css`. Los
+   tokens `--ogn-*` los declaran las tres, pero el que manda es el `:root` de
+   AQUÍ: es el último que los toca —`hotels.css` solo declara los suyos,
+   `--inv-*`, para el mostrador—. Así que el estilo se escribe aquí, igual
+   que se hizo en `origen_doorlock`.
+
+   Las reglas, resumidas:
+
+   - Papel crema, no negro. El cristal es `--ogn-veil`, casi opaco porque
+     debajo está el juego.
+   - Barlow Condensed (--ogn-rotulo) para lo que se RECONOCE: cursiva y 800
+     para títulos y nombres, 700 espaciado y en versales para los rótulos
+     pequeños. Barlow (--ogn-texto) para lo que se LEE de corrido. Share Tech
+     Mono (--ogn-mono) para las cifras. Las tres van con su <link> en
+     index.html: un @import dentro de una hoja cargada detrás no se aplica.
+   - Relieve, no borde: realce blanco arriba y escalón de 5 px abajo
+     (`--ogn-relieve`). Al pulsar baja a 2 px.
+   - Bloques sesgados 10°. El sesgo lo pinta un `::before` de detrás
+     (`--sg-bg` / `--sg-sh`), no la pieza: así el texto se queda derecho sin
+     envolverlo y el `translateY` del pulsado sigue valiendo.
+   - El acento NO decora. Un solo botón rosa por pantalla: el que confirma
+     (comprar, alquilar, guardar). Vender o echar a alguien van en rojo de
+     estado.
+   - El color con significado (verde/ámbar/rojo) se reserva a estados reales.
+   - Las cifras llevan tabular-nums, o bailan al refrescarse.
+   - Nada de backdrop-filter: en el CEF de FiveM el desenfoque no se queda
+     detrás del elemento, lava toda la pantalla del juego. El cristal se hace
+     subiendo la opacidad del crema.
+   - LAS FOTOS DE LAS CASAS Y DE LAS HABITACIONES NO SE TIÑEN NI SE FILTRAN:
+     son el producto. Solo se les cambia el marco.
+
+   Los nombres de token antiguos (--primary-color, --bg-panel…) se conservan
+   apuntando a los nuevos, para que los cientos de reglas de más abajo hereden
+   la paleta sin tener que reescribirlas una a una.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+    /* ── Tipos ─────────────────────────────────────────────────
+       El <link> está en index.html. Las dos familias de respaldo son las que
+       usa el resto del servidor, para que si un día no carga la web no se
+       descoloque el ancho. */
+    --ogn-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --ogn-texto: "Barlow", "Segoe UI", sans-serif;
+    --ogn-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /* ── Marca ───────────────────────────────────────────────────
+       `--ogn-acc-soft` es COLOR DE TEXTO en media docena de sitios (el
+       antetítulo, los rótulos encendidos, la marca del raíl). Sobre negro era
+       un rosa claro; sobre crema hay que bajarlo o no se lee. */
+    --ogn-bg: var(--arc-papel1);
+    --ogn-fg: #0b0b0d;
+    --ogn-acc: #d81b55;
+    --ogn-acc-rgb: 224, 7, 79;
+    --ogn-acc-soft: #b3123f;
+    --ogn-acc-pale: #d81b55;
+    --ogn-acc-deep: #a80c3f;
+    --ogn-grad: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --ogn-grad-hi: linear-gradient(160deg, #ff6f97 0%, #e81255 100%);
+
+    /* ── Superficies ─────────────────────────────────────────────
+       Sobre crema, «subir» es poner blanco, no quitar negro. `--ogn-surface`
+       se queda en tinta muy diluida porque en el fichero se usa también como
+       hueco hundido (ranuras, campos). */
+    --ogn-surface: rgba(38, 34, 26, 0.05);
+    --ogn-surface-hi: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    --ogn-surface-on: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    --ogn-sunken: rgba(var(--arc-t-linea), 0.12);
+
+    /* ── Líneas ──────────────────────────────────────────────── */
+    --ogn-line: rgba(var(--arc-t-linea), 0.24);
+    --ogn-line-soft: rgba(var(--arc-t-linea), 0.15);
+    --ogn-line-hi: rgba(111, 104, 87, 0.45);
+
+    /* ── Tinta, de más a menos presente ──────────────────────── */
+    --ogn-t1: #0b0b0d;
+    --ogn-t2: #3b352a;
+    --ogn-t3: #6b6352;
+    --ogn-t4: #8a8270;
+
+    /* ── Estados con significado, legibles sobre crema ─────────
+       Los de la paleta negra (#3ce6a4, #f0b429) sobre papel no se ven. */
+    --ogn-ok: #146636;
+    --ogn-ok-deep: #0f4a26;
+    --ogn-warn: #b3123f;
+    --ogn-bad: #b3123f;
+    --ogn-bad-deep: #7d0930;
+    --ogn-info: #1d5b9e;
+
+    /* ── Radios ──────────────────────────────────────────────────
+       El claro redondea más que el negro: zona de 14, control de 9. */
+    --ogn-r: 9px;
+    --ogn-r-zona: 14px;
+    --ogn-r-ctrl: 9px;
+    --ogn-r-pill: 6px;
+    --ogn-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* ── El sesgo y el relieve ─────────────────────────────────── */
+    --ogn-skew: skewX(-10deg);
+    --ogn-unskew: skewX(10deg);
+    --ogn-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    --ogn-relieve-on: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.45);
+    --ogn-relieve-bajo: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.3);
+    /* La sombra que despega una zona del fondo: cálida y baja. */
+    --ogn-sombra: 0 10px 24px rgba(90, 80, 60, 0.16);
+    --ogn-sombra-alta: 0 18px 40px rgba(60, 52, 36, 0.3);
+
+    /* ── Medidas ─────────────────────────────────────────────────
+       En vh, no en px: el panel escala entero con la ventana.
+
+       `--ogn-veil` no es el velo de los diálogos aunque lo parezca: es el
+       FONDO de las zonas, de la cabecera, del raíl y de la barra de cifras.
+       Es el cristal crema del diseño. */
+    --ogn-veil: linear-gradient(160deg, rgba(230, 231, 234, 0.97) 0%, rgba(230, 231, 234, 0.95) 45%, rgba(220, 221, 224, 0.97) 100%);
+    --ogn-pad: calc(2.6vh / var(--ogn-escala, 1));
+
+    /* ── Nombres de siempre, apuntando a los nuevos ──────────────
+       Ojo con --primary-color: se usa por todo el fichero como línea y como
+       fondo suave, no solo como color de marca. Si apuntara al acento, la
+       pantalla entera se volvería rosa. Se queda NEUTRO a propósito. */
+    --primary-color: var(--ogn-surface-on);
+    --color-acent: var(--ogn-line-hi);
+    --text-white: var(--ogn-fg);
+    --cubic: var(--ogn-ease);
+
+    --bg-dark: linear-gradient(160deg, rgba(230, 231, 234, 0.98), rgba(230, 231, 234, 0.97));
+    --bg-panel: linear-gradient(160deg, rgba(230, 231, 234, 0.97), rgba(220, 221, 224, 0.96));
+    --border-color: var(--ogn-line-hi);
+    --border-subtle: var(--ogn-line);
+    --color-danger: var(--ogn-bad);
+
+    /* La TINTA de acento: el mismo granate que el canto de un botón rosa. */
+    --ogn-acc-texto: #a80c3f;
+}
+
+/* ══ Los tokens mecánicos ═════════════════════════════════════════════
+   Copiados tal cual de
+   origen_inventory/source-ui/src/assets/styles/arcade.css. Los usan las
+   tres hojas de este recurso.
+
+     --arc-vf  es el factor de los velos BLANCOS. Vale 1.
+     --arc-t-* son los tres canales de un tinte, para escribir cada regla
+               con su propio alfa.
+
+   VA AQUÍ Y NO EN `ogn.css`: esa hoja la GENERA `kit/_armar-plain.py` desde
+   el kit y la sobrescribe entera. Lo que se escriba allí a mano se pierde en
+   la siguiente pasada del script; esto, no.
+   ════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 230, 231, 234;
+    --arc-t-papel2: 230, 231, 234;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+}
+
+/* ── El sesgo, en una sola regla ──────────────────────────────────────
+   Cada pieza sesgada dice su fondo y su sombra con --sg-bg y --sg-sh, y el
+   `::before` de detrás los pinta ya inclinados. El texto se queda derecho sin
+   envolverlo en un <span>.
+
+   Ojo: la pieza tiene que quedarse SIN fondo propio, o taparía al pseudo. Y
+   su contenedor no puede llevar `overflow: hidden`, o se come el pico que
+   sobresale y el escalón de abajo. Por eso la lista es corta: solo las chapas
+   que están en una caja que NO recorta. Un botón dentro del pie de una ficha
+   de la rejilla se deja recto. */
+.ogn-btn,
+.ogn-chip,
+.btn-confirm,
+.btn-cancel,
+.rp-btn,
+.rp-confirmar,
+.hs-pager__btn {
+    position: relative;
+    isolation: isolate;
+}
+
+.ogn-btn::before,
+.ogn-chip::before,
+.btn-confirm::before,
+.btn-cancel::before,
+.rp-btn::before,
+.rp-confirmar::before,
+.hs-pager__btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--sg-bg, transparent);
+    box-shadow: var(--sg-sh, none);
+    transform: var(--ogn-skew);
+    transition: box-shadow 0.16s ease, background 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    user-select: none;
+    color: var(--ogn-t1);
+    font-family: var(--ogn-texto);
+    -webkit-font-smoothing: antialiased;
+    width: calc(100vw / var(--ogn-escala, 1));
+    height: calc(100vh / var(--ogn-escala, 1));
+    /* Es una NUI: detrás está el juego. */
+    background: transparent !important;
+}
+
+::selection {
+    background-color: rgba(224, 7, 79, 0.18);
+    color: var(--ogn-t1);
+}
+
+/* Condensada es tipografía de rótulo: cursiva y 800 para lo que se reconoce
+   —títulos, nombres—. Antes se aplicaba a `p, span, div, a, label, button` Y
+   con versales forzadas, así que la pantalla entera gritaba. */
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: var(--ogn-t1);
+}
+
+p { margin: 0; }
+
+/* ── Rótulos compartidos ───────────────────────────────────────
+   El antetítulo rosa dice dónde estás; el título grande, qué sección es.
+   Son los mismos del panel de administración. */
+.ogn-kicker {
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ogn-acc-soft);
+    line-height: 1;
+}
+
+.ogn-h2 {
+    margin: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.6vh / var(--ogn-escala, 1));
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ogn-t1);
+}
+
+/* Rótulo de sección dentro de un panel: pequeño, muy espaciado y en versales.
+   Es una etiqueta, no un título: derecho, no cursivo. */
+.ogn-label {
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+/* Las cifras van en Oxanium 800 y con tabular-nums: si no, bailan de
+   ancho cada vez que se refrescan. */
+.price, .amount, .money, .value, .count {
+    font-family: var(--ogn-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+}
+
+/* ── Campos ──────────────────────────────────────────────────
+   Hundidos: sobre papel, un campo es un hueco, no una caja levantada. */
+input, textarea, select {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+    color: var(--ogn-t1);
+    padding: 0 calc(1.4vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    font-weight: 600;
+    outline: none;
+    text-transform: none;
+    transition: border-color 0.22s ease, background 0.22s ease;
+}
+
+input::placeholder, textarea::placeholder { color: var(--ogn-t4); }
+
+/* Las casillas del sistema salen azules del navegador si no se les dice
+   nada. Marcada es «esto está en marcha»: verde. */
+input[type="checkbox"], input[type="radio"] {
+    accent-color: var(--ogn-ok);
+    width: auto;
+    box-shadow: none;
+}
+
+/* El deslizador de intensidad de las luces. */
+input[type="range"] {
+    accent-color: var(--ogn-acc);
+    box-shadow: none;
+    background: none;
+    border: 0;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+    background: var(--arc-papel1);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.1);
+}
+
+/* ── Botones ───────────────────────────────────────────────────
+   Chapas de papel sesgadas con relieve. El relleno rosa se reserva al que
+   confirma, y ese se marca en cada pantalla con su propia clase.
+
+   El sesgo NO va aquí: `button` a secas lo llevan también las flechas del
+   swiper y los iconos sueltos, y una chapa inclinada de 2 cm de ancho se lee
+   como un error. Lo pone cada pieza con su `--sg-bg`. */
+button {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 0;
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: var(--ogn-relieve);
+    color: var(--ogn-t2);
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(2.2vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s ease, box-shadow 0.16s ease, color 0.2s ease;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+    opacity: 1;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--ogn-acc);
+    outline-offset: 2px;
+}
+
+button:active {
+    transform: translateY(3px);
+    box-shadow: var(--ogn-relieve-on);
+}
+
+/* ── Panel ─────────────────────────────────────────────────────
+   Sin desenfoque: en el CEF de FiveM lava la pantalla entera del juego. */
+
+/* ── Barras de desplazamiento ────────────────────────────────
+   El kit las pinta de blanco al 20 %: sobre crema no existirían. */
+*::-webkit-scrollbar { height: 5px; width: 5px; }
+*::-webkit-scrollbar-track { background: rgba(var(--arc-t-linea), 0.1); border: none; }
+*::-webkit-scrollbar-thumb { background: rgba(var(--arc-t-linea), 0.38); border-radius: 3px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(var(--arc-t-linea), 0.6); }
+
+/* El kit las escribe con `:where(#app, .ogn-portal)`, que pesa lo mismo que
+   una clase; esto lleva `#app` y pesa más. */
+#app ::-webkit-scrollbar-thumb { background: rgba(var(--arc-t-linea), 0.38); }
+#app ::-webkit-scrollbar-thumb:hover { background: rgba(var(--arc-t-linea), 0.6); }
+
+/* ══ El kit de la tablet, en claro ═══════════════════════════════
+   `ogn.css` va cargado antes y trae unas cuantas piezas con el negro escrito
+   a pelo en vez de en un token. Aquí se repintan; la hoja de allí no se toca
+   porque la arma un script. */
+
+/* La hoja de fondo que tapa el juego. Va un punto más apagada que las zonas:
+   con el mismo crema las cajas dejaban de verse. */
+.ogn-stage__veil {
+    background: linear-gradient(150deg, var(--arc-fondo2, #dcdde0) 0%, var(--arc-fondo2, #e6ddca) 55%, var(--arc-fondo3, #ded4be) 100%);
+}
+
+/* La cabecera es la caja de arriba de la pantalla: la única con el filo rosa
+   de 4 px del diseño. Con el filo en todas, el rosa deja de señalar nada. */
+.ogn-head {
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    border-top: 4px solid #d81b55;
+    box-shadow: var(--ogn-sombra);
+}
+
+.ogn-rail,
+.ogn-panel,
+.ogn-bar__cell {
+    border-color: rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+}
+
+.ogn-bar__cell--btn:hover {
+    background: linear-gradient(160deg, var(--arc-papel1), var(--arc-fondo1, #dcdde0));
+    border-color: var(--ogn-line-hi);
+}
+
+.ogn-bar__label { font-weight: 700; }
+
+/* Las cifras de la barra, en mono. */
+.ogn-bar__value {
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    color: var(--ogn-t1);
+}
+
+.ogn-bar__value--accent { color: var(--ogn-acc-soft); }
+.ogn-bar__value--live { color: var(--ogn-ok); }
+.ogn-bar__value--warn { color: var(--ogn-warn); }
+.ogn-bar__value--bad { color: var(--ogn-bad); }
+
+.ogn-panel__head { font-weight: 700; }
+
+/*  Los botones del kit que NO son chapas: el `button` de arriba les puso el
+    relieve de 5 px y el `translateY` del pulsado, y en una lista pegada al
+    borde eso deja un escalón donde no debe. Se les quita a mano. */
+.ogn-rail__it {
+    box-shadow: none;
+}
+
+.ogn-rail__it:active,
+.ogn-bar__cell--btn:active,
+.ogn-table__row:active {
+    transform: none;
+}
+
+/* El raíl: la marca en su chapa rosa, que es de donde sale el color. */
+.ogn-rail__mark {
+    display: grid;
+    place-items: center;
+    padding: calc(0.8vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    background: var(--ogn-grad);
+    box-shadow: 0 4px 0 var(--ogn-acc-deep);
+    color: #ffffff;
+}
+
+.ogn-rail__it { color: var(--ogn-t4); }
+.ogn-rail__it:hover { background: rgba(224, 7, 79, 0.12); color: var(--ogn-acc-soft); }
+.ogn-rail__it.is-on { background: rgba(var(--arc-t-hueco), 0.07); color: var(--ogn-t1); }
+
+.ogn-rail__word { color: var(--ogn-t3); font-weight: 700; }
+.ogn-rail__state { color: var(--ogn-t4); font-weight: 700; }
+.ogn-rail__dot { background: rgba(var(--arc-t-linea), 0.32); }
+
+/* Sin halo: un resplandor verde sobre crema se lee como una mancha. */
+.ogn-rail__foot.is-on .ogn-rail__dot {
+    background: var(--ogn-ok);
+    box-shadow: none;
+}
+
+.ogn-rail__foot.is-on .ogn-rail__state { color: var(--ogn-t2); }
+
+/* El nombre de la sección al pasar el ratón: etiqueta del tema, no pastilla
+   negra. Sesgada, con su filete rosa a la izquierda. */
+.ogn-tip {
+    padding: calc(0.6vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1)) calc(0.5vh / var(--ogn-escala, 1));
+    border: 0;
+    border-left: 3px solid #d81b55;
+    border-radius: 8px;
+    transform: translateY(-50%) var(--ogn-skew);
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.98), rgba(var(--arc-t-papel2), 0.97));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf))), 0 8px 20px rgba(60, 52, 36, 0.28);
+    color: var(--ogn-t1);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    letter-spacing: 0.06em;
+}
+
+/* Los botones del kit: chapas sesgadas. El `::before` de arriba pinta el
+   sesgo; aquí solo se dice el material. */
+.ogn-btn {
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: var(--ogn-r-ctrl);
+    background: none;
+    box-shadow: none;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    --sg-bg: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    --sg-sh: var(--ogn-relieve);
+    --sg-sh-on: var(--ogn-relieve-on);
+    color: var(--ogn-t2);
+}
+
+.ogn-btn:hover { background: none; --sg-bg: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); color: var(--ogn-t1); }
+.ogn-btn:active { transform: translateY(3px); box-shadow: none; }
+.ogn-btn:active::before { box-shadow: var(--sg-sh-on, none); }
+
+/* El único en rosa de su pantalla: el que confirma. */
+.ogn-btn--solid,
+.ogn-btn--primary {
+    --sg-bg: var(--ogn-grad);
+    --sg-sh: 0 5px 0 var(--ogn-acc-deep);
+    --sg-sh-on: 0 2px 0 var(--ogn-acc-deep);
+    border: 0;
+    background: none;
+    color: #ffffff;
+}
+
+.ogn-btn--solid:hover:not(:disabled),
+.ogn-btn--primary:hover:not(:disabled) {
+    --sg-bg: var(--ogn-grad-hi);
+    background: none;
+    color: #ffffff;
+}
+
+.ogn-btn--ghost {
+    --sg-bg: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    --sg-sh: var(--ogn-relieve);
+    --sg-sh-on: var(--ogn-relieve-on);
+    border: 0;
+    background: none;
+    color: var(--ogn-t2);
+}
+
+.ogn-btn--ghost:hover:not(:disabled) { --sg-bg: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); background: none; color: var(--ogn-t1); }
+
+.ogn-btn:disabled {
+    --sg-bg: rgba(38, 34, 26, 0.07);
+    --sg-sh: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    opacity: 1;
+    color: var(--ogn-t4);
+}
+
+/* Las pastillas del kit: chapa de papel con filete. En negro eran solo
+   borde; sobre crema un borde suelto se pierde. */
+.ogn-chip {
+    border: 0;
+    border-radius: var(--ogn-r-pill);
+    background: none;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.ogn-chip--neutral {
+    --sg-bg: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    --sg-sh: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    color: var(--ogn-t3);
+}
+
+.ogn-chip--accent {
+    --sg-bg: rgba(224, 7, 79, 0.1);
+    --sg-sh: inset 0 0 0 1px rgba(224, 7, 79, 0.45);
+    color: var(--ogn-acc-soft);
+}
+
+.ogn-chip--live {
+    --sg-bg: rgba(20, 102, 54, 0.1);
+    --sg-sh: inset 0 0 0 1px rgba(20, 102, 54, 0.4);
+    color: var(--ogn-ok);
+}
+
+.ogn-chip--warn {
+    --sg-bg: rgba(138, 86, 0, 0.1);
+    --sg-sh: inset 0 0 0 1px rgba(138, 86, 0, 0.4);
+    color: var(--ogn-warn);
+}
+
+.ogn-chip--bad {
+    --sg-bg: rgba(192, 10, 70, 0.1);
+    --sg-sh: inset 0 0 0 1px rgba(192, 10, 70, 0.4);
+    color: var(--ogn-bad);
+}
+
+/* El buscador y los campos de una línea del kit van a sangre, sin caja. La
+   regla de arriba (`input, textarea, select`) les metía el hueco hundido, que
+   ahí sobra: se les quita a mano. */
+.ogn-search__input,
+.ogn-field__input {
+    box-shadow: none;
+    background: transparent;
+    color: var(--ogn-t1);
+    font-weight: 700;
+}
+
+.ogn-field__input--area {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+    font-weight: 500;
+}
+
+.ogn-search__input::placeholder,
+.ogn-field__input::placeholder { color: var(--ogn-t4); }
+.ogn-search:focus-within .ogn-search__icon { color: var(--ogn-acc); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ══ De aquí para abajo, los estilos propios de cada pantalla ══ */
+
+
+
+
+
+
+
+
+
+.no-items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: calc(43vh / var(--ogn-escala, 1));
+    text-align: center;
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.no-items img {
+    display: none;
+}
+
+.no-items span {
+    margin-top: 0;
+}
+
+/* El campo es un hueco: papel hundido con su sombra interior, igual que la
+   regla general de `input`. */
+.form-control {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+    border-radius: var(--ogn-r-ctrl);
+    position: relative;
+    width: 100%;
+    color: var(--ogn-fg) !important;
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+    height: unset;
+    outline: unset;
+    font-family: var(--ogn-texto);
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: var(--ogn-t4);
+}
+
+.form-control:hover {
+    border-color: var(--ogn-line-hi);
+}
+
+.form-control:focus {
+    background: var(--arc-papel1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.1);
+}
+
+.btn option {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: calc(4.1vh / var(--ogn-escala, 1));
+    height: calc(1.9vh / var(--ogn-escala, 1));
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* Interruptor. Encendido va en verde: el rosa dice «esto es lo que señalas»,
+   el verde dice «esto está funcionando». */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(var(--arc-t-hueco), 0.1);
+    border: 1px solid rgba(var(--arc-t-linea), 0.3);
+    transition: background 0.24s ease, border-color 0.24s ease;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    width: calc(1.3vh / var(--ogn-escala, 1));
+    height: calc(1.3vh / var(--ogn-escala, 1));
+    left: calc(0.2vh / var(--ogn-escala, 1));
+    bottom: calc(0.2vh / var(--ogn-escala, 1));
+    background: rgba(var(--arc-t-linea), 0.5);
+    transition: transform 0.24s var(--ogn-ease), background 0.24s ease;
+}
+
+input:checked+.slider {
+    background: rgba(20, 102, 54, 0.16);
+    border-color: rgba(20, 102, 54, 0.5);
+}
+
+input:checked+.slider:before {
+    background: var(--ogn-ok);
+}
+
+input:focus+.slider {
+    box-shadow: none;
+}
+
+input:checked+.slider:before {
+
+    transform: translateX(calc(2.2vh / var(--ogn-escala, 1)));
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* ══ Los controles del editor de muebles ════════════════════════
+   Se ven SOBRE el interior de la casa, así que el papel va sólido: con crema
+   traslúcido encima de un salón oscuro no se lee una letra. Va abajo del
+   todo y centrado, sin tapar el centro de la pantalla, que es donde está el
+   mueble que se está colocando. */
+
+.controls-container {
+    position: fixed;
+    bottom: calc(2vh / var(--ogn-escala, 1));
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+}
+
+/* Crema SÓLIDO —nada de translúcido— con el filo rosa de 4 px arriba y su
+   relieve: es la pieza principal de esta pantalla. */
+.controls-container .controls {
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-top: 4px solid #d81b55;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 14px 34px rgba(0, 0, 0, 0.4);
+    border-radius: var(--ogn-r-zona);
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+    gap: calc(1.4vh / var(--ogn-escala, 1));
+
+}
+
+/* El rótulo va encima del papel, sobre el juego: se le pone su propia
+   pastilla crema o se pierde contra cualquier pared clara. */
+.controls-container .title {
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t2) !important;
+
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border-radius: var(--ogn-r-pill);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 6px 16px rgba(0, 0, 0, 0.3);
+    border: 0;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    margin-bottom: calc(1.1vh / var(--ogn-escala, 1));
+}
+
+.controls-container .controls .control {
+    display: flex;
+    align-items: center;
+    gap: calc(0.7vh / var(--ogn-escala, 1));
+}
+
+/* Cada tecla, en su pastilla con canto: es lo que se reconoce como tecla. */
+.controls-container .controls .control .key {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--ogn-t1);
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+
+    border-radius: var(--ogn-r-pill);
+    height: calc(2.2vh / var(--ogn-escala, 1));
+    min-width: calc(2.2vh / var(--ogn-escala, 1));
+    padding: calc(0.2vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+
+    .icon {
+        font-size: calc(1.2vh / var(--ogn-escala, 1));
+    }
+
+    span {
+        font-size: calc(1.2vh / var(--ogn-escala, 1));
+    }
+}
+
+.controls-container .controls .control .desc {
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    color: var(--ogn-t2);
+}
+
+.controls-container .controls .control .mouse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+    padding-right: calc(0.3vh / var(--ogn-escala, 1));
+    border-radius: 4px;
+    height: calc(2vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.2vh / var(--ogn-escala, 1));
+}
+
+.controls-container .controls .control .mouse img {
+    width: calc(2.8vh / var(--ogn-escala, 1))
+}
+
+/*  */
+
+.title_h {
+    position: absolute;
+    top: calc(5vh / var(--ogn-escala, 1));
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+
+    /* También se ve sobre el interior de la casa: papel sólido. */
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-radius: var(--ogn-r-zona);
+
+    text-shadow: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.disabled {
+    opacity: 0.3 !important;
+}
+
+.title_h h4 {
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t2);
+    text-transform: uppercase;
+    /* margin-bottom: calc(1vh / var(--ogn-escala, 1)); */
+
+}
+
+/* Creation */
+
+.creation-selector {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    transition: background-color var(--cubic) 0.5s, border-color var(--cubic) 0.5s, color var(--cubic) 0.5s, opacity var(--cubic) 0.5s, transform var(--cubic) 0.5s, box-shadow var(--cubic) 0.5s;
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+.creation-selector .content {
+    position: absolute;
+    margin: 0 auto;
+    bottom: calc(7vh / var(--ogn-escala, 1));
+    left: 0;
+    right: 0;
+    height: calc(20vh / var(--ogn-escala, 1));
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.creation-selector .content .title {
+    position: absolute;
+    top: calc(-6vh / var(--ogn-escala, 1));
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t2);
+    text-transform: uppercase;
+    margin-bottom: calc(1vh / var(--ogn-escala, 1));
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+
+    /* Sobre el mundo: papel sólido. */
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-radius: var(--ogn-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 12px 30px rgba(0, 0, 0, 0.4);
+
+    text-shadow: none;
+
+    max-width: 89%;
+    max-lines: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.mySwiper {
+    width: calc(100vh / var(--ogn-escala, 1));
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.mySwiper.reduced {
+    width: calc(40vh / var(--ogn-escala, 1)) !important;
+}
+
+
+.swiper-horizontal {
+    height: 100% !important;
+}
+
+.mySwiper.tab-cameras {
+    margin-top: calc(3vh / var(--ogn-escala, 1));
+    width: 95%;
+
+    position: relative;
+}
+
+.mySwiper.tab-cameras .item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(13vh / var(--ogn-escala, 1)) !important;
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    border-radius: var(--ogn-r-ctrl);
+    background: rgba(var(--arc-t-papel1), 0.9);
+    cursor: pointer;
+
+    transition: box-shadow 0.5s var(--cubic), background 0.5s var(--cubic);
+}
+
+/* Sin `invert(1)`: sobre crema el dibujo invertido salía blanco. */
+.mySwiper.tab-cameras .item img {
+    margin-bottom: calc(2vh / var(--ogn-escala, 1));
+}
+
+.mySwiper.tab-cameras .item .item-img {
+    height: calc(8vh / var(--ogn-escala, 1)) !important;
+}
+
+.mySwiper.tab-cameras .item .img-add {
+    height: calc(4vh / var(--ogn-escala, 1)) !important;
+    margin: 0 !important;
+    opacity: 0.1;
+}
+
+.mySwiper.tab-cameras .item .name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: calc(0.2vh / var(--ogn-escala, 1));
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    color: var(--ogn-t1);
+    text-align: center;
+    width: 100%;
+    border-radius: 0;
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.96), rgba(var(--arc-t-papel2), 0.95));
+    border-top: 1px solid var(--ogn-line-soft);
+    box-shadow: none;
+}
+
+.tab-cameras .item.broken {
+    animation: broken_background 1s infinite;
+}
+
+.tab-cameras .item.broken img {
+    margin-bottom: 0;
+    opacity: 0.5;
+
+    animation: broken 1s infinite;
+}
+
+.mySwiper.tab-cameras .item:hover:not(.broken) {
+    box-shadow: none;
+}
+
+@keyframes broken {
+    0% {
+        transform: scale(0.95);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes broken_background {
+    0% {
+        background: #a01124;
+    }
+
+    50% {
+        background: #630a16;
+    }
+
+    100% {
+        background: #a01124;
+    }
+}
+
+.creation-selector .content .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: calc(20vh / var(--ogn-escala, 1));
+    /* LA FOTO ES EL PRODUCTO: aquí solo se toca el marco. Ni filtros ni
+       tintes sobre la imagen. */
+    background: rgba(var(--arc-t-papel1), 0.9);
+    border: 1px solid rgba(var(--arc-t-linea), 0.28);
+    box-shadow: var(--ogn-sombra);
+    border-radius: var(--ogn-r-zona);
+    margin-right: calc(0.5vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+    color: var(--ogn-t1);
+
+    background-position: center;
+    overflow: hidden;
+}
+
+/* La elegida se marca con el filo rosa, que es lo que el rosa sirve. */
+.creation-selector .content .item.selected {
+    background: var(--arc-papel1);
+    box-shadow: 0 0 0 2px rgba(var(--ogn-acc-rgb), 0.55), var(--ogn-sombra);
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+}
+
+.creation-selector .content .item.selected img {
+    transform: scale(1.1);
+}
+
+.creation-selector .content .item.selected .house_name {
+    transition: 4s var(--cubic) transform;
+    transform: translateY(calc(10vh / var(--ogn-escala, 1)));
+}
+
+.creation-selector .content .item img {
+    height: calc(20vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.creation-selector .content .item .house_name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    /* El nombre se apoya SOBRE la foto: banda crema opaca, no un velo negro.
+       La foto no se toca, solo se le pone el rótulo encima. */
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.96), rgba(var(--arc-t-papel2), 0.95));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border: 0;
+    color: var(--ogn-t1);
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    text-transform: uppercase;
+    width: 100%;
+    border-radius: 0;
+
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.creation-selector .content .item .time {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: calc(1vh / var(--ogn-escala, 1));
+    top: calc(1vh / var(--ogn-escala, 1));
+    width: fit-content;
+    height: fit-content;
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.96), rgba(var(--arc-t-papel2), 0.95));
+    color: var(--ogn-t1);
+    border-radius: var(--ogn-r-pill);
+    padding: calc(0.3vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.35);
+    transition: background-color var(--cubic) 0.3s, border-color var(--cubic) 0.3s, color var(--cubic) 0.3s, opacity var(--cubic) 0.3s, transform var(--cubic) 0.3s, box-shadow var(--cubic) 0.3s;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+}
+
+.creation-selector .content .item .time span {
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    margin-left: calc(0.5vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+}
+
+.creation-selector .content .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--ogn-t2);
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 8px 20px rgba(0, 0, 0, 0.3);
+    height: 50%;
+    width: calc(4vh / var(--ogn-escala, 1));
+
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+
+    margin: 0 calc(1vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+    outline: none;
+}
+
+.content .arrow i {
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.creation-selector .content .arrow:hover {
+    height: 100%;
+}
+
+/* Loading */
+
+.loading-object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
+    color: var(--ogn-t3);
+
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-align: center;
+
+    font-family: var(--ogn-texto);
+}
+
+.loading-object img {
+    /* Sin `invert(1)`: el dibujo ya es oscuro y sobre crema se veía en
+       blanco, o sea nada. */
+    height: calc(2.4vh / var(--ogn-escala, 1));
+    margin-bottom: calc(1.6vh / var(--ogn-escala, 1));
+    opacity: 0.5;
+    animation: loading 1s linear infinite;
+}
+
+.loading-object .loading-object span {
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* Management menu */
+
+/* ══ Panel de administración ════════════════════════════════════
+   Es la escena del kit (.ogn-stage): riel al canto, cabecera en su caja,
+   contenido y barra de cifras. Aquí sólo se clava sobre el juego, que es lo
+   único que el kit no puede saber.
+
+   Antes esto era un armazón propio: dos franjas a sangre, el título suelto en
+   una esquina, las secciones como pastillas y el paginador flotando. No se
+   parecía a ningún otro panel del servidor. Ver la skill origen-tablet. */
+.management {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+}
+
+/* El grano y las líneas de barrido se han ido de las dos pantallas: el velo de
+   la tablet va limpio, y además estos pseudoelementos se pintaban por encima
+   del riel. Se deja el selector por si vuelve alguna capa decorativa, pero
+   apagado.
+
+.house_panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.14;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+.house_panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(130% 100% at 50% 50%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.75) 100%),
+        repeating-linear-gradient(180deg, rgba(255, 255, 255, calc(0.0105 * var(--arc-vf))) 0 1px, rgba(0, 0, 0, 0) 1px 4px);
+}
+
+.house_panel>* {
+    position: relative;
+    z-index: 4;
+}
+*/
+
+.blackscreen {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0);
+}
+
+/* La region que rueda. Sin relleno de los lados: el hueco lo pone .ogn-frame
+   una sola vez, y asi las fichas quedan a la misma linea que la caja de la
+   cabecera y que la barra del pie. */
+.scripts-grid-container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.scripts-grid-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scripts-grid-container::-webkit-scrollbar-track {
+    background: rgba(var(--arc-t-linea), 0.1);
+    border-radius: var(--ogn-r);
+}
+
+.scripts-grid-container::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-linea), 0.38);
+    border-radius: var(--ogn-r);
+}
+
+.scripts-grid-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--arc-t-linea), 0.6);
+}
+
+/* Dos franjas a sangre: arriba quién eres y qué puedes crear, debajo la
+   búsqueda y las secciones. Cada una se cierra con su propia línea. */
+/*  El armazón viejo de la cabecera —.header, .title-section, .header-button,
+    .header-content, .header-left, .header-right, .search-box, .categories y
+    .category-btn— se ha ido con él. Ahora la cabecera es .ogn-head y la
+    navegación es el riel; las piezas de dentro son las del kit (.ogn-search,
+    .ogn-btn), que es lo que usan los demás paneles del servidor.
+
+    Se han quitado en vez de dejarlas ahí: reglas de un armazón que ya no
+    existe son justo lo que acaba reestilando por accidente una pantalla
+    nueva. */
+
+
+
+/* .management .content - Eliminado, ya no se necesita */
+
+
+
+
+
+
+
+
+/*  Botoncito de icono, recto: sale dentro de listas y de cajas que recortan,
+    así que no lleva sesgo ni escalón, solo el filete y el realce. */
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    color: var(--ogn-t2);
+    border-radius: var(--ogn-r-pill);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background-color 0.24s var(--cubic), border-color 0.24s var(--cubic), color 0.24s var(--cubic), transform 0.24s var(--cubic);
+    width: fit-content;
+    min-width: calc(3vh / var(--ogn-escala, 1));
+    height: calc(3vh / var(--ogn-escala, 1));
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    box-shadow: none;
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.btn-action:hover {
+    background: var(--arc-fondo1, #ffffff);
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-t1);
+    transform: scale(1.08);
+}
+
+.btn-action:active { transform: none; box-shadow: none; }
+
+/* Lo que no tiene vuelta atrás va en el rojo de estado, nunca en el rosa. */
+.btn-action.danger {
+    gap: calc(1vh / var(--ogn-escala, 1));
+    margin-right: 0;
+    background: linear-gradient(160deg, #d4174f 0%, #a80c3f 100%);
+    border-color: #a80c3f;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.btn-action.danger:hover {
+    background: linear-gradient(160deg, #e02458 0%, #bb0f47 100%);
+    border-color: #bb0f47;
+    color: #ffffff;
+}
+
+/*  */
+
+/* Create house */
+
+/*  Los campos de crear vivienda y puerta tenian el texto en negro, resto de
+    cuando el panel era claro: sobre el fondo oscuro de ahora escribias a
+    ciegas. Se usa el color de texto de la casa, que es el que ya aplica la
+    regla general de input; el !important se conserva porque es lo que habia y
+    algo mas abajo lo estaba pisando. */
+.create-house input,
+.create-door input {
+    color: var(--ogn-fg) !important;
+}
+
+.house_types {
+    margin: 0;
+    /* padding: 0; */
+}
+
+.create-door .option {
+    font-size: calc(1.7vh / var(--ogn-escala, 1)) !important;
+
+    i {
+        font-size: calc(1.5vh / var(--ogn-escala, 1)) !important;
+    }
+}
+
+.door_types {
+    padding: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+/* Fichas de elección (modalidad, interior, método de pago). Antes eran
+   blancas con texto negro, que en una pantalla negra grita más que el botón
+   que confirma. Ahora: borde de 1px, y la elegida se marca con el acento. */
+.c-modal .option {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--ogn-t2);
+    border: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.24);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: background 0.2s var(--cubic), box-shadow 0.2s var(--cubic), color 0.2s var(--cubic);
+    margin: 0 calc(0.6vh / var(--ogn-escala, 1)) 0 0;
+    padding: calc(0.85vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1));
+}
+
+.c-modal .option:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.4);
+    color: var(--ogn-t1);
+}
+
+/* La elegida: filete del acento y un tinte, nunca relleno lleno. El relleno
+   rosa se lo queda el botón que confirma. */
+.c-modal .option.active {
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    box-shadow: inset 0 0 0 1px rgba(var(--ogn-acc-rgb), 0.55);
+    color: var(--ogn-acc-soft);
+}
+
+.c-modal .option span {
+    margin-left: calc(0.6vh / var(--ogn-escala, 1));
+}
+
+.c-modal .option i {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.c-modal .option.active i {
+    color: var(--ogn-acc-soft);
+}
+
+
+/* Modal */
+
+/* ══ Modales ════════════════════════════════════════════════════
+   Velo plano y OSCURO aunque el panel sea claro: lo que hay detrás es el
+   juego, y un velo crema sobre el mundo no separa nada. El que se aclara es
+   el cuadro, no el velo.
+   z-index 99000 para quedar siempre por encima de paneles laterales (.rp con z-index 1000). */
+.modals {
+    position: relative;
+    z-index: 99000;
+}
+
+.c-modal {
+    background: rgba(30, 26, 18, 0.62);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99000;
+}
+
+.modal-block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body {
+    padding: var(--ogn-pad);
+    color: var(--ogn-t1);
+    overflow: auto;
+}
+
+/*  El cuadro: cristal crema con el filo rosa de 4 px arriba, que es la pieza
+    principal mientras está abierto.
+
+    Lleva `overflow: hidden`, así que NINGUNA chapa de dentro va sesgada: el
+    pie está pegado al borde y se comería el pico. Aquí las chapas son rectas
+    con su relieve. */
+.modal-content {
+    width: max-content;
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.99) 0%, rgba(var(--arc-t-papel2), 0.98) 45%, rgba(var(--arc-t-papel3), 0.99) 100%);
+    border-radius: var(--ogn-r-zona) !important;
+    overflow: hidden;
+    border: 0;
+    border-top: 4px solid #d81b55;
+    /* Sombra oscura: es profundidad, no un aura de color. */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 calc(2.4vh / var(--ogn-escala, 1)) calc(6vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.45);
+    max-height: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    flex: none;
+    padding: calc(2.2vh / var(--ogn-escala, 1)) var(--ogn-pad) !important;
+    border: 0;
+    border-bottom: 1px solid rgba(var(--arc-t-linea), 0.2) !important;
+}
+
+.modal-footer {
+    flex: none;
+    margin-top: 0;
+    border-top: 1px solid rgba(var(--arc-t-linea), 0.2);
+    background: rgba(var(--arc-t-linea), 0.07);
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    padding: calc(1.6vh / var(--ogn-escala, 1)) var(--ogn-pad);
+}
+
+/* El título del modal es el nombre de lo que se está haciendo: cursiva 800. */
+.c-modal .title {
+    text-shadow: none;
+    color: var(--ogn-t1);
+    padding: 0;
+    border-radius: 0;
+    font-size: calc(2.4vh / var(--ogn-escala, 1));
+    line-height: 1.05;
+    font-style: italic;
+    font-weight: 800;
+    border: 0;
+    background: none;
+    font-family: var(--ogn-rotulo);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    width: auto;
+}
+
+/* Dentro del modal, h4 es el rótulo de un bloque y h5 la etiqueta de un
+   campo. Sin esto los dos salen del mismo tamaño y el ojo no sabe cuál
+   manda. Los dos son etiquetas: derechos, no cursivos. */
+.modal-body h4 {
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.modal-body h5 {
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    margin-bottom: calc(0.7vh / var(--ogn-escala, 1));
+}
+
+/* Cerrar es la salida, no una acción: papel. */
+.c-modal .btn-cancel {
+    font-family: var(--ogn-rotulo);
+    text-transform: uppercase;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    font-style: italic;
+    font-weight: 800;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    color: var(--ogn-t2);
+    border: 0;
+    box-shadow: var(--ogn-relieve);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.16s ease;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+}
+
+/* El cuadro recorta: aquí las chapas van rectas, sin el `::before` sesgado. */
+.c-modal .btn-cancel::before,
+.c-modal .btn-modal::before { content: none; }
+
+.c-modal .btn-cancel:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.c-modal .btn-cancel:active {
+    transform: translateY(3px);
+    box-shadow: var(--ogn-relieve-on);
+}
+
+/* El único botón lleno del modal: el que confirma. */
+.c-modal .btn-modal {
+    font-family: var(--ogn-rotulo);
+    text-transform: uppercase;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(2.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    font-style: italic;
+    font-weight: 800;
+    background: var(--ogn-grad);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.16s ease;
+    letter-spacing: 0.04em;
+}
+
+.c-modal .btn-modal:focus-visible {
+    box-shadow: unset;
+    border: unset;
+    outline: unset;
+}
+
+.c-modal .btn-modal:hover {
+    background: var(--ogn-grad-hi);
+    color: #fff;
+}
+
+.c-modal .btn-modal:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+/* Quitar propietario deshace algo: no puede parecerse al botón que confirma.
+   Va en el rojo de estado. */
+.c-modal .btn-modal.btn-danger {
+    background: linear-gradient(160deg, #d4174f 0%, #a80c3f 100%);
+    color: #ffffff;
+    box-shadow: 0 5px 0 #7d0930;
+    font-weight: 800;
+}
+
+.c-modal .btn-modal.btn-danger:hover {
+    background: linear-gradient(160deg, #e02458 0%, #bb0f47 100%);
+    color: #ffffff;
+}
+
+.c-modal .btn-modal.btn-danger:active { box-shadow: 0 2px 0 #7d0930; }
+
+/* Visitar acompaña a comprar, pero no es la acción principal: papel. */
+.c-modal .visit-btn {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: var(--ogn-relieve);
+    color: var(--ogn-t2);
+    font-weight: 800;
+}
+
+.c-modal .visit-btn:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.c-modal .visit-btn:active { box-shadow: var(--ogn-relieve-on); }
+
+.fadeIn {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.info-box {
+    margin-top: calc(2.4vh / var(--ogn-escala, 1)) !important;
+    background: rgba(var(--arc-t-linea), 0.06);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--ogn-t1);
+    position: relative;
+    padding: calc(2vh / var(--ogn-escala, 1));
+    user-select: text !important;
+    padding-top: calc(2.5vh / var(--ogn-escala, 1));
+    font-weight: 500;
+}
+
+.c-modal .info-box {
+    background: rgba(var(--arc-t-linea), 0.06);
+    padding: calc(2vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1)) !important;
+}
+
+/* El rótulo del recuadro se apoya en su borde superior: es una etiqueta, no
+   una pastilla de color. */
+.info-box h4:first-child {
+    position: absolute;
+    top: calc(-0.8vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    /* Tapa la línea del recuadro por detrás: tiene que ser el MISMO crema del
+       cuadro, no un color suelto. */
+    background: var(--arc-fondo1, #e6e7ea);
+    padding: 0 calc(0.8vh / var(--ogn-escala, 1));
+    border-radius: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    left: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.box-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    position: relative;
+    color: var(--ogn-t1) !important;
+    padding: calc(1.2vh / var(--ogn-escala, 1));
+    height: unset;
+    outline: unset;
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    border-radius: var(--ogn-r-ctrl);
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+}
+
+.box-option i {
+    color: var(--ogn-t3);
+}
+
+.box-option input {
+    background: none;
+    appearance: none;
+    color: var(--ogn-t1) !important;
+}
+
+.box-option input:hover,
+.box-option input:focus {
+    opacity: 1.1;
+}
+
+.create-house .desc {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    color: var(--ogn-t3);
+}
+
+
+
+
+
+
+
+
+
+
+.buy-house .box-option {
+    position: relative;
+    justify-content: flex-start;
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+}
+
+.buy-house .box-option .info h5 {
+    margin: 0 0 calc(0.4vh / var(--ogn-escala, 1));
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    font-family: var(--ogn-rotulo);
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+}
+
+/* El precio de la casa: mono y tabular. */
+.buy-house .box-option .info span {
+    font-family: var(--ogn-mono);
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-variant-numeric: tabular-nums;
+}
+
+.buy-house .box-option i {
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.buy-house .house-images {
+    width: fit-content;
+    overflow: hidden;
+    padding-bottom: calc(1vh / var(--ogn-escala, 1));
+}
+
+.buy-house .house-images::-webkit-scrollbar {
+    height: calc(0.3vh / var(--ogn-escala, 1));
+}
+
+.garage-images {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.garage-images::-webkit-scrollbar {
+    height: calc(0.4vh / var(--ogn-escala, 1));
+    width: 100%;
+}
+
+.buy-house .house-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: fit-content; */
+    width: calc(10vh / var(--ogn-escala, 1));
+    height: calc(10vh / var(--ogn-escala, 1));
+    /* LA FOTO DE LA CASA ES EL PRODUCTO: solo se toca el marco, nunca la
+       imagen. Ni filtro ni tinte encima. */
+    background-color: rgba(var(--arc-t-papel1), 0.9);
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-radius: var(--ogn-r-pill);
+    cursor: pointer;
+    margin-right: calc(2.9vh / var(--ogn-escala, 1));
+    overflow: hidden;
+}
+
+.buy-house .house-image img {
+    height: calc(12vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.buy-house .house-image:hover img {
+    transform: scale(1.1);
+}
+
+/* Notifications */
+
+.notifications {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    flex-direction: column;
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+    height: 0px;
+    z-index: 9999999;
+}
+
+/* El aviso es papel como todo lo demás; lo que dice si ha ido bien o mal es
+   una barra de 2px y el color del icono, no un rectángulo verde o rojo del
+   ancho de la pantalla. Se ve sobre el juego, así que el crema va sólido. */
+.notifications .notification {
+    position: relative;
+    /* El contenedor mide 0 de alto: sin esto el aviso se encoge hasta que el
+       texto se le sale por arriba y por abajo. */
+    flex: none;
+    width: calc(46vh / var(--ogn-escala, 1));
+    padding: calc(1.4vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1)) calc(2.2vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    display: flex;
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-radius: var(--ogn-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 12px 30px rgba(0, 0, 0, 0.4);
+    text-transform: none;
+    align-items: center;
+    gap: calc(1.4vh / var(--ogn-escala, 1));
+    margin-bottom: calc(1vh / var(--ogn-escala, 1));
+    overflow: hidden;
+}
+
+.notifications .notification::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--ogn-t4);
+}
+
+.notifications .notification .icon {
+    flex: none;
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    margin-right: 0;
+    color: var(--ogn-t3);
+}
+
+.notifications .notification .name {
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: var(--ogn-t1);
+}
+
+.notifications .notification .message {
+    font-family: var(--ogn-texto);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    opacity: 1;
+    color: var(--ogn-t2);
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.notifications .notification.success::before { background: var(--ogn-ok); }
+.notifications .notification.success .icon { color: var(--ogn-ok); }
+
+.notifications .notification.error::before { background: var(--ogn-bad); }
+.notifications .notification.error .icon { color: var(--ogn-bad); }
+
+.notifications .notification.warning::before { background: var(--ogn-warn); }
+.notifications .notification.warning .icon { color: var(--ogn-warn); }
+
+.notifications .notification.info::before { background: var(--ogn-info); }
+.notifications .notification.info .icon { color: var(--ogn-info); }
+
+
+/* Anims */
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: 0.3s;
+}
+
+/* Houses */
+
+.houses {
+    position: absolute;
+    bottom: calc(3vh / var(--ogn-escala, 1));
+    right: calc(3vh / var(--ogn-escala, 1));
+    height: fit-content;
+    width: calc(30vh / var(--ogn-escala, 1));
+
+    padding: calc(1.4vh / var(--ogn-escala, 1));
+
+    /* Se abre sobre el mundo: crema sólido con el filo rosa arriba. */
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-top: 4px solid #d81b55;
+    border-radius: var(--ogn-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 14px 34px rgba(0, 0, 0, 0.4);
+
+    z-index: 0;
+}
+
+.houses .title {
+    position: relative;
+    text-align: center;
+    border-radius: 0;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    background: transparent;
+    border: none;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 0;
+    padding-bottom: calc(0.8vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+/* La raya que se apaga, en vez del filete gris de antes. */
+.houses .title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc) 0%, rgba(var(--arc-t-linea), 0.28) 20%, transparent 100%);
+}
+
+.houses .list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    max-height: calc(22.4vh / var(--ogn-escala, 1));
+    margin-top: calc(0.8vh / var(--ogn-escala, 1));
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+}
+
+.houses .list::-webkit-scrollbar {
+    width: calc(0.3vh / var(--ogn-escala, 1));
+}
+
+.houses .list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.houses .list::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-linea), 0.38);
+    border-radius: var(--ogn-r);
+}
+
+.houses .list .house {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(0.8vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    color: var(--ogn-t1);
+
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    transition: background-color 0.24s ease, border-color 0.24s ease, color 0.24s ease;
+}
+
+.houses .list .house:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+}
+
+/* El acento entra SOLO al pasar por encima o en la casa elegida. */
+.houses .list .house:hover>.d-flex:first-child>i,
+.houses .list .house.selected>.d-flex:first-child>i,
+.houses .list .house .btn-action:hover i {
+    color: var(--ogn-acc-soft);
+}
+
+/* La casa elegida se marca con una barra al lado, no rellenandola. */
+.houses .list .house { position: relative; }
+.houses .list .house.selected::before {
+    content: "";
+    position: absolute;
+    left: 0; top: calc(0.7vh / var(--ogn-escala, 1)); bottom: calc(0.7vh / var(--ogn-escala, 1));
+    width: 2px;
+    background: linear-gradient(180deg, var(--ogn-acc-soft), var(--ogn-acc-deep));
+}
+
+.houses .list .house>.d-flex:first-child>i {
+    /* Neutro en reposo: el acento se reserva a lo seleccionado y a lo que
+       tienes debajo del raton. Veinte iconos rosas no señalan nada. */
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+    filter: none;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+}
+
+.houses .list .house .info {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    margin-left: calc(0.8vh / var(--ogn-escala, 1));
+    color: var(--ogn-t2);
+    font-weight: 500;
+}
+
+.houses .list .house .info .name {
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-size: calc(1.55vh / var(--ogn-escala, 1));
+    line-height: 1.15;
+    color: var(--ogn-t1);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.houses .list .house .btn-action {
+    margin-right: 0;
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.22);
+    box-shadow: none;
+    min-width: calc(2.5vh / var(--ogn-escala, 1));
+    height: calc(2.5vh / var(--ogn-escala, 1));
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+}
+
+.houses .list .house .btn-action:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.12);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.houses .list .house .btn-action i {
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+    filter: none;
+}
+
+.houses .no-houses {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc(18vh / var(--ogn-escala, 1));
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+}
+
+.houses .no-houses img {
+    display: none;
+}
+
+
+/* ══ El editor de muebles ═══════════════════════════════════════
+   Se ve SOBRE el interior de la casa, así que el crema va sólido: con papel
+   traslúcido encima de un salón oscuro no se lee nada. Va pegado al canto
+   inferior derecho y deja el centro libre, que es donde está el mueble que se
+   está colocando. */
+
+.furniture {
+    position: absolute;
+    bottom: calc(3vh / var(--ogn-escala, 1));
+    right: calc(3vh / var(--ogn-escala, 1));
+    height: calc(34vh / var(--ogn-escala, 1));
+    width: fit-content;
+
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1)) 0 calc(1.2vh / var(--ogn-escala, 1));
+
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    border-top: 4px solid #d81b55;
+    border-radius: var(--ogn-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 14px 34px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+.furniture .options {
+    position: absolute;
+    right: 0;
+    top: calc(-3.5vh / var(--ogn-escala, 1));
+    width: calc(30vh / var(--ogn-escala, 1));
+    height: fit-content;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+    margin-right: calc(0.2vh / var(--ogn-escala, 1));
+}
+
+.furniture .options .option {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+    border-radius: 8px 8px 0 0;
+    padding: calc(0.45vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    width: calc(2.8vh / var(--ogn-escala, 1));
+    transition: width 0.5s var(--cubic), padding 0.5s var(--cubic), color 0.2s ease, box-shadow 0.2s ease;
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.furniture .options .option span {
+    white-space: nowrap;
+}
+
+.furniture .options .option:hover,
+.furniture .options .option.selected {
+    width: calc(11.5vh / var(--ogn-escala, 1));
+    padding: calc(0.45vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+}
+
+.furniture .options .option:hover {
+    color: var(--ogn-t1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.38);
+}
+
+/* La pestaña elegida se marca con el acento en el texto y en su filete, no
+   rellenándose: el relleno rosa de esta pantalla es el de Colocar, que es lo
+   que confirma, y dos rosas llenos no señalan nada. */
+.furniture .options .option.selected {
+    background: rgba(var(--ogn-acc-rgb), 0.1) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+
+.furniture .categories {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: calc(1vh / var(--ogn-escala, 1));
+    height: 100%;
+    width: fit-content;
+    /* padding: 0 calc(0.5vh / var(--ogn-escala, 1)) 0; */
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: calc(2vh / var(--ogn-escala, 1));
+
+    scroll-margin: 10px;
+}
+
+.furniture .categories::-webkit-scrollbar {
+    display: none;
+}
+
+.furniture .categories .category {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    width: calc(10vh / var(--ogn-escala, 1));
+    height: calc(7.2vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    margin-right: calc(0.5vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    cursor: pointer;
+    overflow: hidden;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.furniture .categories .category.minimized {
+    width: calc(4.5vh / var(--ogn-escala, 1));
+    height: calc(4.5vh / var(--ogn-escala, 1));
+
+    flex-direction: none;
+}
+
+.furniture .categories .category.minimized .title {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.furniture .categories .category.minimized i {
+    margin: 0;
+    font-size: calc(1.7vh / var(--ogn-escala, 1));
+}
+
+/* El botón de volver, que es el único que lleva acento aquí. */
+.bg-accent {
+    background: rgba(var(--ogn-acc-rgb), 0.1) !important;
+    border-color: rgba(var(--ogn-acc-rgb), 0.5) !important;
+    color: var(--ogn-acc-soft) !important;
+    box-shadow: none;
+}
+
+.furniture .categories .category .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.5vh / var(--ogn-escala, 1));
+    /* Banda crema opaca sobre la miniatura: la foto no se tiñe, se le pone
+       el rótulo encima. */
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.96), rgba(var(--arc-t-papel2), 0.95));
+    box-shadow: none;
+    border: 0;
+    border-top: 1px solid var(--ogn-line-soft);
+    color: var(--ogn-t3);
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    width: 100%;
+    border-radius: 0;
+
+    transition: color 0.2s ease;
+
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+}
+
+.furniture .categories .category i {
+    margin-bottom: calc(1.5vh / var(--ogn-escala, 1));
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+}
+
+.furniture .categories .category:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+}
+
+.furniture .categories .category:hover i {
+    transform: none;
+    color: var(--ogn-acc-soft);
+}
+
+.furniture .categories .category:hover .title {
+    color: var(--ogn-t1);
+}
+
+.furniture .expand-content {
+    overflow: hidden;
+}
+
+.furniture .items {
+    display: flex;
+    flex-direction: column;
+    padding: 0 calc(1.3vh / var(--ogn-escala, 1)) 0 0;
+    height: 100%;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+}
+
+/* El nombre de la categoría es un rótulo con su línea debajo, no una barra
+   gris clara del ancho del panel. */
+.furniture .items .current_category {
+    position: relative;
+    height: fit-content;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    padding: 0 0 calc(1vh / var(--ogn-escala, 1));
+
+    background: none;
+    box-shadow: none;
+    border: 0;
+    border-bottom: 0;
+
+    border-radius: 0;
+    text-shadow: none;
+    width: 100%;
+}
+
+/* La raya que se apaga del tema, en vez del filete gris. */
+.furniture .items .current_category::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc) 0%, rgba(var(--arc-t-linea), 0.28) 20%, transparent 100%);
+}
+
+.furniture .items .current_category span {
+    max-width: calc(15vh / var(--ogn-escala, 1));
+    max-lines: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.furniture .items .objects {
+    margin-top: calc(1vh / var(--ogn-escala, 1));
+    height: fit-content;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(1vh / var(--ogn-escala, 1));
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    padding-bottom: calc(1.8vh / var(--ogn-escala, 1));
+}
+
+.furniture .items .objects::-webkit-scrollbar {
+    display: none;
+}
+
+.furniture .items .objects .object {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    width: calc(15vh / var(--ogn-escala, 1));
+    height: calc(7.9vh / var(--ogn-escala, 1));
+    /* LA FOTO DEL MUEBLE ES EL PRODUCTO: solo el marco. */
+    background: rgba(255, 255, 255, calc(0.68 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+
+    color: var(--ogn-t1);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* El seleccionado se marca con el acento, que es lo que el acento sirve. */
+.furniture .items .objects .object.selected {
+    background: rgba(var(--ogn-acc-rgb), 0.09);
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+}
+
+.furniture .items .objects .buyed-object:hover .object-actions {
+    opacity: 1;
+}
+
+.furniture .items .objects .object img {
+    height: calc(7vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.furniture .items .objects .object .no-item {
+    height: calc(3vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+    /* Sin `invert(1)`: sobre crema el dibujo salía en blanco. */
+    opacity: 0.3;
+}
+
+.furniture .items .objects .object:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+}
+
+.furniture .items .objects .object:hover img {
+    transform: scale(1.1);
+}
+
+/* El precio es un dato: pastilla de papel en Oxanium 800, no un
+   rectángulo verde por cada mueble del catálogo. Va encima de la foto, así
+   que el crema tiene que ser opaco. */
+.furniture .items .objects .object .price {
+    position: absolute;
+    top: calc(0.6vh / var(--ogn-escala, 1));
+    right: calc(0.6vh / var(--ogn-escala, 1));
+
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97), rgba(var(--arc-t-papel2), 0.96));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: calc(0.2vh / var(--ogn-escala, 1)) calc(0.5vh / var(--ogn-escala, 1));
+    z-index: 2;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--ogn-t2);
+    width: fit-content;
+    font-variant-numeric: tabular-nums;
+}
+
+.furniture .items .object-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s var(--cubic);
+    gap: calc(1vh / var(--ogn-escala, 1));
+    padding-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.furniture .items .object-actions .action {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    opacity: 0.4;
+    transition: opacity 0.5s var(--cubic);
+}
+
+.furniture .items .object-actions .action:hover {
+    opacity: 1;
+}
+
+.furniture .items .actions {
+    display: flex;
+    align-items: center;
+    margin-left: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+/* Colocar es lo que confirma en este panel: el único rosa. Sin sesgo: está
+   dentro de una caja que recorta y se le comería el pico. */
+.furniture .items .actions .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ogn-grad);
+    border: 0;
+    box-shadow: 0 4px 0 var(--ogn-acc-deep);
+    border-radius: var(--ogn-r-pill);
+    transition: background 0.2s ease, box-shadow 0.16s ease, color 0.2s ease;
+
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+
+    color: #fff;
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.furniture .items .actions .action:last-of-type {
+    margin-right: 0;
+}
+
+.furniture .items .actions .action i {
+    margin-right: calc(0.7vh / var(--ogn-escala, 1));
+}
+
+/* Apagado no se rellena de gris: papel hundido, porque no está roto, es que
+   todavía no tiene a qué aplicarse. */
+.furniture .items .actions .action.disabled {
+    opacity: 1 !important;
+    background: rgba(var(--arc-t-hueco), 0.07);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    color: var(--ogn-t4);
+    cursor: not-allowed;
+}
+
+.furniture .items .actions .action:hover:not(.disabled) {
+    opacity: 1;
+    transform: none;
+    background: var(--ogn-grad-hi);
+    cursor: pointer;
+}
+
+
+
+
+
+.confirm-buy-object .object {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.68 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    /* width: 100%; */
+    padding: 0 calc(2vh / var(--ogn-escala, 1));
+}
+
+.confirm-buy-object .object img {
+    height: calc(13vh / var(--ogn-escala, 1));
+}
+
+.confirm-buy-object h4 {
+    font-size: calc(2vh / var(--ogn-escala, 1));
+}
+
+.confirm-buy-object .desc {
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    color: var(--ogn-t3);
+}
+
+.confirm-buy-object .object .price {
+    position: absolute;
+    top: calc(0.7vh / var(--ogn-escala, 1));
+    right: calc(0.7vh / var(--ogn-escala, 1));
+
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97), rgba(var(--arc-t-papel2), 0.96));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    color: var(--ogn-t2);
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    padding: calc(0.2vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1));
+    z-index: 2;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--ogn-t1);
+    width: fit-content;
+}
+
+/* Casilla que se llena: el cuadrado gira desde la esquina hasta cubrirla. */
+.checkbox {
+    display: block;
+    cursor: pointer;
+    width: calc(1.6vh / var(--ogn-escala, 1));
+    height: calc(1.6vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-hi);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+    margin-top: calc(-0.1vh / var(--ogn-escala, 1));
+}
+
+.checkbox div {
+    width: calc(6vh / var(--ogn-escala, 1));
+    height: calc(6vh / var(--ogn-escala, 1));
+    background: var(--ogn-ok);
+    top: calc(-5.2vh / var(--ogn-escala, 1));
+    left: calc(-5.2vh / var(--ogn-escala, 1));
+    position: absolute;
+    transform: rotateZ(45deg);
+    z-index: 100;
+    transition: left 0.24s var(--ogn-ease), top 0.24s var(--ogn-ease);
+}
+
+.checkbox input[type=checkbox]:checked+div {
+    left: calc(-1vh / var(--ogn-escala, 1));
+    top: calc(-1vh / var(--ogn-escala, 1));
+}
+
+.checkbox input[type=checkbox] {
+    position: absolute;
+    left: calc(5vh / var(--ogn-escala, 1));
+    visibility: hidden;
+}
+
+.transition {
+    transition: 0.5s ease-in-out;
+}
+
+#gizmo canvas {
+    display: none;
+    color: rgb(243, 243, 243);
+}
+
+.house_panel {
+    inset: 0;
+    background: var(--ogn-veil);
+    position: fixed;
+    overflow: hidden;
+    transition: opacity 0.5s var(--cubic);
+
+    z-index: 1;
+}
+
+.info-upgrade {
+    position: fixed;
+    top: 0;
+    right: calc(49.4vh / var(--ogn-escala, 1));
+    height: fit-content;
+    width: fit-content;
+
+    /* También se ve sobre el interior de la casa: papel sólido. */
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    padding: calc(1.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--ogn-t2);
+    font-family: var(--ogn-texto);
+    max-width: calc(25vh / var(--ogn-escala, 1));
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+
+    z-index: 999999;
+    border: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.info-upgrade h5 {
+    color: var(--ogn-t2);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.info-upgrade i {
+    color: var(--ogn-t3);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.info-upgrade span {
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    color: var(--ogn-t2);
+    font-family: var(--ogn-texto);
+}
+
+.house_panel .buy-object {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    /* Tapa el panel entero mientras se confirma la compra: el mismo papel de
+       la hoja de fondo, no un velo negro. */
+    background: linear-gradient(150deg, var(--arc-fondo2, rgba(220, 221, 224, 0.98)) 0%, var(--arc-fondo2, rgba(230, 221, 202, 0.98)) 55%, var(--arc-fondo3, rgba(222, 212, 190, 0.98)) 100%);
+    z-index: 99999;
+}
+
+.house_panel .buy-object h4 {
+    color: var(--ogn-t1);
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.6vh / var(--ogn-escala, 1));
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+
+.house_panel .buy-object img {
+    height: calc(15vh / var(--ogn-escala, 1));
+}
+
+.house_panel .buy-object .name {
+    color: var(--ogn-acc-soft);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+    margin-bottom: calc(4vh / var(--ogn-escala, 1));
+}
+
+/* Comprar es lo que confirma aquí: el único rosa de la pantalla. */
+.house_panel .buy-object button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ogn-grad);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    border-radius: var(--ogn-r-ctrl);
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(2.4vh / var(--ogn-escala, 1));
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, box-shadow 0.16s ease;
+    width: fit-content;
+}
+
+.house_panel .buy-object button i {
+    /* font-size: calc(1.8vh / var(--ogn-escala, 1)); */
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .buy-object button:hover {
+    transform: none;
+    background: var(--ogn-grad-hi);
+}
+
+.house_panel .buy-object button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+/* Sin margen propio: el hueco de los lados lo pone .ogn-frame una sola vez,
+   igual que en el panel de administración. Con los calc(7vh / var(--ogn-escala, 1))/calc(12vh / var(--ogn-escala, 1)) de antes el
+   contenido empezaba muy por debajo de la cabecera y se salía por abajo. */
+.house_panel .content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+}
+
+/*  Las columnas llenan el alto, y la última caja de cada una es la que crece.
+
+    Sin esto la fila medía lo que midiera su contenido y quedaba una franja de
+    negro entre las cajas y la barra de cifras; y dentro de la columna de la
+    derecha, otra debajo de Puertas. Una zona que acaba a media pantalla con
+    negro debajo se lee como que falta algo por cargar. */
+.house_panel .content > .row {
+    flex: 1;
+    min-height: 0;
+    /* El hueco entre columnas lo pone el `gap`, no el padding de Bootstrap:
+       así es el mismo calc(1.2vh / var(--ogn-escala, 1)) que separa la cabecera del contenido.
+
+       `nowrap` va con el `gap`: las columnas de Bootstrap suman el 100 % justo
+       y, al añadirles hueco, la tercera se caía a una línea nueva debajo. */
+    flex-wrap: nowrap;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    margin: 0;
+}
+
+.house_panel .content > .row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    min-height: 0;
+    /* Que puedan encoger para dejar sitio al hueco, en vez de desbordar. */
+    min-width: 0;
+    padding: 0;
+}
+
+.house_panel .content > .row > [class*='col-'] > * { flex: none; min-height: 0; }
+.house_panel .content > .row > [class*='col-'] > *:last-child { flex: 1; }
+
+/* El hueco ya lo pone el `gap`; los márgenes de Bootstrap lo doblaban. */
+.house_panel .content > .row > [class*='col-'] > .mt-4,
+.house_panel .content > .row > [class*='col-'] > .row.mt-4 { margin-top: 0 !important; }
+
+/* La fila de dentro de la columna del medio —Luces y Cuadros— y sus dos
+   cajas, que también llenan lo suyo. */
+.house_panel .content > .row .row {
+    flex-wrap: nowrap;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    margin: 0;
+    min-height: 0;
+}
+
+.house_panel .content > .row .row > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    padding: 0;
+}
+
+.house_panel .content > .row .row > [class*='col-'] > * { flex: 1; min-height: 0; }
+
+/* El nombre de la casa es lo único grande de la pantalla: por ahí empieza el
+   ojo. Debajo, el número y la zona en pastillas discretas. */
+.house_panel .housing-title {
+    font-size: calc(3.6vh / var(--ogn-escala, 1));
+    margin: 0;
+    text-align: left;
+    text-transform: uppercase;
+    line-height: 1.05;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    color: var(--ogn-t1);
+    letter-spacing: 0;
+}
+
+.house_panel .housing-title .info {
+    margin-top: calc(1.1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .housing-title .info .info_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: fit-content;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    border-radius: var(--ogn-r-pill);
+    padding: calc(0.35vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    margin-right: calc(0.8vh / var(--ogn-escala, 1));
+}
+
+/*  Las columnas llenaban calc(73vh / var(--ogn-escala, 1)) y punto: sobrara o faltara sitio. Ahora el alto
+    lo reparte el marco de la tablet y esto sólo tiene que no estorbar.
+
+    Se deja el selector porque lo llevan puesto varios bloques del HTML. */
+.house_panel .h-max {
+    height: auto;
+    min-height: 0;
+}
+
+.house_panel .panel {
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+}
+
+.house_panel .edit {
+    color: var(--ogn-t4);
+    font-size: calc(2.2vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+    margin-left: calc(2vh / var(--ogn-escala, 1));
+    width: fit-content;
+    height: fit-content;
+}
+
+.house_panel .edit:hover {
+    color: var(--ogn-t1);
+}
+
+/*  Decorar es la acción principal de esta pantalla, y la única rosa.
+
+    Sin sesgo: lleva `overflow: hidden` —lo necesita para el rótulo que sube
+    desde abajo— y se comería el pico del `::before`. Se queda recta con su
+    canto rosa hondo. */
+.housing-button {
+    position: relative;
+    display: flex;
+    place-items: center;
+    flex-direction: column;
+    place-content: flex-end;
+    background: var(--ogn-grad);
+    border: 0;
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    border-radius: var(--ogn-r-ctrl);
+    color: #fff;
+    padding: calc(2vh / var(--ogn-escala, 1));
+    transition: background 0.24s var(--cubic), box-shadow 0.16s ease;
+    cursor: pointer;
+    font-size: calc(3vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    width: calc(10vh / var(--ogn-escala, 1));
+    height: 100%;
+    overflow: hidden;
+}
+
+.housing-button>i {
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.housing-button span {
+    position: absolute;
+    transform: translateY(calc(6vh / var(--ogn-escala, 1)));
+    transition: transform 0.5s cubic-bezier(0, 0.37, 0.08, 1.03);
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.housing-button:hover {
+    background: var(--ogn-grad-hi);
+}
+
+.housing-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+.housing-button:hover span {
+    transform: translateY(calc(1.8vh / var(--ogn-escala, 1)));
+}
+
+.housing-button:hover i {
+    transform: scale(0.9);
+    transition: background-color 0.5s cubic-bezier(0, 0.37, 0.08, 1.03), border-color 0.5s cubic-bezier(0, 0.37, 0.08, 1.03), color 0.5s cubic-bezier(0, 0.37, 0.08, 1.03), opacity 0.5s cubic-bezier(0, 0.37, 0.08, 1.03), transform 0.5s cubic-bezier(0, 0.37, 0.08, 1.03), box-shadow 0.5s cubic-bezier(0, 0.37, 0.08, 1.03);
+    transform: translateY(calc(-1.5vh / var(--ogn-escala, 1))) scale(0.8);
+}
+
+/* Cada módulo del panel es una zona: hoja de papel con su sombra cálida. */
+.house_panel .keys-management {
+    padding: calc(1.6vh / var(--ogn-escala, 1));
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    border-radius: var(--ogn-r-zona);
+}
+
+.house_panel .keys-management .add-holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    color: var(--ogn-t3);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    box-shadow: none;
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+    height: calc(3vh / var(--ogn-escala, 1));
+    width: calc(3.4vh / var(--ogn-escala, 1));
+
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.house_panel .keys-management .add-holder:hover {
+    transform: none;
+    opacity: 1;
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+.house_panel .keys-management .add-holder:active { transform: none; box-shadow: none; }
+
+/* Rótulo de módulo: una etiqueta con su raya que se apaga, no una pastilla
+   gris que compite con el nombre de la casa. */
+.house_panel .title {
+    position: relative;
+    text-align: left;
+    border-radius: 0;
+    padding: 0 0 calc(1.1vh / var(--ogn-escala, 1));
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    background: none;
+    border: 0;
+    border-bottom: 0;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+}
+
+.house_panel .title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc) 0%, rgba(var(--arc-t-linea), 0.28) 20%, transparent 100%);
+}
+
+.house_panel .keys-management .list {
+    display: flex;
+    /* align-items: center; */
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: calc(1vh / var(--ogn-escala, 1));
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+    /* padding-right: calc(0.3vh / var(--ogn-escala, 1)); */
+}
+
+.house_panel .keys-management .list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Los que tienen llave son una lista, no una pila de tarjetas: filas
+   separadas por una línea, y la acción de quitar aparece al señalar. */
+.house_panel .keys-management .list .user {
+    position: relative;
+    margin-bottom: 0;
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(0.4vh / var(--ogn-escala, 1));
+    display: flex;
+    border-radius: 0;
+    background: none;
+    user-select: none;
+    transition: background 0.2s ease;
+    align-items: center;
+    border: 0;
+    border-bottom: 1px solid var(--ogn-line-soft);
+    color: var(--ogn-t1);
+}
+
+.house_panel .keys-management .list .user:hover {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+
+.house_panel .keys-management .list .user .icon {
+    width: calc(2.2vh / var(--ogn-escala, 1));
+    height: calc(2.2vh / var(--ogn-escala, 1));
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+    margin-right: calc(1.1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .keys-management .list .user .name {
+    font-size: calc(1.4vh / var(--ogn-escala, 1)) !important;
+    font-family: var(--ogn-texto);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.house_panel .keys-management .list .user-action {
+    transition: background 0.2s ease, color 0.2s ease;
+    margin-right: 0;
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    background: none;
+    border: 0;
+    border-radius: 3px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.house_panel .keys-management .list .user:hover .user-action {
+    opacity: 1;
+}
+
+.house_panel .keys-management .list .user .edit {
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+/* Quitar la llave a alguien no es lo que confirma: rojo de estado. */
+.house_panel .keys-management .list .user-action:hover {
+    opacity: 1;
+    transform: none;
+    background: rgba(192, 10, 70, 0.1);
+    color: var(--ogn-bad);
+}
+
+.house_panel .upgrades {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: var(--ogn-t1);
+
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    width: 100%;
+    padding: calc(1.6vh / var(--ogn-escala, 1));
+    min-height: 0;
+}
+
+.house_panel .upgrades .list {
+    margin-top: calc(1vh / var(--ogn-escala, 1));
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* Mejoras y puertas comparten forma: una fila con su nombre a la izquierda y
+   su estado a la derecha, separadas por una línea. */
+.house_panel .upgrades .upgrade,
+.house_panel .doors .door {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--ogn-line-soft);
+    color: var(--ogn-t1) !important;
+    padding: calc(1.05vh / var(--ogn-escala, 1)) calc(0.4vh / var(--ogn-escala, 1));
+    height: unset;
+    outline: unset;
+    font-family: var(--ogn-texto);
+    transition: background 0.2s ease;
+    border-radius: 0;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.house_panel .doors .door .badge {
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .doors .door .badge:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+}
+
+.house_panel .doors .door .action {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* Tapa la fila entera al pasar por encima: crema opaco, no negro. */
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    color: var(--ogn-t1);
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+    text-transform: uppercase;
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    visibility: hidden;
+    opacity: 0;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .doors .door .action i {
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.4vh / var(--ogn-escala, 1));
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .doors .door:hover .action {
+    opacity: 1;
+    visibility: visible;
+}
+
+.house_panel .upgrades .upgrade:first-child,
+.house_panel .doors .door:first-child {
+    margin-top: 0;
+}
+
+/* Pastillas de papel con su filete. */
+.house_panel .upgrades .upgrade .badge,
+.house_panel .doors .door .badge {
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    font-variant-numeric: tabular-nums;
+}
+
+.house_panel .upgrades .upgrade .info,
+.house_panel .doors .door .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* El precio es un dato, no un estado: va neutro. */
+.house_panel .upgrades .upgrade .badge.price,
+.house_panel .doors .door .badge.price {
+    background: none;
+    border-color: transparent;
+    color: var(--ogn-t2);
+    /* Es una cifra: mono y tabular. */
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    padding-right: calc(0.2vh / var(--ogn-escala, 1));
+}
+
+/*  El ámbar es para una puerta cerrada, que es un estado: ahora mismo esa
+    puerta está así y puede dejar de estarlo. */
+.house_panel .doors .door .badge.locked {
+    background: rgba(138, 86, 0, 0.1);
+    border-color: rgba(138, 86, 0, 0.4);
+    color: var(--ogn-warn);
+}
+
+/*  El candado de una mejora que aún no tienes NO lo es: no ha pasado nada,
+    simplemente no la has comprado. Iba en ámbar y la columna salía con tres
+    avisos encendidos que no avisaban de nada, con lo que el ámbar de la
+    puerta cerrada —que sí importa— dejaba de destacar.
+
+    El precio, que está justo al lado, ya dice que se compra. */
+.house_panel .upgrades .upgrade .badge.locked {
+    background: none;
+    border-color: var(--ogn-line);
+    color: var(--ogn-t3);
+}
+
+.house_panel .upgrades .upgrade .badge.config {
+    background: none;
+    border-color: var(--ogn-line);
+    color: var(--ogn-t3);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.house_panel .upgrades .upgrade .badge.config:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+/* «Adquirido» es lo normal en una mejora que ya tienes: si va en verde, la
+   columna entera se llena de verde y el verde deja de significar nada. */
+.house_panel .upgrades .upgrade .badge.unlocked {
+    background: none;
+    border-color: var(--ogn-line);
+    color: var(--ogn-t3);
+}
+
+/* En una puerta sí es un estado que cambia: abierta o cerrada. */
+.house_panel .doors .door .badge.unlocked {
+    background: rgba(20, 102, 54, 0.1);
+    border-color: rgba(20, 102, 54, 0.4);
+    color: var(--ogn-ok);
+}
+
+.house_panel .doors .door .badge.delete {
+    background: none;
+    border-color: transparent;
+    color: var(--ogn-t4);
+}
+
+/* Borrar una puerta no tiene vuelta atrás: rojo de estado. */
+.house_panel .doors .door .badge.delete:hover {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.45);
+    color: var(--ogn-bad);
+    opacity: 1;
+}
+
+.house_panel .upgrades .upgrade .upgrade_name {
+    display: flex;
+    align-items: center;
+}
+
+.house_panel .upgrades .upgrade .upgrade_name i,
+.house_panel .doors .door .door_name i {
+    margin-right: calc(1.1vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.house_panel .upgrades .upgrade .upgrade_name span {
+    max-width: calc(19vh / var(--ogn-escala, 1)) !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.house_panel .upgrades .upgrade:hover:not(.unlocked),
+.house_panel .doors .door:hover {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+
+.house_panel .upgrade_panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: var(--ogn-t1);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    height: calc(35vh / var(--ogn-escala, 1));
+    width: 100%;
+    padding: calc(4vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+
+    position: relative;
+}
+
+/* Pestañas: texto espaciado y la activa marcada con una barra de 2px debajo,
+   apoyada en la línea del contenedor. */
+.tabs {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    border-radius: 0;
+    border-bottom: 1px solid var(--ogn-line);
+
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+
+    z-index: 5;
+}
+
+.tabs .tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+    background: none;
+    border: 0;
+    border-left: 1px solid var(--ogn-line);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    color: var(--ogn-t3);
+
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.tabs .tab i {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    margin-right: calc(0.7vh / var(--ogn-escala, 1));
+    margin-bottom: 0;
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+}
+
+.tabs .tab:hover {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.tabs .tab.selected {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.tabs .tab.selected::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc-soft), var(--ogn-acc-deep));
+}
+
+.tabs .tab.selected i,
+.tabs .tab:hover i {
+    color: var(--ogn-acc-soft);
+}
+
+.upgrade_panel .header {
+    position: absolute;
+    top: calc(1vh / var(--ogn-escala, 1));
+    left: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .upgrade_panel .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* La imagen de la mejora es el producto: solo el marco. */
+    background: rgba(255, 255, 255, calc(0.68 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    height: calc(20vh / var(--ogn-escala, 1));
+    width: calc(20vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    overflow: hidden;
+}
+
+.house_panel .upgrade_panel .item .badges {
+    position: absolute;
+    top: calc(1vh / var(--ogn-escala, 1));
+    right: calc(1vh / var(--ogn-escala, 1));
+}
+
+/* Las pastillas van SOBRE la imagen: el crema tiene que ser opaco, pero la
+   imagen no se toca. */
+.house_panel .upgrade_panel .item .badges .price {
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97), rgba(var(--arc-t-papel2), 0.96));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--ogn-t1);
+    padding: calc(0.35vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    font-variant-numeric: tabular-nums;
+}
+
+/* El estilo que ya tienes puesto: eso sí es un estado. */
+.house_panel .upgrade_panel .item .badges .price.acquired {
+    background: rgba(20, 102, 54, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(20, 102, 54, 0.45);
+    color: var(--ogn-ok);
+}
+
+.house_panel .upgrade_panel .item .badges .name {
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: calc(0.35vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97), rgba(var(--arc-t-papel2), 0.96));
+    color: var(--ogn-t3);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    margin-left: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.house_panel .upgrade_panel .item img {
+    height: calc(20vh / var(--ogn-escala, 1));
+}
+
+.house_panel .upgrade_panel .info {
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+    padding: 0 calc(2vh / var(--ogn-escala, 1));
+}
+
+.house_panel .upgrade_panel .description {
+    font-family: var(--ogn-texto);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    padding-right: calc(2vh / var(--ogn-escala, 1));
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Comprar es lo que confirma en esta pestaña: el único rosa lleno. Sin sesgo,
+   que el panel recorta. */
+.house_panel .upgrade_panel .buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background: var(--ogn-grad);
+    text-shadow: none;
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    border: 0;
+    padding: 0 calc(2.2vh / var(--ogn-escala, 1));
+    height: calc(3.4vh / var(--ogn-escala, 1));
+    width: fit-content;
+    border-radius: var(--ogn-r-ctrl);
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.16s ease, color 0.2s ease;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.house_panel .upgrade_panel .buy:hover:not(.disabled) {
+    opacity: 1;
+    transform: none;
+    background: var(--ogn-grad-hi);
+    color: #fff;
+}
+
+.house_panel .upgrade_panel .buy:active:not(.disabled) {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+.house_panel .upgrade_panel .buy.disabled {
+    color: var(--ogn-t4);
+    background: none;
+    border-color: var(--ogn-line);
+    cursor: not-allowed;
+}
+
+.house_panel .doors {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: var(--ogn-t1);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    height: 100%;
+    width: 100%;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    min-height: 0;
+}
+
+.house_panel .doors .header {
+    flex: none;
+    padding: 0 calc(0.4vh / var(--ogn-escala, 1)) calc(1.1vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+.house_panel .doors .header h4 {
+    display: flex;
+    align-items: center;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.house_panel .doors .header span {
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    color: var(--ogn-t3);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+    padding: calc(0.3vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    height: fit-content;
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.2vh / var(--ogn-escala, 1));
+    text-transform: uppercase;
+}
+
+.house_panel .doors .header .add {
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .doors .header .add:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1); border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.house_panel .doors .list {
+    display: flex;
+    /* align-items: center; */
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: calc(1vh / var(--ogn-escala, 1));
+    height: calc(36.6vh / var(--ogn-escala, 1));
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+    padding-bottom: calc(2.5vh / var(--ogn-escala, 1));
+}
+
+.house_panel .doors .no-items {
+    height: calc(37.9vh / var(--ogn-escala, 1));
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: var(--ogn-t1);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    width: 100%;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    height: 100%;
+    position: relative;
+    min-height: 0;
+}
+
+.house_panel .lights .header {
+    flex: none;
+    padding: 0 calc(0.4vh / var(--ogn-escala, 1)) calc(1.1vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+.house_panel .lights .header h4 {
+    display: flex;
+    align-items: center;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.house_panel .lights .header h4 i {
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .header span {
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    color: var(--ogn-t3);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    letter-spacing: 0;
+    font-variant-numeric: tabular-nums;
+    padding: calc(0.3vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    height: fit-content;
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.2vh / var(--ogn-escala, 1));
+    text-transform: uppercase;
+}
+
+.house_panel .lights .header .add {
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .lights .header .add:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1); border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.house_panel .lights .lights-content {
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    justify-content: flex-start;
+    flex-direction: column;
+    height: calc(100% - calc(10vh / var(--ogn-escala, 1)));
+    padding: calc(1.5vh / var(--ogn-escala, 1)) calc(0.5vh / var(--ogn-escala, 1));
+    height: fit-content;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .lights-content .light {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    width: 100%;
+    height: calc(5.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    color: var(--ogn-t1) !important;
+    padding: calc(0.9vh / var(--ogn-escala, 1));
+
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    margin: 0;
+}
+
+
+.house_panel .lights .lights-content .light:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+}
+
+/* Encendida es un estado real: se pone ámbar, como una bombilla dada. */
+/*  Una luz encendida lleva el ACENTO, no ámbar.
+
+    El ámbar es «avisado» —una puerta cerrada, algo que reclama atención— y
+    una luz encendida no avisa de nada: está encendida. Con tres luces dadas,
+    la columna salía con tres avisos que no avisaban y el ámbar dejaba de
+    significar nada donde sí importa. */
+.house_panel .lights .lights-content .light.on .status {
+    background: rgba(var(--ogn-acc-rgb), 0.12) !important;
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.house_panel .lights .lights-content .light.on .status i {
+    color: var(--ogn-acc-soft) !important;
+}
+
+.house_panel .lights .lights-content::-webkit-scrollbar {
+    display: none;
+}
+
+.house_panel .lights .lights-content .light .status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: none;
+    width: calc(3.4vh / var(--ogn-escala, 1));
+    height: calc(3.4vh / var(--ogn-escala, 1));
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    border-radius: var(--ogn-r-pill);
+    transition: background 0.24s ease, border-color 0.24s ease;
+}
+
+.house_panel .lights .lights-content .light .status i {
+    color: var(--ogn-t4);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    transition: color 0.24s ease;
+}
+
+/* .house_panel .lights .lights-content .light .status:hover {
+   background: rgba(var(--ogn-acc-rgb), 0.1); border-color: rgba(var(--ogn-acc-rgb), 0.5);
+} */
+
+.house_panel .lights .lights-content .status:hover .light {
+    background: #d81b55 !important;
+}
+
+
+/* El nombre se lee, el estado se reconoce: uno en Barlow y otro en rótulo
+   condensado pequeño. */
+.house_panel .lights .lights-content .light .text {
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+
+    margin-left: calc(1.2vh / var(--ogn-escala, 1));
+    gap: calc(0.3vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .lights-content .light .text .name {
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: left;
+    color: var(--ogn-t1);
+}
+
+/*  Sólo la palabra que dice cómo está. El nombre de la luz no es un estado, y
+    teñido de punta a punta el salón entero gritaba. */
+.house_panel .lights .lights-content .light.on .text {
+    color: var(--ogn-acc-soft);
+}
+
+.house_panel .lights .lights-content .light.on .text .name {
+    color: var(--ogn-t1);
+}
+
+.house_panel .lights .lights-content .light-menu {
+    position: relative;
+    padding-bottom: calc(2vh / var(--ogn-escala, 1));
+    height: calc(28vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .lights-content .light-menu .back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    color: var(--ogn-t3);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    box-shadow: none;
+
+    width: calc(3vh / var(--ogn-escala, 1));
+    height: calc(2.5vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .lights .lights-content .light-menu .back:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1); border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.house_panel .lights .lights-content .light-menu .l-title {
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    color: var(--ogn-t1);
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .lights-content .light-menu input[type="text"] {
+    width: 95%;
+    height: calc(2.5vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    padding-left: calc(1vh / var(--ogn-escala, 1));
+
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    margin-left: 5%;
+}
+
+/* Guardar es lo que confirma en este submenú: el único rosa. Recto, que el
+   panel de luces recorta. */
+.house_panel .lights .lights-content .light-menu button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    background: var(--ogn-grad);
+    color: #fff;
+    border: 0;
+    box-shadow: 0 4px 0 var(--ogn-acc-deep);
+    border-radius: var(--ogn-r-ctrl);
+    font-size: calc(1.25vh / var(--ogn-escala, 1));
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    font-family: var(--ogn-rotulo);
+    text-transform: uppercase;
+    padding: calc(1vh / var(--ogn-escala, 1)) 0;
+    transition: background 0.3s var(--cubic), box-shadow 0.16s ease, color 0.3s var(--cubic);
+}
+
+.house_panel .lights .lights-content .light-menu button:hover {
+    background: var(--ogn-grad-hi);
+}
+
+.house_panel .lights .lights-content .light-menu button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+.house_panel .lights .lights-content .light-menu .menu {
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+}
+
+.house_panel .lights .lights-content .light-menu .opacity-slider {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.house_panel .lights .lights-content .light-menu .opacity-slider .level {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: calc(1.2vh / var(--ogn-escala, 1));
+    background: rgba(var(--arc-t-hueco), 0.1);
+    border: 1px solid rgba(var(--arc-t-linea), 0.3);
+    box-shadow: none;
+    overflow: hidden;
+    border-radius: var(--ogn-r-pill);
+    cursor: inherit;
+    transition: height 0.3s var(--cubic);
+}
+
+.house_panel .lights .lights-content .light-menu .opacity-slider .level::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+    box-shadow: -200px 0 0 200px rgba(var(--ogn-acc-rgb), 0.6);
+    transition: background-color 0.3s var(--cubic), border-color 0.3s var(--cubic), color 0.3s var(--cubic), opacity 0.3s var(--cubic), transform 0.3s var(--cubic), box-shadow 0.3s var(--cubic);
+}
+
+.house_panel .lights .lights-content .light-menu .opacity-slider:hover .level::-webkit-slider-thumb {
+    box-shadow: -200px 0 0 200px var(--ogn-acc);
+
+}
+
+.boards-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    place-content: start;
+    justify-content: center;
+    padding: calc(1.5vh / var(--ogn-escala, 1)) 0 calc(2vh / var(--ogn-escala, 1));
+    height: fit-content;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+    gap: calc(1vh / var(--ogn-escala, 1));
+
+    height: calc(31vh / var(--ogn-escala, 1));
+}
+
+
+.boards-list .board {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(12vh / var(--ogn-escala, 1));
+    height: calc(13.3vh / var(--ogn-escala, 1));
+    /* La imagen del cuadro es el producto: aquí solo el marco. */
+    border: 1px solid rgba(var(--arc-t-linea), 0.3);
+    border-radius: var(--ogn-r-pill);
+    cursor: pointer;
+    transition: background-color 0.3s var(--cubic), border-color 0.3s var(--cubic), color 0.3s var(--cubic), opacity 0.3s var(--cubic), transform 0.3s var(--cubic), box-shadow 0.3s var(--cubic);
+    box-shadow: none;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: arrow;
+}
+
+.boards-list .board .text {
+    font-size: calc(3vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+}
+
+.boards-list .board .edit {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    right: 0;
+    height: calc(2.5vh / var(--ogn-escala, 1));
+    width: calc(2.5vh / var(--ogn-escala, 1));
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    /* Va sobre el cuadro que se está mirando: crema opaco, la imagen no se
+       toca. */
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97), rgba(var(--arc-t-papel2), 0.96));
+    color: var(--ogn-t2);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    border-radius: var(--ogn-r-pill);
+    margin-right: calc(0.5vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.boards-list .board .edit.active {
+    width: calc(10.8vh / var(--ogn-escala, 1));
+    height: calc(2.5vh / var(--ogn-escala, 1));
+}
+
+.boards-list .board .edit input {
+    background: transparent;
+    color: var(--ogn-t1);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    border: none;
+    outline: none;
+
+    overflow: hidden;
+    /* padding: calc(1vh / var(--ogn-escala, 1)); */
+}
+
+.boards-list .board .edit:hover:not(.active) {
+    background: rgba(var(--ogn-acc-rgb), 0.2);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+/* Estado vacio: una frase en rotulo pequeno y espaciado, centrada. La
+   ilustracion grande solo ocupa sitio y no dice nada mas. */
+.house_panel .no-lights {
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    padding: calc(2vh / var(--ogn-escala, 1));
+
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    opacity: 1;
+}
+
+.house_panel .no-lights img {
+    display: none;
+}
+
+.house_panel .color-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    place-content: start;
+    justify-content: center;
+    height: calc(100% - calc(10vh / var(--ogn-escala, 1)));
+    padding: calc(1vh / var(--ogn-escala, 1)) 0;
+    height: fit-content;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -webkit-mask-image: linear-gradient(180deg, black 92%, transparent);
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.lights .color-list {
+    padding-bottom: calc(2vh / var(--ogn-escala, 1));
+}
+
+.house_panel .color-list .item-color {
+    width: calc(2.5vh / var(--ogn-escala, 1));
+    border: 1px solid rgba(var(--arc-t-linea), 0.45);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s var(--cubic), border-color 0.3s var(--cubic), color 0.3s var(--cubic), opacity 0.3s var(--cubic), transform 0.3s var(--cubic), box-shadow 0.3s var(--cubic);
+    box-shadow: none;
+    aspect-ratio: 1/1;
+}
+
+/* Sobre crema, el blanco no marca nada: la muestra elegida lleva el aro
+   rosa, que es lo que el acento sirve. */
+.house_panel .color-list .item-color.selected {
+    border-color: var(--ogn-acc);
+    box-shadow: 0 0 0 2px rgba(var(--ogn-acc-rgb), 0.35);
+}
+
+.house_panel .color-list .item-color:hover {
+    border-color: var(--ogn-t2);
+}
+
+.house_panel .personalize {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: var(--ogn-t1);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    width: 100%;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    height: 100%;
+}
+
+.house_panel .personalize .header {
+    flex: none;
+    padding: 0 calc(0.4vh / var(--ogn-escala, 1)) calc(1.1vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+.house_panel .personalize .header h4 {
+    display: flex;
+    align-items: center;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.house_panel .personalize .header h4 i {
+    margin-right: calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .personalize .sub-header {
+    margin-top: calc(2vh / var(--ogn-escala, 1));
+    /* text-align: center; */
+}
+
+.house_panel .personalize .sub {
+    padding: 0 calc(1vh / var(--ogn-escala, 1));
+}
+
+.house_panel .personalize .sub-header h5 {
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+    font-style: normal;
+    font-weight: 600;
+    color: var(--ogn-t2);
+}
+
+/* .personalize .item-color {
+   width: calc(2vh / var(--ogn-escala, 1)) !important;
+} */
+
+.house_panel .personalize .sub .add {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    color: var(--ogn-t2);
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    box-shadow: none;
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-texto);
+    padding: calc(0.2vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    height: fit-content;
+    margin-left: calc(1vh / var(--ogn-escala, 1));
+    margin-bottom: calc(0.2vh / var(--ogn-escala, 1));
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.house_panel .personalize .sub .add:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+
+
+
+.nearby-players {
+    min-width: calc(34vh / var(--ogn-escala, 1));
+    max-height: calc(48vh / var(--ogn-escala, 1));
+}
+
+.nearby-selection-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.2vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid rgba(var(--arc-t-linea), 0.18);
+    margin-bottom: calc(0.6vh / var(--ogn-escala, 1));
+}
+
+.nearby-selected-count {
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+}
+
+.btn-select-all {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 0;
+    border-radius: var(--ogn-r-ctrl);
+    padding: calc(0.5vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    box-shadow: var(--ogn-relieve);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-select-all:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.nearby-players .box-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: calc(0.8vh / var(--ogn-escala, 1));
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+    user-select: none;
+}
+
+.nearby-players .box-option:last-of-type {
+    margin-bottom: 0;
+}
+
+.nearby-players .box-option:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+}
+
+.nearby-players .box-option.selected,
+.nearby-players .box-option.active {
+    background: rgba(var(--ogn-acc-rgb), 0.12) !important;
+    border-color: rgba(var(--ogn-acc-rgb), 0.6) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--ogn-acc-rgb), 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    color: var(--ogn-acc-soft) !important;
+}
+
+.nearby-players .box-option .player-check-icon {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.nearby-players .box-option.selected .player-check-icon,
+.nearby-players .box-option.active .player-check-icon {
+    color: var(--ogn-acc-soft);
+}
+
+.nearby-players .box-option .player-id-badge {
+    background: rgba(var(--arc-t-linea), 0.14);
+    border-radius: var(--ogn-r-ctrl);
+    padding: calc(0.3vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    font-family: var(--ogn-rotulo);
+    letter-spacing: 0.05em;
+    color: var(--ogn-t2);
+    transition: all 0.2s ease;
+}
+
+.nearby-players .box-option.selected .player-id-badge,
+.nearby-players .box-option.active .player-id-badge {
+    background: rgba(var(--ogn-acc-rgb), 0.2);
+    color: var(--ogn-acc-soft);
+}
+
+.c-modal .btn-modal.btn-secondary-modal {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf))) !important;
+    color: var(--ogn-t2) !important;
+    box-shadow: var(--ogn-relieve) !important;
+}
+
+.c-modal .btn-modal.btn-secondary-modal:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))) !important;
+    color: var(--ogn-t1) !important;
+}
+
+/* El ascensor se abre de pie en el portal: papel sólido con su filo rosa. */
+.elevator-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: calc(5vh / var(--ogn-escala, 1));
+    width: calc(30vh / var(--ogn-escala, 1));
+    height: fit-content;
+    margin: auto;
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    border-radius: var(--ogn-r-zona);
+    border: 0;
+    border-top: 4px solid #d81b55;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 14px 34px rgba(0, 0, 0, 0.4);
+    padding: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.elevator-container .title {
+    position: relative;
+    text-align: center;
+    border-radius: 0;
+    padding: 0 0 calc(1.1vh / var(--ogn-escala, 1));
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-style: normal;
+    font-weight: 700;
+    font-family: var(--ogn-rotulo);
+    background: none;
+    border: 0;
+    border-bottom: 0;
+    letter-spacing: 0.28em;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+}
+
+.elevator-container .title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc) 0%, rgba(var(--arc-t-linea), 0.28) 20%, transparent 100%);
+}
+
+.elevator-container .elevator-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(12vh / var(--ogn-escala, 1)), 1fr));
+    gap: calc(1vh / var(--ogn-escala, 1));
+    width: 100%;
+    margin-top: calc(1vh / var(--ogn-escala, 1));
+}
+
+.elevator-container .elevator-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    height: calc(8vh / var(--ogn-escala, 1));
+    /* El número del piso es una cifra: mono y tabular. */
+    font-family: var(--ogn-mono);
+    font-size: calc(3vh / var(--ogn-escala, 1));
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+}
+
+.elevator-container .elevator-button.selected {
+    box-shadow: none;
+    cursor: auto;
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+}
+
+.elevator-container .elevator-button.selected span {
+    color: var(--ogn-acc-soft);
+}
+
+
+.elevator-container .elevator-button span {
+    color: var(--ogn-t3);
+    margin-top: calc(0.8vh / var(--ogn-escala, 1));
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.elevator-container .elevator-button:hover:not(.selected) {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+}
+
+.elevator-container .elevator-button:hover:not(.selected) span {
+    color: var(--ogn-acc-soft);
+}
+
+.elevator-container .elevator-button:nth-child(odd):last-child {
+    grid-column: span 2;
+}
+
+.fade_bottom-enter-active,
+.fade_bottom-leave-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), border-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), box-shadow 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.fade_bottom-enter,
+.fade_bottom-leave-to {
+    opacity: 0;
+    transform: translateY(calc(10vh / var(--ogn-escala, 1)));
+}
+
+.fade_left-enter-active,
+.fade_left-leave-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), border-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), box-shadow 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.fade_left-enter,
+.fade_left-leave-to {
+    opacity: 0;
+    transform: translateX(calc(-20vh / var(--ogn-escala, 1)));
+}
+
+.expand_right-enter-active,
+.expand_right-leave-active {
+    margin-right: calc(0vh / var(--ogn-escala, 1));
+    opacity: 1;
+    transition: background-color 0.5s var(--cubic), border-color 0.5s var(--cubic), color 0.5s var(--cubic), opacity 0.5s var(--cubic), transform 0.5s var(--cubic), box-shadow 0.5s var(--cubic);
+}
+
+.expand_right-enter,
+.expand_right-leave-to {
+    margin-right: calc(-100vh / var(--ogn-escala, 1));
+    opacity: 0;
+    transition: background-color 8s var(--cubic), border-color 8s var(--cubic), color 8s var(--cubic), opacity 8s var(--cubic), transform 8s var(--cubic), box-shadow 8s var(--cubic);
+}
+
+.fade_right-enter-active,
+.fade_right-leave-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), border-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), box-shadow 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.fade_right-enter,
+.fade_right-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.scale_in-enter-active,
+.scale_in-leave-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: background-color 0.8s var(--cubic), border-color 0.8s var(--cubic), color 0.8s var(--cubic), opacity 0.8s var(--cubic), transform 0.8s var(--cubic), box-shadow 0.8s var(--cubic);
+}
+
+.scale_in-enter,
+.scale_in-leave-to {
+    opacity: 0;
+    transform: scale(2);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    opacity: 1;
+    transition: background-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), border-color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), color 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53), box-shadow 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade_fast-enter-active,
+.fade_fast-leave-active {
+    opacity: 1;
+    transition: background-color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), border-color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), color 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), box-shadow 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.fade_fast-enter,
+.fade_fast-leave-to {
+    opacity: 0;
+}
+
+
+.fade_top-enter-active,
+.fade_top-leave-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: background-color 0.8s, border-color 0.8s, color 0.8s, opacity 0.8s, transform 0.8s, box-shadow 0.8s;
+}
+
+.fade_top-enter,
+.fade_top-leave-to {
+    opacity: 0;
+    transform: translateY(calc(-100vh / var(--ogn-escala, 1)));
+    transition: background-color 0.8s, border-color 0.8s, color 0.8s, opacity 0.8s, transform 0.8s, box-shadow 0.8s;
+}
+
+/* Pie del panel: una franja a sangre, como la barra de acciones del panel
+   de administración, no unos botones flotando sobre el fondo. */
+/*  El paginador ya no flota suelto: es la última celda de la barra de cifras
+    del pie (.hs-pager, en hotels.css). Sus reglas se han ido con él. */
+
+
+.holders-container {
+    max-height: calc(16vh / var(--ogn-escala, 1));
+    overflow-y: auto;
+}
+
+.holder-item {
+    background: rgba(255, 255, 255, calc(0.66 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    padding: calc(0.8vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.holder-item .btn-danger {
+    opacity: 0.7;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.holder-item:hover .btn-danger {
+    opacity: 1;
+}
+
+.holder-name {
+    color: var(--ogn-t1);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-texto);
+}
+
+/* Leaflet Map Tab Styles */
+/* El mapa ocupa la zona entera; la ficha de la casa elegida se pega a su
+   derecha, separada por una línea. */
+.map-view-container {
+    flex: 1;
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    /* Hueco entre el mapa y la ficha de la casa elegida: son dos zonas, y lo
+       que las separa es el aire, no una raya. */
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    box-sizing: border-box;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+/* El mapa es una zona, como el de la tablet de policia: caja con su borde y
+   su radio, no un rectangulo a sangre. Iba sin nada y se leia como un agujero
+   negro debajo de la cabecera. */
+/*  Las teselas del mapa son la foto de la ciudad y NO se tocan: ni filtro ni
+    tinte. Lo que se aclara es el marco. Las rayas entre teselas ya las
+    arregla la regla `.leaflet-tile` del final del fichero. */
+#housing-admin-map {
+    flex: 1;
+    height: 100%;
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    border-radius: var(--ogn-r-zona);
+    /* Papel debajo mientras cargan las teselas, no un agujero negro. */
+    background: var(--arc-fondo2, #e6ddca);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.6 * var(--arc-vf))), var(--ogn-sombra);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.map-selected-house-panel {
+    width: calc(45vh / var(--ogn-escala, 1));
+    flex: none;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-shadow: var(--ogn-sombra);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+/* Chincheta del mapa. Verde libre, ámbar ocupada: son estados de verdad. */
+.map-house-marker .marker-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(var(--arc-t-papel1), 0.9);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.map-house-marker.marker-available .marker-circle {
+    background: var(--ogn-ok);
+}
+
+.map-house-marker.marker-rented .marker-circle {
+    background: var(--ogn-warn);
+}
+
+.map-house-marker:hover .marker-circle {
+    transform: scale(1.2);
+    border-color: var(--ogn-acc);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Las tres acciones de la ficha del mapa: borde de 1px, y borrar solo se
+   pone rojo al tenerlo debajo del ratón. */
+.map-selected-house-panel .actions-grid .action-btn {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    box-shadow: none;
+    border-radius: var(--ogn-r-ctrl);
+    color: var(--ogn-t2);
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(0.5vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    height: auto;
+}
+
+.map-selected-house-panel .actions-grid .action-btn i {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+}
+
+.map-selected-house-panel .actions-grid .action-btn:hover {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-t1);
+}
+
+.map-selected-house-panel .actions-grid .action-btn:hover i {
+    color: var(--ogn-acc-soft);
+}
+
+.map-selected-house-panel .actions-grid .action-btn:active {
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+}
+
+.map-selected-house-panel .actions-grid .action-btn.delete {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border-color: rgba(var(--arc-t-linea), 0.24);
+    color: var(--ogn-t2);
+}
+
+.map-selected-house-panel .actions-grid .action-btn.delete i {
+    color: var(--ogn-t3);
+}
+
+.map-selected-house-panel .actions-grid .action-btn.delete:hover,
+.map-selected-house-panel .actions-grid .action-btn.delete:hover i {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.4);
+    color: var(--ogn-bad);
+}
+
+/* Botoncito de icono suelto (dar llave, cambiar dueño, quitar llave). */
+.btn-action-icon {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.26);
+    box-shadow: none;
+    color: var(--ogn-t3);
+    border-radius: var(--ogn-r-pill);
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-action-icon:active { transform: none; box-shadow: none; }
+
+.btn-action-icon:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.1);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+.btn-action-icon.delete {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border-color: rgba(var(--arc-t-linea), 0.26);
+    color: var(--ogn-t3);
+}
+
+.btn-action-icon.delete:hover {
+    background: rgba(192, 10, 70, 0.12);
+    border-color: rgba(192, 10, 70, 0.4);
+    color: var(--ogn-bad);
+}
+
+/* ── Las rayas que partían el mapa en cuadrícula ───────────────────────────
+   No son un hueco entre teselas: el mapa se escala por una fracción, y como
+   cada tesela se coloca con translate3d, Chromium le da a cada una su propia
+   capa y le suaviza el borde contra el vacío. Ese medio píxel transparente,
+   encima de la tesela de al lado, es la raya.
+
+   Hacen falta las dos reglas, y ninguna sola vale: el contorno de un píxel
+   transparente agranda los límites de la capa, así que el borde suavizado cae
+   fuera de lo que se ve; y el píxel de solape tapa además el borde de la
+   propia imagen, que al reescalarse se queda sin vecinos que muestrear y se
+   oscurece. Un píxel sobre 256 es un 0,4% y no se nota; con cuatro ya se
+   mueve una carretera en la junta.
+
+   La medición está en origen_pausemenu/html/src/App.vue, que es donde salió
+   esto primero. */
+.leaflet-tile {
+    outline: 1px solid transparent;
+    width: 257px !important;
+    height: 257px !important;
+    /*  Y sin el parche de Leaflet 1.9. Esa version pinta cada tesela con
+        `mix-blend-mode: plus-lighter` -su propio intento contra las juntas- y
+        con el las rayas seguian saliendo dentro del juego. Lo de arriba solo
+        esta probado en el menu de pausa, que va con Leaflet 1.8 y no lo trae;
+        esto deja las teselas de la 1.9 igual que las de la 1.8. Con !important
+        porque la regla de Leaflet tiene mas especificidad
+        (.leaflet-container img.leaflet-tile). */
+    mix-blend-mode: normal !important;
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- Las teclas del pie del menu de Ajustes. La caja de GTA («Volver /
+     Seleccionar») va oculta en stream/pause_menu_instructional_buttons.gfx
+     y esta la sustituye con el estilo pegatina. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,600;1,700&family=Knewave&display=swap" rel="stylesheet">
+<style>
+    :root { --acento: #d81b55; --tinta: #0b0b0d; }
+    html.nacion { --acento: #ff9230; }
+    html, body { margin: 0; background: transparent; overflow: hidden; }
+    .pie {
+        position: fixed;
+        right: 2.2vh;
+        bottom: 2.2vh;
+        display: none;
+        gap: 1vh;
+        padding: 0.8vh;
+        border-radius: 1.2vh;
+        background: #c4c6ca;
+        box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-style: italic;
+        font-weight: 700;
+    }
+    .pie.ver { display: flex; }
+    .boton {
+        display: flex;
+        align-items: center;
+        gap: 0.8vh;
+        padding: 0.6vh 1.2vh 0.6vh 0.7vh;
+        border-radius: 0.9vh;
+        background: #dcdde0;
+        box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+        color: var(--tinta);
+        font-size: 1.9vh;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+    .tecla {
+        min-width: 2.6vh;
+        padding: 0.45vh 0.7vh;
+        border-radius: 0.6vh;
+        background: var(--tinta);
+        color: #fff;
+        font-size: 1.4vh;
+        font-style: normal;
+        text-align: center;
+    }
+    .boton.principal { background: var(--acento); }
+
+    /* La pestaña de arriba («AJUSTES»): tapa la de GTA, que se pinta justo
+       debajo (de 15,6 % a 83,5 % de ancho y de 15,3 % a 19,7 % de alto en
+       16:9). Pieza rosa con canto y sombra y el titulo a brocha, como el
+       «Los Santos» del logo. */
+    .titulo {
+        position: fixed;
+        left: 15.95vw;
+        width: 68.1vw;
+        top: 14.9vh;
+        height: 5.4vh;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        border-radius: 1.2vh;
+        background: var(--acento);
+        box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    }
+    .titulo.ver { display: flex; }
+    .titulo span {
+        font-family: 'Knewave', cursive;
+        font-size: 3.4vh;
+        line-height: 1;
+        color: #fff;
+        -webkit-text-stroke: 2px #000;
+        paint-order: stroke fill;
+        text-shadow: 2px 2px 0 #000;
+        transform: rotate(-2deg);
+    }
+</style>
+<style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+<body>
+<div class="titulo" id="titulo"><span>Ajustes</span></div>
+<div class="pie" id="pie">
+    <div class="boton"><span class="tecla">ESC</span>Volver</div>
+    <div class="boton principal"><span class="tecla">ENTER</span>Seleccionar</div>
+</div>
+<script>
+    window.addEventListener('message', (e) => {
+        const d = e.data || {};
+        if (d.accion !== 'origen_ajustes:pie') return;
+        document.getElementById('pie').classList.toggle('ver', d.ver === true);
+        document.getElementById('titulo').classList.toggle('ver', d.ver === true);
+        document.documentElement.classList.toggle('nacion', d.marca === 'nacion');
+    });
+</script>
+</body>
+</html>

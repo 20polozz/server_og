@@ -1,0 +1,1 @@
+Config.ConsoleMaxStoredLogs = 300 -- Max amount of logs stored in the console buffer

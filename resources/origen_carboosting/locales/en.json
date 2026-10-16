@@ -1,0 +1,273 @@
+{
+    "nui": {
+        "main": {
+            "title": "Boosting",
+            "contracts": {
+                "title": "Contracts",
+                "description": "Create new contracts and distribute them around the city"
+            },
+            "play": {
+                "title": "Play",
+                "description": "Be the best in boosting"
+            },
+            "ranking": {
+                "title": "Ranking",
+                "description": "Fight to be in the top positions and be the best"
+            }
+        },
+        "notifications": {
+            "coins_received": "You have received %s coins",
+            "coins_sent": "You have sent %s coins",
+            "coins_given": "You have given %s OGN",
+            "register_bonus": "You have received %s OGN for registering",
+            "contract_bought": "Contract bought successfully",
+            "contract_canceled": "Contract canceled successfully",
+            "contract_created": "Contract created successfully",
+            "contract_declined": "Contract declined successfully",
+            "contract_deleted": "Saved contract deleted successfully",
+            "contract_edited": "Contract edited successfully",
+            "contract_received": "You have received a new contract",
+            "contract_removed": "Contract removed successfully",
+            "contract_sended": "Contract sended successfully",
+            "contract_not_bought": "The contract could not be bought",
+            "contract_not_canceled": "The contract could not be canceled",
+            "contract_not_declined": "The contract could not be declined",
+            "contract_not_started": "The contract could not be started",
+            "contract_not_deleted": "Something went wrong while deleting the contract",
+            "contract_not_listed": "Could not list the contract",
+            "contract_not_removed": "Could not remove the contract",
+            "contract_sent": "Contract sent successfully",
+            "error": "Error",
+            "info": "Info",
+            "name_already_in_use": "The name is already in use or is invalid",
+            "player_offline": "The player is not online",
+            "ranks_updated": "Categories updated successfully",
+            "ranks_not_updated": "The class could not be updated",
+            "success": "Success",
+            "enter_duty": "You have entered the queue",
+            "exit_duty": "You have exited the queue"
+        },
+        "play": {
+            "#": "#",
+            "current": "Current",
+            "exp": "Experience",
+            "name": "Name",
+            "next": "Next",
+            "rank": "Rank",
+            "saved_contracts": "Saved Contracts",
+            "title": "Play",
+            "no_leaderboard": "No leaderboard available"
+        },
+        "contracts": {
+            "actions": "Actions",
+            "auction": "On Sale",
+            "category": "Category",
+            "coinsName": "OGN",
+            "create": "Create",
+            "give_ogn": "Give OGN",
+            "difficulty": "Difficulty",
+            "exp": "Experience",
+            "header": "Contract Management",
+            "label": "Name",
+            "no_contracts": "No contracts available",
+            "no_owned_contracts": "No contracts owned",
+            "no_history": "No history available",
+            "contract_not_found": "Contract not found",
+            "npcs_number": "Guards",
+            "npcs_weapon": "Weapon",
+            "offered": "Offered",
+            "off_duty": "Exit queue",
+            "on_duty": "Enter queue",
+            "price": "Price",
+            "probability": "Probability",
+            "reward": "Reward",
+            "search": "Search...",
+            "settings": {
+                "categories": "Categories",
+                "fails": "Fails",
+                "max": "Max contracts",
+                "minCops": "Required cops",
+                "hackxp": "Hacker XP",
+                "percentage": "Probability",
+                "title": "Settings",
+                "tries": "Hacks",
+                "xp": "XP"
+            },
+            "started": "In progress",
+            "vehicle": "Vehicle Models",
+            "vin_scratch": "Vin Scratch",
+            "market": {
+                "title": "Market",
+                "buy": "Buy",
+                "no_offers": "No offers available"
+            }
+        },
+        "ranking": {
+            "#": "#",
+            "exp": "Experience",
+            "header": "Ranking",
+            "name": "Name",
+            "rank": "Rank",
+            "search": "Search...",
+            "back": "Back",
+            "your_rank": "Your rank",
+            "xp_total": "Total XP",
+            "progress": "Progress",
+            "completed": "Completed",
+            "saved": "Saved",
+            "failed": "Failed",
+            "success_rate": "Success %",
+            "vin_completed": "VIN",
+            "ogn_earned": "OGN Earned",
+            "hacks_success": "Hacks OK",
+            "hacks_failed": "Hacks Fail",
+            "no_data": "No data available"
+        },
+        "tracker": "Remaining hacks: %s",
+        "modal": {
+            "cancel": "Cancel",
+            "confirm": "Confirm",
+            "deliver": "Deliver",
+            "deliver_vin": "Pay",
+            "admin_edit_contract": {
+                "category": "Category",
+                "create_header": "Create Contract",
+                "difficulties": {
+                    "1": "Easy",
+                    "2": "Normal",
+                    "3": "Hard"
+                },
+                "difficulty": "Difficulty (NPC)",
+                "disabled": "Disabled",
+                "edit_header": "Edit Contract",
+                "enabled": "Enabled",
+                "exp": "Experience",
+                "label": "Name",
+                "npcs_number": "Number of Guards",
+                "npcs_weapon": "Select Guards Weapon",
+                "price": "Price",
+                "probability": "Probability",
+                "reward": "Reward",
+                "vehicle": "Select Vehicle Model",
+                "minigame": "Select Minigame",
+                "minigame_difficulty": "Minigame Difficulty",
+                "vin_price": "Vin Scratch Price",
+                "vin_scratch": "Vin Scratch"
+            },
+            "admin_send_contract": {
+                "header": "Send contract",
+                "player_id": "Player ID",
+                "price": "Price"
+            },
+            "admin_delete_contract": {
+                "header": "Delete contract",
+                "message": "Do you want to delete the contract named \"%s\"?, this action cannot be undone"
+            },
+            "buy_market_offer": {
+                "header": "Buy market offer",
+                "message": "Do you want to buy the contract for a price of %s OGN?"
+            },
+            "buy_contract": {
+                "header": "Buy contract",
+                "message": "Do you want to buy the contract for a price of %s OGN?"
+            },
+            "cancel_market_offer": {
+                "header": "Cancel market offer",
+                "message": "Do you want to cancel the offer for the contract?"
+            },
+            "contract_offer": {
+                "header": "Contract offer",
+                "message": "You have been offered the following contract, do you want to buy it?"
+            },
+            "change_name": {
+                "create_header": "Create profile",
+                "edit_header": "Edit name",
+                "name": "Name"
+            },
+            "decline_contract": {
+                "header": "Decline contract",
+                "message": "Do you want to decline this contract?, this action cannot be undone"
+            },
+            "decline_saved_contract": {
+                "header": "Decline saved contract",
+                "message": "Do you want to decline this saved contract?, this action is irreversible and you won't be able to recover the contract"
+            },
+            "sell_contract": {
+                "header": "Sell contract",
+                "player_id": "Player ID",
+                "price": "Price"
+            },
+            "sell_contract_market": {
+                "header": "Sell contract in the market",
+                "price": "Price",
+                "duration": "Duration (minutes)"
+            },
+            "send_coins": {
+                "header": "Transfer coins",
+                "player_id": "Player ID",
+                "amount": "Amount"
+            },
+            "admin_give_coins": {
+                "header": "Give OGN",
+                "player_id": "Player ID",
+                "amount": "OGN Amount"
+            },
+            "start_contract": {
+                "header": "Start contract",
+                "message": "Do you want to deliver the vehicle and receive a reward of %s OGN?",
+                "message_vin": "Do you want to deliver the vehicle and receive a reward of %s OGN or keep the vehicle for a payment of %s OGN?"
+            },
+            "cancel_contract": {
+                "header": "Cancel contract",
+                "message": "Do you want to cancel the contract? This action cannot be undone"
+            }
+        }
+    },
+    "in_game": {
+        "blip": {
+            "delivery_point": "Delivery Point",
+            "vin_scratch": "Vin Scratch Specialist"
+        },
+        "notifications": {
+            "boosting_already_active": "You already have an active mission",
+            "cannot_offer_to_self": "You can't offer a contract to yourself",
+            "coins_received": "You have received %s coins",
+            "register_bonus": "You have received %s OGN for registering",
+            "checking_vehicle": "Checking vehicle",
+            "contract_already_offered": "You have already offered this contract. Wait for the user to accept it or the offer to expire.",
+            "contract_failed": "You have failed the contract, be faster next time",
+            "contract_not_allowed": "You are not allowed to perform this action",
+            "contract_not_enough_police": "You can't start the contract right now, try again later",
+            "contract_not_enough_money": "You do not have enough money to perform this action",
+            "contract_offer_refused": "The contract offer has been refused",
+            "contract_offer_expired": "The contract offer has expired",
+            "contract_offer_received": "You have received a contract offer",
+            "contract_offer_sent": "The contract offer has been sent successfully.",
+            "contract_received": "You have received a contract",
+            "contract_sold": "The contract has been sold successfully",
+            "hack_driver": "Only the passenger can hack",
+            "hack_failed": "You have failed the minigame. You have %s hacks remaining.",
+            "hack_remaining": "You have successfully solved the minigame, %s hacks remaining",
+            "hack_speed": "The vehicle must go faster to start hacking",
+            "hack_too_slow": "You are going too slow. You must be at least %s",
+            "hack_too_fast": "You are going too fast. You must stay below %s",
+            "hack_not_in_vehicle": "You must be inside the vehicle to hack the tracker",
+            "hack_not_available": "This vehicle does not have an active tracker",
+            "hack_minigame_not_started": "The minigame could not be started, try again",
+            "interact_mechanic": "Interact with the mechanic",
+            "market_contract_bought": "Your contract published in the market has been bought",
+            "no_spawn_point": "You can't start the contract right now, try again later",
+            "not_enough_money": "You do not have enough money to perform this action",
+            "user_not_found": "The user is not available at this time.",
+            "vehicle_deliver": "Leave the vehicle at the delivery point and exit the area",
+            "vehicle_delivered": "You have successfully delivered the vehicle",
+            "vehicle_explosion": "The vehicle will explode in %s seconds",
+            "vehicle_location": "The last known location of the vehicle has been marked on the map",
+            "vehicle_tracker_disabled": "You have successfully disabled the tracker. Now you must deliver the vehicle to the delivery point",
+            "vehicle_tracker_police": "It seems that the vehicle has a tracker, disable it before the police arrive",
+            "vehicle_vin_finished": "Ready, you better leave before the police catch you",
+            "vehicle_vin_specialist": "Take the vehicle to a Vin Scratch specialist",
+            "hacker_xp_received": "You earned %s XP for disabling the tracker"
+        }
+    }
+}

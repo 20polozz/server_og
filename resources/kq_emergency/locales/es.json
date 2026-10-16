@@ -1,0 +1,133 @@
+{
+  "ui": {
+    "emergency_vehicles_creator": "Creador de Vehículos de Emergencia",
+    "subtitle": "Explora, gestiona y crea ajustes para vehículos",
+    "search_placeholder": "Buscar por nombre, modelo o autor...",
+    "create_new": "Crear Nuevo",
+    "create_for_vehicle": "Crear un nuevo ajuste para el vehículo en el que estás",
+    "must_be_in_vehicle": "Debes estar en un vehículo para crear un nuevo ajuste",
+    "table": {
+      "id": "ID",
+      "preset_name": "Nombre del ajuste",
+      "vehicle_model": "Modelo del vehículo",
+      "author": "Autor",
+      "created": "Creado",
+      "updated": "Actualizado",
+      "public": "Público",
+      "actions": "Acciones",
+      "no_results": "No se encontraron ajustes",
+      "adjust_search": "Intenta ajustar tu búsqueda o crea un nuevo ajuste",
+      "show_more": "Mostrar más ajustes"
+    },
+    "editor": {
+      "title": "Configuración de Emergencia",
+      "subtitle": "Configura el equipamiento de tu vehículo",
+      "installed_equipment": "Equipamiento Instalado",
+      "no_equipment": "Aún no se ha añadido equipamiento",
+      "spawner": "Generador de Equipamiento",
+      "cancel": "Cancelar",
+      "next": "Siguiente",
+      "form": {
+        "name": "Nombre del ajuste",
+        "name_placeholder": "Nombre de tu ajuste",
+        "description": "Descripción del ajuste",
+        "description_placeholder": "Descripción de tu ajuste",
+        "public": "Público",
+        "public_no": "No, mantener este ajuste privado",
+        "public_yes": "Sí, cualquiera puede usar este ajuste",
+        "lights": "Modo de luces",
+        "lights_side": "Ciclo izquierda-derecha",
+        "lights_sync": "Sincronizado",
+        "back": "Atrás",
+        "save": "Guardar",
+        "missing_name": "Debes definir el nombre del ajuste"
+      }
+    },
+    "apply_menu": {
+      "title": "Aplicar Ajuste",
+      "subtitle": "Selecciona un ajuste para tu vehículo",
+      "make": "Marca:",
+      "plate": "Matrícula:",
+      "no_presets": "No se encontraron ajustes para este vehículo",
+      "clear": "Eliminar Equipamiento Actual",
+      "cancel": "Cancelar",
+      "new": "Crear Nuevo"
+    },
+    "yes": "Sí",
+    "no": "No",
+    "n/a": "N/D",
+    "m_ago": "m atrás",
+    "h_ago": "h atrás",
+    "d_ago": "d atrás",
+    "just_now": "Ahora mismo",
+    "apply": "Aplicar",
+    "apply_preset": "Aplicar ajuste",
+    "edit_preset": "Editar ajuste",
+    "delete_preset": "Eliminar ajuste",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "delete_subtitle": "¿Estás seguro de que quieres eliminar {{preset}}? Esta acción no se puede deshacer.",
+    "shift_to_position": "Mantén MAYÚS para generar en la posición seleccionada",
+    "options": {
+      "bone_attachment": "Anclaje a hueso",
+      "light_groups": "Grupos de iluminación",
+      "max_reached": "Máximo {{ max }} selecciones alcanzado",
+      "anim_delay": "Retraso de animación de luces",
+      "anim_speed": "Velocidad de animación de luces",
+      "default": "Predeterminado",
+      "static": "(Estático)",
+      "delay_auto": "Automático",
+      "extras": "Extras",
+      "livery": "Pegatina (Livery)"
+    },
+    "bones": {
+      "chassis": "Predeterminado (Chasis)",
+      "boot": "Maletero",
+      "bonnet": "Capó",
+      "door_left_front": "Puerta Delantera Izquierda",
+      "door_left_rear": "Puerta Trasera Izquierda",
+      "door_right_front": "Puerta Delantera Derecha",
+      "door_right_rear": "Puerta Trasera Derecha",
+      "front_bumper": "Parachoques Delantero",
+      "rear_bumper": "Parachoques Trasero"
+    },
+    "credits": "Creador de Vehículos de Emergencia por"
+  },
+  "applicator": {
+    "hint_short": "Aplicación rápida",
+    "hint": "Presiona ~INPUT_CONTEXT~ para abrir el menú de aplicación rápida"
+  },
+  "misc": {
+    "not_in_vehicle": "Debes estar en un vehículo",
+    "not_in_vehicle_long": "Debes estar en un vehículo para realizar esta acción",
+    "not_allowed": "No tienes permiso para realizar esta acción",
+    "not_existing": "El ajuste no existe",
+    "wrong_model": "Este ajuste no encaja en este vehículo",
+    "applied": "El ajuste ha sido aplicado",
+    "item_missing": "No tienes el objeto necesario para esto"
+  },
+  "editor": {
+    "max_equipped": "Se ha alcanzado la cantidad máxima de equipamiento",
+    "saved": "El ajuste ha sido guardado",
+    "deleted": "El ajuste ha sido eliminado",
+    "clone_and_mirror": "Clonar y reflejar"
+  },
+  "gizmo": {
+    "translate": "Modo Traslación",
+    "rotate": "Modo Rotación",
+    "clone": "Clonar objeto"
+  },
+  "keybinds": {
+    "cycle": "Ciclar modos",
+    "light_mode_1": "Modo luz 1",
+    "light_mode_2": "Modo luz 2",
+    "light_mode_3": "Modo luz 3",
+    "siren_mode_1": "Desactivar todo",
+    "siren_mode_2": "Desactivar sirena",
+    "siren_mode_3": "Sirena modo 1",
+    "siren_mode_4": "Sirena modo 2",
+    "siren_mode_5": "Sirena modo 3",
+    "siren_mode_6": "Sirena modo 4",
+    "siren_mode_7": "Sirena modo 5"
+  }
+}

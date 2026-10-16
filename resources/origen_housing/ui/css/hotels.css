@@ -1,0 +1,2997 @@
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 230, 231, 234;
+    --arc-t-papel2: 230, 231, 234;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento: los dos son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/* Rejilla y fichas del panel de administracion de casas y hoteles, y la
+   ficha de habitacion que ve el jugador. Mismo lenguaje que style.css: los
+   tokens --ogn-* se definen alli, y esta hoja va DETRAS, asi que aqui se
+   escriben los remates del estilo «HUD Arcade» de estas pantallas.
+
+   Lo unico propio que declara esta hoja son los --inv-* del mostrador (mas
+   abajo, en EL MOSTRADOR): son las medidas del riel lateral, que se copian al
+   pixel de origen_inventory.  */
+
+.hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: calc(2vh / var(--ogn-escala, 1));
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar ahora está en .scripts-grid-container */
+
+/* ══ Ficha de casa / hotel ══════════════════════════════════════
+   Es la excepción a lo de «nada de tarjetas»: en una rejilla cada ficha
+   necesita su recuadro para no fundirse con la de al lado. Al señalarla
+   sube el fondo y aparece una barra del acento a la izquierda. */
+.hotel-card,
+.house-card {
+    width: 100%;
+    height: fit-content;
+    /* Papel, no velo: la ficha es una hoja sobre la mesa. Un punto más blanca
+       que el fondo de la zona, y despegada con su sombra cálida. */
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.97) 0%, var(--arc-fondo1, rgba(230, 231, 234, 0.95)) 100%);
+    border-radius: var(--ogn-r-zona);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), var(--ogn-sombra);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: pointer;
+    max-width: 100%;
+    padding: calc(1.8vh / var(--ogn-escala, 1)) 0 0;
+    position: relative;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    min-height: 0;
+}
+
+.hotel-card::before,
+.house-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #d81b55, var(--ogn-acc-deep));
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.24s var(--ogn-ease);
+}
+
+.hotel-card:hover,
+.house-card:hover {
+    background: linear-gradient(160deg, var(--arc-papel1) 0%, var(--arc-fondo1, #e6e7ea) 100%);
+    border-color: rgba(var(--arc-t-linea), 0.32);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 14px 30px rgba(90, 80, 60, 0.22);
+}
+
+.hotel-card:hover::before,
+.house-card:hover::before {
+    transform: scaleY(1);
+}
+
+/* El icono y el tipo van juntos en una línea de rótulo, sin recuadro: la
+   ficha ya es el recuadro. */
+.hotel-card .icon-section,
+.house-card .icon-section {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 calc(1.8vh / var(--ogn-escala, 1));
+}
+
+.hotel-card .indicator,
+.house-card .indicator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    height: fit-content;
+    width: fit-content;
+    border-radius: 0;
+    transition: none;
+    background: transparent;
+    border: none;
+}
+
+.hotel-card .indicator .icon-container,
+.house-card .indicator .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    transition: none;
+    background: none;
+    box-shadow: none;
+}
+
+.hotel-card .indicator .icon,
+.house-card .indicator .icon {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+}
+
+.hotel-card:hover .indicator .icon,
+.house-card:hover .indicator .icon {
+    transform: none;
+    color: var(--ogn-acc-soft);
+}
+
+.hotel-card .indicator span,
+.house-card .indicator span {
+    display: block;
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.hotel-card .label-section,
+.house-card .label-section {
+    width: 100%;
+    flex: none;
+    padding: 0 calc(1.8vh / var(--ogn-escala, 1));
+}
+
+/* El nombre de la casa es lo que se reconoce: condensada cursiva y 800, en
+   versales, sin espaciado. */
+.hotel-card .label-section .label-text,
+.house-card .label-section .label-text {
+    font-size: calc(2.1vh / var(--ogn-escala, 1));
+    line-height: 1.1;
+    color: var(--ogn-t1);
+    text-align: left;
+    margin: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.hotel-card .card-content,
+.house-card .card-content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: calc(1.4vh / var(--ogn-escala, 1));
+    width: 100%;
+    flex: 1;
+}
+
+.hotel-card .card-header,
+.house-card .card-header {
+    display: none;
+}
+
+.hotel-card .card-header .info {
+    display: flex;
+    align-items: center;
+    gap: calc(2vh / var(--ogn-escala, 1));
+}
+
+.hotel-card .card-header .badge {
+    display: flex;
+    align-items: center;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.hotel-card .card-header .badge i {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    color: var(--ogn-t2);
+}
+
+.hotel-card .card-header .location-text {
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    color: var(--ogn-t2);
+    font-family: var(--ogn-texto);
+}
+
+.hotel-card .blip-badge {
+    width: calc(3vh / var(--ogn-escala, 1));
+    height: calc(3vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotel-card .blip-badge i {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+}
+
+.hotel-card .blip-badge.active {
+    background: rgba(var(--ogn-acc-rgb), 0.12);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+}
+
+.hotel-card .blip-badge.active i {
+    color: var(--ogn-acc-soft);
+}
+
+/* Los datos van en dos columnas: la etiqueta en rótulo pequeño y el dato en
+   texto corrido, para que el ojo pueda leer la columna de valores sola. */
+.hotel-card .card-stats,
+.house-card .card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    flex: 1;
+    padding: 0 calc(1.8vh / var(--ogn-escala, 1));
+}
+
+.hotel-card .stat-item,
+.house-card .stat-item {
+    display: grid;
+    grid-template-columns: calc(1.4vh / var(--ogn-escala, 1)) minmax(0, calc(9vh / var(--ogn-escala, 1))) 1fr;
+    align-items: baseline;
+    gap: calc(0.8vh / var(--ogn-escala, 1));
+    flex: 0;
+    background: transparent;
+    border-radius: 0;
+    padding: calc(0.55vh / var(--ogn-escala, 1)) 0;
+    border: none;
+}
+
+.hotel-card .stat-icon,
+.house-card .stat-icon {
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+}
+
+.hotel-card .stat-label,
+.house-card .stat-label {
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+/*  El dato va en Barlow. El que es cifra lleva además la clase `price`, que
+    en style.css le pone Oxanium 800 con tabular-nums. */
+.hotel-card .stat-value,
+.house-card .stat-value {
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* El pie de la ficha son columnas separadas por una línea, cada una un
+   botón entero: la misma barra que cierra el panel de administración. */
+.hotel-card .card-actions,
+.house-card .card-actions {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 0;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 0;
+    border-top: 1px solid rgba(var(--arc-t-linea), 0.2);
+    background: rgba(var(--arc-t-linea), 0.05);
+}
+
+/*  El pie de la ficha son columnas separadas por una línea. Aquí NO hay
+    chapas sesgadas: la ficha lleva `overflow: hidden` y se comería el pico y
+    el escalón. Botones rectos, a sangre, sin relieve. */
+.hotel-card .action-btn,
+.house-card .action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+    padding: calc(1.1vh / var(--ogn-escala, 1)) calc(0.6vh / var(--ogn-escala, 1));
+    border-radius: 0;
+    border: 0;
+    border-right: 1px solid rgba(var(--arc-t-linea), 0.2);
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    color: var(--ogn-t3);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+}
+
+/*  Sin el `translateY` del pulsado del botón general: estos van pegados al
+    borde de la ficha y al bajar dejarían un hueco. */
+.hotel-card .action-btn:active,
+.house-card .action-btn:active {
+    transform: none;
+    box-shadow: none;
+    background: rgba(var(--arc-t-linea), 0.14);
+}
+
+.hotel-card .action-btn:last-child,
+.house-card .action-btn:last-child {
+    border-right: 0;
+}
+
+.hotel-card .action-btn i,
+.house-card .action-btn i {
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    color: inherit;
+}
+
+.hotel-card .action-btn:hover,
+.house-card .action-btn:hover {
+    background: rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    color: var(--ogn-t1);
+    box-shadow: none;
+}
+
+/* Borrar es lo único que no tiene vuelta atrás: se pone en rojo, y solo
+   cuando lo tienes debajo del ratón. */
+.hotel-card .action-btn.delete:hover,
+.house-card .action-btn.delete:hover {
+    background: rgba(192, 10, 70, 0.1);
+    color: var(--ogn-bad);
+}
+
+.floating-create-button {
+    position: absolute;
+    bottom: calc(3vh / var(--ogn-escala, 1));
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    background: var(--ogn-grad);
+    border: 0;
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    border-radius: var(--ogn-r-ctrl);
+    padding: calc(1.4vh / var(--ogn-escala, 1)) calc(2.6vh / var(--ogn-escala, 1));
+    color: #ffffff;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-family: var(--ogn-rotulo);
+}
+
+.floating-create-button:hover {
+    background: var(--ogn-grad-hi);
+    transform: scale(1.06);
+}
+
+.floating-create-button i {
+    font-size: calc(2vh / var(--ogn-escala, 1));
+}
+
+.hotel-creation {
+    padding: calc(3vh / var(--ogn-escala, 1));
+}
+
+.creation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(3vh / var(--ogn-escala, 1));
+    padding-bottom: calc(2vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+.creation-header h2 {
+    margin: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(3vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    text-transform: uppercase;
+}
+
+.creation-header .actions {
+    display: flex;
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+/* ══ Lo propio del armazón ══════════════════════════════════════════════════
+   Tres cosas que el kit no trae porque son de este panel. Todo lo demás —el
+   riel, la cabecera, el contenido, la barra— sale de css/ogn.css tal cual. */
+
+/*  El riel, mientras se rellena un formulario.
+
+    No lleva a ninguna parte: la salida es Cancelar o Guardar, que están en la
+    cabecera. Saltar de sección desde aquí se llevaría por delante lo escrito
+    sin decir nada, así que se apaga y deja de responder al ratón.
+
+    La sección en la que estás NO se apaga: sigues en Hoteles aunque estés
+    dentro de un formulario, y apagarla también dejaba el riel sin decir dónde
+    andas. */
+.ogn-rail__it.is-mudo {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.ogn-rail__it.is-mudo:hover {
+    background: none;
+    color: var(--ogn-t4);
+}
+
+/*  El paginador, que es la última celda de la barra de cifras del pie.
+
+    Va ahí y no flotando en mitad del negro, que es donde estaba: es lo único
+    de la barra que se puede pulsar, y sin una caja debajo no había nada que
+    lo sujetara. */
+.hs-pager__row {
+    display: flex;
+    align-items: center;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.hs-pager__row .ogn-bar__value { flex: 1; text-align: center; }
+
+/*  Chapita de papel sesgada. Cabe en la celda porque la barra de cifras no
+    recorta: si algún día se le pone `overflow: hidden`, el pico se pierde. */
+.hs-pager__btn {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(2.6vh / var(--ogn-escala, 1));
+    height: calc(2.6vh / var(--ogn-escala, 1));
+    padding: 0;
+    border: 0;
+    border-radius: var(--ogn-r-pill);
+    background: none;
+    box-shadow: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    --sg-sh: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.3);
+    --sg-sh-on: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 1px 0 rgba(var(--arc-t-relieve), 0.3);
+    color: var(--ogn-t3);
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.hs-pager__btn:hover {
+    background: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+.hs-pager__btn:active { transform: translateY(2px); box-shadow: none; }
+.hs-pager__btn:active::before { box-shadow: var(--sg-sh-on); }
+
+/* Sin página a la que ir no es un botón roto, es un botón sin nada que hacer:
+   se apaga en vez de pintarse de gris. */
+.hs-pager__btn.is-mudo {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.hs-pager__btn.is-mudo:hover {
+    --sg-bg: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    color: var(--ogn-t3);
+}
+
+.hs-pager__btn.is-mudo:active { transform: none; }
+
+/*  El formulario de un hotel, y el de una habitacion.
+
+    No tenia ni una regla: era un div pelado colgando del panel, asi que iba a
+    sangre de lado a lado de la pantalla, sin margen y sin rodar. Es la misma
+    region que la rejilla de fichas (.scripts-grid-container en style.css) y
+    lleva las mismas medidas, que es lo que hace que al pasar de la lista al
+    formulario no se mueva nada de sitio.
+
+    El hueco entre bloques lo pone el `gap` de aqui una sola vez, no el margen
+    de cada bloque: asi el ultimo no deja un hueco muerto al final. */
+.hotel-creation-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    /* Sin relleno de los lados: el hueco lo pone .ogn-frame una sola vez, y
+       asi los bloques quedan a la misma linea que la caja de la cabecera. */
+    padding: 0;
+}
+
+.hotel-creation-content > .creation-body {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.creation-body {
+    /* El alto lo manda el contenedor, que es quien rueda. Un max-height aqui
+       dejaba el formulario cortado a calc(70vh / var(--ogn-escala, 1)) con media pantalla vacia debajo. */
+    min-height: 0;
+}
+
+.creation-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.creation-body::-webkit-scrollbar-track {
+    background: rgba(var(--arc-t-linea), 0.1);
+    border-radius: var(--ogn-r);
+}
+
+.creation-body::-webkit-scrollbar-thumb {
+    background: rgba(var(--arc-t-linea), 0.38);
+    border-radius: var(--ogn-r);
+}
+
+.creation-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--arc-t-linea), 0.6);
+}
+
+/* Cada bloque es una zona: hoja de papel con su radio de zona y su sombra
+   cálida. Lo que la separa de la de al lado es el hueco, no una raya. */
+.form-section {
+    flex: none;
+    background: var(--ogn-veil);
+    border: 1px solid rgba(var(--arc-t-linea), 0.2);
+    border-radius: var(--ogn-r-zona);
+    box-shadow: var(--ogn-sombra);
+    padding: calc(2.4vh / var(--ogn-escala, 1));
+}
+
+/*  El rótulo del bloque, con la raya que se apaga debajo: rosa al arranque y
+    disuelta hacia la derecha, que es como se marcan las secciones del tema.
+    Reemplaza al `border-bottom` gris de antes. */
+.form-section h3 {
+    position: relative;
+    margin: 0 0 calc(2vh / var(--ogn-escala, 1)) 0;
+    padding-bottom: calc(1.2vh / var(--ogn-escala, 1));
+    border-bottom: 0;
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.28em;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.form-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ogn-acc) 0%, rgba(var(--arc-t-linea), 0.28) 20%, transparent 100%);
+}
+
+.form-section .badge {
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    color: var(--ogn-t3);
+    padding: calc(0.35vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-mono);
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+}
+
+.form-group {
+    margin-bottom: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+/*  `:not(.checkbox-label)` no es cosmetico: sin el, esta regla le gana por
+    especificidad a la del interruptor (.checkbox-label, mas abajo) y le pone
+    `display: block`. La pista del interruptor deja de estar en una fila, se
+    monta encima del texto y sale «(A)CTIVAR BLIP» con la bola sobre la A. */
+.form-group label:not(.checkbox-label):not(.checkbox-clean) {
+    display: block;
+    margin-bottom: calc(0.8vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    font-weight: 700;
+}
+
+/* Los campos son huecos: papel hundido con su sombra interior, no cajas
+   levantadas. */
+.form-group input.form-control,
+.form-group select.form-control {
+    width: 100%;
+    background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(1.5vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+/* Con el foco puesto se ve cual es: `outline: none` a secas quitaba el aviso
+   del navegador y no ponia nada en su sitio. */
+.form-group input.form-control:focus,
+.form-group select.form-control:focus {
+    outline: none;
+    border-color: rgba(var(--ogn-acc-rgb), 0.55);
+    background: var(--arc-papel1);
+}
+
+.coords-input {
+    display: flex;
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.coords-input input {
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: calc(2vh / var(--ogn-escala, 1));
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.rental-options {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    margin-bottom: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+.rental-option {
+    display: flex;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    align-items: center;
+}
+
+.rental-option input {
+    flex: 1;
+}
+
+.rental-option .duration {
+    min-width: calc(10vh / var(--ogn-escala, 1));
+    text-align: center;
+    padding: calc(1vh / var(--ogn-escala, 1));
+    border: 0;
+    border-radius: var(--ogn-r-ctrl);
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.24);
+    font-family: var(--ogn-mono);
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    font-variant-numeric: tabular-nums;
+}
+
+.add-room-form {
+    background: rgba(var(--arc-t-linea), 0.07);
+    padding: calc(2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    border: 1px solid var(--ogn-line-soft);
+    margin-bottom: calc(2vh / var(--ogn-escala, 1));
+}
+
+.rooms-preview {
+    display: flex;
+    flex-direction: column;
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.room-preview {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(1.5vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.66 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+/* El número de la habitación es una cifra: mono. */
+.room-preview .room-number {
+    font-family: var(--ogn-mono);
+    font-weight: 400;
+    font-size: calc(1.45vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    min-width: calc(8vh / var(--ogn-escala, 1));
+}
+
+.room-preview .room-ipl {
+    color: var(--ogn-t2);
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    flex: 1;
+}
+
+/* Una habitación sin puerta solo se alquila desde la recepción. Aquí no es un
+   estado bueno ni malo, es un dato: gris y de borde, para que no compita con
+   la pastilla de Disponible / Alquilada que va al lado. */
+.room-preview .room-nodoor {
+    flex: none;
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    border: 0;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-rotulo);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.room-preview .room-status {
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-rotulo);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* Los estados, en los colores que se leen sobre crema: el verde y el ámbar de
+   la paleta negra aquí desaparecían. */
+.room-preview .room-status.available {
+    background: rgba(20, 102, 54, 0.1);
+    color: var(--ogn-ok);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(20, 102, 54, 0.4);
+}
+
+.room-preview .room-status.rented {
+    background: rgba(138, 86, 0, 0.1);
+    color: var(--ogn-warn);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(138, 86, 0, 0.4);
+}
+
+.room-preview .room-status.maintenance {
+    background: rgba(29, 91, 158, 0.1);
+    color: var(--ogn-info);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(29, 91, 158, 0.4);
+}
+
+.room-preview .room-actions {
+    display: flex;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+}
+
+/* Guardar es el ÚNICO botón rosa del formulario; cancelar es papel. Las dos
+   son chapas sesgadas: el sesgo lo pinta el `::before` de style.css. */
+.btn-confirm {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    --sg-bg: var(--ogn-grad);
+    --sg-sh: 0 5px 0 var(--ogn-acc-deep);
+    --sg-sh-on: 0 2px 0 var(--ogn-acc-deep);
+    color: #ffffff;
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(2.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    cursor: pointer;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background: none;
+    --sg-bg: var(--ogn-grad-hi);
+    color: #ffffff;
+}
+
+.btn-confirm:active,
+.btn-cancel:active { transform: translateY(3px); box-shadow: none; }
+.btn-confirm:active::before,
+.btn-cancel:active::before { box-shadow: var(--sg-sh-on); }
+
+.btn-cancel {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    --sg-sh: var(--ogn-relieve);
+    --sg-sh-on: var(--ogn-relieve-on);
+    color: var(--ogn-t2);
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(2.2vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    cursor: pointer;
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(1.3vh / var(--ogn-escala, 1));
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.btn-cancel:hover {
+    background: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--ogn-t1);
+}
+
+/*  Dos sitios donde estas chapas NO pueden ir sesgadas:
+
+    - dentro de un modal, que lleva `overflow: hidden` y les comería el pico;
+    - a lo ancho del bloque (`w-100`), que una barra larga inclinada se lee
+      torcida.
+
+    En los dos casos se apaga el `::before` y el material se pinta en la
+    propia pieza. */
+.c-modal .btn-confirm::before,
+.btn-confirm.w-100::before,
+.btn-cancel.w-100::before { content: none; }
+
+.c-modal .btn-confirm,
+.btn-confirm.w-100 {
+    background: var(--ogn-grad);
+    box-shadow: 0 5px 0 var(--ogn-acc-deep);
+    color: #ffffff;
+}
+
+.c-modal .btn-confirm:hover,
+.btn-confirm.w-100:hover {
+    background: var(--ogn-grad-hi);
+}
+
+.c-modal .btn-confirm:active,
+.btn-confirm.w-100:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 var(--ogn-acc-deep);
+}
+
+.btn-cancel.w-100 {
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    box-shadow: var(--ogn-relieve);
+    color: var(--ogn-t2);
+}
+
+.btn-cancel.w-100:hover { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); color: var(--ogn-t1); }
+.btn-cancel.w-100:active { transform: translateY(3px); box-shadow: var(--ogn-relieve-on); }
+
+.w-100 {
+    width: 100%;
+}
+
+.management .header .button.active {
+    background: var(--ogn-surface-on);
+}
+
+.coords-placement {
+    width: 100%;
+}
+
+/* Marcar la posición en el mundo: una zona para pulsar, con su borde de
+   trazos, no un botón lleno. */
+.btn-placement {
+    width: 100%;
+    background: rgba(var(--arc-t-linea), 0.05);
+    border: 1px dashed rgba(var(--arc-t-linea), 0.4);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: none;
+    padding: calc(1.8vh / var(--ogn-escala, 1)) calc(2.4vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    color: var(--ogn-t2);
+    font-family: var(--ogn-rotulo);
+    font-style: normal;
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.btn-placement:hover {
+    background: rgba(var(--ogn-acc-rgb), 0.08);
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    color: var(--ogn-acc-soft);
+}
+
+/* Es una zona para pulsar, no una chapa: al pulsar no baja. */
+.btn-placement:active { transform: none; box-shadow: none; }
+
+.btn-placement i {
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+.coords-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    background: var(--ogn-sunken);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+}
+
+.coords-values {
+    display: flex;
+    align-items: center;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    flex: 1;
+}
+
+.coord-label {
+    font-family: var(--ogn-rotulo);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    font-weight: 700;
+}
+
+/* Una coordenada es una medida: mono y tabular, o baila al moverse. */
+.coord-value {
+    font-family: var(--ogn-mono);
+    font-size: calc(1.35vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-weight: 400;
+    letter-spacing: 0;
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.coords-display .btn-action {
+    flex-shrink: 0;
+}
+
+.room-detail-panel {
+    position: fixed;
+    right: calc(2.5vh / var(--ogn-escala, 1));
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(45vh / var(--ogn-escala, 1));
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(var(--arc-t-linea), 0.24);
+    box-shadow: none;
+    border-radius: var(--ogn-r);
+    overflow: hidden;
+    animation: slideInRight 0.4s ease;
+
+    padding: calc(1vh / var(--ogn-escala, 1));
+    box-sizing: border-box;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translate(calc(50vh / var(--ogn-escala, 1)), -50%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(-50%);
+        opacity: 1;
+    }
+}
+
+.btn-close-panel-x {
+    position: absolute;
+    top: calc(1.2vh / var(--ogn-escala, 1));
+    right: calc(1.2vh / var(--ogn-escala, 1));
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    border: 1px solid rgba(var(--arc-t-linea), 0.28);
+    box-shadow: none;
+    color: var(--ogn-t2);
+    width: calc(3.5vh / var(--ogn-escala, 1));
+    height: calc(3.5vh / var(--ogn-escala, 1));
+    aspect-ratio: 1;
+    border-radius: var(--ogn-r);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    z-index: 10;
+}
+
+.btn-close-panel-x:hover {
+    background: var(--arc-fondo1, #ffffff); border-color: var(--ogn-line-hi); color: var(--ogn-t1);
+}
+
+/* Va pegado a la esquina del panel: al pulsar no baja, o deja un escalón. */
+.btn-close-panel-x:active { transform: none; box-shadow: none; }
+
+/* Cabecera de la ficha que se abre al pinchar una casa en el mapa: el
+   antetítulo dice qué casa es y el número es lo que se reconoce de lejos. */
+.panel-compact-header {
+    background: none;
+    padding: calc(1.8vh / var(--ogn-escala, 1)) var(--ogn-pad, calc(2vh / var(--ogn-escala, 1))) calc(1.4vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+.hotel-name {
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    color: var(--ogn-acc-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    margin-bottom: calc(0.9vh / var(--ogn-escala, 1));
+}
+
+.room-number-compact {
+    display: flex;
+    align-items: center;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    margin-bottom: 0;
+}
+
+.room-number-compact i {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+}
+
+.room-number-compact span {
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-size: calc(2.2vh / var(--ogn-escala, 1));
+    line-height: 1.1;
+    color: var(--ogn-t1);
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+}
+
+.panel-compact-body {
+    padding: calc(1.6vh / var(--ogn-escala, 1));
+}
+
+/* «Dueño» junto a quien tiene la llave. */
+.badge-owner {
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, calc(0.72 * var(--arc-vf)));
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    color: var(--ogn-t3);
+    padding: calc(0.25vh / var(--ogn-escala, 1)) calc(0.7vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+}
+
+.fade_right-enter-active,
+.fade_right-leave-active {
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, opacity 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fade_right-enter-from {
+    opacity: 0;
+    transform: translateX(calc(5vh / var(--ogn-escala, 1))) translateY(-50%);
+}
+
+.fade_right-leave-to {
+    opacity: 0;
+    transform: translateX(calc(5vh / var(--ogn-escala, 1))) translateY(-50%);
+}
+
+
+/* ══ Ficha de habitación de hotel ═══════════════════════════════
+   Es el panel que ve el jugador delante de la puerta. Mismo lenguaje que el
+   resto: cabecera a sangre, rótulos con su línea, y el color reservado a lo
+   que de verdad es un estado. */
+
+.panel-header-clean {
+    text-shadow: none;
+    color: var(--ogn-fg);
+    padding: 0 0 calc(1.4vh / var(--ogn-escala, 1));
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--ogn-line);
+    background: none;
+    width: auto;
+}
+
+.panel-header-clean span {
+    font-family: var(--ogn-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(2.2vh / var(--ogn-escala, 1));
+    line-height: 1.1;
+    color: var(--ogn-t1);
+    text-transform: uppercase;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.panel-body-clean {
+    padding: calc(1.8vh / var(--ogn-escala, 1)) 0 0;
+    box-sizing: border-box;
+}
+
+.room-info-card,
+.details-card {
+    background: rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+    border: 1px solid var(--ogn-line-soft);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    border-radius: var(--ogn-r-ctrl);
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+    margin-bottom: calc(2vh / var(--ogn-escala, 1));
+}
+
+.info-row,
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: calc(1.5vh / var(--ogn-escala, 1));
+    padding: calc(1vh / var(--ogn-escala, 1)) 0;
+}
+
+.info-row:not(:last-child),
+.detail-item:not(:last-child) {
+    border-bottom: 1px solid var(--ogn-line-soft);
+}
+
+.info-label,
+.detail-label {
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.info-value,
+.detail-value {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-family: var(--ogn-texto);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Pastilla de estado. */
+.status-tag {
+    padding: calc(0.4vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-pill);
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+}
+
+.status-tag.available {
+    background: rgba(20, 102, 54, 0.1);
+    color: var(--ogn-ok);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(20, 102, 54, 0.4);
+}
+
+/* Alquilada no es un fallo, es que está ocupada: ámbar, no rojo. */
+.status-tag.rented {
+    background: rgba(138, 86, 0, 0.1);
+    color: var(--ogn-warn);
+    border: 0;
+    box-shadow: inset 0 0 0 1px rgba(138, 86, 0, 0.4);
+}
+
+.section-title {
+    font-family: var(--ogn-rotulo);
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    margin: calc(2.4vh / var(--ogn-escala, 1)) 0 calc(1.4vh / var(--ogn-escala, 1)) 0;
+    padding-bottom: calc(1vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+    font-weight: 500;
+}
+
+.rental-grid-clean {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    margin-bottom: calc(2.5vh / var(--ogn-escala, 1));
+}
+
+.rental-card-clean {
+    background: var(--ogn-surface);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(1.6vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    position: relative;
+    overflow: hidden;
+}
+
+.rental-card-clean::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--ogn-acc-soft), var(--ogn-acc-deep));
+    transform: scaleY(0);
+    transition: transform 0.24s var(--ogn-ease);
+}
+
+.rental-card-clean:hover {
+    background: var(--ogn-surface-hi);
+    border-color: var(--ogn-line-hi);
+}
+
+.rental-card-clean:hover::before {
+    transform: scaleY(1);
+}
+
+.card-type {
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    font-weight: 500;
+    color: var(--ogn-t3);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-family: var(--ogn-rotulo);
+    position: relative;
+    z-index: 1;
+}
+
+.card-duration {
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    font-family: var(--ogn-texto);
+    position: relative;
+    z-index: 1;
+}
+
+/* El precio es la cifra grande de la ficha, pero es un dato: va en blanco. */
+.card-price {
+    font-size: calc(1.8vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    color: var(--ogn-fg);
+    margin-top: calc(0.3vh / var(--ogn-escala, 1));
+    letter-spacing: 0.03em;
+    font-family: var(--ogn-rotulo);
+    font-variant-numeric: tabular-nums;
+    position: relative;
+    z-index: 1;
+}
+
+.auto-renew-section {
+    background: var(--ogn-surface);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(1.4vh / var(--ogn-escala, 1));
+    margin-top: calc(2.4vh / var(--ogn-escala, 1));
+    margin-bottom: 0;
+}
+
+.checkbox-clean {
+    display: flex;
+    align-items: center;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-clean input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-clean .check-icon {
+    position: relative;
+    width: calc(2.2vh / var(--ogn-escala, 1));
+    height: calc(2.2vh / var(--ogn-escala, 1));
+    background: var(--ogn-sunken);
+    border: 1px solid var(--ogn-line-hi);
+    border-radius: var(--ogn-r-ctrl);
+    transition: background 0.24s ease, border-color 0.24s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Marcada es «esto está en marcha»: verde. */
+.checkbox-clean input:checked+.check-icon {
+    background: rgba(20, 102, 54, 0.14);
+    border-color: rgba(20, 102, 54, 0.5);
+    box-shadow: none;
+}
+
+.checkbox-clean input:checked+.check-icon::after {
+    content: '✓';
+    color: var(--ogn-ok);
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+    font-weight: bold;
+    position: relative;
+}
+
+.checkbox-clean .check-label {
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    color: var(--ogn-t2);
+    font-weight: 500;
+    font-family: var(--ogn-rotulo);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+}
+
+/* La puerta dice cómo está: cerrada en ámbar, abierta en verde. */
+.btn-door-clean {
+    width: 100%;
+    background: var(--ogn-surface);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(1.3vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t1);
+    margin-bottom: calc(2vh / var(--ogn-escala, 1));
+}
+
+.btn-door-clean.locked,
+.btn-door-clean.locked i {
+    color: var(--ogn-warn);
+}
+
+.btn-door-clean.locked {
+    border-color: rgba(138, 86, 0, 0.4);
+    background: rgba(138, 86, 0, 0.08);
+}
+
+.btn-door-clean:not(.locked),
+.btn-door-clean:not(.locked) i {
+    color: var(--ogn-ok);
+}
+
+.btn-door-clean:not(.locked) {
+    border-color: rgba(20, 102, 54, 0.4);
+    background: rgba(20, 102, 54, 0.08);
+}
+
+.btn-door-clean:hover {
+    border-color: var(--ogn-line-hi);
+}
+
+.btn-door-clean i {
+    font-size: calc(1.4vh / var(--ogn-escala, 1));
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.btn-action-clean {
+    background: transparent;
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    font-family: var(--ogn-rotulo);
+    font-size: calc(0.85vh / var(--ogn-escala, 1));
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+}
+
+.btn-action-clean i {
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    transition: color 0.2s ease;
+}
+
+.btn-action-clean:hover {
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-t1);
+}
+
+.btn-action-clean:hover i {
+    color: var(--ogn-acc-soft);
+}
+
+/* Entrar es a lo que vienes: el único botón lleno del panel. */
+.btn-action-clean.enter {
+    background: var(--ogn-acc);
+    border-color: var(--ogn-acc);
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn-action-clean.enter i {
+    color: #fff;
+}
+
+.btn-action-clean.enter:hover {
+    background: var(--ogn-acc-deep);
+    border-color: var(--ogn-acc-deep);
+    color: #fff;
+}
+
+/* Son tres botones en dos columnas: el tercero ocupa la fila entera en vez
+   de dejar un hueco al lado. */
+.btn-action-clean.abandon {
+    grid-column: 1 / -1;
+}
+
+/* Dejar la habitación no tiene vuelta atrás: en rojo, y solo al señalarlo. */
+.btn-action-clean.abandon:hover {
+    background: rgba(192, 10, 70, 0.1);
+    border-color: rgba(192, 10, 70, 0.4);
+    color: var(--ogn-bad);
+}
+
+.btn-action-clean.abandon:hover i {
+    color: var(--ogn-bad);
+}
+
+.occupied-message {
+    background: var(--ogn-surface);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r);
+    padding: calc(3.4vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    text-align: center;
+}
+
+.occupied-message i {
+    font-size: calc(2.4vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+    margin-bottom: calc(1.5vh / var(--ogn-escala, 1));
+}
+
+.occupied-message p {
+    margin: 0;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+/* ══ El mapa de administración ═════════════════════════════════════════════
+   LAS TESELAS NO SE TOCAN: son la foto de la ciudad, igual que las fotos de
+   las casas. Aquí solo se pinta lo que las rodea —el fondo de debajo y los
+   botones de Leaflet—, nunca un filtro encima.
+
+   Las rayas entre teselas las arregla la regla
+   `.leaflet-tile` del final de style.css (contorno transparente + el píxel de
+   solape). Ya estaba puesta: no se ha inventado nada nuevo aquí. */
+
+/* El papel que se ve mientras cargan las teselas. */
+.leaflet-container {
+    background: var(--arc-fondo2, #e6ddca) !important;
+}
+
+.leaflet-container img.leaflet-tile {
+}
+
+/* Los botones de acercar y alejar los pinta Leaflet en blanco de navegador:
+   aquí son chapitas de papel con su canto, como el resto del tema. */
+.leaflet-control-zoom a {
+    width: calc(3vh / var(--ogn-escala, 1)) !important;
+    height: calc(3vh / var(--ogn-escala, 1)) !important;
+    line-height: calc(3vh / var(--ogn-escala, 1)) !important;
+    border: 0 !important;
+    border-radius: var(--ogn-r-ctrl, 9px) !important;
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%) !important;
+    box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.45) !important;
+    color: var(--ogn-t2) !important;
+    font-family: var(--ogn-rotulo) !important;
+    font-style: italic !important;
+    font-weight: 800 !important;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--arc-fondo1, #ffffff) !important;
+    color: var(--ogn-t1) !important;
+}
+
+.leaflet-control-zoom { border: 0 !important; box-shadow: none !important; }
+.leaflet-control-zoom a + a { margin-top: calc(0.4vh / var(--ogn-escala, 1)); }
+
+/* ══ Las casillas ══════════════════════════════════════════════════════════
+   Eran casillas del navegador: Chromium las pinta con el tema de Windows, en
+   verde y con su tipo de letra. Aquí son la misma pista con bola que el resto
+   de la tablet. Ver la skill origen-tablet. */
+
+.checkbox-label,
+.checkbox-clean {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.1vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r);
+    background: rgba(255, 255, 255, calc(0.025 * var(--arc-vf)));
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.checkbox-label:hover,
+.checkbox-clean:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-fg);
+}
+
+.checkbox-label input[type='checkbox'],
+.checkbox-clean input[type='checkbox'] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* La pista, con hueco a la izquierda para la bola. */
+.checkbox-label::before,
+.checkbox-clean::before {
+    content: '';
+    flex: none;
+    width: calc(3.2vh / var(--ogn-escala, 1));
+    height: calc(1.7vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line);
+    border-radius: 999px;
+    background: var(--ogn-sunken);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* La bola. */
+.checkbox-label::after,
+.checkbox-clean::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(calc(1.1vh / var(--ogn-escala, 1)) + calc(0.25vh / var(--ogn-escala, 1)));
+    width: calc(1.1vh / var(--ogn-escala, 1));
+    height: calc(1.1vh / var(--ogn-escala, 1));
+    border-radius: 999px;
+    background: var(--ogn-t3);
+    transform: translateY(-50%);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.checkbox-label:has(input:checked)::before,
+.checkbox-clean:has(input:checked)::before {
+    border-color: rgba(var(--ogn-acc-rgb), 0.5);
+    background: rgba(var(--ogn-acc-rgb), 0.18);
+}
+
+.checkbox-label:has(input:checked)::after,
+.checkbox-clean:has(input:checked)::after {
+    transform: translateY(-50%) translateX(calc(1.4vh / var(--ogn-escala, 1)));
+    background: var(--ogn-acc);
+}
+
+/* El icono que traia .checkbox-clean sobra: la bola ya dice si esta puesto. */
+.checkbox-clean .check-icon { display: none; }
+
+
+/* == El desplegable propio ==============================================
+   Copiado del kit de la tablet, que este recurso no lo trae entero.
+   Ver .claude/skills/origen-tablet/SKILL.md */
+
+
+
+/* == El desplegable propio ==============================================
+   Copiado del kit de la tablet: este recurso no lo trae entero.
+   Ver .claude/skills/origen-tablet/SKILL.md */
+
+.ogn-select { position: relative; display: flex; flex-direction: column; gap: calc(0.65vh / var(--ogn-escala, 1)); min-width: 0; }
+
+.ogn-select__label {
+	font-family: var(--ogn-rotulo);
+	font-weight: 700;
+	font-size: calc(1vh / var(--ogn-escala, 1));
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: var(--ogn-t3);
+}
+
+/* El control es un hueco, como los campos: papel hundido. No lleva sesgo
+   —ocupa el ancho de la columna y una caja larga inclinada se lee torcida—. */
+.ogn-select__control {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(1.2vh / var(--ogn-escala, 1));
+	width: 100%;
+	padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+	border: 1px solid var(--ogn-line);
+	border-radius: var(--ogn-r-ctrl);
+	background: rgba(255, 255, 255, calc(0.75 * var(--arc-vf)));
+	box-shadow: inset 0 2px 3px rgba(var(--arc-t-linea), 0.14);
+	color: var(--ogn-t2);
+	cursor: pointer;
+	transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.ogn-select__control:hover { border-color: var(--ogn-line-hi); background: var(--arc-papel1); color: var(--ogn-t1); }
+.ogn-select__control:active { transform: none; }
+
+.ogn-select__value {
+	min-width: 0;
+	font-family: var(--ogn-rotulo);
+	font-weight: 700;
+	font-size: calc(1.25vh / var(--ogn-escala, 1));
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Abierto, el control se queda encendido: si no, con la lista teletransportada
+   fuera del árbol no hay nada que ate una cosa a la otra. */
+.ogn-select__control--on { border-color: rgba(var(--ogn-acc-rgb), 0.55); background: var(--arc-papel1); color: var(--ogn-t1); }
+
+/* La lista se apoya en el borde, no flota: bloque recto, sin sombra.
+
+   Va `fixed` y teletransportada a <body> con las coordenadas del control:
+   colgada del desplegable la recortaba cualquier caja de arriba con
+   `overflow: hidden`, y las zonas lo llevan. El z-index queda por encima del
+   panel (1000) y de los diálogos (4000), porque también se abre dentro de
+   uno. */
+.ogn-select__panel {
+	position: fixed;
+	z-index: 99500;
+	max-height: calc(32vh / var(--ogn-escala, 1));
+	overflow-y: auto;
+	border: 1px solid rgba(var(--arc-t-linea), 0.24);
+	border-radius: var(--ogn-r-zona);
+	background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.99) 0%, var(--arc-fondo1, rgba(220, 221, 224, 0.99)) 100%);
+	box-shadow: var(--ogn-sombra-alta);
+	animation: ogn-rise 0.22s var(--ogn-ease);
+}
+
+.ogn-select__vacio {
+	display: block;
+	padding: calc(1.4vh / var(--ogn-escala, 1));
+	text-align: center;
+	font-family: var(--ogn-rotulo);
+	font-weight: 700;
+	font-size: calc(1vh / var(--ogn-escala, 1));
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--ogn-t4);
+}
+
+.ogn-select__option {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding: calc(1vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+	border: 0;
+	border-radius: 0;
+	background: none;
+	box-shadow: none;
+	text-align: left;
+	font-family: var(--ogn-rotulo);
+	font-style: normal;
+	font-weight: 700;
+	font-size: calc(1.15vh / var(--ogn-escala, 1));
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--ogn-t2);
+	cursor: pointer;
+	transition: background 0.18s ease, color 0.18s ease;
+}
+
+.ogn-select__option:hover { background: rgba(var(--arc-t-hueco), 0.07); color: var(--ogn-t1); }
+.ogn-select__option:active { transform: none; box-shadow: none; }
+
+/* Lo elegido se marca con una barra a la izquierda, no rellenando. */
+.ogn-select__option--on { background: rgba(var(--ogn-acc-rgb), 0.1); color: var(--ogn-acc-soft); }
+
+.ogn-select__option--on::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: calc(0.6vh / var(--ogn-escala, 1));
+	bottom: calc(0.6vh / var(--ogn-escala, 1));
+	width: 2px;
+	background: var(--ogn-acc);
+}
+
+/* ══ Diálogo ═════════════════════════════════════════════════════
+   Se dibuja como una zona más: mismo borde, mismo radio y el mismo negro.
+
+   El z-index tiene que quedar por encima del panel entero: el diálogo se
+   teletransporta a <body> para escapar del recorte de las zonas, y el panel
+   es `position: fixed` con z-index 1000, así que con el 200 de la tablet el
+   diálogo se abría de verdad —estaba en el árbol, respondía a Escape— pero
+   se pintaba debajo y no se veía nada. */
+
+/* ══ EL MOSTRADOR ═══════════════════════════════════════════════════════
+   La recepción del hotel es un menú lateral de los del servidor, no una
+   pantalla de este recurso: riel de iconos al canto derecho y columna a su
+   izquierda, las dos despegadas del borde, sin velo y con el juego
+   viéndose detrás.
+
+   Todo lo de aquí lleva el prefijo `rp-` y no toca ninguna clase del resto
+   del recurso: reutilizar las de arriba reestilaría las dos pantallas de
+   golpe.
+
+   Copiado de origen_anims, que es el otro menú lateral del servidor hecho
+   sobre HTML pelado. Ver .claude/skills/origen-riel/SKILL.md
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* Los mismos valores que el inventario, copiados tal cual. No apuntan a los
+   --ogn-* de este recurso a propósito: el mostrador es uno de los menús
+   laterales del servidor, y tiene que ser LA MISMA pieza que el del
+   inventario y el de las bandas: es la que se queda quieta al saltar de uno a
+   otro, y cualquier diferencia se ve como un escalón.
+
+   Desde el paso al estilo «HUD Arcade» el acento vuelve a ser el rosa de
+   la casa: el granate #c2153f era del riel negro. Copiado de
+   origen_inventory/source-ui/src/assets/styles/arcade.css y de
+   origen_ilegalv2 QuickMenu.vue (.qm-riel*). LAS MEDIDAS NO SE TOCAN. */
+:root {
+    --inv-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --inv-mono: "Barlow", "Segoe UI", sans-serif;
+    /* Las cifras: precios, plazos y medidas. */
+    --inv-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+
+    --inv-acc: #d81b55;
+    --inv-acc-hi: #d81b55;
+    --inv-acc-deep: #b3123f;
+    --inv-acc-rgb: 224, 7, 79;
+    --inv-grad: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --inv-grad-hi: linear-gradient(160deg, #ff6f97 0%, #e81255 100%);
+
+    /* Tinta cálida sobre papel, de más a menos presente. */
+    --inv-t1: #0b0b0d;
+    --inv-t2: #3b352a;
+    --inv-t3: #6b6352;
+    --inv-t4: #8a8270;
+
+    --inv-linea: rgba(var(--arc-t-linea), 0.24);
+    --inv-ranura: rgba(38, 34, 26, 0.07);
+    --inv-relleno: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    /* El cristal crema de las dos piezas. */
+    --inv-cristal: linear-gradient(160deg, rgba(230, 231, 234, 0.95) 0%, rgba(230, 231, 234, 0.9) 45%, rgba(220, 221, 224, 0.94) 100%);
+    --inv-relieve: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    --inv-relieve-on: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.45);
+
+    /* Los de la paleta negra sobre crema no se ven. */
+    --inv-ok: #146636;
+    --inv-warn: #b3123f;
+    --inv-bad: #b3123f;
+
+    /* Los tres radios de la casa, y no hay más: 14 el botón del riel y el
+       que confirma, 13 todo lo de dentro, 10 las piezas de fuera y los
+       detalles. */
+    --inv-r-ctrl: 14px;
+    --inv-r: 13px;
+    --inv-r-min: 10px;
+    --inv-r-zona: 16px;
+
+    /* Las medidas del riel, al píxel las de origen_inventory: los menús
+       laterales del servidor son la misma pieza, y una diferencia aquí se ve
+       como un escalón al pasar de uno a otro. */
+    --inv-riel: 64px;
+    --inv-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --inv-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --inv-hueco: var(--inv-margen-x);
+    /* Lo que ocupa el riel por la derecha con su margen y su hueco: es donde
+       acaba la columna. */
+    --inv-riel-total: calc(var(--inv-margen-x) + var(--inv-riel) + var(--inv-hueco));
+    --inv-col: clamp(420px, calc(31vw / var(--ogn-escala, 1)), 548px);
+
+    --inv-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rp {
+    position: fixed;
+    inset: 0;
+    /* Por encima del panel de gestión (999) y por debajo de los avisos. */
+    z-index: 1000;
+    font-family: var(--inv-mono);
+}
+
+/* NADA DE VELO. Con las dos piezas despegadas del borde y con fondo propio
+   no hace falta, y además estorba: se apagaría a mitad de pantalla como una
+   mancha vertical, y este menú se abre de pie en el vestíbulo. Lo que queda
+   es un recogedor de clics invisible: pinchar fuera cierra. */
+.rp-velo {
+    position: absolute;
+    inset: 0;
+    background: none;
+}
+
+/* ── El riel ──────────────────────────────────────────────────────────── */
+.rp-riel {
+    position: fixed;
+    top: var(--inv-margen-y);
+    right: var(--inv-margen-x);
+    bottom: var(--inv-margen-y);
+    width: var(--inv-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Todo arracimado arriba y el rótulo al fondo con su margen automático.
+       Con space-between los botones se van al centro, lejos de la marca. */
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 14px 0 16px;
+    gap: 7px;
+    /* Cristal crema con su filo claro arriba y el relieve: la misma pieza que
+       el riel del inventario y el de las bandas. */
+    background: var(--inv-cristal);
+    border: 0;
+    border-top: 4px solid rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    border-radius: var(--inv-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 30px 70px rgba(0, 0, 0, 0.35);
+    font-family: var(--inv-rotulo);
+}
+
+/* La placa, del mismo tamaño que los botones. Dentro va el icono del MENÚ
+   que está abierto (la casa en viviendas, la cama en hoteles); hasta el
+   16/09/2026 llevaba la marca «OGN», que el usuario quitó de los rieles: la
+   placa dice ahora en qué menú estás, no de quién es.
+
+   Es una placa de papel con su canto, no una chapa rosa: el rosa lo
+   lleva la pestaña encendida, que está justo debajo, y dos rosas seguidos no
+   dicen nada. El filete rosa de abajo la separa de las pestañas. */
+.rp-riel__marca-caja {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: var(--inv-r-min);
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--inv-acc);
+}
+
+.rp-riel__marca-caja::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, rgba(223, 47, 99, 0), #d81b55, rgba(223, 47, 99, 0));
+}
+
+.rp-riel__marca-caja svg {
+    width: 19px;
+    height: 19px;
+}
+
+/* El icono va en Font Awesome, como los de las pestañas de abajo, y un punto
+   más pequeño que ellos: la placa no es una pestaña y no debe pesar más. */
+.rp-riel__marca-caja i {
+    font-size: 19px;
+    line-height: 1;
+}
+
+.rp-riel__tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.rp-riel__tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* 44 px, los mismos que en el inventario y en el panel de banda. */
+.rp-riel__btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: var(--inv-r-min);
+    background: rgba(255, 255, 255, calc(0.45 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: #6f6857;
+    cursor: pointer;
+    transition: color 0.12s ease, background 0.12s ease;
+}
+
+.rp-riel__btn:hover {
+    background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf)));
+    color: var(--arc-tinta2, #3b352a);
+}
+
+/* El rosa a fondo lleno, una de las dos veces que aparece en toda la
+   pantalla —la otra es el botón que confirma—. Todo lo demás marca el
+   estado con filete y un tinte. */
+.rp-riel__btn.on {
+    background: var(--inv-grad);
+    box-shadow: 0 5px 0 var(--inv-acc-deep);
+    color: #fff;
+}
+
+/* Estos no bajan al pulsarse: el de la pestaña encendida se quedaría medio
+   píxel desalineado con los de al lado. */
+.rp-riel__btn:active { transform: none; }
+
+.rp-riel__ico {
+    font-size: 20px;
+}
+
+/* El nombre de la sección al pasar por encima, con su contador: una pestaña
+   que no dice cuánto hay dentro obliga a entrar para averiguarlo. Así no
+   hay que ensanchar el riel solo para poder leerlo. */
+.rp-riel__tip {
+    position: absolute;
+    right: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%) translateX(4px) skewX(-10deg);
+    padding: 7px 12px 6px;
+    border: 0;
+    border-left: 3px solid #d81b55;
+    border-radius: 8px;
+    background: linear-gradient(160deg, rgba(var(--arc-t-papel1), 0.98), rgba(var(--arc-t-papel2), 0.97));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf))), 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: var(--inv-t1);
+    /* Sale hacia la izquierda y cae sobre la columna: sin esto se mete
+       debajo y se lee a medias. */
+    z-index: 2;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.rp-riel__btn:hover .rp-riel__tip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) skewX(-10deg);
+}
+
+/* El rótulo del pie, escrito de abajo arriba en el canto. Con el nombre
+   entero del producto: a media palabra no se sabe de quién es. */
+.rp-riel__marca {
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6f6857;
+    white-space: nowrap;
+}
+
+/* ── La columna ───────────────────────────────────────────────────────── */
+.rp-col {
+    position: fixed;
+    top: var(--inv-margen-y);
+    bottom: var(--inv-margen-y);
+    right: var(--inv-riel-total);
+    width: var(--inv-col);
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    box-sizing: border-box;
+    padding: 18px 20px 16px;
+    /* Caja propia, como el riel: el mismo cristal crema, y el filo ROSA de
+       4 px arriba, que es el que lleva la pieza principal de la pantalla —el
+       riel lleva el claro—. */
+    background: var(--inv-cristal);
+    border: 0;
+    border-top: 4px solid #d81b55;
+    border-radius: var(--inv-r-zona);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 30px 70px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.rp-cab {
+    flex: none;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(var(--arc-t-hueco), 0.14);
+}
+
+.rp-cab__t {
+    margin: 0;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+}
+
+.rp-cab__meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+    min-width: 0;
+}
+
+.rp-cab__nombre {
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--inv-t2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rp-cab__sub {
+    font-family: var(--inv-mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--inv-t3);
+    white-space: nowrap;
+}
+
+/* El que se desplaza es el cuerpo entero, no las listas de dentro: con
+   `flex: 1 1 auto` en una lista, flex la comprime por debajo de su
+   contenido y las filas se salen por abajo. */
+.rp-cuerpo {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    /*  El aire de las piezas sesgadas. `overflow-y: auto` recorta también por
+        los lados, así que un botón inclinado pegado al canto se quedaba sin
+        el pico y sin el escalón de abajo. Seis píxeles de hueco por dentro,
+        devueltos por fuera con el margen negativo: nada se mueve de sitio y
+        nada se corta. */
+    padding: 0 6px 6px;
+    margin: 0 -6px -6px;
+}
+
+.rp-pie {
+    flex: none;
+    padding-top: 14px;
+    border-top: 1px solid rgba(var(--arc-t-hueco), 0.14);
+}
+
+/* ── Las piezas de dentro ─────────────────────────────────────────────── */
+.rp-lista {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/*  Las filas NO van sesgadas: son de ancho completo y una hoja larga
+    inclinada se lee torcida. Papel con su filete, y el pico se lo dejamos a
+    los botones. */
+.rp-fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.rp-fila:hover {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.36);
+}
+
+/* Lo elegido: filete del acento y un tinte del 10 %, nunca relleno lleno. */
+.rp-fila.on {
+    background: rgba(var(--inv-acc-rgb), 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.7 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--inv-acc-rgb), 0.55);
+}
+
+/* La fila que solo informa no se puede pulsar y no debe parecer que sí. */
+.rp-fila.is-mudo {
+    cursor: default;
+}
+
+.rp-fila.is-mudo:hover {
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+}
+
+/* El icono sí es una chapita: sesgado, con su canto. */
+.rp-fila__ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--inv-r-min);
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    box-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf))), 0 3px 0 rgba(var(--arc-t-relieve), 0.35);
+    color: var(--inv-t3);
+    font-size: 14px;
+}
+
+.rp-fila.on .rp-fila__ico { color: var(--inv-acc); }
+
+.rp-fila__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* El nombre de la habitación es lo que se reconoce: cursiva 800. */
+.rp-fila__n {
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+}
+
+.rp-fila__m {
+    font-family: var(--inv-mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--inv-t3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* El precio es una cifra: mono y tabular. */
+.rp-precio {
+    flex: none;
+    font-family: var(--inv-cifra);
+    font-weight: 400;
+    font-size: 15px;
+    letter-spacing: 0;
+    color: var(--inv-t1);
+    font-variant-numeric: tabular-nums;
+}
+
+/* La pastilla de estado. Borde y tinte, que el relleno lleno está reservado
+   al icono activo del riel y al botón que confirma. */
+.rp-tag {
+    flex: none;
+    padding: 4px 9px;
+    border: 0;
+    border-radius: 6px;
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.rp-tag.available {
+    color: var(--inv-ok);
+    box-shadow: inset 0 0 0 1px rgba(20, 102, 54, 0.4);
+    background: rgba(20, 102, 54, 0.1);
+}
+
+/* Ocupada no es un fallo, es que está cogida: ámbar, no rojo. */
+.rp-tag.rented {
+    color: var(--inv-warn);
+    box-shadow: inset 0 0 0 1px rgba(138, 86, 0, 0.4);
+    background: rgba(138, 86, 0, 0.1);
+}
+
+.rp-tag.es-mia {
+    color: var(--inv-acc-deep);
+    box-shadow: inset 0 0 0 1px rgba(var(--inv-acc-rgb), 0.5);
+    background: rgba(var(--inv-acc-rgb), 0.1);
+}
+
+/* Un rótulo con su raya que se apaga, no otra caja: se sigue leyendo de
+   arriba abajo. Rosa al arranque y disuelta hacia la derecha. */
+.rp-rotulo {
+    position: relative;
+    margin-top: 12px;
+    padding-top: 14px;
+    border-top: 0;
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--inv-t3);
+}
+
+.rp-rotulo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #d81b55 0%, rgba(var(--arc-t-hueco), 0.16) 20%, transparent 100%);
+}
+
+/* La rejilla de datos, para las fichas de datos cortos: se leen de un
+   vistazo en columnas y en una frase seguida no. El truco es que el fondo
+   de la rejilla ES la línea y el hueco de 1px la deja ver; sin bordes por
+   celda, que se doblarían en los cruces. */
+.rp-datos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    border: 0;
+    border-radius: var(--inv-r);
+    /* El fondo de la rejilla ES la línea, y el hueco de 1px la deja ver. */
+    background: rgba(var(--arc-t-linea), 0.26);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.26);
+    overflow: hidden;
+}
+
+.rp-dato {
+    padding: 10px 12px;
+    background: rgba(var(--arc-t-papel1), 0.95);
+    min-width: 0;
+}
+
+/* El dato es una cifra o un estado corto: mono, que es lo que no baila. */
+.rp-dato b {
+    display: block;
+    font-family: var(--inv-cifra);
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rp-dato b.available {
+    color: var(--inv-ok);
+}
+
+.rp-dato b.rented {
+    color: var(--inv-warn);
+}
+
+.rp-dato b.es-mia {
+    color: var(--inv-acc-deep);
+}
+
+.rp-dato i {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--inv-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--inv-t4);
+}
+
+/*  Volver ocupa la fila entera: papel con relieve y sin sesgo, que una barra
+    larga inclinada se lee torcida. */
+.rp-volver {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    box-shadow: var(--inv-relieve);
+    color: var(--inv-t3);
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.rp-volver:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--inv-t1);
+}
+
+.rp-volver:active { transform: translateY(3px); box-shadow: var(--inv-relieve-on); }
+.rp-volver::before { content: none; }
+
+.rp-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.rp-check:hover {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.36);
+}
+
+.rp-check input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Marcada, la fila entera: borde del acento y un tinte del 10 %, igual que
+   cualquier otra fila elegida. Una casilla cuadrada pequeña obligaria a un
+   cuarto radio, y a 20px con el radio de la casa sale un circulo, que se lee
+   como un boton de radio y no como una casilla. */
+.rp-check.on {
+    background: rgba(var(--inv-acc-rgb), 0.09);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.7 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--inv-acc-rgb), 0.55);
+}
+
+.rp-check__ok {
+    flex: none;
+    font-size: 12px;
+    color: var(--inv-acc-deep);
+    opacity: 0;
+    transition: opacity 0.16s ease;
+}
+
+.rp-check.on .rp-check__ok {
+    opacity: 1;
+}
+
+.rp-check__txt {
+    font-family: var(--inv-mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--inv-t2);
+}
+
+.rp-acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/*  Chapas sesgadas de papel. El sesgo lo pinta el `::before` de style.css con
+    --sg-bg / --sg-sh, y `.rp-cuerpo` lleva el hueco de 6 px para que el pico
+    no se corte. */
+.rp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: none;
+    box-shadow: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    --sg-sh: var(--inv-relieve);
+    --sg-sh-on: var(--inv-relieve-on);
+    color: var(--inv-t2);
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.16s ease;
+}
+
+.rp-btn:hover {
+    background: none;
+    --sg-bg: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--inv-t1);
+}
+
+.rp-btn:active,
+.rp-confirmar:active { transform: translateY(3px); box-shadow: none; }
+.rp-btn:active::before,
+.rp-confirmar:active::before { box-shadow: var(--sg-sh-on); }
+
+/* Un boton solo en una rejilla de dos deja media fila vacia al lado, y eso
+   se lee como que falta algo. Y el de abandonar va ancho y el ultimo porque
+   es el que no tiene vuelta atras: no se pulsa de refilon buscando otro. */
+.rp-btn.es-ancha {
+    grid-column: 1 / -1;
+}
+
+/*  Abandonar y echar a alguien NO son el botón que confirma: van en el rojo
+    de estado, nunca en el rosa. */
+.rp-btn.es-mala:hover {
+    --sg-bg: rgba(192, 10, 70, 0.1);
+    --sg-sh: inset 0 0 0 1px rgba(192, 10, 70, 0.45), 0 5px 0 rgba(var(--arc-t-relieve), 0.35);
+    color: var(--inv-bad);
+}
+
+/* El botón que confirma: la segunda y última vez que el rosa se rellena del
+   todo. Es el ÚNICO rosa de la pantalla junto a la pestaña encendida. */
+.rp-confirmar {
+    display: block;
+    width: 100%;
+    padding: 13px 16px;
+    border: 0;
+    border-radius: var(--inv-r-ctrl);
+    background: none;
+    box-shadow: none;
+    --sg-bg: var(--inv-grad);
+    --sg-sh: 0 5px 0 var(--inv-acc-deep);
+    --sg-sh-on: 0 2px 0 var(--inv-acc-deep);
+    color: #fff;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.16s ease;
+}
+
+.rp-confirmar:hover {
+    background: none;
+    --sg-bg: var(--inv-grad-hi);
+    color: #fff;
+}
+
+/* Apagado NO se rellena de gris: se queda en papel hundido, porque no es un
+   botón roto, es un botón que todavía no tiene a qué aplicarse. */
+.rp-confirmar:disabled {
+    background: none;
+    --sg-bg: rgba(38, 34, 26, 0.07);
+    --sg-sh: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    color: var(--inv-t4);
+    cursor: default;
+}
+
+.rp-confirmar:disabled:hover {
+    background: none;
+    --sg-bg: rgba(38, 34, 26, 0.07);
+    color: var(--inv-t4);
+}
+
+.rp-confirmar:disabled:active { transform: none; }
+
+/* El renglón de la pregunta en el pie. Antes esto era un diálogo centrado con
+   velo sobre toda la pantalla: al lado del riel parecía que había saltado otro
+   programa. */
+.rp-aviso {
+    margin: 0 0 12px;
+    font-family: var(--inv-mono);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--inv-t2);
+}
+
+/* Dentro de la rejilla de dos, el que confirma se iguala de alto al otro. */
+.rp-acciones .rp-confirmar {
+    padding: 12px;
+}
+
+/* El vacío es una caja de papel con una frase en versales espaciadas, no un
+   dibujo grande. */
+.rp-vacio {
+    margin: 0;
+    padding: 18px 14px;
+    text-align: center;
+    border-radius: var(--inv-r);
+    background: rgba(var(--arc-t-hueco), 0.05);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.18);
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--inv-t4);
+}
+
+/* ── La entrada y la salida ───────────────────────────────────────────────
+   Las dos piezas entran deslizándose desde el borde derecho y salen por
+   donde vinieron. Se anima la transformada y nunca `right`: mover la
+   geometría obliga al navegador a recalcular la posición de todo en cada
+   fotograma. La columna se desplaza además lo que ocupa el riel a su
+   derecha, para salir entera de la pantalla.
+
+   Vue 2: las clases de partida son `-enter` y `-leave-to`. */
+.rp-enter-active .rp-riel,
+.rp-leave-active .rp-riel,
+.rp-enter-active .rp-col,
+.rp-leave-active .rp-col {
+    transition: transform 0.26s var(--inv-ease), opacity 0.2s ease;
+}
+
+.rp-enter .rp-riel,
+.rp-leave-to .rp-riel {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--inv-margen-x)));
+}
+
+.rp-enter .rp-col,
+.rp-leave-to .rp-col {
+    opacity: 0;
+    transform: translateX(calc(100% + var(--inv-riel-total)));
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .rp-enter-active .rp-riel,
+    .rp-leave-active .rp-riel,
+    .rp-enter-active .rp-col,
+    .rp-leave-active .rp-col {
+        transition: opacity 0.15s ease;
+    }
+
+    .rp-enter .rp-riel,
+    .rp-leave-to .rp-riel,
+    .rp-enter .rp-col,
+    .rp-leave-to .rp-col {
+        transform: none;
+    }
+}
+
+/* ── El renglón de ayuda del formulario de administración ─────────────────
+   Este sí es del panel de admin y va con sus tokens, no con los del riel. */
+.field-hint {
+    margin: calc(0.8vh / var(--ogn-escala, 1)) 0 0;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    line-height: 1.5;
+    color: var(--ogn-t3);
+}
+
+
+/* Solo en la compra de un MLO, donde no hay «Visitar»: el de comprar va solo
+   y ocupa la fila entera, como .rp-btn.es-ancha. */
+.rp-confirmar.es-ancha { grid-column: 1 / -1; }
+
+/* La foto del garaje en la compra de una casa (index.html, «COMPRAR UNA CASA»). */
+.rp-foto {
+    display: block;
+    width: 100%;
+    border-radius: 9px;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.22);
+}
+
+
+/* ══ CALCADO DEL INVENTARIO (15/09) ═══════════════════════════════════════
+
+   Los menús laterales de vivienda —recepción, habitación, comprar una casa,
+   tu vivienda y los muebles— tienen que ser LA MISMA pieza que el inventario:
+   el usuario los vio al lado y no lo eran (fondo más opaco, título pequeño
+   sin chapa, rótulos y pie de otra forma, hexágono en vez de «OGN»).
+
+   Los valores de aquí están sacados uno a uno de
+   origen_inventory/source-ui/src/assets/styles/arcade.css (el panel
+   `.menu.arcade`, el riel `.riel.arcade`, `.arc-badge`, `.arc-regla`,
+   `.arc-pie__b`, los slots). Si el inventario cambia, se cambia aquí.
+   Va al final de la hoja a propósito: pisa lo de arriba sin tocarlo.
+   ══════════════════════════════════════════════════════════════════════ */
+:root {
+    /* --arc-glass del inventario (ARC:78). */
+    --inv-cristal: linear-gradient(160deg, rgba(230, 231, 234, 0.9) 0%, rgba(230, 231, 234, 0.82) 45%, rgba(220, 221, 224, 0.88) 100%);
+    --inv-t4: #6f6857;
+    /* El canto rosa de un botón (ARC:121). */
+    --rp-canto: #b3123f;
+    --rp-sombra: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), 0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Las dos piezas ─────────────────────────────────────────────────────── */
+.rp-col {
+    gap: 12px;
+    border-radius: 16px;
+    box-shadow: var(--rp-sombra);
+}
+
+.rp-riel {
+    border-radius: 16px;
+    border-top: 4px solid rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    box-shadow: var(--rp-sombra);
+}
+
+.rp-riel__btn { border-radius: 10px; color: var(--inv-t4); }
+.rp-riel__btn.on { box-shadow: 0 5px 0 var(--rp-canto); }
+.rp-riel__marca { color: var(--inv-t4); }
+
+/* ── La cabecera: chapa rosa, título grande, contador a la derecha ─────── */
+.rp-cab {
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.rp-badge {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    transform: skewX(-10deg);
+    background: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    box-shadow: 0 5px 0 var(--rp-canto);
+    color: #fff;
+    font-size: 19px;
+}
+
+.rp-badge i { transform: skewX(10deg); }
+
+.rp-cab__txt {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.rp-cab__t {
+    font-size: 42px;
+    line-height: 0.86;
+    letter-spacing: 0.01em;
+    padding-right: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* El subtítulo: «MOCHILA PERSONAL». */
+.rp-cab__sub2 {
+    margin-top: 2px;
+    font-family: var(--inv-rotulo);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--inv-t3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* El contador: «9/40 · CASILLAS». */
+.rp-cuenta {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-family: var(--inv-rotulo);
+}
+
+.rp-cuenta__v {
+    font-style: italic;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 0.9;
+    color: var(--inv-t1);
+    font-variant-numeric: tabular-nums;
+}
+
+.rp-cuenta__v span { color: var(--inv-t4); }
+
+.rp-cuenta__k {
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--inv-t3);
+}
+
+/* Los meta de la derecha que aún usan recepción y habitación. */
+.rp-cab__nombre { font-size: 14px; font-weight: 600; letter-spacing: 0.2em; color: var(--inv-t3); }
+.rp-cab__sub { font-family: var(--inv-rotulo); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+
+/* ── Los rótulos: «ESTADO» con su raya a la derecha (ARC:985-1015) ─────── */
+.rp-rotulo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 6px;
+    padding-top: 0;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    color: var(--inv-t1);
+}
+
+.rp-rotulo::before { display: none; }
+
+.rp-rotulo::after {
+    content: '';
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, #d81b55 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* ── Las celdas de datos, como los slots vacíos (ARC:503-548) ──────────── */
+.rp-datos {
+    gap: 6px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.rp-dato {
+    padding: 9px 12px 10px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf)));
+}
+
+/* La cifra, como «100» del estado; la etiqueta, como «VIDA». */
+.rp-dato b {
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 23px;
+    line-height: 0.95;
+    text-transform: none;
+}
+
+.rp-dato i {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    color: var(--inv-t3);
+}
+
+/* ── Las filas, como un slot con objeto ────────────────────────────────── */
+.rp-fila {
+    border-radius: 11px;
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+
+.rp-fila:hover { background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf))); }
+
+.rp-fila.on {
+    background: rgba(var(--arc-t-elegido), 0.78);
+    box-shadow: inset 0 0 0 2px #d81b55;
+}
+
+.rp-fila.is-mudo:hover {
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+}
+
+.rp-fila__m { font-size: 12.5px; }
+
+/* El vacío, como «ELIGE UN OBJETO PARA VER SU FICHA». */
+.rp-vacio {
+    padding: 22px 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--inv-t3);
+}
+
+/* ── El pie: la franja clara con las teclas sesgadas (ARC:1201-1282) ───── */
+.rp-pie {
+    margin: 4px -20px -16px;
+    padding: 11px 20px 14px;
+    border-top: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.5 * var(--arc-vf))) 0%, rgba(255, 255, 255, calc(0.3 * var(--arc-vf))) 100%);
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+}
+
+.rp-acciones {
+    display: flex;
+    gap: 7px;
+}
+
+.rp-acciones > * { flex: 1; min-width: 0; }
+
+.rp-btn,
+.rp-confirmar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: auto;
+    padding: 10px 8px;
+    border-radius: 9px;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.rp-btn {
+    --sg-bg: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))) 0%, rgba(var(--arc-t-papel2), 0.7) 100%);
+    --sg-sh: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+    --sg-sh-on: inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))), 0 2px 0 rgba(var(--arc-t-relieve), 0.45);
+    color: var(--inv-t2);
+}
+
+.rp-btn:hover { --sg-bg: linear-gradient(180deg, rgba(255, 255, 255, calc(0.95 * var(--arc-vf))) 0%, rgba(var(--arc-t-papel2), 0.8) 100%); color: var(--inv-t1); }
+
+.rp-confirmar {
+    --sg-bg: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --sg-sh: 0 5px 0 var(--rp-canto);
+    --sg-sh-on: 0 2px 0 var(--rp-canto);
+    font-size: 16px;
+}
+
+.rp-btn:disabled,
+.rp-confirmar:disabled { opacity: 0.6; }
+
+.rp-confirmar:disabled {
+    --sg-bg: linear-gradient(160deg, #d81b55 0%, #d81b55 100%);
+    --sg-sh: 0 5px 0 var(--rp-canto);
+    color: #fff;
+}
+
+/* La chapita de la tecla: «TAB», «C», «R» (ARC:1245-1255). */
+.rp-kbd {
+    flex: none;
+    padding: 1px 7px;
+    border-radius: 4px;
+    background: var(--inv-t4);
+    font-family: var(--inv-rotulo);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: #fff;
+}
+
+.rp-confirmar .rp-kbd { background: #dcdde0; color: #b3123f; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+
+.rp-aviso { font-size: 13.5px; }

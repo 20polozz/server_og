@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CVehicleModelInfoVariation>
+  <variationData>
+    <Item>
+      <modelName>gbtaxiargento7f</modelName>
+      <colors>
+        <Item>
+          <indices content="char_array">
+            88
+            88
+            0
+            1
+            112
+            0
+          </indices>
+          <liveries>
+            <Item value="false"/>
+            <Item value="true"/>
+          </liveries>
+        </Item>
+      </colors>
+      <kits>
+        <Item>812_gbtaxiargento7f_modkit</Item>
+      </kits>
+      <windowsWithExposedEdges/>
+      <plateProbabilities>
+        <Probabilities>
+          <Item>
+            <Name>Standard White</Name>
+            <Value value="80"/>
+          </Item>
+          <Item>
+            <Name>White Plate 2</Name>
+            <Value value="20"/>
+          </Item>
+        </Probabilities>
+      </plateProbabilities>
+      <lightSettings value="1"/>
+      <sirenSettings value="0"/>
+    </Item>
+  </variationData>
+</CVehicleModelInfoVariation>

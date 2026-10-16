@@ -1,0 +1,110 @@
+{
+    "nui": {
+        "input-placeholder": "Messaggio...",
+        "find-emoji": "Cerca emoji...",
+        "skin-tone": "Tonalità della pelle",
+        "smileys-people": "Emoticon e Persone",
+        "animals-nature": "Animali e Natura",
+        "food-drink": "Cibo e Bevande",
+        "activities": "Attività",
+        "travel-places": "Viaggi e Luoghi",
+        "objects": "Oggetti",
+        "symbols": "Simboli",
+        "flags": "Bandiere",
+        "recent": "Recenti",
+        "settings_title": "Modifica chat",
+        "main-color": "Colore principale",
+        "main-color-description": "Cambia il colore principale della chat",
+        "position": "Posizione",
+        "position-description": "Cambia la posizione della chat",
+        "size": "Dimensione",
+        "size-description": "Cambia la dimensione della chat",
+        "size-small": "Piccolo",
+        "size-medium": "Medio",
+        "size-large": "Grande",
+        "save": "Salva",
+        "close": "Chiudi"
+    },
+    "notifications": {
+        "error": {
+            "self-message": "Non puoi inviare un messaggio a te stesso",
+            "no-permission": "Non hai il permesso di usare questo comando",
+            "no-grade-level": "Non hai il livello scolastico richiesto per usare questo comando"
+        },
+        "success": {},
+        "info": {}
+    },
+    "commands": {
+        "chat": {
+            "description": "Apri la chat"
+        },
+        "me": {
+            "description": "Invia un messaggio ai giocatori nel tuo raggio",
+            "message": "ME • %s"
+        },
+        "do": {
+            "description": "Invia un messaggio ai giocatori nel tuo raggio",
+            "message": "DO • %s"
+        },
+        "ooc": {
+            "description": "Invia un messaggio ai giocatori nel tuo raggio",
+            "message": "OOC • %s"
+        },
+        "msg": {
+            "description": "Invia un messaggio a un giocatore specifico",
+            "message": "MSG A • %s",
+            "message-from": "MSG DA %s • %s"
+        },
+        "proximity": {
+            "params": {
+                "message": "Messaggio da inviare"
+            }
+        },
+        "global": {
+            "params": {
+                "message": "Invia un messaggio a tutti i giocatori"
+            }
+        },
+        "ptp": {
+            "params": {
+                "target": "ID del server del giocatore bersaglio",
+                "message": "Messaggio da inviare"
+            }
+        },
+        "announcement": {
+            "description": "Invia un messaggio a tutti i giocatori",
+            "message": "ANNUNCIO"
+        },
+        "lspd": {
+            "description": "Invia un messaggio a tutti i giocatori",
+            "message": "LSPD • %s"
+        },
+        "ems": {
+            "description": "Invia un messaggio a tutti i giocatori",
+            "message": "EMS • %s"
+        },
+        "announce-lspd": {
+            "description": "Invia un messaggio a tutti i giocatori",
+            "message": "ANNUNCIO LSPD"
+        },
+        "announce-ems": {
+            "description": "Invia un messaggio a tutti i giocatori",
+            "message": "ANNUNCIO EMS"
+        },
+        "global-announcement": {
+            "params": {
+                "message": "Invia un messaggio a tutti i giocatori"
+            }
+        },
+        "job-to-job": {
+            "params": {
+                "message": "Messaggio da inviare"
+            }
+        },
+        "job-to-global": {
+            "params": {
+                "message": "Messaggio da inviare"
+            }
+        }
+    }
+}

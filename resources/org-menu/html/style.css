@@ -1,0 +1,530 @@
+/* ══ ORIGEN · org-menu en formato RIEL, piel PEGATINA ════════════════════
+
+   El menu de opciones de todo el servidor. Dos piezas despegadas del canto
+   derecho, la columna a la izquierda y el riel de 64 px pegado al borde,
+   a MEDIA ALTURA, que entran juntas deslizandose desde la derecha y salen
+   por donde vinieron. Es el formato DIALOGO (skill origen-dialogo).
+
+   - La COLUMNA mide lo que su contenido: un menu de dos opciones no deja un
+     panel vacio hasta abajo. Si no cabe, se desplaza la lista (con su barra
+     fina, visible) y la cabecera y el pie se quedan quietos.
+   - El RIEL mide lo que la columna (con un minimo de 300 px): placa con el
+     icono del menu arriba y el nombre abajo. El silencio NO va aqui: solo
+     en el inventario.
+
+   Se maneja SIN cursor (rueda, clic, clic derecho): nada de :hover en las
+   opciones, la que cuenta es la señalada (.selected).
+
+   Piel pegatina (skill origen-pegatina): panel #c4c6ca, piezas #dcdde0,
+   canto negro fino y sombra dura, rosa #d81b55 con tinta NEGRA, nada
+   inclinado. Nacion es esto mismo en naranja: lo repinta la marca (el trozo
+   «ORIGEN · marca» del index.html), aqui no se escribe.
+
+   Las fuentes van en el <link> del index.html, nunca en un @import. Nada de
+   backdrop-filter, :has() ni color-mix() (el CEF 103 no los tiene) y nada de
+   @keyframes: un menu que late distrae de lo que se lee.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Las medidas del riel, las del inventario. */
+    --o-riel: 64px;
+    --o-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --o-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --o-hueco: var(--o-margen-x);
+    --o-col: 440px;
+    --o-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* La pegatina. */
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-tinta-3: #55555c;
+    --peg-rosa: #d81b55;
+    --peg-rosa-texto: #b3123f;
+    --peg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-anillo: inset 0 0 0 1.5px #000;
+    --peg-elegido: inset 0 0 0 2px #d81b55, 3px 3px 0 #d81b55;
+
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --texto: "Barlow", "Segoe UI", sans-serif;
+    --cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    background: transparent !important;
+}
+
+body {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    font-family: var(--texto);
+    color: var(--peg-tinta);
+    user-select: none;
+    cursor: none;
+}
+
+/*  Los dibujos van a trazo: sobre gris, un icono relleno es una mancha. */
+.om svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* ── El armazon ──────────────────────────────────────────────────────────
+   fixed y no absolute (absolute flota en medio de la pantalla). Entra y
+   sale entero, con la transformada. */
+.om {
+    position: fixed;
+    top: 50%;
+    right: var(--o-margen-x);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    z-index: 10;
+    display: flex;
+    align-items: stretch;
+    gap: var(--o-hueco);
+    pointer-events: none;
+    transform: translate(calc(100% + var(--o-margen-x) + 6px), -50%);
+    opacity: 0;
+    transition: transform 0.26s var(--o-ease), opacity 0.2s ease;
+}
+
+.om.esta-dentro {
+    transform: translateY(-50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*  Cerrado del todo: fuera del dibujo (y del vigilante del raton). */
+.om.apagado {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .om {
+        transform: translateY(-50%);
+        transition: opacity 0.15s ease;
+    }
+}
+
+/* ── La columna: alto justo, como mucho la pantalla ──────────────────── */
+.om-col {
+    flex: none;
+    width: var(--o-col);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+/* ── Cabecera (la opcion isMenuHeader) ───────────────────────────────── */
+.om-cab {
+    position: relative;
+    flex: none;
+    padding: 14px 22px 15px;
+}
+
+.om-cab:empty {
+    display: none;
+}
+
+/*  El filete rosa macizo bajo el titulo. */
+.om-cab::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+.om-cab__in {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+/*  La placa del titulo: rosa, icono negro, un pelo girada. */
+.om-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    color: #000;
+    font-size: 19px;
+}
+
+.om-cab__placa i {
+    color: #000;
+}
+
+.om-cab .text-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.om-cab__k {
+    display: block;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--peg-rosa-texto);
+}
+
+.om-cab .title-text {
+    display: block;
+    margin-top: 3px;
+    padding-right: 4px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 29px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+/*  El rótulo a brocha bajo el título (08/10), como el resto de menús: la
+    frase la pone script.js en data-brocha (la del Lua o «Tú eliges»). EN
+    FLUJO para que empuje el renglón gris; anula la cursiva y las mayúsculas
+    del título. Rosa literal: en Nación lo repinta kit/marca.js. */
+.om-cab .title-text[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    margin: 6px 0 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal; font-weight: 400;
+    font-size: 20px; line-height: 1; letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+.om-cab .subtitle {
+    margin-top: 5px;
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--peg-tinta-2);
+    overflow-wrap: anywhere;
+}
+
+/* ── La lista: lo unico que se desplaza ──────────────────────────────────
+   Relleno de sobra a la derecha y abajo: es el aire de la sombra dura de
+   cada opcion, que el recorte de la columna cortaria. */
+#buttons {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px 20px 18px 22px;
+}
+
+#buttons::-webkit-scrollbar {
+    width: 6px;
+}
+
+#buttons::-webkit-scrollbar-track {
+    margin: 10px 0;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+#buttons::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--peg-tinta);
+}
+
+.buttons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+/* ── Una opcion ──────────────────────────────────────────────────────── */
+.button {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 8px 14px 8px 8px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-tinta);
+    transition: box-shadow 0.16s ease, background 0.16s ease, opacity 0.16s ease;
+}
+
+/*  La chapa del icono: negra con el dibujo blanco. */
+.button .icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--peg-tinta);
+    color: #fff;
+    font-size: 16px;
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.button .icon i {
+    color: inherit;
+}
+
+.button .column {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.button .header {
+    padding-right: 3px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+/*  El renglon: hasta dos lineas, y lo que sobre con puntos. */
+.button .text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 1.3;
+    color: var(--peg-tinta-2);
+    overflow-wrap: anywhere;
+}
+
+/*  La señalada: la misma pieza gris con el anillo y la sombra en rosa, y la
+    chapa del icono en rosa con tinta negra. */
+.button.selected {
+    box-shadow: var(--peg-elegido);
+}
+
+.button.selected .icon {
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-anillo);
+    color: #000;
+}
+
+/*  Lo que no se puede elegir: apagada y sin sombra. */
+.button.disabled {
+    opacity: 0.5;
+    box-shadow: var(--peg-anillo);
+}
+
+/*  Una cabecera de mas dentro de la lista: rotulo de grupo, no otra caja. */
+.om-grupo {
+    padding: 8px 2px 0;
+}
+
+.om-grupo:first-child {
+    padding-top: 0;
+}
+
+.om-grupo .title-text {
+    display: block;
+    padding-right: 3px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-2);
+}
+
+.om-grupo .subtitle {
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--peg-tinta-3);
+}
+
+/* ── El pie: como se maneja ──────────────────────────────────────────── */
+.om-pie {
+    position: relative;
+    flex: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+    padding: 13px 20px 15px 22px;
+}
+
+.om-pie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 1.5px;
+    background: #000;
+}
+
+.om-tecla {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-2);
+}
+
+kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20px;
+    padding: 3px 7px 2px;
+    border-radius: 6px;
+    background: var(--peg-tinta);
+    font-family: var(--cifra);
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/*  El raton dibujado: la rueda en el primero, el boton izquierdo lleno en el
+    segundo. */
+.om kbd svg {
+    width: 9px;
+    height: 15px;
+    stroke-width: 1.4;
+}
+
+.om kbd svg .om-lleno {
+    fill: currentColor;
+}
+
+/* ══ EL RIEL ══════════════════════════════════════════════════════════════
+   El mismo de todos los menus laterales, al pixel: 64 de ancho, relleno
+   14/16, placa y botones de 44, filete de 22x1. Aqui no hay pestañas: la
+   placa dice de que va el menu, y abajo el nombre. */
+.riel {
+    flex: none;
+    align-self: stretch;
+    min-height: 300px;
+    width: var(--o-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+.riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-rosa);
+}
+
+.riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.riel__marca svg {
+    width: 22px;
+    height: 22px;
+}
+
+.riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--peg-tinta);
+}

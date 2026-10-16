@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+    <Item>
+      <kitName>985_gstbehf_modkit</kitName>
+      <id value="985" />	 	  
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+
+<!-- FRONT BUMPERS START HERE -->
+
+	     <Item>
+          <modelName>NULL</modelName>
+          <modShopLabel>gstbehf_bumf_rem</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>bumper_f</Item>
+            <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+
+<!-- FRONT BUMPERS END HERE -->
+<!-- REAR BUMPERS START HERE -->
+
+        <Item>
+          <modelName>NULL</modelName>
+          <modShopLabel>gstbehf_bumr_rem</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_b</Item>
+            <Item>misc_c</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+
+<!-- REAR BUMPERS END HERE -->
+<!-- ROOFS START HERE -->
+
+        <Item>
+          <modelName>gstbehf_roof1</modelName>
+          <modShopLabel>gstbehf_roof1</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof2</modelName>
+          <modShopLabel>gstbehf_roof2</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof3</modelName>
+          <modShopLabel>gstbehf_roof3</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof4</modelName>
+          <modShopLabel>gstbehf_roof4</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof5</modelName>
+          <modShopLabel>gstbehf_roof5</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofsun_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof6</modelName>
+          <modShopLabel>gstbehf_roof6</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofsun_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof7</modelName>
+          <modShopLabel>gstbehf_roof7</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofsun_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof8</modelName>
+          <modShopLabel>gstbehf_roof8</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofsun_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof9</modelName>
+          <modShopLabel>gstbehf_roof9</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofsun_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof10</modelName>
+          <modShopLabel>gstbehf_roof10</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofmoon_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof11</modelName>
+          <modShopLabel>gstbehf_roof11</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofmoon_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof12</modelName>
+          <modShopLabel>gstbehf_roof12</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofmoon_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof13</modelName>
+          <modShopLabel>gstbehf_roof13</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofmoon_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_roof14</modelName>
+          <modShopLabel>gstbehf_roof14</modShopLabel>
+          <linkedModels>
+          <Item>gstbehf_roofmoon_int</Item>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_o</Item>
+            <Item>misc_i</Item>
+          </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+        <!-- ROOFS END HERE -->
+
+        <!-- SPOILERS START HERE -->
+                                <Item>
+          <modelName>DUCKTAIL REMOVAL</modelName>
+          <modShopLabel>gstbehf_wing50</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+        <Item>
+          <modelName>gstbehf_wing1</modelName>
+          <modShopLabel>gstbehf_wing1</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing2</modelName>
+          <modShopLabel>gstbehf_wing2</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing3</modelName>
+          <modShopLabel>gstbehf_wing3</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing4</modelName>
+          <modShopLabel>gstbehf_wing4</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing5</modelName>
+          <modShopLabel>gstbehf_wing5</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing6</modelName>
+          <modShopLabel>gstbehf_wing6</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing7</modelName>
+          <modShopLabel>gstbehf_wing7</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing8</modelName>
+          <modShopLabel>gstbehf_wing8</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing9</modelName>
+          <modShopLabel>gstbehf_wing9</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing10</modelName>
+          <modShopLabel>gstbehf_wing10</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing11</modelName>
+          <modShopLabel>gstbehf_wing11</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing12</modelName>
+          <modShopLabel>gstbehf_wing12</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing13</modelName>
+          <modShopLabel>gstbehf_wing13</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing14</modelName>
+          <modShopLabel>gstbehf_wing14</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing15</modelName>
+          <modShopLabel>gstbehf_wing15</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing16</modelName>
+          <modShopLabel>gstbehf_wing16</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing17</modelName>
+          <modShopLabel>gstbehf_wing17</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing18</modelName>
+          <modShopLabel>gstbehf_wing18</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing19</modelName>
+          <modShopLabel>gstbehf_wing19</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing20</modelName>
+          <modShopLabel>gstbehf_wing20</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing21</modelName>
+          <modShopLabel>gstbehf_wing21</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing22</modelName>
+          <modShopLabel>gstbehf_wing22</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing23</modelName>
+          <modShopLabel>gstbehf_wing23</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing24</modelName>
+          <modShopLabel>gstbehf_wing24</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing25</modelName>
+          <modShopLabel>gstbehf_wing25</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing26</modelName>
+          <modShopLabel>gstbehf_wing26</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing27</modelName>
+          <modShopLabel>gstbehf_wing27</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing28</modelName>
+          <modShopLabel>gstbehf_wing28</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing29</modelName>
+          <modShopLabel>gstbehf_wing29</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing30</modelName>
+          <modShopLabel>gstbehf_wing30</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing31</modelName>
+          <modShopLabel>gstbehf_wing31</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing32</modelName>
+          <modShopLabel>gstbehf_wing32</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing33</modelName>
+          <modShopLabel>gstbehf_wing33</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing34</modelName>
+          <modShopLabel>gstbehf_wing34</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing35</modelName>
+          <modShopLabel>gstbehf_wing35</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing36</modelName>
+          <modShopLabel>gstbehf_wing36</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing37</modelName>
+          <modShopLabel>gstbehf_wing37</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing38</modelName>
+          <modShopLabel>gstbehf_wing38</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing39</modelName>
+          <modShopLabel>gstbehf_wing39</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing40</modelName>
+          <modShopLabel>gstbehf_wing40</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing41</modelName>
+          <modShopLabel>gstbehf_wing41</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing42</modelName>
+          <modShopLabel>gstbehf_wing42</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing43</modelName>
+          <modShopLabel>gstbehf_wing43</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing44</modelName>
+          <modShopLabel>gstbehf_wing44</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing45</modelName>
+          <modShopLabel>gstbehf_wing45</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing46</modelName>
+          <modShopLabel>gstbehf_wing46</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing47</modelName>
+          <modShopLabel>gstbehf_wing47</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing48</modelName>
+          <modShopLabel>gstbehf_wing48</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <Item>
+          <modelName>gstbehf_wing49</modelName>
+          <modShopLabel>gstbehf_wing49</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_s</Item>
+          </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+        <!-- SPOILERS END HERE -->
+
+        <!-- CAGES START HERE -->
+        
+                        <Item>
+          <modelName>gstbehf_cage1</modelName>
+          <modShopLabel>GAUNT4_CAGEA</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                                <Item>
+          <modelName>gstbehf_cage2</modelName>
+          <modShopLabel>GAUNT4_CAGEB</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                                <Item>
+          <modelName>gstbehf_cage3</modelName>
+          <modShopLabel>GAUNT4_CAGEC</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                                <Item>
+          <modelName>gstbehf_cage4</modelName>
+          <modShopLabel>GAUNT4_CAGED</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                                <Item>
+          <modelName>gstbehf_cage5</modelName>
+          <modShopLabel>GAUNT4_CAGEE</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                                <Item>
+          <modelName>gstbehf_cage6</modelName>
+          <modShopLabel>GAUNT4_CAGEF</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>misc_h</Item>
+          </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+                <!-- CAGES END HERE -->
+
+                        <!-- HOOD START HERE -->
+
+                                                        <Item>
+          <modelName>gstbehf_hood1</modelName>
+          <modShopLabel>gstbehf_hood1</modShopLabel>
+          <linkedModels>
+          </linkedModels>
+          <turnOffBones>
+            <Item>bonnet</Item>
+          </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+
+	  </visibleMods>
+      <linkMods>
+	  <Item>
+          <modelName>gstbehf_roofsun_int</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+            <Item>
+          <modelName>gstbehf_roofmoon_int</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+        </Item>
+        </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="65" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+		<Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+		</Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+		<!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+		<Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames />
+      <liveryNames />
+    </Item>
+  </Kits>
+   <Lights>           <!-- Light ID Customisation -->
+    <Item>
+      <id value="666"/>
+      <indicator>
+        <intensity value="0.37500000"/>
+        <falloffMax value="2.50000000"/>
+        <falloffExponent value="8.00000000"/>
+        <innerConeAngle value="30.00000000"/>
+        <outerConeAngle value="80.00000000"/>
+        <emmissiveBoost value="false"/>
+        <color value="0xFFFF8000"/>
+        <textureName/>
+        <mirrorTexture value="true"/>
+      </indicator>
+      <rearIndicatorCorona>
+        <size value="0.00000000"/>
+        <size_far value="0.00000000"/>
+        <intensity value="0.00000000"/>
+        <intensity_far value="0.00000000"/>
+        <color value="0x00000000"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </rearIndicatorCorona>
+      <frontIndicatorCorona>
+        <size value="0.00000000"/>
+        <size_far value="0.00000000"/>
+        <intensity value="0.00000000"/>
+        <intensity_far value="0.00000000"/>
+        <color value="0x00000000"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </frontIndicatorCorona>
+      <tailLight>
+        <intensity value="0.25000000"/>
+    <!-- <intensity value="0.25000000"/> -->
+        <falloffMax value="4.00000000"/>
+        <falloffExponent value="16.00000000"/>
+        <innerConeAngle value="45.00000000"/>
+        <outerConeAngle value="90.00000000"/>
+        <emmissiveBoost value="false"/>
+        <color value="0xFFFF0000"/>
+        <textureName/>
+        <mirrorTexture value="true"/>
+      </tailLight>
+      <tailLightCorona>
+        <size value="0.00000000"/>
+        <size_far value="8.00000000"/>
+    <intensity value="0.00000000"/>
+    <!-- <intensity value="4.00000000"/> -->
+        <intensity_far value="0.00000000"/>
+    <!-- <intensity_far value="1.00000000"/> -->
+        <color value="0xFFFF1E05"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </tailLightCorona>
+      <tailLightMiddleCorona>
+        <size value="0.00000000"/>
+        <size_far value="0.00000000"/>
+        <intensity value="0.00000000"/>
+        <intensity_far value="0.00000000"/>
+        <color value="0x00000000"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </tailLightMiddleCorona>
+      <headLight>
+    <intensity value="1.00000000"/>
+    <!-- <intensity value="1.00000000"/> -->
+        <falloffMax value="35.00000000"/>
+        <falloffExponent value="16.00000000"/>
+        <innerConeAngle value="0.00000000"/>
+        <outerConeAngle value="60.21000000"/>
+        <emmissiveBoost value="false"/>
+        <color value="0xFFFFFFCC"/>
+        <textureName>VehicleLight_car_oldsquare</textureName>
+        <mirrorTexture value="false"/>
+      </headLight>
+      <headLightCorona>
+        <size value="0.10000000"/>
+        <size_far value="10.00000000"/>
+        <intensity value="0.00000000"/>
+    <!-- <intensity value="5.00000000"/> -->
+        <intensity_far value="0.00000000"/>
+        <color value="0xFFFFFFFF"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </headLightCorona>
+      <reversingLight>
+        <intensity value="0.50000000"/>
+    <!-- <intensity value="0.50000000"/> -->
+        <falloffMax value="4.00000000"/>
+        <falloffExponent value="32.00000000"/>
+        <innerConeAngle value="45.00000000"/>
+        <outerConeAngle value="90.00000000"/>
+        <emmissiveBoost value="false"/>
+        <color value="0xFFFFFFFF"/>
+        <textureName/>
+        <mirrorTexture value="true"/>
+      </reversingLight>
+      <reversingLightCorona>
+        <size value="0.80000000"/>
+        <size_far value="2.00000000"/>
+        <intensity value="0.00000000"/>
+    <!-- <intensity value="1.50000000"/> -->
+        <intensity_far value="0.00000000"/>
+    <!-- <intensity_far value="1.00000000"/> -->
+        <color value="0xFFFFFFFF"/>
+        <numCoronas value="1"/>
+        <distBetweenCoronas value="128"/>
+        <distBetweenCoronas_far value="255"/>
+        <xRotation value="0.00000000"/>
+        <yRotation value="0.00000000"/>
+        <zRotation value="0.00000000"/>
+        <zBias value="0.25000000"/>
+        <pullCoronaIn value="false"/>
+      </reversingLightCorona>
+      <name>nation_default</name>
+    </Item>
+    </Lights> 
+</CVehicleModelInfoVarGlobal>

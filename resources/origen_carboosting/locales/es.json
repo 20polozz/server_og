@@ -1,0 +1,273 @@
+{
+    "nui": {
+        "main": {
+            "title": "Boosting",
+            "contracts": {
+                "title": "Contratos",
+                "description": "Crea nuevos contratos y distribúyelos por la ciudad"
+            },
+            "play": {
+                "title": "Jugar",
+                "description": "Sé el mejor en el boosting"
+            },
+            "ranking": {
+                "title": "Clasificación",
+                "description": "Lucha por estar en las primeras posiciones y ser el mejor"
+            }
+        },
+        "notifications": {
+            "coins_received": "Te han transferido %s monedas",
+            "coins_sent": "Has transferido %s monedas",
+            "coins_given": "Has entregado %s OGN",
+            "register_bonus": "Has recibido %s OGN por registrarte",
+            "contract_bought": "Contrato comprado con éxito",
+            "contract_canceled": "Contrato cancelado con éxito",
+            "contract_created": "Contrato creado con éxito",
+            "contract_declined": "Contrato rechazado con éxito",
+            "contract_deleted": "Contrato guardado eliminado con éxito",
+            "contract_edited": "Contrato editado con éxito",
+            "contract_received": "Has recibido un nuevo contrato",
+            "contract_removed": "Contrato eliminado con éxito",
+            "contract_sended": "Contrato enviado con éxito",
+            "contract_not_bought": "No se pudo comprar el contrato",
+            "contract_not_canceled": "No se pudo cancelar el contrato",
+            "contract_not_declined": "No se pudo rechazar el contrato",
+            "contract_not_started": "No se pudo iniciar el contrato",
+            "contract_not_deleted": "Algo salió mal al eliminar el contrato",
+            "contract_not_listed": "No se pudo poner el contrato a la venta",
+            "contract_not_removed": "No se pudo retirar el contrato",
+            "contract_sent": "Contrato enviado con éxito",
+            "error": "Error",
+            "info": "Información",
+            "name_already_in_use": "El nombre ya está en uso o es inválido",
+            "player_offline": "El jugador no está en línea",
+            "ranks_updated": "Clase actualizada con éxito",
+            "ranks_not_updated": "No se pudo actualizar la clase",
+            "success": "Éxito",
+            "enter_duty": "Has entrado en cola",
+            "exit_duty": "Has salido de la cola"
+        },
+        "play": {
+            "#": "#",
+            "current": "Actual",
+            "exp": "Experiencia",
+            "name": "Nombre",
+            "next": "Próximo",
+            "rank": "Clase",
+            "saved_contracts": "Contratos guardados",
+            "title": "Jugar",
+            "no_leaderboard": "No hay clasificación disponible"
+        },
+        "contracts": {
+            "actions": "Acciones",
+            "auction": "En Venta",
+            "category": "Categoría",
+            "coinsName": "OGN",
+            "create": "Crear",
+            "give_ogn": "Dar OGN",
+            "difficulty": "Dificultad",
+            "exp": "Experiencia",
+            "header": "Gestión de contratos",
+            "label": "Nombre",
+            "no_contracts": "No hay contratos disponibles",
+            "no_owned_contracts": "No tienes contratos", 
+            "no_history": "No hay historial disponible",
+            "contract_not_found": "No se encontró el contrato",
+            "npcs_number": "Número de guardias",
+            "npcs_weapon": "Arma",
+            "offered": "Ofrecido",
+            "off_duty": "Salir de la cola",
+            "on_duty": "Unirse a la cola",
+            "price": "Precio",
+            "probability": "Probabilidad",
+            "reward": "Recompensa",
+            "search": "Buscar...",
+            "settings": {
+                "categories": "Clases",
+                "fails": "Fallos",
+                "max": "Máximo de contratos",
+                "minCops": "Min. Policías",
+                "hackxp": "XP de pirateo",
+                "percentage": "Probabilidad",
+                "title": "Ajustes",
+                "tries": "Hackeos",
+                "xp": "XP"
+            },
+            "started": "En curso",
+            "vehicle": "Modelos de vehículo",
+            "vin_scratch": "Borrado de VIN",
+            "market": {
+                "title": "Mercado",
+                "buy": "Comprar",
+                "no_offers": "No hay ofertas disponibles"
+            }
+        },
+        "ranking": {
+            "#": "#",
+            "exp": "Experiencia",
+            "header": "Clasificación general",
+            "name": "Nombre",
+            "rank": "Clase",
+            "search": "Buscar...",
+            "back": "Volver",
+            "your_rank": "Tu clase",
+            "xp_total": "XP total",
+            "progress": "Progreso",
+            "completed": "Completados",
+            "saved": "Guardados",
+            "failed": "Fallidos",
+            "success_rate": "% Éxito",
+            "vin_completed": "VIN",
+            "ogn_earned": "OGN ganados",
+            "hacks_success": "Pirateos logrados",
+            "hacks_failed": "Pirateos fallidos",
+            "no_data": "No hay datos disponibles"
+        },
+        "tracker": "Hackeos restantes: %s",
+        "modal": {
+            "cancel": "Cancelar",
+            "confirm": "Confirmar",
+            "deliver": "Entregar",
+            "deliver_vin": "Pagar",
+            "admin_edit_contract": {
+                "category": "Categoría",
+                "create_header": "Crear contrato",
+                "difficulties": {
+                    "1": "Fácil",
+                    "2": "Normal",
+                    "3": "Difícil"
+                },
+                "difficulty": "Dificultad (NPC)",
+                "disabled": "Desactivado",
+                "edit_header": "Editar contrato",
+                "enabled": "Activado",
+                "exp": "Experiencia",
+                "label": "Nombre",
+                "npcs_number": "Número de guardias",
+                "npcs_weapon": "Seleccionar arma de guardias",
+                "price": "Precio",
+                "probability": "Probabilidad",
+                "reward": "Recompensa",
+                "vehicle": "Seleccionar modelo de vehículo",
+                "minigame": "Seleccionar minijuego",
+                "minigame_difficulty": "Dificultad del minijuego",
+                "vin_price": "Precio del borrado de VIN",
+                "vin_scratch": "Borrado de VIN"
+            },
+            "admin_send_contract": {
+                "header": "Enviar contrato",
+                "player_id": "ID del jugador",
+                "price": "Precio"
+            },
+            "admin_delete_contract": {
+                "header": "Eliminar contrato",
+                "message": "¿Deseas eliminar el contrato llamado \"%s\"? Esta acción no se puede deshacer"
+            },
+            "buy_market_offer": {
+                "header": "Comprar oferta de mercado",
+                "message": "¿Deseas comprar el contrato por un precio de %s OGN?"
+            },
+            "buy_contract": {
+                "header": "Comprar contrato",
+                "message": "¿Deseas comprar el contrato por un precio de %s OGN?"
+            },
+            "cancel_market_offer": {
+                "header": "Cancelar oferta de mercado",
+                "message": "¿Deseas cancelar la publicación del contrato?"
+            },
+            "contract_offer": {
+                "header": "Oferta de contrato",
+                "message": "Te han ofrecido el siguiente contrato, ¿deseas comprarlo?"
+            },
+            "change_name": {
+                "create_header": "Crear perfil",
+                "edit_header": "Editar nombre",
+                "name": "Nombre"
+            },
+            "decline_contract": {
+                "header": "Descartar contrato",
+                "message": "¿Deseas descartar este contrato? Esta acción no se puede deshacer"
+            },
+            "decline_saved_contract": {
+                "header": "Descartar contrato",
+                "message": "¿Deseas descartar este contrato guardado? Esta acción es irreversible y no podrás recuperar el contrato"
+            },
+            "sell_contract": {
+                "header": "Ofrecer contrato",
+                "player_id": "ID del jugador",
+                "price": "Precio"
+            },
+            "sell_contract_market": {
+                "header": "Vender contrato en mercado",
+                "price": "Precio",
+                "duration": "Duración (minutos)"
+            },
+            "send_coins": {
+                "header": "Transferir monedas",
+                "player_id": "ID del jugador",
+                "amount": "Cantidad"
+            },
+            "admin_give_coins": {
+                "header": "Dar OGN",
+                "player_id": "ID del jugador",
+                "amount": "Cantidad de OGN"
+            },
+            "start_contract": {
+                "header": "Iniciar contrato",
+                "message": "¿Deseas entregar el vehículo y recibir una recompensa de %s OGN?",
+                "message_vin": "¿Deseas entregar el vehículo y recibir una recompensa de %s OGN o quedarte con el vehículo por un pago de %s OGN?"
+            },
+            "cancel_contract": {
+                "header": "Cancelar contrato",
+                "message": "¿Deseas cancelar el contrato? Esta acción no se puede deshacer"
+            }
+        }
+    },
+    "in_game": {
+        "blip": {
+            "delivery_point": "Punto de entrega",
+            "vin_scratch": "Especialista en borrar el VIN"
+        },
+        "notifications": {
+            "boosting_already_active": "Ya tienes una misión activa",
+            "cannot_offer_to_self": "No puedes ofrecerte un contrato a ti mismo",
+            "coins_received": "Te han transferido %s monedas",
+            "register_bonus": "Has recibido %s OGN por registrarte",
+            "checking_vehicle": "Raspando Vin",
+            "contract_already_offered": "Ya has ofrecido este contrato. Espera a que el usuario lo acepte o la oferta expire",
+            "contract_failed": "Has fallado el contrato, sé más rápido la próxima vez",
+            "contract_not_allowed": "No cumples con los requisitos para comenzar el contrato",
+            "contract_not_enough_police": "No puedes iniciar el contrato ahora mismo, inténtalo en otro momento",
+            "contract_not_enough_money": "No tienes suficiente dinero para realizar esta acción",
+            "contract_offer_refused": "La oferta de contrato ha sido rechazada",
+            "contract_offer_expired": "La oferta de contrato ha expirado",
+            "contract_offer_received": "Has recibido una oferta de contrato",
+            "contract_offer_sent": "Se ha enviado correctamente la oferta de contrato",
+            "contract_received": "Has recibido un contrato",
+            "contract_sold": "Contrato vendido con éxito",
+            "hack_driver": "El conductor no puede realizar el hackeo",
+            "hack_failed": "Has fallado el minijuego. Te quedan %s hacks",
+            "hack_remaining": "Has resuelto el minijuego correctamente. Te quedan %s hacks",
+            "hack_speed": "El vehículo debe ir más rápido para comenzar con el hackeo",
+            "hack_too_slow": "Vas demasiado lento. Debes ir al menos a %s",
+            "hack_too_fast": "Vas demasiado rápido. Debes ir por debajo de %s",
+            "hack_not_in_vehicle": "Debes estar dentro del vehículo para hackear el localizador",
+            "hack_not_available": "Este vehículo no tiene localizador activo",
+            "hack_minigame_not_started": "No se pudo iniciar el minijuego, vuelve a intentarlo",
+            "interact_mechanic": "Raspar vin",
+            "market_contract_bought": "Tu contrato publicado en el mercado ha sido comprado",
+            "no_spawn_point": "No puedes iniciar el contrato ahora mismo, inténtalo en otro momento",
+            "not_enough_money": "No tienes suficiente dinero para realizar esta acción",
+            "user_not_found": "El usuario no está disponible en este momento",
+            "vehicle_explosion": "El vehículo explotara en %s segundos",
+            "vehicle_deliver": "Deja el vehículo en el punto de entrega y abandona el área",
+            "vehicle_delivered": "Has entregado el vehículo con éxito",
+            "vehicle_location": "Se ha marcado en el mapa la última ubicación conocida del vehículo",
+            "vehicle_tracker_disabled": "Lleva el vehículo hasta el punto de entrega",
+            "vehicle_tracker_police": "Parece que el vehículo tiene un localizador. Desactívalo antes de que llegue la policía",
+            "vehicle_vin_finished": "Listo, mejor vete antes de que te pille la policía",
+            "vehicle_vin_specialist": "Lleva el vehículo a un especialista en borrar el VIN para que lo revise",
+            "hacker_xp_received": "Has ganado %s XP por desactivar el localizador"
+        }
+    }
+}

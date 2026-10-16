@@ -1,0 +1,133 @@
+{
+  "ui": {
+    "emergency_vehicles_creator": "Emergency Vehicles Creator",
+    "subtitle": "Browse, manage, and create vehicle presets",
+    "search_placeholder": "Search by preset name, vehicle model, or author...",
+    "create_new": "Create New",
+    "create_for_vehicle": "Create a new preset for the vehicle that you're currently in",
+    "must_be_in_vehicle": "You must be in a vehicle to create a new preset",
+    "table": {
+      "id": "ID",
+      "preset_name": "Preset name",
+      "vehicle_model": "Vehicle Model",
+      "author": "Author",
+      "created": "Created",
+      "updated": "Updated",
+      "public": "Public",
+      "actions": "Actions",
+      "no_results": "No presets found",
+      "adjust_search": "Try adjusting your search or create a new preset",
+      "show_more": "Show More Presets"
+    },
+    "editor": {
+      "title": "Emergency Setup",
+      "subtitle": "Configure your vehicle's equipment",
+      "installed_equipment": "Installed Equipment",
+      "no_equipment": "No equipment added yet",
+      "spawner": "Equipment Spawner",
+      "cancel": "Cancel",
+      "next": "Next",
+      "form": {
+        "name": "Preset name",
+        "name_placeholder": "Your preset name",
+        "description": "Preset description",
+        "description_placeholder": "Your preset description",
+        "public": "Public",
+        "public_no": "No, keep this preset private",
+        "public_yes": "Yes, anyone can use this preset",
+        "lights": "Lights mode",
+        "lights_side": "Left-right cycle",
+        "lights_sync": "Synchronised",
+        "back": "Back",
+        "save": "Save",
+        "missing_name": "You must define the preset name"
+      }
+    },
+    "apply_menu": {
+      "title": "Apply Preset",
+      "subtitle": "Select a preset for your vehicle",
+      "make": "Make:",
+      "plate": "Plate:",
+      "no_presets": "No presets found for this vehicle",
+      "clear": "Remove Current Equipment",
+      "cancel": "Cancel",
+      "new": "Create New"
+    },
+    "yes": "Yes",
+    "no": "No",
+    "n/a": "N/A",
+    "m_ago": "m ago",
+    "h_ago": "h ago",
+    "d_ago": "d ago",
+    "just_now": "Just now",
+    "apply": "Apply",
+    "apply_preset": "Apply preset",
+    "edit_preset": "Edit preset",
+    "delete_preset": "Delete preset",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "delete_subtitle": "Are you sure you want to delete {{preset}}? This action cannot be undone.",
+    "shift_to_position": "Hold SHIFT to spawn at selected position",
+    "options": {
+      "bone_attachment": "Bone attachment",
+      "light_groups": "Lighting groups",
+      "max_reached": "Maximum {{ max }} selections reached",
+      "anim_delay": "Light animation delay",
+      "anim_speed": "Light animation speed",
+      "default": "Default",
+      "static": "(Static)",
+      "delay_auto": "Automatic",
+      "extras": "Extras",
+      "livery": "Livery"
+    },
+    "bones": {
+      "chassis": "Default (Chassis)",
+      "boot": "Trunk",
+      "bonnet": "Hood",
+      "door_left_front": "Door Left Front",
+      "door_left_rear": "Door Left Rear",
+      "door_right_front": "Door Right Front",
+      "door_right_rear": "Door Right Rear",
+      "front_bumper": "Front Bumper",
+      "rear_bumper": "Rear Bumper"
+    },
+    "credits": "Emergency Vehicles Creator by"
+  },
+  "applicator": {
+    "hint_short": "Quick Apply Menu",
+    "hint": "Press ~INPUT_CONTEXT~ to open Quick Apply Menu"
+  },
+  "misc": {
+    "not_in_vehicle": "You must be in a vehicle",
+    "not_in_vehicle_long": "You must be in a vehicle to perform this action",
+    "not_allowed": "You are not allowed to perform this action",
+    "not_existing": "The preset does not exist",
+    "wrong_model": "This preset does not fit on this vehicle",
+    "applied": "Preset has been applied",
+    "item_missing": "You do not have the required item for this"
+  },
+  "editor": {
+    "max_equipped": "Max amount of equipment has been reached",
+    "saved": "Preset has been saved",
+    "deleted": "Preset has been deleted",
+    "clone_and_mirror": "Clone and mirror"
+  },
+  "gizmo": {
+    "translate": "Translate mode",
+    "rotate": "Rotate mode",
+    "clone": "Clone object"
+  },
+  "keybinds": {
+    "cycle": "Cycle modes",
+    "light_mode_1": "Light Mode 1",
+    "light_mode_2": "Light Mode 2",
+    "light_mode_3": "Light Mode 3",
+    "siren_mode_1": "Toggle Everything off",
+    "siren_mode_2": "Toggle Siren off",
+    "siren_mode_3": "Siren mode 1",
+    "siren_mode_4": "Siren mode 2",
+    "siren_mode_5": "Siren mode 3",
+    "siren_mode_6": "Siren mode 4",
+    "siren_mode_7": "Siren mode 5"
+  }
+}

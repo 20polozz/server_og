@@ -1,0 +1,780 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   ORIGEN CARBOOSTING · la tablet
+
+   Esta hoja va DESPUÉS de style.css y repinta lo que ve el administrador —el
+   listado de contratos y todos los diálogos— con el sistema de la MDT de
+   policía. No toca la maquetación: los mismos selectores, otros valores.
+   Ver .claude/skills/origen-tablet/SKILL.md
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Los cuatro radios: lo que se apila, la zona, el control y la pastilla.
+       Un radio único para todo es justo lo que deja la pantalla plana. */
+    --ogn-r: 5px;
+    --ogn-r-zona: 8px;
+    --ogn-r-ctrl: 4px;
+    --ogn-r-pill: var(--ogn-r-ctrl);
+
+    --ogn-bg: #000;
+    --ogn-veil: #000;
+    --ogn-pad: calc(2.6vh / var(--ogn-escala, 1));
+    --ogn-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* El segundo :root de style.css devolvía estos dos al tema viejo. */
+    --color-acent: var(--ogn-line-hi);
+    --text-white: var(--ogn-fg);
+    --main-background: rgba(255, 255, 255, calc(0.04 * var(--arc-vf)));
+}
+
+/* La barra de desplazamiento es una raya fina y neutra: el acento no decora,
+   y una barra no es ni lo elegido ni lo encendido. */
+*::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, calc(0.16 * var(--arc-vf)));
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, calc(0.28 * var(--arc-vf))); }
+*::-webkit-scrollbar-thumb:active { background: rgba(255, 255, 255, calc(0.36 * var(--arc-vf))); }
+
+/* ══ El listado de contratos ═══════════════════════════════════════════════
+   Es la pantalla del administrador: se pinta sobre negro y tapa las luces de
+   fondo del resto del recurso. */
+
+/* Negro casi puro: tapa las luces de fondo del resto del recurso. */
+.container .create-menu { background: var(--ogn-veil); }
+
+.container .create-menu .management {
+    height: auto;
+    width: auto;
+    inset: calc(1.2vh / var(--ogn-escala, 1));
+    padding: 0;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    background: var(--ogn-veil);
+    border-radius: 0;
+}
+
+/* La cabecera y sus botones comparten caja: son la misma pieza. */
+.container .create-menu .management .header {
+    height: auto;
+    gap: calc(2vh / var(--ogn-escala, 1));
+    justify-content: space-between;
+    padding: calc(2vh / var(--ogn-escala, 1)) var(--ogn-pad);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-zona);
+    background: var(--ogn-veil);
+}
+
+.container .create-menu .management .header .title {
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 700 !important;
+    font-size: calc(1.6vh / var(--ogn-escala, 1));
+    letter-spacing: 0.06em;
+    color: var(--ogn-fg);
+}
+
+.container .create-menu .management .header-actions { display: flex; align-items: center; gap: calc(0.6vh / var(--ogn-escala, 1)); }
+
+/* Ningún botón se pinta en reposo: borde de 1 px sobre transparente. */
+.container .create-menu .management .header .button {
+    height: auto;
+    padding: calc(0.85vh / var(--ogn-escala, 1)) calc(1.4vh / var(--ogn-escala, 1));
+    gap: calc(0.7vh / var(--ogn-escala, 1));
+    background: none;
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    transition: border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease), background 0.2s var(--ogn-ease);
+}
+
+.container .create-menu .management .header .button:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-fg);
+    transform: none;
+}
+
+.container .create-menu .management .header .button .icon { font-size: calc(1.5vh / var(--ogn-escala, 1)); }
+
+/* El cuerpo es una zona más: caja con borde y radio de zona sobre el negro. */
+.container .create-menu .management .content {
+    margin-top: 0;
+    gap: 0;
+    padding: 0;
+    min-height: 0;
+    background: var(--ogn-veil);
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-zona);
+    overflow: hidden;
+}
+
+.container .create-menu .management .management-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    flex: none;
+    padding: calc(1.2vh / var(--ogn-escala, 1)) var(--ogn-pad);
+    border-bottom: 1px solid var(--ogn-line);
+}
+
+/* El buscador va a sangre: el borde lo pone la franja que lo contiene, y
+   buscar ya ocurre al escribir, así que la lupa no es un botón. */
+.container .create-menu .management .content .search-items {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    color: var(--ogn-t3);
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+}
+
+.container .create-menu .management .content .search-items .icon { font-size: calc(1.5vh / var(--ogn-escala, 1)); }
+
+.container .create-menu .management .content .search-items input {
+    padding: 0;
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    color: var(--ogn-fg);
+}
+
+.container .create-menu .management .content .search-items input::placeholder,
+.container .create-menu .management .content .search-items input::-moz-placeholder { color: var(--ogn-t4); }
+
+/* Filtros: pastillas con borde, no rótulos con una raya debajo. */
+.container .create-menu .contract-filters { display: flex; align-items: center; gap: calc(0.5vh / var(--ogn-escala, 1)); flex: none; }
+
+.container .create-menu .filter-chip {
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-pill);
+    background: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.85vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    cursor: pointer;
+    transition: border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease), background 0.2s var(--ogn-ease);
+}
+
+.container .create-menu .filter-chip:hover { border-color: var(--ogn-line-hi); color: var(--ogn-fg); }
+
+.container .create-menu .filter-chip.active,
+.container .create-menu .filter-chip.active:hover {
+    border-color: rgba(var(--ogn-acc-rgb), 0.45);
+    background: rgba(var(--ogn-acc-rgb), 0.12);
+    color: var(--ogn-acc-pale);
+}
+
+/* ── La tabla ────────────────────────────────────────────────────────────
+   Cabecera con su línea y cada fila como una ficha con borde propio. */
+
+.container .create-menu .management .content .contract-list {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    padding: calc(1.2vh / var(--ogn-escala, 1));
+    -webkit-mask-image: none;
+}
+
+.container .create-menu .management .content .contract-list table {
+    border-spacing: 0 calc(0.5vh / var(--ogn-escala, 1));
+}
+
+.container .create-menu .management .content .contract-list table th {
+    padding: calc(0.6vh / var(--ogn-escala, 1)) calc(1vh / var(--ogn-escala, 1));
+    background: none;
+    border-bottom: 1px solid var(--ogn-line);
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.85vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.container .create-menu .management .content .contract-list table tbody tr {
+    background: rgba(255, 255, 255, calc(0.025 * var(--arc-vf)));
+}
+
+.container .create-menu .management .content .contract-list table tbody td {
+    padding: calc(1vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    border-top: 1px solid var(--ogn-line-soft);
+    border-bottom: 1px solid var(--ogn-line-soft);
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.06em;
+    color: var(--ogn-t2);
+    font-variant-numeric: tabular-nums;
+}
+
+.container .create-menu .management .content .contract-list table tbody td:first-child {
+    border-left: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r) 0 0 var(--ogn-r);
+    text-align: left;
+    font-weight: 700;
+    color: var(--ogn-fg);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.container .create-menu .management .content .contract-list table tbody td:last-child {
+    border-right: 1px solid var(--ogn-line-soft);
+    border-radius: 0 var(--ogn-r) var(--ogn-r) 0;
+}
+
+.container .create-menu .management .content .contract-list table tbody tr:hover td {
+    background: rgba(255, 255, 255, calc(0.045 * var(--arc-vf)));
+    border-color: var(--ogn-line);
+}
+
+.container .create-menu .management .content .contract-list table tbody td.actions { gap: calc(0.35vh / var(--ogn-escala, 1)); }
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action {
+    min-width: calc(2.8vh / var(--ogn-escala, 1));
+    height: calc(2.8vh / var(--ogn-escala, 1));
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--ogn-r-ctrl);
+    box-shadow: none;
+    color: var(--ogn-t3);
+    transition: border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease), background 0.2s var(--ogn-ease);
+}
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-soft);
+    color: var(--ogn-fg);
+    transform: none;
+}
+
+.container .create-menu .management .content .contract-list table tbody td.actions .action .icon { font-size: calc(1.4vh / var(--ogn-escala, 1)); }
+
+/* El distintivo de tipo: solo borde y color de texto, sin fondo. */
+.container .create-menu .contract-type-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+    padding: calc(0.35vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-pill);
+    background: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.8vh / var(--ogn-escala, 1));
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+}
+
+/* ══ Los diálogos ══════════════════════════════════════════════════════════
+   Un diálogo se dibuja como una zona más: mismo borde, mismo radio, mismo
+   negro. */
+
+.modal-container {
+    z-index: 99000;
+    background: rgba(0, 0, 0, 0.82);
+    padding: calc(2.2vh / var(--ogn-escala, 1));
+}
+
+.modal-container .modal {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--ogn-veil) !important;
+    border: 1px solid var(--ogn-line) !important;
+    border-radius: var(--ogn-r-zona) !important;
+    box-shadow: 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.6) !important;
+}
+
+.modal-container .modal .title {
+    flex: none;
+    width: auto;
+    margin: 0;
+    padding: calc(1.6vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    border: 0;
+    border-bottom: 1px solid var(--ogn-line);
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1.2vh / var(--ogn-escala, 1));
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal .body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+    padding: calc(2vh / var(--ogn-escala, 1));
+    gap: calc(1.4vh / var(--ogn-escala, 1));
+}
+
+.modal-container .modal .body p {
+    font-family: var(--ogn-texto);
+    font-size: calc(1.15vh / var(--ogn-escala, 1));
+    line-height: 1.55;
+    color: var(--ogn-t2);
+}
+
+.modal-container .modal .footer {
+    flex: none;
+    justify-content: flex-end;
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    margin: 0;
+    padding: calc(1.4vh / var(--ogn-escala, 1)) calc(2vh / var(--ogn-escala, 1));
+    background: none;
+    border-top: 1px solid var(--ogn-line);
+}
+
+/* Un solo botón lleno por pantalla, y es el que confirma. */
+.modal-container .modal .footer .confirm,
+.modal-container .modal .footer .pay {
+    padding: calc(0.85vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    background: var(--ogn-acc);
+    border: 1px solid var(--ogn-acc);
+    color: #fff;
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+}
+
+.modal-container .modal .footer .confirm:hover,
+.modal-container .modal .footer .pay:hover { background: var(--ogn-acc-soft); }
+
+.modal-container .modal .footer .cancel {
+    padding: calc(0.85vh / var(--ogn-escala, 1)) calc(1.6vh / var(--ogn-escala, 1));
+    border-radius: var(--ogn-r-ctrl);
+    background: none;
+    border: 1px solid var(--ogn-line-soft);
+    color: var(--ogn-t3);
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+}
+
+.modal-container .modal .footer .cancel:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal .footer .confirm.disabled,
+.modal-container .modal .footer .cancel.disabled,
+.modal-container .modal .footer .pay.disabled { opacity: 0.35; }
+
+/* ── Los campos ──────────────────────────────────────────────────────────── */
+.modal-container .modal .input {
+    gap: calc(0.9vh / var(--ogn-escala, 1));
+    padding: 0 calc(0.9vh / var(--ogn-escala, 1));
+    background: var(--ogn-sunken);
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    transition: border-color 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal .input:focus-within { border-color: var(--ogn-acc); }
+
+.modal-container .modal .input input,
+.modal-container .modal .input textarea {
+    padding: calc(1vh / var(--ogn-escala, 1)) 0;
+    font-family: var(--ogn-texto);
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    color: var(--ogn-fg);
+    background: transparent;
+    border: 0;
+    outline: none;
+    width: 100%;
+    resize: none;
+}
+
+.modal-container .modal .input input::placeholder,
+.modal-container .modal .input textarea::placeholder { color: var(--ogn-t4); }
+
+.modal-container .modal .input .icon { font-size: calc(1.5vh / var(--ogn-escala, 1)); color: var(--ogn-t4); }
+
+/* ── Los desplegables propios ────────────────────────────────────────────
+   Nunca un <select> nativo: Chromium lo pinta con el tema de Windows. Este
+   panel cuelga del control y tiene que verse entero, así que va por encima
+   del diálogo. */
+
+.modal-container .modal .input.searchable-select { cursor: pointer; }
+
+.modal-container .modal .input.searchable-select .selected-value {
+    flex: 1;
+    min-width: 0;
+    padding: calc(1vh / var(--ogn-escala, 1)) 0;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ogn-t1);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.modal-container .modal .input.searchable-select .select-arrow {
+    flex: none;
+    font-size: calc(1.5vh / var(--ogn-escala, 1));
+    color: var(--ogn-t3);
+    transition: transform 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal .input.searchable-select.open { border-color: rgba(var(--ogn-acc-rgb), 0.45); }
+.modal-container .modal .input.searchable-select.open .select-arrow { transform: rotate(180deg); }
+
+.modal-container .modal .dropdown-panel {
+    position: absolute;
+    top: calc(100% + calc(0.6vh / var(--ogn-escala, 1)));
+    left: 0;
+    right: 0;
+    z-index: 99500;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    max-height: calc(26vh / var(--ogn-escala, 1));
+    padding: calc(0.8vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-zona);
+    background: var(--ogn-veil);
+    box-shadow: 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.modal-container .modal .dropdown-panel > input {
+    flex: none;
+    width: 100%;
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    background: var(--ogn-sunken);
+    outline: none;
+    font-family: var(--ogn-texto);
+    font-size: calc(1.05vh / var(--ogn-escala, 1));
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal .dropdown-panel > input::placeholder { color: var(--ogn-t4); }
+
+.modal-container .modal .dropdown-options {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.3vh / var(--ogn-escala, 1));
+    overflow-y: auto;
+}
+
+.modal-container .modal .dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1));
+    border: 1px solid transparent;
+    border-radius: var(--ogn-r);
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.95vh / var(--ogn-escala, 1));
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    cursor: pointer;
+    transition: background 0.15s var(--ogn-ease), border-color 0.15s var(--ogn-ease), color 0.15s var(--ogn-ease);
+}
+
+.modal-container .modal .dropdown-option:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-soft);
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal .dropdown-option.custom-model-option { color: var(--ogn-acc-pale); }
+
+/* ── La rejilla del contrato ─────────────────────────────────────────────
+   Todo cuadrado: dos columnas iguales, y lo que ocupa el ancho entero lo
+   dice la clase, no un margen. */
+
+.modal-container .modal.contract-editor-modal .body .contract-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    align-items: start;
+}
+
+.modal-container .modal.contract-editor-modal .body .contract-grid .full-width { grid-column: 1 / -1; }
+.modal-container .modal.contract-editor-modal .body .input-textarea { align-items: flex-start; padding-top: calc(0.6vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.contract-editor-modal .body .co-cell {
+    display: flex;
+    flex-direction: column;
+    gap: calc(0.5vh / var(--ogn-escala, 1));
+    min-width: 0;
+    padding: calc(1.1vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r);
+    background: rgba(255, 255, 255, calc(0.025 * var(--arc-vf)));
+}
+
+.modal-container .modal.contract-editor-modal .body .co-label {
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.85vh / var(--ogn-escala, 1));
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-val {
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    color: var(--ogn-t1);
+    font-variant-numeric: tabular-nums;
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(0.8vh / var(--ogn-escala, 1));
+    padding: calc(0.9vh / var(--ogn-escala, 1)) calc(1.1vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r);
+    background: rgba(255, 255, 255, calc(0.025 * var(--arc-vf)));
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    cursor: pointer;
+    transition: background 0.2s var(--ogn-ease), border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-toggle.active,
+.modal-container .modal.contract-editor-modal .body .co-toggle.active:hover {
+    border-color: rgba(var(--ogn-acc-rgb), 0.45);
+    background: rgba(var(--ogn-acc-rgb), 0.12);
+    color: var(--ogn-acc-pale);
+}
+
+.modal-container .modal.contract-editor-modal .body .co-arrow { color: var(--ogn-t3); font-size: calc(1.4vh / var(--ogn-escala, 1)); }
+
+/* ── Los ajustes de categorías ──────────────────────────────────────────── */
+.modal-container .modal.settings-modal { width: calc(150vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.settings-modal .title.settings-title { display: flex; flex-direction: column; gap: calc(0.5vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.settings-modal .title.settings-title .settings-title-main { display: flex; align-items: center; gap: calc(0.8vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.settings-modal .title.settings-title .settings-title-sub {
+    font-family: var(--ogn-texto);
+    font-weight: 400;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ogn-t4);
+}
+
+.modal-container .modal.settings-modal .body .settings-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    margin-bottom: calc(1.2vh / var(--ogn-escala, 1));
+}
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-type-tabs { display: flex; align-items: center; gap: calc(0.5vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: calc(0.6vh / var(--ogn-escala, 1));
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    background: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+    cursor: pointer;
+    transition: background 0.2s var(--ogn-ease), border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn:hover { border-color: var(--ogn-line-hi); color: var(--ogn-fg); }
+
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn.active,
+.modal-container .modal.settings-modal .body .settings-actions .settings-tab-btn.active:hover {
+    border-color: rgba(var(--ogn-acc-rgb), 0.45);
+    background: rgba(var(--ogn-acc-rgb), 0.12);
+    color: var(--ogn-acc-pale);
+}
+
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn {
+    padding: calc(0.7vh / var(--ogn-escala, 1)) calc(1.2vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r-ctrl);
+    background: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.9vh / var(--ogn-escala, 1));
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ogn-t2);
+    cursor: pointer;
+    transition: background 0.2s var(--ogn-ease), border-color 0.2s var(--ogn-ease), color 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn:hover {
+    background: rgba(255, 255, 255, calc(0.055 * var(--arc-vf)));
+    border-color: var(--ogn-line-hi);
+    color: var(--ogn-fg);
+}
+
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn.compact { padding: calc(0.6vh / var(--ogn-escala, 1)) calc(0.9vh / var(--ogn-escala, 1)); }
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn.danger { color: var(--ogn-bad); border-color: rgba(255, 77, 94, 0.35); }
+.modal-container .modal.settings-modal .body .inline-modal-btn,
+.modal-container .modal.contract-editor-modal .body .inline-modal-btn:disabled { opacity: 0.3; pointer-events: none; }
+
+.modal-container .modal.settings-modal .body .settings-editor-list { display: flex; flex-direction: column; gap: calc(0.8vh / var(--ogn-escala, 1)); }
+
+.modal-container .modal.settings-modal .body .settings-editor-row {
+    display: flex;
+    align-items: flex-end;
+    gap: calc(1.2vh / var(--ogn-escala, 1));
+    padding: calc(1.2vh / var(--ogn-escala, 1));
+    border: 1px solid var(--ogn-line-soft);
+    border-radius: var(--ogn-r);
+    background: rgba(255, 255, 255, calc(0.025 * var(--arc-vf)));
+}
+
+.modal-container .modal.settings-modal .body .settings-row-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(1vh / var(--ogn-escala, 1));
+}
+
+.modal-container .modal.settings-modal .body .settings-main-grid,
+.modal-container .modal.settings-modal .body .settings-secondary-grid {
+    display: grid;
+    gap: calc(1vh / var(--ogn-escala, 1));
+    align-items: end;
+}
+
+.modal-container .modal.settings-modal .body .settings-main-grid { grid-template-columns: 2fr repeat(3, minmax(0, 1fr)); }
+.modal-container .modal.settings-modal .body .settings-secondary-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* Los campos sueltos van sin recuadro: una línea debajo y nada más. */
+.modal-container .modal.settings-modal .body .settings-field { display: flex; flex-direction: column; gap: calc(0.5vh / var(--ogn-escala, 1)); min-width: 0; }
+
+.modal-container .modal.settings-modal .body .settings-field > span {
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(0.8vh / var(--ogn-escala, 1));
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ogn-t3);
+}
+
+.modal-container .modal.settings-modal .body .settings-field input {
+    width: 100%;
+    padding: calc(0.5vh / var(--ogn-escala, 1)) calc(0.2vh / var(--ogn-escala, 1));
+    border: 0;
+    border-bottom: 1px solid var(--ogn-line);
+    background: none;
+    outline: none;
+    font-family: var(--ogn-rotulo);
+    font-weight: 500;
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    color: var(--ogn-fg);
+    font-variant-numeric: tabular-nums;
+    transition: border-color 0.2s var(--ogn-ease);
+}
+
+.modal-container .modal.settings-modal .body .settings-field input:focus { border-bottom-color: var(--ogn-acc); }
+
+.modal-container .modal.settings-modal .body .settings-row-actions { flex: none; display: flex; align-items: center; gap: calc(0.4vh / var(--ogn-escala, 1)); }
+
+/* ── El cuadro de escoger un punto en el mapa ───────────────────────────── */
+.modal-container .npd-overlay,
+.container .npd-overlay {
+    z-index: 99700;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.modal-container .npd-modal,
+.container .npd-modal {
+    border: 1px solid var(--ogn-line);
+    border-radius: var(--ogn-r-zona);
+    background: var(--ogn-veil);
+    box-shadow: 0 calc(1.4vh / var(--ogn-escala, 1)) calc(3vh / var(--ogn-escala, 1)) rgba(0, 0, 0, 0.6);
+}
+
+.modal-container .npd-header,
+.container .npd-header {
+    padding: calc(1.4vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+    border-bottom: 1px solid var(--ogn-line);
+    font-family: var(--ogn-rotulo);
+    font-weight: 700;
+    font-size: calc(1.1vh / var(--ogn-escala, 1));
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ogn-fg);
+}
+
+.modal-container .npd-footer,
+.container .npd-footer {
+    padding: calc(1.2vh / var(--ogn-escala, 1)) calc(1.8vh / var(--ogn-escala, 1));
+    border-top: 1px solid var(--ogn-line);
+}
+
+.modal-container .npd-hint,
+.container .npd-hint {
+    font-family: var(--ogn-texto);
+    font-size: calc(1vh / var(--ogn-escala, 1));
+    color: var(--ogn-t4);
+}

@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en" data-escala>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://cfx-nui-origen_map/html/leaflet/1.9.4/leaflet.css" />
+    <script src="https://cfx-nui-origen_map/html/leaflet/1.9.4/leaflet.js"></script>
+
+    <!-- Las tres tipografias del estilo «HUD Arcade»: Barlow Condensed
+         para lo que se reconoce, Barlow para lo que se lee de corrido y Share
+         Tech Mono para las cifras. Van AQUI y no en un @import dentro de una
+         hoja: detras de otras reglas el @import no se aplica. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Barlow:wght@400;500;600;700&family=Knewave&family=Oxanium:wght@800&display=swap" />
+    <!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+         con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+         medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+         (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+         de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+    <style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3XmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3Xmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3TmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3Tmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B47b1z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+
+    <!-- El kit de la tablet, tal cual sale de .claude/skills/origen-tablet/
+         kit/plain/ogn.css. Va PRIMERO: trae el armazon, las piezas y su
+         reset, y lo de este recurso se pone encima donde haga falta.
+
+         Desde el 12/09/2026 ogn.css YA SALE EN CLARO del script: antes era
+         negro y lo tapaba style.css a base de redefinir tokens, pero lo que
+         no redefinia —el velo del dialogo, la lista del desplegable— se veia
+         negro de verdad.
+
+         OJO CON EL ORDEN: los tokens --ogn-* estan definidos en las TRES
+         hojas, pero manda style.css, que es la ultima que los toca
+         (hotels.css solo declara los suyos, --inv-*). Los retoques del
+         recurso van ahi; ogn.css se queda como sale del script, que es
+         .claude/skills/origen-tablet/kit/_armar-plain.py. -->
+    <link href="./css/ogn.css?v=oxa0710" media="all" rel="stylesheet" />
+    <link href="./css/style.css?v=oxa0710" media="all" rel="stylesheet" />
+    <link href="./css/hotels.css?v=riel0710" media="all" rel="stylesheet" />
+    <link href="./css/vivienda.css?v=oxa0710" media="all" rel="stylesheet" />
+    <!-- PEGATINA (03/10, a prueba, solo en Origen): el estilo del logo. Va LA
+         ULTIMA: no reescribe nada, pisa con mas peso. Knewave y Oxanium, las
+         dos tipografias que usa, van en el <link> de Google Fonts de arriba. -->
+    <link href="./css/pegatina.css?v=filo0710" media="all" rel="stylesheet" />
+    <!-- La barra de construir de la obra: después de pegatina.css, que trae las medidas --bab-* -->
+    <link href="./css/obra.css?v=cinta5" media="all" rel="stylesheet" />
+    <!-- Packs, tamaño y cosméticos de las casas (js/packs.js): después de obra.css -->
+    <link href="./css/packs.css?v=packs2" media="all" rel="stylesheet" />
+    <!-- Las chinchetas del mapa de administracion (solo Origen), en hoja aparte. -->
+    <link href="./css/pegatina-mapa.css?v=w0610" media="all" rel="stylesheet" />
+    <!-- El menú PEQUEÑO (Mis casas y los diálogos de muebles y puntos), ya en
+         pegatina: va después de todo para no depender del orden. -->
+    <link href="./css/chico.css?v=brocha0810" media="all" rel="stylesheet" />
+    <title>Origen Vivienda</title>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ORIGEN · vigilante del raton. NO EDITAR A MANO: este trozo es identico
+         en todas las interfaces del servidor y lo reparte
+         kit/repartir-foco.py. El lado de Lua es @origen_map/shared/foco.lua:
+         mientras el recurso tiene el raton, pregunta cada 1,5 s si esta
+         pagina enseña algo, y si dos veces seguidas no, suelta el raton.
+         Ante la duda contesta que SI: soltar el raton de una pantalla que se
+         ve es peor que tardar en soltarlo. -->
+    <script>
+      (function () {
+        // El fetch del navegador, guardado antes de que la pagina cargue lo
+        // suyo: alguna (origen_titlemenu) declara un `fetch` global propio.
+        var enviar = window.fetch.bind(window)
+        var TOPE = 6000
+        var HUECO = /^(transparent|rgba\([^)]*,\s*0(\.0+)?\))$/
+        var SIEMPRE = { IMG: 1, VIDEO: 1, CANVAS: 1, IFRAME: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, BUTTON: 1, svg: 1, SVG: 1 }
+        var color = function (c) { return c && !HUECO.test(c) }
+        var borde = function (cs) {
+          return (parseFloat(cs.borderTopWidth) > 0 && color(cs.borderTopColor)) ||
+            (parseFloat(cs.borderBottomWidth) > 0 && color(cs.borderBottomColor)) ||
+            (parseFloat(cs.borderLeftWidth) > 0 && color(cs.borderLeftColor)) ||
+            (parseFloat(cs.borderRightWidth) > 0 && color(cs.borderRightColor))
+        }
+        var capa = function (cs) {
+          return color(cs.backgroundColor) || cs.backgroundImage !== 'none' ||
+            cs.boxShadow !== 'none' || borde(cs)
+        }
+        var pseudo = function (el, cual) {
+          var ps = getComputedStyle(el, cual)
+          var c = ps.content
+          if (!c || c === 'none' || c === 'normal') return false
+          return capa(ps) || (c.length > 2 && color(ps.color))
+        }
+        var pinta = function (el, cs) {
+          if (SIEMPRE[el.tagName]) return true
+          if (capa(cs)) return true
+          if (color(cs.color) && parseFloat(cs.fontSize) > 0) {
+            for (var h = el.firstChild; h; h = h.nextSibling) {
+              if (h.nodeType === 3 && h.nodeValue.trim()) return true
+            }
+          }
+          return pseudo(el, '::before') || pseudo(el, '::after')
+        }
+        var hayAlgo = function () {
+          if (!document.body) return true
+          var W = window.innerWidth
+          var H = window.innerHeight
+          var paseo = document.createTreeWalker(document.body, 1, {
+            acceptNode: function (el) {
+              var cs = getComputedStyle(el)
+              // Lo que no se ve no deja ver a sus hijos: se salta la rama.
+              if (cs.display === 'none' || parseFloat(cs.opacity) < 0.02) return 2
+              // Ni lo marcado como HUD fijo (sin raton): no es una pantalla
+              // abierta, y si contara la red no soltaria nunca.
+              if (el.hasAttribute('data-foco-ignora')) return 2
+              return 1
+            }
+          })
+          var n = 0
+          var el
+          while ((el = paseo.nextNode())) {
+            if (++n > TOPE) return true
+            var cs = getComputedStyle(el)
+            if (cs.visibility !== 'visible') continue
+            var r = el.getBoundingClientRect()
+            if (r.width < 2 || r.height < 2) continue
+            if (r.right <= 0 || r.bottom <= 0 || r.left >= W || r.top >= H) continue
+            if (pinta(el, cs)) return true
+          }
+          return false
+        }
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (!d || d.accion !== 'origen:foco:mira') return
+          var visto = true
+          // Una pagina con HUD fijo (siempre pinta algo) dice ella misma si
+          // hay una pantalla CON RATON delante: window.__origenFocoVisto.
+          try {
+            visto = typeof window.__origenFocoVisto === 'function'
+              ? window.__origenFocoVisto() !== false
+              : hayAlgo()
+          } catch (err) { visto = true }
+          try {
+            var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+            if (!yo) return
+            enviar('https://' + yo + '/origen:foco:veo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: JSON.stringify({ n: d.n, visto: visto })
+            }).catch(function () {})
+          } catch (err) {}
+        })
+        window.__origenFocoHayAlgo = hayAlgo
+      })()
+    </script>
+    <!-- /ORIGEN · vigilante del raton -->
+    <!-- ORIGEN · marca (el color de la casa segun el servidor: origen o
+         nacion). NO EDITAR A MANO: este trozo es identico en todas las
+         interfaces y lo reparte kit/repartir-marca.py desde kit/marca.js.
+         En origen no hace nada. -->
+    <script>
+      (function () {
+        var PALETAS = {
+          /* tono: el de la marca nueva, en grados.
+             luz:  por donde pasa la escala, [luz del rosa, luz nueva]. El naranja
+                   es mas claro que el rosa a igual papel: el de los botones sube,
+                   y el de LEER sobre crema se queda oscuro para que se lea.
+             fijos: los que tienen que salir clavados, pedidos por el usuario:
+                   acc #FD8A23 · soft #FFAA5C · pale #FFD9B6 · deep #6A3402 */
+          nacion: {
+            tono: 28.5,
+            sat: 1.04,
+            luz: [[0, 0], [0.267, 0.212], [0.396, 0.36], [0.453, 0.565], [0.714, 0.68], [0.8, 0.857], [1, 1]],
+            fijos: {
+              e0074f: [253, 138, 35], fc0259: [253, 138, 35],
+              /* el rosa menos neon (06/10) sale con el MISMO naranja que el rosa de antes */
+              d81b55: [255, 146, 48], df2f63: [255, 154, 64], b3123f: [227, 108, 0],
+              ff6d97: [255, 170, 92],
+              fd9bbd: [255, 217, 182],
+              '7d0b31': [106, 52, 2], '82173c': [106, 52, 2]
+            }
+          }
+        }
+        /* La familia del rosa: del granate antiguo (#850e49) al rosa-rojo del movil
+           (#c2153f). El rojo de los errores (350 en adelante) queda fuera. */
+        var DESDE = 318, HASTA = 349, SAT_MIN = 0.3
+
+        var raiz = document.documentElement
+        var paleta = null
+        var memo = {}
+
+        var hex2 = function (n) { return (n < 16 ? '0' : '') + n.toString(16) }
+
+        /* -> [r, g, b] de la marca nueva, o null si el color no es de la familia. */
+        var cambiar = function (r, g, b) {
+          var k = (r << 16) | (g << 8) | b
+          if (k in memo) return memo[k]
+          var res = null
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn
+          if (d > 0) {
+            var l = (mx + mn) / 510
+            var s = d / (255 - Math.abs(mx + mn - 255))
+            var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4
+            h = (h * 60 + 360) % 360
+            if (s >= SAT_MIN && h >= DESDE && h < HASTA) {
+              res = paleta.fijos[hex2(r) + hex2(g) + hex2(b)]
+              if (!res) {
+                var c = paleta.luz, L = l
+                for (var i = 1; i < c.length; i++) {
+                  if (l <= c[i][0]) {
+                    L = c[i - 1][1] + (c[i][1] - c[i - 1][1]) * (l - c[i - 1][0]) / (c[i][0] - c[i - 1][0])
+                    break
+                  }
+                }
+                var S = Math.min(1, s * paleta.sat)
+                var C = (1 - Math.abs(2 * L - 1)) * S
+                var H = paleta.tono / 60
+                var X = C * (1 - Math.abs(H % 2 - 1))
+                var m = L - C / 2
+                var t = H < 1 ? [C, X, 0] : H < 2 ? [X, C, 0] : H < 3 ? [0, C, X] : H < 4 ? [0, X, C] : H < 5 ? [X, 0, C] : [C, 0, X]
+                res = [Math.round((t[0] + m) * 255), Math.round((t[1] + m) * 255), Math.round((t[2] + m) * 255)]
+              }
+            }
+          }
+          return (memo[k] = res)
+        }
+
+        /* Todo color escrito en un texto de CSS: #hex (3, 4, 6 u 8 cifras, tambien
+           como %23 dentro de un data:), rgb()/rgba() y los tres canales sueltos de
+           un token (`--acc-rgb: 224, 7, 79`). */
+        var COLOR = /(#|%23)([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])|(rgba?\(\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})|(--[\w-]+\s*:\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(?=\s*(?:;|!|$))/g
+
+        var pintar = function (texto) {
+          if (!paleta || !texto) return texto
+          return texto.replace(COLOR, function (todo, almo, hex, f1, r1, s1, g1, s2, b1, f2, r2, s3, g2, s4, b2) {
+            var n
+            if (hex) {
+              var v = hex.length < 6 ? hex.replace(/./g, '$&$&') : hex
+              n = cambiar(parseInt(v.substr(0, 2), 16), parseInt(v.substr(2, 2), 16), parseInt(v.substr(4, 2), 16))
+              return n ? almo + hex2(n[0]) + hex2(n[1]) + hex2(n[2]) + v.substr(6) : todo
+            }
+            if (f1) {
+              n = cambiar(+r1, +g1, +b1)
+              return n && +r1 < 256 && +g1 < 256 && +b1 < 256 ? f1 + n[0] + s1 + n[1] + s2 + n[2] : todo
+            }
+            n = cambiar(+r2, +g2, +b2)
+            return n && +r2 < 256 && +g2 < 256 && +b2 < 256 ? f2 + n[0] + s3 + n[1] + s4 + n[2] : todo
+          })
+        }
+
+        /* Las hojas. NO SE MODIFICA NINGUNA REGLA: la hoja se lee, se repinta el
+           texto y se sustituye entera por un <style> en su mismo sitio.
+
+           Es a proposito y costo un cuelgue encontrarlo (02/10): en el Chromium 103
+           del juego, escribir en una regla de la hoja del movil (Tailwind v4)
+           --`regla.style.cssText = ...` o un solo `setProperty`-- deja el navegador
+           de TODAS las interfaces en un bucle del que no sale. En otras hojas no
+           pasa y en un Chromium moderno tampoco, asi que fuera del juego no se ve.
+           Leer si se puede; escribir, no. */
+        var cambio = false
+        var urls = function (texto, base) {
+          // Al pasar de <link> a <style> las rutas dejan de ser relativas al .css.
+          return texto.replace(/url\(\s*(["']?)([^"')]+)\1\s*\)/g, function (todo, c, u) {
+            if (/^(data:|blob:|https?:|nui:|about:|#)/i.test(u)) return todo
+            try { return 'url("' + new URL(u, base).href + '")' } catch (e) { return todo }
+          })
+        }
+        var texto = function (lista, base) {
+          var out = []
+          for (var i = 0; i < lista.length; i++) {
+            var r = lista[i], c = r.cssText, k = c.indexOf('{')
+            // Un @import de casa se trae dentro: su hoja no tiene etiqueta propia.
+            var dentro = null
+            try { dentro = r.styleSheet && r.styleSheet.cssRules } catch (e) {}
+            if (dentro) {
+              var t = texto(dentro, r.styleSheet.href || base)
+              var m = r.media && r.media.mediaText
+              out.push(m ? '@media ' + m + ' {' + t + '}' : t)
+            } else if (k < 0) {
+              // Sin llaves: un @import de fuera, un @namespace... o declaraciones
+              // sueltas dentro de una regla anidada.
+              var p = r.style ? pintar(c) : c
+              if (p !== c) cambio = true
+              out.push(urls(p, base))
+            } else if (r.cssRules) {
+              // Un grupo (@media, @supports, @layer, @keyframes) o, en un
+              // Chromium con anidado, una regla con hijas.
+              var cuerpo = ''
+              if (r.style) {
+                var d = r.style.cssText, nd = pintar(d)
+                if (nd !== d) cambio = true
+                cuerpo = urls(nd, base)
+              }
+              out.push(c.substr(0, k) + '{' + cuerpo + texto(r.cssRules, base) + '}')
+            } else {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              var b = c.substr(k), nb = pintar(b)
+              if (nb !== b) cambio = true
+              out.push(c.substr(0, k) + urls(nb, base))
+            }
+          }
+          return out.join('\n')
+        }
+        /* Tope de reescrituras por nodo. Si otro codigo de la pagina vuelve a
+           poner el rosa cada vez que se lo cambiamos, se le deja ganar: mejor un
+           rosa suelto que dos observadores persiguiendose sin fin. */
+        var veces = new WeakMap()
+        var harto = function (nodo) {
+          var n = (veces.get(nodo) || 0) + 1
+          veces.set(nodo, n)
+          return n > 40
+        }
+        var hoja = function (h) {
+          var lista, dueno = h && h.ownerNode
+          if (!dueno || dueno.nodeType !== 1) return
+          // Una hoja de otro origen (fuentes de Google) no deja leer sus reglas.
+          try { lista = h.cssRules } catch (e) { return }
+          if (!lista || !lista.length) return
+          cambio = false
+          var nuevo
+          try { nuevo = texto(lista, h.href || document.baseURI) } catch (e) { return }
+          if (!cambio || harto(dueno)) return
+          if (dueno.nodeName.toLowerCase() === 'style') {
+            dueno.textContent = nuevo
+            return
+          }
+          var s = document.createElement('style')
+          s.setAttribute('data-ogn-marca', h.href || '')
+          if (dueno.media) s.media = dueno.media
+          s.textContent = nuevo
+          dueno.parentNode.insertBefore(s, dueno.nextSibling)
+          dueno.disabled = true
+        }
+        var hojas = function () {
+          // Sobre una copia: sustituir una hoja cambia la lista mientras se recorre.
+          var l = Array.prototype.slice.call(document.styleSheets)
+          for (var i = 0; i < l.length; i++) hoja(l[i])
+        }
+
+        /* Lo escrito en el propio elemento: style="" y los atributos de SVG. */
+        var ATRIBUTOS = ['style', 'fill', 'stroke', 'stop-color', 'flood-color', 'color']
+        var elemento = function (el) {
+          for (var i = 0; i < ATRIBUTOS.length; i++) {
+            var v = el.getAttribute(ATRIBUTOS[i])
+            if (v) {
+              var n = pintar(v)
+              if (n !== v && !harto(el)) el.setAttribute(ATRIBUTOS[i], n)
+            }
+          }
+        }
+        var SELECTOR = '[style],[fill],[stroke],[stop-color],[flood-color]'
+        var rama = function (nodo) {
+          if (nodo.nodeType !== 1) return
+          var nombre = nodo.nodeName.toLowerCase()
+          if (nombre === 'style') {
+            hoja(nodo.sheet)
+            // El texto de un <style> puede llegar despues que la etiqueta.
+            setTimeout(function () { hoja(nodo.sheet) }, 0)
+            return
+          }
+          if (nombre === 'link') {
+            hoja(nodo.sheet)
+            nodo.addEventListener('load', function () { hoja(nodo.sheet) })
+            return
+          }
+          elemento(nodo)
+          var dentro = nodo.querySelectorAll(SELECTOR + ',style')
+          for (var i = 0; i < dentro.length; i++) {
+            if (dentro[i].sheet) hoja(dentro[i].sheet)
+            else elemento(dentro[i])
+          }
+        }
+
+        /* Lo que no pasa por el DOM: el <canvas> y las reglas que mete una libreria
+           a mano. Solo se enganchan con otra marca puesta. */
+        var ganchos = function () {
+          try {
+            var P = CanvasRenderingContext2D.prototype
+            var uno = function (n) {
+              var d = Object.getOwnPropertyDescriptor(P, n)
+              if (!d || !d.set) return
+              Object.defineProperty(P, n, {
+                configurable: true,
+                enumerable: d.enumerable,
+                get: d.get,
+                set: function (v) { d.set.call(this, typeof v === 'string' ? pintar(v) : v) }
+              })
+            }
+            uno('fillStyle'); uno('strokeStyle'); uno('shadowColor')
+            var parada = CanvasGradient.prototype.addColorStop
+            CanvasGradient.prototype.addColorStop = function (o, c) {
+              return parada.call(this, o, typeof c === 'string' ? pintar(c) : c)
+            }
+          } catch (e) {}
+          try {
+            var meter = CSSStyleSheet.prototype.insertRule
+            CSSStyleSheet.prototype.insertRule = function (t, i) {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              if (typeof t === 'string') {
+                var c = t.indexOf('{')
+                if (c > 0) t = t.substr(0, c) + pintar(t.substr(c))
+              }
+              return arguments.length > 1 ? meter.call(this, t, i) : meter.call(this, t)
+            }
+          } catch (e) {}
+        }
+
+        var activar = function (nombre) {
+          if (paleta || !PALETAS.hasOwnProperty(nombre)) return
+          paleta = PALETAS[nombre]
+          raiz.dataset.marca = nombre
+          /* El mismo freno que el del tema: una propiedad EN TRANSICION cuyo valor
+             sale de un var() se queda congelada en el color viejo cuando la
+             variable cambia desde una hoja. */
+          var freno = document.createElement('style')
+          freno.textContent = '*,*::before,*::after{transition:none !important}'
+          ;(document.head || raiz).appendChild(freno)
+          ganchos()
+          hojas()
+          rama(raiz)
+          new MutationObserver(function (cambios) {
+            for (var i = 0; i < cambios.length; i++) {
+              var c = cambios[i]
+              if (c.type === 'attributes') elemento(c.target)
+              // Le han cambiado el texto a un <style> (la recarga en caliente).
+              else if (c.target.nodeName.toLowerCase() === 'style') hoja(c.target.sheet)
+              else for (var j = 0; j < c.addedNodes.length; j++) rama(c.addedNodes[j])
+            }
+          }).observe(raiz, { subtree: true, childList: true, attributes: true, attributeFilter: ATRIBUTOS })
+          // Las hojas que aun no habian cargado cuando llego la respuesta.
+          document.addEventListener('DOMContentLoaded', hojas)
+          window.addEventListener('load', hojas)
+          if (document.body) void document.body.offsetHeight
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { freno.remove() })
+          })
+          // Para la pagina que quiera saberlo (un logo que cambiar, por ejemplo).
+          window.postMessage({ accion: 'origen:marca:puesta', marca: nombre }, '*')
+        }
+
+        raiz.dataset.marca = 'origen'
+        // Para quien dibuja con colores que esto no ve (WebGL, una imagen).
+        window.__ognMarca = { pintar: pintar, de: function () { return raiz.dataset.marca } }
+
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:marca') activar(d.marca)
+        })
+        // Fuera del juego (la pagina en un navegador): index.html?marca=nacion
+        try {
+          var q = /[?&]marca=([\w-]+)/.exec(location.search)
+          if (q) activar(q[1])
+        } catch (e) {}
+        // La pantalla de carga: ahi no hay Lua de cliente, lo trae el servidor.
+        try {
+          if (window.nuiHandoverData && window.nuiHandoverData.marca) activar(window.nuiHandoverData.marca)
+        } catch (e) {}
+        /* Y lo normal: preguntarselo al Lua de este recurso. Con reintentos, porque
+           la pagina puede nacer antes de que su script haya puesto el callback. */
+        var intentos = 0
+        var preguntar = function () {
+          var yo = null
+          try { yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null } catch (e) {}
+          // Hay marcos donde el juego no pone esa funcion (visto en el movil al
+          // recargarse): el nombre del recurso tambien va en la direccion.
+          if (!yo) {
+            var h = /^cfx-nui-(.+)$/.exec(location.hostname)
+            if (h) yo = h[1]
+          }
+          if (!yo) return
+          fetch('https://' + yo + '/origen:marca:dame', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            body: '{}'
+          })
+            .then(function (r) { return r.json() })
+            .then(function (d) {
+              if (d && d.marca) activar(d.marca)
+              else throw new Error('sin marca')
+            })
+            .catch(function () { if (++intentos < 6) setTimeout(preguntar, 1500) })
+        }
+        preguntar()
+      })()
+    </script>
+  
+    <!-- ORIGEN · interfaz. NO EDITAR A MANO: este trozo es identico en todas
+         las interfaces del servidor y lo reparte kit/repartir-tema.py. El
+         lado de Lua es @origen_map/shared/tema.lua. Lleva el silencio de la
+         interfaz y la escala por encima de 1080p. -->
+    <script>
+      (function () {
+        var raiz = document.documentElement
+        /* El silencio de la interfaz (boton del riel del inventario, 27/09).
+           Calla los RUIDOS de pantalla: clics, abrir, cerrar, pasar por
+           encima. No la musica ni los videos (<video> o en bucle) ni los
+           pitidos de la radio ni las voces de los personajes (carpeta
+           voces/): eso es contenido, no ruido de menu.
+           Se engancha a play() y a las conexiones de Web Audio antes de que
+           cargue el bundle, asi vale para todas las paginas sin tocarlas. */
+        var callado = false
+        var LIBRE = /walkie|music|musica|radio|[/]voces[/]/i
+        var esRuido = function (el) {
+          return el.tagName !== 'VIDEO' && !el.loop && !LIBRE.test(el.currentSrc || el.src || '')
+        }
+        var ajustar = function (el) {
+          if (callado && esRuido(el)) {
+            if (!el.muted) { el.muted = true; el.__origenCallado = true }
+          } else if (el.__origenCallado) {
+            el.muted = false; el.__origenCallado = false
+          }
+        }
+        try {
+          var reproducir = HTMLMediaElement.prototype.play
+          HTMLMediaElement.prototype.play = function () {
+            ajustar(this)
+            return reproducir.apply(this, arguments)
+          }
+        } catch (e) {}
+        /* Web Audio (minijuegos, Howler...): todo lo que va a los altavoces
+           pasa por una ganancia nuestra por contexto, a 0 en silencio. */
+        var ganancias = []
+        try {
+          var conectar = AudioNode.prototype.connect
+          AudioNode.prototype.connect = function (destino) {
+            if (typeof AudioDestinationNode !== 'undefined' && destino instanceof AudioDestinationNode) {
+              var ctx = destino.context
+              var g = ctx.__origenGanancia
+              if (!g) {
+                g = ctx.createGain()
+                g.gain.value = callado ? 0 : 1
+                conectar.call(g, destino)
+                ctx.__origenGanancia = g
+                ganancias.push(g)
+              }
+              if (this !== g) {
+                var args = Array.prototype.slice.call(arguments)
+                args[0] = g
+                return conectar.apply(this, args)
+              }
+            }
+            return conectar.apply(this, arguments)
+          }
+        } catch (e) {}
+        var silenciar = function (si) {
+          si = si === true
+          if (si === callado) return
+          callado = si
+          raiz.dataset.silencio = si ? 'si' : 'no'
+          for (var i = 0; i < ganancias.length; i++) ganancias[i].gain.value = si ? 0 : 1
+          var els = document.querySelectorAll('audio,video')
+          for (var j = 0; j < els.length; j++) ajustar(els[j])
+          // El boton del riel se entera por este mensaje.
+          window.postMessage({ accion: 'origen:silencio', silencio: si }, '*')
+        }
+        raiz.dataset.silencio = 'no'
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:silencio') silenciar(d.silencio)
+        })
+        /* La ESCALA por encima de 1080p (27/09). Las interfaces se dibujaron
+           a 1920x1080; en 1440p o 4K lo medido en px se quedaba chico y los
+           menus salian finos. Solo en las paginas con <html data-escala>, y
+           solo si la pantalla pasa de 1080 de alto: a 1080 no se toca nada.
+           - El body se escala entero, como si la pantalla midiera 1080.
+           - Lo que la pagina lee por JS (ventana, raton, cajas) se traduce a
+             esas medidas, para que arrastrar y los clics caigan donde toca.
+           - Los vh/vw los divide al compilar origen_map/kit/escala-postcss.mjs.
+           Con `zoom` no: en el Chromium 103 del juego elementFromPoint y
+           getBoundingClientRect salen en coordenadas distintas (medido). */
+        ;(function () {
+          if (!raiz.hasAttribute('data-escala')) return
+          var dW = Object.getOwnPropertyDescriptor(window, 'innerWidth')
+          var dH = Object.getOwnPropertyDescriptor(window, 'innerHeight')
+          if (!dW || !dW.get || !dH || !dH.get) return
+          var s = 1
+          var calcular = function () {
+            var f = window.__ognEscalaForzada
+            return f > 0 ? f : Math.max(1, dH.get.call(window) / 1080)
+          }
+          var hoja = document.createElement('style')
+          hoja.textContent = 'html.ogn-escalado{overflow:hidden}' +
+            'html.ogn-escalado body{margin:0 !important;' +
+            'width:calc(100vw / var(--ogn-escala)) !important;min-width:0 !important;max-width:none !important;' +
+            'height:calc(100vh / var(--ogn-escala)) !important;min-height:0 !important;max-height:none !important;' +
+            'transform:scale(var(--ogn-escala));transform-origin:0 0;overflow:hidden}'
+          document.head.appendChild(hoja)
+          var aplicar = function () {
+            s = calcular()
+            raiz.style.setProperty('--ogn-escala', String(s))
+            raiz.classList.toggle('ogn-escalado', s !== 1)
+          }
+          var entre = function (v) { return v / s }
+          var envolver = function (obj, prop, fn, solo) {
+            var d = Object.getOwnPropertyDescriptor(obj, prop)
+            if (!d || !d.get) return
+            Object.defineProperty(obj, prop, {
+              configurable: true,
+              enumerable: d.enumerable,
+              get: function () {
+                var v = d.get.call(this)
+                return s === 1 || (solo && !solo(this)) ? v : fn(v)
+              },
+              set: d.set
+            })
+          }
+          try {
+            envolver(window, 'innerWidth', entre)
+            envolver(window, 'innerHeight', entre)
+            var raton = ['clientX', 'clientY', 'pageX', 'pageY', 'x', 'y']
+            for (var i = 0; i < raton.length; i++) envolver(MouseEvent.prototype, raton[i], entre)
+            var esRaiz = function (el) { return el === document.documentElement }
+            envolver(Element.prototype, 'clientWidth', entre, esRaiz)
+            envolver(Element.prototype, 'clientHeight', entre, esRaiz)
+            var caja = Element.prototype.getBoundingClientRect
+            Element.prototype.getBoundingClientRect = function () {
+              var r = caja.call(this)
+              return s === 1 ? r : new DOMRect(r.x / s, r.y / s, r.width / s, r.height / s)
+            }
+            var cajas = Element.prototype.getClientRects
+            Element.prototype.getClientRects = function () {
+              var l = cajas.call(this)
+              if (s === 1) return l
+              var o = []
+              for (var k = 0; k < l.length; k++) o.push(new DOMRect(l[k].x / s, l[k].y / s, l[k].width / s, l[k].height / s))
+              o.item = function (n) { return o[n] || null }
+              return o
+            }
+            var punto = Document.prototype.elementFromPoint
+            Document.prototype.elementFromPoint = function (x, y) { return punto.call(this, x * s, y * s) }
+            var puntos = Document.prototype.elementsFromPoint
+            if (puntos) Document.prototype.elementsFromPoint = function (x, y) { return puntos.call(this, x * s, y * s) }
+          } catch (e) {}
+          aplicar()
+          // En captura y antes que nadie: los oyentes de la pagina ya leen
+          // la ventana nueva.
+          window.addEventListener('resize', aplicar, true)
+          window.__ognAplicarEscala = aplicar
+        })()
+        // La pagina puede nacer DESPUES del aviso: entonces hay que preguntar.
+        try {
+          var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+          if (yo) {
+            fetch('https://' + yo + '/origen:tema:dame', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: '{}'
+            })
+              .then(function (r) { return r.json() })
+              .then(function (d) {
+                if (d && typeof d.silencio === 'boolean') silenciar(d.silencio)
+              })
+              .catch(function () {})
+          }
+        } catch (e) {}
+      })()
+    </script>
+  <style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+
+<body>
+    <div id="app" v-if="visible || hotels.view === 'room_detail' || hotels.view === 'reception'">
+
+        <!--
+            ══ EL ASCENSOR ═════════════════════════════════════════════════
+            Menú PEQUEÑO (skill origen-dialogo, css/chico.css) con su riel
+            «Ascensor». Hasta el 07/10 era un cuadro suelto a la derecha, sin
+            riel. Escape y el clic fuera cierran (cerrarAscensor).
+        -->
+        <transition name="oc" appear>
+            <div class="oc" v-if="elevator.visible">
+                <div class="oc-velo" @click="cerrarAscensor()"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-elevator"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">Viviendas</span>
+                                <h2 class="oc-cab__t" data-brocha="Sube y baja">{{translations.elevator || 'Ascensor'}}</h2>
+                                <span class="oc-cab__sub">{{ elevator.currentFloor != null ? (elevator.floors[elevator.currentFloor] && elevator.floors[elevator.currentFloor].nombre ? 'Estás en: ' + elevator.floors[elevator.currentFloor].nombre : 'Estás en la planta ' + (Number(elevator.currentFloor) + 1)) : 'Elige una planta' }}</span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <div class="oc-plantas">
+                                <button type="button" class="oc-planta"
+                                    :class="{ on: elevator.currentFloor != null && elevator.currentFloor == key }"
+                                    v-for="(floor, key) in elevator.floors" :key="'pl' + key" @click="selectFloor(key)">
+                                    <!-- las plantas de una casa de obra traen su nombre (custom/client/ascensores.lua); las de garaje, no -->
+                                    <b>{{ floor && floor.corto != null ? floor.corto : key + 1 }}</b>
+                                    <small>{{ elevator.currentFloor != null && elevator.currentFloor == key ? 'Aquí' : (floor && floor.nombre || 'Planta') }}</small>
+                                </button>
+                            </div>
+                        </div>
+
+                        <footer class="oc-pie">
+                            <div class="oc-teclas">
+                                <span class="oc-tecla"><kbd>Clic</kbd> Ir a la planta</span>
+                                <span class="oc-tecla"><kbd>Esc</kbd> Cerrar</span>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-elevator"></i></span>
+                        <span class="oc-riel__pie">Ascensor</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!-- Los avisos ya no se pintan aquí: van todos a origen_notify
+             (script.js, sendNotification → callback sendNotification). -->
+
+        <div class="container" v-if="visible">
+        </div>
+
+        <!--
+            ══ TU VIVIENDA ═════════════════════════════════════════════════
+
+            Menú lateral de los del servidor (15/09): riel al canto derecho y
+            columna a su izquierda, con las clases `rp-` de la recepción del
+            hotel y de la compra de una casa. Antes era una tablet a pantalla
+            completa con cinco cajas repartidas.
+
+            Como el panel de banda y el de negocios, se AMPLÍA: la columna se
+            estira hacia la izquierda hasta el margen y enseña todas las
+            secciones a la vez en tres columnas; la barra se queda donde está.
+            Estrecha, enseña la sección elegida en el riel.
+
+            Las preguntas («¿comprar esta mejora?») van en el pie, no en un
+            cuadro encima. Ver .claude/skills/origen-riel/SKILL.md
+        -->
+        <transition name="rp" appear>
+            <div class="rp vv" :class="{ 'esta-tapado': nuevoPuntoMlo.visible || modalChico > 0 }" v-if="house.visible && house.data">
+                <div class="rp-velo" @click="vivienda.confirmando ? cancelarVivienda() : cerrarVivienda()"></div>
+
+                <section class="rp-col vv-col" :class="{ 'is-ancho': vivienda.ancho }">
+                    <!-- La celebración de una mejora recién comprada, dentro de la columna. -->
+                    <transition name="fade">
+                        <div class="vv-celebra" v-if="upgrades.visible">
+                            <span class="vv-celebra__k">{{ translations.upgradeBuy }}</span>
+                            <img :src="'./img/upgrades/' + upgrades.item + '.png'" @error="setDefaultImage">
+                            <span class="vv-celebra__n">{{ upgrades.title }}</span>
+                            <button class="rp-confirmar vv-celebra__b" @click="buyUpgrade(false)">{{ translations.continue }}</button>
+                        </div>
+                    </transition>
+
+                    <header class="rp-cab">
+                        <span class="rp-badge"><i class="fas fa-house-chimney"></i></span>
+                        <div class="rp-cab__txt">
+                            <h1 class="rp-cab__t">{{ translations.yourHome || 'Tu vivienda' }}</h1>
+                            <!-- El nombre y el número de la casa; si falta alguno no queda un «· #» suelto
+                                 en la brocha, y si faltan los dos, «Tu casa». -->
+                            <span class="rp-cab__sub2">{{ [house.data.name, house.data.data && house.data.data.number ? '#' + house.data.data.number : ''].filter(Boolean).join(' · ') || 'Tu casa' }}</span>
+                        </div>
+                        <div class="rp-cuenta" v-if="cifrasDeLaCasa.length">
+                            <span class="rp-cuenta__v">{{ cifrasDeLaCasa[4].v.split(' / ')[0] }}<span>/{{ cifrasDeLaCasa[4].v.split(' / ')[1] }}</span></span>
+                            <span class="rp-cuenta__k">{{ cifrasDeLaCasa[4].k }}</span>
+                        </div>
+                    </header>
+
+                    <!-- Las cifras de la casa, de un vistazo. -->
+                    <div class="rp-datos vv-cifras">
+                        <div class="rp-dato" v-for="c in cifrasDeLaCasa.slice(0, 4)" :key="c.k">
+                            <b>{{ c.v }}</b>
+                            <i>{{ c.k }}</i>
+                        </div>
+                    </div>
+
+                    <!-- La barra de la sección: su nombre y el botón de ampliar. -->
+                    <div class="vv-barra">
+                        <span class="vv-barra__t">{{ vivienda.ancho ? (translations.yourHome || 'Tu vivienda') : nombreDeSeccionVivienda }}</span>
+                        <button class="vv-ampliar" @click="alternarAnchoVivienda()">
+                            <i class="fas" :class="vivienda.ancho ? 'fa-angles-right' : 'fa-angles-left'"></i>
+                            <span>{{ vivienda.ancho ? 'Reducir' : 'Ampliar' }}</span>
+                        </button>
+                    </div>
+
+                    <div class="rp-cuerpo vv-cuerpo" ref="cuerpoVivienda">
+                        <!-- ── Llaves ─────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="llaves" v-show="vivienda.ancho || vivienda.seccion === 'llaves'">
+                            <div class="vv-sec__cab">
+                                <span class="rp-rotulo">{{ translations.keysManagement }}<template v-if="house.data.llaves && house.data.llaves.texto"> · {{ house.data.llaves.texto }}</template></span>
+                                <button class="vv-mas" @click="addKeyModal"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <div class="rp-lista">
+                                <div class="rp-fila is-mudo" v-for="(data, key) in house.data.holders" :key="'ll' + key" v-if="data && data.name">
+                                    <span class="rp-fila__ico"><i class="fas" :class="data.owner ? 'fa-crown' : 'fa-key'"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ data.name }}</span>
+                                        <span class="rp-fila__m">{{ data.owner ? (translations.owner || 'Propietario') : (translations.keys || 'Llave') }}</span>
+                                    </span>
+                                    <button class="vv-mini es-mala" v-if="!data.owner" @click="deleteKey(key)"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <button class="vv-anadir" @click="addKeyModal"><i class="fas fa-plus"></i> {{ translations.addKeyLabel || translations.add }}</button>
+                            </div>
+                        </div>
+
+                        <!-- ── Puertas ────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="puertas" v-show="vivienda.ancho || vivienda.seccion === 'puertas'">
+                            <div class="vv-sec__cab">
+                                <span class="rp-rotulo">{{ translations.doors }} · {{ Object.keys(house.data.doors || {}).length }}/{{ house.doorLimit }}</span>
+                                <button class="vv-mas" @click="createDoor"><i class="fas fa-plus"></i></button>
+                            </div>
+                            <div class="rp-lista" v-if="house.data.doors && Object.keys(house.data.doors).length">
+                                <div class="rp-fila is-mudo" v-for="(item, key) in house.data.doors" :key="'pu' + key" v-if="item.name">
+                                    <span class="rp-fila__ico"><i class="fas" :class="item.locked ? 'fa-door-closed' : 'fa-door-open'"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ item.name }}</span>
+                                        <span class="rp-fila__m">{{ item.type === 'garage' ? 'Garaje' : item.type === 'double' ? 'Doble' : 'Normal' }} · {{ item.distance || (item.type === 'garage' ? 3.5 : 2.0) }}m</span>
+                                    </span>
+                                    <button class="rp-tag vv-cerrojo" :class="item.locked ? 'rented' : 'available'" @click="toggleLock(key)">
+                                        {{ item.locked ? translations.locked : translations.unlocked }}
+                                    </button>
+                                    <button class="vv-mini" @click="editDoor(key)" title="Editar"><i class="fas fa-pen"></i></button>
+                                    <button class="vv-mini es-mala" @click="deleteDoor(key)"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                            <p class="rp-vacio" v-else>{{ translations.noDoors }}</p>
+                            <button class="vv-anadir" @click="createDoor"><i class="fas fa-plus"></i> {{ translations.add }}</button>
+                        </div>
+
+                        <!-- ── Puntos de Interacción (Solo MLO) ─────────────── -->
+                        <div class="vv-sec" data-sec="puntos" v-if="house.data && house.data.data && house.data.data.type === 'mlo'"
+                            v-show="vivienda.ancho || vivienda.seccion === 'puntos'">
+                            <div class="vv-sec__cab">
+                                <span class="rp-rotulo">Puntos MLO · {{ Object.keys(house.data.positions && house.data.positions.points || {}).length }}</span>
+                                <button class="vv-mas" @click="abrirMenuNuevoPuntoMlo()"><i class="fas fa-plus"></i></button>
+                            </div>
+
+                            <!-- Cupos disponibles y ampliación -->
+                            <div class="rp-mlo-cupos">
+                                <div class="rp-mlo-cupo-card">
+                                    <div class="rp-mlo-cupo-info">
+                                        <i class="fas fa-box-archive"></i>
+                                        <div class="rp-mlo-cupo-txt">
+                                            <span class="rp-mlo-cupo-nom">Almacenes</span>
+                                            <span class="rp-mlo-cupo-val">{{ contarPuntosMlo('stash') }} / {{ limitePuntosMlo('stash') }} usados</span>
+                                        </div>
+                                    </div>
+                                    <button class="rp-btn-cupo" @click="comprarHuecoMlo('stash')" title="Adquirir 1 espacio adicional">
+                                        <i class="fas fa-plus"></i> {{ precio(mloSlotPrice) }}
+                                    </button>
+                                </div>
+                                <div class="rp-mlo-cupo-card">
+                                    <div class="rp-mlo-cupo-info">
+                                        <i class="fas fa-shirt"></i>
+                                        <div class="rp-mlo-cupo-txt">
+                                            <span class="rp-mlo-cupo-nom">Vestidores</span>
+                                            <span class="rp-mlo-cupo-val">{{ contarPuntosMlo('wardrobe') }} / {{ limitePuntosMlo('wardrobe') }} usados</span>
+                                        </div>
+                                    </div>
+                                    <button class="rp-btn-cupo" @click="comprarHuecoMlo('wardrobe')" title="Adquirir 1 espacio adicional">
+                                        <i class="fas fa-plus"></i> {{ precio(mloSlotPrice) }}
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="rp-lista" v-if="house.data.positions && house.data.positions.points && Object.keys(house.data.positions.points).length">
+                                <div class="rp-fila is-mudo" v-for="(pt, ptId) in house.data.positions.points" :key="'mlo_pt_' + ptId">
+                                    <span class="rp-fila__ico">
+                                        <i class="fas" :class="pt.type === 'stash' ? 'fa-box-archive' : 'fa-shirt'"></i>
+                                    </span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ pt.name || pt.type }}</span>
+                                        <span class="rp-fila__m">{{ pt.type === 'stash' ? 'Almacén / Baúl' : 'Vestidor / Armario' }}</span>
+                                    </span>
+                                    <button class="vv-mini es-mala" @click="eliminarPuntoMlo(ptId)" title="Eliminar punto">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="rp-vacio" v-else>No hay puntos configurados en esta casa MLO.</p>
+                            <button class="vv-anadir" @click="abrirMenuNuevoPuntoMlo()"><i class="fas fa-plus"></i> Añadir punto</button>
+                        </div>
+
+                        <!-- ── Entradas (custom/client/entradas.lua) ────────── -->
+                        <div class="vv-sec" data-sec="entradas" v-if="house.data.entradas"
+                            v-show="vivienda.ancho || vivienda.seccion === 'entradas'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">Entradas</span>
+                            </div>
+                            <div class="rp-lista">
+                                <div class="rp-fila is-mudo">
+                                    <span class="rp-fila__ico"><i class="fas fa-door-open"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">Entrada a pie</span>
+                                        <span class="rp-fila__m">{{ house.data.entradas.pie.texto }}</span>
+                                    </span>
+                                    <button class="rp-tag vv-cerrojo es-mia" v-if="house.data.entradas.dentro" @click="entradaAccion('ponerPie')">Poner aquí</button>
+                                    <button class="vv-mini" v-if="house.data.entradas.dentro" @click="entradaAccion('irPie')" title="Ir a la entrada"><i class="fas fa-person-walking"></i></button>
+                                    <button class="vv-mini es-mala" v-if="house.data.entradas.pie.puesta" @click="entradaAccion('quitarPie')" title="Volver a la puerta de siempre"><i class="fas fa-rotate-left"></i></button>
+                                </div>
+                                <template v-if="house.data.entradas.libre && house.data.entradas.permite">
+                                    <div class="rp-fila is-mudo">
+                                        <span class="rp-fila__ico"><i class="fas fa-car"></i></span>
+                                        <span class="rp-fila__txt">
+                                            <span class="rp-fila__n">Garaje · sitio del coche</span>
+                                            <span class="rp-fila__m">{{ house.data.entradas.coche.texto }}{{ !house.data.entradas.dentro && !house.data.entradas.coche.puesta ? ' · se pone desde dentro' : '' }}</span>
+                                        </span>
+                                        <button class="rp-tag vv-cerrojo es-mia" v-if="house.data.entradas.dentro" @click="entradaAccion('ponerCoche')">Poner aquí</button>
+                                        <button class="vv-mini" v-if="house.data.entradas.dentro && house.data.entradas.coche.puesta" @click="entradaAccion('irCoche')" title="Ir al sitio del coche"><i class="fas fa-person-walking"></i></button>
+                                    </div>
+                                    <div class="rp-fila is-mudo">
+                                        <span class="rp-fila__ico"><i class="fas fa-road"></i></span>
+                                        <span class="rp-fila__txt">
+                                            <span class="rp-fila__n">Garaje · punto de la calle</span>
+                                            <span class="rp-fila__m">{{ house.data.entradas.calle.texto }}{{ house.data.entradas.dentro && !house.data.entradas.calle.puesta ? ' · se pone desde la calle' : '' }}</span>
+                                        </span>
+                                        <button class="rp-tag vv-cerrojo es-mia" v-if="!house.data.entradas.dentro" @click="entradaAccion('ponerCalle')">Poner aquí</button>
+                                        <button class="vv-mini" v-if="house.data.entradas.calle.puesta" @click="entradaAccion('irCalle')" title="Marcar en el GPS"><i class="fas fa-location-dot"></i></button>
+                                    </div>
+                                    <!-- El garaje, abierto o cerrado: aparte de la puerta principal (que es la de entrar a pie) -->
+                                    <div class="rp-fila is-mudo" v-if="house.data.entradas.coche.puesta && house.data.entradas.calle.puesta">
+                                        <span class="rp-fila__ico"><i class="fas" :class="house.data.entradas.abierto ? 'fa-door-open' : 'fa-door-closed'"></i></span>
+                                        <span class="rp-fila__txt">
+                                            <span class="rp-fila__n">Garaje</span>
+                                            <span class="rp-fila__m">{{ house.data.entradas.abierto ? 'Abierto: cualquiera entra con su vehículo' : 'Cerrado: con vehículo, solo quien tiene llave' }}</span>
+                                        </span>
+                                        <button class="rp-tag vv-cerrojo" :class="house.data.entradas.abierto ? 'available' : 'rented'" @click="entradaAccion('garaje')">
+                                            {{ house.data.entradas.abierto ? 'Cerrar garaje' : 'Abrir garaje' }}
+                                        </button>
+                                    </div>
+                                    <div class="rp-fila is-mudo" v-if="house.data.entradas.coche.puesta || house.data.entradas.calle.puesta">
+                                        <span class="rp-fila__ico"><i class="fas fa-warehouse"></i></span>
+                                        <span class="rp-fila__txt">
+                                            <span class="rp-fila__n">Vehículos dentro</span>
+                                            <span class="rp-fila__m">{{ house.data.entradas.coches == null ? 'Caben ' + house.data.entradas.tope : house.data.entradas.coches + ' de ' + house.data.entradas.tope }}</span>
+                                        </span>
+                                        <button class="vv-mini es-mala" @click="entradaAccion('quitarGaraje')" title="Quitar la entrada de garaje"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </template>
+                            </div>
+                            <p class="vv-nota" v-if="house.data.entradas.libre && house.data.entradas.permite">
+                                El sitio se elige yendo hasta él: «Poner aquí» cierra el menú y lo pones con Intro, mirando hacia donde quieres que mire quien entra. El punto de la calle se pone desde fuera, junto a la puerta. Al salir el último de casa, los vehículos que queden dentro se sacan a la calle.
+                            </p>
+                            <p class="vv-nota" v-else-if="house.data.entradas.libre">
+                                El sitio se elige yendo hasta él: «Poner aquí» cierra el menú y lo pones con Intro. Esta casa no admite vehículos.
+                            </p>
+                            <p class="vv-nota" v-else>
+                                El sitio se elige yendo hasta él: «Poner aquí» cierra el menú y lo pones con Intro, mirando hacia donde quieres que mire quien entra.
+                            </p>
+                        </div>
+
+                        <!-- ── Mejoras ────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="mejoras" v-show="vivienda.ancho || vivienda.seccion === 'mejoras'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">{{ translations.upgrades }}</span>
+                            </div>
+                            <div class="rp-lista">
+                                <div class="rp-fila" v-for="(item, key) in house.upgrades" :key="'me' + key"
+                                    :class="{ on: vivienda.confirmando && vivienda.confirmando.mejora === key, 'is-mudo': !item.locked }"
+                                    @click="pedirMejora(key)">
+                                    <span class="rp-fila__ico"><i :class="item.icon"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ item.label }}</span>
+                                        <span class="rp-fila__m" :title="item.description">{{ item.description }}</span>
+                                    </span>
+                                    <span class="rp-precio" v-if="item.locked">{{ precio(item.price) }}</span>
+                                    <span class="rp-tag available" v-else>{{ translations.acquired }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── Luces ──────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="luces" v-show="vivienda.ancho || vivienda.seccion === 'luces'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">{{ translations.lights }}</span>
+                            </div>
+                            <p class="rp-vacio" v-if="!(house.data.lightsCount > 0)">{{ translations.noLights }}</p>
+
+                            <div class="rp-lista" v-else-if="currentLight === null">
+                                <div class="rp-fila" v-for="(item, index) in house.data.lights" :key="'lu' + index"
+                                    :class="{ on: item.state }" @click="openLightMenu(index, $event)">
+                                    <span class="rp-fila__ico"><i class="fas fa-lightbulb"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ item.label || translations.light }}</span>
+                                        <span class="rp-fila__m">{{ item.state ? translations.on : translations.off }}</span>
+                                    </span>
+                                    <span class="vv-interruptor" :class="{ on: item.state }" @click="toggleLight(index, $event)"><i></i></span>
+                                </div>
+                            </div>
+
+                            <!-- El editor de una luz: nombre, color e intensidad. -->
+                            <div class="vv-editor" v-else>
+                                <div class="vv-editor__cab">
+                                    <button class="vv-mini" @click="closeLightMenu"><i class="fas fa-arrow-left"></i></button>
+                                    <span class="rp-fila__n" v-if="!isEditingName" @dblclick="startEditingName">
+                                        {{ editedName != '' ? editedName : house.data.lights[currentLight].label }}
+                                    </span>
+                                    <input type="text" class="vv-campo" v-model="editedName" v-else
+                                        @keyup.enter="finishEditingName" @blur="finishEditingName">
+                                </div>
+                                <span class="vv-etq">{{ translations.colors }}</span>
+                                <div class="vv-colores">
+                                    <button class="vv-color" v-for="(color, index) in colors" :key="'co' + index"
+                                        :style="{ backgroundColor: 'rgb(' + color.join(',') + ')' }"
+                                        :class="{ on: isColorSelected(color) }" @click="selectColor(color)"></button>
+                                </div>
+                                <span class="vv-etq">{{ translations.intensity }} · {{ house.data.lights[currentLight].opacity }}%</span>
+                                <input type="range" class="vv-rango" min="1" max="100" step="1"
+                                    v-model="house.data.lights[currentLight].opacity">
+                                <button class="rp-btn" @click="saveLightChanges">{{ translations.saveChanges }}</button>
+                            </div>
+                        </div>
+
+                        <!-- ── Cuadros ────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="cuadros" v-show="vivienda.ancho || vivienda.seccion === 'cuadros'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">{{ translations.personalizeBoard }}</span>
+                            </div>
+                            <p class="rp-vacio" v-if="!(house.data.boardsCount > 0)">{{ translations.noBoards || '—' }}</p>
+                            <div class="vv-cuadros" v-else>
+                                <div class="vv-cuadro" v-for="(item, index) in house.data.boards" :key="'cu' + index"
+                                    :style="{ backgroundImage: item.url ? 'url(' + item.url + ')' : 'none' }">
+                                    <i class="fas fa-image" v-if="!item.url"></i>
+                                    <button class="vv-mini vv-cuadro__edit" v-if="isEditingURL == null || isEditingURL !== index"
+                                        @click="isEditingURL = index"><i class="fas fa-pen"></i></button>
+                                    <input type="text" class="vv-campo vv-cuadro__url" v-else v-model="newUrl"
+                                        @keyup.enter="saveBoardUrl(index, $event)" @blur="handleBlur(index)" :placeholder="item.url">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── Cámaras ────────────────────────────────────── -->
+                        <div class="vv-sec" data-sec="camaras" v-show="vivienda.ancho || vivienda.seccion === 'camaras'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">{{ translations.cameras || 'Cámaras' }}</span>
+                            </div>
+                            <p class="rp-vacio" v-if="house.upgrades.cameras && house.upgrades.cameras.locked">{{ translations.noCamerasModule }}</p>
+                            <div class="rp-lista" v-else-if="house.data.cameras && Object.keys(house.data.cameras).length">
+                                <div class="rp-fila" v-for="(camera, key, index) in house.data.cameras" :key="'ca' + key"
+                                    @click="useCamera(key)">
+                                    <span class="rp-fila__ico"><i class="fas" :class="camera.broken ? 'fa-video-slash' : 'fa-video'"></i></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ translations.camera }} #{{ index + 1 }}</span>
+                                    </span>
+                                    <i class="fas fa-chevron-right vv-flecha"></i>
+                                </div>
+                            </div>
+                            <p class="rp-vacio" v-else>{{ translations.noCameras || '—' }}</p>
+                        </div>
+
+                        <!-- ── Estilo del interior (solo IPL con estilos) ───── -->
+                        <div class="vv-sec" data-sec="estilo" v-if="tieneEstilosLaCasa"
+                            v-show="vivienda.ancho || vivienda.seccion === 'estilo'">
+                            <div class="vv-sec__cab sin-boton">
+                                <span class="rp-rotulo">{{ translations.upgradesBtn || 'Estilo' }}</span>
+                            </div>
+                            <p class="vv-nota">{{ translations.houseupgraadeInfo }}</p>
+                            <div class="rp-lista">
+                                <div class="rp-fila" v-for="(item, index) in ipls[house.data.data.model].list" :key="'es' + index"
+                                    :class="{ on: house.currentUpgrade === index, 'is-mudo': house.data.data.style == item.name }"
+                                    @click="elegirEstilo(index)">
+                                    <span class="rp-fila__ico vv-miniatura" :style="{ backgroundImage: 'url(' + getImageUrl(item.name) + ')' }"></span>
+                                    <span class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{ item.label }}</span>
+                                    </span>
+                                    <span class="rp-tag available" v-if="house.data.data.style == item.name">{{ translations.acquired }}</span>
+                                    <span class="rp-precio" v-else>{{ precio(item.price) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="rp-pie">
+                        <template v-if="vivienda.confirmando">
+                            <p class="rp-aviso">{{ avisoVivienda }}</p>
+                            <div class="rp-acciones">
+                                <button class="rp-btn" @click="cancelarVivienda()"><kbd class="rp-kbd">ESC</kbd><span>{{ translations.cancel }}</span></button>
+                                <button class="rp-confirmar" @click="confirmarVivienda()">{{ translations.buy }}</button>
+                            </div>
+                        </template>
+                        <div class="rp-acciones" v-else>
+                            <button class="rp-btn" v-if="vivienda.seccion === 'estilo' && !vivienda.ancho" :disabled="house.currentUpgrade === null"
+                                @click="pedirEstilo()">
+                                <i class="fas fa-paint-roller"></i><span>{{ translations.buy }}</span>
+                            </button>
+                            <button class="rp-btn" v-else @click="cerrarVivienda()">
+                                <kbd class="rp-kbd">ESC</kbd><span>{{ translations.Close }}</span>
+                            </button>
+                            <button class="rp-confirmar" @click="openFurnitureMenu">
+                                <i class="fas fa-paintbrush"></i> {{ translations.decorate }}
+                            </button>
+                        </div>
+                    </footer>
+                </section>
+
+                <aside class="rp-riel">
+                    <!--  El icono del MENU que esta abierto --la casa de las viviendas--. Hasta el
+                          16/09/2026 aqui iba la marca «OGN»; el usuario la quito de
+                          los rieles: la placa dice ahora en que menu estas, no de
+                          quien es. -->
+                    <span class="rp-riel__marca-caja"><i class="fas fa-house"></i></span>
+                    <div class="rp-riel__tabs">
+                        <div class="rp-riel__btn" v-for="s in seccionesVivienda" :key="s.id"
+                            :class="{ on: s.id === vivienda.seccion }" @click="irDeVivienda(s.id)">
+                            <i class="fas rp-riel__ico" :class="s.icono"></i>
+                            <span class="rp-riel__tip">{{ s.nombre }}<template v-if="s.n !== undefined"> · {{ s.n }}</template></span>
+                        </div>
+                    </div>
+                    <span class="rp-riel__marca">{{ nombreDeMarca }} Viviendas</span>
+                </aside>
+            </div>
+        </transition>
+
+        <transition name="fade_top">
+            <div class="title_h" v-if="info.visible">
+                <h4>{{info.text}}</h4>
+            </div>
+        </transition>
+
+        <!--
+            ══ DECORAR · LOS MUEBLES ═══════════════════════════════════════
+
+            Menú lateral de los del servidor (15/09), con las piezas `rp-` de
+            tu vivienda y la recepción. Antes eran dos pestañas sueltas y una
+            tira de categorías pegadas al canto.
+
+            DIFERENTE de los otros en una cosa: NO lleva recogedor de clics a
+            pantalla completa. Mientras decoras, el clic en el mundo coloca el
+            mueble (script.js, `mousedown`), y un velo encima lo bloquearía.
+            El mundo ignora los clics que caen sobre `.mb-zona` (la columna y
+            el riel), así que pinchar el menú no suelta un mueble detrás.
+
+            Se amplía como tu vivienda: la columna se estira a la izquierda y
+            caben más muebles por fila. Ver .claude/skills/origen-riel/SKILL.md
+        -->
+        <transition name="rp" appear>
+            <div class="rp mb" :class="{ 'esta-tapado': modalCarrito || compraMueble.visible }" v-if="furniture.visible">
+                <section class="rp-col vv-col mb-zona" :class="{ 'is-ancho': muebles.ancho }">
+                    <header class="rp-cab">
+                        <span class="rp-badge"><i class="fas fa-couch"></i></span>
+                        <div class="rp-cab__txt">
+                            <h1 class="rp-cab__t">{{ translations.decorate }}</h1>
+                            <span class="rp-cab__sub2">{{ translations.yourHome || 'Tu vivienda' }}</span>
+                        </div>
+                        <div class="rp-cuenta">
+                            <span class="rp-cuenta__v">{{ Object.keys(furniture.buyedItems || {}).length }}</span>
+                            <span class="rp-cuenta__k">{{ translations.buyed }}</span>
+                        </div>
+                    </header>
+
+                    <div class="vv-barra">
+                        <span class="vv-barra__t">
+                            <template v-if="furniture.selectedOption == 'buyed'">{{ translations.buyed_furniture }}</template>
+                            <template v-else-if="furniture.selectedOption == 'obra'">Construir</template>
+                            <template v-else-if="furniture.selectCategory !== null && furniture.selectCategory !== undefined && furniture.categories[furniture.selectCategory]">
+                                {{ furniture.categories[furniture.selectCategory].label }}
+                            </template>
+                            <template v-else>{{ translations.all }}</template>
+                        </span>
+                        <div class="mb-barra__der">
+                            <button class="vv-ampliar" v-if="furniture.selectedOption == 'all' && furniture.selectCategory !== null && furniture.selectCategory !== undefined"
+                                @click="backCategory()">
+                                <i class="fas fa-arrow-left"></i><span>{{ translations.categories || 'Categorías' }}</span>
+                            </button>
+                            <button class="vv-ampliar" @click="muebles.ancho = !muebles.ancho">
+                                <i class="fas" :class="muebles.ancho ? 'fa-angles-right' : 'fa-angles-left'"></i>
+                                <span>{{ muebles.ancho ? 'Reducir' : 'Ampliar' }}</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="rp-cuerpo">
+                        <!-- ── El catálogo: primero las categorías ──────────── -->
+                        <template v-if="furniture.selectedOption == 'all'">
+                            <div class="mb-cats" v-if="furniture.selectCategory === null || furniture.selectCategory === undefined">
+                                <button class="mb-cat" v-for="(item, index) in furniture.categories" :key="'cat' + index"
+                                    @click="selectFurnitureCategory(index)">
+                                    <span class="rp-fila__ico"><i :class="item.icon"></i></span>
+                                    <span class="mb-cat__n">{{ item.label }}</span>
+                                    <span class="mb-cat__c" v-if="furniture.items[index]">{{ furniture.items[index].items.length }}</span>
+                                </button>
+                            </div>
+
+                            <!-- …y dentro de una, sus muebles. -->
+                            <div class="mb-objetos" v-else-if="furniture.items[furniture.selectCategory]">
+                                <button class="mb-obj" v-for="(item, index) in furniture.items[furniture.selectCategory].items"
+                                    :key="'obj' + index" :class="{ on: furniture.currentObject === item.model }"
+                                    @click="spawnObject(item.model)">
+                                    <img :src="'./img/furniture/' + item.model + '.png'" @error="setDefaultImage">
+                                    <span class="mb-obj__p">{{ !item.price ? (furniture.defaultPrice > 0 ? precio(furniture.defaultPrice) : translations.free) : (item.price > 0 ? precio(item.price) : translations.free) }}</span>
+                                </button>
+                            </div>
+                        </template>
+
+                        <!-- ── Lo que ya tienes puesto ──────────────────────── -->
+                        <template v-else-if="furniture.selectedOption == 'buyed'">
+                            <div class="mb-objetos" v-if="furniture.buyedItems && Object.keys(furniture.buyedItems).length">
+                                <div class="mb-obj" v-for="(item, index) in furniture.buyedItems" :key="'com' + index"
+                                    :class="{ on: furniture.selectedObject == index }" @click="selectObject(index)">
+                                    <img :src="'./img/furniture/' + item.model + '.png'" @error="setDefaultImage">
+                                    <span class="mb-obj__acc">
+                                        <button class="vv-mini" @click="editObject(index)"><i class="fas fa-up-down-left-right"></i></button>
+                                        <button class="vv-mini es-mala" @click="deleteObject(index)"><i class="fas fa-trash"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="rp-vacio" v-else>{{ translations.noFurniture || '—' }}</p>
+                        </template>
+
+                        <!-- ── Construir: solo en las casas de modalidad libre ──
+                             (custom/client/obra.lua). Aquí se elige; al elegir, el
+                             menú se aparta y se trabaja sobre el juego con la barra
+                             de abajo. Tab devuelve a este menú. -->
+                        <template v-else-if="furniture.selectedOption == 'obra' && furniture.obra">
+                            <div class="mb-cats">
+                                <button class="mb-cat" v-for="h in furniture.obra.herramientas" :key="'obra' + h.id" @click="obraElegir(h.id)">
+                                    <span class="rp-fila__ico"><i :class="h.icono"></i></span>
+                                    <span class="mb-cat__n">{{ h.nombre }}</span>
+                                </button>
+                            </div>
+                            <div class="vv-barra"><span class="vv-barra__t">Pintar con</span></div>
+                            <div class="mb-objetos">
+                                <button class="mb-obj" v-for="(m, q) in furniture.obra.materiales" :key="'mat' + m.id"
+                                    :class="{ on: furniture.obraMaterial === q + 1 }" @click="furniture.obraMaterial = q + 1; obraElegir('pintar')">
+                                    <img :src="'./img/obra/' + m.id + '.jpg'">
+                                    <span class="mb-obj__p">{{ m.nombre }}</span>
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+
+                    <footer class="rp-pie">
+                        <div class="rp-acciones">
+                            <button class="rp-btn" @click="cerrarMuebles()"><kbd class="rp-kbd">ESC</kbd><span>{{ translations.Close }}</span></button>
+                            <button class="rp-btn rp-btn-carrito" v-if="carrito.length > 0" @click="abrirCarrito()">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Carrito ({{ carrito.length }}) · {{ precio(totalCarrito) }}</span>
+                            </button>
+                            <button class="rp-confirmar" v-if="furniture.selectedOption == 'all'"
+                                :disabled="!furniture.currentObject" @click="startPlacement()">
+                                <i class="fas fa-plus"></i> {{ translations.place }}
+                            </button>
+                            <button class="rp-confirmar" v-else-if="furniture.selectedOption == 'buyed'" :disabled="furniture.selectedObject === null"
+                                @click="furniture.selectedObject !== null && editObject(furniture.selectedObject)">
+                                <i class="fas fa-up-down-left-right"></i> {{ translations.move || 'Mover' }}
+                            </button>
+                        </div>
+                    </footer>
+                </section>
+
+                <aside class="rp-riel mb-zona">
+                    <!--  El icono del MENU que esta abierto --la casa de las viviendas--. Hasta el
+                          16/09/2026 aqui iba la marca «OGN»; el usuario la quito de
+                          los rieles: la placa dice ahora en que menu estas, no de
+                          quien es. -->
+                    <span class="rp-riel__marca-caja"><i class="fas fa-house"></i></span>
+                    <div class="rp-riel__tabs">
+                        <div class="rp-riel__btn" :class="{ on: furniture.selectedOption == 'all' }" @click="furniture.selectedOption = 'all'">
+                            <i class="fas rp-riel__ico fa-couch"></i>
+                            <span class="rp-riel__tip">{{ translations.all }} · {{ furniture.categories.length }}</span>
+                        </div>
+                        <div class="rp-riel__btn" :class="{ on: furniture.selectedOption == 'buyed' }" @click="furniture.selectedOption = 'buyed'">
+                            <i class="fas rp-riel__ico fa-house-user"></i>
+                            <span class="rp-riel__tip">{{ translations.buyed }} · {{ Object.keys(furniture.buyedItems || {}).length }}</span>
+                        </div>
+                        <div class="rp-riel__btn" v-if="furniture.obra" :class="{ on: furniture.selectedOption == 'obra' }" @click="furniture.selectedOption = 'obra'">
+                            <i class="fas rp-riel__ico fa-trowel-bricks"></i>
+                            <span class="rp-riel__tip">Construir</span>
+                        </div>
+                        <div class="rp-riel__btn rp-riel__carrito" :class="{ on: modalCarrito, 'tiene-items': carrito.length > 0 }" @click="abrirCarrito()">
+                            <i class="fas rp-riel__ico fa-shopping-cart"></i>
+                            <span class="rp-riel__tip">Carrito ({{ carrito.length }}) · {{ precio(totalCarrito) }}</span>
+                            <span class="rp-riel__badge" v-if="carrito.length > 0">{{ carrito.length }}</span>
+                        </div>
+                    </div>
+                    <span class="rp-riel__marca">{{ nombreDeMarca }} Viviendas</span>
+                </aside>
+            </div>
+        </transition>
+
+        <div class="loading-object d-flex align-items-center flex-column" v-if="loading">
+            <div class="l-icon">
+                <img src="./img/loading.png">
+            </div>
+            <div class="l-text">
+                <span>{{translations.loading}}</span>
+            </div>
+        </div>
+
+        <transition name="fade">
+            <section class="creation-selector" v-if="menu.preview.visible" :class="menu.preview.hidden ? 'hidden' : ''">
+                <div class="content">
+                    <div class="arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="mySwiper slider-preview" :class="{'reduced': menu.preview.itemLength <= 3}">
+                        <h4 class="title">{{menu.preview.title}}</h4>
+                        <div class="swiper-wrapper">
+                            <div v-for="item, index in menu.preview.items" :class="'swiper-slide item slide-' + index">
+                                <img :src="'./img/'+menu.preview.path+'/'+item.model+'.png'" class="item-img"
+                                    @error="setDefaultImage">
+                                <span class="house_name">{{item.label}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </section>
+        </transition>
+
+        <transition name="fade">
+            <section class="management ogn-stage" v-if="menu.management">
+                <!--
+                    El armazón de la tablet: riel al canto izquierdo, cabecera
+                    en su caja, el contenido en medio y la barra de cifras al
+                    pie. Ver la skill origen-tablet.
+
+                    Antes esto eran dos franjas a sangre con el título suelto
+                    arriba a la izquierda, las secciones como pastillas en la
+                    esquina y el paginador flotando en el vacío. No se parecía
+                    en nada a los demás paneles del servidor.
+                -->
+                <div class="ogn-stage__veil"></div>
+
+                <aside class="ogn-rail">
+                    <div class="ogn-rail__top">
+                        <span class="ogn-rail__mark"><i class="fas fa-city"></i></span>
+
+                        <!--
+                            Mientras se rellena un formulario el riel no lleva
+                            a ninguna parte: la salida es Cancelar o Guardar,
+                            que están en la cabecera. Saltar de sección desde
+                            aquí se llevaría por delante lo escrito sin decir
+                            nada.
+                        -->
+                        <nav class="ogn-rail__nav">
+                            <button
+                                v-for="s in seccionesDelRiel"
+                                :key="s.id"
+                                class="ogn-rail__it"
+                                :class="{ 'is-on': seccionActual === s.id, 'is-mudo': hotels.creating && seccionActual !== s.id }"
+                                @click="hotels.creating ? null : setView(s.id)"
+                                @mouseenter="pista(s.nombre, $event)"
+                                @mouseleave="pista(null)"
+                            >
+                                <span class="ogn-rail__bar" v-if="seccionActual === s.id"></span>
+                                <i class="fas" :class="s.icono"></i>
+                            </button>
+                        </nav>
+                    </div>
+
+                    <div class="ogn-rail__foot is-on">
+                        <span class="ogn-rail__dot"></span>
+                        <span class="ogn-rail__state">{{ nombreDeMarca }} Viviendas</span>
+                    </div>
+                </aside>
+
+                <!-- El nombre de la sección, fuera del riel para no ensancharlo. -->
+                <span class="ogn-tip" v-if="pistaTexto" :style="{ top: pistaY + 'px' }">{{ pistaTexto }}</span>
+
+                <div class="ogn-frame">
+                    <header class="ogn-head">
+                        <!--  La placa del icono y el rótulo a brocha son de la pegatina
+                              (css/pegatina.css, solo Origen): la placa nace oculta y el
+                              `data-brocha` no pinta nada sin esa hoja. -->
+                        <span class="ogn-head__placa" style="display: none"><i class="fas" :class="(seccionActual === 'hotels' || hotels.creating) ? 'fa-hotel' : (seccionActual === 'map' ? 'fa-map' : 'fa-home')"></i></span>
+                        <div class="ogn-head__title">
+                            <span class="ogn-kicker">{{ anteTituloPanel }}</span>
+                            <h2 class="ogn-h2" :data-brocha="hotels.creating ? (hotels.view === 'room_creation' ? 'Habitación nueva' : 'Ficha del hotel') : (seccionActual === 'hotels' ? 'Con sus habitaciones' : (seccionActual === 'map' ? 'Todas en el mapa' : 'Casas de la ciudad'))">{{ tituloPanel }}</h2>
+                        </div>
+
+                        <div class="ogn-head__right">
+                            <!-- Buscar y crear, o salir del formulario. Nunca
+                                 las dos cosas: en un formulario no hay nada
+                                 que buscar. -->
+                            <template v-if="!hotels.creating">
+                                <div class="ogn-search" v-if="seccionActual !== 'map'">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text"
+                                        :placeholder="seccionActual === 'hotels' ? translations.searchHotel : translations.searchHouse"
+                                        v-model="search.management.value" />
+                                </div>
+
+                                <button class="ogn-btn ogn-btn--solid"
+                                    v-if="seccionActual === 'housing'"
+                                    @click="createHouse()">
+                                    <i class="fas fa-plus"></i>
+                                    <span>{{translations.createHouse}}</span>
+                                </button>
+                                <button class="ogn-btn ogn-btn--solid"
+                                    v-if="seccionActual === 'hotels'"
+                                    @click="openHotelCreation()">
+                                    <i class="fas fa-plus"></i>
+                                    <span>{{translations.createHotel}}</span>
+                                </button>
+                            </template>
+
+                            <template v-else>
+                                <button class="ogn-btn ogn-btn--ghost"
+                                    @click="hotels.view === 'room_creation' ? cancelRoomCreation() : cancelHotelCreation()">
+                                    <i class="fas fa-times"></i>
+                                    <span>{{translations.cancel}}</span>
+                                </button>
+                                <button class="ogn-btn ogn-btn--solid"
+                                    @click="hotels.view === 'room_creation' ? confirmCreateRoom(hotels.selected) : saveHotel()">
+                                    <i class="fas fa-check"></i>
+                                    <span>{{ hotels.editing ? translations.update : translations.save }}</span>
+                                </button>
+                            </template>
+                        </div>
+                    </header>
+
+                    <div class="ogn-content">
+                <div class="scripts-grid-container"
+                    v-if="(hotels.view === 'list' || hotels.view === 'housing') && !hotels.creating">
+                    <div class="hotels-grid">
+                        <div class="hotel-card es-casa" v-for="house in paginatedHouses" :key="house.id" v-if="house">
+                            <div class="icon-section">
+                                <div class="indicator">
+                                    <div class="icon-container">
+                                        <i class="fas fa-home icon"></i>
+                                    </div>
+                                    <span>{{translations.house}}</span>
+                                </div>
+                            </div>
+
+                            <div class="label-section">
+                                <p class="label-text">{{house.name}}</p>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card-stats">
+                                    <div class="stat-item">
+                                        <i class="fas fa-map-marker-alt stat-icon"></i>
+                                        <span class="stat-label">{{translations.location}}</span>
+                                        <span class="stat-value">{{house.data.location}}</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-user stat-icon"></i>
+                                        <span class="stat-label">{{translations.owner}}</span>
+                                        <span class="stat-value btn-sound" 
+                                              v-if="house.citizenid" 
+                                              @click.stop="copyClipboard(house.citizenid); sendNotification('success', translations.copied || 'Copiado', house.citizenid)" 
+                                              style="cursor: pointer; text-decoration: underline;" 
+                                              title="Copiar CID">
+                                            {{house.citizenid}} <i class="fas fa-copy" style="font-size: calc(1vh / var(--ogn-escala, 1)); margin-left: calc(0.3vh / var(--ogn-escala, 1)); opacity: 0.7;"></i>
+                                        </span>
+                                        <span class="stat-value" v-else>{{translations.noOwner}}</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="stat-icon" :class="paymentIcon(house.data.uso === 'banda' ? 'negro' : house.data.uso === 'crew' ? 'ogn' : house.data.paymentMethod)"></i>
+                                        <span class="stat-label">{{translations.price}}</span>
+                                        <span class="stat-value price">{{precioCasa(house)}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions">
+                                    <button class="action-btn view" @click.stop="markPosition(house.id, $event)"
+                                        title="Marcar en el mapa">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </button>
+                                    <button class="action-btn edit" @click.stop="createHouse(house)" title="Editar la casa">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button class="action-btn delete" @click.stop="deleteHouse(house.id)"
+                                        title="Borrar la casa">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Sin casas, o sin ninguna que case con lo buscado. Solo lo
+                          enseña la pegatina (Origen); nace oculto. -->
+                    <div class="pg-vacio" v-if="!paginatedHouses.length" style="display: none">
+                        <span class="pg-vacio__ico"><i class="fas fa-home"></i></span>
+                        <span class="pg-vacio__t">{{ search.management.value ? 'Ninguna casa con ese nombre' : 'Todavía no hay casas' }}</span>
+                        <span class="pg-vacio__d">{{ search.management.value ? 'Prueba con otro nombre, calle o propietario.' : 'Crea la primera con el botón de arriba.' }}</span>
+                    </div>
+                </div>
+
+                <!-- HOTEL VIEW -->
+                <div class="scripts-grid-container" v-if="hotels.view === 'hotels' && !hotels.creating">
+                    <div class="hotels-grid">
+                        <div class="hotel-card es-hotel" v-for="hotel in paginatedHotels" :key="hotel.id" v-if="hotel">
+                            <div class="icon-section">
+                                <div class="indicator">
+                                    <div class="icon-container">
+                                        <i class="fas fa-hotel icon"></i>
+                                    </div>
+                                    <span>{{translations.hotel}}</span>
+                                </div>
+                            </div>
+
+                            <div class="label-section">
+                                <p class="label-text">{{hotel.name}}</p>
+                            </div>
+
+                            <div class="card-content">
+                                <div class="card-stats">
+                                    <div class="stat-item">
+                                        <i class="fas fa-door-open stat-icon"></i>
+                                        <span class="stat-label">{{translations.total}}</span>
+                                        <span class="stat-value">{{hotel.stats.total}}</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-check-circle stat-icon"></i>
+                                        <span class="stat-label">{{translations.available}}</span>
+                                        <span class="stat-value">{{hotel.stats.available}}</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="fas fa-user-clock stat-icon"></i>
+                                        <span class="stat-label">{{translations.rented}}</span>
+                                        <span class="stat-value">{{hotel.stats.rented}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="card-actions">
+                                    <!--  Abre la ficha del hotel, que es donde está el formulario
+                                          de la habitación: llamar aquí a
+                                          createRoomForExistingHotel con el formulario vacío
+                                          solo daba «El número de habitación es obligatorio». -->
+                                    <button class="action-btn add" @click.stop="editHotel(hotel.id)"
+                                        title="Añadir habitación">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                    <button class="action-btn edit" @click.stop="editHotel(hotel.id)"
+                                        title="Editar el hotel">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button class="action-btn delete" @click.stop="deleteHotel(hotel.id)"
+                                        title="Borrar el hotel">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pg-vacio" v-if="!paginatedHotels.length" style="display: none">
+                        <span class="pg-vacio__ico"><i class="fas fa-hotel"></i></span>
+                        <span class="pg-vacio__t">{{ search.management.value ? 'Ningún hotel con ese nombre' : 'Todavía no hay hoteles' }}</span>
+                        <span class="pg-vacio__d">{{ search.management.value ? 'Prueba con otro nombre.' : 'Crea el primero con el botón de arriba.' }}</span>
+                    </div>
+                </div>
+
+                <!-- MAP VIEW -->
+                <div class="map-view-container" v-show="hotels.view === 'map'">
+                    <div id="housing-admin-map"></div>
+                    <div class="map-selected-house-panel" v-if="selectedMapHouse">
+                        <button class="btn-close-panel-x" @click="selectedMapHouse = null" style="position: absolute; top: calc(1.2vh / var(--ogn-escala, 1)); right: calc(1.2vh / var(--ogn-escala, 1));">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="panel-compact-header">
+                            <div class="hotel-name">{{selectedMapHouse.name}}</div>
+                            <div class="room-number-compact" style="display: flex; align-items: center; gap: calc(1vh / var(--ogn-escala, 1)); margin-top: calc(0.5vh / var(--ogn-escala, 1));">
+                                <i class="fas fa-home"></i>
+                                <span>#{{selectedMapHouse.data.number}}</span>
+                            </div>
+                        </div>
+                        <div class="panel-compact-body" style="padding: calc(1.5vh / var(--ogn-escala, 1)); display: flex; flex-direction: column; gap: calc(1.5vh / var(--ogn-escala, 1)); flex: 1; overflow-y: auto;">
+                            <div class="details-card" style="background: #dcdde0; border: 1.5px solid #000; border-radius: 12px; padding: calc(1.5vh / var(--ogn-escala, 1)); display: flex; flex-direction: column; gap: calc(1vh / var(--ogn-escala, 1));">
+                                <div class="detail-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid rgba(11, 11, 13, 0.25); padding-bottom: calc(0.8vh / var(--ogn-escala, 1));">
+                                    <span class="detail-label">{{translations.PropertyPrice || 'Precio'}}</span>
+                                    <span class="detail-value">{{precioCasa(selectedMapHouse)}}</span>
+                                </div>
+                                <div class="detail-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid rgba(11, 11, 13, 0.25); padding-bottom: calc(0.8vh / var(--ogn-escala, 1));">
+                                    <span class="detail-label">{{translations.houseType || 'Tipo'}}</span>
+                                    <span class="detail-value">{{selectedMapHouse.data.type}}</span>
+                                </div>
+                                <div class="detail-item" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid rgba(11, 11, 13, 0.25); padding-bottom: calc(0.8vh / var(--ogn-escala, 1));">
+                                    <span class="detail-label">{{translations.location || 'Ubicación'}}</span>
+                                    <span class="detail-value">{{selectedMapHouse.data.location}}</span>
+                                </div>
+                                <div class="detail-item" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: calc(0.2vh / var(--ogn-escala, 1));">
+                                    <span class="detail-label">{{translations.owner || 'Propietario'}}</span>
+                                    <div style="display: flex; align-items: center; gap: calc(0.8vh / var(--ogn-escala, 1));">
+                                        <span class="detail-value btn-sound" 
+                                              v-if="selectedMapHouse.citizenid" 
+                                              @click="copyClipboard(selectedMapHouse.citizenid); sendNotification('success', translations.copied || 'Copiado', selectedMapHouse.citizenid)" 
+                                              style="cursor: pointer; text-decoration: underline;" 
+                                              title="Copiar CID">
+                                            {{selectedMapHouse.citizenid}} <i class="fas fa-copy" style="font-size: calc(1.1vh / var(--ogn-escala, 1)); margin-left: calc(0.3vh / var(--ogn-escala, 1)); opacity: 0.7;"></i>
+                                        </span>
+                                        <span class="detail-value" v-else>
+                                            {{translations.none || 'Ninguno'}}
+                                        </span>
+                                        <button class="btn-action-icon" @click="openChangeOwnerModal(selectedMapHouse)" title="Cambiar propietario">
+                                            <i class="fas fa-user-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- KEY HOLDERS CARD -->
+                            <div class="map-keys-card" style="background: #dcdde0; border: 1.5px solid #000; border-radius: 12px; padding: calc(1.2vh / var(--ogn-escala, 1)); display: flex; flex-direction: column; gap: calc(1vh / var(--ogn-escala, 1)); flex: 1; min-height: calc(15vh / var(--ogn-escala, 1));">
+                                <div class="keys-card-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1.5px solid rgba(11, 11, 13, 0.25); padding-bottom: calc(0.8vh / var(--ogn-escala, 1));">
+                                    <div style="font-family: var(--ogn-rotulo); font-size: calc(1.2vh / var(--ogn-escala, 1)); color: var(--ogn-t1); display: flex; align-items: center; gap: calc(0.6vh / var(--ogn-escala, 1)); text-transform: uppercase;">
+                                        <i class="fas fa-key" style="color: #0b0b0d; font-size: calc(1.2vh / var(--ogn-escala, 1));"></i>
+                                        <span>{{translations.keysManagement || 'Llaves de la casa'}}<template v-if="selectedMapHouse.llaves && selectedMapHouse.llaves.texto"> · {{ selectedMapHouse.llaves.propietario }} · {{ selectedMapHouse.llaves.texto }}</template></span>
+                                    </div>
+                                    <button class="btn-action-icon" @click="openAddMapKeyModal(selectedMapHouse)" title="Dar llave">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div class="keys-list" style="overflow-y: auto; display: flex; flex-direction: column; gap: calc(0.6vh / var(--ogn-escala, 1)); max-height: calc(18vh / var(--ogn-escala, 1)); padding-right: calc(0.3vh / var(--ogn-escala, 1));">
+                                    <template v-if="selectedMapHouse.holders && Object.keys(selectedMapHouse.holders).length > 0">
+                                        <div class="key-holder-item" v-for="(holder, citizenid) in selectedMapHouse.holders" :key="citizenid"
+                                             style="display: flex; align-items: center; justify-content: space-between; background: #e6e7ea; border: 1.5px solid #000; padding: calc(0.6vh / var(--ogn-escala, 1)) calc(0.8vh / var(--ogn-escala, 1)); border-radius: 10px;">
+                                            <div style="display: flex; align-items: center; gap: calc(0.8vh / var(--ogn-escala, 1)); overflow: hidden;">
+                                                <i class="fas fa-user-circle" style="color: #0b0b0d; font-size: calc(1.4vh / var(--ogn-escala, 1)); flex-shrink: 0;"></i>
+                                                <div style="display: flex; flex-direction: column; overflow: hidden;">
+                                                    <span style="font-size: calc(1.1vh / var(--ogn-escala, 1)); color: var(--ogn-t1); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                        {{holder.name || citizenid}}
+                                                    </span>
+                                                    <span style="font-size: calc(0.95vh / var(--ogn-escala, 1)); color: var(--ogn-t3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                        {{citizenid}}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: calc(0.6vh / var(--ogn-escala, 1)); flex-shrink: 0;">
+                                                <span v-if="holder.owner" class="badge-owner">
+                                                    Dueño
+                                                </span>
+                                                <button class="btn-action-icon delete" v-if="!holder.owner" @click="deleteMapHouseKey(selectedMapHouse.id, citizenid)" title="Quitar llave">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </template>
+                                    <div v-else style="font-size: calc(1vh / var(--ogn-escala, 1)); color: var(--ogn-t3); text-align: center; padding: calc(1.5vh / var(--ogn-escala, 1)) 0; font-family: var(--ogn-texto); text-transform: uppercase;">
+                                        Sin llaves asignadas
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="actions-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1vh / var(--ogn-escala, 1)); margin-top: auto;">
+                                <button class="action-btn view" @click="markPosition(selectedMapHouse.id, $event)">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>{{translations.markPositionBtn || 'Marcar'}}</span>
+                                </button>
+                                <button class="action-btn edit" @click="createHouse(selectedMapHouse)">
+                                    <i class="fas fa-edit"></i>
+                                    <span>{{translations.edit || 'Editar'}}</span>
+                                </button>
+                                <button class="action-btn delete" @click="deleteHouse(selectedMapHouse.id)">
+                                    <i class="fas fa-trash"></i>
+                                    <span>{{translations.delete || 'Borrar'}}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROOM CREATION VIEW -->
+                <div class="hotel-creation-content" v-if="hotels.creating && hotels.view === 'room_creation'">
+                    <div class="creation-body">
+                        <div class="form-section">
+                            <h3>{{translations.roomInformation}}</h3>
+                            <div class="form-group">
+                                <label>{{translations.roomNumberLabel}}</label>
+                                <input type="text" class="form-control" v-model="hotels.roomCreationData.room_number"
+                                    placeholder="101">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{translations.doorCoords}}</label>
+                                <div class="coords-placement" v-if="!tienePuerta(hotels.roomCreationData)">
+                                    <button class="btn-placement" @click="setRoomDoorCoords()">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>{{translations.placeDoorWithLaser}}</span>
+                                    </button>
+                                </div>
+                                <div class="coords-display" v-else>
+                                    <div class="coords-values">
+                                        <span class="coord-label">X:</span>
+                                        <span
+                                            class="coord-value">{{hotels.roomCreationData.door_coords.x.toFixed(2)}}</span>
+                                        <span class="coord-label">Y:</span>
+                                        <span
+                                            class="coord-value">{{hotels.roomCreationData.door_coords.y.toFixed(2)}}</span>
+                                        <span class="coord-label">Z:</span>
+                                        <span
+                                            class="coord-value">{{hotels.roomCreationData.door_coords.z.toFixed(2)}}</span>
+                                        <span class="coord-label">H:</span>
+                                        <span
+                                            class="coord-value">{{hotels.roomCreationData.door_coords.w.toFixed(2)}}</span>
+                                    </div>
+                                    <button class="btn-action" @click="setRoomDoorCoords()">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                    <button class="btn-action" @click="quitarPuerta()">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <p class="field-hint">{{translations.doorHint}}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{translations.interiorIpl}}</label>
+                                <ogn-select
+                                    v-model="hotels.roomCreationData.interior_ipl"
+                                    :options="opcionesInterior"
+                                    :placeholder="translations.selectInterior"
+                                ></ogn-select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOTEL CREATION/EDIT VIEW -->
+                <div class="hotel-creation-content" v-if="hotels.creating && hotels.view !== 'room_creation'">
+                    <div class="creation-body">
+                        <div class="form-section">
+                            <h3>{{translations.basicInformation}}</h3>
+                            <div class="form-group">
+                                <label>{{translations.hotelName}}</label>
+                                <input type="text" class="form-control" v-model="hotels.creationData.name"
+                                    placeholder="Grand Hotel">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{translations.blipLocation}}</label>
+                                <div class="coords-placement" v-if="hotels.creationData.coords.x === 0">
+                                    <button class="btn-placement" @click="setHotelCoords()">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>{{translations.placeLocationWithLaser}}</span>
+                                    </button>
+                                </div>
+                                <div class="coords-display" v-else>
+                                    <div class="coords-values">
+                                        <span class="coord-label">X:</span>
+                                        <span class="coord-value">{{hotels.creationData.coords.x.toFixed(2)}}</span>
+                                        <span class="coord-label">Y:</span>
+                                        <span class="coord-value">{{hotels.creationData.coords.y.toFixed(2)}}</span>
+                                        <span class="coord-label">Z:</span>
+                                        <span class="coord-value">{{hotels.creationData.coords.z.toFixed(2)}}</span>
+                                    </div>
+                                    <button class="btn-action" @click="setHotelCoords()">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- El mostrador: un solo sitio desde el que ver
+                                 todas las habitaciones y alquilar. Es
+                                 opcional, y dejarlo sin poner no quita nada:
+                                 el hotel se sigue alquilando en la puerta de
+                                 cada habitación. -->
+                            <div class="form-group">
+                                <label>{{translations.receptionPoint}}</label>
+                                <div class="coords-placement" v-if="!tieneRecepcion(hotels.creationData)">
+                                    <button class="btn-placement" @click="setReceptionCoords()">
+                                        <i class="fas fa-concierge-bell"></i>
+                                        <span>{{translations.placeReceptionWithLaser}}</span>
+                                    </button>
+                                </div>
+                                <div class="coords-display" v-else>
+                                    <div class="coords-values">
+                                        <span class="coord-label">X:</span>
+                                        <span class="coord-value">{{hotels.creationData.reception_coords.x.toFixed(2)}}</span>
+                                        <span class="coord-label">Y:</span>
+                                        <span class="coord-value">{{hotels.creationData.reception_coords.y.toFixed(2)}}</span>
+                                        <span class="coord-label">Z:</span>
+                                        <span class="coord-value">{{hotels.creationData.reception_coords.z.toFixed(2)}}</span>
+                                    </div>
+                                    <button class="btn-action" @click="setReceptionCoords()">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                    <button class="btn-action" @click="quitarRecepcion()">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                                <p class="field-hint">{{translations.receptionHint}}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>{{translations.blipConfiguration}}</h3>
+                            <div class="form-group">
+                                <label class="checkbox-label" :class="{ 'is-on': hotels.creationData.blip.enabled }">
+                                    <input type="checkbox" v-model="hotels.creationData.blip.enabled">
+                                    <span>{{translations.activateBlip}}</span>
+                                </label>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>{{translations.blipSprite}}</label>
+                                    <input type="number" class="form-control"
+                                        v-model.number="hotels.creationData.blip.sprite">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{translations.blipColor}}</label>
+                                    <input type="number" class="form-control"
+                                        v-model.number="hotels.creationData.blip.color">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>{{translations.rentalOptionsLabel}}</h3>
+                            <div class="rental-options">
+                                <div class="rental-option" v-for="(option, index) in hotels.creationData.rental_options"
+                                    :key="index">
+                                    <input type="text" class="form-control" v-model="option.type"
+                                        :placeholder="translations.type">
+                                    <input type="number" class="form-control" v-model.number="option.price"
+                                        :placeholder="translations.price">
+                                    <span class="duration">{{ duracionEnDias(option.duration) }}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label" :class="{ 'is-on': hotels.creationData.auto_renew_available }">
+                                    <input type="checkbox" v-model="hotels.creationData.auto_renew_available">
+                                    <span>{{translations.allowAutoRenewal}}</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>{{translations.rooms}} <span class="badge">{{hotels.editing ?
+                                    (hotels.creationData.existingRooms ? hotels.creationData.existingRooms.length : 0) :
+                                    hotels.creationData.rooms.length}}</span></h3>
+
+                            <div class="add-room-form">
+                                <div class="form-group">
+                                    <label>{{translations.roomNumberLabel}}</label>
+                                    <input type="text" class="form-control"
+                                        v-model="hotels.roomCreationData.room_number" placeholder="101">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{translations.doorCoordsLabel}}</label>
+                                    <div class="coords-placement" v-if="!tienePuerta(hotels.roomCreationData)">
+                                        <button class="btn-placement" @click="setRoomDoorCoords()">
+                                            <i class="fas fa-door-open"></i>
+                                            <span>{{translations.placeDoorWithLaser}}</span>
+                                        </button>
+                                    </div>
+                                    <div class="coords-display" v-else>
+                                        <div class="coords-values">
+                                            <span class="coord-label">X:</span>
+                                            <span
+                                                class="coord-value">{{hotels.roomCreationData.door_coords.x.toFixed(2)}}</span>
+                                            <span class="coord-label">Y:</span>
+                                            <span
+                                                class="coord-value">{{hotels.roomCreationData.door_coords.y.toFixed(2)}}</span>
+                                            <span class="coord-label">Z:</span>
+                                            <span
+                                                class="coord-value">{{hotels.roomCreationData.door_coords.z.toFixed(2)}}</span>
+                                            <span class="coord-label">H:</span>
+                                            <span
+                                                class="coord-value">{{hotels.roomCreationData.door_coords.w.toFixed(2)}}</span>
+                                        </div>
+                                        <button class="btn-action" @click="setRoomDoorCoords()">
+                                            <i class="fas fa-redo"></i>
+                                        </button>
+                                        <button class="btn-action" @click="quitarPuerta()">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                    <p class="field-hint">{{translations.doorHint}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{translations.interiorIpl}}</label>
+                                    <ogn-select
+                                        v-model="hotels.roomCreationData.interior_ipl"
+                                        :options="opcionesInterior"
+                                        :placeholder="translations.selectInterior"
+                                    ></ogn-select>
+                                </div>
+                                <div class="form-group">
+                                    <label>{{translations.stashSlots}}</label>
+                                    <input type="number" class="form-control"
+                                        v-model.number="hotels.roomCreationData.stash_data.slots" placeholder="50">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{translations.stashWeight}}</label>
+                                    <input type="number" class="form-control"
+                                        v-model.number="hotels.roomCreationData.stash_data.weight" placeholder="100000">
+                                </div>
+                                <button v-if="!hotels.editing" class="btn-confirm w-100" @click="addRoomToHotel()">
+                                    <i class="fas fa-plus"></i> {{translations.addRoom}}
+                                </button>
+                                <button v-else class="btn-confirm w-100"
+                                    @click="createRoomForExistingHotel(hotels.creationData.id)">
+                                    <i class="fas fa-plus"></i> {{translations.createRoom}}
+                                </button>
+                            </div>
+
+                            <div class="rooms-preview" v-if="!hotels.editing && hotels.creationData.rooms.length > 0">
+                                <div class="room-preview" v-for="(room, index) in hotels.creationData.rooms"
+                                    :key="index">
+                                    <span class="room-number">{{translations.room}} {{room.room_number}}</span>
+                                    <span class="room-ipl">{{hotels.ipls[room.interior_ipl] ?
+                                        hotels.ipls[room.interior_ipl].label : room.interior_ipl}}</span>
+                                    <span class="room-nodoor" v-if="!tienePuerta(room)">{{translations.withoutDoor}}</span>
+                                    <button class="btn-action" @click="removeRoomFromHotel(index)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="rooms-preview"
+                                v-if="hotels.editing && hotels.creationData.existingRooms && hotels.creationData.existingRooms.length > 0">
+                                <div class="room-preview" v-for="room in hotels.creationData.existingRooms"
+                                    :key="room.id">
+                                    <span class="room-number">{{translations.room}} {{room.room_number}}</span>
+                                    <span class="room-ipl">{{hotels.ipls[room.interior_ipl] ?
+                                        hotels.ipls[room.interior_ipl].label : room.interior_ipl}}</span>
+                                    <span class="room-nodoor" v-if="!tienePuerta(room)">{{translations.withoutDoor}}</span>
+                                    <span class="room-status" :class="room.status">{{room.status === 'available' ?
+                                        translations.available : translations.rented}}</span>
+                                    <div class="room-actions">
+                                        <button class="btn-action" @click="adminEvictRoom(room.id)"
+                                            v-if="room.status === 'rented'" :title="translations.evictRoomTitle">
+                                            <i class="fas fa-user-slash"></i>
+                                        </button>
+                                        <button class="btn-action" @click="deleteHotelRoom(room.id)"
+                                            v-if="room.status === 'available'" :title="translations.deleteRoomTitle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    </div><!-- /.ogn-content -->
+
+                    <!--
+                        La barra de cifras del pie. Fichas sueltas con su
+                        caja, no columnas de una tabla, y lo que las separa es
+                        el hueco.
+
+                        El paginador es la última: es lo único de aquí que se
+                        puede pulsar, y antes flotaba solo en mitad del negro
+                        sin nada que lo sujetara.
+                    -->
+                    <div class="ogn-bar" v-if="!hotels.creating && seccionActual !== 'map'">
+                        <div class="ogn-bar__cell" v-for="c in cifrasDelPie" :key="c.k">
+                            <span class="ogn-bar__label">{{ c.k }}</span>
+                            <span class="ogn-bar__value">{{ c.v }}</span>
+                        </div>
+
+                        <div class="ogn-bar__cell hs-pager" v-if="seccionActual === 'housing'">
+                            <span class="ogn-bar__label">{{translations.page || 'Página'}}</span>
+                            <div class="hs-pager__row">
+                                <button class="hs-pager__btn" :class="{ 'is-mudo': currentPage <= 1 }"
+                                    @click="if (currentPage > 1) currentPage--">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <span class="ogn-bar__value">{{Math.min(currentPage, totalPages || 1)}} / {{totalPages || 1}}</span>
+                                <button class="hs-pager__btn" :class="{ 'is-mudo': currentPage >= totalPages }"
+                                    @click="if (currentPage < totalPages) currentPage++">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.ogn-frame -->
+            </section>
+        </transition>
+        <div class="blackscreen" v-if="menu.management"></div>
+
+        <transition name="fade_bottom">
+            <div class="controls-container" v-if="controlsHelp.visible">
+                <div class="title" v-if="controlsHelp.title">
+                    <span>{{controlsHelp.title}}</span>
+                </div>
+                <div class="controls">
+                    <div class="control" v-for="item in controlsHelp.keysData">
+                        <div class="key" v-if="item.key == 'fizquierda'"><i class="fa-solid fa-left-long"></i></div>
+                        <div class="key" v-else-if="item.key == 'fderecha'"><i class="fa-solid fa-right-long"></i></div>
+                        <div class="key" v-else-if="item.key == 'farriba'"><i class="fa-solid fa-up-long"></i></div>
+                        <div class="key" v-else-if="item.key == 'fabajo'"><i class="fa-solid fa-down-long"></i></div>
+                        <div class="key" v-else-if="item.key == 'borrar'"><i class="fa-solid fa-delete-left"></i></div>
+                        <div class="key" v-else-if="item.key == 'enter'"><i class="fa-solid fa-right-to-bracket"></i>
+                        </div>
+                        <div class="mouse" v-else-if="item.key == 'wheel'"><img src="./img/mouse.png"></div>
+                        <div class="mouse" v-else-if="item.key == 'rclick'"><img src="./img/right-click.png"></div>
+                        <div class="mouse" v-else-if="item.key == 'lclick'"><img src="./img/left-click.png"></div>
+                        <div class="key" v-else>{{item.key}}</div>
+                        <div class="desc">{{item.text}}</div>
+                    </div>
+                </div>
+            </div>
+        </transition>
+
+        <!--
+            ══ MIS CASAS ═══════════════════════════════════════════════════
+            Menú PEQUEÑO (skill origen-dialogo, css/chico.css): columna y riel
+            del mismo alto, a media altura a la derecha. Antes era una lista
+            crema sin riel abajo a la derecha. Sin recogedor de clics: se
+            cierra con Escape, como siempre (y sin casas se va sola a los 3 s).
+        -->
+        <transition name="oc" appear>
+            <div class="oc mb-zona" v-if="menu.houses.visible">
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-house"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">Viviendas</span>
+                                <h2 class="oc-cab__t" data-brocha="Hogar, dulce hogar">Mis casas</h2>
+                                <span class="oc-cab__sub" v-if="numeroDeMisCasas">{{ numeroDeMisCasas }} {{ numeroDeMisCasas === 1 ? 'propiedad' : 'propiedades' }}</span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <div class="oc-lista" v-if="numeroDeMisCasas">
+                                <div class="oc-fila" v-for="house in menu.houses.list" :key="house.id">
+                                    <span class="oc-fila__ico"><i class="fas fa-house"></i></span>
+                                    <span class="oc-fila__txt">
+                                        <span class="oc-fila__n">{{ house.name }}</span>
+                                        <span class="oc-fila__m" v-if="house.location">{{ house.location }}</span>
+                                        <!-- Sin la mejora de domótica no se gestiona a distancia. -->
+                                        <span class="oc-fila__tag" v-if="house.locked">Sin domótica</span>
+                                    </span>
+                                    <span class="oc-fila__acc">
+                                        <button type="button" class="oc-mini" title="Marcar en el mapa" @click="markPosition(house.id, $event)">
+                                            <i class="fas fa-location-dot"></i>
+                                        </button>
+                                        <button type="button" class="oc-mini" title="Gestionar la casa" v-if="!house.locked" @click="loadHouse(house.id, $event)">
+                                            <i class="fas fa-house-chimney-window"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="oc-vacio" v-else>{{ translations.no_houses || 'No tienes ninguna casa' }}</p>
+                        </div>
+
+                        <footer class="oc-pie" v-if="numeroDeMisCasas">
+                            <div class="oc-teclas">
+                                <span class="oc-tecla"><kbd><i class="fas fa-location-dot"></i></kbd> En el mapa</span>
+                                <span class="oc-tecla"><kbd><i class="fas fa-house-chimney-window"></i></kbd> Gestionar</span>
+                                <span class="oc-tecla"><kbd>Esc</kbd> Cerrar</span>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-house"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Viviendas</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!--
+            == EL MOSTRADOR ===============================================
+            La recepción del hotel: el jugador pulsa E en el mostrador y ve
+            de golpe todas las habitaciones con su estado, en vez de
+            recorrer el pasillo probando puertas.
+
+            Es un menú lateral de los del servidor: riel de iconos al canto
+            derecho y columna a su izquierda, las dos despegadas del borde y
+            sin velo, con el juego viéndose detrás. La columna va primero en
+            el DOM y el riel después, para que el globito del riel caiga por
+            encima de ella.
+
+            Ver .claude/skills/origen-riel/SKILL.md
+
+            El riel no cambia de pantalla: filtra la lista. Pinchar una
+            habitación cambia lo que hay en la columna y el riel se queda
+            quieto, que es de lo que va esto.
+        -->
+        <transition name="rp" appear>
+            <div class="rp" v-if="hotels.reception.abierto && hotels.reception.hotel">
+                <!-- Nada de velo: este menú se abre de pie en el vestíbulo y
+                     las dos piezas ya son casi opacas. Lo que queda es un
+                     recogedor de clics invisible: pinchar fuera cierra. -->
+                <div class="rp-velo" @click.self="cerrarRecepcion()"></div>
+
+                <div class="rp-col">
+                    <header class="rp-cab">
+                        <span class="rp-badge"><i class="fas fa-bell-concierge"></i></span>
+                        <!--  `data-brocha`, `peg-fuera` y `peg-solo` son de la pegatina
+                              (css/pegatina.css, solo Origen): sin esa hoja el atributo no
+                              pinta nada, la clase no hace nada y lo `peg-solo` nace oculto. -->
+                        <h1 class="rp-cab__t" style="flex: 1; min-width: 0;" :data-brocha="hotels.reception.hotel.name">{{translations.reception}}</h1>
+                        <div class="rp-cab__meta">
+                            <span class="rp-cab__nombre peg-fuera">{{hotels.reception.hotel.name}}</span>
+                            <span class="rp-cab__sub">{{cifrasDeLaRecepcion.total}} {{translations.rooms}} ·
+                                {{cifrasDeLaRecepcion.libres}} {{translations.freeRooms}}</span>
+                        </div>
+                    </header>
+
+                    <!-- La lista -->
+                    <div class="rp-cuerpo" v-if="!hotels.reception.room">
+                        <div class="rp-datos peg-solo" style="display: none">
+                            <div class="rp-dato"><b>{{cifrasDeLaRecepcion.total}}</b><i>{{translations.rooms}}</i></div>
+                            <div class="rp-dato"><b>{{cifrasDeLaRecepcion.libres}}</b><i>{{translations.freeRooms}}</i></div>
+                            <div class="rp-dato"><b>{{cifrasDeLaRecepcion.total - cifrasDeLaRecepcion.libres}}</b><i>{{translations.occupiedRooms}}</i></div>
+                        </div>
+                        <span class="rp-rotulo peg-solo" style="display: none" :data-cuenta="habitacionesDeRecepcion.length">{{translations.rooms}}</span>
+
+                        <p class="rp-vacio" v-if="!habitacionesDeRecepcion.length">{{translations.noRoomsInHotel}}</p>
+
+                        <div class="rp-lista" v-else>
+                            <div class="rp-fila" v-for="room in habitacionesDeRecepcion" :key="room.id"
+                                @click="abrirHabitacionDeRecepcion(room)">
+                                <span class="rp-fila__ico">
+                                    <i class="fas" :class="iconoDeEstado(room)"></i>
+                                </span>
+                                <div class="rp-fila__txt">
+                                    <span class="rp-fila__n">{{translations.room}} {{room.room_number}}</span>
+                                    <span class="rp-fila__m">{{textoDeEstado(room)}}</span>
+                                </div>
+                                <span class="rp-tag" :class="claseDeEstado(room)">{{etiquetaDeEstado(room)}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- La ficha de una habitación -->
+                    <div class="rp-cuerpo" v-else>
+                        <button class="rp-volver" @click="volverALaLista()">
+                            <i class="fas fa-arrow-left"></i>
+                            <span>{{translations.backToList}}</span>
+                        </button>
+
+                        <!-- Tres datos cortos, en columnas: en una frase
+                             seguida no se leen de un vistazo. -->
+                        <div class="rp-datos">
+                            <div class="rp-dato">
+                                <b>{{hotels.reception.room.room_number}}</b>
+                                <i>{{translations.room}}</i>
+                            </div>
+                            <div class="rp-dato">
+                                <b :class="claseDeEstado(hotels.reception.room)">{{etiquetaDeEstado(hotels.reception.room)}}</b>
+                                <i>{{translations.status}}</i>
+                            </div>
+                            <div class="rp-dato">
+                                <b>{{textoDeCaducidad(hotels.reception.room)}}</b>
+                                <i>{{translations.expires}}</i>
+                            </div>
+                        </div>
+
+                        <!-- Libre: se elige plazo y se confirma abajo -->
+                        <template v-if="hotels.reception.room.status === 'available'">
+                            <span class="rp-rotulo">{{translations.rentalOptions}}</span>
+
+                            <div class="rp-lista">
+                                <div class="rp-fila" v-for="option in hotels.reception.hotel.rental_options"
+                                    :key="option.type" :class="{ on: hotels.reception.opcion === option }"
+                                    @click="elegirPlazoRecepcion(option)">
+                                    <div class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{nombreDelPlazo(option.type)}}</span>
+                                        <span class="rp-fila__m">{{diasDelPlazo(option)}} {{translations.days}}</span>
+                                    </div>
+                                    <span class="rp-precio">{{precio(option.price)}}</span>
+                                </div>
+                            </div>
+
+                            <label class="rp-check" :class="{ on: hotels.autoRenewSelected }"
+                                v-if="hotels.reception.hotel.auto_renew_available">
+                                <input type="checkbox" v-model="hotels.autoRenewSelected">
+                                <span class="rp-check__txt">{{translations.enableAutoRenewal}}</span>
+                                <i class="fas fa-check rp-check__ok"></i>
+                            </label>
+                        </template>
+
+                        <!-- Tuya: lo que se puede hacer con ella -->
+                        <template v-else-if="hotels.reception.room.mine">
+                            <span class="rp-rotulo">{{translations.rentalDetails}}</span>
+                            <div class="rp-datos">
+                                <div class="rp-dato">
+                                    <b>{{nombreDelPlazo(hotels.reception.room.rental_type)}}</b>
+                                    <i>{{translations.rentalType}}</i>
+                                </div>
+                                <div class="rp-dato">
+                                    <b>{{precio(hotels.reception.room.rental_price)}}</b>
+                                    <i>{{translations.price}}</i>
+                                </div>
+                                <div class="rp-dato">
+                                    <b>{{hotels.reception.room.auto_renew == 1 ? translations.on : translations.off}}</b>
+                                    <i>{{translations.autoRenewal}}</i>
+                                </div>
+                            </div>
+
+                            <span class="rp-rotulo">{{translations.doorAccess}}</span>
+                            <div class="rp-lista">
+                                <div class="rp-fila" @click="toggleDoorLock(hotels.reception.room.id)">
+                                    <span class="rp-fila__ico">
+                                        <i class="fas"
+                                            :class="hotels.reception.room.door_locked == 1 ? 'fa-lock' : 'fa-lock-open'"></i>
+                                    </span>
+                                    <div class="rp-fila__txt">
+                                        <span class="rp-fila__n">{{hotels.reception.room.door_locked == 1 ?
+                                            translations.closed : translations.open}}</span>
+                                        <span class="rp-fila__m">{{translations.doorAccess}}</span>
+                                    </div>
+                                </div>
+
+                                <label class="rp-check" :class="{ on: hotels.reception.room.auto_renew == 1 }">
+                                    <input type="checkbox" :checked="hotels.reception.room.auto_renew == 1"
+                                        @change="toggleAutoRenew(hotels.reception.room.id, $event)">
+                                    <span class="rp-check__txt">{{translations.autoRenewal}}</span>
+                                    <i class="fas fa-check rp-check__ok"></i>
+                                </label>
+                            </div>
+
+                            <div class="rp-acciones">
+                                <button class="rp-btn" @click="renewRoom(hotels.reception.room.id)">
+                                    <i class="fas fa-sync"></i>
+                                    <span>{{translations.renew}}</span>
+                                </button>
+                                <button class="rp-btn es-mala" @click="evictRoom(hotels.reception.room.id)">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>{{translations.abandon}}</span>
+                                </button>
+                            </div>
+                        </template>
+
+                        <!-- De otro: solo se entra si dejó la puerta abierta -->
+                        <template v-else>
+                            <span class="rp-rotulo">{{translations.doorAccess}}</span>
+                            <p class="rp-vacio" v-if="hotels.reception.room.door_locked == 1">
+                                {{translations.roomOccupied}}</p>
+                            <div class="rp-fila is-mudo" v-else>
+                                <span class="rp-fila__ico"><i class="fas fa-lock-open"></i></span>
+                                <div class="rp-fila__txt">
+                                    <span class="rp-fila__n">{{translations.open}}</span>
+                                    <span class="rp-fila__m">{{translations.roomOccupied}}</span>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- El pie solo existe cuando hay algo que confirmar. -->
+                    <footer class="rp-pie" v-if="hotels.reception.room">
+                        <!-- Abandonar se pregunta AQUÍ, no en el diálogo del
+                             panel de administración: aquel trae su velo sobre
+                             toda la pantalla y su propio lenguaje, y al lado
+                             del riel se lee como si hubiera saltado otro
+                             programa. El pie es donde vive lo decisivo. -->
+                        <template v-if="hotels.reception.confirmando === 'abandonar'">
+                            <p class="rp-aviso">{{translations.abandonRoomConfirm}}</p>
+                            <div class="rp-acciones">
+                                <button class="rp-btn" @click="cancelarConfirmacion()">
+                                    <span>{{translations.cancel}}</span>
+                                </button>
+                                <button class="rp-confirmar" @click="confirmarAbandono()">
+                                    {{translations.abandon}}
+                                </button>
+                            </div>
+                        </template>
+
+                        <template v-else>
+                            <button class="rp-confirmar" v-if="hotels.reception.room.status === 'available'"
+                                :disabled="!hotels.reception.opcion" @click="alquilarDesdeRecepcion()">
+                                {{textoDelBotonAlquilar}}
+                            </button>
+
+                            <button class="rp-confirmar"
+                                v-else-if="hotels.reception.room.mine || hotels.reception.room.door_locked == 0"
+                                @click="entrarDesdeRecepcion(hotels.reception.room.id)">
+                                {{translations.enter}}
+                            </button>
+                        </template>
+                    </footer>
+                </div>
+
+                <aside class="rp-riel">
+                    <!--  El icono del MENU que esta abierto --la cama de los hoteles--. Hasta el
+                          16/09/2026 aqui iba la marca «OGN»; el usuario la quito de
+                          los rieles: la placa dice ahora en que menu estas, no de
+                          quien es. -->
+                    <span class="rp-riel__marca-caja"><i class="fas fa-bed"></i></span>
+
+                    <div class="rp-riel__tabs">
+                        <div class="rp-riel__btn" v-for="s in seccionesDeRecepcion" :key="s.id"
+                            :class="{ on: s.id === hotels.reception.filtro }" @click="irDeRecepcion(s.id)">
+                            <i class="fas rp-riel__ico" :class="s.icono"></i>
+                            <span class="rp-riel__tip">{{s.nombre}} · {{s.n}}</span>
+                        </div>
+                    </div>
+
+                    <span class="rp-riel__marca">{{ nombreDeMarca }} Hoteles</span>
+                </aside>
+            </div>
+        </transition>
+
+        <!--
+            ══ LA HABITACIÓN, EN LA PUERTA ═════════════════════════════════
+            Menú PEQUEÑO (skill origen-dialogo, css/chico.css): columna y riel
+            del mismo alto, a media altura a la derecha. Hasta el 07/10 era un
+            riel a todo el alto con pestañas, y con tan poco dentro se veía
+            vacío. Sin pestañas: lo que toca (alquilar; o la puerta, el
+            contrato y lo que puedes hacer) va seguido en la columna.
+            Abandonar se pregunta en el pie, como antes. Escape, el clic fuera
+            y las acciones cierran por `cerrarHabitacion`.
+        -->
+        <transition name="oc" appear>
+            <div class="oc" v-if="hotels.view === 'room_detail' && hotels.selected && hotels.roomCreationData && !hotels.saliendoHabitacion">
+                <div class="oc-velo" @click="cerrarHabitacion"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-bed"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">{{hotels.selected.name}}</span>
+                                <h2 class="oc-cab__t" data-brocha="Lista para estrenar">{{translations.roomTitle}} {{hotels.roomCreationData.room_number}}</h2>
+                                <span class="oc-cab__sub">{{ subtituloDeLaHabitacion }}</span>
+                            </div>
+                            <span class="rp-tag" :class="soyElInquilino ? 'es-mia' : hotels.roomCreationData.status">
+                                {{ soyElInquilino ? translations.yours
+                                : hotels.roomCreationData.status === 'available' ? translations.available
+                                : translations.rented }}
+                            </span>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <!-- ── Alquilar (libre) ────────────────────────── -->
+                            <template v-if="tieneSeccionHabitacion('alquilar')">
+                                <span class="rp-rotulo">{{translations.rentalOptions}}</span>
+
+                                <!--  Se elige aquí y se confirma en el pie:
+                                      pinchar una fila no lanza el cobro. -->
+                                <div class="rp-lista">
+                                    <div class="rp-fila" v-for="option in hotels.selected.rental_options"
+                                        :key="option.type"
+                                        :class="{ on: hotels.opcionElegida && hotels.opcionElegida.type === option.type }"
+                                        @click="elegirPlazo(option)">
+                                        <span class="rp-fila__ico"><i class="fas fa-calendar-day"></i></span>
+                                        <span class="rp-fila__txt">
+                                            <span class="rp-fila__n">{{option.type === 'daily' ? translations.daily :
+                                                option.type === 'weekly' ? translations.weekly : option.type === 'monthly' ?
+                                                translations.monthly : option.type}}</span>
+                                            <span class="rp-fila__m">{{(option.duration / 86400).toFixed(0)}}
+                                                {{translations.days}}</span>
+                                        </span>
+                                        <span class="rp-precio">{{precio(option.price)}}</span>
+                                    </div>
+                                </div>
+
+                                <label class="rp-check" :class="{ on: hotels.autoRenewSelected }"
+                                    v-if="hotels.selected.auto_renew_available">
+                                    <input type="checkbox" v-model="hotels.autoRenewSelected">
+                                    <span class="rp-check__ok"><i class="fas fa-check"></i></span>
+                                    <span class="rp-check__txt">{{translations.enableAutoRenewal}}</span>
+                                </label>
+                            </template>
+
+                            <!-- ── La puerta: pestillo (si es tuya) y entrar ── -->
+                            <template v-if="tieneSeccionHabitacion('puerta')">
+                                <span class="rp-rotulo">{{translations.doorAccess}}</span>
+                                <div class="rp-acciones">
+                                    <button class="rp-btn" v-if="soyElInquilino"
+                                        @click="toggleDoorLock(hotels.roomCreationData.id)">
+                                        <i class="fas"
+                                            :class="hotels.roomCreationData.door_locked == 1 ? 'fa-lock' : 'fa-lock-open'"></i>
+                                        <span>{{hotels.roomCreationData.door_locked == 1 ? translations.closed :
+                                            translations.open}}</span>
+                                    </button>
+                                    <button class="rp-btn" :class="{ 'es-ancha': !soyElInquilino }"
+                                        @click="enterRoomFromPanel(hotels.roomCreationData.id)">
+                                        <i class="fas fa-door-open"></i>
+                                        <span>{{translations.enter}}</span>
+                                    </button>
+                                </div>
+                            </template>
+
+                            <!-- ── El contrato ─────────────────────────────── -->
+                            <template v-if="tieneSeccionHabitacion('alquiler')">
+                                <span class="rp-rotulo">{{translations.rentalDetails}}</span>
+                                <div class="rp-datos">
+                                    <div class="rp-dato">
+                                        <b>{{hotels.roomCreationData.rental_type === 'daily' ? translations.daily :
+                                            hotels.roomCreationData.rental_type === 'weekly' ? translations.weekly :
+                                            hotels.roomCreationData.rental_type === 'monthly' ? translations.monthly :
+                                            hotels.roomCreationData.rental_type}}</b>
+                                        <i>{{translations.rentalType}}</i>
+                                    </div>
+                                    <div class="rp-dato">
+                                        <b>{{precio(hotels.roomCreationData.rental_price)}}</b>
+                                        <i>{{translations.price}}</i>
+                                    </div>
+                                    <div class="rp-dato">
+                                        <b>{{formatDate(hotels.roomCreationData.expires_at)}}</b>
+                                        <i>{{translations.expires}}</i>
+                                    </div>
+                                </div>
+
+                                <label class="rp-check" :class="{ on: hotels.roomCreationData.auto_renew == 1 }">
+                                    <input type="checkbox" :checked="hotels.roomCreationData.auto_renew == 1"
+                                        @change="toggleAutoRenew(hotels.roomCreationData.id, $event)">
+                                    <span class="rp-check__ok"><i class="fas fa-check"></i></span>
+                                    <span class="rp-check__txt">{{translations.autoRenewal}}</span>
+                                </label>
+                            </template>
+
+                            <!-- ── Renovar y abandonar (Entrar ya va arriba) ── -->
+                            <template v-if="tieneSeccionHabitacion('acciones')">
+                                <span class="rp-rotulo">{{translations.roomActions}}</span>
+                                <div class="rp-acciones">
+                                    <button class="rp-btn" @click="renewRoom(hotels.roomCreationData.id)">
+                                        <i class="fas fa-sync"></i>
+                                        <span>{{translations.renew}}</span>
+                                    </button>
+                                    <button class="rp-btn es-mala"
+                                        @click="evictRoom(hotels.roomCreationData.id)">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span>{{translations.abandon}}</span>
+                                    </button>
+                                </div>
+                            </template>
+
+                            <!--  Ocupada por otro y con la puerta cerrada: lo único
+                                  que hay que decir. -->
+                            <p class="oc-vacio" v-if="!seccionesDeLaHabitacion.length">
+                                <i class="fas fa-lock"></i> {{translations.roomOccupied}}
+                            </p>
+                        </div>
+
+                        <!--  El pie solo cuando hay algo que confirmar. -->
+                        <footer class="oc-pie" v-if="tieneSeccionHabitacion('alquilar') || hotels.confirmandoHabitacion">
+                            <template v-if="hotels.confirmandoHabitacion === 'abandonar'">
+                                <p class="rp-aviso">{{translations.abandonRoomConfirm}}</p>
+                                <div class="rp-acciones">
+                                    <button class="rp-btn" @click="cancelarEnLaHabitacion()">
+                                        <kbd class="rp-kbd">ESC</kbd><span>{{translations.cancel}}</span>
+                                    </button>
+                                    <button class="rp-confirmar"
+                                        @click="confirmEvictRoom(hotels.roomCreationData.id)">
+                                        {{translations.abandon}}
+                                    </button>
+                                </div>
+                            </template>
+
+                            <div class="rp-acciones" v-else>
+                                <button class="rp-confirmar es-ancha" :disabled="!hotels.opcionElegida"
+                                    @click="alquilarLaHabitacion()">
+                                    {{ textoDelBotonDeAlquiler }}
+                                </button>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-bed"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Hoteles</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!--
+            ══ COMPRAR UNA CASA ════════════════════════════════════════════
+            Menú PEQUEÑO (skill origen-dialogo, css/chico.css). Hasta el 07/10
+            iba en riel a todo el alto, y con tres cifras y dos botones se veía
+            vacío. La pregunta de «¿seguro?» sigue en el pie. Vale igual para
+            las casas que se pagan con XP: `precioCasa` ya pone «XP».
+            Todos los cierres pasan por `cerrarCompra`.
+        -->
+        <transition name="oc" appear>
+            <div class="oc" v-if="compra.casa && !compra.saliendo">
+                <div class="oc-velo" @click="compra.confirmando ? cancelarCompra() : cerrarCompra()"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-house"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">{{translations.available}}</span>
+                                <h2 class="oc-cab__t" data-brocha="Las llaves, tuyas">{{translations.BuyHouseTitle}}</h2>
+                                <span class="oc-cab__sub">{{ compra.casa.name || (compra.casa.data && compra.casa.data.number ? 'Casa #' + compra.casa.data.number : 'Casa en venta') }}</span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <!--  Precio, número y, si trae garaje, sus plazas. -->
+                            <div class="rp-datos"
+                                :style="{ gridTemplateColumns: 'repeat(' + (compra.garaje ? 3 : 2) + ', 1fr)' }">
+                                <div class="rp-dato">
+                                    <b>{{precioCasa(compra.casa)}}</b>
+                                    <i>{{translations.PropertyPrice}}</i>
+                                </div>
+                                <div class="rp-dato">
+                                    <b>#{{compra.casa.data.number}}</b>
+                                    <i>{{translations.PropertyNumber}}</i>
+                                </div>
+                                <div class="rp-dato" v-if="compra.garaje">
+                                    <b>{{compra.garaje.slots ? compra.garaje.slots.length : 0}}</b>
+                                    <i>{{translations.PropertyGarageTitle}} · {{translations.PropertyGarageSlots}}</i>
+                                </div>
+                            </div>
+
+                            <template v-if="compra.garaje && compra.garaje.images && compra.garaje.images.length">
+                                <span class="rp-rotulo">{{translations.PropertyGarageTitle}}</span>
+                                <div class="rp-lista">
+                                    <img class="rp-foto" v-for="image in compra.garaje.images" :key="image"
+                                        :src="'./img/garages/' + image">
+                                </div>
+                            </template>
+                        </div>
+
+                        <footer class="oc-pie">
+                            <template v-if="compra.confirmando">
+                                <p class="rp-aviso">{{translations.buyHouseConfirm}}</p>
+                                <div class="rp-acciones">
+                                    <button class="rp-btn" @click="cancelarCompra()">
+                                        <kbd class="rp-kbd">ESC</kbd><span>{{translations.cancel}}</span>
+                                    </button>
+                                    <button class="rp-confirmar" @click="confirmarCompra()">
+                                        {{translations.BuyHouse}}
+                                    </button>
+                                </div>
+                            </template>
+
+                            <div class="rp-acciones" v-else>
+                                <!--  Visitar no existe en un MLO: no hay interior. -->
+                                <button class="rp-btn" v-if="compra.casa.data.type !== 'mlo'" @click="visitarCasa()">
+                                    <i class="fas fa-door-open"></i>
+                                    <span>{{translations.visitHouse}}</span>
+                                </button>
+                                <button class="rp-confirmar" :class="{ 'es-ancha': compra.casa.data.type === 'mlo' }"
+                                    @click="pedirCompra()">
+                                    {{translations.BuyHouse}}
+                                </button>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-house"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Viviendas</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!--
+            ══ LOS DIÁLOGOS PEQUEÑOS: carrito, comprar un mueble, punto MLO ══
+            Formato PEQUEÑO (skill origen-dialogo, css/chico.css): columna y
+            riel del mismo alto, a media altura a la derecha, con la pregunta y
+            los botones en el pie. Antes eran cuadros centrados con velo.
+            Mientras están abiertos, el menú lateral de debajo se aparta
+            (`esta-tapado` en «Tu vivienda» y «Decorar»). Escape y pinchar
+            fuera cierran por el mismo camino que antes. `mb-zona`: el clic
+            dentro no coloca un mueble detrás (script.js, mousedown).
+        -->
+
+        <!-- ── El carrito de muebles ─────────────────────────────────────── -->
+        <transition name="oc" appear>
+            <div class="oc mb-zona" v-if="modalCarrito">
+                <div class="oc-velo" @click="modalCarrito = false"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-shopping-cart"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">Decorar</span>
+                                <h2 class="oc-cab__t" data-brocha="Casa a tu gusto">Carrito de muebles</h2>
+                                <span class="oc-cab__sub">{{ carrito.length }} {{ carrito.length === 1 ? 'mueble colocado' : 'muebles colocados' }}<template v-if="carrito.length"> · {{ precio(totalCarrito) }}</template></span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <div class="rp-carrito-aviso" v-if="carrito.length > 0">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Si no te llega el dinero, se compran en orden (del primero al último) los que alcance tu saldo.</span>
+                            </div>
+
+                            <div class="rp-carrito-lista" v-if="carrito.length > 0">
+                                <div class="rp-carrito-item" v-for="(item, idx) in carrito" :key="item.cartId">
+                                    <span class="rp-carrito-orden">#{{ idx + 1 }}</span>
+                                    <div class="rp-carrito-thumb">
+                                        <img :src="'./img/furniture/' + item.model + '.png'" @error="setDefaultImage" alt="Mueble">
+                                    </div>
+                                    <div class="rp-carrito-info">
+                                        <span class="rp-carrito-nombre">{{ item.label }}</span>
+                                        <!-- 07/10: sin la clave del modelo (apa_mp_h_...) a la vista -->
+                                    </div>
+                                    <span class="rp-carrito-precio">{{ item.priceText }}</span>
+                                    <button type="button" class="rp-carrito-del" @click="eliminarDelCarrito(item.cartId)" title="Quitar del carrito">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <p class="oc-vacio" v-else>El carrito está vacío. Elige un mueble y colócalo en la casa para añadirlo.</p>
+
+                            <div class="rp-carrito-resumen" v-if="carrito.length > 0">
+                                <div class="rp-carrito-resumen-fila">
+                                    <span>Muebles</span>
+                                    <b>{{ carrito.length }}</b>
+                                </div>
+                                <div class="rp-carrito-resumen-fila total">
+                                    <span>Total</span>
+                                    <b>{{ precio(totalCarrito) }}</b>
+                                </div>
+                            </div>
+
+                            <div class="rp-metodo-selector" v-if="carrito.length > 0 && totalCarrito > 0 && monedaCasa === 'dinero'">
+                                <span class="rp-metodo-etq">Pagar con</span>
+                                <div class="rp-metodo-opciones">
+                                    <button type="button" class="rp-metodo-btn" :class="{ on: carritoMetodoPago === 'cash' }" @click="carritoMetodoPago = 'cash'">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Efectivo</span>
+                                    </button>
+                                    <button type="button" class="rp-metodo-btn" :class="{ on: carritoMetodoPago === 'bank' }" @click="carritoMetodoPago = 'bank'">
+                                        <i class="fas fa-building-columns"></i>
+                                        <span>Banco</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="oc-pie">
+                            <div class="rp-acciones">
+                                <button class="rp-btn" :class="{ 'es-ancha': carrito.length === 0 }" @click="modalCarrito = false">
+                                    <kbd class="rp-kbd">ESC</kbd><span>Seguir decorando</span>
+                                </button>
+                                <button class="rp-btn es-mala" v-if="carrito.length > 0" @click="vaciarCarrito()">
+                                    <i class="fas fa-trash"></i><span>Vaciar</span>
+                                </button>
+                                <button class="rp-confirmar es-ancha" v-if="carrito.length > 0" :disabled="comprandoCarrito" @click="confirmarPagoCarrito()">
+                                    <i class="fas fa-spinner fa-spin" v-if="comprandoCarrito"></i>
+                                    <i class="fas fa-check" v-else></i>
+                                    Pagar y colocar ({{ carrito.length }})
+                                </button>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Viviendas</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!-- ── Comprar un mueble ─────────────────────────────────────────── -->
+        <transition name="oc" appear>
+            <div class="oc mb-zona" v-if="compraMueble.visible">
+                <div class="oc-velo" @click="cancelarCompraMueble()"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-couch"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">Decorar</span>
+                                <h2 class="oc-cab__t" data-brocha="Queda de cine">Comprar mueble</h2>
+                                <span class="oc-cab__sub">{{ compraMueble.label || compraMueble.model }}</span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <div class="rp-mueble-preview">
+                                <span class="rp-mueble-precio">{{ compraMueble.priceText }}</span>
+                                <img :src="'./img/furniture/' + compraMueble.model + '.png'" @error="setDefaultImage" alt="Mueble">
+                            </div>
+
+                            <div class="rp-metodo-selector" v-if="compraMueble.price > 0 && monedaCasa === 'dinero'">
+                                <span class="rp-metodo-etq">Pagar con</span>
+                                <div class="rp-metodo-opciones">
+                                    <button type="button" class="rp-metodo-btn" :class="{ on: compraMueble.paymentMethod === 'cash' }" @click="compraMueble.paymentMethod = 'cash'">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                        <span>Efectivo</span>
+                                    </button>
+                                    <button type="button" class="rp-metodo-btn" :class="{ on: compraMueble.paymentMethod === 'bank' }" @click="compraMueble.paymentMethod = 'bank'">
+                                        <i class="fas fa-building-columns"></i>
+                                        <span>Banco</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="oc-pie">
+                            <div class="rp-acciones">
+                                <button class="rp-btn" @click="cancelarCompraMueble()">
+                                    <kbd class="rp-kbd">ESC</kbd><span>Cancelar</span>
+                                </button>
+                                <button class="rp-confirmar" @click="confirmarPagoMueble()">
+                                    <i class="fas fa-check"></i> {{ compraMueble.price > 0 ? 'Comprar' : 'Colocar' }}
+                                </button>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-couch"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Viviendas</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <!-- ── Añadir un punto del MLO ───────────────────────────────────── -->
+        <transition name="oc" appear>
+            <div class="oc mb-zona" v-if="nuevoPuntoMlo.visible">
+                <div class="oc-velo" @click="nuevoPuntoMlo.visible = false"></div>
+                <div class="oc-caja">
+                    <section class="oc-col">
+                        <header class="oc-cab">
+                            <span class="oc-cab__placa"><i class="fas fa-location-dot"></i></span>
+                            <div class="oc-cab__txt">
+                                <span class="oc-cab__k">Tu vivienda</span>
+                                <h2 class="oc-cab__t" data-brocha="Aquí mismo">Añadir un punto</h2>
+                                <span class="oc-cab__sub">Elige qué vas a colocar, ponle nombre y señala el sitio.</span>
+                            </div>
+                        </header>
+
+                        <div class="oc-cuerpo">
+                            <span class="rp-metodo-etq">Tipo de punto</span>
+                            <div class="rp-mlo-tipos">
+                                <button type="button" class="rp-mlo-tipo-btn" :class="{ on: nuevoPuntoMlo.type === 'stash' }" @click="seleccionarTipoPuntoMlo('stash')">
+                                    <i class="fas fa-box-archive"></i>
+                                    <b>Almacén</b>
+                                    <small>{{ contarPuntosMlo('stash') }} / {{ limitePuntosMlo('stash') }} en uso</small>
+                                </button>
+                                <button type="button" class="rp-mlo-tipo-btn" :class="{ on: nuevoPuntoMlo.type === 'wardrobe' }" @click="seleccionarTipoPuntoMlo('wardrobe')">
+                                    <i class="fas fa-shirt"></i>
+                                    <b>Vestidor</b>
+                                    <small>{{ contarPuntosMlo('wardrobe') }} / {{ limitePuntosMlo('wardrobe') }} en uso</small>
+                                </button>
+                            </div>
+
+                            <div class="rp-mlo-limite-aviso" v-if="contarPuntosMlo(nuevoPuntoMlo.type) >= limitePuntosMlo(nuevoPuntoMlo.type)">
+                                <div class="rp-mlo-limite-txt">
+                                    <i class="fas fa-circle-exclamation"></i>
+                                    <span>Límite alcanzado ({{ limitePuntosMlo(nuevoPuntoMlo.type) }}/{{ limitePuntosMlo(nuevoPuntoMlo.type) }}). Amplía el cupo para colocar más.</span>
+                                </div>
+                                <button type="button" class="rp-btn-cupo-modal" @click="comprarHuecoMlo(nuevoPuntoMlo.type)">
+                                    <i class="fas fa-plus"></i> Comprar un hueco más ({{ precio(mloSlotPrice) }})
+                                </button>
+                            </div>
+
+                            <div class="rp-campo-grupo">
+                                <span class="rp-metodo-etq">Nombre</span>
+                                <input type="text" class="vv-campo w-100" v-model="nuevoPuntoMlo.name" placeholder="Ej. Almacén principal, ropa del salón…">
+                            </div>
+                        </div>
+
+                        <footer class="oc-pie">
+                            <div class="rp-acciones">
+                                <button class="rp-btn" @click="nuevoPuntoMlo.visible = false">
+                                    <kbd class="rp-kbd">ESC</kbd><span>Cancelar</span>
+                                </button>
+                                <button class="rp-confirmar" @click="iniciarColocacionPuntoMlo()">
+                                    <i class="fas fa-crosshairs"></i> Colocar
+                                </button>
+                            </div>
+                        </footer>
+                    </section>
+
+                    <aside class="oc-riel">
+                        <span class="oc-riel__marca"><i class="fas fa-location-dot"></i></span>
+                        <span class="oc-riel__pie">{{ nombreDeMarca }} Viviendas</span>
+                    </aside>
+                </div>
+            </div>
+        </transition>
+
+        <div id="gizmo"></div>
+        <div class="modals"></div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script type="module" crossorigin src="./js/gizmo.js?v=modo1310"></script>
+<script src="./js/script.js?v=obra1310bq"></script>
+<script src="./js/obra.js?v=cinta5"></script>
+<!-- después de obra.js: le añade a la cinta los candados y el contador -->
+<script src="./js/packs.js?v=packs3"></script>
+<!-- «Tipo de propietario» en el formulario de la casa y la cuenta de llaves -->
+<script src="./js/propietario.js?v=prop1"></script>
+
+</html>

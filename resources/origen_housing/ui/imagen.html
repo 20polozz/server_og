@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- La página de cada imagen pegada en una casa de modalidad libre
+       (custom/client/imagenes.lua). El navegador tiene ya la forma de la cara:
+       la imagen entra entera, sin deformarse, y lo que sobra queda transparente.
+       El enlace llega en el # de la dirección y nunca se escribe como HTML. -->
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: transparent; }
+    img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: contain; display: none; }
+  </style>
+</head>
+<body>
+  <img id="i" alt="">
+  <script>
+    (function () {
+      // El mismo patrón que Config.Imagenes.Valida (config/imagenes.lua)
+      var PATRON = /^https:\/\/r2\.fivemanage\.com\/[A-Za-z0-9\-._\/%]+\.(png|jpg|jpeg|webp)$/i;
+      function poner(url) {
+        if (typeof url !== 'string' || url.length > 300 || !PATRON.test(url)) return;
+        if (url.indexOf('..') !== -1 || url.indexOf('//', 8) !== -1) return;
+        var i = document.getElementById('i');
+        i.onload = function () { i.style.display = 'block'; };
+        i.onerror = function () { i.style.display = 'none'; };
+        i.src = url;
+      }
+      try { poner(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+      // por si el # no llegara: el cliente lo manda también por mensaje
+      window.addEventListener('message', function (e) {
+        if (e.data && e.data.action === 'imagen') poner(e.data.url);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{
+    "nui": {
+        "input-placeholder": "Mensaje...",
+        "find-emoji": "Buscar emoji...",
+        "skin-tone": "Tono de piel",
+        "smileys-people": "Emoticonos y Personas",
+        "animals-nature": "Animales y Naturaleza",
+        "food-drink": "Comida y Bebida",
+        "activities": "Actividades",
+        "travel-places": "Viajes y Lugares",
+        "objects": "Objetos",
+        "symbols": "Símbolos",
+        "flags": "Banderas",
+        "recent": "Recientes",
+        "settings_title": "Editar chat",
+        "main-color": "Color principal",
+        "main-color-description": "Cambiar el color principal del chat",
+        "position": "Posición",
+        "position-description": "Cambiar la posición del chat",
+        "size": "Tamaño",
+        "size-description": "Cambiar el tamaño del chat",
+        "size-small": "Pequeño",
+        "size-medium": "Mediano",
+        "size-large": "Grande",
+        "save": "Guardar",
+        "close": "Cerrar",
+        "settings_kicker": "Ajustes",
+        "settings_sub": "Cómo y dónde se ve el chat",
+        "settings_nada": "Nada que cambiar",
+        "settings_salir": "Esc para salir"
+    },
+    "notifications": {
+        "error": {
+            "self-message": "No puedes enviarte un mensaje a ti mismo",
+            "no-permission": "No tienes permiso para usar este comando",
+            "no-grade-level": "No tienes el nivel de grado requerido para usar este comando"
+        },
+        "success": {},
+        "info": {}
+    },
+    "commands": {
+        "chat": {
+            "description": "Abrir el chat"
+        },
+        "me": {
+            "description": "Enviar un mensaje a los jugadores en tu radio",
+            "message": "ME • %s"
+        },
+        "do": {
+            "description": "Enviar un mensaje a los jugadores en tu radio",
+            "message": "DO • %s"
+        },
+        "ooc": {
+            "description": "Enviar un mensaje a los jugadores en tu radio",
+            "message": "OOC • %s"
+        },
+        "msg": {
+            "description": "Enviar un mensaje a un jugador específico",
+            "message": "MSG A • %s",
+            "message-from": "MSG DE %s • %s"
+        },
+        "proximity": {
+            "params": {
+                "message": "Mensaje a enviar"
+            }
+        },
+        "global": {
+            "params": {
+                "message": "Enviar un mensaje a todos los jugadores"
+            }
+        },
+        "ptp": {
+            "params": {
+                "target": "ID del servidor del jugador objetivo",
+                "message": "Mensaje a enviar"
+            }
+        },
+        "announcement": {
+            "description": "Enviar un mensaje a todos los jugadores",
+            "message": "ANUNCIO"
+        },
+        "lspd": {
+            "description": "Enviar un mensaje a todos los jugadores",
+            "message": "LSPD • %s"
+        },
+        "ems": {
+            "description": "Enviar un mensaje a todos los jugadores",
+            "message": "EMS • %s"
+        },
+        "announce-lspd": {
+            "description": "Enviar un mensaje a todos los jugadores",
+            "message": "ANUNCIO LSPD"
+        },
+        "announce-ems": {
+            "description": "Enviar un mensaje a todos los jugadores",
+            "message": "ANUNCIO EMS"
+        },
+        "global-announcement": {
+            "params": {
+                "message": "Enviar un mensaje a todos los jugadores"
+            }
+        },
+        "job-to-job": {
+            "params": {
+                "message": "Mensaje a enviar"
+            }
+        },
+        "job-to-global": {
+            "params": {
+                "message": "Mensaje a enviar"
+            }
+        },
+        "dados": {
+            "description": "Lanza un dado del 1 al 6",
+            "message": "DADO • %s",
+            "result": "Ha sacado un %s"
+        },
+        "suerte": {
+            "description": "Prueba tu suerte",
+            "message": "SUERTE • %s",
+            "good": "¡Hoy es tu día de suerte!",
+            "bad": "Parece que hoy no es tu día..."
+        }
+    }
+}

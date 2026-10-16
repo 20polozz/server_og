@@ -1,0 +1,459 @@
+/*  ORIGEN · packs, tamaño y cosméticos de las viviendas (ui/js/packs.js)
+
+    1. En la cinta de decorar y construir (obra.css): el candado de lo que la
+       casa no tiene y lo que le queda según su tamaño, junto a «Gastado».
+    2. En el diálogo de crear una casa: el tamaño y los packs.
+    3. El panel de admin «Vivienda: cosméticos», a pantalla completa.
+    Estilo pegatina: gris #c4c6ca / #dcdde0, rosa #d81b55, canto negro.
+    CEF 103: sin color-mix ni rotate: suelto.                                 */
+
+/* ── 1. La cinta ── */
+.cinta-cosa--candado img,
+.cinta-cosa--candado > i:not(.cinta-candado) { opacity: 0.32; filter: grayscale(1); }
+.cinta-cosa--candado { background: #b4b6ba; }
+.cinta-cosa--candado .cinta-precio { opacity: 0.45; }
+
+.cinta-candado {
+    position: absolute;
+    left: calc(var(--bab-u) * 5);
+    top: calc(var(--bab-u) * 5);
+    display: grid;
+    place-items: center;
+    width: calc(var(--bab-u) * 22);
+    height: calc(var(--bab-u) * 22);
+    border-radius: calc(var(--bab-u) * 6);
+    background: #0b0b0d;
+    color: #fff;
+    font-size: calc(var(--bab-u) * 11) !important;
+}
+
+.cinta-cosa--si .cinta-candado { background: #d81b55; color: #000; box-shadow: 0 0 0 1.5px #000; }
+
+.cinta-nombre .cinta-pack {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 5);
+    padding: calc(var(--bab-u) * 3) calc(var(--bab-u) * 7) calc(var(--bab-u) * 2);
+    border-radius: calc(var(--bab-u) * 5);
+    background: #d81b55;
+    color: #000;
+    text-decoration: none;
+    font-size: calc(var(--bab-u) * 12.5);
+}
+
+.cinta-nombre .cinta-pack i { color: #000; font-size: calc(var(--bab-u) * 10); }
+
+.cinta-topes {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 5);
+    flex: none;
+    margin-left: auto;
+}
+
+.cinta-topes + .cinta-dato { margin-left: 0; }
+
+.cinta-topes em {
+    margin-right: calc(var(--bab-u) * 2);
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 12);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.cinta-tope {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--bab-u) * 5);
+    padding: calc(var(--bab-u) * 6) calc(var(--bab-u) * 8) calc(var(--bab-u) * 4);
+    border-radius: calc(var(--bab-u) * 10);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    line-height: 1;
+}
+
+.cinta-tope small {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 11);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-tope b { font-family: var(--bab-cifra); font-weight: 800; font-size: calc(var(--bab-u) * 15); }
+.cinta-tope--aviso { background: #f2c230; }
+.cinta-tope--agotado { background: #0b0b0d; color: #fff; }
+.cinta-tope--agotado b { color: #ff6f9c; }
+
+/* ── 2. Crear una casa ── */
+.create-house .obra_tamanos__lista,
+.create-house .casa_packs__lista { flex-wrap: wrap; row-gap: 8px; }
+.create-house .obra_tamanos__det { display: block; margin-top: 8px; }
+.create-house .casa_packs h5 { margin-bottom: 6px; }
+.create-house .casa_packs .option em {
+    margin-left: 8px;
+    padding: 1px 6px 0;
+    border-radius: 5px;
+    background: #0b0b0d;
+    color: #fff;
+    font-family: "Oxanium", "Barlow Condensed", sans-serif;
+    font-style: normal;
+    font-size: 0.8em;
+    letter-spacing: 0;
+}
+
+/* ── 3. El panel de cosméticos ── */
+.cosm {
+    --u: min(calc(100vh / var(--ogn-escala, 1) / 1080), calc(100vw / var(--ogn-escala, 1) / 1920));    /* como --bab-u (pegatina.css) */
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10050;
+    display: grid;
+    place-items: center;
+    background: rgba(11, 11, 13, 0.55);
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+}
+
+.cosm[hidden] { display: none; }
+/* Los botones y los campos de la página traen lo suyo (style.css: relleno,
+   mayúsculas, sombra hundida…). Aquí se parte de cero, y con :where() para que
+   el punto de partida no pese más que la clase de cada pieza: con
+   `.cosm button { font: inherit }` se perdían la cursiva y el grueso de los
+   botones del riel y de las pestañas. */
+:where(.cosm) button { font: inherit; color: inherit; cursor: pointer; padding: 0; letter-spacing: normal; text-transform: none; }
+.cosm input,
+.cosm input:focus { padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; }
+
+.cosm-panel {
+    display: flex;
+    width: calc(var(--u) * 1700);
+    height: calc(var(--u) * 940);
+    border-radius: calc(var(--u) * 20);
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 5px 5px 0 1.5px #000;
+    overflow: hidden;
+}
+
+.cosm-rail {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 10);
+    width: calc(var(--u) * 104);
+    padding: calc(var(--u) * 18) calc(var(--u) * 12);
+    background: #b4b6ba;
+    box-shadow: inset -1.5px 0 0 #000;
+}
+
+.cosm-rail__b {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--u) * 6);
+    padding: calc(var(--u) * 12) 0 calc(var(--u) * 9);
+    border: 0;
+    border-radius: calc(var(--u) * 12);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--u) * 14);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.cosm-rail__b i { font-size: calc(var(--u) * 22); }
+.cosm-rail__b.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+
+.cosm-rail__esc {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--u) * 5);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--u) * 13);
+    text-transform: uppercase;
+}
+
+.cosm-rail__esc kbd {
+    padding: calc(var(--u) * 4) calc(var(--u) * 8) calc(var(--u) * 3);
+    border-radius: calc(var(--u) * 6);
+    background: #0b0b0d;
+    color: #fff;
+    font-family: "Oxanium", sans-serif;
+    font-style: normal;
+    font-size: calc(var(--u) * 12);
+}
+
+.cosm-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.cosm-cab {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 18);
+    padding: calc(var(--u) * 22) calc(var(--u) * 28) calc(var(--u) * 18);
+    box-shadow: inset 0 -1.5px 0 #000;
+}
+
+.cosm-placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(var(--u) * 58);
+    height: calc(var(--u) * 58);
+    border-radius: calc(var(--u) * 14);
+    background: #d81b55;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    transform: rotate(-6deg);
+    font-size: calc(var(--u) * 26);
+}
+
+.cosm-cab__txt { flex: 1; min-width: 0; }
+
+.cosm-cab h1 {
+    margin: 0;
+    font-family: "Knewave", "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-size: calc(var(--u) * 34);
+    line-height: 1;
+}
+
+.cosm-cab p { margin: calc(var(--u) * 6) 0 0; font-weight: 600; font-size: calc(var(--u) * 16); color: #33343a; }
+
+.cosm-busca {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 10);
+    width: calc(var(--u) * 420);
+    margin: 0;
+    padding: 0 calc(var(--u) * 14);
+    height: calc(var(--u) * 46);
+    border-radius: calc(var(--u) * 12);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-size: calc(var(--u) * 16);
+}
+
+.cosm-busca input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: none;
+    color: #0b0b0d;
+    font: inherit;
+    font-weight: 700;
+    font-size: calc(var(--u) * 18);
+}
+
+.cosm-cuerpo { flex: 1; min-height: 0; overflow-y: auto; padding: calc(var(--u) * 8) calc(var(--u) * 28) calc(var(--u) * 24); }
+.cosm-cuerpo::-webkit-scrollbar { width: calc(var(--u) * 10); }
+.cosm-cuerpo::-webkit-scrollbar-thumb { background: #0b0b0d; border-radius: calc(var(--u) * 5); }
+
+.cosm-rotulo {
+    margin: calc(var(--u) * 20) 0 calc(var(--u) * 10);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--u) * 22);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cosm-rotulo em { margin-left: calc(var(--u) * 8); font-size: calc(var(--u) * 15); font-weight: 700; opacity: 0.65; text-transform: none; }
+
+.cosm-rejilla { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: calc(var(--u) * 12); }
+.cosm-rejilla--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.cosm-ficha {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--u) * 5);
+    min-width: 0;
+    padding: calc(var(--u) * 13) calc(var(--u) * 14) calc(var(--u) * 11);
+    border: 0;
+    border-radius: calc(var(--u) * 13);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    text-align: left;
+}
+
+.cosm-ficha:hover { background: #e8e9eb; }
+.cosm-ficha:active { transform: translate(1px, 1px); }
+.cosm-ficha.on { background: #f3b6c9; box-shadow: inset 0 0 0 1.5px #000, inset 0 0 0 4px #d81b55, 3px 3px 0 #000; }
+.cosm-ficha b { font-style: italic; font-weight: 800; font-size: calc(var(--u) * 19); line-height: 1.05; text-transform: uppercase; }
+
+.cosm-ficha small {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 600;
+    font-size: calc(var(--u) * 14.5);
+    line-height: 1.15;
+    color: #33343a;
+}
+
+/* (el nombre de una casa no se mete debajo de su número) */
+.cosm-ficha__n ~ b { padding-right: calc(var(--u) * 44); }
+
+.cosm-ficha__n {
+    position: absolute;
+    right: calc(var(--u) * 10);
+    top: calc(var(--u) * 10);
+    font-family: "Oxanium", sans-serif;
+    font-weight: 800;
+    font-size: calc(var(--u) * 16);
+    opacity: 0.55;
+}
+
+.cosm-ficha__pie { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 5); margin-top: auto; padding-top: calc(var(--u) * 6); }
+
+.cosm-chapa {
+    padding: calc(var(--u) * 3) calc(var(--u) * 7) calc(var(--u) * 2);
+    border-radius: calc(var(--u) * 6);
+    background: #c4c6ca;
+    box-shadow: inset 0 0 0 1px #000;
+    font-family: "Oxanium", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: calc(var(--u) * 12);
+}
+
+.cosm-chapa--rosa { background: #d81b55; }
+.cosm-chapa--xp { background: #f2c230; }
+.cosm-chapa--negra { background: #0b0b0d; color: #fff; }
+
+.cosm-tira { display: flex; align-items: center; gap: calc(var(--u) * 16); margin-top: calc(var(--u) * 14); }
+.cosm-tira__t { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.cosm-tira__t b { font-style: italic; font-weight: 800; font-size: calc(var(--u) * 24); text-transform: uppercase; }
+.cosm-tira__t small { font-weight: 600; font-size: calc(var(--u) * 15); color: #33343a; }
+.cosm-destino { display: flex; align-items: center; gap: calc(var(--u) * 8); }
+.cosm-destino small { font-style: italic; font-weight: 800; font-size: calc(var(--u) * 14); text-transform: uppercase; }
+
+.cosm-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--u) * 8);
+    height: calc(var(--u) * 40);
+    padding: 0 calc(var(--u) * 14);
+    border: 0;
+    border-radius: calc(var(--u) * 10);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--u) * 16);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.cosm-boton.on,
+.cosm-boton--rosa { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+
+.cosm-aviso {
+    margin: calc(var(--u) * 12) 0 0;
+    padding: calc(var(--u) * 9) calc(var(--u) * 14);
+    border-radius: calc(var(--u) * 10);
+    background: #0b0b0d;
+    color: #fff;
+    font-weight: 700;
+    font-size: calc(var(--u) * 16);
+}
+
+.cosm-aviso i { color: #ff6f9c; }
+.cosm-nota { margin: calc(var(--u) * 10) 0 0; font-weight: 600; font-size: calc(var(--u) * 15); color: #33343a; }
+
+.cosm-sueltas { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 8); }
+
+.cosm-suelta {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--u) * 8);
+    padding: calc(var(--u) * 5) calc(var(--u) * 6) calc(var(--u) * 5) calc(var(--u) * 12);
+    border-radius: calc(var(--u) * 10);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-weight: 700;
+    font-size: calc(var(--u) * 16);
+}
+
+.cosm-suelta em { font-size: calc(var(--u) * 12); font-weight: 800; text-transform: uppercase; opacity: 0.6; }
+
+.cosm-suelta button {
+    display: grid;
+    place-items: center;
+    width: calc(var(--u) * 26);
+    height: calc(var(--u) * 26);
+    border: 0;
+    border-radius: calc(var(--u) * 7);
+    padding: 0;
+    background: #0b0b0d;
+    color: #fff;
+    font-size: calc(var(--u) * 13);
+    line-height: 1;
+}
+
+.cosm-dar { display: flex; align-items: center; gap: calc(var(--u) * 8); margin-bottom: calc(var(--u) * 10); }
+.cosm-busca--corta { width: calc(var(--u) * 300); height: calc(var(--u) * 40); margin-left: auto; }
+.cosm-suelta--dar { border: 0; padding-right: calc(var(--u) * 12); }
+.cosm-suelta--dar:hover { background: #f3b6c9; }
+.cosm-suelta--dar i { font-size: calc(var(--u) * 12); }
+.cosm-posibles { max-height: calc(var(--u) * 190); overflow-y: auto; }
+
+.cosm-registro { display: flex; flex-direction: column; gap: calc(var(--u) * 6); }
+
+.cosm-registro div {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--u) * 14);
+    padding: calc(var(--u) * 8) calc(var(--u) * 12);
+    border-radius: calc(var(--u) * 9);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-weight: 600;
+    font-size: calc(var(--u) * 15);
+}
+
+.cosm-registro time { flex: none; font-family: "Oxanium", sans-serif; font-size: calc(var(--u) * 13); opacity: 0.7; }
+.cosm-registro b { flex: none; font-weight: 800; }
+.cosm-registro u { text-decoration: none; font-weight: 800; background: #f3b6c9; padding: 0 calc(var(--u) * 4); border-radius: calc(var(--u) * 4); }
+
+.cosm-cifras {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--u) * 10);
+    padding: calc(var(--u) * 12) calc(var(--u) * 28);
+    background: #b4b6ba;
+    box-shadow: inset 0 1.5px 0 #000;
+}
+
+.cosm-cifras span {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--u) * 8);
+    padding: calc(var(--u) * 7) calc(var(--u) * 13) calc(var(--u) * 5);
+    border-radius: calc(var(--u) * 10);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    line-height: 1;
+}
+
+.cosm-cifras b { font-family: "Oxanium", sans-serif; font-weight: 800; font-size: calc(var(--u) * 19); }
+.cosm-cifras small { font-style: italic; font-weight: 800; font-size: calc(var(--u) * 13); text-transform: uppercase; }
+.cosm-cifras__amb { margin-left: auto; }
+.cosm-cifras__amb b { font-family: inherit; font-style: italic; text-transform: uppercase; font-size: calc(var(--u) * 16); }

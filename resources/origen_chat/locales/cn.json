@@ -1,0 +1,110 @@
+{
+    "nui": {
+        "input-placeholder": "消息...",
+        "find-emoji": "查找表情...",
+        "skin-tone": "肤色",
+        "smileys-people": "表情符号与人物",
+        "animals-nature": "动物与自然",
+        "food-drink": "食物与饮料",
+        "activities": "活动",
+        "travel-places": "旅行与地点",
+        "objects": "物体",
+        "symbols": "符号",
+        "flags": "旗帜",
+        "recent": "最近",
+        "settings_title": "编辑聊天",
+        "main-color": "主颜色",
+        "main-color-description": "更改聊天的主颜色",
+        "position": "位置",
+        "position-description": "更改聊天窗口的位置",
+        "size": "大小",
+        "size-description": "更改聊天窗口的大小",
+        "size-small": "小",
+        "size-medium": "中",
+        "size-large": "大",
+        "save": "保存",
+        "close": "关闭"
+    },
+    "notifications": {
+        "error": {
+            "self-message": "你不能给自己发送消息",
+            "no-permission": "你没有权限使用此命令",
+            "no-grade-level": "你没有使用此命令所需的年级等级"
+        },
+        "success": {},
+        "info": {}
+    },
+    "commands": {
+        "chat": {
+            "description": "打开聊天"
+        },
+        "me": {
+            "description": "向你附近的玩家发送消息",
+            "message": "ME • %s"
+        },
+        "do": {
+            "description": "向你附近的玩家发送消息",
+            "message": "DO • %s"
+        },
+        "ooc": {
+            "description": "向你附近的玩家发送消息",
+            "message": "OOC • %s"
+        },
+        "msg": {
+            "description": "向特定玩家发送消息",
+            "message": "消息至 • %s",
+            "message-from": "来自 %s 的消息 • %s"
+        },
+        "proximity": {
+            "params": {
+                "message": "要发送的消息"
+            }
+        },
+        "global": {
+            "params": {
+                "message": "向所有玩家发送消息"
+            }
+        },
+        "ptp": {
+            "params": {
+                "target": "目标玩家的服务器ID",
+                "message": "要发送的消息"
+            }
+        },
+        "announcement": {
+            "description": "向所有玩家发送消息",
+            "message": "公告"
+        },
+        "lspd": {
+            "description": "向所有玩家发送消息",
+            "message": "LSPD • %s"
+        },
+        "ems": {
+            "description": "向所有玩家发送消息",
+            "message": "EMS • %s"
+        },
+        "announce-lspd": {
+            "description": "向所有玩家发送消息",
+            "message": "LSPD 公告"
+        },
+        "announce-ems": {
+            "description": "向所有玩家发送消息",
+            "message": "EMS 公告"
+        },
+        "global-announcement": {
+            "params": {
+                "message": "向所有玩家发送消息"
+            }
+        },
+        "job-to-job": {
+            "params": {
+                "message": "要发送的消息"
+            }
+        },
+        "job-to-global": {
+            "params": {
+                "message": "要发送的消息"
+            }
+        }
+    }
+}

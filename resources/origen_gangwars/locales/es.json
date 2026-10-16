@@ -1,0 +1,348 @@
+{
+    "nui": {
+        "individual": "Individual",
+        "group": "Grupo",
+
+        "main": {
+            "title": "Guerra de bandas",
+
+            "create": {
+                "title": "Crear",
+                "description": "Crea y personaliza tu propia partida, necesitarás tener acceso a esta opción."
+            },
+            "play": {
+                "title": "Jugar",
+                "description": "¡Únete y disfruta de la emoción de ser el mejor y ganar premios únicos!"
+            },
+            "ranking": {
+                "title": "Clasificación",
+                "description": "Consulta la clasificación global de los jugadores."
+            }
+        },
+        "create": {
+            "title": "Crear una Partida",
+
+            "presetsTitle": "Partidas predefinidas",
+            "dataTitle": "Datos de la Partida",
+
+            "inputs": {
+                "name": {
+                    "title": "Nombre de la Partida",
+                    "placeholder": "Nombre"
+                },
+                "radius": {
+                    "title": "Radio de la partida",
+                    "placeholder": "Radio"
+                },
+                "coords": {
+                    "title": "Coordenadas",
+                    "placeholder": "Coordenadas"
+                },
+                "preview": {
+                    "title": "Imagen de vista previa",
+                    "placeholder": "URL de la imagen"
+                },
+                "startedIn": {
+                    "title": "Tiempo para iniciar (Minutos)",
+                    "placeholder": "Tiempo para iniciar (Minutos)"
+                },
+                "minPlayers": {
+                    "title": "Jugadores mínimos para empezar",
+                    "placeholder": "Cantidad de jugadores"
+                },
+                "lobbyPassword": {
+                    "title": "Contraseña de la Partida",
+                    "placeholder": "Contraseña"
+                },
+                "startTimes": {
+                    "title": "Horarios de inicio (Programador)",
+                    "placeholder": "Ejemplo: 12:30, 10:18, 09:10, 23:00"
+                },
+                "sendMessage": {
+                    "title": "Mensaje",
+                    "placeholder": "Mensaje"
+                }
+            },
+            "sliders": {
+                "gameMode": {
+                    "title": "Modo de Juego",
+                    "individual": "Individual",
+                    "group": "Grupo"
+                },
+                "zoneSpeed": {
+                    "title": "Velocidad de la zona",
+                    "slow": "Lenta",
+                    "normal": "Normal",
+                    "fast": "Rápida"
+                },
+                "visibility": {
+                    "title": "Visibilidad",
+                    "public": "Pública",
+                    "private": "Privada"
+                },
+                "scheduler": {
+                    "title": "Programador",
+                    "enabled": "Activado",
+                    "disabled": "Desactivado"
+                },
+                "message": {
+                    "title": "Mensaje",
+                    "enabled": "Activado",
+                    "disabled": "Desactivado"
+                },
+                "weather": {
+                    "title": "Clima"
+                },
+                "time": {
+                    "title": "Hora",
+                    "day": "Día",
+                    "night": "Noche"
+                }
+            },
+
+            "initialKit": {
+                "title": "Kit Inicial",
+                "description": "Selecciona el kit que se generará automáticamente al inicio de la partida, el cual estará disponible para los jugadores al comenzar el juego.",
+                "placeholder": "Nombre del item"
+            },
+            "rewards": {
+                "title": "Recompensas",
+                "description": "Al finalizar el juego, se seleccionarán recompensas para otorgar a los jugadores según su rendimiento, como puntos.",
+                "placeholder": "Nombre del item"
+            },
+
+            "no_items": "Sin items",
+
+            "start": "Iniciar"
+        },
+
+        "ranking": {
+            "title": "Clasificación general",
+            "description": "Mejores jugadores",
+            "search": "Buscar...",
+
+            "table": {
+                "position": "Pos.",
+                "name": "Nombre",
+                "prestige": "Prestigio",
+                "level": "Nivel",
+                "wins": "Victorias",
+                "loses": "Derrotas",
+                "kd": "KD",
+                "kills": "Bajas",
+                "headshots": "A la cabeza"
+            },
+            "no_stats": "No hay estadísticas de clasificación disponibles",
+            "page": "Página",
+
+            "tabs": {
+                "global": "Global",
+                "gangs": "Bandas"
+            },
+
+            "gangs": {
+                "title": "Clasificación de bandas",
+                "description": "Mejores líderes de gangs",
+
+                "title-list": "Lista de bandas",
+                "no_stats": "No hay estadísticas de gangs disponibles",
+                "no_data": "Sin datos"
+            }
+        },
+        "playerlobby": {
+            "edit": "Editar perfil",
+            "profile": {
+                "prestige": "Prestigio",
+                "points": "Puntos",
+                "current": "Actual",
+                "next": "Siguiente"
+            },
+            "missions": {
+                "title": "Misiones",
+                "daily": "Diarias",
+                "weekly": "Semanales",
+                "no_missions": "No hay misiones disponibles"
+            },
+            "rewards": {
+                "title": "Recompensas",
+                "description": "Adéntrate en el corazón de la guerra urbana con el nuevo <strong>Pase de Batalla de Gangwar Origen</strong>. \n    Desbloquea outfits y armas exclusivas mientras enfrentas desafíos intensos en cada nivel. ¡Demuestra tus habilidades y reclama tu lugar en las calles!",
+                "claim": "Reclamar",
+                "claimed": "Reclamado",
+                "level": "Nivel",
+                "locked": "Bloqueado"
+            },
+            "stats": {
+                "title": "Estadísticas",
+                "headshots": "A la cabeza",
+                "deaths": "Muertes",
+                "kills": "Bajas",
+                "damage": "Daño",
+                "wins": "Victorias",
+                "games_played": "Partidas jugadas",
+                "kd": "KD",
+                "long_shot": "Disparo largo"
+            },
+            "searchgame": "Buscar partida"
+        },
+        "serverList": {
+            "title": "BUSCAR PARTIDA",
+            "description": "Partidas disponibles",
+            "join": "Unirse",
+            "search": "Buscar...",
+
+            "table": {
+                "server": "Servidor",
+                "host": "Anfitrión",
+                "weapon": "Arma",
+                "mode": "Modo",
+                "status": "Estado",
+                "visibility": "Visibilidad",
+                "players": "Jugadores",
+
+                "public": "Pública",
+                "private": "Privada",
+
+                "no_servers": "No se encontraron servidores"
+            },
+            "join_server": "Unirse al servidor"
+        },
+        "serverLobby": {
+            "title": "SALA DE ESPERA",
+            "ready": "Jugadores listos:",
+
+            "lobby": "Sala de espera",
+            "settings": "Configuración",
+            "stats": "Estadísticas",
+
+            "gameInfo": {
+                "weather": "Clima",
+                "time": "Hora",
+                "gameMode": "Modo de Juego",
+                "weapon": "Arma",
+
+                "stats": {
+                    "winners": "Mejores ganadores",
+                    "ranking": "Clasificaciones",
+                    "no_stats": "No se encontraron resultados",
+
+                    "table": {
+                        "place": "Pos.",
+                        "username": "Nombre",
+                        "time": "Tiempo",
+                        "level": "Nivel"
+                    }
+                }
+            },
+
+            "playerlist": {
+                "title": "Lista de jugadores",
+                "search": "Buscar...",
+
+                "table": {
+                    "name": "Nombre",
+                    "level": "Nivel",
+                    "status": "Estado",
+
+                    "ready": "Listo",
+                    "not_ready": "No listo",
+                    "cancel": "Cancelar",
+                    "no_players": "No se encontraron jugadores"
+                },
+
+                "kick": "Expulsar",
+                "type_message": "Escribe tu mensaje..."
+            }
+        },
+
+        "friends": {
+            "search": "Buscar...",
+            "online": "Jugadores conectados",
+            "offline": "Jugadores desconectados",
+            "no_results": "No se encontraron resultados",
+            "no_friends": "No se encontraron amigos"
+        },
+
+        "levelUp": {
+            "title": "Nuevo nivel",
+            "current_level": "Nivel actual",
+            "next_level": "Próximo nivel"
+        },
+
+        "claim_reward": {
+            "title": "Recompensa",
+            "continue": "Continuar"
+        },
+
+        "modals": {
+            "confirm": "Confirmar",
+            "cancel": "Cancelar",
+
+            "request_friend": {
+                "title": "Solicitud de amistad",
+                "placeholder": "Identificador o ID del jugador"
+            },
+            "request_password": {
+                "title": "Contraseña de la partida",
+                "placeholder": "Contraseña"
+            },
+            "edit_profile": {
+                "title": "Editar perfil",
+                "image": "Imagen de perfil",
+                "banner": "Banner de perfil"
+            },
+            "claim_code": {
+                "title": "Canjear código",
+                "placeholder": "Código"
+            }
+        },
+
+        "notifications": {
+            "error": {
+                "title": "Error",
+                "already_in_war": "Este jugador ya está en guerra",
+                "already_in_team": "Este jugador ya está en otro equipo",
+                "no_code": "No se introdujo un código válido",
+                "already_premium": "Ya eres premium"
+            },
+            "success": {
+                "title": "Éxito",
+                "lobby_started": "¡Partida iniciada exitosamente!",
+                "friend_invited": "¡Amigo invitado exitosamente!",
+                "friend_added": "¡Amigo añadido exitosamente!",
+                "friend_removed": "¡Amigo eliminado exitosamente!",
+                "reward_claimed": "¡Recompensa reclamada exitosamente!"
+            },
+            "info": {
+                "title": "Información"
+            },
+
+            "team_request": {
+                "title": "Solicitud para unirse a un equipo",
+                "description": "%s te ha invitado a unirte a su equipo.",
+                "accept": "Aceptar",
+                "decline": "Rechazar",
+
+                "accepted": "¡Has aceptado la invitación!",
+                "declined": "¡Has rechazado la invitación!"
+            }
+        },
+        "hud": {
+            "stages": "Etapa %s"
+        }
+    },
+    "general": {},
+    "notifications": {
+        "error": {},
+        "success": {},
+        "info": {
+            "create_code": "Código creado: %s"
+        },
+        "not_enough_players": "La partida fue cancelada: no hay suficientes jugadores para comenzar."
+    },
+    "drawtext": {},
+    "commands": {
+        "create_code": {
+            "help": "Generar ID único (Para recompensas)"
+        }
+    }
+}

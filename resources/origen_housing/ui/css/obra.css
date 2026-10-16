@@ -1,0 +1,673 @@
+/*  ORIGEN · la cinta de decorar y construir (custom/client/obra.lua)
+
+    Va abajo en el centro, sobre el juego, y no coge el ratón. Un solo panel
+    con cuatro filas (los subgrupos, el buscador, las variantes y la ayuda
+    están al final de este fichero):
+      · los grupos (Q y E), el elegido en rosa;
+      · sus subgrupos (flechas), el de la cosa elegida en negro;
+      · las cosas de esa categoría, la elegida en el centro, más grande y con
+        su nombre encima (la rueda las pasa);
+      · lo que hace cada tecla ahora mismo y lo gastado.
+    Medidas --bab-* de pegatina.css (la barra de abajo del servidor).         */
+.cinta {
+    position: fixed;
+    left: 50%;
+    bottom: var(--bab-abajo);
+    z-index: 9999;
+    box-sizing: border-box;
+    width: calc(var(--bab-u) * 1560);
+    padding: calc(var(--bab-u) * 12) calc(var(--bab-u) * 14) calc(var(--bab-u) * 12);
+    transform: translateX(-50%);
+    border-radius: calc(var(--bab-u) * 16);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    color: #0b0b0d;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.cinta[hidden] { display: none; }
+
+.cinta-tecla {
+    flex: none;
+    box-sizing: border-box;
+    min-width: var(--bab-tecla-min);
+    padding: var(--bab-tecla-pad);
+    border-radius: var(--bab-tecla-radio);
+    background: #0b0b0d;
+    color: #fff;
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: var(--bab-tecla);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-style: normal;     /* (dentro de un rótulo en cursiva la tecla no se inclina) */
+}
+
+/* ── Categorías ── */
+.cinta-cats {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 8);
+}
+
+/* Nueve pestañas a la vista, todas igual de anchas y enteras: la fila avanza
+   de pestaña en pestaña (obra.js), nunca deja una a medias en los bordes. */
+.cinta-cats__via {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    padding: calc(var(--bab-u) * 4) calc(var(--bab-u) * 3);
+}
+
+.cinta-cats__fila {
+    --hueco: calc(var(--bab-u) * 6);
+    display: flex;
+    gap: var(--hueco);
+    width: 100%;
+    transition: transform 0.16s ease;
+}
+
+.cinta-cat {
+    flex: 0 0 calc((100% - var(--hueco) * 8) / 9);
+    box-sizing: border-box;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--bab-u) * 7);
+    height: calc(var(--bab-u) * 36);
+    padding: 0 calc(var(--bab-u) * 8);
+    border-radius: calc(var(--bab-u) * 9);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-cat i { flex: none; font-size: calc(var(--bab-u) * 13); }
+/* los nombres largos parten en dos renglones en vez de ensanchar la pestaña */
+.cinta-cat span { min-width: 0; white-space: normal; line-height: 1.05; }
+
+.cinta-cat--si {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: translateY(calc(var(--bab-u) * -2));
+}
+
+/* ── Las cosas ── */
+.cinta-cosas {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: calc(var(--bab-u) * 8);
+    height: calc(var(--bab-u) * 112);
+    margin-top: calc(var(--bab-u) * 40);    /* el nombre de la elegida va encima: que no roce el renglón de arriba */
+}
+
+/* Un grupo sin nada (Recientes y Favoritos al estrenar, Buscar sin resultados):
+   su renglón de pista, en el centro de la fila, en vez de un hueco mudo. */
+.cinta-vacio {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 12);
+    padding: calc(var(--bab-u) * 12) calc(var(--bab-u) * 20) calc(var(--bab-u) * 10);
+    border-radius: calc(var(--bab-u) * 12);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 17);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-vacio i { font-size: calc(var(--bab-u) * 20); color: #d81b55; }
+.cinta--vacia .cinta-pista { visibility: hidden; }
+
+.cinta-cosa {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    width: calc(var(--bab-u) * 92);
+    height: calc(var(--bab-u) * 92);
+    border-radius: calc(var(--bab-u) * 12);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-size: calc(var(--bab-u) * 30);
+}
+
+.cinta-cosa img { width: 84%; height: 84%; object-fit: contain; }
+.cinta-cosa--llena { overflow: hidden; }
+.cinta-cosa--llena img { width: 100%; height: 100%; object-fit: cover; }
+.cinta-cosa--hueco { background: none; box-shadow: none; }
+
+.cinta-cosa--si {
+    width: calc(var(--bab-u) * 112);
+    height: calc(var(--bab-u) * 112);
+    overflow: visible;
+    box-shadow: inset 0 0 0 1.5px #000, 0 0 0 calc(var(--bab-u) * 3) #d81b55, 0 0 0 calc(var(--bab-u) * 4.5) #000;
+    font-size: calc(var(--bab-u) * 40);
+}
+
+.cinta-cosa--si.cinta-cosa--llena img { border-radius: calc(var(--bab-u) * 11); }
+
+.cinta-precio {
+    position: absolute;
+    right: calc(var(--bab-u) * 5);
+    bottom: calc(var(--bab-u) * 4);
+    padding: calc(var(--bab-u) * 2) calc(var(--bab-u) * 5) calc(var(--bab-u) * 1);
+    border-radius: calc(var(--bab-u) * 5);
+    background: #0b0b0d;
+    color: #fff;
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 11.5);
+    line-height: 1.2;
+}
+
+.cinta-nombre {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + var(--bab-u) * 10);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 8);
+    padding: calc(var(--bab-u) * 5) calc(var(--bab-u) * 10) calc(var(--bab-u) * 4);
+    transform: translateX(-50%);
+    border-radius: calc(var(--bab-u) * 8);
+    background: #0b0b0d;
+    color: #fff;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 15);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-nombre i { color: #d81b55; font-size: calc(var(--bab-u) * 12); }
+.cinta-nombre b { font-family: var(--bab-cifra); font-style: normal; color: #ff6f9c; }
+.cinta-nombre em { font-family: var(--bab-cifra); font-style: normal; font-size: calc(var(--bab-u) * 11.5); opacity: 0.6; }
+
+/* ── Las teclas ── */
+.cinta-pie {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 18);
+    margin-top: calc(var(--bab-u) * 12);
+}
+
+/* Las teclas van en una sola línea; si no caben, obra.js las encoge lo justo */
+.cinta-pie__via { flex: 1; min-width: 0; overflow: hidden; }
+
+.cinta-pie__teclas {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 12);
+    width: max-content;
+}
+
+.cinta-tramo {
+    display: flex;
+    align-items: center;
+    gap: var(--bab-hueco-tecla);
+}
+
+.cinta-tramo + .cinta-tramo {
+    padding-left: calc(var(--bab-u) * 12);
+    border-left: 1.5px solid #000;
+}
+
+.cinta-k {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-dato {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--bab-u) * 8);
+    flex: none;
+    margin-left: auto;
+    padding: calc(var(--bab-u) * 6) calc(var(--bab-u) * 12) calc(var(--bab-u) * 4);
+    border-radius: calc(var(--bab-u) * 10);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    line-height: 1;
+}
+
+.cinta-dato small {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 12);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-dato b { font-family: var(--bab-cifra); font-weight: 800; font-size: calc(var(--bab-u) * 19); }
+
+/* ── Subgrupos (flechas ← →), buscador (Intro) y ayuda (H) ──
+   El segundo renglón de la cinta: dentro del grupo elegido, sus subgrupos, con
+   el de la cosa que se lleva en negro. Mientras se busca, ese renglón es la
+   caja de escribir. (config/cinta.lua dice qué va en cada grupo.)            */
+.cinta-subs {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 10);
+    height: calc(var(--bab-u) * 30);
+    margin-top: calc(var(--bab-u) * 6);
+}
+
+.cinta-subs__zona[hidden],
+.cinta-busca[hidden],
+.cinta-lupa[hidden],
+.cinta-vars[hidden],
+.cinta-ayuda[hidden] { display: none; }
+
+.cinta-subs__zona {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 8);
+}
+
+.cinta-subs__via {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    padding: calc(var(--bab-u) * 3);
+}
+
+.cinta-subs__fila {
+    display: flex;
+    gap: calc(var(--bab-u) * 6);
+    width: max-content;
+    transition: transform 0.16s ease;
+}
+
+.cinta-sub,
+.cinta-var {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 6);
+    height: calc(var(--bab-u) * 24);
+    padding: calc(var(--bab-u) * 1) calc(var(--bab-u) * 10) 0;
+    border-radius: calc(var(--bab-u) * 7);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 13.5);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-sub em {
+    font-family: var(--bab-cifra);
+    font-style: normal;
+    font-size: calc(var(--bab-u) * 10.5);
+    opacity: 0.55;
+}
+
+.cinta-sub--si { background: #0b0b0d; color: #fff; }
+.cinta-sub--si em { opacity: 1; color: #ff6f9c; }
+
+.cinta-pista {
+    padding-left: calc(var(--bab-u) * 4);
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 700;
+    font-size: var(--bab-texto);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.cinta-lupa,
+.cinta-busca__n {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: var(--bab-hueco-tecla);
+}
+
+.cinta-lupa .cinta-k + .cinta-tecla,
+.cinta-busca__n .cinta-tecla { margin-left: calc(var(--bab-u) * 8); }
+
+.cinta-busca {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 10);
+    height: calc(var(--bab-u) * 30);
+    box-sizing: border-box;
+    padding: 0 calc(var(--bab-u) * 10);
+    border-radius: calc(var(--bab-u) * 9);
+    background: #fff;
+    box-shadow: inset 0 0 0 1.5px #000, 0 0 0 calc(var(--bab-u) * 2.5) #d81b55, 0 0 0 calc(var(--bab-u) * 4) #000;
+    font-size: calc(var(--bab-u) * 14);
+}
+
+.cinta-busca input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;       /* (style.css le pone a todo <input> una sombra hundida) */
+    color: #0b0b0d;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 17);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-busca__n {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: var(--bab-texto);
+    text-transform: uppercase;
+}
+
+.cinta-busca__n b { font-family: var(--bab-cifra); font-style: normal; color: #d81b55; }
+
+/* ── Variantes de la herramienta (R): todos los estilos a la vista ── */
+.cinta-vars {
+    display: flex;
+    justify-content: center;
+    height: calc(var(--bab-u) * 26);
+    margin-top: calc(var(--bab-u) * 8);
+    overflow: hidden;
+}
+
+.cinta-vars__fila {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 6);
+    width: max-content;
+}
+
+.cinta-vars small {
+    margin-right: calc(var(--bab-u) * 4);
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 13);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-var img {
+    width: calc(var(--bab-u) * 20);
+    height: calc(var(--bab-u) * 20);
+    margin-left: calc(var(--bab-u) * -7);
+    border-radius: calc(var(--bab-u) * 5);
+    object-fit: cover;
+}
+
+.cinta-var--si {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: translateY(calc(var(--bab-u) * -1));
+}
+
+/* ── La ayuda: una ficha encima de la cinta, a la izquierda ── */
+.cinta-ayuda {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + var(--bab-u) * 14);
+    box-sizing: border-box;
+    width: calc(var(--bab-u) * 640);
+    padding: calc(var(--bab-u) * 12) calc(var(--bab-u) * 14);
+    border-radius: calc(var(--bab-u) * 14);
+    background: var(--bab-fondo);
+    box-shadow: var(--bab-canto);
+    white-space: normal;
+}
+
+.cinta-ayuda header {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--bab-u) * 8);
+    margin-bottom: calc(var(--bab-u) * 8);
+    font-size: calc(var(--bab-u) * 16);
+}
+
+.cinta-ayuda header i { color: #d81b55; }
+
+.cinta-ayuda header b {
+    flex: 1;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 20);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.cinta-ayuda p {
+    display: flex;
+    align-items: baseline;
+    gap: calc(var(--bab-u) * 9);
+    margin: calc(var(--bab-u) * 5) 0 0;
+    padding: calc(var(--bab-u) * 6) calc(var(--bab-u) * 9);
+    border-radius: calc(var(--bab-u) * 8);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    font-family: var(--bab-rotulo);
+    font-weight: 600;
+    font-size: calc(var(--bab-u) * 15.5);
+    line-height: 1.2;
+}
+
+.cinta-ayuda p i { flex: none; width: calc(var(--bab-u) * 16); font-size: calc(var(--bab-u) * 13); text-align: center; }
+
+.cinta-ayuda__teclas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--bab-u) * 7) calc(var(--bab-u) * 14);
+    margin-top: calc(var(--bab-u) * 11);
+    padding-top: calc(var(--bab-u) * 10);
+    border-top: 1.5px solid #000;
+}
+
+.cinta-ayuda__teclas > span { display: flex; align-items: center; gap: var(--bab-hueco-tecla); }
+
+/* ══ DISEÑO B (13/10): la pieza elegida, en grande ══════════════════════════
+   A la izquierda una ficha con lo que se lleva (dibujo, nombre, para qué sirve y
+   sus estilos); a la derecha los grupos, los subgrupos, las cosas —nueve a la
+   vista, cada una con su nombre— y las teclas. Pisa las medidas de arriba.     */
+.cinta-cuerpo {
+    display: flex;
+    align-items: stretch;
+    gap: calc(var(--bab-u) * 14);
+}
+
+.cinta-der { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.cinta-ficha {
+    flex: none;
+    box-sizing: border-box;
+    width: calc(var(--bab-u) * 330);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--bab-u) * 8);
+    padding: calc(var(--bab-u) * 12) calc(var(--bab-u) * 13);
+    border-radius: calc(var(--bab-u) * 13);
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, calc(var(--bab-u) * 3) calc(var(--bab-u) * 3) 0 #d81b55;
+    white-space: normal;
+}
+
+.cinta-ficha__cab { display: flex; align-items: center; gap: calc(var(--bab-u) * 11); min-width: 0; }
+
+.cinta-ficha__ico {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: calc(var(--bab-u) * 58);
+    height: calc(var(--bab-u) * 58);
+    border-radius: calc(var(--bab-u) * 10);
+    background: #fff;
+    box-shadow: inset 0 0 0 1.5px #000;
+    overflow: hidden;
+    font-size: calc(var(--bab-u) * 28);
+    color: #d81b55;
+}
+
+.cinta-ficha__ico img { width: 88%; height: 88%; object-fit: contain; }
+
+.cinta-ficha__tit { min-width: 0; display: flex; flex-direction: column; gap: calc(var(--bab-u) * 5); }
+
+.cinta-ficha__tit b {
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 23);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    /* dos renglones como mucho: un mueble de nombre largo no empuja lo demás */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cinta-ficha__datos { display: flex; align-items: center; gap: calc(var(--bab-u) * 8); line-height: 1; }
+.cinta-ficha__datos:empty { display: none; }
+.cinta-ficha__datos i { color: #d81b55; font-size: calc(var(--bab-u) * 13); }
+.cinta-ficha__datos u {
+    padding: calc(var(--bab-u) * 3) calc(var(--bab-u) * 7) calc(var(--bab-u) * 2);
+    border-radius: calc(var(--bab-u) * 6);
+    background: #0b0b0d;
+    color: #fff;
+    font-family: var(--bab-cifra);
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 14);
+    text-decoration: none;
+}
+.cinta-ficha__datos em { font-family: var(--bab-cifra); font-style: normal; font-weight: 800; font-size: calc(var(--bab-u) * 12.5); opacity: 0.6; }
+
+.cinta-ficha__desc {
+    margin: 0;
+    font-family: var(--bab-rotulo);
+    font-weight: 600;
+    font-size: calc(var(--bab-u) * 15.5);
+    line-height: 1.22;
+    color: #26262b;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.cinta-ficha__desc:empty { display: none; }
+
+.cinta-ficha__extra:empty { display: none; }
+.cinta-ficha__extra .cinta-pack { display: inline-flex; margin: 0; text-decoration: none; }
+
+/* los estilos (R), dentro de la ficha: en varias líneas si hace falta */
+.cinta-ficha .cinta-vars { display: block; height: auto; margin-top: auto; overflow: visible; }
+.cinta-ficha .cinta-vars[hidden] { display: none; }
+.cinta-ficha .cinta-vars__fila { flex-wrap: wrap; width: 100%; gap: calc(var(--bab-u) * 5); }
+.cinta-vars__de { display: flex; align-items: center; gap: calc(var(--bab-u) * 6); margin-right: calc(var(--bab-u) * 2); }
+.cinta-vars__de small { margin-right: 0; }
+
+/* las cosas: nueve a la vista (las tres de cada extremo se guardan), con nombre */
+.cinta-cosas {
+    align-items: stretch;
+    height: calc(var(--bab-u) * 112);
+    margin-top: calc(var(--bab-u) * 12);
+}
+
+.cinta-cosas > .cinta-cosa:nth-child(-n+3),
+.cinta-cosas > .cinta-cosa:nth-child(n+13) { display: none; }
+
+.cinta-cosa,
+.cinta-cosa--si {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: calc(var(--bab-u) * 5) calc(var(--bab-u) * 5) calc(var(--bab-u) * 6);
+    gap: calc(var(--bab-u) * 4);
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    font-size: calc(var(--bab-u) * 30);
+    overflow: hidden;
+}
+
+.cinta-cosa--hueco { box-shadow: none; }
+
+.cinta-cosa__foto { position: relative; flex: 1; min-height: 0; display: grid; place-items: center; overflow: hidden; }
+/* la foto ocupa su hueco y nada más: sin esto se montaba encima del nombre */
+.cinta-cosa__foto img,
+.cinta-cosa--llena .cinta-cosa__foto img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: calc(var(--bab-u) * 7);
+}
+
+.cinta-rot {
+    flex: none;
+    overflow: hidden;
+    font-family: var(--bab-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: calc(var(--bab-u) * 13);
+    line-height: 1;
+    letter-spacing: 0.03em;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.cinta-cosa--si {
+    background: #fff;
+    box-shadow: inset 0 0 0 calc(var(--bab-u) * 3) #d81b55, inset 0 0 0 calc(var(--bab-u) * 4.5) #000, 3px 3px 0 #000;
+    transform: translateY(calc(var(--bab-u) * -5));
+    overflow: hidden;
+}
+.cinta-cosa--si .cinta-rot { color: #7d0b31; }
+
+/* el precio, arriba a la derecha de la foto (abajo tapaba el nombre) */
+.cinta-precio { top: 0; right: 0; bottom: auto; font-size: calc(var(--bab-u) * 11); }
+.cinta-cosa .cinta-candado { z-index: 1; }
+.cinta-pie { margin-top: calc(var(--bab-u) * 10); }

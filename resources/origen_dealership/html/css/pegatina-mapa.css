@@ -1,0 +1,55 @@
+/* ══ PEGATINA · LOS MARCADORES DEL MAPA (04/10) — solo Origen ═══════════════
+   Las chinchetas de este mapa con la hechura de las de origen_map y del mapa
+   grande del inventario (.pm-pin): cabeza redonda rellena del color de su
+   ESTADO o TIPO, canto negro, punta abajo, sombra dura corta y el dibujo
+   dentro en negro. La elegida, en rosa, mas grande y con troquel blanco.
+   Los rotulos son chapas blancas con canto (Barlow Condensed cursiva 800).
+
+   Hoja aparte de pegatina.css a proposito (origen_dealership): para no pisarse con
+   el repaso de los paneles. Todo cuelga de html:
+   en Nacion no entra ninguna regla. Lleva !important porque pisa estilos
+   con ambito de los componentes y reglas de la pegatina principal.
+   Generada con la receta comun; para quitarla, borrar el fichero y su import.
+
+   Concesionarios: chincheta blanca con el coche; rosa al pasar por encima.  */
+html .leaflet-container .store-marker .marker-icon {
+    position: absolute !important; left: -1px !important; top: -15.4px !important; right: auto !important; bottom: auto !important; margin: 0 !important;
+    display: grid !important; place-items: center; padding: 0 !important;
+    width: 22px !important; height: 22px !important; min-width: 0 !important; box-sizing: border-box !important;
+    border: 2px solid #000 !important; border-radius: 50% !important;
+    background: #dcdde0 !important;
+    box-shadow: 2px 2.5px 0 #000 !important;
+    color: #0b0b0d !important; opacity: 1 !important; filter: none !important; outline: 0 !important;
+    overflow: visible !important; cursor: pointer;
+    transform: none; transform-origin: 50% 115%;
+    transition: transform 0.12s ease !important;
+}
+html .leaflet-container .store-marker .marker-icon::after {
+    content: "" !important; position: absolute; display: block; top: calc(100% - 3px); left: 50%;
+    width: 7px; height: 7px; box-sizing: border-box;
+    background: inherit; border: 0 solid #000; border-right-width: 2px; border-bottom-width: 2px;
+    border-radius: 0 0 1px 0; box-shadow: none; opacity: 1;
+    transform: translateX(-50%) rotate(45deg);
+}
+html .leaflet-container .store-marker .marker-icon:hover { transform: translateY(-2px) scale(1.12); }
+html .leaflet-container .store-marker .marker-icon::before {
+    content: "" !important; position: relative; z-index: 1; display: block; width: 14px; height: 14px;
+    border: 0; border-radius: 0; box-shadow: none; opacity: 1; transform: none; animation: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%230b0b0d'%3E%3Cpath d='M3 13.4l1.5-4.6A2.3 2.3 0 0 1 6.7 7.2h6.6a2.3 2.3 0 0 1 2.2 1.6l1.5 4.6v2.5a.9.9 0 0 1-.9.9h-1.2a.9.9 0 0 1-.9-.9v-.6H5.9v.6a.9.9 0 0 1-.9.9H3.8a.9.9 0 0 1-.9-.9z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+html .leaflet-container .store-marker .marker-icon:hover { background: #d81b55 !important; }
+html .leaflet-container .leaflet-popup { margin-bottom: 20px !important; }
+html .leaflet-container .leaflet-popup-content-wrapper {
+    border: 0 !important; border-radius: 10px !important; background: #dcdde0 !important;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000 !important; color: #0b0b0d !important;
+}
+html .leaflet-container .leaflet-popup-content {
+    margin: 7px 11px 6px !important;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif !important;
+    font-style: italic; font-weight: 800; font-size: 13px !important; letter-spacing: 0.04em;
+    text-transform: uppercase; line-height: 1.2 !important; color: #0b0b0d !important;
+}
+html .leaflet-container .leaflet-popup-tip-container { display: none !important; }
+
+html .leaflet-container .leaflet-popup-content b { font-weight: 800; }

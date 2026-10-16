@@ -1,0 +1,1118 @@
+/* ══ Tu vivienda, en menú lateral ══════════════════════════════════════════
+
+   El panel de la casa (index.html, «TU VIVIENDA»). Va encima de las clases
+   `rp-` de hotels.css —las de la recepción y la compra de una casa— y aquí
+   solo está lo que ellas no tienen:
+
+     · el AMPLIADO: la columna se estira hacia la izquierda hasta el margen,
+       como el panel de banda y el de negocios, y la barra no se mueve;
+     · las secciones en tarjetas (una a una estrecho, en tres columnas ancho);
+     · el editor de una luz, el interruptor y los cuadros.
+
+   Todo con los tokens --inv-* / --arc-*.
+   Ver .claude/skills/origen-riel/SKILL.md */
+
+/* ── La columna que se estira ─────────────────────────────────────────────
+   El ancho lo dan los dos cantos y no `width`: al ampliar lo único que cambia
+   es dónde empieza por la izquierda, y eso sí se puede animar. La curva sale
+   despacio y llega despacio, que es como se lee algo que se despliega. */
+.vv-col {
+    width: auto;
+    left: calc(calc(100vw / var(--ogn-escala, 1)) - var(--inv-riel-total) - var(--inv-col));
+    transition: left 0.5s cubic-bezier(0.45, 0, 0.25, 1);
+}
+
+.vv-col.is-ancho {
+    left: var(--inv-margen-x);
+}
+
+/* ── Cabecera ─────────────────────────────────────────────────────────────── */
+.vv-cab__txt {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.vv-cab__txt .rp-cab__t {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.vv-kicker {
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto, #b3123f);
+}
+
+/* Las cinco cifras en una fila. */
+.vv-cifras {
+    flex: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* ── La barra de la sección ───────────────────────────────────────────────── */
+.vv-barra {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.vv-barra__t {
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+}
+
+/* «Ampliar»: la chapa de papel del panel de banda, con su flecha. */
+.vv-ampliar {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 0;
+    border-radius: var(--inv-r-min);
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28), 0 3px 0 rgba(var(--arc-t-relieve), 0.35);
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--inv-t2);
+    cursor: pointer;
+    transition: background 0.16s ease, color 0.16s ease;
+}
+
+.vv-ampliar:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--inv-t1);
+}
+
+.vv-ampliar i { font-size: 11px; }
+
+/* ── Las secciones ────────────────────────────────────────────────────────── */
+.vv-sec {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+/* La primera sección no necesita el aire de arriba del rótulo. */
+.vv-sec__cab {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.vv-sec__cab .rp-rotulo {
+    flex: 1;
+    margin-top: 0;
+}
+
+/* Estrecho, el nombre de la sección ya lo dice la barra de arriba: aquí solo
+   queda su botón, a la derecha. Ampliado cada tarjeta lleva su rótulo. */
+.vv-col:not(.is-ancho) .vv-sec__cab .rp-rotulo { visibility: hidden; padding-top: 0; }
+.vv-col:not(.is-ancho) .vv-sec__cab .rp-rotulo::before { display: none; }
+.vv-col:not(.is-ancho) .vv-sec__cab { display: none; }
+
+/* Estrecho, el «+» de la cabecera pasa a ser la última fila de la lista:
+   arriba solo dejaba una franja vacía con un botón suelto. */
+.vv-anadir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px;
+    border: 0;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, calc(0.34 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--inv-t3);
+    cursor: pointer;
+    transition: background 0.16s ease, color 0.16s ease;
+}
+
+.vv-anadir:hover { background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf))); color: var(--inv-t1); }
+.vv-col.is-ancho .vv-anadir { display: none; }
+
+/* Ampliado: tres columnas de tarjetas y cada una con su caja, porque ya no
+   se leen de arriba abajo sino de un vistazo. */
+.vv-col.is-ancho .vv-cuerpo {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: start;
+    align-items: start;
+    gap: 14px;
+}
+
+.vv-col.is-ancho .vv-sec {
+    padding: 12px 14px 14px;
+    border-radius: var(--inv-r);
+    background: rgba(var(--arc-t-hueco), 0.035);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.16);
+}
+
+.vv-nota {
+    margin: 0;
+    font-family: var(--inv-mono);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--inv-t3);
+}
+
+/* ── Botones pequeños ─────────────────────────────────────────────────────── */
+.vv-mas,
+.vv-mini {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.28);
+    color: var(--inv-t2);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.vv-mas:hover,
+.vv-mini:hover {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    color: var(--inv-t1);
+}
+
+.vv-mini.es-mala:hover {
+    background: rgba(192, 10, 70, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(192, 10, 70, 0.45);
+    color: var(--inv-bad);
+}
+
+/* El cerrojo de una puerta es una pastilla que se pulsa. */
+.vv-cerrojo {
+    border: 0;
+    cursor: pointer;
+}
+
+.vv-flecha {
+    flex: none;
+    font-size: 11px;
+    color: var(--inv-t4);
+}
+
+/* ── Luces ────────────────────────────────────────────────────────────────── */
+.rp-fila.on .rp-fila__ico .fa-lightbulb { color: #f2c200; }
+
+.vv-interruptor {
+    position: relative;
+    flex: none;
+    width: 38px;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(var(--arc-t-linea), 0.24);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.3);
+    cursor: pointer;
+    transition: background 0.16s ease;
+}
+
+.vv-interruptor i {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--arc-papel1) 0%, var(--arc-papel2) 100%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    transition: transform 0.16s ease;
+}
+
+.vv-interruptor.on { background: var(--inv-grad); box-shadow: none; }
+.vv-interruptor.on i { transform: translateX(16px); }
+
+.vv-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vv-editor__cab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vv-etq {
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--inv-t3);
+}
+
+.vv-colores {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    gap: 7px;
+}
+
+.vv-color {
+    aspect-ratio: 1;
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.vv-color.on { box-shadow: 0 0 0 2px var(--arc-papel1), 0 0 0 4px var(--inv-acc); }
+
+.vv-rango {
+    width: 100%;
+    accent-color: var(--inv-acc);
+}
+
+.vv-campo {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.3);
+    font-family: var(--inv-mono);
+    font-size: 13px;
+    color: var(--inv-t1);
+    outline: none;
+}
+
+.vv-campo:focus { box-shadow: inset 0 0 0 1px rgba(var(--inv-acc-rgb), 0.6); }
+
+/* ── Cuadros ──────────────────────────────────────────────────────────────── */
+.vv-cuadros {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.vv-cuadro {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    display: grid;
+    place-items: center;
+    border-radius: var(--inv-r-min);
+    background-color: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.22);
+    color: var(--inv-t4);
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.vv-cuadro__edit {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+}
+
+.vv-cuadro__url {
+    position: absolute;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    font-size: 11px;
+}
+
+/* ── Estilos del interior ─────────────────────────────────────────────────── */
+.vv-miniatura {
+    width: 56px;
+    background-size: cover;
+    background-position: center;
+}
+
+/* ── La celebración de una mejora, dentro de la columna ─────────────────── */
+.vv-celebra {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 30px;
+    background: var(--inv-cristal);
+}
+
+.vv-celebra__k {
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+}
+
+.vv-celebra img { height: calc(14vh / var(--ogn-escala, 1)); }
+
+.vv-celebra__n {
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--arc-accent-texto, #b3123f);
+}
+
+.vv-celebra__b { width: auto; min-width: 200px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .vv-col { transition: none; }
+}
+
+
+/* ══ Decorar · el menú de muebles ═════════════════════════════════════════
+   (index.html, «DECORAR · LOS MUEBLES»). Usa la columna que se estira de tu
+   vivienda (.vv-col) y las piezas rp-. Sin recogedor de clics: la pantalla
+   entera deja pasar el ratón al mundo y solo las dos piezas lo cogen. */
+.rp.mb { pointer-events: none; }
+.rp.mb .rp-col,
+.rp.mb .rp-riel { pointer-events: auto; }
+
+.mb-barra__der {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Las categorías: fichas de dos en dos estrecho, más ampliado. */
+.mb-cats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+.mb-cat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.mb-cat:hover {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.36);
+}
+
+.mb-cat__n {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mb-cat__c {
+    flex: none;
+    font-family: var(--inv-mono);
+    font-size: 12px;
+    color: var(--inv-t4);
+}
+
+/* Los muebles: tres por fila estrecho, los que quepan ampliado. */
+.mb-objetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+}
+
+.mb-obj {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    aspect-ratio: 1;
+    padding: 10px;
+    border: 0;
+    border-radius: var(--inv-r);
+    background: rgba(255, 255, 255, calc(0.62 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(var(--arc-t-linea), 0.2);
+    cursor: pointer;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.mb-obj:hover {
+    background: rgba(255, 255, 255, calc(0.92 * var(--arc-vf)));
+}
+
+/* Lo elegido: filete del acento y tinte, nunca relleno lleno. */
+.mb-obj.on {
+    background: rgba(var(--inv-acc-rgb), 0.09);
+    box-shadow: inset 0 0 0 1px rgba(var(--inv-acc-rgb), 0.55);
+}
+
+.mb-obj img {
+    width: 72%;
+    height: 72%;
+    object-fit: contain;
+}
+
+.mb-obj__p {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(var(--arc-t-papel1), 0.9);
+    box-shadow: inset 0 0 0 1px rgba(var(--arc-t-linea), 0.24);
+    font-family: var(--inv-cifra);
+    font-size: 12px;
+    color: var(--inv-t1);
+}
+
+.mb-obj__acc {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    display: flex;
+    gap: 5px;
+}
+
+/* ══ Modales Nuevos: Compra de Mueble y Puntos MLO ══════════════════════════
+   Diseño 100% neutro acorde a las directrices de origen-nui:
+   Fondo oscuro translúcido, acentos en blanco/grises, sin colores vivos. */
+
+.rp-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rp-modal-overlay__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.rp-modal-panel {
+    position: relative;
+    z-index: 2;
+    width: 440px;
+    max-width: 90vw;
+    background: rgba(18, 18, 20, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--inv-r, 12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: #ffffff;
+    animation: modalIn 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.rp-modal-cab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.rp-modal-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.rp-modal-cab__txt {
+    flex: 1;
+    min-width: 0;
+}
+
+.rp-modal-t {
+    font-family: var(--inv-rotulo, 'Barlow Condensed', sans-serif);
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+    color: #ffffff;
+    line-height: 1.1;
+}
+
+.rp-modal-sub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rp-modal-close {
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.rp-modal-close:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.rp-modal-cuerpo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Previsualización del mueble */
+.rp-mueble-preview {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.rp-mueble-preview img {
+    max-width: 75%;
+    max-height: 75%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+}
+
+.rp-mueble-precio {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-family: var(--inv-cifra, "Oxanium", "Barlow Condensed", sans-serif);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+/* Selector de método de pago */
+.rp-metodo-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rp-metodo-etq {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+
+.rp-metodo-opciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.rp-metodo-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: all 0.16s ease;
+}
+
+.rp-metodo-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.rp-metodo-btn.on {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Tipos de punto MLO */
+.rp-mlo-tipos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.rp-mlo-cupos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.rp-mlo-cupo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+.rp-mlo-cupo-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rp-mlo-cupo-info i {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.rp-mlo-cupo-txt {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rp-mlo-cupo-nom {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.rp-mlo-cupo-val {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.rp-btn-cupo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rp-btn-cupo:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.rp-mlo-limite-aviso {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+.rp-mlo-limite-txt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.rp-mlo-limite-txt i {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.rp-btn-cupo-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rp-btn-cupo-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.rp-mlo-tipo-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 14px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.16s ease;
+}
+
+.rp-mlo-tipo-btn i {
+    font-size: 20px;
+}
+
+.rp-mlo-tipo-btn b {
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.rp-mlo-tipo-btn small {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.1;
+}
+
+.rp-mlo-tipo-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.rp-mlo-tipo-btn.on {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.rp-campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rp-modal-pie {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ══ MODAL DE CARRITO DE MUEBLES ══════════════════════════════════════════ */
+.rp-modal-panel.es-carrito {
+    width: 530px;
+    max-width: 92vw;
+}
+
+.rp-carrito-aviso {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid rgba(255, 255, 255, 0.45);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.rp-carrito-aviso i {
+    font-size: 14px;
+    margin-top: 2px;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.rp-carrito-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 240px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.rp-carrito-lista::-webkit-scrollbar {
+    width: 4px;
+}
+
+.rp-carrito-lista::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.rp-carrito-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.rp-carrito-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.rp-carrito-orden {
+    font-family: var(--inv-cifra, monospace);
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    min-width: 24px;
+}
+
+.rp-carrito-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.rp-carrito-thumb img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+}
+
+.rp-carrito-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rp-carrito-nombre {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rp-carrito-modelo {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: var(--inv-cifra, monospace);
+}
+
+.rp-carrito-precio {
+    font-family: var(--inv-cifra, monospace);
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.rp-carrito-del {
+    background: transparent;
+    border: 0;
+    color: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+    padding: 6px;
+    font-size: 13px;
+    border-radius: 4px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.rp-carrito-del:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.rp-carrito-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+}
+
+.rp-carrito-resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.rp-carrito-resumen-fila.total {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+.rp-carrito-resumen-fila.total b {
+    font-family: var(--inv-cifra, monospace);
+    font-size: 17px;
+    letter-spacing: 0.02em;
+}
+
+.rp-modal-pie-izq {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: auto;
+}
+
+.rp-btn-carrito {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.rp-btn-carrito:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #ffffff;
+}
+
+.rp-riel__carrito {
+    position: relative;
+}
+
+.rp-riel__badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--inv-cifra, monospace);
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 1px 5px;
+    line-height: 13px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}

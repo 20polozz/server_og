@@ -1,0 +1,4829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CVehicleModelInfoVarGlobal>    
+  <Kits>
+    <Item>
+      <kitName>1935_gbrumina_modkit</kitName>
+      <id value="1935" />
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+        <Item>
+          <modelName>rumina_liv1</modelName>
+          <modShopLabel>RUMINA_LIV1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv2</modelName>
+          <modShopLabel>RUMINA_LIV2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv3</modelName>
+          <modShopLabel>RUMINA_LIV3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv4</modelName>
+          <modShopLabel>RUMINA_LIV4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv5</modelName>
+          <modShopLabel>RUMINA_LIV5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv6</modelName>
+          <modShopLabel>RUMINA_LIV6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv7</modelName>
+          <modShopLabel>RUMINA_LIV7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv8</modelName>
+          <modShopLabel>RUMINA_LIV8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv9</modelName>
+          <modShopLabel>RUMINA_LIV9</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv10</modelName>
+          <modShopLabel>RUMINA_LIV10</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv11</modelName>
+          <modShopLabel>RUMINA_LIV11</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv12</modelName>
+          <modShopLabel>RUMINA_LIV12</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_liv13</modelName>
+          <modShopLabel>RUMINA_LIV13</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv14</modelName>
+          <modShopLabel>RUMINA_LIV14</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv15</modelName>
+          <modShopLabel>RUMINA_LIV15</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv16</modelName>
+          <modShopLabel>RUMINA_LIV16</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv17</modelName>
+          <modShopLabel>RUMINA_LIV17</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv18</modelName>
+          <modShopLabel>RUMINA_LIV18</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv22</modelName>
+          <modShopLabel>RUMINA_LIV22</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv24</modelName>
+          <modShopLabel>RUMINA_LIV24</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv25</modelName>
+          <modShopLabel>RUMINA_LIV25</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv26</modelName>
+          <modShopLabel>RUMINA_LIV26</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+          <modelName>rumina_liv23</modelName>
+          <modShopLabel>RUMINA_LIV23</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+        <Item>
+          <modelName>rumina_bumf1</modelName>
+          <modShopLabel>RUMINA_BUMF1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf2</modelName>
+          <modShopLabel>RUMINA_BUMF2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf2a</modelName>
+          <modShopLabel>RUMINA_BUMF2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf3</modelName>
+          <modShopLabel>RUMINA_BUMF3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf3a</modelName>
+          <modShopLabel>RUMINA_BUMF3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf5</modelName>
+          <modShopLabel>RUMINA_BUMF5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf6</modelName>
+          <modShopLabel>RUMINA_BUMF6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf6a</modelName>
+          <modShopLabel>RUMINA_BUMF6A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf6b</modelName>
+          <modShopLabel>RUMINA_BUMF6B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf7</modelName>
+          <modShopLabel>RUMINA_BUMF7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf8</modelName>
+          <modShopLabel>RUMINA_BUMF8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf9</modelName>
+          <modShopLabel>RUMINA_BUMF9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf9a</modelName>
+          <modShopLabel>RUMINA_BUMF9A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf10</modelName>
+          <modShopLabel>RUMINA_BUMF10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf11</modelName>
+          <modShopLabel>RUMINA_BUMF11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf12</modelName>
+          <modShopLabel>RUMINA_BUMF12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf13</modelName>
+          <modShopLabel>RUMINA_BUMF13</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf14</modelName>
+          <modShopLabel>RUMINA_BUMF14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf15</modelName>
+          <modShopLabel>RUMINA_BUMF15</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf16</modelName>
+          <modShopLabel>RUMINA_BUMF16</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf17</modelName>
+          <modShopLabel>RUMINA_BUMF17</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf18</modelName>
+          <modShopLabel>RUMINA_BUMF18</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf19</modelName>
+          <modShopLabel>RUMINA_BUMF19</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf20</modelName>
+          <modShopLabel>RUMINA_BUMF20</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf20a</modelName>
+          <modShopLabel>RUMINA_BUMF20A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf21</modelName>
+          <modShopLabel>RUMINA_BUMF21</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf22</modelName>
+          <modShopLabel>RUMINA_BUMF22</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf23</modelName>
+          <modShopLabel>RUMINA_BUMF23</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf24</modelName>
+          <modShopLabel>RUMINA_BUMF24</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf24a</modelName>
+          <modShopLabel>RUMINA_BUMF24A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf4a</modelName>
+          <modShopLabel>RUMINA_BUMF4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf4</modelName>
+          <modShopLabel>RUMINA_BUMF4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf25</modelName>
+          <modShopLabel>RUMINA_BUMF25</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf25a</modelName>
+          <modShopLabel>RUMINA_BUMF25A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_bumf26</modelName>
+          <modShopLabel>RUMINA_BUMF26</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_null</modelName>
+          <modShopLabel>RUMINA_BUMF0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_f</Item>
+          </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh1</modelName>
+          <modShopLabel>RUMINA_BUMR1</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr1</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh1</modelName>
+          <modShopLabel>RUMINA_BUMR2</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr2</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR3</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr3</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh3</modelName>
+          <modShopLabel>RUMINA_BUMR4</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr4</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR5</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr5</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR6</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr6</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh5</modelName>
+          <modShopLabel>RUMINA_BUMR7</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr7</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh6</modelName>
+          <modShopLabel>RUMINA_BUMR8</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr8</Item>
+		  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh5</modelName>
+          <modShopLabel>RUMINA_BUMR9</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr9</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh12</modelName>
+          <modShopLabel>RUMINA_BUMR9A</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr9a</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh7</modelName>
+          <modShopLabel>RUMINA_BUMR10</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr10</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR11</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr11</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh8</modelName>
+          <modShopLabel>RUMINA_BUMR12</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr12</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR13</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr13</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh9</modelName>
+          <modShopLabel>RUMINA_BUMR14</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr14</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh1</modelName>
+          <modShopLabel>RUMINA_BUMR15</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr15</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR16</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr16</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh10</modelName>
+          <modShopLabel>RUMINA_BUMR17</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr17</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR18</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr18</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR19</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr19</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh2</modelName>
+          <modShopLabel>RUMINA_BUMR20</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr20</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh1</modelName>
+          <modShopLabel>RUMINA_BUMR21</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr21</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR22</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr22</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh11</modelName>
+          <modShopLabel>RUMINA_BUMR23</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr23</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR24</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr24</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR25</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr25</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR26</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr26</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_exh4</modelName>
+          <modShopLabel>RUMINA_BUMR26A</modShopLabel>
+          <linkedModels>
+            <Item>rumina_bumr26a</Item>
+	  </linkedModels>
+          <turnOffBones>
+            <Item>bumper_r</Item>
+            <Item>misc_g</Item>
+            <Item>exhaust</Item>
+          </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood0a</modelName>
+          <modShopLabel>RUMINA_HOOD0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood1</modelName>
+          <modShopLabel>RUMINA_HOOD1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood1a</modelName>
+          <modShopLabel>RUMINA_HOOD1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood2</modelName>
+          <modShopLabel>RUMINA_HOOD2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood2a</modelName>
+          <modShopLabel>RUMINA_HOOD2A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood3</modelName>
+          <modShopLabel>RUMINA_HOOD3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood3a</modelName>
+          <modShopLabel>RUMINA_HOOD3A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood4</modelName>
+          <modShopLabel>RUMINA_HOOD4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood4a</modelName>
+          <modShopLabel>RUMINA_HOOD4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood5</modelName>
+          <modShopLabel>RUMINA_HOOD5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood5a</modelName>
+          <modShopLabel>RUMINA_HOOD5A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood6</modelName>
+          <modShopLabel>RUMINA_HOOD6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood6a</modelName>
+          <modShopLabel>RUMINA_HOOD6A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood7</modelName>
+          <modShopLabel>RUMINA_HOOD7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood7a</modelName>
+          <modShopLabel>RUMINA_HOOD7A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood8</modelName>
+          <modShopLabel>RUMINA_HOOD8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood8a</modelName>
+          <modShopLabel>RUMINA_HOOD8A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood9</modelName>
+          <modShopLabel>RUMINA_HOOD9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood9a</modelName>
+          <modShopLabel>RUMINA_HOOD9A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood10</modelName>
+          <modShopLabel>RUMINA_HOOD10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood10a</modelName>
+          <modShopLabel>RUMINA_HOOD10A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood11</modelName>
+          <modShopLabel>RUMINA_HOOD11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_hood11a</modelName>
+          <modShopLabel>RUMINA_HOOD11A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>bonnet</Item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_hpin1</modelName>
+          <modShopLabel>RUMINA_HPIN1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hpin2</modelName>
+          <modShopLabel>RUMINA_HPIN2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hpin3</modelName>
+          <modShopLabel>RUMINA_HPIN3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hpin4</modelName>
+          <modShopLabel>RUMINA_HPIN4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS3</type>
+          <bone>bonnet</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+		<Item>
+          <modelName>rumina_mirl0a</modelName>
+          <modShopLabel>RUMINA_MIR0A</modShopLabel>
+          <linkedModels>
+          <Item>rumina_mirr0a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_mirl1</modelName>
+          <modShopLabel>RUMINA_MIR1</modShopLabel>
+          <linkedModels>
+          <Item>rumina_mirr1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_mirl1a</modelName>
+          <modShopLabel>RUMINA_MIR1A</modShopLabel>
+          <linkedModels>
+          <Item>rumina_mirr1a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_mirl2</modelName>
+          <modShopLabel>RUMINA_MIR2</modShopLabel>
+          <linkedModels>
+          <Item>rumina_mirr2</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_mirl2a</modelName>
+          <modShopLabel>RUMINA_MIR2A</modShopLabel>
+          <linkedModels>
+          <Item>rumina_mirr2a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_i</Item>
+			<Item>misc_j</Item>
+		  </turnOffBones>
+          <type>VMT_DOOR_L</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_rspl1</modelName>
+          <modShopLabel>RUMINA_RSPL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTVANITY</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_hcover0a</modelName>
+          <modShopLabel>RUMINA_HCOVER0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover0b</modelName>
+          <modShopLabel>RUMINA_HCOVER0B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover0a</modelName>
+          <modShopLabel>RUMINA_HCOVER0AE</modShopLabel>
+          <linkedModels>
+          <Item>rumina_hcover1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover1</modelName>
+          <modShopLabel>RUMINA_HCOVER1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover0b</modelName>
+          <modShopLabel>RUMINA_HCOVER0BE</modShopLabel>
+          <linkedModels>
+          <Item>rumina_hcover1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover2</modelName>
+          <modShopLabel>RUMINA_HCOVER2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover3</modelName>
+          <modShopLabel>RUMINA_HCOVER3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hcover4</modelName>
+          <modShopLabel>RUMINA_HCOVER4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>extra_9</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hlight1</modelName>
+          <modShopLabel>RUMINA_HLIGHT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_hlight2</modelName>
+          <modShopLabel>RUMINA_HLIGHT2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_m</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+        <Item>
+          <modelName>rumina_null</modelName>
+          <modShopLabel>RUMINA_HLIGHT0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_9</Item>
+			<Item>headlight_l</Item>
+			<Item>headlight_r</Item>
+			<Item>indicator_lf</Item>
+			<Item>indicator_rf</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item> 
+		<Item>
+          <modelName>rumina_skirt1</modelName>
+		  <modShopLabel>RUMINA_SKIRT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt2</modelName>
+		  <modShopLabel>RUMINA_SKIRT2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt3</modelName>
+		  <modShopLabel>RUMINA_SKIRT3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt4</modelName>
+		  <modShopLabel>RUMINA_SKIRT4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt5</modelName>
+		  <modShopLabel>RUMINA_SKIRT5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt6</modelName>
+		  <modShopLabel>RUMINA_SKIRT6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt7</modelName>
+		  <modShopLabel>RUMINA_SKIRT7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt8</modelName>
+		  <modShopLabel>RUMINA_SKIRT8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt9</modelName>
+		  <modShopLabel>RUMINA_SKIRT9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt10</modelName>
+		  <modShopLabel>RUMINA_SKIRT10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt11</modelName>
+		  <modShopLabel>RUMINA_SKIRT11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt12</modelName>
+		  <modShopLabel>RUMINA_SKIRT12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt13</modelName>
+		  <modShopLabel>RUMINA_SKIRT13</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt14</modelName>
+		  <modShopLabel>RUMINA_SKIRT14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt15</modelName>
+		  <modShopLabel>RUMINA_SKIRT15</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt16</modelName>
+		  <modShopLabel>RUMINA_SKIRT16</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt17</modelName>
+		  <modShopLabel>RUMINA_SKIRT17</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt17a</modelName>
+		  <modShopLabel>RUMINA_SKIRT17A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt18</modelName>
+		  <modShopLabel>RUMINA_SKIRT18</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt19</modelName>
+		  <modShopLabel>RUMINA_SKIRT19</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt20</modelName>
+		  <modShopLabel>RUMINA_SKIRT20</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt21</modelName>
+		  <modShopLabel>RUMINA_SKIRT21</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt22</modelName>
+		  <modShopLabel>RUMINA_SKIRT22</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt23</modelName>
+		  <modShopLabel>RUMINA_SKIRT23</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt24</modelName>
+		  <modShopLabel>RUMINA_SKIRT24</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_h</Item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_skirt25</modelName>
+		  <modShopLabel>RUMINA_SKIRT25</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl0</modelName>
+		  <modShopLabel>RUMINA_SPL0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl1</modelName>
+		  <modShopLabel>RUMINA_SPL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl2</modelName>
+		  <modShopLabel>RUMINA_SPL2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl3</modelName>
+		  <modShopLabel>RUMINA_SPL3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl4</modelName>
+		  <modShopLabel>RUMINA_SPL4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl4a</modelName>
+		  <modShopLabel>RUMINA_SPL4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl5</modelName>
+		  <modShopLabel>RUMINA_SPL5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl6</modelName>
+		  <modShopLabel>RUMINA_SPL6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl7</modelName>
+		  <modShopLabel>RUMINA_SPL7</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl8</modelName>
+		  <modShopLabel>RUMINA_SPL8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl9</modelName>
+		  <modShopLabel>RUMINA_SPL9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl10</modelName>
+		  <modShopLabel>RUMINA_SPL10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl11</modelName>
+		  <modShopLabel>RUMINA_SPL11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl11a</modelName>
+		  <modShopLabel>RUMINA_SPL11A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl12</modelName>
+		  <modShopLabel>RUMINA_SPL12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl13</modelName>
+		  <modShopLabel>RUMINA_SPL13</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl14</modelName>
+		  <modShopLabel>RUMINA_SPL14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl15</modelName>
+		  <modShopLabel>RUMINA_SPL15</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl16</modelName>
+		  <modShopLabel>RUMINA_SPL16</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl17</modelName>
+		  <modShopLabel>RUMINA_SPL17</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl18</modelName>
+		  <modShopLabel>RUMINA_SPL18</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_spl19</modelName>
+		  <modShopLabel>RUMINA_SPL19</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>extra_3</Item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_trunk0a</modelName>
+		  <modShopLabel>RUMINA_TRUNK0A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_trunk1</modelName>
+		  <modShopLabel>RUMINA_TRUNK1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_trunk1a</modelName>
+		  <modShopLabel>RUMINA_TRUNK1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_trunk2</modelName>
+		  <modShopLabel>RUMINA_TRUNK2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+		<Item>
+          <modelName>rumina_trunk3</modelName>
+		  <modShopLabel>RUMINA_TRUNK3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="false" />
+        </Item>
+	<!--	<Item>
+          <modelName>rumina_tail0al</modelName>
+          <modShopLabel>RUMINA_TAIL0A</modShopLabel>
+          <linkedModels>
+          <Item>rumina_tail0ar</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>taillight_l</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+		<Item>
+          <modelName>rumina_tail0bl</modelName>
+          <modShopLabel>RUMINA_TAIL0B</modShopLabel>
+          <linkedModels>
+          <Item>rumina_tail0br</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>taillight_l</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_tail1</modelName>
+          <modShopLabel>RUMINA_TAIL1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+			<Item>misc_e</Item>
+			<Item>misc_f</Item>
+			<Item>misc_k</Item>
+			<Item>indicator_lr</Item>
+			<Item>indicator_rr</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_tail1a</modelName>
+          <modShopLabel>RUMINA_TAIL1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+			<Item>misc_e</Item>
+			<Item>misc_f</Item>
+			<Item>misc_k</Item>
+			<Item>indicator_lr</Item>
+			<Item>indicator_rr</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_tail1b</modelName>
+          <modShopLabel>RUMINA_TAIL1B</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_a</Item>
+			<Item>misc_b</Item>
+			<Item>misc_c</Item>
+			<Item>misc_d</Item>
+			<Item>misc_e</Item>
+			<Item>misc_f</Item>
+			<Item>misc_k</Item>
+			<Item>indicator_lr</Item>
+			<Item>indicator_rr</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf1</modelName>
+          <modShopLabel>RUMINA_WGF1</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf1</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf1a</modelName>
+          <modShopLabel>RUMINA_WGF1A</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf1a</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf2</modelName>
+          <modShopLabel>RUMINA_WGF2</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf2</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf3</modelName>
+          <modShopLabel>RUMINA_WGF3</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf3</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf4</modelName>
+          <modShopLabel>RUMINA_WGF4</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf4</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wglf5</modelName>
+          <modShopLabel>RUMINA_WGF5</modShopLabel>
+          <linkedModels>
+          <Item>rumina_wgrf5</Item>
+          </linkedModels>
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_null</modelName>
+          <modShopLabel>RUMINA_WGF0</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+			<Item>misc_p</Item>
+			<Item>misc_q</Item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>wing_lf</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr1</modelName>
+          <modShopLabel>RUMINA_WGR1</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr1a</modelName>
+          <modShopLabel>RUMINA_WGR1A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr2</modelName>
+          <modShopLabel>RUMINA_WGR2</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr3</modelName>
+          <modShopLabel>RUMINA_WGR3</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr4</modelName>
+          <modShopLabel>RUMINA_WGR4</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr4a</modelName>
+          <modShopLabel>RUMINA_WGR4A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr5</modelName>
+          <modShopLabel>RUMINA_WGR5</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr6</modelName>
+          <modShopLabel>RUMINA_WGR6</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr6a</modelName>
+          <modShopLabel>RUMINA_WGR6A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr7</modelName>
+          <modShopLabel>RUMINA_WGR7</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr7a</modelName>
+          <modShopLabel>RUMINA_WGR7A</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_wgr8</modelName>
+          <modShopLabel>RUMINA_WGR8</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_WING_R</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+          <modelName>rumina_strip</modelName>
+          <modShopLabel>RUMINA_STRIP</modShopLabel>
+          <linkedModels />
+          <turnOffBones />
+          <type>VMT_PLTHOLDER</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <!--<Item>
+          <modelName>remus_stwheel8</modelName>
+          <modShopLabel>SMOD2_STEER8</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+        <!--<Item>
+          <modelName>remus_stwheel9</modelName>
+          <modShopLabel>SMOD2_STEER9</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+       <!-- <Item>
+          <modelName>remus_stwheel10</modelName>
+          <modShopLabel>SMOD2_STEER10</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+        <Item>
+          <modelName>remus_stwheel11</modelName>
+          <modShopLabel>SMOD2_STEER11</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>remus_stwheel12</modelName>
+          <modShopLabel>SMOD2_STEER12</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <!--<Item>
+          <modelName>remus_stwheel14</modelName>
+          <modShopLabel>SMOD2_STEER14</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>steeringwheel</Item>
+          </turnOffBones>
+          <type>VMT_STEERING</type>
+          <bone>steeringwheel</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+        <Item>
+          <modelName>rumina_sports1_smod</modelName>
+          <modShopLabel>SMOD_BSEAT1</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+          <allowBonnetSlide value="true" />
+        </Item>
+       <!-- <Item>
+          <modelName>rumina_bucketa2_smod</modelName>
+          <modShopLabel>SMOD_BSEAT3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>-->
+        <Item>
+          <modelName>rumina_bucketb2_smod</modelName>
+          <modShopLabel>SMOD_BSEAT6</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_v</Item>
+          </turnOffBones>
+          <type>VMT_SEATS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>rumina_cage1</modelName>
+          <modShopLabel>SULTAN_CAGE1</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>rumina_cage2</modelName>
+          <modShopLabel>SULTAN_CAGE2</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>rumina_cage3</modelName>
+          <modShopLabel>SULTAN_CAGE3</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>rumina_cage4</modelName>
+          <modShopLabel>SULTAN_CAGE4</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	  <Item>
+          <modelName>rumina_cage5</modelName>
+          <modShopLabel>SULTAN_CAGE5</modShopLabel>
+          <linkedModels />
+          <turnOffBones	/>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_intercool2</modelName>
+          <modShopLabel>SULTAN_IC3</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_u</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_intercool3</modelName>
+          <modShopLabel>SULTAN_IC2</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_u</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_intercool4</modelName>
+          <modShopLabel>SULTAN_IC4</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_u</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+        <Item>
+          <modelName>rumina_intercool5</modelName>
+          <modShopLabel>SULTAN_IC5</modShopLabel>
+          <linkedModels />
+          <turnOffBones>
+            <Item>misc_u</Item>
+          </turnOffBones>
+          <type>VMT_ENGINEBAY3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <turnOffExtra value="false" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+    </visibleMods>
+      <linkMods>
+		<Item>
+			<modelName>rumina_hcover1</modelName>
+			<bone>extra_9</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf1</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf1a</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf2</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf3</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf4</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_wgrf5</modelName>
+			<bone>wing_rf</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_tail0ar</modelName>
+			<bone>taillight_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_tail0br</modelName>
+			<bone>taillight_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_tail1l</modelName>
+			<bone>taillight_l</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_tail1r</modelName>
+			<bone>taillight_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_mirr0a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_mirr1</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_mirr1a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_mirr2</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_mirr2a</modelName>
+			<bone>door_pside_f</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr1</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr2</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr3</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr4</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr5</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr6</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr7</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr8</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr9</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr9a</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr10</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr11</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr12</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr13</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr14</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr15</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr16</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr17</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr18</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr19</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr20</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr21</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr22</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr23</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr24</modelName>
+			<bone>bumper_r</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr25</modelName>
+			<bone>chassis</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr26</modelName>
+			<bone>chassis</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+		<Item>
+			<modelName>rumina_bumr26a</modelName>
+			<bone>chassis</bone>
+			<turnOffExtra value ="false" />
+		</Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="75" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="50" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="150" />
+          <audioApply value="1.000000" />
+          <weight value="5" />
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="10" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="60" />
+          <audioApply value="1.000000" />
+          <weight value="20" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="80" />
+          <audioApply value="1.000000" />
+          <weight value="30" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="100" />
+          <audioApply value="1.000000" />
+          <weight value="40" />
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="5" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="10" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="15" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="20" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="25" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier />
+          <modifier value="40" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+    <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+        <!-- PREVIEW HORN - FOR MOD SHOP USE ONLY -->
+        <Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638" />
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+        <Item>
+          <slot>VMT_CHASSIS3</slot>
+          <name>TOP_CATCH</name>
+        </Item>
+        <Item>
+          <slot>VMT_WING_R</slot>
+          <name>TOP_RMN_WGR</name>
+        </Item>
+        <Item>
+          <slot>VMT_WING_L</slot>
+          <name>TOP_RMN_WGF</name>
+        </Item>
+        <Item>
+          <slot>VMT_EXHAUST</slot>
+          <name>TOP_RMN_BUMR</name>
+        </Item>
+        <Item>
+          <slot>VMT_PLTHOLDER</slot>
+          <name>TOP_SUNST</name>
+        </Item>
+        <Item>
+          <slot>VMT_PLTVANITY</slot>
+          <name>TOP_RUFSPOILER</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS2</slot>
+          <name>TOP_RMN_HL</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS4</slot>
+          <name>TOP_HLT</name>
+        </Item>
+        <Item>
+          <slot>VMT_CHASSIS5</slot>
+          <name>TOP_RMN_TAIL</name>
+        </Item>
+	<Item>
+          <slot>VMT_ENGINEBAY3</slot>
+          <name>TOP_RMN_INTER</name>
+        </Item>
+      </slotNames>
+      <liveryNames />
+    </Item>
+  </Kits>
+  <Lights />
+</CVehicleModelInfoVarGlobal>

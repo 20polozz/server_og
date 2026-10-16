@@ -1,0 +1,2353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CVehicleModelInfoVarGlobal>
+  <Kits>
+	<Item>
+      <kitName>2495_gbhedrakombi_modkit</kitName>
+      <id value="2495"/>
+      <kitType>MKT_SPECIAL</kitType>
+      <visibleMods>
+	<Item>
+		  <modelName>hedrak_liv_1</modelName>
+          <modShopLabel>HEDRAK_LIV1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_2</modelName>
+          <modShopLabel>HEDRAK_LIV2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_liv_3</modelName>
+          <modShopLabel>HEDRAK_LIV3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_liv_4</modelName>
+          <modShopLabel>HEDRAK_LIV4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_liv_5</modelName>
+          <modShopLabel>HEDRAK_LIV5</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_6</modelName>
+          <modShopLabel>HEDRAK_LIV6</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_7</modelName>
+          <modShopLabel>HEDRAK_LIV7</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_8</modelName>
+          <modShopLabel>HEDRAK_LIV8</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_9</modelName>
+          <modShopLabel>HEDRAK_LIV9</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedrak_liv_10</modelName>
+          <modShopLabel>HEDRAK_LIV10</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_LIVERY_MOD</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	  <Item>
+		  <modelName>hedrak_rrack_1</modelName>
+          <modShopLabel>HEDRAK_RRACK1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_rrack_2</modelName>
+          <modShopLabel>HEDRAK_RRACK2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS5</type>
+          <bone>chassis</bone>
+          <collisionBone>mod_col_1</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_rails_1</modelName>
+          <modShopLabel>HEDRAK_RAILS1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_rails_2</modelName>
+          <modShopLabel>HEDRAK_RAILS2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_rails_3</modelName>
+          <modShopLabel>HEDRAK_RAILS3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS3</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		
+		<Item>
+		  <modelName>hedrak_sstrip_1</modelName>
+          <modShopLabel>HEDRAK_SSTRIP1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_INTERIOR2</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	
+	<Item>
+		  <modelName>hedra_split_1</modelName>
+          <modShopLabel>HEDRA_SPLIT1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_split_2</modelName>
+          <modShopLabel>HEDRA_SPLIT2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_split_3</modelName>
+          <modShopLabel>HEDRA_SPLIT3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_split_4</modelName>
+          <modShopLabel>HEDRA_SPLIT4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_split_5</modelName>
+          <modShopLabel>HEDRA_SPLIT5</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR4</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	<Item>
+		  <modelName>hedra_diff_1</modelName>
+          <modShopLabel>HEDRA_DIFF1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_diff_2</modelName>
+          <modShopLabel>HEDRA_DIFF2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_diff_3</modelName>
+          <modShopLabel>HEDRA_DIFF3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_INTERIOR1</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+	<Item>
+		  <modelName>hedrak_roof_0b</modelName>
+          <modShopLabel>HEDRAK_ROOF0B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_q</item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_roof_0c</modelName>
+          <modShopLabel>HEDRAK_ROOF0C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_q</item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_roof_1a</modelName>
+          <modShopLabel>HEDRAK_ROOF1A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_q</item>
+			<item>misc_c</item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_roof_1b</modelName>
+          <modShopLabel>HEDRAK_ROOF1B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_q</item>
+			<item>misc_c</item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_roof_1c</modelName>
+          <modShopLabel>HEDRAK_ROOF1C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_q</item>
+			<item>misc_c</item>
+		  </turnOffBones>
+          <type>VMT_ROOF</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	<Item>
+		  <modelName>hedrak_bon_0b</modelName>
+          <modShopLabel>HEDRAK_BON0B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_0c</modelName>
+          <modShopLabel>HEDRAK_BON0C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_1a</modelName>
+          <modShopLabel>HEDRAK_BON1A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_1b</modelName>
+          <modShopLabel>HEDRAK_BON1B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_1c</modelName>
+          <modShopLabel>HEDRAK_BON1C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_2a</modelName>
+          <modShopLabel>HEDRAK_BON2A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_2b</modelName>
+          <modShopLabel>HEDRAK_BON2B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_2c</modelName>
+          <modShopLabel>HEDRAK_BON2C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_3a</modelName>
+          <modShopLabel>HEDRAK_BON3A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_3b</modelName>
+          <modShopLabel>HEDRAK_BON3B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_3c</modelName>
+          <modShopLabel>HEDRAK_BON3C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_4a</modelName>
+          <modShopLabel>HEDRAK_BON4A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_4b</modelName>
+          <modShopLabel>HEDRAK_BON4B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bon_4c</modelName>
+          <modShopLabel>HEDRAK_BON4C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bonnet</item>
+		  </turnOffBones>
+          <type>VMT_BONNET</type>
+          <bone>bonnet</bone>
+          <collisionBone>bonnet</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_skirts_1</modelName>
+          <modShopLabel>HEDRAK_SKIRT1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_s</item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_skirts_2</modelName>
+          <modShopLabel>HEDRAK_SKIRT2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_s</item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_skirts_3</modelName>
+          <modShopLabel>HEDRAK_SKIRT3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_s</item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_skirts_5</modelName>
+          <modShopLabel>HEDRAK_SKIRT5</modShopLabel>
+          <linkedModels>
+		  	<item>hedrak_bumra_1</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>misc_s</item>
+		  </turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_sskirts_1</modelName>
+          <modShopLabel>HEDRA_SSKIRTS1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_sskirts_2</modelName>
+          <modShopLabel>HEDRA_SSKIRTS2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+	<Item>
+		  <modelName>hedra_sskirts_3</modelName>
+          <modShopLabel>HEDRA_SSKIRTS3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		</turnOffBones>
+          <type>VMT_SKIRT</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+		
+	<Item>
+		  <modelName>hedrak_bumr_0b</modelName>
+          <modShopLabel>HEDRAK_BUMR0B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_exh_1</modelName>
+          <modShopLabel>HEDRAK_BUMR1A</modShopLabel>
+          <linkedModels>
+		  		<item>hedrak_bumr_1a</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+			<item>exhaust</item>
+			<item>exhaust_2</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_exh_2</modelName>
+          <modShopLabel>HEDRAK_BUMR2A</modShopLabel>
+          <linkedModels>
+		  		<item>hedrak_bumr_2a</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+			<item>exhaust</item>
+			<item>exhaust_2</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_exh_2</modelName>
+          <modShopLabel>HEDRAK_BUMR2B</modShopLabel>
+          <linkedModels>
+		  		<item>hedrak_bumr_2b</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+			<item>exhaust</item>
+			<item>exhaust_2</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_exh_2</modelName>
+          <modShopLabel>HEDRAK_BUMR2C</modShopLabel>
+          <linkedModels>
+		  		<item>hedrak_bumr_2c</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+			<item>exhaust</item>
+			<item>exhaust_2</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_exh_2</modelName>
+          <modShopLabel>HEDRAK_BUMR2D</modShopLabel>
+          <linkedModels>
+		  		<item>hedrak_bumr_2d</item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<item>bumper_r</item>
+			<item>exhaust</item>
+			<item>exhaust_2</item>
+		  </turnOffBones>
+          <type>VMT_EXHAUST</type>
+          <bone>engineblock</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	<Item>
+		  <modelName>hedra_rguard_0</modelName>
+          <modShopLabel>HEDRA_RG0</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		<item>misc_v</item>
+		</turnOffBones>
+          <type>VMT_BUMPER_R</type>
+          <bone>bumper_r</bone>
+          <collisionBone>bumper_r</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_bumf_1</modelName>
+          <modShopLabel>HEDRAK_BUMF1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bumf_2</modelName>
+          <modShopLabel>HEDRAK_BUMF2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bumf_3</modelName>
+          <modShopLabel>HEDRAK_BUMF3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_bumf_4</modelName>
+          <modShopLabel>HEDRAK_BUMF4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_BUMPER_F</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_grille_0b</modelName>
+          <modShopLabel>HEDRAK_GRILL0B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_1a</modelName>
+          <modShopLabel>HEDRAK_GRILL1A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_1b</modelName>
+          <modShopLabel>HEDRAK_GRILL1B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_1c</modelName>
+          <modShopLabel>HEDRAK_GRILL1C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_1d</modelName>
+          <modShopLabel>HEDRAK_GRILL1D</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_2a</modelName>
+          <modShopLabel>HEDRAK_GRILL2A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_2b</modelName>
+          <modShopLabel>HEDRAK_GRILL2B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_2c</modelName>
+          <modShopLabel>HEDRAK_GRILL2C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_3a</modelName>
+          <modShopLabel>HEDRAK_GRILL3A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_3b</modelName>
+          <modShopLabel>HEDRAK_GRILL3B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_3c</modelName>
+          <modShopLabel>HEDRAK_GRILL3C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_4a</modelName>
+          <modShopLabel>HEDRAK_GRILL4A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_4b</modelName>
+          <modShopLabel>HEDRAK_GRILL4B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_4c</modelName>
+          <modShopLabel>HEDRAK_GRILL4C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_5a</modelName>
+          <modShopLabel>HEDRAK_GRILL5A</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_5b</modelName>
+          <modShopLabel>HEDRAK_GRILL5B</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grille_5c</modelName>
+          <modShopLabel>HEDRAK_GRILL5C</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_i</item>
+		  </turnOffBones>
+          <type>VMT_GRILL</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_grilleb_1</modelName>
+          <modShopLabel>HEDRAK_GRILLB1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_j</item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grilleb_2</modelName>
+          <modShopLabel>HEDRAK_GRILLB2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_j</item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grilleb_3</modelName>
+          <modShopLabel>HEDRAK_GRILLB3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_j</item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_grilleb_4</modelName>
+          <modShopLabel>HEDRAK_GRILLB4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_j</item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS2</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_ventsf_1</modelName>
+          <modShopLabel>HEDRAK_VENTSF1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_g</item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_ventsf_2</modelName>
+          <modShopLabel>HEDRAK_VENTSF2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_g</item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_ventsf_3</modelName>
+          <modShopLabel>HEDRAK_VENTSF3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_g</item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_ventsf_4</modelName>
+          <modShopLabel>HEDRAK_VENTSF4</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_g</item>
+		  </turnOffBones>
+          <type>VMT_WING_L</type>
+          <bone>bumper_f</bone>
+          <collisionBone>bumper_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_wing_1</modelName>
+          <modShopLabel>HEDRAK_WING1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_r</item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_wing_2</modelName>
+          <modShopLabel>HEDRAK_WING2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  	<item>misc_r</item>
+		  </turnOffBones>
+          <type>VMT_SPOILER</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_winga_1</modelName>
+          <modShopLabel>HEDRAK_WINGA1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_winga_2</modelName>
+          <modShopLabel>HEDRAK_WINGA2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_winga_3</modelName>
+          <modShopLabel>HEDRAK_WINGA3</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_TRUNK</type>
+          <bone>boot</bone>
+          <collisionBone>boot</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+
+	<Item>
+		  <modelName>hedra_cwing</modelName>
+          <modShopLabel>HEDRA_CWING</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_INTERIOR5</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_vortex_1</modelName>
+          <modShopLabel>HEDRAK_VORT1</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_vortex_2</modelName>
+          <modShopLabel>HEDRAK_VORT2</modShopLabel>
+          <linkedModels/>
+          <turnOffBones>
+		  </turnOffBones>
+          <type>VMT_CHASSIS</type>
+          <bone>chassis</bone>
+          <collisionBone>chassis</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_mirl_1</modelName>
+          <modShopLabel>HEDRAK_MIR1</modShopLabel>
+          <linkedModels>
+		  	<Item>hedrak_mirr_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<Item>misc_y</Item>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_mirl_2</modelName>
+          <modShopLabel>HEDRAK_MIR2</modShopLabel>
+          <linkedModels>
+		  	<Item>hedrak_mirr_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<Item>misc_y</Item>
+			<Item>misc_z</Item>
+		  </turnOffBones>
+          <type>VMT_WING_R</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		
+		<Item>
+		  <modelName>hedrak_wframelf_1</modelName>
+          <modShopLabel>HEDRAK_WF1</modShopLabel>
+          <linkedModels>
+		  	<Item>hedrak_wframerf_1</Item>
+			<Item>hedrak_wframelr_1</Item>
+			<Item>hedrak_wframerr_1</Item>
+			<Item>hedrak_wframer_1</Item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<Item>misc_k</Item>
+			<Item>misc_l</Item>
+			<Item>misc_m</Item>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>
+		<Item>
+		  <modelName>hedrak_wframelf_2</modelName>
+          <modShopLabel>HEDRAK_WF2</modShopLabel>
+          <linkedModels>
+		  	<Item>hedrak_wframerf_2</Item>
+			<Item>hedrak_wframelr_2</Item>
+			<Item>hedrak_wframerr_2</Item>
+			<Item>hedrak_wframer_2</Item>
+		  </linkedModels>
+          <turnOffBones>
+		  	<Item>misc_k</Item>
+			<Item>misc_l</Item>
+			<Item>misc_m</Item>
+			<Item>misc_n</Item>
+			<Item>misc_o</Item>
+		  </turnOffBones>
+          <type>VMT_CHASSIS4</type>
+          <bone>door_dside_f</bone>
+          <collisionBone>door_dside_f</collisionBone>
+          <cameraPos>VMCP_DEFAULT</cameraPos>
+          <audioApply value="1.000000" />
+          <weight value="0" />
+          <turnOffExtra value="true" />
+          <disableBonnetCamera value="false" />
+          <allowBonnetSlide value="true" />
+        </Item>	
+      </visibleMods>
+      <linkMods>
+	  	<Item>
+          <modelName>hedrak_mirr_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_mirr_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_bumra_1</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		
+		<Item>
+          <modelName>hedrak_wframerf_1</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframelr_1</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframerr_1</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframer_1</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframerf_2</modelName>
+          <bone>door_pside_f</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframelr_2</modelName>
+          <bone>door_dside_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframerr_2</modelName>
+          <bone>door_pside_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_wframer_2</modelName>
+          <bone>chassis</bone>
+          <turnOffExtra value="false" />
+		</Item>
+	<Item>
+          <modelName>hedrak_bumr_1a</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_bumr_2a</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_bumr_2b</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_bumr_2c</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+		<Item>
+          <modelName>hedrak_bumr_2d</modelName>
+          <bone>bumper_r</bone>
+          <turnOffExtra value="false" />
+		</Item>
+      </linkMods>
+      <statMods>
+        <Item>
+          <identifier/>
+          <modifier value="25"/>
+          <audioApply value="1.00000000"/>
+          <weight value="20"/>
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="50"/>
+          <audioApply value="1.00000000"/>
+          <weight value="20"/>
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="75"/>
+          <audioApply value="1.00000000"/>
+          <weight value="20"/>
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="100"/>
+          <audioApply value="1.00000000"/>
+          <weight value="20"/>
+          <type>VMT_ENGINE</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="25"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="50"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="100"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_BRAKES</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="25"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="50"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="100"/>
+          <audioApply value="1.00000000"/>
+          <weight value="5"/>
+          <type>VMT_GEARBOX</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="20"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="40"/>
+          <audioApply value="1.00000000"/>
+          <weight value="10"/>
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="60"/>
+          <audioApply value="1.00000000"/>
+          <weight value="20"/>
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="80"/>
+          <audioApply value="1.00000000"/>
+          <weight value="30"/>
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="100"/>
+          <audioApply value="1.00000000"/>
+          <weight value="40"/>
+          <type>VMT_ARMOUR</type>
+        </Item>
+        <Item>
+          <identifier>HORN_TRUCK</identifier>
+          <modifier value="1766676233"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_COP</identifier>
+          <modifier value="2904189469"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_CLOWN</identifier>
+          <modifier value="2543206147"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_1</identifier>
+          <modifier value="1732399718"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_2</identifier>
+          <modifier value="2046162893"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_3</identifier>
+          <modifier value="2194999691"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_4</identifier>
+          <modifier value="2508304100"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_MUSICAL_5</identifier>
+          <modifier value="3707223535"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HORN_SAD_TROMBONE</identifier>
+          <modifier value="632950117"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="5"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="10"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="20"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier/>
+          <modifier value="30"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier/>
+          <modifier value="40"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+		<Item>
+          <identifier/>
+          <modifier value="50"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_SUSPENSION</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_1</identifier>
+          <modifier value="3628534289"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_2</identifier>
+          <modifier value="3892554122"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_3</identifier>
+          <modifier value="4112892878"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_4</identifier>
+          <modifier value="116877169"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_5</identifier>
+          <modifier value="2684983719"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_6</identifier>
+          <modifier value="2982690084"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>MUSICAL_HORN_BUSINESS_7</identifier>
+          <modifier value="3203290992"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C0</identifier>
+          <modifier value="771284519"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_D0</identifier>
+          <modifier value="2586621229"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_E0</identifier>
+          <modifier value="283386134"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_F0</identifier>
+          <modifier value="3884502400"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_G0</identifier>
+          <modifier value="265723083"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_A0</identifier>
+          <modifier value="1746883687"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_B0</identifier>
+          <modifier value="1919870950"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_BUSI2_C_MAJOR_NOTES_C1</identifier>
+          <modifier value="1085277077"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_1</identifier>
+          <modifier value="444549672"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_2</identifier>
+          <modifier value="1603064898"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_3</identifier>
+          <modifier value="240366033"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>HIPSTER_HORN_4</identifier>
+          <modifier value="960137118"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_1</identifier>
+          <modifier value="3572144790"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_2</identifier>
+          <modifier value="3801396714"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_3</identifier>
+          <modifier value="2843657151"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>INDEP_HORN_4</identifier>
+          <modifier value="3341811489"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_1</identifier>
+          <modifier value="3199657341"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_2</identifier>
+          <modifier value="2900378064"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXE_HORN_3</identifier>
+          <modifier value="3956195248"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXORY_HORN_1</identifier>
+          <modifier value="676333254"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXURY_HORN_2</identifier>
+          <modifier value="2099578296"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LUXURY_HORN_3</identifier>
+          <modifier value="1373384483"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01</identifier>
+          <modifier value="2916775806"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_01_PREVIEW</identifier>
+          <modifier value="3714706952"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02</identifier>
+          <modifier value="2611860261"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>ORGAN_HORN_LOOP_02_PREVIEW</identifier>
+          <modifier value="3206770359"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_1</identifier>
+          <modifier value="310529291"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_1_PREVIEW</identifier>
+          <modifier value="2965568987"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_2</identifier>
+          <modifier value="55291550"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>LOWRIDER_HORN_2_PREVIEW</identifier>
+          <modifier value="965054819"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_01</identifier>
+          <modifier value="55862314"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_01_PREVIEW</identifier>
+          <modifier value="2156743178"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_02</identifier>
+          <modifier value="400002352"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_02_PREVIEW</identifier>
+          <modifier value="897484282"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_03</identifier>
+          <modifier value="560832604"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>XM15_HORN_03_PREVIEW</identifier>
+          <modifier value="314232747"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_01</identifier>
+          <modifier value="3851180092"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_01_Preview</identifier>
+          <modifier value="246182814"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_02</identifier>
+          <modifier value="3412861948"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_02_Preview</identifier>
+          <modifier value="1804608241"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_03</identifier>
+          <modifier value="3374260066"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+        <Item>
+          <identifier>DLC_AW_Airhorn_03_Preview</identifier>
+          <modifier value="2798044638"/>
+          <audioApply value="1.00000000"/>
+          <weight value="0"/>
+          <type>VMT_HORN</type>
+        </Item>
+      </statMods>
+      <slotNames>
+      </slotNames>
+      <liveryNames/>
+      <livery2Names/>
+    </Item>
+  </Kits>
+</CVehicleModelInfoVarGlobal>

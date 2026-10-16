@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="en" data-escala>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen Concesionario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cfx-nui-origen_map/html/leaflet/1.8.0/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cfx-nui-origen_map/html/leaflet/1.8.0/leaflet.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
+    <!-- Las fuentes del HUD Arcade van aqui, no en un @import del CSS: detras
+         de otras reglas el navegador de la NUI se lo salta. -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,600;1,700;1,800&family=Barlow:wght@400;500;600&family=Knewave&family=Oxanium:wght@800&display=swap" />
+    <!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+         con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+         medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+         (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+         de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+    <style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3XmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3Xmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3TmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3Tmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+    <link rel="stylesheet" href="./css/ogn.css?v=oxa0710">
+    <link rel="stylesheet" href="./css/main.css?v=oxa0710">
+    <link rel="stylesheet" href="./css/admin.css?v=bab0710">
+    <link rel="stylesheet" href="./css/concesionario.css?v=riel0710">
+    <!-- PEGATINA: el estilo del logo, a prueba y solo en Origen. La ultima,
+         para pisar a las cuatro de arriba. -->
+    <link rel="stylesheet" href="./css/pegatina.css?v=brocha0810">
+    <!-- Las chinchetas del mapa (solo Origen), en hoja aparte. -->
+    <link rel="stylesheet" href="./css/pegatina-mapa.css?v=1">
+    <!-- El menú pequeño (la financiación): armazón y piel propios, clases odg-*. -->
+    <link rel="stylesheet" href="./css/dialogo.css?v=riel0710">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ORIGEN · vigilante del raton. NO EDITAR A MANO: este trozo es identico
+         en todas las interfaces del servidor y lo reparte
+         kit/repartir-foco.py. El lado de Lua es @origen_map/shared/foco.lua:
+         mientras el recurso tiene el raton, pregunta cada 1,5 s si esta
+         pagina enseña algo, y si dos veces seguidas no, suelta el raton.
+         Ante la duda contesta que SI: soltar el raton de una pantalla que se
+         ve es peor que tardar en soltarlo. -->
+    <script>
+      (function () {
+        // El fetch del navegador, guardado antes de que la pagina cargue lo
+        // suyo: alguna (origen_titlemenu) declara un `fetch` global propio.
+        var enviar = window.fetch.bind(window)
+        var TOPE = 6000
+        var HUECO = /^(transparent|rgba\([^)]*,\s*0(\.0+)?\))$/
+        var SIEMPRE = { IMG: 1, VIDEO: 1, CANVAS: 1, IFRAME: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, BUTTON: 1, svg: 1, SVG: 1 }
+        var color = function (c) { return c && !HUECO.test(c) }
+        var borde = function (cs) {
+          return (parseFloat(cs.borderTopWidth) > 0 && color(cs.borderTopColor)) ||
+            (parseFloat(cs.borderBottomWidth) > 0 && color(cs.borderBottomColor)) ||
+            (parseFloat(cs.borderLeftWidth) > 0 && color(cs.borderLeftColor)) ||
+            (parseFloat(cs.borderRightWidth) > 0 && color(cs.borderRightColor))
+        }
+        var capa = function (cs) {
+          return color(cs.backgroundColor) || cs.backgroundImage !== 'none' ||
+            cs.boxShadow !== 'none' || borde(cs)
+        }
+        var pseudo = function (el, cual) {
+          var ps = getComputedStyle(el, cual)
+          var c = ps.content
+          if (!c || c === 'none' || c === 'normal') return false
+          return capa(ps) || (c.length > 2 && color(ps.color))
+        }
+        var pinta = function (el, cs) {
+          if (SIEMPRE[el.tagName]) return true
+          if (capa(cs)) return true
+          if (color(cs.color) && parseFloat(cs.fontSize) > 0) {
+            for (var h = el.firstChild; h; h = h.nextSibling) {
+              if (h.nodeType === 3 && h.nodeValue.trim()) return true
+            }
+          }
+          return pseudo(el, '::before') || pseudo(el, '::after')
+        }
+        var hayAlgo = function () {
+          if (!document.body) return true
+          var W = window.innerWidth
+          var H = window.innerHeight
+          var paseo = document.createTreeWalker(document.body, 1, {
+            acceptNode: function (el) {
+              var cs = getComputedStyle(el)
+              // Lo que no se ve no deja ver a sus hijos: se salta la rama.
+              if (cs.display === 'none' || parseFloat(cs.opacity) < 0.02) return 2
+              // Ni lo marcado como HUD fijo (sin raton): no es una pantalla
+              // abierta, y si contara la red no soltaria nunca.
+              if (el.hasAttribute('data-foco-ignora')) return 2
+              return 1
+            }
+          })
+          var n = 0
+          var el
+          while ((el = paseo.nextNode())) {
+            if (++n > TOPE) return true
+            var cs = getComputedStyle(el)
+            if (cs.visibility !== 'visible') continue
+            var r = el.getBoundingClientRect()
+            if (r.width < 2 || r.height < 2) continue
+            if (r.right <= 0 || r.bottom <= 0 || r.left >= W || r.top >= H) continue
+            if (pinta(el, cs)) return true
+          }
+          return false
+        }
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (!d || d.accion !== 'origen:foco:mira') return
+          var visto = true
+          // Una pagina con HUD fijo (siempre pinta algo) dice ella misma si
+          // hay una pantalla CON RATON delante: window.__origenFocoVisto.
+          try {
+            visto = typeof window.__origenFocoVisto === 'function'
+              ? window.__origenFocoVisto() !== false
+              : hayAlgo()
+          } catch (err) { visto = true }
+          try {
+            var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+            if (!yo) return
+            enviar('https://' + yo + '/origen:foco:veo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: JSON.stringify({ n: d.n, visto: visto })
+            }).catch(function () {})
+          } catch (err) {}
+        })
+        window.__origenFocoHayAlgo = hayAlgo
+      })()
+    </script>
+    <!-- /ORIGEN · vigilante del raton -->
+    <!-- ORIGEN · marca (el color de la casa segun el servidor: origen o
+         nacion). NO EDITAR A MANO: este trozo es identico en todas las
+         interfaces y lo reparte kit/repartir-marca.py desde kit/marca.js.
+         En origen no hace nada. -->
+    <script>
+      (function () {
+        var PALETAS = {
+          /* tono: el de la marca nueva, en grados.
+             luz:  por donde pasa la escala, [luz del rosa, luz nueva]. El naranja
+                   es mas claro que el rosa a igual papel: el de los botones sube,
+                   y el de LEER sobre crema se queda oscuro para que se lea.
+             fijos: los que tienen que salir clavados, pedidos por el usuario:
+                   acc #FD8A23 · soft #FFAA5C · pale #FFD9B6 · deep #6A3402 */
+          nacion: {
+            tono: 28.5,
+            sat: 1.04,
+            luz: [[0, 0], [0.267, 0.212], [0.396, 0.36], [0.453, 0.565], [0.714, 0.68], [0.8, 0.857], [1, 1]],
+            fijos: {
+              e0074f: [253, 138, 35], fc0259: [253, 138, 35],
+              /* el rosa menos neon (06/10) sale con el MISMO naranja que el rosa de antes */
+              d81b55: [255, 146, 48], df2f63: [255, 154, 64], b3123f: [227, 108, 0],
+              ff6d97: [255, 170, 92],
+              fd9bbd: [255, 217, 182],
+              '7d0b31': [106, 52, 2], '82173c': [106, 52, 2]
+            }
+          }
+        }
+        /* La familia del rosa: del granate antiguo (#850e49) al rosa-rojo del movil
+           (#c2153f). El rojo de los errores (350 en adelante) queda fuera. */
+        var DESDE = 318, HASTA = 349, SAT_MIN = 0.3
+
+        var raiz = document.documentElement
+        var paleta = null
+        var memo = {}
+
+        var hex2 = function (n) { return (n < 16 ? '0' : '') + n.toString(16) }
+
+        /* -> [r, g, b] de la marca nueva, o null si el color no es de la familia. */
+        var cambiar = function (r, g, b) {
+          var k = (r << 16) | (g << 8) | b
+          if (k in memo) return memo[k]
+          var res = null
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn
+          if (d > 0) {
+            var l = (mx + mn) / 510
+            var s = d / (255 - Math.abs(mx + mn - 255))
+            var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4
+            h = (h * 60 + 360) % 360
+            if (s >= SAT_MIN && h >= DESDE && h < HASTA) {
+              res = paleta.fijos[hex2(r) + hex2(g) + hex2(b)]
+              if (!res) {
+                var c = paleta.luz, L = l
+                for (var i = 1; i < c.length; i++) {
+                  if (l <= c[i][0]) {
+                    L = c[i - 1][1] + (c[i][1] - c[i - 1][1]) * (l - c[i - 1][0]) / (c[i][0] - c[i - 1][0])
+                    break
+                  }
+                }
+                var S = Math.min(1, s * paleta.sat)
+                var C = (1 - Math.abs(2 * L - 1)) * S
+                var H = paleta.tono / 60
+                var X = C * (1 - Math.abs(H % 2 - 1))
+                var m = L - C / 2
+                var t = H < 1 ? [C, X, 0] : H < 2 ? [X, C, 0] : H < 3 ? [0, C, X] : H < 4 ? [0, X, C] : H < 5 ? [X, 0, C] : [C, 0, X]
+                res = [Math.round((t[0] + m) * 255), Math.round((t[1] + m) * 255), Math.round((t[2] + m) * 255)]
+              }
+            }
+          }
+          return (memo[k] = res)
+        }
+
+        /* Todo color escrito en un texto de CSS: #hex (3, 4, 6 u 8 cifras, tambien
+           como %23 dentro de un data:), rgb()/rgba() y los tres canales sueltos de
+           un token (`--acc-rgb: 216, 27, 85`). */
+        var COLOR = /(#|%23)([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])|(rgba?\(\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})|(--[\w-]+\s*:\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(?=\s*(?:;|!|$))/g
+
+        var pintar = function (texto) {
+          if (!paleta || !texto) return texto
+          return texto.replace(COLOR, function (todo, almo, hex, f1, r1, s1, g1, s2, b1, f2, r2, s3, g2, s4, b2) {
+            var n
+            if (hex) {
+              var v = hex.length < 6 ? hex.replace(/./g, '$&$&') : hex
+              n = cambiar(parseInt(v.substr(0, 2), 16), parseInt(v.substr(2, 2), 16), parseInt(v.substr(4, 2), 16))
+              return n ? almo + hex2(n[0]) + hex2(n[1]) + hex2(n[2]) + v.substr(6) : todo
+            }
+            if (f1) {
+              n = cambiar(+r1, +g1, +b1)
+              return n && +r1 < 256 && +g1 < 256 && +b1 < 256 ? f1 + n[0] + s1 + n[1] + s2 + n[2] : todo
+            }
+            n = cambiar(+r2, +g2, +b2)
+            return n && +r2 < 256 && +g2 < 256 && +b2 < 256 ? f2 + n[0] + s3 + n[1] + s4 + n[2] : todo
+          })
+        }
+
+        /* Las hojas. NO SE MODIFICA NINGUNA REGLA: la hoja se lee, se repinta el
+           texto y se sustituye entera por un <style> en su mismo sitio.
+
+           Es a proposito y costo un cuelgue encontrarlo (02/10): en el Chromium 103
+           del juego, escribir en una regla de la hoja del movil (Tailwind v4)
+           --`regla.style.cssText = ...` o un solo `setProperty`-- deja el navegador
+           de TODAS las interfaces en un bucle del que no sale. En otras hojas no
+           pasa y en un Chromium moderno tampoco, asi que fuera del juego no se ve.
+           Leer si se puede; escribir, no. */
+        var cambio = false
+        var urls = function (texto, base) {
+          // Al pasar de <link> a <style> las rutas dejan de ser relativas al .css.
+          return texto.replace(/url\(\s*(["']?)([^"')]+)\1\s*\)/g, function (todo, c, u) {
+            if (/^(data:|blob:|https?:|nui:|about:|#)/i.test(u)) return todo
+            try { return 'url("' + new URL(u, base).href + '")' } catch (e) { return todo }
+          })
+        }
+        var texto = function (lista, base) {
+          var out = []
+          for (var i = 0; i < lista.length; i++) {
+            var r = lista[i], c = r.cssText, k = c.indexOf('{')
+            // Un @import de casa se trae dentro: su hoja no tiene etiqueta propia.
+            var dentro = null
+            try { dentro = r.styleSheet && r.styleSheet.cssRules } catch (e) {}
+            if (dentro) {
+              var t = texto(dentro, r.styleSheet.href || base)
+              var m = r.media && r.media.mediaText
+              out.push(m ? '@media ' + m + ' {' + t + '}' : t)
+            } else if (k < 0) {
+              // Sin llaves: un @import de fuera, un @namespace... o declaraciones
+              // sueltas dentro de una regla anidada.
+              var p = r.style ? pintar(c) : c
+              if (p !== c) cambio = true
+              out.push(urls(p, base))
+            } else if (r.cssRules) {
+              // Un grupo (@media, @supports, @layer, @keyframes) o, en un
+              // Chromium con anidado, una regla con hijas.
+              var cuerpo = ''
+              if (r.style) {
+                var d = r.style.cssText, nd = pintar(d)
+                if (nd !== d) cambio = true
+                cuerpo = urls(nd, base)
+              }
+              out.push(c.substr(0, k) + '{' + cuerpo + texto(r.cssRules, base) + '}')
+            } else {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              var b = c.substr(k), nb = pintar(b)
+              if (nb !== b) cambio = true
+              out.push(c.substr(0, k) + urls(nb, base))
+            }
+          }
+          return out.join('\n')
+        }
+        /* Tope de reescrituras por nodo. Si otro codigo de la pagina vuelve a
+           poner el rosa cada vez que se lo cambiamos, se le deja ganar: mejor un
+           rosa suelto que dos observadores persiguiendose sin fin. */
+        var veces = new WeakMap()
+        var harto = function (nodo) {
+          var n = (veces.get(nodo) || 0) + 1
+          veces.set(nodo, n)
+          return n > 40
+        }
+        var hoja = function (h) {
+          var lista, dueno = h && h.ownerNode
+          if (!dueno || dueno.nodeType !== 1) return
+          // Una hoja de otro origen (fuentes de Google) no deja leer sus reglas.
+          try { lista = h.cssRules } catch (e) { return }
+          if (!lista || !lista.length) return
+          cambio = false
+          var nuevo
+          try { nuevo = texto(lista, h.href || document.baseURI) } catch (e) { return }
+          if (!cambio || harto(dueno)) return
+          if (dueno.nodeName.toLowerCase() === 'style') {
+            dueno.textContent = nuevo
+            return
+          }
+          var s = document.createElement('style')
+          s.setAttribute('data-ogn-marca', h.href || '')
+          if (dueno.media) s.media = dueno.media
+          s.textContent = nuevo
+          dueno.parentNode.insertBefore(s, dueno.nextSibling)
+          dueno.disabled = true
+        }
+        var hojas = function () {
+          // Sobre una copia: sustituir una hoja cambia la lista mientras se recorre.
+          var l = Array.prototype.slice.call(document.styleSheets)
+          for (var i = 0; i < l.length; i++) hoja(l[i])
+        }
+
+        /* Lo escrito en el propio elemento: style="" y los atributos de SVG. */
+        var ATRIBUTOS = ['style', 'fill', 'stroke', 'stop-color', 'flood-color', 'color']
+        var elemento = function (el) {
+          for (var i = 0; i < ATRIBUTOS.length; i++) {
+            var v = el.getAttribute(ATRIBUTOS[i])
+            if (v) {
+              var n = pintar(v)
+              if (n !== v && !harto(el)) el.setAttribute(ATRIBUTOS[i], n)
+            }
+          }
+        }
+        var SELECTOR = '[style],[fill],[stroke],[stop-color],[flood-color]'
+        var rama = function (nodo) {
+          if (nodo.nodeType !== 1) return
+          var nombre = nodo.nodeName.toLowerCase()
+          if (nombre === 'style') {
+            hoja(nodo.sheet)
+            // El texto de un <style> puede llegar despues que la etiqueta.
+            setTimeout(function () { hoja(nodo.sheet) }, 0)
+            return
+          }
+          if (nombre === 'link') {
+            hoja(nodo.sheet)
+            nodo.addEventListener('load', function () { hoja(nodo.sheet) })
+            return
+          }
+          elemento(nodo)
+          var dentro = nodo.querySelectorAll(SELECTOR + ',style')
+          for (var i = 0; i < dentro.length; i++) {
+            if (dentro[i].sheet) hoja(dentro[i].sheet)
+            else elemento(dentro[i])
+          }
+        }
+
+        /* Lo que no pasa por el DOM: el <canvas> y las reglas que mete una libreria
+           a mano. Solo se enganchan con otra marca puesta. */
+        var ganchos = function () {
+          try {
+            var P = CanvasRenderingContext2D.prototype
+            var uno = function (n) {
+              var d = Object.getOwnPropertyDescriptor(P, n)
+              if (!d || !d.set) return
+              Object.defineProperty(P, n, {
+                configurable: true,
+                enumerable: d.enumerable,
+                get: d.get,
+                set: function (v) { d.set.call(this, typeof v === 'string' ? pintar(v) : v) }
+              })
+            }
+            uno('fillStyle'); uno('strokeStyle'); uno('shadowColor')
+            var parada = CanvasGradient.prototype.addColorStop
+            CanvasGradient.prototype.addColorStop = function (o, c) {
+              return parada.call(this, o, typeof c === 'string' ? pintar(c) : c)
+            }
+          } catch (e) {}
+          try {
+            var meter = CSSStyleSheet.prototype.insertRule
+            CSSStyleSheet.prototype.insertRule = function (t, i) {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              if (typeof t === 'string') {
+                var c = t.indexOf('{')
+                if (c > 0) t = t.substr(0, c) + pintar(t.substr(c))
+              }
+              return arguments.length > 1 ? meter.call(this, t, i) : meter.call(this, t)
+            }
+          } catch (e) {}
+        }
+
+        var activar = function (nombre) {
+          if (paleta || !PALETAS.hasOwnProperty(nombre)) return
+          paleta = PALETAS[nombre]
+          raiz.dataset.marca = nombre
+          /* El mismo freno que el del tema: una propiedad EN TRANSICION cuyo valor
+             sale de un var() se queda congelada en el color viejo cuando la
+             variable cambia desde una hoja. */
+          var freno = document.createElement('style')
+          freno.textContent = '*,*::before,*::after{transition:none !important}'
+          ;(document.head || raiz).appendChild(freno)
+          ganchos()
+          hojas()
+          rama(raiz)
+          new MutationObserver(function (cambios) {
+            for (var i = 0; i < cambios.length; i++) {
+              var c = cambios[i]
+              if (c.type === 'attributes') elemento(c.target)
+              // Le han cambiado el texto a un <style> (la recarga en caliente).
+              else if (c.target.nodeName.toLowerCase() === 'style') hoja(c.target.sheet)
+              else for (var j = 0; j < c.addedNodes.length; j++) rama(c.addedNodes[j])
+            }
+          }).observe(raiz, { subtree: true, childList: true, attributes: true, attributeFilter: ATRIBUTOS })
+          // Las hojas que aun no habian cargado cuando llego la respuesta.
+          document.addEventListener('DOMContentLoaded', hojas)
+          window.addEventListener('load', hojas)
+          if (document.body) void document.body.offsetHeight
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { freno.remove() })
+          })
+          // Para la pagina que quiera saberlo (un logo que cambiar, por ejemplo).
+          window.postMessage({ accion: 'origen:marca:puesta', marca: nombre }, '*')
+        }
+
+        raiz.dataset.marca = 'origen'
+        // Para quien dibuja con colores que esto no ve (WebGL, una imagen).
+        window.__ognMarca = { pintar: pintar, de: function () { return raiz.dataset.marca } }
+
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:marca') activar(d.marca)
+        })
+        // Fuera del juego (la pagina en un navegador): index.html?marca=nacion
+        try {
+          var q = /[?&]marca=([\w-]+)/.exec(location.search)
+          if (q) activar(q[1])
+        } catch (e) {}
+        // La pantalla de carga: ahi no hay Lua de cliente, lo trae el servidor.
+        try {
+          if (window.nuiHandoverData && window.nuiHandoverData.marca) activar(window.nuiHandoverData.marca)
+        } catch (e) {}
+        /* Y lo normal: preguntarselo al Lua de este recurso. Con reintentos, porque
+           la pagina puede nacer antes de que su script haya puesto el callback. */
+        var intentos = 0
+        var preguntar = function () {
+          var yo = null
+          try { yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null } catch (e) {}
+          // Hay marcos donde el juego no pone esa funcion (visto en el movil al
+          // recargarse): el nombre del recurso tambien va en la direccion.
+          if (!yo) {
+            var h = /^cfx-nui-(.+)$/.exec(location.hostname)
+            if (h) yo = h[1]
+          }
+          if (!yo) return
+          fetch('https://' + yo + '/origen:marca:dame', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            body: '{}'
+          })
+            .then(function (r) { return r.json() })
+            .then(function (d) {
+              if (d && d.marca) activar(d.marca)
+              else throw new Error('sin marca')
+            })
+            .catch(function () { if (++intentos < 6) setTimeout(preguntar, 1500) })
+        }
+        preguntar()
+      })()
+    </script>
+  
+    <!-- ORIGEN · interfaz. NO EDITAR A MANO: este trozo es identico en todas
+         las interfaces del servidor y lo reparte kit/repartir-tema.py. El
+         lado de Lua es @origen_map/shared/tema.lua. Lleva el silencio de la
+         interfaz y la escala por encima de 1080p. -->
+    <script>
+      (function () {
+        var raiz = document.documentElement
+        /* El silencio de la interfaz (boton del riel del inventario, 27/09).
+           Calla los RUIDOS de pantalla: clics, abrir, cerrar, pasar por
+           encima. No la musica ni los videos (<video> o en bucle) ni los
+           pitidos de la radio ni las voces de los personajes (carpeta
+           voces/): eso es contenido, no ruido de menu.
+           Se engancha a play() y a las conexiones de Web Audio antes de que
+           cargue el bundle, asi vale para todas las paginas sin tocarlas. */
+        var callado = false
+        var LIBRE = /walkie|music|musica|radio|[/]voces[/]/i
+        var esRuido = function (el) {
+          return el.tagName !== 'VIDEO' && !el.loop && !LIBRE.test(el.currentSrc || el.src || '')
+        }
+        var ajustar = function (el) {
+          if (callado && esRuido(el)) {
+            if (!el.muted) { el.muted = true; el.__origenCallado = true }
+          } else if (el.__origenCallado) {
+            el.muted = false; el.__origenCallado = false
+          }
+        }
+        try {
+          var reproducir = HTMLMediaElement.prototype.play
+          HTMLMediaElement.prototype.play = function () {
+            ajustar(this)
+            return reproducir.apply(this, arguments)
+          }
+        } catch (e) {}
+        /* Web Audio (minijuegos, Howler...): todo lo que va a los altavoces
+           pasa por una ganancia nuestra por contexto, a 0 en silencio. */
+        var ganancias = []
+        try {
+          var conectar = AudioNode.prototype.connect
+          AudioNode.prototype.connect = function (destino) {
+            if (typeof AudioDestinationNode !== 'undefined' && destino instanceof AudioDestinationNode) {
+              var ctx = destino.context
+              var g = ctx.__origenGanancia
+              if (!g) {
+                g = ctx.createGain()
+                g.gain.value = callado ? 0 : 1
+                conectar.call(g, destino)
+                ctx.__origenGanancia = g
+                ganancias.push(g)
+              }
+              if (this !== g) {
+                var args = Array.prototype.slice.call(arguments)
+                args[0] = g
+                return conectar.apply(this, args)
+              }
+            }
+            return conectar.apply(this, arguments)
+          }
+        } catch (e) {}
+        var silenciar = function (si) {
+          si = si === true
+          if (si === callado) return
+          callado = si
+          raiz.dataset.silencio = si ? 'si' : 'no'
+          for (var i = 0; i < ganancias.length; i++) ganancias[i].gain.value = si ? 0 : 1
+          var els = document.querySelectorAll('audio,video')
+          for (var j = 0; j < els.length; j++) ajustar(els[j])
+          // El boton del riel se entera por este mensaje.
+          window.postMessage({ accion: 'origen:silencio', silencio: si }, '*')
+        }
+        raiz.dataset.silencio = 'no'
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:silencio') silenciar(d.silencio)
+        })
+        /* La ESCALA por encima de 1080p (27/09). Las interfaces se dibujaron
+           a 1920x1080; en 1440p o 4K lo medido en px se quedaba chico y los
+           menus salian finos. Solo en las paginas con <html data-escala>, y
+           solo si la pantalla pasa de 1080 de alto: a 1080 no se toca nada.
+           - El body se escala entero, como si la pantalla midiera 1080.
+           - Lo que la pagina lee por JS (ventana, raton, cajas) se traduce a
+             esas medidas, para que arrastrar y los clics caigan donde toca.
+           - Los vh/vw los divide al compilar origen_map/kit/escala-postcss.mjs.
+           Con `zoom` no: en el Chromium 103 del juego elementFromPoint y
+           getBoundingClientRect salen en coordenadas distintas (medido). */
+        ;(function () {
+          if (!raiz.hasAttribute('data-escala')) return
+          var dW = Object.getOwnPropertyDescriptor(window, 'innerWidth')
+          var dH = Object.getOwnPropertyDescriptor(window, 'innerHeight')
+          if (!dW || !dW.get || !dH || !dH.get) return
+          var s = 1
+          var calcular = function () {
+            var f = window.__ognEscalaForzada
+            return f > 0 ? f : Math.max(1, dH.get.call(window) / 1080)
+          }
+          var hoja = document.createElement('style')
+          hoja.textContent = 'html.ogn-escalado{overflow:hidden}' +
+            'html.ogn-escalado body{margin:0 !important;' +
+            'width:calc(100vw / var(--ogn-escala)) !important;min-width:0 !important;max-width:none !important;' +
+            'height:calc(100vh / var(--ogn-escala)) !important;min-height:0 !important;max-height:none !important;' +
+            'transform:scale(var(--ogn-escala));transform-origin:0 0;overflow:hidden}'
+          document.head.appendChild(hoja)
+          var aplicar = function () {
+            s = calcular()
+            raiz.style.setProperty('--ogn-escala', String(s))
+            raiz.classList.toggle('ogn-escalado', s !== 1)
+          }
+          var entre = function (v) { return v / s }
+          var envolver = function (obj, prop, fn, solo) {
+            var d = Object.getOwnPropertyDescriptor(obj, prop)
+            if (!d || !d.get) return
+            Object.defineProperty(obj, prop, {
+              configurable: true,
+              enumerable: d.enumerable,
+              get: function () {
+                var v = d.get.call(this)
+                return s === 1 || (solo && !solo(this)) ? v : fn(v)
+              },
+              set: d.set
+            })
+          }
+          try {
+            envolver(window, 'innerWidth', entre)
+            envolver(window, 'innerHeight', entre)
+            var raton = ['clientX', 'clientY', 'pageX', 'pageY', 'x', 'y']
+            for (var i = 0; i < raton.length; i++) envolver(MouseEvent.prototype, raton[i], entre)
+            var esRaiz = function (el) { return el === document.documentElement }
+            envolver(Element.prototype, 'clientWidth', entre, esRaiz)
+            envolver(Element.prototype, 'clientHeight', entre, esRaiz)
+            var caja = Element.prototype.getBoundingClientRect
+            Element.prototype.getBoundingClientRect = function () {
+              var r = caja.call(this)
+              return s === 1 ? r : new DOMRect(r.x / s, r.y / s, r.width / s, r.height / s)
+            }
+            var cajas = Element.prototype.getClientRects
+            Element.prototype.getClientRects = function () {
+              var l = cajas.call(this)
+              if (s === 1) return l
+              var o = []
+              for (var k = 0; k < l.length; k++) o.push(new DOMRect(l[k].x / s, l[k].y / s, l[k].width / s, l[k].height / s))
+              o.item = function (n) { return o[n] || null }
+              return o
+            }
+            var punto = Document.prototype.elementFromPoint
+            Document.prototype.elementFromPoint = function (x, y) { return punto.call(this, x * s, y * s) }
+            var puntos = Document.prototype.elementsFromPoint
+            if (puntos) Document.prototype.elementsFromPoint = function (x, y) { return puntos.call(this, x * s, y * s) }
+          } catch (e) {}
+          aplicar()
+          // En captura y antes que nadie: los oyentes de la pagina ya leen
+          // la ventana nueva.
+          window.addEventListener('resize', aplicar, true)
+          window.__ognAplicarEscala = aplicar
+        })()
+        // La pagina puede nacer DESPUES del aviso: entonces hay que preguntar.
+        try {
+          var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+          if (yo) {
+            fetch('https://' + yo + '/origen:tema:dame', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: '{}'
+            })
+              .then(function (r) { return r.json() })
+              .then(function (d) {
+                if (d && typeof d.silencio === 'boolean') silenciar(d.silencio)
+              })
+              .catch(function () {})
+          }
+        } catch (e) {}
+      })()
+    </script>
+  <style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+
+<body>
+
+    <div id="app">
+        <div class="test-drive" key="test-drive" v-if="testDriving">
+            <div class="test-drive-header">
+                {{ T('ui.test_drive.currently_testing') }}<div class="tag">{{currentVehicleLabel}}</div>
+            </div>
+            <div class="test-drive-timer" style="width: 100%;">
+                <div class="timer-label">{{ T('ui.test_drive.time_remaining') }}</div>
+                <div class="timer-display" :class="getTimerClass()">{{formatTimeRemaining(testDriveTimeRemaining)}}
+                </div>
+            </div>
+        </div>
+
+        <div class="modals"></div>
+        <div class="vehicle-scroller" key="vehicle-scroller" v-if="dealershipMenu.visible "></div>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             ORIGEN DEALERSHIP · el modo de colocar puntos
+
+             Sale mientras se está plantando algo en el mundo: la lista de lo
+             que ya hay puesto a un lado y las teclas abajo. No es el panel,
+             así que no lleva raíl. Ver la skill origen-tablet.
+             ══════════════════════════════════════════════════════════════ -->
+        <div class="de-creador" v-if="creatorMode.active">
+            <div class="ogn-panel de-creador__caja">
+                <div class="ogn-panel__head">
+                    <span class="ogn-panel__title">{{ T('ui.admin_panel.dealership_creator') }}</span>
+                </div>
+
+                <div class="ogn-tabs de-creador__tabs">
+                    <button type="button" class="ogn-tabs__tab" v-for="tab in creatorMode.tabs" :key="tab.id"
+                        :class="{ 'ogn-tabs__tab--on': tab.active }" @click="setCreatorTab(tab.id)">
+                        {{ T(tab.labelKey) }} <b class="de-cuenta">{{ getTabCounter(tab.id) }}</b>
+                    </button>
+                </div>
+
+                <div class="ogn-panel__body de-creador__cuerpo">
+                    <p class="ogn-prose de-nota">{{ creatorDescripcion }}</p>
+
+                    <div class="ogn-list de-lista">
+                        <div class="ogn-row" v-for="(point, index) in creatorMode.points[creatorMode.activeTab]"
+                            :key="index">
+                            <span class="ogn-row__txt">
+                                <span class="ogn-row__name">{{ creatorEtiqueta }} {{ index + 1 }}</span>
+                                <!-- Las coordenadas se comparan cifra a cifra: monoespaciada. -->
+                                <span class="ogn-row__meta ogn-mono">{{ formatCoords(point) }}</span>
+                            </span>
+
+                            <button type="button" class="ogn-btn ogn-btn--quiet"
+                                v-if="creatorMode.activeTab === 'cars_exhibitor'"
+                                @click="configureExhibitorVehicles(index)">
+                                <i data-lucide="settings"></i>
+                            </button>
+                            <button type="button" class="ogn-btn ogn-btn--quiet de-borrar"
+                                @click="deleteCreatorPoint(creatorMode.activeTab, index)">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+
+                        <div class="ogn-empty" v-if="!creatorMode.points[creatorMode.activeTab].length">
+                            <i data-lucide="map-pin" class="ogn-empty__icon"></i>
+                            <span class="ogn-empty__text">{{ T('ui.admin_panel.place_point') }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Las teclas, dibujadas como teclas. -->
+            <div class="de-teclas">
+                <span class="de-tecla"><b>E</b><i>{{ T('ui.admin_panel.place_point') }}</i></span>
+                <span class="de-tecla"><b>Rueda</b><i>{{ T('ui.admin_panel.rotate') }}</i></span>
+                <span class="de-tecla"><b>Mayús + rueda</b><i>{{ T('ui.admin_panel.slow_rotate') }}</i></span>
+                <span class="de-tecla"><b>Intro</b><i>{{ T('ui.admin_panel.finish') }}</i></span>
+                <span class="de-tecla"><b>Retroceso</b><i>{{ T('buttons.cancel') }}</i></span>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             ORIGEN DEALERSHIP · el panel
+
+             Los concesionarios del servidor: dónde están en el mapa, qué
+             venden y dónde tienen cada punto. El armazón es el de la tablet:
+             raíl, cabecera, contenido y barra de datos.
+             ══════════════════════════════════════════════════════════════ -->
+        <!-- ══ Sacando fotos ════════════════════════════════════════════
+             El panel se esconde para que se vea el coche en la caja. La NUI no
+             tiene el foco (el juego tiene que seguir pintando), así que el ESC
+             lo lee Lua y aquí solo se enseña. -->
+        <div class="de-fotos" v-if="photoGen.running">
+            <span class="de-fotos__placa">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" /></svg>
+            </span>
+            <span class="de-fotos__titulo">Sacando fotos</span>
+            <span class="de-fotos__tramo">
+                <span class="de-fotos__modelo">{{ photoGen.model || '…' }}</span>
+                <span class="de-fotos__barra">
+                    <span class="de-fotos__lleno"
+                        :style="{ width: (photoGen.total ? (photoGen.current / photoGen.total * 100) : 0) + '%' }"></span>
+                </span>
+                <span class="de-fotos__cuenta">{{ photoGen.current }} / {{ photoGen.total }}</span>
+            </span>
+            <span class="de-fotos__tramo" v-if="!photoGen.cancelling"><kbd>Esc</kbd> <i>Cancelar</i></span>
+            <span class="de-fotos__tramo de-fotos__cancelando" v-else>Cancelando al terminar este coche…</span>
+        </div>
+
+        <div class="ogn-stage de-panel" :class="{ 'de-panel--fotos': photoGen.running }" v-if="adminPanel.visible">
+            <div class="ogn-stage__veil"></div>
+
+            <nav class="ogn-rail">
+                <div class="ogn-rail__top">
+                    <i data-lucide="car-front" class="ogn-rail__mark"></i>
+
+                    <div class="ogn-rail__nav">
+                        <button type="button" class="ogn-rail__it" v-for="tab in adminPanel.tabs" :key="tab.id"
+                            :class="{ 'is-on': tab.active }" @click="setTabActive(tab.id)" :title="tab.name">
+                            <span class="ogn-rail__bar" v-if="tab.active"></span>
+                            <i :data-lucide="tab.icon"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="ogn-rail__mid">
+                    <span class="ogn-rail__word">{{ casaNombre() }} Concesionario</span>
+                </div>
+
+                <div class="ogn-rail__foot" :class="{ 'is-on': totalConcesionarios > 0 }">
+                    <span class="ogn-rail__dot"></span>
+                    <span class="ogn-rail__state">{{ totalConcesionarios }} concesionarios</span>
+                </div>
+            </nav>
+
+            <div class="ogn-frame">
+                <header class="ogn-head">
+                    <div class="ogn-head__title">
+                        <span class="ogn-kicker">Panel de administración</span>
+                        <!-- data-brocha: el rotulo a brocha de debajo del titulo. Solo lo
+                             pinta pegatina.css (Origen); sin esa hoja no sale nada. -->
+                        <h2 class="ogn-h2" :data-brocha="adminPanel.tabs.map.active ? 'Dónde está cada uno' : 'Catálogo y puntos'">{{ tituloDeLaSeccion }}</h2>
+                    </div>
+
+                    <div class="ogn-head__right">
+                        <button type="button" class="ogn-btn ogn-btn--primary" @click="createDealership()">
+                            <i data-lucide="plus"></i>
+                            <span>Concesionario nuevo</span>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="ogn-content de-contenido">
+                    <!-- ══ El mapa ═══════════════════════════════════════ -->
+                    <div class="de-mapa" v-if="adminPanel.tabs.map.active">
+                        <div id="map-container" class="de-mapa__lienzo"></div>
+                    </div>
+
+                    <!-- ══ Los concesionarios ════════════════════════════ -->
+                    <div class="ogn-split" v-if="adminPanel.tabs.stock.active">
+                        <div class="ogn-split__list">
+                            <section class="ogn-panel">
+                                <div class="ogn-panel__head">
+                                    <span class="ogn-panel__title">Los concesionarios</span>
+                                    <span class="ogn-chip ogn-chip--neutral">{{ totalConcesionarios }}</span>
+                                </div>
+
+                                <div class="ogn-panel__body ogn-panel__body--flush">
+                                    <div class="ogn-list">
+                                        <div class="ogn-item de-conce"
+                                            v-for="dealership in adminPanel.dealershipManagement.dealerships"
+                                            :key="dealership.id"
+                                            :class="{ 'ogn-item--on': dealership.id === adminPanel.dealershipManagement.selectedDealership }">
+                                            <span class="ogn-item__txt" @click="editDealership(dealership.id)">
+                                                <span class="ogn-item__name">{{ dealership.name || dealership.id }}</span>
+                                                <!-- El identificador se escribe en la base de datos. -->
+                                                <span class="ogn-item__meta ogn-mono">{{ dealership.id }}</span>
+                                            </span>
+
+                                            <span class="de-conce__acc">
+                                                <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                    @click.stop="tpDealership(dealership.id)"
+                                                    :title="T('ui.admin.teleport')">
+                                                    <i data-lucide="navigation"></i>
+                                                </button>
+                                                <button type="button" class="ogn-btn ogn-btn--quiet de-borrar"
+                                                    @click.stop="confirmDeleteDealership(dealership)"
+                                                    :title="T('ui.admin.delete')">
+                                                    <i data-lucide="trash-2"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+
+                                        <div class="ogn-empty" v-if="!totalConcesionarios">
+                                            <i data-lucide="building" class="ogn-empty__icon"></i>
+                                            <span class="ogn-empty__text">Todavía no hay ningún concesionario</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="ogn-split__detail">
+                            <!-- Sin uno elegido no hay nada que enseñar. -->
+                            <section class="ogn-panel" v-if="!adminPanel.dealershipManagement.selectedDealership">
+                                <div class="ogn-panel__body">
+                                    <div class="ogn-empty">
+                                        <i data-lucide="building" class="ogn-empty__icon"></i>
+                                        <span class="ogn-empty__text">{{ T('ui.admin.select_dealership_message') }}</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="ogn-panel de-detalle"
+                                v-for="dealership in adminPanel.dealershipManagement.dealerships"
+                                :key="dealership.id"
+                                v-if="dealership.id === adminPanel.dealershipManagement.selectedDealership">
+                                <div class="ogn-panel__head">
+                                    <span class="ogn-panel__title">{{ dealership.name || dealership.id }}</span>
+
+                                    <span class="de-detalle__acc">
+                                        <button type="button" class="ogn-btn ogn-btn--danger"
+                                            @click="deleteDealership(dealership)"
+                                            :title="T('ui.admin.delete_dealership')">
+                                            <i data-lucide="trash-2"></i>
+                                        </button>
+                                        <button type="button" class="ogn-btn ogn-btn--solid" @click="saveDealershipInfo()">
+                                            <i data-lucide="save"></i>
+                                            <span>{{ T('buttons.save') }}</span>
+                                        </button>
+                                    </span>
+                                </div>
+
+                                <div class="ogn-tabs de-detalle__tabs">
+                                    <button type="button" class="ogn-tabs__tab" v-for="tab in adminPanel.dealershipTabs"
+                                        :key="tab.id" :class="{ 'ogn-tabs__tab--on': tab.active }"
+                                        @click="setDealershipTab(tab.id)">
+                                        {{ T('ui.admin.' + tab.id) }}
+                                    </button>
+                                </div>
+
+                                <div class="ogn-panel__body">
+                                    <!-- ── Lo básico ────────────────────── -->
+                                    <div class="de-columna" v-show="adminPanel.activeDealershipTab === 'general'">
+                                        <div class="de-bloque">
+                                            <div class="ogn-fields de-dos">
+                                                <label class="ogn-field">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.dealership_name') }}</span>
+                                                    <input type="text" class="ogn-field__input" v-model="dealership.name">
+                                                </label>
+
+                                                <label class="ogn-field">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.test_time_minutes') }}</span>
+                                                    <input type="number" class="ogn-field__input" min="1" max="30"
+                                                        v-model="dealership.settings.testDriveTime">
+                                                </label>
+
+                                                <label class="ogn-field de-ancho">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.description') }}</span>
+                                                    <textarea class="ogn-field__input ogn-field__input--area" rows="3"
+                                                        v-model="dealership.description"
+                                                        :placeholder="T('ui.admin_panel.description_placeholder')"></textarea>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="de-bloque">
+                                            <span class="ogn-label">Lo que se puede hacer aquí</span>
+
+                                            <label class="ogn-switch-row">
+                                                <span class="ogn-switch-row__txt">
+                                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.allow_test_drives') }}</span>
+                                                </span>
+                                                <button type="button" class="ogn-switch" role="switch"
+                                                    :class="{ 'ogn-switch--on': dealership.settings.allowTestDrive }"
+                                                    @click="dealership.settings.allowTestDrive = !dealership.settings.allowTestDrive">
+                                                    <span class="ogn-switch__knob"></span>
+                                                </button>
+                                            </label>
+
+                                            <label class="ogn-switch-row">
+                                                <span class="ogn-switch-row__txt">
+                                                    <span class="ogn-switch-row__label">Se puede mirar el catálogo</span>
+                                                </span>
+                                                <button type="button" class="ogn-switch" role="switch"
+                                                    :class="{ 'ogn-switch--on': dealership.settings.allowCatalog }"
+                                                    @click="dealership.settings.allowCatalog = !dealership.settings.allowCatalog">
+                                                    <span class="ogn-switch__knob"></span>
+                                                </button>
+                                            </label>
+
+                                            <!-- Solo para quien tenga el rol de Discord de
+                                                 config/server/vip.lua. Lo comprueba el servidor
+                                                 al abrir, comprar, financiar y probar. -->
+                                            <label class="ogn-switch-row">
+                                                <span class="ogn-switch-row__txt">
+                                                    <span class="ogn-switch-row__label">Concesionario VIP · solo con el rol de Discord</span>
+                                                </span>
+                                                <button type="button" class="ogn-switch" role="switch"
+                                                    :class="{ 'ogn-switch--on': dealership.settings.vipOnly }"
+                                                    @click="$set(dealership.settings, 'vipOnly', !dealership.settings.vipOnly)">
+                                                    <span class="ogn-switch__knob"></span>
+                                                </button>
+                                            </label>
+                                        </div>
+
+                                        <div class="de-bloque">
+                                            <span class="ogn-label">{{ T('ui.admin_panel.blip_settings') }}</span>
+
+                                            <div class="ogn-fields de-tres">
+                                                <label class="ogn-field">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.blip_sprite') }}</span>
+                                                    <input type="number" class="ogn-field__input" min="1" max="826"
+                                                        v-model="dealership.blipConfig.sprite"
+                                                        :placeholder="T('ui.admin_panel.blip_sprite_placeholder')">
+                                                </label>
+
+                                                <label class="ogn-field">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.blip_color') }}</span>
+                                                    <input type="number" class="ogn-field__input" min="0" max="85"
+                                                        v-model="dealership.blipConfig.color"
+                                                        :placeholder="T('ui.admin_panel.blip_color_placeholder')">
+                                                </label>
+
+                                                <label class="ogn-field">
+                                                    <span class="ogn-field__label">{{ T('ui.admin_panel.blip_scale') }}</span>
+                                                    <input type="number" class="ogn-field__input" min="0.1" max="2" step="0.1"
+                                                        v-model="dealership.blipConfig.scale"
+                                                        :placeholder="T('ui.admin_panel.blip_scale_placeholder')">
+                                                </label>
+                                            </div>
+
+                                            <p class="ogn-prose de-nota">{{ T('ui.admin_panel.blip_sprite_hint') }}</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- ── Lo que vende ─────────────────── -->
+                                    <div class="de-columna" v-show="adminPanel.activeDealershipTab === 'vehicles'">
+                                        <div class="de-bloque">
+                                            <span class="de-bloque__cab">
+                                                <span class="ogn-label">{{ T('ui.admin.categories') }}</span>
+                                                <button type="button" class="ogn-btn ogn-btn--quiet" @click="addNewCategory()">
+                                                    <i data-lucide="plus"></i>
+                                                    <span>{{ T('ui.admin.add_category') }}</span>
+                                                </button>
+                                            </span>
+
+                                            <div class="de-filas">
+                                                <div class="de-fila" v-for="(category, categoryKey) in dealership.stock"
+                                                    :key="categoryKey">
+                                                    <div class="ogn-fields de-fila__campos de-categoria">
+                                                        <label class="ogn-field">
+                                                            <span class="ogn-field__label">{{ T('ui.admin.name') }}</span>
+                                                            <input type="text" class="ogn-field__input"
+                                                                v-model="category.label"
+                                                                :placeholder="T('ui.admin.category_label')">
+                                                        </label>
+
+                                                        <label class="ogn-field">
+                                                            <span class="ogn-field__label">{{ T('ui.admin.job_restriction') }}</span>
+                                                            <input type="text" class="ogn-field__input" v-model="category.job"
+                                                                :title="T('ui.admin.job_restriction_hint')">
+                                                        </label>
+                                                    </div>
+
+                                                    <button type="button" class="ogn-btn ogn-btn--danger de-fila__x"
+                                                        @click="deleteCategory(categoryKey)"
+                                                        :title="T('ui.admin.delete_category')">
+                                                        <i data-lucide="trash-2"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="de-bloque">
+                                            <span class="de-bloque__cab">
+                                                <span class="ogn-label">{{ T('ui.admin.vehicles') }}</span>
+
+                                                <span class="de-acciones">
+                                                    <label class="ogn-search de-buscar">
+                                                        <i data-lucide="search" class="ogn-search__icon"></i>
+                                                        <input type="text" class="ogn-search__input" v-model="searchQuery"
+                                                            :placeholder="T('ui.admin.search_vehicles')"
+                                                            @input="searchVehicles">
+                                                    </label>
+
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        @click="expandAllCategories()" title="Abrirlas todas">
+                                                        <i data-lucide="chevrons-down"></i>
+                                                    </button>
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        @click="collapseAllCategories()" title="Cerrarlas todas">
+                                                        <i data-lucide="chevrons-up"></i>
+                                                    </button>
+                                                    <!-- Fotos automáticas: saca las que faltan y pone
+                                                         en cada ficha la foto de su modelo. La cifra es
+                                                         cuántos coches no la enseñan todavía. -->
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        :disabled="photoGen.running"
+                                                        @click="startPhotoGeneration(false)"
+                                                        :title="photoGen.available ? 'Sacar las fotos que faltan' : 'Hace falta screencapture y origen_uploader'">
+                                                        <i data-lucide="camera"></i>
+                                                        <span>Sacar fotos</span>
+                                                        <span class="de-cuenta" v-if="fotosPendientes(dealership).length">
+                                                            {{ fotosPendientes(dealership).length }}
+                                                        </span>
+                                                    </button>
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        :disabled="photoGen.running || !photoGen.available"
+                                                        @click="startPhotoGeneration(true)"
+                                                        title="Volver a sacar todas las fotos">
+                                                        <i data-lucide="refresh-cw"></i>
+                                                    </button>
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        :disabled="photoGen.running || !photoGen.available"
+                                                        @click="startExtraPhotoGeneration(false)"
+                                                        title="Sacar las fotos de los coches de emergencias y de los garajes de trabajo">
+                                                        <i data-lucide="siren"></i>
+                                                        <span>Fotos emergencias</span>
+                                                    </button>
+                                                    <label class="ogn-search de-foto-modelo">
+                                                        <i data-lucide="aperture" class="ogn-search__icon"></i>
+                                                        <input type="text" class="ogn-search__input ogn-mono"
+                                                            v-model="photoGen.single"
+                                                            :disabled="photoGen.running || !photoGen.available"
+                                                            placeholder="Foto de un modelo"
+                                                            title="Escribe el modelo y pulsa Enter para sacar o rehacer su foto"
+                                                            @keydown.enter.prevent="startSinglePhotoGeneration(photoGen.single)">
+                                                    </label>
+                                                    <button type="button" class="ogn-btn ogn-btn--primary"
+                                                        @click="showAddVehicleModal()">
+                                                        <i data-lucide="plus"></i>
+                                                        <span>{{ T('ui.admin.add_vehicle') }}</span>
+                                                    </button>
+                                                </span>
+                                            </span>
+
+                                            <div v-if="vehiclesReady">
+                                                <div class="de-cat" v-for="(categoryData, categoryKey) in dealership.stock"
+                                                    :key="categoryKey">
+                                                    <button type="button" class="de-cat__cab"
+                                                        @click="toggleCategoryExpansion(categoryKey)">
+                                                        <i :data-lucide="isCategoryExpanded(categoryKey) ? 'chevron-down' : 'chevron-right'"></i>
+                                                        <span class="de-cat__n">{{ categoryData.label }}</span>
+                                                        <span class="ogn-chip ogn-chip--neutral">
+                                                            {{ (categoryData.isFiltering ? categoryData.filteredStock : categoryData.categoryStock).length }}
+                                                        </span>
+                                                    </button>
+
+                                                    <div class="ogn-grid de-coches" v-if="isCategoryExpanded(categoryKey)">
+                                                        <div class="de-coche"
+                                                            v-for="(vehicle, index) in (categoryData.isFiltering ? categoryData.filteredStock : categoryData.categoryStock)"
+                                                            :key="index">
+                                                            <button type="button" class="de-coche__img de-coche__foto"
+                                                                :disabled="photoGen.running || !photoGen.available"
+                                                                @click="startSinglePhotoGeneration(vehicle.model)"
+                                                                :title="fotoDe(vehicle.model) ? 'Rehacer la foto' : 'Sacar la foto'">
+                                                                <img :src="vehicleImageSrc(vehicle)" :alt="vehicle.label"
+                                                                    @error="handleImageError">
+                                                                <i data-lucide="camera" class="de-coche__foto-ico"></i>
+                                                            </button>
+
+                                                            <span class="de-coche__txt">
+                                                                <span class="de-coche__n">{{ vehicle.label }}</span>
+                                                                <span class="de-coche__m ogn-mono">{{ vehicle.model }}</span>
+
+                                                                <span class="de-coche__datos">
+                                                                    <span class="ogn-chip ogn-chip--neutral">{{ vehicle.class }}</span>
+                                                                    <span class="de-coche__precio">${{ vehicle.price }}</span>
+                                                                    <span class="ogn-chip ogn-chip--neutral" v-if="vehicle.xp > 0">{{ vehicle.xp }} {{ nombreXP }}</span>
+                                                                    <span class="ogn-chip ogn-chip--neutral">{{ vehicle.stock }} en stock</span>
+                                                                    <!-- Verde: que se pueda financiar es un estado
+                                                                         real del coche, no una categoría. -->
+                                                                    <span class="ogn-chip" v-if="vehicle.financing"
+                                                                        :class="'ogn-chip--live'">A plazos</span>
+                                                                </span>
+                                                            </span>
+
+                                                            <span class="de-coche__acc">
+                                                                <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                                    @click="spawnVehicle(vehicle)" title="Sacarlo">
+                                                                    <i data-lucide="car"></i>
+                                                                </button>
+                                                                <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                                    @click="editVehicle(vehicle, categoryKey)"
+                                                                    :title="T('ui.admin.edit')">
+                                                                    <i data-lucide="edit"></i>
+                                                                </button>
+                                                                <button type="button" class="ogn-btn ogn-btn--quiet de-borrar"
+                                                                    @click="deleteVehicle(vehicle, index, categoryKey)"
+                                                                    :title="T('ui.admin.delete')">
+                                                                    <i data-lucide="trash-2"></i>
+                                                                </button>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ── Los puntos del local ─────────── -->
+                                    <div class="de-columna" v-show="adminPanel.activeDealershipTab === 'locations'">
+                                        <div class="ogn-tabs de-hueco">
+                                            <button type="button" class="ogn-tabs__tab"
+                                                v-for="tab in adminPanel.locationTabs" :key="tab.id"
+                                                :class="{ 'ogn-tabs__tab--on': tab.active }" @click="setLocationTab(tab.id)">
+                                                {{ T(tab.labelKey) }}
+                                                <b class="de-cuenta">{{ getLocationCounter(dealership, tab.id) }}</b>
+                                            </button>
+                                        </div>
+
+                                        <div class="de-bloque">
+                                            <span class="de-bloque__cab">
+                                                <span class="ogn-label">{{ puntoActual.titulo }}</span>
+
+                                                <button type="button" class="ogn-btn ogn-btn--primary"
+                                                    @click="setupLocationCoords(dealership, adminPanel.activeLocationTab)"
+                                                    :disabled="puntoActual.unico && (dealership[adminPanel.activeLocationTab] || []).length >= 1">
+                                                    <i data-lucide="plus"></i>
+                                                    <span>{{ T('ui.admin_panel.add') }}</span>
+                                                </button>
+                                            </span>
+
+                                            <p class="ogn-prose de-nota">{{ puntoActual.pie }}</p>
+
+                                            <div class="de-filas">
+                                                <div class="ogn-row"
+                                                    v-for="(location, index) in dealership[adminPanel.activeLocationTab] || []"
+                                                    :key="index">
+                                                    <span class="ogn-row__txt">
+                                                        <span class="ogn-row__name">
+                                                            {{ puntoActual.etiqueta }}
+                                                            <template v-if="!puntoActual.unico">{{ index + 1 }}</template>
+                                                        </span>
+                                                        <span class="ogn-row__meta ogn-mono">{{ formatLocationCoords(location) }}</span>
+                                                    </span>
+
+                                                    <span class="ogn-chip ogn-chip--accent"
+                                                        v-if="location.allowedVehicles && location.allowedVehicles.length">
+                                                        {{ location.allowedVehicles.length }} coches
+                                                    </span>
+
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        v-if="adminPanel.activeLocationTab === 'cars_exhibitor'"
+                                                        @click.stop="configureExhibitorVehiclesFromList(dealership, index)"
+                                                        title="Qué coches se exponen">
+                                                        <i data-lucide="settings"></i>
+                                                    </button>
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet"
+                                                        @click="teleportToLocation(location)"
+                                                        :title="T('ui.admin.go_to_location')">
+                                                        <i data-lucide="navigation"></i>
+                                                    </button>
+                                                    <button type="button" class="ogn-btn ogn-btn--quiet de-borrar"
+                                                        @click="deleteLocation(dealership, adminPanel.activeLocationTab, index)"
+                                                        :title="T('ui.admin.remove')">
+                                                        <i data-lucide="trash-2"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="ogn-empty"
+                                                    v-if="!(dealership[adminPanel.activeLocationTab] || []).length">
+                                                    <i data-lucide="map-pin" class="ogn-empty__icon"></i>
+                                                    <span class="ogn-empty__text">Aquí no hay ningún punto todavía</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ══ Barra de datos ════════════════════════════════════ -->
+                <div class="ogn-bar">
+                    <div class="ogn-bar__cell">
+                        <span class="ogn-bar__label">Concesionarios</span>
+                        <span class="ogn-bar__value">{{ totalConcesionarios }}</span>
+                    </div>
+                    <div class="ogn-bar__cell">
+                        <span class="ogn-bar__label">Coches a la venta</span>
+                        <span class="ogn-bar__value">{{ totalCoches }}</span>
+                    </div>
+                    <div class="ogn-bar__cell">
+                        <span class="ogn-bar__label">Categorías</span>
+                        <span class="ogn-bar__value">{{ totalCategorias }}</span>
+                    </div>
+                    <div class="ogn-bar__cell">
+                        <span class="ogn-bar__label">Exhibidores</span>
+                        <span class="ogn-bar__value">{{ totalExhibidores }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══ Un coche a la venta ═══════════════════════════════════════ -->
+        <div class="ogn-modal" v-if="addVehicleModal.visible && adminPanel.visible"
+            @click.self="closeAddVehicleModal">
+            <div class="ogn-modal__card de-modal--ancho">
+                <header class="ogn-modal__head">
+                    <span class="ogn-modal__titles">
+                        <span class="ogn-modal__title">
+                            {{ addVehicleModal.isEditing ? T('ui.admin_panel.edit_vehicle') : T('ui.admin_panel.add_vehicle') }}
+                        </span>
+                    </span>
+                </header>
+
+                <div class="ogn-modal__body de-modal__cuerpo">
+                    <!-- Lo que se está montando, a la izquierda; el catálogo
+                         del que se elige, a la derecha. -->
+                    <div class="de-modal__izq">
+                        <div class="de-bloque">
+                            <span class="ogn-label">{{ T('ui.admin_panel.vehicle_info') }}</span>
+
+                            <div class="ogn-fields de-dos">
+                                <ogn-select v-model="addVehicleModal.form.category"
+                                    :label="T('ui.admin_panel.category')"
+                                    :placeholder="T('ui.admin_panel.select_category')"
+                                    :options="opcionesDeCategoria"></ogn-select>
+
+                                <ogn-select v-model="addVehicleModal.form.class"
+                                    :label="T('ui.admin_panel.class')"
+                                    :options="opcionesDeClase"></ogn-select>
+
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">{{ T('ui.admin_panel.vehicle_model') }}</span>
+                                    <input type="text" class="ogn-field__input" v-model="addVehicleModal.form.model"
+                                        :placeholder="T('ui.admin_panel.vehicle_model_placeholder')">
+                                </label>
+
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">{{ T('ui.admin_panel.vehicle_name') }}</span>
+                                    <input type="text" class="ogn-field__input" v-model="addVehicleModal.form.label"
+                                        :placeholder="T('ui.admin_panel.vehicle_name_placeholder')">
+                                </label>
+
+                                <label class="ogn-field de-ancho">
+                                    <span class="ogn-field__label">{{ T('ui.admin_panel.image') }}</span>
+                                    <input type="text" class="ogn-field__input" v-model="addVehicleModal.form.image"
+                                        placeholder="https://r2.fivemanage.com/">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="de-bloque">
+                            <span class="ogn-label">Cómo se vende</span>
+
+                            <label class="ogn-switch-row">
+                                <span class="ogn-switch-row__txt">
+                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.allow_financing_vehicle') }}</span>
+                                </span>
+                                <button type="button" class="ogn-switch" role="switch"
+                                    :class="{ 'ogn-switch--on': addVehicleModal.form.financing }"
+                                    @click="addVehicleModal.form.financing = !addVehicleModal.form.financing">
+                                    <span class="ogn-switch__knob"></span>
+                                </button>
+                            </label>
+
+                            <label class="ogn-switch-row">
+                                <span class="ogn-switch-row__txt">
+                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.enable_stock_system') }}</span>
+                                    <span class="ogn-switch-row__hint">Se acaban las unidades y hay que reponerlas</span>
+                                </span>
+                                <button type="button" class="ogn-switch" role="switch"
+                                    :class="{ 'ogn-switch--on': addVehicleModal.form.stockEnabled }"
+                                    @click="addVehicleModal.form.stockEnabled = !addVehicleModal.form.stockEnabled">
+                                    <span class="ogn-switch__knob"></span>
+                                </button>
+                            </label>
+
+                            <div class="ogn-fields" v-if="addVehicleModal.form.stockEnabled">
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">{{ T('ui.admin_panel.stock_amount') }}</span>
+                                    <input type="number" class="ogn-field__input" min="0"
+                                        v-model="addVehicleModal.form.stock">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="de-bloque">
+                            <span class="ogn-label">{{ T('ui.admin_panel.payment_configuration') }}</span>
+
+                            <label class="ogn-switch-row">
+                                <span class="ogn-switch-row__txt">
+                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.cash_purchase') }}</span>
+                                    <span class="ogn-switch-row__hint">{{ T('ui.admin_panel.cash_description') }}</span>
+                                </span>
+                                <button type="button" class="ogn-switch" role="switch"
+                                    :class="{ 'ogn-switch--on': addVehicleModal.form.paymentMethods.cash }"
+                                    @click="addVehicleModal.form.paymentMethods.cash = !addVehicleModal.form.paymentMethods.cash">
+                                    <span class="ogn-switch__knob"></span>
+                                </button>
+                            </label>
+
+                            <div class="ogn-fields" v-if="addVehicleModal.form.paymentMethods.cash">
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">Precio en metálico</span>
+                                    <input type="number" class="ogn-field__input" min="0"
+                                        v-model="addVehicleModal.form.prices.cash"
+                                        :placeholder="T('ui.admin_panel.cash_price_placeholder')">
+                                </label>
+                            </div>
+
+                            <label class="ogn-switch-row">
+                                <span class="ogn-switch-row__txt">
+                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.xp_purchase') }}</span>
+                                </span>
+                                <button type="button" class="ogn-switch" role="switch"
+                                    :class="{ 'ogn-switch--on': addVehicleModal.form.paymentMethods.xp }"
+                                    @click="addVehicleModal.form.paymentMethods.xp = !addVehicleModal.form.paymentMethods.xp">
+                                    <span class="ogn-switch__knob"></span>
+                                </button>
+                            </label>
+
+                            <div class="ogn-fields" v-if="addVehicleModal.form.paymentMethods.xp">
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">{{ marca === 'nacion' ? 'Cuánto Farm XP cuesta' : 'Cuánta experiencia cuesta' }}</span>
+                                    <input type="number" class="ogn-field__input" min="1"
+                                        v-model="addVehicleModal.form.prices.xp"
+                                        :placeholder="T('ui.admin_panel.xp_price_placeholder')">
+                                </label>
+                            </div>
+
+                            <label class="ogn-switch-row">
+                                <span class="ogn-switch-row__txt">
+                                    <span class="ogn-switch-row__label">{{ T('ui.admin_panel.company_purchase') }}</span>
+                                    <span class="ogn-switch-row__hint">{{ T('ui.admin_panel.company_description') }}</span>
+                                </span>
+                                <button type="button" class="ogn-switch" role="switch"
+                                    :class="{ 'ogn-switch--on': addVehicleModal.form.paymentMethods.company }"
+                                    @click="addVehicleModal.form.paymentMethods.company = !addVehicleModal.form.paymentMethods.company">
+                                    <span class="ogn-switch__knob"></span>
+                                </button>
+                            </label>
+
+                            <div class="ogn-fields" v-if="addVehicleModal.form.paymentMethods.company">
+                                <label class="ogn-field">
+                                    <span class="ogn-field__label">Precio para una empresa</span>
+                                    <input type="number" class="ogn-field__input" min="0"
+                                        v-model="addVehicleModal.form.prices.company"
+                                        :placeholder="T('ui.admin_panel.company_price_placeholder')">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="de-modal__der">
+                        <div class="de-catalogo__cab">
+                            <label class="ogn-search de-buscar">
+                                <i data-lucide="search" class="ogn-search__icon"></i>
+                                <input type="text" class="ogn-search__input" v-model="addVehicleModal.searchQuery"
+                                    :placeholder="T('ui.admin_panel.search_vehicle')">
+                            </label>
+
+                            <button type="button" class="ogn-btn ogn-btn--quiet" @click="toggleSortDirection()">
+                                <i :data-lucide="sortOrder === 'asc' ? 'chevron-up' : 'chevron-down'"></i>
+                                <span>{{ sortOrder === 'asc' ? 'A · Z' : 'Z · A' }}</span>
+                            </button>
+                        </div>
+
+                        <div class="ogn-grid de-catalogo">
+                            <button type="button" class="de-cat-coche" v-for="vehicle in sortedDefaultVehicles"
+                                :key="vehicle.model"
+                                :class="{
+                                    'de-cat-coche--on': addVehicleModal.selectedVehicle === vehicle.model,
+                                    'de-cat-coche--puesto': existingVehicleModels.includes(vehicle.model.toLowerCase())
+                                }"
+                                :disabled="existingVehicleModels.includes(vehicle.model.toLowerCase())"
+                                @click="selectDefaultVehicle(vehicle)">
+                                <span class="de-cat-coche__img">
+                                    <img :src="getVehicleImageUrl(vehicle.model)" :alt="vehicle.label"
+                                        @error="handleVehicleImageLoadError($event, vehicle.model)">
+                                </span>
+                                <span class="de-cat-coche__n">{{ vehicle.label }}</span>
+                                <span class="de-cat-coche__m ogn-mono">{{ vehicle.model }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="ogn-modal__foot">
+                    <button type="button" class="ogn-btn ogn-btn--ghost" @click="closeAddVehicleModal">Cancelar</button>
+                    <button type="button" class="ogn-btn ogn-btn--solid" @click="confirmAddVehicle"
+                        :disabled="!isAddVehicleFormValid">
+                        {{ addVehicleModal.isEditing ? 'Guardar' : 'Ponerlo a la venta' }}
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <!-- ══ Qué coches se exponen en un exhibidor ═════════════════════ -->
+        <div class="ogn-modal" v-if="exhibitorConfigModal.visible && adminPanel.visible"
+            @click.self="closeExhibitorConfigModal">
+            <div class="ogn-modal__card de-modal--ancho">
+                <header class="ogn-modal__head">
+                    <span class="ogn-modal__titles">
+                        <span class="ogn-modal__title">Los coches de este exhibidor</span>
+                        <span class="ogn-modal__sub">
+                            {{ exhibitorConfigModal.selectedVehicles.length }} elegidos de
+                            {{ exhibitorConfigModal.availableVehicles.length }}
+                        </span>
+                    </span>
+                </header>
+
+                <div class="ogn-modal__body de-columna">
+                    <div class="de-bloque">
+                        <span class="ogn-label">Qué se puede hacer aquí</span>
+
+                        <label class="ogn-switch-row">
+                            <span class="ogn-switch-row__txt">
+                                <span class="ogn-switch-row__label">El coche gira solo</span>
+                            </span>
+                            <button type="button" class="ogn-switch" role="switch"
+                                :class="{ 'ogn-switch--on': exhibitorConfigModal.rotateEnabled }"
+                                @click="exhibitorConfigModal.rotateEnabled = !exhibitorConfigModal.rotateEnabled">
+                                <span class="ogn-switch__knob"></span>
+                            </button>
+                        </label>
+
+                        <label class="ogn-switch-row">
+                            <span class="ogn-switch-row__txt">
+                                <span class="ogn-switch-row__label">Se puede mirar por dentro</span>
+                            </span>
+                            <button type="button" class="ogn-switch" role="switch"
+                                :class="{ 'ogn-switch--on': exhibitorConfigModal.interactable }"
+                                @click="exhibitorConfigModal.interactable = !exhibitorConfigModal.interactable">
+                                <span class="ogn-switch__knob"></span>
+                            </button>
+                        </label>
+
+                        <label class="ogn-switch-row">
+                            <span class="ogn-switch-row__txt">
+                                <span class="ogn-switch-row__label">Se puede comprar desde aquí</span>
+                            </span>
+                            <button type="button" class="ogn-switch" role="switch"
+                                :class="{ 'ogn-switch--on': exhibitorConfigModal.allowPurchase }"
+                                @click="exhibitorConfigModal.allowPurchase = !exhibitorConfigModal.allowPurchase">
+                                <span class="ogn-switch__knob"></span>
+                            </button>
+                        </label>
+
+                        <label class="ogn-switch-row">
+                            <span class="ogn-switch-row__txt">
+                                <span class="ogn-switch-row__label">Se puede probar desde aquí</span>
+                            </span>
+                            <button type="button" class="ogn-switch" role="switch"
+                                :class="{ 'ogn-switch--on': exhibitorConfigModal.allowTestDrive }"
+                                @click="exhibitorConfigModal.allowTestDrive = !exhibitorConfigModal.allowTestDrive">
+                                <span class="ogn-switch__knob"></span>
+                            </button>
+                        </label>
+                    </div>
+
+                    <div class="de-bloque">
+                        <span class="de-bloque__cab">
+                            <label class="ogn-search de-buscar">
+                                <i data-lucide="search" class="ogn-search__icon"></i>
+                                <input type="text" class="ogn-search__input" v-model="exhibitorConfigModal.searchQuery"
+                                    placeholder="Buscar un coche por nombre o modelo">
+                            </label>
+
+                            <span class="de-acciones">
+                                <span class="ogn-chip ogn-chip--neutral">{{ filteredExhibitorVehicles.length }}</span>
+                                <button type="button" class="ogn-btn ogn-btn--quiet" @click="selectAllFilteredVehicles">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Elegirlos todos</span>
+                                </button>
+                                <button type="button" class="ogn-btn ogn-btn--quiet" @click="clearAllVehicles">
+                                    <i data-lucide="x-circle"></i>
+                                    <span>Quitar la selección</span>
+                                </button>
+                            </span>
+                        </span>
+
+                        <div class="ogn-grid de-catalogo">
+                            <button type="button" class="de-cat-coche" v-for="vehicle in filteredExhibitorVehicles"
+                                :key="vehicle.model"
+                                :class="{ 'de-cat-coche--on': exhibitorConfigModal.selectedVehicles.includes(vehicle.model) }"
+                                @click="toggleVehicleSelection(vehicle.model)">
+                                <span class="de-cat-coche__img">
+                                    <img :src="vehicle.img" :alt="vehicle.label" @error="handleImageError">
+                                </span>
+                                <span class="de-cat-coche__n">{{ vehicle.label }}</span>
+                                <span class="de-cat-coche__m ogn-mono">{{ vehicle.model }}</span>
+                                <span class="ogn-chip ogn-chip--neutral">{{ vehicle.class }}</span>
+                            </button>
+                        </div>
+
+                        <div class="ogn-empty" v-if="!filteredExhibitorVehicles.length">
+                            <i data-lucide="search-x" class="ogn-empty__icon"></i>
+                            <span class="ogn-empty__text">Ningún coche se llama así</span>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="ogn-modal__foot">
+                    <button type="button" class="ogn-btn ogn-btn--ghost" @click="closeExhibitorConfigModal">Cancelar</button>
+                    <button type="button" class="ogn-btn ogn-btn--solid" @click="saveExhibitorConfig">
+                        Guardar ({{ exhibitorConfigModal.selectedVehicles.length }})
+                    </button>
+                </footer>
+            </div>
+        </div>
+
+        <!-- ══ El concesionario del jugador (diseño «HUD conce», 15/09) ═══════════
+             Todo en una columna de 560 px a la derecha y el riel al lado: sin tira
+             abajo, para que el coche del expositor se vea entero. Catálogo, ficha
+             y color van en pestañas dentro de la columna, y firmar la compra sale
+             encima de la propia columna.
+             El cableado es el de siempre (main.js): dmSelectVehicle, la paleta de
+             tonos con sus campos ocultos, testDriveVehicle, purchaseVehicle y la
+             financiación. Las piezas que se pulsan llevan la clase .dp dentro, y
+             isInteractiveElement las aparta del arrastre de la cámara. -->
+        <div class="dealership" v-if="dealershipMenu.visible">
+            <!-- Con la financiación abierta, la columna sale por la derecha y
+                 vuelve al cerrarla (como esta-tapado de origen_housing); el riel se queda. -->
+            <div class="dp" :class="{ 'esta-tapado': financingModal.visible }">
+                <section class="dp-col">
+
+                    <!-- Cabecera: el coche elegido -->
+                    <header class="dp-cab">
+                        <span class="dp-cab__placa">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 14.5h18"></path><path d="M5 14.5 7 8h10l2 6.5"></path>
+                                <circle cx="7.5" cy="17" r="1.6"></circle><circle cx="16.5" cy="17" r="1.6"></circle>
+                            </svg>
+                        </span>
+                        <div class="dp-cab__txt">
+                            <div class="dp-cab__fila">
+                                <h1 class="dp-cab__nombre">{{ selectedVehicle ? currentVehicleLabel : 'Concesionario' }}</h1>
+                                <span v-if="selectedVehicle" class="dp-clase" :class="'dp-clase--' + dpClase(selectedVehicle.class)"><b>{{ selectedVehicle.class }}</b></span>
+                            </div>
+                            <div class="dp-cab__sub" :data-brocha="dpCategoriaDelCoche || (dealershipInfo && dealershipInfo.name) || 'Concesionario'">{{ dpSubtitulo }}</div>
+                        </div>
+                        <div class="dp-cab__precio" v-if="selectedVehicle">
+                            <div class="dp-rot">Precio</div>
+                            <div class="dp-cab__cifra" v-html="getVehicleListPrice(selectedVehicle)"></div>
+                        </div>
+                    </header>
+
+                    <!-- Las cuatro cifras rápidas -->
+                    <div class="dp-datos" v-if="selectedVehicle">
+                        <div class="dp-dato" v-for="d in dpDatos" :key="d.k">
+                            <div class="dp-rot">{{ d.k }}</div>
+                            <div class="dp-dato__v" :class="d.clase"><b>{{ d.v }}</b><small v-if="d.u">{{ d.u }}</small></div>
+                        </div>
+                    </div>
+
+                    <!-- Pestañas -->
+                    <nav class="dp-tabs">
+                        <button v-for="t in dpPestanas" :key="t.id" type="button" class="dp-tab" :class="{ 'dp-tab--on': dpTab === t.id }" @click="dpTab = t.id">
+                            <span>{{ t.label }}</span>
+                        </button>
+                    </nav>
+
+                    <div class="dp-cuerpo">
+                        <div class="dp-regla">
+                            <span class="dp-regla__t">{{ dpTituloPestana }}</span>
+                            <i></i>
+                            <span class="dp-regla__meta">{{ dpMetaPestana }}</span>
+                        </div>
+
+                        <!-- ── Catálogo ── -->
+                        <div v-show="dpTab === 'list'" class="dp-lista">
+                            <div class="dp-busca">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4 4"></path></svg>
+                                <input type="text" v-model="dpBusqueda" placeholder="Buscar modelo">
+                                <button type="button" class="dp-orden" @click="dpCiclarOrden()">
+                                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16"></path><path d="M7 12h10"></path><path d="M10 17h4"></path></svg>
+                                    <span>{{ dpOrdenLabel }}</span>
+                                </button>
+                            </div>
+
+                            <div class="dp-marcas">
+                                <button v-for="c in dpCategorias" :key="c.key" type="button" class="dp-marca" :class="{ 'dp-marca--on': selectedCategory === c.key }" @click="selectedCategory = c.key">
+                                    <span>{{ c.label }}</span><em>{{ c.n }}</em>
+                                </button>
+                            </div>
+
+                            <div class="dp-rejilla">
+                                <button v-for="vehicle in dpLista" :key="vehicle.model" type="button" class="dp-coche"
+                                    :class="{ 'dp-coche--on': selectedVehicle && selectedVehicle.model === vehicle.model, 'dp-coche--agotado': vehicle.stockEnabled && vehicle.stock <= 0 }"
+                                    @click="dmSelectVehicle(vehicle)">
+                                    <span class="dp-coche__foto">
+                                        <img v-if="vehicle.img" :src="vehicle.img" :alt="vehicle.label" @error="dpSinFoto($event)">
+                                        <b>{{ (vehicle.label || vehicle.model || '').slice(0, 2).toUpperCase() }}</b>
+                                    </span>
+                                    <span class="dp-coche__txt">
+                                        <span class="dp-coche__nombre">{{ vehicle.label }}</span>
+                                        <span class="dp-coche__linea">
+                                            <span class="dp-coche__precio" v-html="getVehicleListPrice(vehicle)"></span>
+                                            <em v-if="vehicle.stockEnabled && vehicle.stock <= 0" class="dp-chapita dp-chapita--mal">Agotado</em>
+                                            <em v-else-if="vehicle.financing" class="dp-chapita dp-chapita--bien">Plazos</em>
+                                        </span>
+                                    </span>
+                                    <span class="dp-clase dp-clase--chica" :class="'dp-clase--' + dpClase(vehicle.class)"><b>{{ vehicle.class }}</b></span>
+                                </button>
+                            </div>
+
+                            <div v-if="dpLista.length === 0" class="dp-vacio">{{ dpBusqueda ? 'Ningún modelo se llama así' : T('ui.admin_panel.no_vehicles_available') }}</div>
+                        </div>
+
+                        <!-- ── Ficha ── -->
+                        <div v-show="dpTab === 'specs'" class="dp-ficha">
+                            <div v-if="loadingVehicleStats" class="dp-vacio">{{ T('ui.admin_panel.loading_vehicle_data') }}</div>
+                            <div class="dp-barras" v-else>
+                                <div class="dp-barra" v-for="s in dpStats" :key="s.k">
+                                    <div class="dp-barra__cab"><span class="dp-rot dp-rot--oscuro">{{ s.k }}</span><b>{{ s.v }} / 100</b></div>
+                                    <div class="dp-barra__pista"><i :style="{ width: s.v + '%' }"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="dp-regla dp-regla--suave"><span class="dp-regla__t dp-regla__t--suave">Datos</span><i></i></div>
+                            <div class="dp-hoja">
+                                <div class="dp-hoja__fila" v-for="r in dpHoja" :key="r.k"><span>{{ r.k }}</span><b>{{ r.v }}</b></div>
+                            </div>
+                        </div>
+
+                        <!-- ── Color ──
+                             Los campos ocultos y los botones .de-tono son los de
+                             siempre: los lee purchaseVehicle y los escucha main.js.
+                             Van con v-show y no v-if para que existan aunque la
+                             pestaña no se vea. -->
+                        <div v-show="dpTab === 'color'" class="dp-color">
+                            <div v-if="dealershipInfo && dealershipInfo.liveInspect" class="dp-nota">Este coche está en exposición: el color no se puede cambiar aquí.</div>
+                            <template v-else>
+                                <div class="dp-muestra">
+                                    <span class="dp-muestra__caja">
+                                        <i :style="{ background: dpColores.primario }"></i>
+                                        <i :style="{ background: dpColores.secundario }"></i>
+                                    </span>
+                                    <span class="dp-muestra__txt">
+                                        <b>{{ dpNombreTono(dpColores.primario) }}</b>
+                                        <em>Secundario · {{ dpNombreTono(dpColores.secundario) }}</em>
+                                    </span>
+                                </div>
+
+                                <div v-for="slot in dpRanuras" :key="slot.id" class="dp-paleta">
+                                    <div class="dp-rot dp-rot--oscuro">{{ slot.label }}</div>
+                                    <div class="de-paleta" :data-para="slot.campo">
+                                        <!-- value fijo, NO enlazado: enlazado, Vue lo devolveria al
+                                             color de fabrica en cada repintado. -->
+                                        <input v-if="slot.id === 'primario'" type="hidden" class="color-input" value="#c40b78" id="primaryColorPicker">
+                                        <input v-else type="hidden" class="color-input" value="#7a034a" id="secondaryColorPicker">
+                                        <span class="dp-tonos">
+                                            <button v-for="tono in dpTonos" :key="tono.hex" type="button" class="de-tono dp-tono"
+                                                :class="{ 'dp-tono--on': dpColores[slot.id] === tono.hex }"
+                                                :data-tono="tono.hex" @click="dpColores[slot.id] = tono.hex">
+                                                <i :style="{ background: tono.hex }"></i>
+                                                <span>{{ tono.nombre }}</span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="dp-nota">El color se aplica al coche del expositor al momento y es el que te llevas al firmar.</div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div v-if="dpAviso" class="dp-aviso">{{ dpAviso }}</div>
+
+                    <!-- Pie: salir, prueba y comprar -->
+                    <footer class="dp-pie">
+                        <button type="button" class="dp-btn dp-btn--salir" @click="dpSalir()"><kbd>ESC</kbd><span>Salir</span></button>
+                        <button type="button" class="dp-btn" :disabled="!selectedVehicle || !canTestDriveCurrent" @click="testDriveVehicle()"><kbd>G</kbd><span>Prueba</span></button>
+                        <button type="button" class="dp-btn" :class="{ 'dp-btn--rosa': dpPuedeComprar }" :disabled="!dpPuedeComprar" @click="dpAbrirFirma()"><kbd>E</kbd><span>{{ dpTextoComprar }}</span></button>
+                    </footer>
+
+                    <!-- Firmar la compra: sale encima de la columna -->
+                    <div v-if="dpFirma && selectedVehicle" class="dp-velo" @click.self="dpFirma = false">
+                        <div class="dp-firma">
+                            <div class="dp-firma__cab">
+                                <span class="dp-cab__placa dp-cab__placa--chica">
+                                    <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5h8l4 4V20.5H6z"></path><path d="M9 12h6"></path><path d="M9 16h4"></path></svg>
+                                </span>
+                                <div>
+                                    <div class="dp-rot dp-rot--rosa">Firmar compra</div>
+                                    <div class="dp-firma__nombre">{{ currentVehicleLabel }}</div>
+                                    <div class="dp-rot">{{ dpNombreTono(dpColores.primario) }} · clase {{ selectedVehicle.class }}</div>
+                                </div>
+                            </div>
+
+                            <div class="dp-firma__cuerpo">
+                                <div class="dp-rot dp-rot--oscuro">Cómo pagas</div>
+                                <div class="dp-metodos">
+                                    <button v-for="m in dpPago.metodos" :key="m.id" type="button" class="dp-metodo" :class="{ 'dp-metodo--on': dpMetodo === m.id }" @click="dpMetodo = m.id">
+                                        <span>{{ m.label }}</span><b>{{ m.precio }}</b>
+                                    </button>
+                                </div>
+                                <div v-if="dpPago.metodos.length === 0" class="dp-aviso dp-aviso--dentro">{{ dpPago.agotado ? T('ui.payment_methods.vehicle_no_stock') : T('ui.payment_methods.no_payment_methods') }}</div>
+
+                                <div class="dp-factura">
+                                    <div class="dp-factura__fila"><span>{{ currentVehicleLabel }} · clase {{ selectedVehicle.class }}</span><b>{{ dpPrecioMetodo }}</b></div>
+                                    <div class="dp-factura__fila"><span>Color {{ dpNombreTono(dpColores.primario) }}</span><b class="dp-suave">incluido</b></div>
+                                    <div class="dp-factura__fila"><span>Matrícula y papeles</span><b class="dp-suave">incluido</b></div>
+                                    <div class="dp-factura__fila dp-factura__fila--total"><span>{{ dpMetodo === 'financing' ? 'A plazos' : 'Total' }}</span><b>{{ dpMetodo === 'financing' ? 'eliges los plazos' : dpPrecioMetodo }}</b></div>
+                                </div>
+                            </div>
+
+                            <div class="dp-pie">
+                                <button type="button" class="dp-btn" @click="dpFirma = false"><kbd>ESC</kbd><span>Cancelar</span></button>
+                                <button type="button" class="dp-btn" :class="{ 'dp-btn--rosa': dpMetodo }" :disabled="!dpMetodo || comprando" @click="dpFirmar()"><kbd>E</kbd><span>{{ dpMetodo === 'financing' ? 'Ver plazos' : 'Firmar' }}</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- El riel -->
+                <aside class="dp-riel">
+                    <!-- La placa de arriba, la del estándar (org-menu .riel__marca):
+                         pieza gris con canto negro, dibujo en rosa y filete debajo. -->
+                    <span class="dp-riel__placa" title="Concesionario">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 14.5h18"></path><path d="M5 14.5 7 8h10l2 6.5"></path>
+                            <circle cx="7.5" cy="17" r="1.6"></circle><circle cx="16.5" cy="17" r="1.6"></circle>
+                        </svg>
+                    </span>
+                    <span class="dp-riel__hueco"></span>
+                    <span class="dp-riel__marca">{{ casaNombre() }} Motor</span>
+                </aside>
+            </div>
+
+            <!-- La financiación: MENÚ PEQUEÑO (skill origen-dialogo, css/dialogo.css),
+                 columna y riel a media altura a la derecha, sin velo. Entra y
+                 sale deslizándose: la <transition> pone y quita odg-sale. -->
+            <transition enter-class="odg-sale" leave-to-class="odg-sale" :duration="280">
+            <div class="odg esta-dentro dfin" v-if="financingModal.visible">
+                <section class="odg-col" role="dialog" aria-label="Financiación">
+                    <header class="odg-cab">
+                        <span class="odg-cab__placa">
+                            <svg viewBox="0 0 24 24" class="odg-trazo" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"></rect><path d="M2 10h20"></path></svg>
+                        </span>
+                        <div class="odg-cab__txt">
+                            <span class="odg-cab__k">Financiación</span>
+                            <!-- data-brocha: el rótulo a brocha bajo el título (css/pegatina.css) -->
+                            <h2 class="odg-cab__t" data-brocha="Poco a poco">{{ financingModal.vehicleName }}</h2>
+                            <p class="odg-cab__sub">Paga una entrada y el resto a plazos</p>
+                        </div>
+                        <div class="odg-cab__cifra">
+                            <i>Precio</i>
+                            <b>${{ formatPrice(financingModal.vehiclePrice || 0) }}</b>
+                        </div>
+                    </header>
+
+                    <div class="odg-cuerpo">
+                        <!-- La entrada se cobra al confirmar; los plazos van sobre lo que queda. -->
+                        <div class="odg-dato" v-if="financingModal.initialPayment > 0">
+                            <span class="odg-dato__k">Entrada al confirmar</span>
+                            <span class="odg-dato__v es-cifra">${{ formatPrice(financingModal.initialPayment) }}</span>
+                        </div>
+
+                        <div class="odg-sec">
+                            <span class="odg-sec__t">Elige los plazos</span>
+                            <span class="odg-sec__raya"></span>
+                            <span class="odg-sec__meta">{{ financingModal.options.length }}</span>
+                        </div>
+
+                        <div class="odg-lista">
+                            <button type="button" v-for="(option, index) in financingModal.options" :key="index"
+                                class="odg-fila"
+                                :class="{ 'is-on': financingModal.selectedOption === index }"
+                                @click="selectFinancingOption(index)"
+                                @dblclick="selectFinancingOption(index); confirmFinancingPurchase()">
+                                <span class="odg-fila__i">{{ option.period }}</span>
+                                <span class="odg-fila__txt">
+                                    <b>{{ option.period }} {{ getTimeUnitText(option.timeUnit, option.period) }}</b>
+                                    <i>Interés: {{ option.interestRate }} %</i>
+                                </span>
+                                <span class="odg-fila__cifras">
+                                    <b>${{ formatPrice(option.monthlyPayment) }}</b>
+                                    <i>Total: ${{ formatPrice(option.totalAmount) }}</i>
+                                </span>
+                            </button>
+                        </div>
+
+                        <p class="odg-nota">
+                            Cada plazo se cobra solo de tu cuenta del banco; si no hay saldo, queda
+                            como plazo atrasado.
+                        </p>
+                    </div>
+
+                    <footer class="odg-pie">
+                        <div class="odg-botones">
+                            <button type="button" class="odg-btn" @click="closeFinancingModal"><span>Cancelar</span></button>
+                            <button type="button" class="odg-btn odg-btn--pri" @click="confirmFinancingPurchase"
+                                :disabled="financingModal.selectedOption === null"><span>Financiar</span></button>
+                        </div>
+                    </footer>
+                </section>
+
+                <nav class="odg-riel">
+                    <span class="odg-riel__marca">
+                        <svg viewBox="0 0 24 24" class="odg-trazo" aria-hidden="true">
+                            <path d="M3 14.5h18"></path><path d="M5 14.5 7 8h10l2 6.5"></path>
+                            <circle cx="7.5" cy="17" r="1.6"></circle><circle cx="16.5" cy="17" r="1.6"></circle>
+                        </svg>
+                    </span>
+                    <span class="odg-riel__pie">{{ casaNombre() }} Motor</span>
+                </nav>
+            </div>
+            </transition>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+        <script src="./js/mapLogic.js"></script>
+        <script>
+            /* La paleta de colores del coche. Antes era un <input type="color">,
+               que abre el selector de Windows: claro, en ingles y tapando media
+               pantalla. El campo oculto y el evento 'input' son los mismos, asi
+               que main.js no se entera del cambio.
+               Ver .claude/skills/origen-tablet/SKILL.md */
+            document.addEventListener('click', function (ev) {
+                var boton = ev.target.closest && ev.target.closest('.de-paleta .de-tono');
+                if (!boton) return;
+
+                var paleta = boton.closest('.de-paleta');
+                var campo = paleta.querySelector('input');
+                if (!campo) return;
+
+                campo.value = boton.dataset.tono;
+                campo.dispatchEvent(new Event('input', { bubbles: true }));
+                campo.dispatchEvent(new Event('change', { bubbles: true }));
+
+                paleta.querySelectorAll('.de-tono').forEach(function (b) {
+                    b.classList.toggle('de-tono--on', b === boton);
+                });
+            });
+        </script>
+        <script src="./js/main.js?v=pest0710"></script>
+    </div>
+
+</body>
+
+</html>

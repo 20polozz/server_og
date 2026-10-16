@@ -1,0 +1,659 @@
+/* ══ ORIGEN · org-input en formato RIEL, piel PEGATINA ═══════════════════
+
+   El dialogo de escribir y elegir valores. Dos piezas despegadas del canto
+   derecho, la columna a la izquierda y el riel de 64 px pegado al borde,
+   a MEDIA ALTURA, que entran juntas deslizandose desde la derecha y salen
+   por donde vinieron. Es el formato DIALOGO (skill origen-dialogo).
+
+   - La COLUMNA mide lo que su contenido: un dialogo de un solo campo no deja
+     un panel vacio hasta abajo. Si no cabe, se desplaza el cuerpo (con su
+     barra fina, visible) y la cabecera y el pie se quedan quietos.
+   - El RIEL mide lo que la columna (con un minimo de 300 px): placa con el
+     icono del dialogo arriba y el nombre abajo. El silencio NO va aqui: solo
+     en el inventario.
+
+   Piel pegatina (skill origen-pegatina): panel #c4c6ca, piezas #dcdde0,
+   canto negro fino y sombra dura, rosa #d81b55 con tinta NEGRA para lo que
+   confirma, nada inclinado. Nacion es esto mismo en naranja: lo repinta la
+   marca (el trozo «ORIGEN · marca» del index.html), aqui no se escribe.
+
+   Las fuentes van en el <link> del index.html, nunca en un @import. Nada de
+   backdrop-filter (en el CEF pinta una banda negra), nada de :has() ni de
+   color-mix() (el CEF 103 no los tiene).
+
+   Las medidas en px se escalan solas por encima de 1080p (trozo «ORIGEN ·
+   interfaz»); los margenes en vh se dividen por --ogn-escala, como en el
+   resto de rieles.
+   ══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Las medidas del riel, las del inventario. */
+    --o-riel: 64px;
+    --o-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --o-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    /* Canto (1.5) y sombra (3) de cada pieza van por fuera: con 10 px se
+       pisaban; va el aire del riel al canto (07/10). */
+    --o-hueco: var(--o-margen-x);
+    --o-col: 440px;
+    --o-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* La pegatina. */
+    --peg-panel: #c4c6ca;
+    --peg-pieza: #dcdde0;
+    --peg-pieza-on: #e6e7ea;
+    --peg-tinta: #0b0b0d;
+    --peg-tinta-2: #44444a;
+    --peg-tinta-3: #55555c;
+    --peg-apagada: #73737c;
+    --peg-rosa: #d81b55;
+    --peg-rosa-on: #df2f63;
+    --peg-rosa-texto: #b3123f;
+    --peg-peligro: #ff4438;
+    --peg-canto-panel: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    --peg-canto: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    --peg-anillo: inset 0 0 0 1.5px #000;
+    --peg-elegido: inset 0 0 0 2px #d81b55, 2px 2px 0 #d81b55;
+
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --texto: "Barlow", "Segoe UI", sans-serif;
+    --cifra: "Oxanium", "Barlow Condensed", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    background: transparent !important;
+}
+
+body {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    font-family: var(--texto);
+    color: var(--peg-tinta);
+    user-select: none;
+}
+
+/*  Los dibujos van a trazo: sobre gris, un icono relleno es una mancha. */
+.oi svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* ── El armazon ──────────────────────────────────────────────────────────
+   fixed y no absolute: absolute se cuelga del contenedor de la NUI y las dos
+   piezas acaban flotando en medio. Entra y sale entero, con la transformada
+   (no con `right`, que obliga a recalcular todo en cada fotograma). */
+.oi {
+    position: fixed;
+    top: 50%;
+    right: var(--o-margen-x);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    z-index: 10;
+    display: flex;
+    align-items: stretch;
+    gap: var(--o-hueco);
+    pointer-events: none;
+    transform: translate(calc(100% + var(--o-margen-x) + 6px), -50%);
+    opacity: 0;
+    transition: transform 0.26s var(--o-ease), opacity 0.2s ease;
+}
+
+.oi.esta-dentro {
+    transform: translateY(-50%);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/*  Cerrado del todo: fuera del dibujo (y del vigilante del raton). */
+.oi.apagado {
+    display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .oi {
+        transform: translateY(-50%);
+        transition: opacity 0.15s ease;
+    }
+}
+
+/* ── La columna: alto justo, como mucho la pantalla ──────────────────── */
+.oi-col {
+    flex: none;
+    width: var(--o-col);
+    max-height: calc(100vh - 2 * var(--o-margen-y));
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+.oi-cab {
+    position: relative;
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 22px 15px;
+}
+
+/*  El filete rosa macizo bajo el titulo. */
+.oi-cab::after {
+    content: '';
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--peg-rosa);
+}
+
+/*  La placa del titulo: rosa, icono negro, un pelo girada. */
+.oi-cab__placa {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    transform: rotate(-5deg);
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    color: #000;
+    font-size: 19px;
+}
+
+.oi-cab__placa i {
+    color: #000;
+}
+
+.oi-cab__txt {
+    flex: 1;
+    min-width: 0;
+}
+
+.oi-cab__k {
+    display: block;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.1;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--peg-rosa-texto);
+}
+
+.oi-cab__t {
+    margin-top: 3px;
+    padding-right: 4px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 29px;
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+/*  El rótulo a brocha bajo el título (08/10), como el resto de menús: la
+    frase va en data-brocha (la del Lua o «Dime algo», ver script.js). EN
+    FLUJO para que empuje lo de debajo; anula la cursiva y las mayúsculas
+    del título. Rosa literal: en Nación lo repinta kit/marca.js. */
+.oi-cab__t[data-brocha]::after {
+    content: attr(data-brocha);
+    display: block;
+    margin: 6px 0 3px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal; font-weight: 400;
+    font-size: 20px; line-height: 1; letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    overflow-wrap: normal;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+/* ── El cuerpo: lo unico que se desplaza ─────────────────────────────────
+   Relleno de sobra a la derecha y abajo: es el aire de la sombra dura de
+   cada pieza, que el recorte de la columna cortaria. */
+.oi-cuerpo {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px 20px 18px 22px;
+}
+
+.oi-cuerpo:empty {
+    display: none;
+}
+
+/*  La barra: fina, pero que se vea que hay mas. */
+.oi-cuerpo::-webkit-scrollbar {
+    width: 6px;
+}
+
+.oi-cuerpo::-webkit-scrollbar-track {
+    margin: 10px 0;
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.oi-cuerpo::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background: var(--peg-tinta);
+}
+
+/* ── Un campo de escribir ────────────────────────────────────────────── */
+.oi-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.oi-rotulo {
+    padding-left: 2px;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.15;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--peg-tinta-2);
+    overflow-wrap: anywhere;
+}
+
+/*  El campo NO se inclina ni lleva sombra que baile: es una pieza quieta,
+    con el anillo rosa cuando tiene el cursor. */
+.form-control,
+.form-select {
+    width: 100%;
+    margin: 0;
+    padding: 10px 14px 9px;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: var(--peg-tinta);
+    user-select: text;
+    transition: box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: var(--peg-elegido);
+}
+
+.form-control::placeholder {
+    opacity: 1;
+    color: var(--peg-apagada);
+}
+
+/*  Sin flechas en los numeros: es una caja de escribir. */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*  Obligatorio y vacio al confirmar: anillo rojo y una linea que lo dice. */
+.oi-aviso {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding-left: 2px;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+}
+
+.oi-aviso::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--peg-peligro);
+    box-shadow: var(--peg-anillo);
+}
+
+.oi-campo.falta .oi-aviso {
+    display: flex;
+}
+
+.oi-campo.falta .form-control {
+    box-shadow: inset 0 0 0 2px var(--peg-peligro), 2px 2px 0 #000;
+}
+
+/* ── Desplegable: la misma pieza, con su flecha dibujada ─────────────── */
+.oi-select {
+    position: relative;
+    display: block;
+}
+
+.form-select {
+    padding-right: 40px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8' fill='none' stroke='%230b0b0d' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px auto;
+}
+
+.form-select option {
+    background: var(--peg-pieza);
+    color: var(--peg-tinta);
+    font-family: var(--texto);
+    font-size: 15px;
+}
+
+/* ── Elegir una (radio) o varias (casillas) ──────────────────────────── */
+.oi-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+/*  La pregunta: a veces es una frase entera («El local te ofrece...»), asi
+    que va en letra de leer y sin versales. */
+.oi-pregunta {
+    padding-left: 2px;
+    font-family: var(--texto);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+.oi-opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.oi-opcion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 10px 14px;
+    border-radius: 11px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    cursor: pointer;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.oi-opcion:hover {
+    background: var(--peg-pieza-on);
+}
+
+/*  La elegida: la misma pieza gris con el anillo y la sombra en rosa. */
+.oi-opcion.on {
+    box-shadow: var(--peg-elegido);
+}
+
+.oi-opcion input {
+    display: none;
+}
+
+.oi-marca {
+    position: relative;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: var(--peg-anillo);
+    transition: background 0.16s ease;
+}
+
+.oi-marca--radio {
+    border-radius: 50%;
+}
+
+.oi-opcion.on .oi-marca {
+    background: var(--peg-rosa);
+}
+
+.oi-opcion.on .oi-marca--radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+}
+
+.oi-opcion.on .oi-marca--casilla::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6.5px;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+
+.oi-opcion__txt {
+    flex: 1;
+    min-width: 0;
+    padding-right: 3px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--peg-tinta);
+    overflow-wrap: anywhere;
+}
+
+/* ── Una linea de texto suelta (el tipo por defecto) ─────────────────── */
+.oi-nota {
+    padding: 0 2px;
+    font-family: var(--texto);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--peg-tinta-2);
+    overflow-wrap: anywhere;
+}
+
+/* ── El pie: los dos botones ──────────────────────────────────────────── */
+.oi-pie {
+    position: relative;
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 20px 18px 22px;
+}
+
+.oi-pie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 22px;
+    right: 22px;
+    height: 1.5px;
+    background: #000;
+}
+
+.oi-botones {
+    display: flex;
+    gap: 10px;
+}
+
+.oi-cancelar,
+.oi-confirmar {
+    padding: 12px 18px 11px;
+    border: 0;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 1.1;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #000;
+    transition: background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.oi-cancelar span,
+.oi-confirmar span {
+    display: block;
+    padding-right: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.oi-cancelar {
+    flex: none;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+}
+
+.oi-cancelar:hover {
+    background: var(--peg-pieza-on);
+}
+
+/*  El que confirma: el unico relleno rosa de la columna, con tinta negra. */
+.oi-confirmar {
+    flex: 1;
+    min-width: 0;
+    background: var(--peg-rosa);
+    box-shadow: var(--peg-canto);
+    font-size: 20px;
+}
+
+.oi-confirmar:hover {
+    background: var(--peg-rosa-on);
+}
+
+.oi-cancelar:active,
+.oi-confirmar:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--peg-anillo);
+}
+
+/* ══ EL RIEL ══════════════════════════════════════════════════════════════
+   El mismo de todos los menus laterales, al pixel: 64 de ancho, relleno
+   14/16, placa y botones de 44, filete de 22x1. Aqui no hay pestañas: la
+   placa dice de que va el dialogo, y abajo el nombre. */
+.riel {
+    flex: none;
+    align-self: stretch;
+    min-height: 300px;
+    width: var(--o-riel);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 0 16px;
+    border-top: 4px solid var(--peg-panel);
+    border-radius: 20px;
+    background: var(--peg-panel);
+    box-shadow: var(--peg-canto-panel);
+    color: var(--peg-tinta);
+}
+
+.riel__marca {
+    position: relative;
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 9px;
+    border-radius: 10px;
+    background: var(--peg-pieza);
+    box-shadow: var(--peg-canto);
+    color: var(--peg-rosa);
+}
+
+.riel__marca::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    width: 22px;
+    height: 2px;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    background: #000;
+}
+
+.riel__marca svg {
+    width: 22px;
+    height: 22px;
+}
+
+.riel__pie {
+    flex: none;
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--peg-tinta);
+}

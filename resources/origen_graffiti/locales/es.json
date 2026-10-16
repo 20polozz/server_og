@@ -1,0 +1,117 @@
+{
+  "notify": {
+    "cannot_erase":       "No puedes borrar este graffiti.",
+    "no_tag_to_erase":    "No hay ningún graffiti para borrar.",
+    "session_ended":      "La sesión ya terminó.",
+    "too_few_strokes":    "¡Sé más creativo! Tu graffiti necesita más detalle para poder guardarse.",
+    "spray_depleted":     "¡Se acabó el espray! Usa otro para continuar.",
+    "eraser_depleted":    "¡Se acabó el borrador!",
+    "zone_limit_reached": "No se puede empezar: esta zona ya alcanzó su límite (%s graffitis en %sm)."
+  },
+
+  "keymapping": {
+    "save":       "Graffiti: guardar",
+    "suspend":    "Graffiti: pausar o cambiar de color",
+    "cancel":     "Graffiti: cancelar y borrar",
+    "canvas_out": "Graffiti: separar el lienzo de la pared",
+    "canvas_in":  "Graffiti: acercar el lienzo a la pared"
+  },
+
+  "textui": {
+    "shop": "[E] Tienda de graffiti"
+  },
+
+  "shop": {
+    "blip_label":        "Tienda de graffiti",
+    "no_cash":           "No tienes suficiente efectivo. Necesitas %s $.",
+    "payment_error":     "Error al procesar el pago.",
+    "no_space":          "No hay espacio en tu inventario. Se te ha devuelto el dinero.",
+    "partial_space":     "Solo había espacio para %s de %s objetos. Se te han devuelto %s $."
+  },
+
+  "admin": {
+    "no_permission": "No tienes permisos para usar este panel."
+  },
+
+  "nui": {
+    "hud": {
+      "saving":       "Guardando graffiti...",
+      "erase_tag":    "Borrando graffiti",
+      "erase_hint":   "Mantén clic izq. · C para cancelar",
+      "color":        "Color",
+      "spray":        "Espray",
+      "eraser":       "Borrador",
+      "confirm_point":"Confirmar punto",
+      "cancel":       "Cancelar",
+      "paint":        "Pintar",
+      "size":         "Tamaño",
+      "save":         "Guardar",
+      "suspend":      "Suspender",
+      "erase":        "Borrar",
+      "canvas_out":   "Sacar lienzo",
+      "canvas_in":    "Meter lienzo"
+    },
+
+    "join": {
+      "title":   "Alguien está pintando",
+      "message": "Hay una sesión activa cerca de ti. Puedes unirte al graffiti en curso o empezar uno nuevo.",
+      "join":    "Unirme al graffiti",
+      "new":     "Nuevo graffiti",
+      "cancel":  "Cancelar"
+    },
+
+    "shop": {
+      "title":    "Tienda de graffiti",
+      "subtitle": "Elige un artículo y confirma la compra",
+      "cancel":   "Cancelar",
+      "buy":      "Comprar",
+      "buying":   "Comprando...",
+
+      "quantity": {
+        "subtitle":   "Elige la cantidad",
+        "unit_price": "Precio unitario",
+        "total":      "Total a pagar",
+        "units":      "unid.",
+        "confirm":    "Confirmar compra",
+        "cancel":     "Cancelar"
+      },
+
+      "color": {
+        "title":    "Color del espray",
+        "subtitle": "Elige el color que quieres comprar",
+        "swatches": "Colores rápidos",
+        "confirm":  "Comprar este color",
+        "back":     "Volver"
+      }
+    },
+
+    "admin": {
+      "header": {
+        "title":    "Graffitis",
+        "subtitle": "Gestión de graffitis",
+        "total":    "En total"
+      },
+      "list": {
+        "loading":     "Cargando graffitis...",
+        "empty":       "No hay graffitis registrados",
+        "no_results":  "Sin resultados para"
+      },
+      "item": {
+        "copy":      "Copiar identificador",
+        "copied":    "Copiado",
+        "teleport":  "Teletransportar",
+        "delete":    "Eliminar"
+      },
+      "search": {
+        "placeholder": "Buscar por ID o creador..."
+      },
+      "confirm": {
+        "title":      "Eliminar graffiti",
+        "message":    "¿Seguro que quieres eliminar el graffiti %s? Esta acción no se puede deshacer.",
+        "cancel":     "Cancelar",
+        "confirm":    "Eliminar",
+        "deleting":   "Eliminando..."
+      }
+    }
+  }
+}

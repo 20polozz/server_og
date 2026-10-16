@@ -1,0 +1,407 @@
+/* ══ Los tokens mecanicos del tema claro/oscuro ═════════════════
+   NO SE EDITAN A MANO: son identicos en todo el servidor y los pone
+   kit/tokenizar-tema.py. La referencia es origen_inventory/arcade.css.
+
+   No son colores, son la MANERA de convertir una capa de claro a oscuro:
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Con el factor a 1 el
+               resultado es EXACTAMENTE el de siempre, asi que el tema claro no
+               puede cambiar. Con 0.13 todas bajan a la vez, que es la regla del
+               modo oscuro: las superficies SUBEN (blanco al 4-10 %), nunca se
+               hunden con negro sobre negro.
+
+     --arc-t-* los tres canales de un tinte, para darles la vuelta sin tocar el
+               alfa de cada regla.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #fffdf7;
+    --arc-papel2: #f3ecdd;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. En claro pueden ser el mismo granate; de noche NO. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+html[data-tema="oscuro"] {
+    --arc-vf: 0.13;
+    /* El que hunde deja de ser el tinte oscuro y pasa a ser el blanco. */
+    --arc-t-hueco: 255, 255, 255;
+    --arc-t-linea: 255, 255, 255;
+    /* Y la sombra dura se vuelve negra: sobre un panel oscuro una sombra
+       clara es un halo, no un relieve. */
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 10, 10, 10;
+    --arc-t-papel2: 8, 8, 8;
+    --arc-t-papel3: 5, 5, 5;
+    /* Lo elegido sigue siendo rosa, pero rosa OSCURO: un rosa palido sobre
+       negro vuelve a ser una isla de luz. */
+    --arc-t-elegido: 92, 24, 48;
+    --arc-papel1: #0a0a0a;
+    --arc-papel2: #080808;
+    --arc-accent-texto: #ff6d97;
+    --ogn-acc-texto: #ff6d97;
+
+    /* Los papeles de la cola larga. SOLO se declaran aqui: en claro la
+       variable no existe y cada regla usa su reserva --el color exacto que
+       tenia siempre--, asi que el tema claro no puede moverse ni un canal. */
+    --arc-fondo1: #0a0a0a;
+    --arc-fondo2: #080808;
+    --arc-fondo3: #050505;
+
+    /* Las tintas, que faltaban: sin ellas un
+       `var(--arc-tinta1, #26221a)` cae a la reserva y el texto
+       se queda oscuro sobre el panel negro. */
+    --arc-tinta1: #f5f0e6;
+    --arc-tinta2: #cfc8ba;
+    --arc-tinta3: #9d9687;
+    /* Los estados, igual: solo existen de noche. Para los colores que un
+       componente elige en JavaScript (`var(--arc-estado-ok, #146636)`). */
+    --arc-estado-ok: #3ce6a4;
+    --arc-estado-warn: #f0b429;
+    --arc-estado-bad: #ff6d97;
+    --arc-estado-info: #56a8ff;
+}
+
+/*  EL CARTEL DE LA LLEGADA, EN EL ESTILO CLARO «HUD ARCADE»
+
+    Los tokens son los del inventario en tema Arcade, copiados de
+    origen_inventory/source-ui/src/assets/styles/arcade.css. Los mismos que
+    usan el chat en papel y los menús del riel: si cambian allí, cambian aquí.
+    Ni un color escrito a mano fuera de esta lista.
+
+    Esto va ENCIMA DE UN VÍDEO: la cámara puede estar sobre un cielo blanco o
+    dentro de un túnel, así que el texto no puede apoyarse en lo que haya
+    detrás. Antes lo resolvía un velo negro redondo; ahora lo resuelve una
+    pieza gris pegatina SÓLIDA debajo del texto, que se lee igual en los dos
+    sitios y además no apaga el plano fuera de ella.
+
+    NADA de `backdrop-filter`: en el CEF de FiveM pinta una banda negra. */
+:root {
+    --inv-rotulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --inv-texto: "Barlow", "Segoe UI", sans-serif;
+    --inv-mono: "Oxanium", "Barlow Condensed", sans-serif;
+
+    /*  El rosa de la casa, el de la pegatina: macizo, sin degradado. El de
+        TEXTO sobre gris es el hondo. */
+    --inv-acc: #d81b55;
+    --inv-acc-rgb: 216, 27, 85;
+    --inv-acc-hi: #df2f63;
+    --inv-acc-deep: #b3123f;
+    --inv-grad: #d81b55;
+
+    /*  Tinta SÓLIDA, no negros con alfa: sobre el gris un negro al 62 % se
+        apoya en el papel y sale lavado. Las líneas sí llevan alfa. */
+    --inv-t1: #0b0b0d;
+    --inv-t2: #44444a;
+    --inv-t3: #55555c;
+
+    --inv-linea: rgba(var(--arc-t-linea), 0.24);
+
+    --inv-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* De noche (kit/gemelos-de-lamina.py): sin esto la lamina se queda
+   crema o la tinta parda, y con el resto ya dado la vuelta no se lee. */
+html[data-tema="oscuro"] {
+    --inv-t1: #f5f0e6;
+    --inv-t2: #cfc8ba;
+    --inv-t3: #9d9687;
+}
+
+/*  El fondo TIENE que ser transparente: esta pagina se dibuja encima del juego,
+    y cualquier color aqui tapa la ciudad entera. */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+    font-family: var(--inv-texto);
+    color: var(--inv-t1);
+    user-select: none;
+}
+
+/*  Nada de esto es pulsable. Sin pointer-events:none, la NUI se comeria los
+    clicks aunque no tenga foco. */
+.oi-aviso {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.oi-aviso.esta-dentro {
+    opacity: 1;
+}
+
+/*  Solo este desplazamiento lleva la curva de la casa. Lo de dentro va con
+    `ease` a secas: en 160 ms la curva no se ve y solo da de que hablar.
+
+    La ficha: pieza gris pegatina (#dcdde0) con canto negro y sombra dura,
+    como el resto del servidor. El canto no es adorno, es lo que la despega
+    del plano cuando la cámara pasa por delante de una pared clara. Los
+    bordes de 1 y 4 px se quedan (no cambian medidas) del color de la pieza. */
+.oi-aviso__caja {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: min(520px, calc(82vw / var(--ogn-escala, 1)));
+    padding: 18px 30px 20px;
+    border: 1px solid #dcdde0;
+    border-top: 4px solid #dcdde0;
+    border-radius: 20px;
+    background: #dcdde0;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    text-align: center;
+    transform: translateY(10px);
+    transition: transform 0.26s var(--inv-ease);
+}
+
+.oi-aviso.esta-dentro .oi-aviso__caja {
+    transform: none;
+}
+
+/*  El antetitulo con su filete. Va simetrico porque el bloque esta centrado,
+    no pegado a un canto. */
+.oi-aviso__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
+}
+
+.oi-aviso__rule {
+    flex: none;
+    width: 30px;
+    height: 2px;
+    border-radius: 1px;
+    background: linear-gradient(90deg, rgba(var(--arc-t-linea), 0), rgba(var(--arc-t-linea), 0.45));
+}
+
+.oi-aviso__rule--der {
+    background: linear-gradient(90deg, rgba(var(--arc-t-linea), 0.45), rgba(var(--arc-t-linea), 0));
+}
+
+/*  El antetítulo va en una chapa rosa sesgada, que es la marca del estilo.
+    El sesgo lo pinta el `::before` de detrás y no la chapa: así el rótulo se
+    queda derecho sin envolverlo en otro <span>, que obligaría a tocar el HTML
+    y el texto lo pone app.js. */
+.oi-aviso__kicker {
+    position: relative;
+    isolation: isolate;
+    display: inline-block;
+    min-width: 0;
+    /*  El relleno de la derecha lleva un pelo más: el espaciado entre letras
+        cuelga también detrás de la última, y con los dos lados iguales el
+        rótulo salía descentrado dentro de la chapa. */
+    padding: 3px 8px 3px 11px;
+    border-radius: 6px;
+    font-family: var(--inv-rotulo);
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+}
+
+.oi-aviso__kicker::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--inv-grad);
+    box-shadow: 0 3px 0 var(--inv-acc-deep);
+    transform: skewX(-10deg);
+}
+
+/*  Vacío mientras no hay aviso: sin esto la chapa rosa se quedaba de pie
+    sola, con la altura de su relleno y sin nada escrito. */
+.oi-aviso__kicker:empty {
+    display: none;
+}
+
+.oi-aviso__titulo {
+    margin: 0;
+    font-family: var(--inv-rotulo);
+    font-style: italic;
+    font-weight: 800;
+    font-size: clamp(24px, calc(3vw / var(--ogn-escala, 1)), 40px);
+    line-height: 1.05;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--inv-t1);
+    text-wrap: balance;
+    /* Sobre la pieza gris el contorno negro sobra: la tinta ya se lee. */
+    text-shadow: none;
+}
+
+.oi-aviso__texto {
+    margin: 0;
+    max-width: 38ch;
+    font-family: var(--inv-texto);
+    font-weight: 500;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--inv-t3);
+    text-wrap: pretty;
+    text-shadow: none;
+}
+
+/* La pista del progreso: pista gris con anillo negro y relleno rosa macizo,
+   como las barras pegatina del resto del servidor. */
+.oi-aviso__pista {
+    width: min(300px, calc(40vw / var(--ogn-escala, 1)));
+    max-width: 100%;
+    height: 6px;
+    margin-top: 4px;
+    border-radius: 4px;
+    background: #c4c6ca;
+    box-shadow: inset 0 0 0 1.5px #000;
+    overflow: hidden;
+}
+
+.oi-aviso__barra {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 0;
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    transition: width 0.16s ease;
+}
+
+/*  Se quita el desplazamiento de entrada, no el sesgo: un `transform: none`
+    a todo lo de dentro enderezaba también la chapa del antetítulo. */
+@media (prefers-reduced-motion: reduce) {
+    .oi-aviso,
+    .oi-aviso *,
+    .oi-aviso *::before {
+        transition-duration: 0.15s !important;
+    }
+
+    .oi-aviso__caja {
+        transform: none !important;
+    }
+}
+
+
+/* ══ PEGATINA: el cartel de la llegada con el estilo del logo ════════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   cartel se queda como arriba. Pareja de pegatina.css del inventario.
+
+   De día: ficha de papel blanco con canto negro grueso y sombra dura, el
+   antetítulo en chapa rosa con tinta negra y sin inclinar, la barra con
+   pista blanca y relleno rosa. De noche («banda rosa»): ficha negra con la
+   sombra dura en blanco roto.
+
+   El canto es box-shadow: no cambia ninguna medida (los bordes de 1 y 4 px
+   que ya tenía la ficha se quedan, del color del papel). Lo que hay detrás
+   (el vídeo de la llegada) no se toca. Para quitarlo: borrar este bloque.
+   ════════════════════════════════════════════════════════════════════ */
+html .oi-aviso .oi-aviso__caja {
+    border-color: #dcdde0;
+    border-radius: 20px;
+    background: #dcdde0;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+/*  Filete macizo, sin degradado. */
+html .oi-aviso .oi-aviso__rule,
+html .oi-aviso .oi-aviso__rule--der { height: 3px; border-radius: 2px; background: #d81b55; }
+html .oi-aviso .oi-aviso__kicker { color: #000; }
+html .oi-aviso .oi-aviso__kicker::before {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    transform: none;
+}
+html .oi-aviso .oi-aviso__titulo { color: #0b0b0d; }
+html .oi-aviso .oi-aviso__texto { color: #44444a; }
+html .oi-aviso .oi-aviso__pista { border: 0; border-radius: 999px; overflow: hidden; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .oi-aviso .oi-aviso__barra { border-radius: 999px; background: #d81b55; }
+
+/* ══ REPASO VISUAL (verificado 06/10) ══════════════════════════════════
+   Lo de arriba dejaba los bordes de 1 y 4 px de la ficha en blanco: salía un
+   filo blanco entre el papel y el canto, más gordo arriba. Van del color del
+   papel. El antetítulo deja la letra fina espaciada por el rótulo de la casa,
+   y la línea de debajo del título pasa a ser el rótulo A BROCHA (Knewave rosa
+   con contorno negro, girado), el de «Mochila personal» del inventario. */
+html .oi-aviso .oi-aviso__caja { border-color: #dcdde0; }
+html .oi-aviso .oi-aviso__kicker {
+    padding: 3px 10px 2px;
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+}
+html .oi-aviso .oi-aviso__kicker::before { border-radius: 7px; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .oi-aviso .oi-aviso__titulo { font-size: clamp(30px, calc(3.4vw / var(--ogn-escala, 1)), 46px); }
+html .oi-aviso .oi-aviso__texto {
+    max-width: 30ch;
+    margin: 2px 0 4px;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.2;
+    color: #d81b55;
+    transform: rotate(-3deg);
+    text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000, 1.5px 1.5px #000, -1.5px 1.5px #000, 1.5px -1.5px #000, -1.5px -1.5px #000, 3px 3px 0 #000;
+}
+html .oi-aviso .oi-aviso__pista { height: 10px; }
+html .oi-aviso .oi-aviso__barra { box-shadow: none; }
+
+/* ── De noche ───────────────────────────────────────────────────────── */
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__caja {
+    border-color: #0d0d0f;
+    background: #0d0d0f;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #efefea;
+}
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__kicker::before { box-shadow: none; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__titulo { color: #fff; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__texto { color: #c4c4cb; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__pista { background: #3a3a42; box-shadow: none; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__barra { background: #d81b55; }
+
+/* >>> NOCHE · DISEÑO 2 «OBJETOS EN PAPEL» (el del inventario, 05/10). Va con !important.
+   La ficha negra con canto y sombra blanco roto; el antetitulo en chapa rosa
+   con canto blanco; la brocha, rosa SIN contorno; la pista negra con anillo. */
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__caja { background: #0d0d0f !important; border-color: #0d0d0f !important; box-shadow: 0 0 0 1.5px #efefea, 3px 3px 0 1.5px #efefea !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__kicker { color: #000 !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__kicker::before { background: #d81b55 !important; box-shadow: inset 0 0 0 1.5px #efefea, 2px 2px 0 #efefea !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__titulo { color: #fff !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__texto { color: #d81b55 !important; text-shadow: none !important; -webkit-text-stroke: 0 !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__pista { background: #0d0d0f !important; box-shadow: inset 0 0 0 1.5px #efefea !important; }
+html[data-tema="oscuro"] .oi-aviso .oi-aviso__barra { background: #d81b55 !important; box-shadow: none !important; }
+/* <<< FIN NOCHE · DISEÑO 2 */
+
+/* >>> NOCHE · APAGADO LEGIBLE (05/10): el negro al 45 % no se leia. Apagado = negro con letra gris claro y raya tenue, sin sombra. */
+html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"]):disabled, html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"]).disabled, html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"])[aria-disabled="true"] { opacity: 1 !important; background: #0d0d0f !important; background-image: none !important; color: #a9a9b2 !important; box-shadow: inset 0 0 0 1.5px rgba(239, 239, 234, 0.3) !important; filter: none !important; }
+html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"]):disabled *, html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"]).disabled *, html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"])[aria-disabled="true"] * { color: inherit !important; }
+html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g) :is(button, [role="button"]):disabled kbd { background: rgba(239, 239, 234, 0.3) !important; color: #0d0d0f !important; }
+/* <<< FIN NOCHE · APAGADO LEGIBLE */
+
+/* >>> REPASO OSCURO 05/10 (repaso final del oscuro, pantalla por pantalla). */
+/* Tecla de un boton apagado: solo texto gris, sin chapa (la chapa al 30 % con letra negra no se leia). */
+html[data-tema="oscuro"] body:not(#_a):not(#_b):not(#_c):not(#_d):not(#_e):not(#_f):not(#_g):not(#_h) :is(button, [role="button"]):is(:disabled, .disabled, [aria-disabled="true"]) kbd { background: transparent !important; color: #a9a9b2 !important; box-shadow: none !important; }
+/* <<< FIN REPASO OSCURO 05/10 */

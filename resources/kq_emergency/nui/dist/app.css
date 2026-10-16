@@ -1,0 +1,589 @@
+.resize-observer[data-v-b329ee4c]{background-color:transparent;border:none;opacity:0}.resize-observer[data-v-b329ee4c],.resize-observer[data-v-b329ee4c] object{display:block;height:100%;left:0;overflow:hidden;pointer-events:none;position:absolute;top:0;width:100%;z-index:-1}.v-popper__popper{left:0;outline:none;top:0;z-index:10000}.v-popper__popper.v-popper__popper--hidden{opacity:0;pointer-events:none;transition:opacity .15s,visibility .15s;visibility:hidden}.v-popper__popper.v-popper__popper--shown{opacity:1;transition:opacity .15s;visibility:visible}.v-popper__popper.v-popper__popper--skip-transition,.v-popper__popper.v-popper__popper--skip-transition>.v-popper__wrapper{transition:none!important}.v-popper__backdrop{display:none;height:100%;left:0;position:absolute;top:0;width:100%}.v-popper__inner{box-sizing:border-box;overflow-y:auto;position:relative}.v-popper__inner>div{max-height:inherit;max-width:inherit;position:relative;z-index:1}.v-popper__arrow-container{height:10px;position:absolute;width:10px}.v-popper__popper--arrow-overflow .v-popper__arrow-container,.v-popper__popper--no-positioning .v-popper__arrow-container{display:none}.v-popper__arrow-inner,.v-popper__arrow-outer{border-style:solid;height:0;left:0;position:absolute;top:0;width:0}.v-popper__arrow-inner{border-width:7px;visibility:hidden}.v-popper__arrow-outer{border-width:6px}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=top] .v-popper__arrow-inner{left:-2px}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-outer,.v-popper__popper[data-popper-placement^=top] .v-popper__arrow-outer{left:-1px}.v-popper__popper[data-popper-placement^=top] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=top] .v-popper__arrow-outer{border-bottom-color:transparent!important;border-bottom-width:0;border-left-color:transparent!important;border-right-color:transparent!important}.v-popper__popper[data-popper-placement^=top] .v-popper__arrow-inner{top:-2px}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-container{top:0}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-outer{border-left-color:transparent!important;border-right-color:transparent!important;border-top-color:transparent!important;border-top-width:0}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-inner{top:-4px}.v-popper__popper[data-popper-placement^=bottom] .v-popper__arrow-outer{top:-6px}.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-inner{top:-2px}.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-outer,.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-outer{top:-1px}.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-outer{border-bottom-color:transparent!important;border-left-color:transparent!important;border-left-width:0;border-top-color:transparent!important}.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-inner{left:-4px}.v-popper__popper[data-popper-placement^=right] .v-popper__arrow-outer{left:-6px}.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-container{right:-10px}.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-inner,.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-outer{border-bottom-color:transparent!important;border-right-color:transparent!important;border-right-width:0;border-top-color:transparent!important}.v-popper__popper[data-popper-placement^=left] .v-popper__arrow-inner{left:-2px}.v-popper--theme-tooltip .v-popper__inner{background:rgba(0,0,0,.8);border-radius: 5px;color: var(--ogn-t1);padding:7px 12px 6px}.v-popper--theme-tooltip .v-popper__arrow-outer{border-color:#000c}.v-popper--theme-dropdown .v-popper__inner{background:#fff;border:1px solid #ddd;border-radius: 5px;box-shadow:0 6px 30px #0000001a;color:#000}.v-popper--theme-dropdown .v-popper__arrow-inner{border-color:#fff;visibility:visible}.v-popper--theme-dropdown .v-popper__arrow-outer{border-color:#ddd}
+/*! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com*/*,:after,:before{border:0 solid #e5e7eb;box-sizing:border-box}:after,:before{--tw-content:""}html{-webkit-text-size-adjust:100%;font-feature-settings:normal;font-family:Inter var,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4}body{line-height:inherit;margin:0}hr{border-top-width:1px;color:inherit;height:0}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-collapse:collapse;border-color:inherit;text-indent:0}button,input,optgroup,select,textarea{color:inherit;font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af;opacity:1}input::placeholder,textarea::placeholder{color:#9ca3af;opacity:1}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{height:auto;max-width:100%}[hidden]{display:none}*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.sr-only{clip:rect(0,0,0,0);border-width:0;height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{bottom:0;left:0;right:0;top:0}.top-1\/2{top:50%}.left-1\/2{left:50%}.top-6{top:1.5rem}.right-6{right:1.5rem}.top-0{top:0}.right-8{right:2rem}.left-0{left:0}.left-4{left:1rem}.z-10{z-index:10}.z-20{z-index:20}.col-span-2{grid-column:span 2/span 2}.col-span-1{grid-column:span 1/span 1}.mx-auto{margin-left:auto;margin-right:auto}.mx-4{margin-left:1rem;margin-right:1rem}.mb-4{margin-bottom:1rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-1{margin-bottom:.25rem}.mt-2{margin-top:.5rem}.mb-6{margin-bottom:1.5rem}.mt-1{margin-top:.25rem}.mt-4{margin-top:1rem}.flex{display:flex}.table{display:table}.grid{display:grid}.aspect-square{aspect-ratio:1/1}.h-full{height:100%}.h-3\/4{height:75%}.h-10{height:2.5rem}.h-5{height:1.25rem}.h-3{height:.75rem}.h-16{height:4rem}.h-4{height:1rem}.h-\[90vh\]{height:90vh}.h-6{height:1.5rem}.h-3\/5{height:60%}.h-8{height:2rem}.h-12{height:3rem}.h-2{height:.5rem}.h-auto{height:auto}.min-h-0{min-height:0}.w-full{width:100%}.w-3\/5{width:60%}.w-10{width:2.5rem}.w-5{width:1.25rem}.w-3{width:.75rem}.w-16{width:4rem}.w-4{width:1rem}.w-1\/4{width:25%}.w-1{width:.25rem}.w-6{width:1.5rem}.w-1\/5{width:20%}.w-8{width:2rem}.w-12{width:3rem}.w-2{width:.5rem}.w-96{width:24rem}.w-2\/3{width:66.666667%}.min-w-0{min-width:0}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.border-separate{border-collapse:separate}.border-spacing-0{--tw-border-spacing-x:0px;--tw-border-spacing-y:0px;border-spacing:var(--tw-border-spacing-x) var(--tw-border-spacing-y)}.origin-center{transform-origin:center}.-translate-y-1\/2{--tw-translate-y:-50%}.-translate-x-1\/2,.-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-x-1\/2{--tw-translate-x:-50%}.rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.cursor-not-allowed{cursor:not-allowed}.resize{resize:both}.auto-rows-min{grid-auto-rows:min-content}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-6{gap:1.5rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-1{gap:.25rem}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-bottom:calc(1rem*var(--tw-space-y-reverse));margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)))}.self-center{align-self:center}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.overflow-x-hidden{overflow-x:hidden}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.break-words{overflow-wrap:break-word}.rounded{border-radius: 4px}.rounded-3xl{border-radius:1.5rem}.rounded-lg{border-radius: var(--ogn-r)}.rounded-xl{border-radius: var(--ogn-r)}.rounded-full{border-radius:9999px}.rounded-2xl{border-radius: var(--ogn-r)}.rounded-md{border-radius: 5px}.rounded-b-none{border-bottom-left-radius:0;border-bottom-right-radius:0}.rounded-t-none{border-top-left-radius:0;border-top-right-radius:0}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-b-0{border-bottom-width:0}.border-t-0{border-top-width:0}.border-none{border-style:none}.border-white\/20{border-color:rgb(var(--color-white)/.2)}.border-white\/10{border-color:rgb(var(--color-white)/.1)}.border-white\/50{border-color:rgb(var(--color-white)/.5)}.border-primary\/40{border-color:rgb(var(--color-primary)/.4)}.border-red\/40{border-color:rgba(255,0,0,.4)}.border-primary{--tw-border-opacity:1;border-color:rgb(var(--color-primary)/var(--tw-border-opacity))}.border-yellow-400\/20{border-color:rgba(250,204,21,.2)}.border-red{--tw-border-opacity:1;border-color:rgb(255 0 0/var(--tw-border-opacity))}.border-white\/40{border-color:rgb(var(--color-white)/.4)}.bg-white\/10{background-color:rgb(var(--color-white)/.1)}.bg-black\/5{background-color:rgb(var(--color-black)/.05)}.bg-background-light\/50{background-color:rgb(var(--color-background-light)/.5)}.bg-white\/5{background-color:rgb(var(--color-white)/.05)}.bg-black\/20{background-color:rgb(var(--color-black)/.2)}.bg-primary\/20{background-color:rgb(var(--color-primary)/.2)}.bg-red\/20{background-color:rgba(255,0,0,.2)}.bg-black\/30{background-color:rgb(var(--color-black)/.3)}.bg-primary\/10{background-color:rgb(var(--color-primary)/.1)}.bg-transparent{background-color:transparent}.bg-black\/60{background-color:rgb(var(--color-black)/.6)}.bg-yellow-400\/10{background-color:rgba(250,204,21,.1)}.bg-black\/80{background-color:rgb(var(--color-black)/.8)}.bg-primary{--tw-bg-opacity:1;background-color:rgb(var(--color-primary)/var(--tw-bg-opacity))}.bg-white{--tw-bg-opacity:1;background-color:rgb(var(--color-white)/var(--tw-bg-opacity))}.bg-black{--tw-bg-opacity:1;background-color:rgb(var(--color-black)/var(--tw-bg-opacity))}.bg-background{--tw-bg-opacity:1;background-color:rgb(var(--color-background)/var(--tw-bg-opacity))}.bg-zinc-300{--tw-bg-opacity:1;background-color:rgb(212 212 216/var(--tw-bg-opacity))}.bg-teal-400{--tw-bg-opacity:1;background-color:rgb(45 212 191/var(--tw-bg-opacity))}.bg-opacity-50{--tw-bg-opacity:0.5}.bg-opacity-20{--tw-bg-opacity:0.2}.bg-gradient-to-br{background-image:linear-gradient(to bottom right,var(--tw-gradient-stops))}.bg-gradient-to-b{background-image:linear-gradient(to bottom,var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right,var(--tw-gradient-stops))}.from-background\/70{--tw-gradient-from:rgb(var(--color-background)/0.7);--tw-gradient-to:rgb(var(--color-background)/0);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.from-primary{--tw-gradient-from:rgb(var(--color-primary));--tw-gradient-to:rgb(var(--color-primary)/0);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to)}.to-background-light\/70{--tw-gradient-to:rgb(var(--color-background-light)/0.7)}.to-primary-dark{--tw-gradient-to:rgb(var(--color-primary-dark))}.object-cover{-o-object-fit:cover;object-fit:cover}.p-3{padding:.75rem}.p-6{padding:1.5rem}.p-4{padding:1rem}.p-12{padding:3rem}.p-0{padding:0}.p-2{padding:.5rem}.p-1{padding:.25rem}.p-8{padding:2rem}.p-0\.5{padding:.125rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-4{padding-left:1rem;padding-right:1rem}.py-2{padding-bottom:.5rem;padding-top:.5rem}.py-3{padding-bottom:.75rem;padding-top:.75rem}.px-2{padding-left:.5rem;padding-right:.5rem}.py-1{padding-bottom:.25rem;padding-top:.25rem}.pb-4{padding-bottom:1rem}.pt-2{padding-top:.5rem}.pl-12{padding-left:3rem}.pr-4{padding-right:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xs{font-size:.75rem;line-height:1rem}.text-lg{font-size:1.125rem}.text-lg,.text-xl{line-height:1.75rem}.text-xl{font-size:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.font-semibold{font-weight:600}.font-medium{font-weight:500}.font-bold{font-weight:700}.font-light{font-weight:300}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-none{line-height:1}.tracking-wide{letter-spacing:.025em}.text-white\/70{color:rgb(var(--color-white)/.7)}.text-primary{--tw-text-opacity:1;color:rgb(var(--color-primary)/var(--tw-text-opacity))}.text-white{--tw-text-opacity:1;color:rgb(var(--color-white)/var(--tw-text-opacity))}.text-white\/20{color:rgb(var(--color-white)/.2)}.text-white\/60{color:rgb(var(--color-white)/.6)}.text-white\/40{color:rgb(var(--color-white)/.4)}.text-white\/50{color:rgb(var(--color-white)/.5)}.text-primary\/80{color:rgb(var(--color-primary)/.8)}.text-red{--tw-text-opacity:1;color:rgb(255 0 0/var(--tw-text-opacity))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21/var(--tw-text-opacity))}.text-primary-light{--tw-text-opacity:1;color:rgb(var(--color-primary-light)/var(--tw-text-opacity))}.opacity-0{opacity:0}.opacity-50{opacity:.5}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color)}.shadow,.shadow-sm{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-2xl,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgba(0,0,0,.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color)}.shadow-primary\/20{--tw-shadow-color:rgb(var(--color-primary)/0.2);--tw-shadow:var(--tw-shadow-colored)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.ring-primary{--tw-ring-opacity:1;--tw-ring-color:rgb(var(--color-primary)/var(--tw-ring-opacity))}.blur-lg{--tw-blur:blur(16px)}.blur,.blur-lg{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.blur{--tw-blur:blur(8px)}.drop-shadow-lg{--tw-drop-shadow:drop-shadow(0 10px 8px rgba(0,0,0,.04)) drop-shadow(0 4px 3px rgba(0,0,0,.1))}.drop-shadow-lg,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-lg{--tw-backdrop-blur:blur(16px)}.backdrop-blur-lg,.backdrop-blur-sm{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px)}.transition-all{transition-duration:.15s;transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-colors{transition-duration:.15s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1)}.transition-opacity{transition-duration:.15s;transition-property:opacity;transition-timing-function:cubic-bezier(.4,0,.2,1)}.duration-200{transition-duration:.2s}.duration-100{transition-duration:.1s}.duration-300{transition-duration:.3s}.hover\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1}.hover\:scale-105:hover,.hover\:scale-110:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-red\/40:hover{border-color:rgba(255,0,0,.4)}.hover\:border-primary:hover{--tw-border-opacity:1;border-color:rgb(var(--color-primary)/var(--tw-border-opacity))}.hover\:border-red:hover{--tw-border-opacity:1;border-color:rgb(255 0 0/var(--tw-border-opacity))}.hover\:border-primary\/30:hover{border-color:rgb(var(--color-primary)/.3)}.hover\:border-primary\/50:hover{border-color:rgb(var(--color-primary)/.5)}.hover\:border-white\/30:hover{border-color:rgb(var(--color-white)/.3)}.hover\:bg-red\/20:hover{background-color:rgba(255,0,0,.2)}.hover\:bg-white\/10:hover{background-color:rgb(var(--color-white)/.1)}.hover\:bg-primary\/10:hover{background-color:rgb(var(--color-primary)/.1)}.hover\:bg-white\/5:hover{background-color:rgb(var(--color-white)/.05)}.hover\:bg-primary\/30:hover{background-color:rgb(var(--color-primary)/.3)}.hover\:bg-white\/20:hover{background-color:rgb(var(--color-white)/.2)}.hover\:to-primary:hover{--tw-gradient-to:rgb(var(--color-primary))}.hover\:text-red:hover{--tw-text-opacity:1;color:rgb(255 0 0/var(--tw-text-opacity))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(var(--color-white)/var(--tw-text-opacity))}.hover\:text-primary:hover{--tw-text-opacity:1;color:rgb(var(--color-primary)/var(--tw-text-opacity))}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.hover\:shadow-lg:hover,.hover\:shadow-md:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.hover\:shadow-primary\/20:hover{--tw-shadow-color:rgb(var(--color-primary)/0.2);--tw-shadow:var(--tw-shadow-colored)}.hover\:shadow-primary\/30:hover{--tw-shadow-color:rgb(var(--color-primary)/0.3);--tw-shadow:var(--tw-shadow-colored)}.focus\:ring-primary:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(var(--color-primary)/var(--tw-ring-opacity))}.active\:scale-\[0\.99\]:active{--tw-scale-x:0.99;--tw-scale-y:0.99;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:border-white\/60{border-color:rgb(var(--color-white)/.6)}.group:hover .group-hover\:bg-primary\/10{background-color:rgb(var(--color-primary)/.1)}.group:hover .group-hover\:opacity-100{opacity:1}@media (min-width:1280px){.xl\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.xl\:gap-2{gap:.5rem}.xl\:gap-4{gap:1rem}.xl\:gap-3{gap:.75rem}.xl\:p-4{padding:1rem}.xl\:p-3{padding:.75rem}}@media (min-width:1536px){.\32xl\:w-1\/5{width:20%}}
+@supports not (clip-path:inset(0)){object[type="application/x-cfx-game-view"]{display:none}}
+@supports not (clip-path:inset(0)){object[type="application/x-cfx-game-view"]{display:none}}
+@supports not (clip-path:inset(0)){object[type="application/x-cfx-game-view"]{display:none}}
+html{-webkit-user-select:none;-moz-user-select:none;user-select:none}
+.button[data-v-75e8ae69]{--tw-bg-opacity:1;--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);background-color:rgb(203 213 225/var(--tw-bg-opacity));border-radius: 4px;box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);padding:.75rem}.button[data-v-75e8ae69]:hover{--tw-bg-opacity:1;background-color:rgb(148 163 184/var(--tw-bg-opacity))}
+:root{--color-background:29 29 51;--color-background-light:41 41 66;--color-primary-dark:58 11 204;--color-primary:106 60 255;--color-primary-light:139 103 255;--color-primary-lighter:180 156 255;--color-secondary:23 23 23;--color-secondary-light:81 81 81;--color-white:255 255 255;--color-black:0 0 0}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#000}::-webkit-scrollbar-thumb{--tw-bg-opacity:1;background-color:rgb(var(--color-primary)/var(--tw-bg-opacity));border-radius: 4px}
+input[type=checkbox]:focus+div[data-v-26828c97],input[type=radio]:focus+div[data-v-26828c97]{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);--tw-ring-color:rgb(var(--color-primary)/var(--tw-ring-opacity));--tw-ring-opacity:0.5;box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}
+
+/* ══ PEGATINA: los menus de kq_emergency con el estilo del logo ══════════
+
+   05/10: Origen y Nacion, la misma interfaz (en Nacion el repintado de la
+   marca pone el naranja). Todo cuelga de html:root, que tiene la misma
+   especificidad que el html:not([data-marca="nacion"]) de antes.
+
+   Tres pantallas, las tres con las mismas piezas: «Aplicar ajuste» (dialogo
+   centrado), el creador (tabla de ajustes, tambien centrado) y el editor
+   (panel de la derecha, con sus dos pasos y las opciones de cada equipo).
+
+   Panel en gris perla con canto negro y sombra dura; las piezas de dentro
+   (fichas, campos, botones, filas) en gris claro con canto; el rosa lleva tinta
+   NEGRA. Los cantos son box-shadow, no border: no cambian ninguna medida.
+
+   Como va escrito: la interfaz es Tailwind y sus clases llevan barras y dos
+   puntos (bg-white/10, hover:scale-110): se cazan con [class*="…"] en vez
+   de escaparlas. El recurso pone sus colores (Config.uiStyling) EN LINEA
+   desde el Lua cifrado: por eso los tokens van con !important.
+
+   CEF 103: sin :has(), sin color-mix(), sin backdrop-filter (sale negro).
+   Para quitarlo: borrar este bloque y el <link> de fuentes de nui.html.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens ─────────────────────────────────────────────────────────── */
+/*  «white» pasa a ser la TINTA: todo lo que era letra o filo blanco sobre
+    panel oscuro (text-white/70, border-white/20…) queda en negro y sus
+    grises sobre el papel, sin tocar regla por regla. Lo que tenia fondo
+    blanco translucido se pinta abajo, pieza a pieza. */
+html:root,
+html:root body,
+html:root #app,
+html:root #app > div {
+    --color-background: 196 198 202 !important;
+    --color-background-light: 196 198 202 !important;
+    --color-primary-dark: 216 27 85 !important;
+    --color-primary: 216 27 85 !important;
+    --color-primary-light: 223 47 99 !important;
+    --color-primary-lighter: 255 214 228 !important;
+    --color-white: 11 11 13 !important;
+    --color-black: 0 0 0 !important;
+    /*  El radio de las piezas: la hoja lo pide por --ogn-r, que aqui no
+        esta definido en ningun sitio (salian en pico). */
+    --ogn-r: 12px;
+}
+
+html:root ::-webkit-scrollbar-track { background: transparent; }
+html:root ::-webkit-scrollbar-thumb { background-color: #0b0b0d; border-radius: 3px; }
+
+/*  El desenfoque del juego detras del panel: con el panel opaco no se ve, y
+    es una vista del juego entera pintandose para nada. */
+html:root #app object[type="application/x-cfx-game-view"] { display: none; }
+html:root #app [class*="backdrop-blur"] { -webkit-backdrop-filter: none; backdrop-filter: none; }
+
+/* ── El panel (los tres menus y el dialogo de confirmar) ────────────── */
+/*  La sombra de serie va en linea: de ahi el !important. El borde de 1 px
+    se queda (transparente) para no mover nada. */
+html:root #app div[class*="from-background"] {
+    border-color: transparent;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000 !important;
+}
+html:root #app div[class*="from-background"].rounded-3xl { border-radius: 20px; }
+
+/*  Cerrar: chapa negra con el aspa blanca. */
+html:root #app button.absolute.top-6.right-6 {
+    border-color: transparent;
+    border-radius: 10px;
+    background: #0b0b0d;
+    color: #fff;
+}
+html:root #app button.absolute.top-6.right-6:hover {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #000;
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html:root #app h1.text-primary {
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+}
+html:root #app p.text-sm[class*="text-white/70"] { color: #44444a; }
+
+/*  Cabecera de seccion: filete rosa macizo y rotulo en tinta negra. */
+html:root #app .w-1.h-6 { border-radius: 2px; background: #d81b55; }
+html:root #app .text-lg.font-medium.text-primary {
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+/*  El rosa de LEER sobre papel (el del boton no se lee como letra). */
+html:root #app .text-primary,
+html:root #app [class*="text-primary/80"] { color: #b3123f; }
+
+/* ── Botones grandes (Cancelar, Crear nuevo, Siguiente, Guardar…) ───── */
+html:root #app button.btn.font-semibold {
+    border-color: transparent;
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+html:root #app button.btn.font-semibold:hover { background: #f1f1ee; }
+html:root #app button.btn.font-semibold[class*="from-primary"] { background: #d81b55; color: #000; }
+html:root #app button.btn.font-semibold[class*="from-primary"]:hover { background: #df2f63; }
+html:root #app button.btn.font-semibold:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+/*  Apagado: gris, con su forma de boton pero sin sombra (no se pulsa). */
+html:root #app button.btn.font-semibold:disabled,
+html:root #app button.btn.font-semibold:disabled:hover,
+html:root #app button.btn.font-semibold.opacity-50,
+html:root #app button.btn.font-semibold.opacity-50:hover {
+    transform: none;
+    background: #c6c9ce;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #55555c;
+    opacity: 1;
+}
+
+/* ── Botones pequeños (aplicar, editar, eliminar) ───────────────────── */
+html:root #app button.w-8.h-8,
+html:root #app button.col-span-2 {
+    transform: none;
+    border-color: transparent;
+    border-radius: 8px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #0b0b0d;
+}
+html:root #app button.w-8.h-8:hover { background: #f1f1ee; }
+/*  «Aplicar», lo principal de la ficha: rosa. Eliminar es peligro: pieza gris
+    con la letra rosa tinta y rosa entero al pasar (el rosa lo lleva el
+    «Eliminar» del dialogo que lo confirma). */
+html:root #app button.col-span-2 { background: #d81b55; color: #000; }
+html:root #app button.col-span-2:hover { background: #df2f63; }
+html:root #app button.w-8.h-8[class*="text-red"] { background: #dcdde0; color: #b3123f; }
+html:root #app button.w-8.h-8[class*="text-red"]:hover { background: #d81b55; color: #000; }
+html:root #app button.col-span-2 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+html:root #app button.w-8.h-8:active,
+html:root #app button.col-span-2:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+/* ── Campos: un solo canto de 2,5 px ────────────────────────────────── */
+html:root #app input[type="text"],
+html:root #app textarea,
+html:root #app select {
+    border-color: transparent;
+    outline: none;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #0b0b0d;
+}
+html:root #app input[type="text"]:focus,
+html:root #app textarea:focus,
+html:root #app select:focus { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html:root #app input[type="text"]::placeholder,
+html:root #app textarea::placeholder { color: #73737c; }
+/*  El campo que falta por rellenar y su aviso. */
+html:root #app input.border-red,
+html:root #app textarea.border-red { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #b3123f; }
+html:root #app p.text-red,
+html:root #app span.text-red { color: #c4003f; font-weight: 600; }
+html:root #app select option { background: #dcdde0; color: #0b0b0d; }
+/*  La lupa del buscador. */
+html:root #app .absolute.left-4[class*="text-white/60"] { color: #0b0b0d; }
+
+/* ── Casillas y opciones de elegir (grupos de luces, extras, modo) ──── */
+html:root #app label.rounded-xl.cursor-pointer {
+    border-color: transparent;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+}
+html:root #app label.rounded-xl.cursor-pointer:hover { background: #f1f1ee; }
+/*  Marcada: rosa con tinta negra. */
+html:root #app label.rounded-xl.cursor-pointer.border-primary,
+html:root #app label.rounded-xl.cursor-pointer.border-primary:hover { background: #d81b55; }
+html:root #app label.rounded-xl.cursor-pointer:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html:root #app label.rounded-xl.cursor-pointer span { color: #0b0b0d; font-weight: 700; }
+/*  El cuadrito: siempre blanco con canto negro; la marca (palomita o punto)
+    ya sale en tinta por el token. Rosa sobre rosa no se veria. */
+html:root #app label.rounded-xl.cursor-pointer .w-5.h-5 { border-color: #000; background: #dcdde0; }
+
+/* ── Fichas y bandejas ──────────────────────────────────────────────── */
+/*  La ficha del vehiculo (Aplicar) y la bandeja de lo instalado (editor). */
+html:root #app .border[class*="bg-black/20"] {
+    border-color: transparent;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root #app .border[class*="bg-black/20"] > p.text-xl {
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+/*  La matricula y la marca son datos: sin cursiva. */
+
+/*  Las listas con scroll (ajustes del vehiculo y tabla). */
+html:root #app .overflow-y-auto[class*="bg-black/5"] { background: transparent; }
+/*  Sin ajustes: un hueco blanco con su canto. */
+html:root #app .overflow-y-auto[class*="bg-black/5"] > div > p.text-center {
+    border-radius: 12px;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+    color: #73737c;
+}
+
+/*  Un ajuste de la lista de Aplicar. */
+html:root #app .rounded-xl.p-4.flex.gap-2[class*="bg-white/10"] {
+    border-color: transparent;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root #app .rounded-xl.p-4.flex.gap-2 h3 { color: #0b0b0d; font-weight: 700; }
+html:root #app .rounded-xl.p-4.flex.gap-2 p { color: #55555c; }
+html:root #app .rounded-xl.p-4.flex.gap-2 [class*="text-white/50"] { color: #73737c; }
+
+/* ── La tabla del creador ───────────────────────────────────────────── */
+/*  Una hoja blanca con canto; la cabecera, banda negra pegada arriba. El
+    canto es outline (se pinta por encima de las filas; un inset quedaria
+    debajo de ellas). */
+html:root #app .overflow-y-auto.rounded-xl[class*="bg-black/5"]:not(.flex) {
+    outline: 1.5px solid #000;
+    outline-offset: -1.5px;
+    background: #dcdde0;
+}
+html:root #app thead { border-color: transparent; background: #0b0b0d; }
+html:root #app thead tr { background: transparent; }
+/*  Cada celda lleva su negro y 1 px a los lados: con anchos de columna con
+    decimales quedaba una rendija clara entre celda y celda. */
+html:root #app thead th {
+    background: #0b0b0d;
+    box-shadow: 1px 0 0 #0b0b0d, -1px 0 0 #0b0b0d, 0 -1px 0 #0b0b0d;
+    color: #fff;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+html:root #app thead th:hover { color: #b3123f; }
+html:root #app thead th svg { color: #d81b55; }
+html:root #app tbody td { box-shadow: inset 0 -1px 0 rgba(11, 11, 13, 0.14); }
+html:root #app tbody tr:hover { background: #f1f1ee; }
+html:root #app tbody td:first-child:not([colspan]) { font-family: "Oxanium", "Barlow Condensed", sans-serif; font-weight: 800; color: #0b0b0d; }
+html:root #app tbody td.font-medium { color: #0b0b0d; font-weight: 700; }
+/*  «Mostrar mas» y el vacio de la tabla no llevan raya. */
+html:root #app tbody td[colspan] { box-shadow: none; }
+
+/* ── Editor: lo instalado ───────────────────────────────────────────── */
+/*  Cada equipo puesto: fila blanca con canto. Sin sombra por fuera: la
+    lista recorta lo que sobresale. */
+html:root #app .btn.rounded-xl.items-center.cursor-pointer {
+    transform: none;
+    border-color: transparent;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+html:root #app .btn.rounded-xl.items-center.cursor-pointer h4 { color: #0b0b0d; }
+/*  La miniatura, en un hueco gris: hay dibujos blancos (numeros, vinilos)
+    que sobre papel blanco no se ven. */
+html:root #app .btn.rounded-xl.items-center.cursor-pointer .w-12.h-12 { border-radius: 8px; background: #b9bdc3; }
+/*  El elegido y sus opciones son UNA pieza: palido con canto rosa gordo. La
+    fila pinta tres lados y el cajon de opciones los otros tres. */
+html:root #app .btn.rounded-xl.items-center.cursor-pointer.border-primary {
+    background: #ffd6e4;
+    box-shadow: inset 3px 0 0 #d81b55, inset -3px 0 0 #d81b55, inset 0 3px 0 #d81b55;
+}
+html:root #app .rounded-t-none.border-primary[class*="bg-primary/10"] {
+    border-color: transparent;
+    background: #ffd6e4;
+    box-shadow: inset 3px 0 0 #d81b55, inset -3px 0 0 #d81b55, inset 0 -3px 0 #d81b55;
+}
+
+/* ── Editor: la rejilla de equipos ──────────────────────────────────── */
+html:root #app button.aspect-square {
+    transform: none;
+    border-color: transparent;
+    background: #dcdde0;
+    box-shadow: inset 0 0 0 1.5px #000;
+}
+/*  Señalado: canto rosa gordo sobre rosa palido. El velo de serie tapaba
+    el canto (va encima del fondo): se mete 4 px hacia dentro. */
+html:root #app button.aspect-square:hover { background: #f1f1ee; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+/*  Dentro, un hueco gris SIEMPRE a la vista (era el velo que solo salia al
+    señalar): hay dibujos blancos —numeros de indicativo, vinilos— que sobre
+    papel blanco desaparecen. Al señalar pasa a rosa palido. */
+html:root #app button.aspect-square > div.absolute {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    border-radius: 7px;
+    background: #b9bdc3;
+    opacity: 1;
+}
+html:root #app button.aspect-square:hover > div.absolute { background: #ffd6e4; }
+html:root #app button.aspect-square:active { box-shadow: inset 0 0 0 1.5px #000; }
+/*  El nombre que sale al señalar: chapa negra con letra blanca. */
+html:root #app button.aspect-square > label {
+    border-radius: 6px;
+    background: #0b0b0d;
+    color: #fff;
+    -webkit-filter: none;
+    filter: none;
+}
+
+/*  «Mostrar mas ajustes», al pie de la tabla. */
+html:root #app tbody td[colspan] > button { background: #f1f1ee; color: #0b0b0d; }
+html:root #app tbody td[colspan] > button:hover { background: #ffd6e4; }
+
+/*  El aviso amarillo (tope de selecciones). SIN VER en el banco: no se ha
+    conseguido abrir. Va lo justo para que no quede letra amarilla sobre
+    gris: ficha blanca con canto y tinta negra. */
+html:root #app [class*="bg-yellow"] { border-color: transparent; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html:root #app [class*="text-yellow"] { color: #0b0b0d; }
+
+/* ── El dialogo de confirmar (eliminar) ─────────────────────────────── */
+html:root #app .absolute.inset-0[class*="bg-black/60"] { background: rgba(11, 11, 13, 0.55); }
+html:root #app div[class*="from-background"] > h3 {
+    color: #0b0b0d;
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 900;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+/* ── El letrero al señalar (v-popper; cuelga del <body>, no de #app) ── */
+html:root .v-popper--theme-tooltip .v-popper__inner {
+    border-radius: 8px;
+    background: #0b0b0d;
+    box-shadow: none;
+    color: #fff;
+}
+html:root .v-popper--theme-tooltip .v-popper__arrow-outer { border-color: #0b0b0d; }
+
+/* ── Menus LATERALES (04/10, segunda vuelta) ────────────────────────── */
+/*  «Aplicar ajuste» salia centrado en la pantalla. Como el resto de menus
+    del servidor, va de columna pegada a la derecha: mismo sitio, ancho y
+    alto que el editor de este recurso (right-8, w-1/4 —1/5 desde 1536 px—,
+    90vh, centrado en vertical). El centrado horizontal de serie es un
+    translate por variable: se anula la variable y se cambia el ancla. */
+html:root #app div[class*="from-background"][class*="h-3/5"] {
+    --tw-translate-x: 0px;
+    right: 2rem;
+    left: auto;
+    width: 25%;
+    height: 90vh;
+}
+@media (min-width: 1536px) {
+    html:root #app div[class*="from-background"][class*="h-3/5"] { width: 20%; }
+}
+/*  El creador (la tabla de ajustes) tambien se ancla a la derecha con el
+    mismo margen y alto. El ancho se le deja: ocho columnas no caben en una
+    columna de menu. */
+html:root #app div[class*="from-background"][class*="h-3/4"] {
+    --tw-translate-x: 0px;
+    right: 2rem;
+    left: auto;
+    height: 90vh;
+}
+
+/*  El pie «Creador de Vehiculos de Emergencia por KuzQuality.com»: fuera.
+    Es un hijo mas de la columna flex, asi que al quitarlo no queda hueco ni
+    raya (la raya era su borde de arriba). */
+html:root #app div[class*="from-background"] > div.pt-2.border-t { display: none; }
+
+/* ── El panel ───────────────────────────────────────────────────────── */
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+/*  La raya bajo la cabecera (border-white/…): tenue. */
+
+/* ── Botones grandes ────────────────────────────────────────────────── */
+/*  Apagado: negro al 45 %, nunca rosa apagado. */
+
+/* ── Botones pequeños ───────────────────────────────────────────────── */
+
+/* ── Campos ─────────────────────────────────────────────────────────── */
+
+/* ── Casillas y opciones de elegir ──────────────────────────────────── */
+/*  Negras con raya tenue; al señalar raya blanca; marcada raya rosa. */
+/*  El cuadrito: negro con canto blanco roto (la marca sale en tinta clara). */
+
+/* ── Fichas y bandejas ──────────────────────────────────────────────── */
+
+/* ── La tabla del creador ───────────────────────────────────────────── */
+/*  Cabecera: negra como el resto, separada por una raya blanco roto. */
+/*  El canto de la hoja es un outline que la cabecera tapa: cada celda
+    se pinta su trozo de arriba (y la primera y la ultima, su lado). */
+
+/* ── Editor: lo instalado ───────────────────────────────────────────── */
+/*  La miniatura: el unico hueco no negro. Es el fondo de una FOTO, no una
+    pieza: hay dibujos blancos (numeros) y negros (la antena) y sobre
+    negro o sobre blanco desaparece uno de los dos. */
+/*  El elegido y sus opciones: UNA pieza negra con raya rosa. */
+
+/* ── Editor: la rejilla de equipos ──────────────────────────────────── */
+/*  El hueco de la foto, como la miniatura (ver arriba). */
+/*  Chapas: blanco roto con tinta negra. */
+
+/* ── El dialogo de confirmar ────────────────────────────────────────── */
+
+/* ── El letrero al señalar ──────────────────────────────────────────── */
+
+/* ══ EL CREADOR (lista de ajustes de admin) EN LA PLANTILLA (06/10) ═════
+   Todos los paneles de admin del servidor se leen igual: pantalla completa
+   sobre el gris liso, riel a la izquierda (placa rosa y nombre en vertical),
+   cabecera con antetitulo, titulo y brocha, y el contenido en una zona. La
+   interfaz va compilada (sin fuente), asi que todo sale de la caja que ya
+   hay: el riel es su ::before y la placa su ::after; el buscador sube a la
+   derecha de la cabecera. Sin barra de cifras: no hay cifras que enseñar. */
+html:root #app div[class*="from-background"][class*="h-3/4"] {
+    --kq-riel: 5.93vh;
+    --kq-hueco: 1.9vh;
+    --kq-cab: 13.4vh;
+    --tw-translate-x: 0px;
+    --tw-translate-y: 0px;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: auto; min-width: 0; height: auto;
+    transform: none;
+    padding: 1.4vh 1.6vh 1.6vh calc(var(--kq-riel) + 1.2vh + var(--kq-hueco));
+    gap: var(--kq-hueco);
+    border: 0;
+    border-radius: 0;
+    background: #b9bbc0;
+    background-image: none;
+    box-shadow: none;
+}
+/*  El riel: la caja y el nombre del recurso, leido de abajo arriba. */
+html:root #app div[class*="from-background"][class*="h-3/4"]::before {
+    content: 'Origen Emergencias';
+    position: absolute;
+    left: 1.2vh; top: 1.4vh; bottom: 1.4vh;
+    width: var(--kq-riel);
+    box-sizing: border-box;
+    padding: 1.5vh 0;
+    display: flex; align-items: center; justify-content: flex-start;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, -3px -3px 0 1.5px #000;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic; font-weight: 800;
+    font-size: 1.45vh; line-height: 1; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #0b0b0d;
+    pointer-events: none;
+}
+/*  La placa del recurso, arriba del riel: rosa, canto y girada. */
+html:root #app div[class*="from-background"][class*="h-3/4"]::after {
+    content: '';
+    position: absolute;
+    left: calc(1.2vh + (var(--kq-riel) - 4.07vh) / 2);
+    top: 2.7vh;
+    width: 4.07vh; height: 4.07vh;
+    border-radius: 11px;
+    background: rgb(var(--color-primary)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 16l1.5-5h11L19 16M4 16h16v3H4zM7.5 19v1.5M16.5 19v1.5M9 7h6M12 4v3'/%3E%3C/svg%3E") center / 2.1vh no-repeat;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    transform: rotate(-5deg);
+    pointer-events: none;
+}
+/*  La cabecera: pieza con canto, antetitulo en chapa, titulo y brocha. */
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.pb-4.border-b {
+    flex: none;
+    box-sizing: border-box;
+    height: var(--kq-cab);
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.7vh;
+    padding: 1.5vh 2.2vh 1.7vh;
+    border: 0;
+    border-radius: 20px;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.pb-4.border-b::before {
+    content: 'Panel de administración';
+    padding: 3px 9px 2px;
+    border-radius: 6px;
+    background: #0b0b0d;
+    color: #fff;
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic; font-weight: 800;
+    font-size: 1.3vh; line-height: 1.25; letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.pb-4.border-b > div { justify-content: flex-start; }
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.pb-4.border-b h1 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-style: italic; font-weight: 800;
+    font-size: 3.4vh; line-height: 0.95; letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: #0b0b0d;
+}
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.pb-4.border-b > p {
+    margin: 1vh 0 0 0.7vh;
+    font-family: "Knewave", "Barlow Condensed", cursive;
+    font-style: normal; font-weight: 400;
+    font-size: 2.1vh; line-height: 1.1; letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: rgb(var(--color-primary));
+    transform: rotate(-1.5deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+/*  Cerrar, a la derecha de la cabecera. */
+html:root #app div[class*="from-background"][class*="h-3/4"] > button.absolute {
+    top: calc(1.4vh + (var(--kq-cab) - 4.2vh) / 2);
+    right: calc(1.6vh + 2.2vh);
+    width: 4.2vh; height: 4.2vh;
+    z-index: 2;
+}
+/*  El buscador sube a la cabecera, a la izquierda de cerrar. */
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.flex.gap-4 {
+    position: absolute;
+    top: calc(1.4vh + (var(--kq-cab) - 4.4vh) / 2);
+    right: calc(1.6vh + 2.2vh + 4.2vh + 1.3vh);
+    width: 42vh;
+    z-index: 2;
+}
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.flex.gap-4 input { height: 4.4vh; padding-top: 0; padding-bottom: 0; }
+/*  La tabla, en su zona: la zona en gris perla y la hoja dentro. */
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.flex-1.overflow-y-auto.rounded-xl {
+    padding: 1.8vh;
+    border-radius: 20px;
+    outline: 0;
+    background: #c4c6ca;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+}
+html:root #app div[class*="from-background"][class*="h-3/4"] > div.flex-1.overflow-y-auto.rounded-xl > table {
+    overflow: hidden;
+    border-radius: 12px;
+    outline: 1.5px solid #000;
+    outline-offset: -1.5px;
+    background: #dcdde0;
+}
+
+/*  Cifras centradas (06/10): la x de borrar es un caracter de Inter que
+    se sienta en la linea de base y quedaba 1,5-2 px baja en su cuadro.
+    Centrado en flex con 3 px de aire abajo (medido en pixel). */
+html:root #app button.w-8.h-8[class*="text-red"] { display: inline-flex; align-items: center; justify-content: center; line-height: 1; padding: 0 0 3px; }
+
+/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */
+html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
+html * { scrollbar-width: none !important; }

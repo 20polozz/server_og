@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Concesionario Policial - Carga</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="loading-screen" class="loading-screen is-hidden" aria-hidden="true">
+    <!-- Contenedor central -->
+    <div class="ls-card">
+      <!-- Marca y chapa superior -->
+      <div class="ls-top-badge">
+        <span class="ls-dot"></span>
+        <span id="ls-tag" class="ls-tag">SISTEMA DE GESTIÓN DE FLOTA</span>
+      </div>
+
+      <!-- Icono central dinámico -->
+      <div class="ls-icon-wrap">
+        <div class="ls-icon-ring"></div>
+        <div id="ls-icon-box" class="ls-icon-box">
+          <!-- Inyectado por JS -->
+        </div>
+      </div>
+
+      <!-- Textos principales -->
+      <div class="ls-headings">
+        <h1 id="ls-title" class="ls-title">GARAJE DEPARTAMENTAL</h1>
+        <h2 id="ls-subtitle" class="ls-subtitle">ACCEDIENDO A LA FLOTA POLICIAL</h2>
+        <p id="ls-message" class="ls-message">Sincronizando vehículos de dotación, equipamiento reglamentario y plazas de exposición...</p>
+      </div>
+
+      <!-- Fila de metadatos tácticos -->
+      <div class="ls-meta-row">
+        <div class="ls-meta-cell">
+          <span class="ls-meta-label" id="ls-meta1-label">UBICACIÓN</span>
+          <span class="ls-meta-val" id="ls-meta1-val">MRPD · PLANTA INFERIOR</span>
+        </div>
+        <div class="ls-meta-sep"></div>
+        <div class="ls-meta-cell">
+          <span class="ls-meta-label" id="ls-meta2-label">ESTADO</span>
+          <span class="ls-meta-val" id="ls-meta2-val">ACCESO AUTORIZADO</span>
+        </div>
+        <div class="ls-meta-sep"></div>
+        <div class="ls-meta-cell">
+          <span class="ls-meta-label" id="ls-meta3-label">CUERPO</span>
+          <span class="ls-meta-val" id="ls-meta3-val">POLICÍA DE LOS SANTOS</span>
+        </div>
+      </div>
+
+      <!-- Barra de progreso con porcentaje y temporizador -->
+      <div class="ls-progress-block">
+        <div class="ls-progress-info">
+          <span id="ls-status-text" class="ls-status-text">Cargando flota...</span>
+          <span id="ls-percent" class="ls-percent">0%</span>
+        </div>
+        <div class="ls-progress-track">
+          <div id="ls-progress-bar" class="ls-progress-bar">
+            <div class="ls-progress-shimmer"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pie informativo / tip -->
+      <div class="ls-footer">
+        <span class="ls-badge-mini">POLICE DEPT</span>
+        <span id="ls-tip" class="ls-tip">COMISARÍA MRPD · LOS SANTOS POLICE DEPARTMENT</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

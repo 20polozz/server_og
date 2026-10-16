@@ -1,0 +1,80 @@
+
+-- Queue Management NUI Callbacks
+
+RegisterNUICallback('GetQueueData', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:GetQueueData', function(result)
+        cb(result)
+    end)
+end)
+
+RegisterNUICallback('GetPriorityData', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:GetPriorityData', function(result)
+        cb(result)
+    end)
+end)
+
+RegisterNUICallback('CreateGroup', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:CreateGroup', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('UpdateGroup', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:UpdateGroup', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('SetQueueIndex', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:SetQueueIndex', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('DeleteGroup', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:DeleteGroup', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('SetPlayerGroup', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:SetPlayerGroup', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('AddPriority', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:AddPriority', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('RemovePriority', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:RemovePriority', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('GetPlayerPriority', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:GetPlayerPriority', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('KickFromQueue', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:KickFromQueue', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('AddReservedSlot', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:AddReservedSlot', function(result)
+        cb(result)
+    end, data)
+end)
+
+RegisterNUICallback('RemoveReservedSlot', function(data, cb)
+    FW_TriggerCallback('origen_admin:server:RemoveReservedSlot', function(result)
+        cb(result)
+    end, data)
+end)

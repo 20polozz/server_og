@@ -1,0 +1,1176 @@
+
+/* ══ Los tokens mecanicos de la interfaz ═════════════════════════════
+   Son identicos en todo el servidor. La referencia es
+   origen_inventory/source-ui/src/assets/styles/arcade.css.
+
+     --arc-vf  factor de los velos BLANCOS. Toda capa blanca esta escrita como
+               rgba(255,255,255, calc(a * var(--arc-vf))). Vale 1.
+
+     --arc-t-* los tres canales de un tinte, para escribir cada regla con su
+               propio alfa.
+   ═════════════════════════════════════════════════════════════════════ */
+:root {
+    --arc-vf: 1;
+    --arc-t-hueco: 38, 34, 26;
+    --arc-t-linea: 111, 104, 87;
+    --arc-t-relieve: 120, 110, 88;
+    --arc-t-papel1: 255, 253, 247;
+    --arc-t-papel2: 246, 241, 230;
+    --arc-t-papel3: 238, 231, 217;
+    --arc-t-elegido: 255, 215, 228;
+    --arc-papel1: #e6e7ea;
+    --arc-papel2: #dcdde0;
+    /* El canto de abajo de lo rosa (una sombra) y la tinta de un rotulo de
+       acento. Aquí son el mismo granate. */
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+}
+
+/* ══ Menu de animaciones · tema «HUD Arcade» ═════════════════════════
+   El mismo que el inventario (origen_inventory, arcade.css): cristal
+   crema, acento rosa #d81b55, Barlow Condensed cursiva y bloques
+   inclinados 10 grados. La version negra de antes esta en
+   copias/origen_anims-antes-arcade.
+
+   El armazon no cambia: columna y riel despegados del canto derecho, con
+   el ancho y los margenes del inventario (--inv-col y compañia). Es lo que
+   hace que al pasar de un menu lateral a otro no se mueva nada.
+   ════════════════════════════════════════════════════════════════════ */
+
+:root {
+    --accent: #d81b55;
+    --accent-deep: #a80c3f;
+    --accent-grad: #d81b55;
+    --ink: #0b0b0d;
+    --ink-2: #3b352a;
+    --ink-3: #6b6352;
+    --ink-4: #6f6857;
+    --glass: linear-gradient(160deg, rgba(255, 253, 247, 0.9) 0%, rgba(246, 241, 230, 0.82) 45%, rgba(238, 231, 217, 0.88) 100%);
+    --skew: skewX(-10deg);
+    --unskew: skewX(10deg);
+    --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+    --text: "Barlow", "Segoe UI", sans-serif;
+    --mono: "Oxanium", "Barlow Condensed", sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Las medidas del inventario, al pixel. */
+    --inv-riel: 64px;
+    --inv-margen-x: calc(1.2vh / var(--ogn-escala, 1));
+    --inv-margen-y: calc(1.4vh / var(--ogn-escala, 1));
+    --inv-hueco: var(--inv-margen-x);
+    --inv-riel-total: calc(var(--inv-margen-x) + var(--inv-riel) + var(--inv-hueco));
+    --inv-col: clamp(420px, 31vw, 548px);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;   /* es una NUI: detras esta el juego */
+    font-family: var(--text);
+    color: var(--ink);
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h3, p { margin: 0; }
+
+button {
+    border: 0;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+}
+
+#app svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+#app svg .lleno,
+#app svg.lleno { fill: currentColor; }
+
+.ogn {
+    position: absolute;
+    inset: 0;
+}
+
+/* Recogedor de clics invisible. Sin velo: las dos piezas llevan fondo. */
+.velo {
+    position: absolute;
+    inset: 0;
+}
+
+/* ── Las dos piezas ─────────────────────────────────────────────────── */
+.panel,
+.riel {
+    /* SIN backdrop-filter. En la NUI de FiveM no hay nada detras que
+       desenfocar —el juego se compone aparte— y el desenfoque sale NEGRO, y
+       mas ancho que la pieza por el radio del blur. En el navegador no se ve
+       porque ahi si hay fondo. El inventario tampoco lo lleva. */
+    background: var(--glass);
+    border-radius: 16px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, calc(0.9 * var(--arc-vf))),
+        0 0 0 1px rgba(255, 255, 255, calc(0.5 * var(--arc-vf))),
+        0 30px 70px rgba(0, 0, 0, 0.45);
+}
+
+.riel {
+    position: fixed;
+    top: var(--inv-margen-y);
+    right: var(--inv-margen-x);
+    bottom: var(--inv-margen-y);
+    width: var(--inv-riel);
+    box-sizing: border-box;
+    padding: 14px 0 16px;
+    border-top: 4px solid rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    animation: riel-entra 0.26s var(--ease);
+}
+
+.panel {
+    position: fixed;
+    top: var(--inv-margen-y);
+    bottom: var(--inv-margen-y);
+    right: var(--inv-riel-total);
+    width: var(--inv-col);
+    box-sizing: border-box;
+    border-top: 4px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: col-entra 0.26s var(--ease);
+}
+
+@keyframes riel-entra {
+    from { opacity: 0; transform: translateX(calc(100% + var(--inv-margen-x))); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes col-entra {
+    from { opacity: 0; transform: translateX(calc(100% + var(--inv-riel-total))); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .riel, .panel { animation: none; }
+}
+
+/* ── Riel ───────────────────────────────────────────────────────────── */
+/* La placa de arriba: dentro va el icono del menu abierto (16/09/2026; antes
+   era el hexagono de la marca). */
+.riel__marca {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+}
+
+.riel__marca svg { width: 22px; height: 22px; }
+
+.riel__tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    min-height: 0;
+    overflow-y: auto;
+    /* Sitio para la sombra de 5 px del boton puesto, que si no se corta. */
+    padding-bottom: 5px;
+    scrollbar-width: none;
+}
+
+.riel__tabs::-webkit-scrollbar { display: none; }
+
+.riel__btn {
+    position: relative;
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, calc(0.45 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--arc-tinta3, #44444a);
+    transition: background 0.12s ease, color 0.12s ease;
+}
+
+.riel__btn:hover { background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf))); color: var(--ink-2); }
+
+.riel__btn.on {
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--accent-deep);
+    color: #fff;
+}
+
+.riel__ico { font-size: 20px; }
+
+/* El nombre al pasar por encima: sale hacia la izquierda, sobre el panel. */
+.riel__tip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    z-index: 3;
+    transform: translateY(-50%) translateX(4px) var(--skew);
+    padding: 6px 11px;
+    border-radius: 8px;
+    background: var(--ink-2);
+    color: #fff;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+.riel__btn:hover .riel__tip {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0) var(--skew);
+}
+
+.riel__hueco { flex: 1; min-height: 18px; }
+
+.riel__pie {
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+.head {
+    flex: none;
+    padding: 18px 22px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.head-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.head-txt { min-width: 0; }
+
+.badge {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 9px;
+    transform: var(--skew);
+    background: #d81b55;
+    box-shadow: 0 5px 0 var(--accent-deep);
+    display: grid;
+    place-items: center;
+    color: #fff;
+}
+
+.badge svg { transform: var(--unskew); stroke-width: 2.2; }
+
+h1 {
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 42px;
+    line-height: 0.86;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.sub {
+    margin-top: 2px;
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    white-space: nowrap;
+}
+
+.head-right { flex: none; text-align: right; }
+
+.count {
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 0.9;
+    font-variant-numeric: tabular-nums;
+}
+
+.count span { color: var(--ink-4); }
+
+.role {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+}
+
+/* ── Buscador y vistas ──────────────────────────────────────────────── */
+.toolbar {
+    flex: none;
+    margin: 16px 22px 0;
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+}
+
+.search {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 14px;
+    transform: var(--skew);
+    border-radius: 9px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    color: var(--arc-tinta3, #44444a);
+    cursor: text;
+}
+
+.search:focus-within { background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf))); }
+.search svg, .search input { transform: var(--unskew); }
+.search svg { flex: none; }
+
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    outline: none;
+    color: var(--ink);
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.search input::placeholder { color: var(--arc-tinta3, #44444a); }
+
+.btn-ghost,
+.btn-danger {
+    transform: var(--skew);
+    border-radius: 9px;
+    padding: 10px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    color: var(--ink-2);
+}
+
+.btn-ghost:hover { background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf))); }
+
+.btn-ghost.on {
+    background: var(--accent-grad);
+    box-shadow: 0 4px 0 var(--accent-deep);
+    color: #fff;
+}
+
+.btn-danger {
+    background: var(--accent-grad);
+    box-shadow: 0 5px 0 var(--accent-deep);
+    color: #fff;
+}
+
+.btn-ghost > *,
+.btn-danger > * { transform: var(--unskew); }
+
+/* En el diseño son 640 de panel; aqui, con el ancho del inventario, 548:
+   a 18 px el pie no cabia y los rotulos se pisaban. */
+.wide { flex: 1 1 auto; min-width: 0; font-size: 16px; padding: 11px 12px; }
+
+kbd {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-style: normal;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 1px 7px;
+    background: var(--ink-4);
+    color: #fff;
+}
+
+.btn-danger kbd,
+.btn-ghost.on kbd { background: #dcdde0; color: var(--accent-deep); box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+
+/* ── Cabecera de bloque ─────────────────────────────────────────────── */
+.rule {
+    flex: none;
+    margin: 18px 22px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rule h3 {
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 21px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.rule i {
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, rgba(255, 255, 255, calc(0.7 * var(--arc-vf))) 20%, rgba(255, 255, 255, calc(0 * var(--arc-vf))) 100%);
+}
+
+.rule span {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    white-space: nowrap;
+}
+
+/* ── Bindeos ────────────────────────────────────────────────────────── */
+.grid3 {
+    flex: none;
+    margin: 10px 22px 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px 8px;
+    padding-bottom: 5px;
+}
+
+.bind {
+    transform: var(--skew);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    background: rgba(255, 255, 255, calc(0.4 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.25);
+}
+
+/* Con animacion puesta. En el diseño era :has(.bind-clear); el CEF de
+   FiveM no es de fiar con :has(), asi que va con clase. */
+.bind.lleno {
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.85 * var(--arc-vf))), rgba(var(--arc-t-papel2), 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), 0 5px 0 rgba(var(--arc-t-relieve), 0.45);
+}
+
+.bind.hot {
+    background: var(--accent-grad);
+    box-shadow: 0 5px 0 var(--accent-deep);
+}
+
+.bind > * { transform: var(--unskew); }
+
+.key {
+    flex: none;
+    min-width: 22px;
+    border-radius: 4px;
+    padding: 2px 7px;
+    background: var(--ink-4);
+    color: #fff;
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+}
+
+.bind.hot .key { background: #dcdde0; color: var(--accent-deep); box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+.key.capturing { background: var(--arc-fondo1, #fff); color: #b3123f; box-shadow: 0 0 0 2px rgba(255, 255, 255, calc(0.6 * var(--arc-vf))); }
+
+.bind-name {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    color: var(--ink-4);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bind.lleno .bind-name { color: var(--ink-2); }
+.bind.hot .bind-name { color: #fff; }
+
+.bind-clear {
+    flex: none;
+    color: var(--ink-4);
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.bind-clear:hover { color: var(--accent-deep); }
+.bind.hot .bind-clear { color: #fff; }
+
+/* ── Categorias ─────────────────────────────────────────────────────── */
+.chips {
+    flex: none;
+    margin: 10px 22px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding-bottom: 4px;
+}
+
+.chip {
+    transform: var(--skew);
+    border-radius: 8px;
+    padding: 6px 11px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+
+.chip:hover { background: rgba(255, 255, 255, calc(0.78 * var(--arc-vf))); }
+
+.chip.on {
+    background: var(--accent-grad);
+    box-shadow: 0 4px 0 var(--accent-deep);
+    color: #fff;
+}
+
+/* ── Lista ──────────────────────────────────────────────────────────── */
+.grid2 {
+    flex: 1;
+    min-height: 0;
+    margin: 10px 22px 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: min-content;
+    gap: 5px;
+    align-content: start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Sin barra: que hay mas se ve porque la ultima fila queda a medias. */
+    scrollbar-width: none;
+}
+
+.grid2::-webkit-scrollbar { display: none; }
+
+.anim {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.95 * var(--arc-vf))), inset 0 0 0 1px rgba(255, 255, 255, calc(0.7 * var(--arc-vf)));
+    transition: background 0.12s ease;
+}
+
+.anim:hover { background: rgba(255, 255, 255, calc(0.82 * var(--arc-vf))); }
+
+/* Eligiendo animacion para un bindeo: la lista entera avisa. */
+.anim.picking { box-shadow: inset 0 0 0 1px rgba(223, 47, 99, 0.45); }
+.anim.picking:hover { box-shadow: inset 0 0 0 2px var(--accent); }
+
+.anim.playing {
+    background: linear-gradient(90deg, rgba(224, 7, 79, 0.9), rgba(255, 92, 137, 0.7));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, calc(0.5 * var(--arc-vf)));
+    color: #fff;
+}
+
+.a-rail { flex: none; width: 5px; background: rgba(var(--arc-t-linea), 0.3); }
+.a-rail.fav { background: var(--accent); }
+.anim.playing .a-rail { background: var(--arc-fondo1, #fff); }
+
+.a-body {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    padding: 8px 6px 9px 10px;
+}
+
+.a-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.a-n {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* La cursiva se sale por la derecha y el recorte la muerde. */
+    padding-right: 2px;
+}
+
+.a-nuevo {
+    flex: none;
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: var(--accent);
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.a-cmd {
+    display: block;
+    margin-top: 3px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--ink-4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anim.playing .a-name { color: #fff; }
+.anim.playing .a-nuevo { background: var(--arc-fondo1, #fff); color: #b3123f; }
+.anim.playing .a-cmd { color: #ffdbe6; }
+
+.a-tools {
+    flex: none;
+    padding: 0 8px 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tool {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.9 * var(--arc-vf)));
+    color: var(--arc-tinta3, #44444a);
+}
+
+.tool:hover { color: var(--ink); background: var(--arc-fondo1, #fff); }
+
+.tool.on {
+    background: var(--accent-grad);
+    box-shadow: 0 2px 0 var(--accent-deep);
+    color: #fff;
+}
+
+/* Sin diccionario no hay nada que previsualizar (andares, escenarios...). */
+.tool.off { opacity: 0.3; pointer-events: none; }
+
+.anim.playing .tool { background: rgba(0, 0, 0, 0.26); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.6 * var(--arc-vf))); color: #fff; }
+.anim.playing .tool.on { background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf))); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3); color: #b3123f; }
+
+.vacia {
+    grid-column: 1 / -1;
+    padding: 36px 0;
+    text-align: center;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+}
+
+/* ── En marcha ──────────────────────────────────────────────────────── */
+.now {
+    flex: none;
+    margin: 10px 22px 0;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, calc(0.42 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    transition: background 0.2s ease;
+}
+
+.now.playing {
+    background: #d81b55;
+    box-shadow: inset 0 0 0 2px #ff9cbc, 0 8px 22px rgba(224, 7, 79, 0.26);
+    color: #fff;
+}
+
+.now-body { flex: 1; min-width: 0; }
+
+.now-lbl {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    white-space: nowrap;
+}
+
+.now-name {
+    margin-top: 2px;
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink-4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 3px;
+}
+
+.now.playing .now-lbl,
+.now.playing .now-name { color: #fff; }
+
+.speeds { display: flex; gap: 4px; }
+
+.pill {
+    flex: none;
+    border-radius: 9px;
+    padding: 8px 11px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.85 * var(--arc-vf)));
+    color: var(--ink-2);
+    font-family: var(--cond);
+    font-style: italic;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pill em {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+}
+
+.pill.mono {
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 12px;
+    padding: 8px 9px;
+    letter-spacing: 0;
+}
+
+.now.playing .pill { background: rgba(0, 0, 0, 0.26); color: #fff; }
+
+.pill.on,
+.now.playing .pill.on {
+    background: rgba(255, 255, 255, calc(0.95 * var(--arc-vf)));
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.28);
+    color: var(--accent-deep);
+}
+
+.now:not(.playing) .pill.on {
+    background: var(--accent-grad);
+    box-shadow: 0 3px 0 var(--accent-deep);
+    color: #fff;
+}
+
+.pill.stop { color: #7a7362; }
+
+.now.playing .pill.stop {
+    background: rgba(0, 0, 0, 0.32);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, calc(0.55 * var(--arc-vf)));
+    color: #fff;
+}
+
+/* ── Pie ────────────────────────────────────────────────────────────── */
+.foot {
+    flex: none;
+    margin-top: 16px;
+    padding: 13px 22px 16px;
+    display: flex;
+    gap: 7px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, calc(0.5 * var(--arc-vf))), rgba(255, 255, 255, calc(0.3 * var(--arc-vf))));
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, calc(0.8 * var(--arc-vf)));
+}
+
+/* ── Borrar bindeos ─────────────────────────────────────────────────
+   Se mantiene pulsado: la barra rosa entra de izquierda a derecha y al
+   llenarse borra. Sin nada que borrar se queda apagado. */
+.borrar {
+    position: relative;
+    overflow: hidden;
+}
+
+.borrar__barra {
+    position: absolute;
+    inset: 0;
+    background: var(--accent-grad);
+    transform-origin: left center;
+    /* El scaleX lo pone la plantilla en linea, y asi pisa tambien el
+       unskew que llevan los hijos de .btn-ghost: la barra tiene que ir
+       inclinada con el boton. */
+    pointer-events: none;
+}
+
+.borrar kbd,
+.borrar span { position: relative; }
+
+/* El texto no se pone blanco al cargar: la mitad sin llenar sigue siendo
+   crema y ahi no se leeria. */
+.borrar.cargando kbd { background: #dcdde0; color: var(--accent-deep); box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #d81b55; }
+
+.borrar.off { opacity: 0.45; pointer-events: none; }
+
+/* ── Pantallas bajas ────────────────────────────────────────────────────
+   A 720 de alto, con todo puesto, a la lista le quedaba fila y media. Lo
+   primero que sobra son los chips: son las mismas categorias que el riel. */
+@media (max-height: 900px) {
+    .chips { display: none; }
+    .head { padding-top: 14px; }
+    h1 { font-size: 36px; }
+    .toolbar { margin-top: 12px; }
+    .rule { margin-top: 12px; }
+    .rule h3 { font-size: 18px; }
+    .grid3, .grid2, .now { margin-top: 8px; }
+    .bind { padding: 8px 11px; }
+    .now { padding: 9px 12px; }
+    .now-name { font-size: 20px; }
+    .foot { margin-top: 12px; padding: 10px 22px 12px; }
+    .wide { padding: 9px 12px; }
+}
+
+@media (max-height: 760px) {
+    .rule--now { display: none; }
+    .now { margin-top: 12px; }
+}
+
+/* ── Transiciones ───────────────────────────────────────────────────── */
+.fade-enter-active,
+.fade-leave-active,
+.fade-right-enter-active,
+.fade-right-leave-active { transition: opacity 0.3s; }
+
+.fade-enter,
+.fade-leave-to,
+.fade-right-enter,
+.fade-right-leave-to { opacity: 0; }
+
+/* ══ PEGATINA: el menu de animaciones con el estilo del logo ══════════════
+
+   A PRUEBA (03/10), SOLO EN ORIGEN: todo cuelga de
+   html; en Nación no entra ninguna regla y el
+   menu se queda con el «HUD Arcade» de arriba. Es la pareja de
+   origen_inventory/source-ui/src/assets/styles/pegatina.css y del bloque
+   PEGATINA de origen_map/html/estilo.css: mismas reglas y mismos colores.
+
+   Papel blanco, canto negro grueso, sombra dura, rosa con tinta
+   NEGRA para lo encendido, nada inclinado.
+
+   Los cantos son box-shadow, no border: no cambia ninguna medida.
+   Para quitarlo: borrar de aqui al final, las dos familias (Knewave,
+   Oxanium) del <link> de index.html y el data-brocha del <h1>.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Tokens y hueco ─────────────────────────────────────────────────── */
+/*  html:root y no html a secas: los de serie van en :root, que pesa mas
+    que html, y se quedaban los suyos (crema, piezas inclinadas). */
+html:root {
+    --peg-cifra: "Oxanium", "Barlow Condensed", sans-serif;
+    --peg-brocha: "Knewave", "Barlow Condensed", cursive;
+
+    --arc-vf: 1;
+    --arc-t-hueco: 11, 11, 13;
+    --arc-t-linea: 11, 11, 13;
+    --arc-t-relieve: 0, 0, 0;
+    --arc-t-papel1: 220, 221, 224;
+    --arc-t-papel2: 220, 221, 224;
+    --arc-t-papel3: 220, 221, 224;
+    --arc-t-elegido: 255, 214, 228;
+    --arc-papel1: #dcdde0;
+    --arc-papel2: #dcdde0;
+    --arc-accent-texto: #b3123f;
+    --ogn-acc-texto: #b3123f;
+
+    --accent: #d81b55;
+    --accent-deep: #000;
+    --accent-grad: linear-gradient(#d81b55, #d81b55);
+    --ink: #0b0b0d;
+    --ink-2: #0b0b0d;
+    --ink-3: #44444a;
+    --ink-4: #55555c;
+    --glass: #c4c6ca;
+    /* Nada inclinado. */
+    --skew: skewX(0deg);
+    --unskew: skewX(0deg);
+
+    /*  Cada pieza lleva por fuera su canto (4) y su sombra (7), y la de al
+        lado su canto: con 10 px se pisaban; va el aire del riel al canto (07/10). --inv-riel-total
+        sale de este, asi que la columna se aparta sola. */
+    --inv-hueco: var(--inv-margen-x);
+}
+
+/* ── Las dos piezas: columna y riel ─────────────────────────────────── */
+html .ogn .panel,
+html .ogn .riel {
+    background: #c4c6ca;
+    border-top-color: #c4c6ca;
+    border-radius: 20px;
+    box-shadow: 0 0 0 1.5px #000, 3px 3px 0 1.5px #000;
+    color: #0b0b0d;
+}
+
+/* ── Riel: el negro va en los botones ───────────────────────────────── */
+html .ogn .riel__marca { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #d81b55; }
+html .ogn .riel__btn { background: #0b0b0d; box-shadow: none; color: #fff; }
+html .ogn .riel__btn:hover { background: #0b0b0d; color: #d81b55; }
+html .ogn .riel__btn.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .riel__tip { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn .riel__pie { color: #0b0b0d; }
+
+/* ── Cabecera ───────────────────────────────────────────────────────── */
+html .ogn .badge {
+    transform: rotate(-5deg);
+    background: #d81b55;
+    box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000;
+    color: #000;
+}
+html .ogn .badge svg { transform: none; }
+html .ogn .head h1 { font-style: italic; color: #0b0b0d; }
+html .ogn .sub { color: #44444a; }
+
+/*  El rotulo a brocha DEBAJO del titulo, como «Mochila personal» en el
+    inventario. El texto viene en el data-brocha del <h1> (index.html); sin
+    estas reglas el atributo no pinta nada, asi que en Nación no sale y alli
+    sigue la linea de datos. Ocupa el sitio de esa linea, que se deja con
+    visibility:hidden para que la cabecera mida lo mismo. */
+html .ogn .head h1[data-brocha] { position: relative; }
+html .ogn .head h1[data-brocha] ~ .sub { visibility: hidden; }
+html .ogn .head h1[data-brocha]::after {
+    content: attr(data-brocha);
+    position: absolute;
+    left: 6px;
+    /* Con 1 px la brocha, girada, se montaba en el pie de las letras. */
+    top: calc(100% + 6px);
+    font-family: var(--peg-brocha);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 17px;
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    color: #d81b55;
+    pointer-events: none;
+    transform: rotate(-3deg);
+    transform-origin: left center;
+    text-shadow:
+        1.5px 0 #000, -1.5px 0 #000, 0 1.5px #000, 0 -1.5px #000,
+        1.2px 1.2px #000, -1.2px 1.2px #000, 1.2px -1.2px #000, -1.2px -1.2px #000,
+        3px 3.5px 0 #000;
+}
+
+html .ogn .count {
+    font-family: var(--peg-cifra);
+    font-style: normal;
+    font-weight: 800;
+    color: #0b0b0d;
+}
+html .ogn .count span { color: #55555c; }
+html .ogn .role { color: #44444a; }
+
+/* ── Buscador y vistas ──────────────────────────────────────────────── */
+html .ogn .search { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn .search:focus-within { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #d81b55, 2px 2px 0 #000; }
+html .ogn .search input { color: #0b0b0d; }
+html .ogn .search input::placeholder { color: #55555c; }
+
+html .ogn .btn-ghost { border-radius: 11px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn .btn-ghost:hover { background: #e6e7ea; }
+html .ogn .btn-ghost:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .btn-ghost.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .btn-ghost.on:hover { background: #df2f63; }
+html .ogn .btn-danger { border-radius: 11px; background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .btn-danger:hover { background: #df2f63; }
+html .ogn .btn-danger:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+
+html .ogn kbd {
+    background: #0b0b0d;
+    font-family: var(--peg-cifra);
+    font-weight: 800;
+    color: #fff;
+}
+html .ogn .btn-danger kbd,
+html .ogn .btn-ghost.on kbd { background: #000; color: #fff; }
+
+/* ── Cabecera de bloque ─────────────────────────────────────────────── */
+html .ogn .rule h3 { color: #0b0b0d; }
+html .ogn .rule i { border-radius: 2px; background: #d81b55; }
+html .ogn .rule span { color: #55555c; }
+
+/* ── Bindeos ────────────────────────────────────────────────────────── */
+html .ogn .bind { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .bind.lleno { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .ogn .bind.hot { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; }
+html .ogn .key {
+    background: #0b0b0d;
+    font-family: var(--peg-cifra);
+    font-weight: 800;
+    color: #fff;
+}
+html .ogn .bind.hot .key { background: #000; color: #fff; }
+html .ogn .key.capturing { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #b3123f; }
+html .ogn .bind-name { color: #73737c; }
+html .ogn .bind.lleno .bind-name { color: #0b0b0d; }
+html .ogn .bind.hot .bind-name { color: #000; }
+html .ogn .bind-clear { color: #55555c; }
+html .ogn .bind-clear:hover { color: #b3123f; }
+html .ogn .bind.hot .bind-clear { color: #000; }
+
+/* ── Categorias ─────────────────────────────────────────────────────── */
+html .ogn .chip { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn .chip:hover { background: #e6e7ea; }
+html .ogn .chip:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .chip.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .chip.on:hover { background: #df2f63; }
+
+/* ── Lista ──────────────────────────────────────────────────────────── */
+html .ogn .anim { border-radius: 12px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .anim:hover { background: #e6e7ea; }
+/*  Eligiendo animacion para un bindeo: la lista entera avisa, en rosa. */
+html .ogn .anim.picking { box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .ogn .anim.picking:hover { background: #ffd6e4; box-shadow: inset 0 0 0 1.5px #d81b55; }
+html .ogn .anim.playing { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .ogn .anim.playing:hover { background: #df2f63; }
+
+/*  El lomo de la fila tapa el canto de la izquierda (el canto es una sombra
+    interior y el lomo va encima): en negro hace de canto; el de favorita es
+    rosa y se dibuja el canto el mismo. */
+html .ogn .a-rail { background: #0b0b0d; }
+html .ogn .a-rail.fav { background: #d81b55; box-shadow: inset 2.5px 0 0 #000, inset 0 2.5px 0 #000, inset 0 -2.5px 0 #000; }
+html .ogn .anim.picking .a-rail { background: #d81b55; box-shadow: none; }
+html .ogn .anim.playing .a-rail { background: #000; box-shadow: none; }
+
+html .ogn .a-name { color: #0b0b0d; }
+html .ogn .a-nuevo { background: #d81b55; color: #000; }
+html .ogn .a-cmd { color: #55555c; }
+html .ogn .anim.playing .a-name { color: #000; }
+html .ogn .anim.playing .a-nuevo { background: #000; color: #fff; }
+html .ogn .anim.playing .a-cmd { color: #0b0b0d; }
+
+html .ogn .tool { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn .tool:hover { background: #e6e7ea; color: #0b0b0d; }
+html .ogn .tool.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000; color: #000; }
+html .ogn .anim.playing .tool { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; color: #0b0b0d; }
+html .ogn .anim.playing .tool.on { background: #000; box-shadow: none; color: #fff; }
+
+html .ogn .vacia { color: #55555c; }
+
+/* ── En marcha ──────────────────────────────────────────────────────── */
+html .ogn .now { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .now.playing { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .now-lbl { color: #55555c; }
+html .ogn .now-name { color: #73737c; }
+html .ogn .now.playing .now-lbl,
+html .ogn .now.playing .now-name { color: #000; }
+
+html .ogn .pill { border-radius: 10px; background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+html .ogn .pill.mono { font-family: var(--peg-cifra); font-weight: 800; }
+html .ogn .pill:active { transform: translate(2px, 2px); box-shadow: inset 0 0 0 1.5px #000; }
+html .ogn .now.playing .pill { background: #dcdde0; color: #0b0b0d; }
+html .ogn .pill.on,
+html .ogn .now.playing .pill.on { background: #0b0b0d; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #fff; }
+html .ogn .now:not(.playing) .pill.on { background: #d81b55; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #000; }
+html .ogn .pill.stop { color: #55555c; }
+html .ogn .now.playing .pill.stop { background: #dcdde0; box-shadow: inset 0 0 0 1.5px #000, 2px 2px 0 #000; color: #0b0b0d; }
+
+/* ── Pie ────────────────────────────────────────────────────────────── */
+html .ogn .foot { background: none; box-shadow: inset 0 3px 0 #000; }
+/*  La barra de «mantener para borrar» va encima del canto del boton (que es
+    una sombra interior): se lo dibuja ella arriba y abajo. */
+html .ogn .borrar__barra { background: #d81b55; box-shadow: inset 0 3px 0 #000, inset 0 -3px 0 #000; }
+html .ogn .borrar.cargando kbd { background: #000; color: #fff; }
+
+/*  El pie: con el canto y sin inclinar, «Mantén · Borrar bindeos» no cabia
+    en su tercio y el texto tocaba el borde. Menos aire por dentro. */
+html .ogn .foot .wide { padding-left: 9px; padding-right: 9px; gap: 7px; }
+html .ogn .foot .wide span { letter-spacing: 0.04em; }
+
+/* ── Repaso 06/10: categorias en una sola fila y lista con barra ───────
+   Las categorias no saltan de linea: si no caben se desplazan de lado
+   (rueda del raton), sin barra. La lista de animaciones desplaza con una
+   barra fina a la vista: nada cortado a ciegas. */
+html .ogn .chips { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; padding: 0 4px 4px 0; }
+html .ogn .chips::-webkit-scrollbar { display: none; }
+html .ogn .chips .chip { flex: none; }
+html .ogn .grid2 { scrollbar-width: thin; scrollbar-color: #0b0b0d transparent; padding-right: 4px; }
+html .ogn .grid2::-webkit-scrollbar { display: block; width: 5px; }
+html .ogn .grid2::-webkit-scrollbar-track { background: transparent; }
+html .ogn .grid2::-webkit-scrollbar-thumb { background: #0b0b0d; border-radius: 3px; }
+
+/* >>> CIFRAS CENTRADAS (06/10): teclas del pie (ESC, MANTEN, X), teclas de los atajos (NUM1...) y
+   pastillas de velocidad (0.5X, 1X, 1.5X) iban 1 px altas. */
+html .ogn kbd { padding: 2px 7px 0; }
+html .ogn .key { padding: 3px 7px 1px; }
+html .ogn .pill.mono { padding: 9px 9px 7px; }
+/* <<< FIN CIFRAS CENTRADAS */
+

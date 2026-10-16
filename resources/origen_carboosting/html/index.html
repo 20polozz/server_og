@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en" data-escala>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&family=Barlow:wght@500;600&family=Knewave&family=Oxanium:wght@800&display=swap" />
+        <!-- ORIGEN · cifras centradas: Oxanium trae la cifra alta en su caja (sube 79 / baja 21
+             con mayusculas de 69) y Barlow Condensed la letra baja (100 / 20 con 71): con estas
+             medidas las mayusculas y cifras quedan en el centro de chapas, contadores y pastillas
+             (medido en 25 tamaños). Mismos ficheros que el <link> de arriba; tiene que ir DESPUES
+             de el (la ultima cara declarada gana). Lo genera fuente2.py del repaso del 06/10. -->
+        <style data-ogn-cifras>@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3XmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrB3Xmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3TmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrY3Tmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmtYkGUrs.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:italic;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxyL3I-JCGChYJ8VI-L6OO_au7B6xTrf3fmu4kG.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3jWuZEC.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:96%;descent-override:24%;line-gap-override:0%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiFD3ULdw.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;ascent-override:85%;descent-override:15%;line-gap-override:25%}@font-face{font-family:"Oxanium";font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/oxanium/v21/RrQPboN_4yJ0JmiMUW7sIGjd1IA9G83JeUiLD3U.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;ascent-override:85%;descent-override:15%;line-gap-override:25%}</style>
+        <link href="./css/style.css?v=g30710" media="all" rel="stylesheet" />
+        <link href="./css/ogn-admin.css" media="all" rel="stylesheet" />
+        <!-- El estilo claro «HUD Arcade»: va LA ÚLTIMA, repinta todo lo anterior. -->
+        <link href="./css/arcade.css?v=oxa0710" media="all" rel="stylesheet" />
+        <!-- El estilo «pegatina», solo en Origen (html): va detrás de arcade.css. -->
+        <link href="./css/pegatina.css?v=riel0710" media="all" rel="stylesheet" />
+        <!-- El menu del jugador en riel (07/10): va detras de la pegatina. -->
+        <link href="./css/riel.css?v=hub0810e" media="all" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Origen Contracts</title>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ORIGEN · vigilante del raton. NO EDITAR A MANO: este trozo es identico
+         en todas las interfaces del servidor y lo reparte
+         kit/repartir-foco.py. El lado de Lua es @origen_map/shared/foco.lua:
+         mientras el recurso tiene el raton, pregunta cada 1,5 s si esta
+         pagina enseña algo, y si dos veces seguidas no, suelta el raton.
+         Ante la duda contesta que SI: soltar el raton de una pantalla que se
+         ve es peor que tardar en soltarlo. -->
+    <script>
+      (function () {
+        // El fetch del navegador, guardado antes de que la pagina cargue lo
+        // suyo: alguna (origen_titlemenu) declara un `fetch` global propio.
+        var enviar = window.fetch.bind(window)
+        var TOPE = 6000
+        var HUECO = /^(transparent|rgba\([^)]*,\s*0(\.0+)?\))$/
+        var SIEMPRE = { IMG: 1, VIDEO: 1, CANVAS: 1, IFRAME: 1, INPUT: 1, TEXTAREA: 1, SELECT: 1, BUTTON: 1, svg: 1, SVG: 1 }
+        var color = function (c) { return c && !HUECO.test(c) }
+        var borde = function (cs) {
+          return (parseFloat(cs.borderTopWidth) > 0 && color(cs.borderTopColor)) ||
+            (parseFloat(cs.borderBottomWidth) > 0 && color(cs.borderBottomColor)) ||
+            (parseFloat(cs.borderLeftWidth) > 0 && color(cs.borderLeftColor)) ||
+            (parseFloat(cs.borderRightWidth) > 0 && color(cs.borderRightColor))
+        }
+        var capa = function (cs) {
+          return color(cs.backgroundColor) || cs.backgroundImage !== 'none' ||
+            cs.boxShadow !== 'none' || borde(cs)
+        }
+        var pseudo = function (el, cual) {
+          var ps = getComputedStyle(el, cual)
+          var c = ps.content
+          if (!c || c === 'none' || c === 'normal') return false
+          return capa(ps) || (c.length > 2 && color(ps.color))
+        }
+        var pinta = function (el, cs) {
+          if (SIEMPRE[el.tagName]) return true
+          if (capa(cs)) return true
+          if (color(cs.color) && parseFloat(cs.fontSize) > 0) {
+            for (var h = el.firstChild; h; h = h.nextSibling) {
+              if (h.nodeType === 3 && h.nodeValue.trim()) return true
+            }
+          }
+          return pseudo(el, '::before') || pseudo(el, '::after')
+        }
+        var hayAlgo = function () {
+          if (!document.body) return true
+          var W = window.innerWidth
+          var H = window.innerHeight
+          var paseo = document.createTreeWalker(document.body, 1, {
+            acceptNode: function (el) {
+              var cs = getComputedStyle(el)
+              // Lo que no se ve no deja ver a sus hijos: se salta la rama.
+              if (cs.display === 'none' || parseFloat(cs.opacity) < 0.02) return 2
+              // Ni lo marcado como HUD fijo (sin raton): no es una pantalla
+              // abierta, y si contara la red no soltaria nunca.
+              if (el.hasAttribute('data-foco-ignora')) return 2
+              return 1
+            }
+          })
+          var n = 0
+          var el
+          while ((el = paseo.nextNode())) {
+            if (++n > TOPE) return true
+            var cs = getComputedStyle(el)
+            if (cs.visibility !== 'visible') continue
+            var r = el.getBoundingClientRect()
+            if (r.width < 2 || r.height < 2) continue
+            if (r.right <= 0 || r.bottom <= 0 || r.left >= W || r.top >= H) continue
+            if (pinta(el, cs)) return true
+          }
+          return false
+        }
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (!d || d.accion !== 'origen:foco:mira') return
+          var visto = true
+          // Una pagina con HUD fijo (siempre pinta algo) dice ella misma si
+          // hay una pantalla CON RATON delante: window.__origenFocoVisto.
+          try {
+            visto = typeof window.__origenFocoVisto === 'function'
+              ? window.__origenFocoVisto() !== false
+              : hayAlgo()
+          } catch (err) { visto = true }
+          try {
+            var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+            if (!yo) return
+            enviar('https://' + yo + '/origen:foco:veo', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: JSON.stringify({ n: d.n, visto: visto })
+            }).catch(function () {})
+          } catch (err) {}
+        })
+        window.__origenFocoHayAlgo = hayAlgo
+      })()
+    </script>
+    <!-- /ORIGEN · vigilante del raton -->
+    <!-- ORIGEN · marca (el color de la casa segun el servidor: origen o
+         nacion). NO EDITAR A MANO: este trozo es identico en todas las
+         interfaces y lo reparte kit/repartir-marca.py desde kit/marca.js.
+         En origen no hace nada. -->
+    <script>
+      (function () {
+        var PALETAS = {
+          /* tono: el de la marca nueva, en grados.
+             luz:  por donde pasa la escala, [luz del rosa, luz nueva]. El naranja
+                   es mas claro que el rosa a igual papel: el de los botones sube,
+                   y el de LEER sobre crema se queda oscuro para que se lea.
+             fijos: los que tienen que salir clavados, pedidos por el usuario:
+                   acc #FD8A23 · soft #FFAA5C · pale #FFD9B6 · deep #6A3402 */
+          nacion: {
+            tono: 28.5,
+            sat: 1.04,
+            luz: [[0, 0], [0.267, 0.212], [0.396, 0.36], [0.453, 0.565], [0.714, 0.68], [0.8, 0.857], [1, 1]],
+            fijos: {
+              e0074f: [253, 138, 35], fc0259: [253, 138, 35],
+              /* el rosa menos neon (06/10) sale con el MISMO naranja que el rosa de antes */
+              d81b55: [255, 146, 48], df2f63: [255, 154, 64], b3123f: [227, 108, 0],
+              ff6d97: [255, 170, 92],
+              fd9bbd: [255, 217, 182],
+              '7d0b31': [106, 52, 2], '82173c': [106, 52, 2]
+            }
+          }
+        }
+        /* La familia del rosa: del granate antiguo (#850e49) al rosa-rojo del movil
+           (#c2153f). El rojo de los errores (350 en adelante) queda fuera. */
+        var DESDE = 318, HASTA = 349, SAT_MIN = 0.3
+
+        var raiz = document.documentElement
+        var paleta = null
+        var memo = {}
+
+        var hex2 = function (n) { return (n < 16 ? '0' : '') + n.toString(16) }
+
+        /* -> [r, g, b] de la marca nueva, o null si el color no es de la familia. */
+        var cambiar = function (r, g, b) {
+          var k = (r << 16) | (g << 8) | b
+          if (k in memo) return memo[k]
+          var res = null
+          var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn
+          if (d > 0) {
+            var l = (mx + mn) / 510
+            var s = d / (255 - Math.abs(mx + mn - 255))
+            var h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4
+            h = (h * 60 + 360) % 360
+            if (s >= SAT_MIN && h >= DESDE && h < HASTA) {
+              res = paleta.fijos[hex2(r) + hex2(g) + hex2(b)]
+              if (!res) {
+                var c = paleta.luz, L = l
+                for (var i = 1; i < c.length; i++) {
+                  if (l <= c[i][0]) {
+                    L = c[i - 1][1] + (c[i][1] - c[i - 1][1]) * (l - c[i - 1][0]) / (c[i][0] - c[i - 1][0])
+                    break
+                  }
+                }
+                var S = Math.min(1, s * paleta.sat)
+                var C = (1 - Math.abs(2 * L - 1)) * S
+                var H = paleta.tono / 60
+                var X = C * (1 - Math.abs(H % 2 - 1))
+                var m = L - C / 2
+                var t = H < 1 ? [C, X, 0] : H < 2 ? [X, C, 0] : H < 3 ? [0, C, X] : H < 4 ? [0, X, C] : H < 5 ? [X, 0, C] : [C, 0, X]
+                res = [Math.round((t[0] + m) * 255), Math.round((t[1] + m) * 255), Math.round((t[2] + m) * 255)]
+              }
+            }
+          }
+          return (memo[k] = res)
+        }
+
+        /* Todo color escrito en un texto de CSS: #hex (3, 4, 6 u 8 cifras, tambien
+           como %23 dentro de un data:), rgb()/rgba() y los tres canales sueltos de
+           un token (`--acc-rgb: 224, 7, 79`). */
+        var COLOR = /(#|%23)([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![0-9a-zA-Z_-])|(rgba?\(\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})(\s*[, ]\s*)(\d{1,3})|(--[\w-]+\s*:\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(\s*,\s*)(\d{1,3})(?=\s*(?:;|!|$))/g
+
+        var pintar = function (texto) {
+          if (!paleta || !texto) return texto
+          return texto.replace(COLOR, function (todo, almo, hex, f1, r1, s1, g1, s2, b1, f2, r2, s3, g2, s4, b2) {
+            var n
+            if (hex) {
+              var v = hex.length < 6 ? hex.replace(/./g, '$&$&') : hex
+              n = cambiar(parseInt(v.substr(0, 2), 16), parseInt(v.substr(2, 2), 16), parseInt(v.substr(4, 2), 16))
+              return n ? almo + hex2(n[0]) + hex2(n[1]) + hex2(n[2]) + v.substr(6) : todo
+            }
+            if (f1) {
+              n = cambiar(+r1, +g1, +b1)
+              return n && +r1 < 256 && +g1 < 256 && +b1 < 256 ? f1 + n[0] + s1 + n[1] + s2 + n[2] : todo
+            }
+            n = cambiar(+r2, +g2, +b2)
+            return n && +r2 < 256 && +g2 < 256 && +b2 < 256 ? f2 + n[0] + s3 + n[1] + s4 + n[2] : todo
+          })
+        }
+
+        /* Las hojas. NO SE MODIFICA NINGUNA REGLA: la hoja se lee, se repinta el
+           texto y se sustituye entera por un <style> en su mismo sitio.
+
+           Es a proposito y costo un cuelgue encontrarlo (02/10): en el Chromium 103
+           del juego, escribir en una regla de la hoja del movil (Tailwind v4)
+           --`regla.style.cssText = ...` o un solo `setProperty`-- deja el navegador
+           de TODAS las interfaces en un bucle del que no sale. En otras hojas no
+           pasa y en un Chromium moderno tampoco, asi que no se ve en los bancos.
+           Leer si se puede; escribir, no. */
+        var cambio = false
+        var urls = function (texto, base) {
+          // Al pasar de <link> a <style> las rutas dejan de ser relativas al .css.
+          return texto.replace(/url\(\s*(["']?)([^"')]+)\1\s*\)/g, function (todo, c, u) {
+            if (/^(data:|blob:|https?:|nui:|about:|#)/i.test(u)) return todo
+            try { return 'url("' + new URL(u, base).href + '")' } catch (e) { return todo }
+          })
+        }
+        var texto = function (lista, base) {
+          var out = []
+          for (var i = 0; i < lista.length; i++) {
+            var r = lista[i], c = r.cssText, k = c.indexOf('{')
+            // Un @import de casa se trae dentro: su hoja no tiene etiqueta propia.
+            var dentro = null
+            try { dentro = r.styleSheet && r.styleSheet.cssRules } catch (e) {}
+            if (dentro) {
+              var t = texto(dentro, r.styleSheet.href || base)
+              var m = r.media && r.media.mediaText
+              out.push(m ? '@media ' + m + ' {' + t + '}' : t)
+            } else if (k < 0) {
+              // Sin llaves: un @import de fuera, un @namespace... o declaraciones
+              // sueltas dentro de una regla anidada.
+              var p = r.style ? pintar(c) : c
+              if (p !== c) cambio = true
+              out.push(urls(p, base))
+            } else if (r.cssRules) {
+              // Un grupo (@media, @supports, @layer, @keyframes) o, en un
+              // Chromium con anidado, una regla con hijas.
+              var cuerpo = ''
+              if (r.style) {
+                var d = r.style.cssText, nd = pintar(d)
+                if (nd !== d) cambio = true
+                cuerpo = urls(nd, base)
+              }
+              out.push(c.substr(0, k) + '{' + cuerpo + texto(r.cssRules, base) + '}')
+            } else {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              var b = c.substr(k), nb = pintar(b)
+              if (nb !== b) cambio = true
+              out.push(c.substr(0, k) + urls(nb, base))
+            }
+          }
+          return out.join('\n')
+        }
+        /* Tope de reescrituras por nodo. Si otro codigo de la pagina vuelve a
+           poner el rosa cada vez que se lo cambiamos, se le deja ganar: mejor un
+           rosa suelto que dos observadores persiguiendose sin fin. */
+        var veces = new WeakMap()
+        var harto = function (nodo) {
+          var n = (veces.get(nodo) || 0) + 1
+          veces.set(nodo, n)
+          return n > 40
+        }
+        var hoja = function (h) {
+          var lista, dueno = h && h.ownerNode
+          if (!dueno || dueno.nodeType !== 1) return
+          // Una hoja de otro origen (fuentes de Google) no deja leer sus reglas.
+          try { lista = h.cssRules } catch (e) { return }
+          if (!lista || !lista.length) return
+          cambio = false
+          var nuevo
+          try { nuevo = texto(lista, h.href || document.baseURI) } catch (e) { return }
+          if (!cambio || harto(dueno)) return
+          if (dueno.nodeName.toLowerCase() === 'style') {
+            dueno.textContent = nuevo
+            return
+          }
+          var s = document.createElement('style')
+          s.setAttribute('data-ogn-marca', h.href || '')
+          if (dueno.media) s.media = dueno.media
+          s.textContent = nuevo
+          dueno.parentNode.insertBefore(s, dueno.nextSibling)
+          dueno.disabled = true
+        }
+        var hojas = function () {
+          // Sobre una copia: sustituir una hoja cambia la lista mientras se recorre.
+          var l = Array.prototype.slice.call(document.styleSheets)
+          for (var i = 0; i < l.length; i++) hoja(l[i])
+        }
+
+        /* Lo escrito en el propio elemento: style="" y los atributos de SVG. */
+        var ATRIBUTOS = ['style', 'fill', 'stroke', 'stop-color', 'flood-color', 'color']
+        var elemento = function (el) {
+          for (var i = 0; i < ATRIBUTOS.length; i++) {
+            var v = el.getAttribute(ATRIBUTOS[i])
+            if (v) {
+              var n = pintar(v)
+              if (n !== v && !harto(el)) el.setAttribute(ATRIBUTOS[i], n)
+            }
+          }
+        }
+        var SELECTOR = '[style],[fill],[stroke],[stop-color],[flood-color]'
+        var rama = function (nodo) {
+          if (nodo.nodeType !== 1) return
+          var nombre = nodo.nodeName.toLowerCase()
+          if (nombre === 'style') {
+            hoja(nodo.sheet)
+            // El texto de un <style> puede llegar despues que la etiqueta.
+            setTimeout(function () { hoja(nodo.sheet) }, 0)
+            return
+          }
+          if (nombre === 'link') {
+            hoja(nodo.sheet)
+            nodo.addEventListener('load', function () { hoja(nodo.sheet) })
+            return
+          }
+          elemento(nodo)
+          var dentro = nodo.querySelectorAll(SELECTOR + ',style')
+          for (var i = 0; i < dentro.length; i++) {
+            if (dentro[i].sheet) hoja(dentro[i].sheet)
+            else elemento(dentro[i])
+          }
+        }
+
+        /* Lo que no pasa por el DOM: el <canvas> y las reglas que mete una libreria
+           a mano. Solo se enganchan con otra marca puesta. */
+        var ganchos = function () {
+          try {
+            var P = CanvasRenderingContext2D.prototype
+            var uno = function (n) {
+              var d = Object.getOwnPropertyDescriptor(P, n)
+              if (!d || !d.set) return
+              Object.defineProperty(P, n, {
+                configurable: true,
+                enumerable: d.enumerable,
+                get: d.get,
+                set: function (v) { d.set.call(this, typeof v === 'string' ? pintar(v) : v) }
+              })
+            }
+            uno('fillStyle'); uno('strokeStyle'); uno('shadowColor')
+            var parada = CanvasGradient.prototype.addColorStop
+            CanvasGradient.prototype.addColorStop = function (o, c) {
+              return parada.call(this, o, typeof c === 'string' ? pintar(c) : c)
+            }
+          } catch (e) {}
+          try {
+            var meter = CSSStyleSheet.prototype.insertRule
+            CSSStyleSheet.prototype.insertRule = function (t, i) {
+              // Solo el cuerpo: en el selector un `#fab` es un id, no un color.
+              if (typeof t === 'string') {
+                var c = t.indexOf('{')
+                if (c > 0) t = t.substr(0, c) + pintar(t.substr(c))
+              }
+              return arguments.length > 1 ? meter.call(this, t, i) : meter.call(this, t)
+            }
+          } catch (e) {}
+        }
+
+        var activar = function (nombre) {
+          if (paleta || !PALETAS.hasOwnProperty(nombre)) return
+          paleta = PALETAS[nombre]
+          raiz.dataset.marca = nombre
+          /* El mismo freno que el del tema: una propiedad EN TRANSICION cuyo valor
+             sale de un var() se queda congelada en el color viejo cuando la
+             variable cambia desde una hoja. */
+          var freno = document.createElement('style')
+          freno.textContent = '*,*::before,*::after{transition:none !important}'
+          ;(document.head || raiz).appendChild(freno)
+          ganchos()
+          hojas()
+          rama(raiz)
+          new MutationObserver(function (cambios) {
+            for (var i = 0; i < cambios.length; i++) {
+              var c = cambios[i]
+              if (c.type === 'attributes') elemento(c.target)
+              // Le han cambiado el texto a un <style> (la recarga en caliente).
+              else if (c.target.nodeName.toLowerCase() === 'style') hoja(c.target.sheet)
+              else for (var j = 0; j < c.addedNodes.length; j++) rama(c.addedNodes[j])
+            }
+          }).observe(raiz, { subtree: true, childList: true, attributes: true, attributeFilter: ATRIBUTOS })
+          // Las hojas que aun no habian cargado cuando llego la respuesta.
+          document.addEventListener('DOMContentLoaded', hojas)
+          window.addEventListener('load', hojas)
+          if (document.body) void document.body.offsetHeight
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { freno.remove() })
+          })
+          // Para la pagina que quiera saberlo (un logo que cambiar, por ejemplo).
+          window.postMessage({ accion: 'origen:marca:puesta', marca: nombre }, '*')
+        }
+
+        raiz.dataset.marca = 'origen'
+        // Para quien dibuja con colores que esto no ve (WebGL, una imagen).
+        window.__ognMarca = { pintar: pintar, de: function () { return raiz.dataset.marca } }
+
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:marca') activar(d.marca)
+        })
+        // Los bancos de pruebas, sin juego: index.html?marca=nacion
+        try {
+          var q = /[?&]marca=([\w-]+)/.exec(location.search)
+          if (q) activar(q[1])
+        } catch (e) {}
+        // La pantalla de carga: ahi no hay Lua de cliente, lo trae el servidor.
+        try {
+          if (window.nuiHandoverData && window.nuiHandoverData.marca) activar(window.nuiHandoverData.marca)
+        } catch (e) {}
+        /* Y lo normal: preguntarselo al Lua de este recurso. Con reintentos, porque
+           la pagina puede nacer antes de que su script haya puesto el callback. */
+        var intentos = 0
+        var preguntar = function () {
+          var yo = null
+          try { yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null } catch (e) {}
+          // Hay marcos donde el juego no pone esa funcion (visto en el movil al
+          // recargarse): el nombre del recurso tambien va en la direccion.
+          if (!yo) {
+            var h = /^cfx-nui-(.+)$/.exec(location.hostname)
+            if (h) yo = h[1]
+          }
+          if (!yo) return
+          fetch('https://' + yo + '/origen:marca:dame', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+            body: '{}'
+          })
+            .then(function (r) { return r.json() })
+            .then(function (d) {
+              if (d && d.marca) activar(d.marca)
+              else throw new Error('sin marca')
+            })
+            .catch(function () { if (++intentos < 6) setTimeout(preguntar, 1500) })
+        }
+        preguntar()
+      })()
+    </script>
+  
+    <!-- ORIGEN · interfaz. NO EDITAR A MANO: este trozo es identico en todas
+         las interfaces del servidor y lo reparte kit/repartir-tema.py. El
+         lado de Lua es @origen_map/shared/tema.lua. Lleva el silencio de la
+         interfaz y la escala por encima de 1080p. -->
+    <script>
+      (function () {
+        var raiz = document.documentElement
+        /* El silencio de la interfaz (boton del riel del inventario, 27/09).
+           Calla los RUIDOS de pantalla: clics, abrir, cerrar, pasar por
+           encima. No la musica ni los videos (<video> o en bucle) ni los
+           pitidos de la radio ni las voces de los personajes (carpeta
+           voces/): eso es contenido, no ruido de menu.
+           Se engancha a play() y a las conexiones de Web Audio antes de que
+           cargue el bundle, asi vale para todas las paginas sin tocarlas. */
+        var callado = false
+        var LIBRE = /walkie|music|musica|radio|[/]voces[/]/i
+        var esRuido = function (el) {
+          return el.tagName !== 'VIDEO' && !el.loop && !LIBRE.test(el.currentSrc || el.src || '')
+        }
+        var ajustar = function (el) {
+          if (callado && esRuido(el)) {
+            if (!el.muted) { el.muted = true; el.__origenCallado = true }
+          } else if (el.__origenCallado) {
+            el.muted = false; el.__origenCallado = false
+          }
+        }
+        try {
+          var reproducir = HTMLMediaElement.prototype.play
+          HTMLMediaElement.prototype.play = function () {
+            ajustar(this)
+            return reproducir.apply(this, arguments)
+          }
+        } catch (e) {}
+        /* Web Audio (minijuegos, Howler...): todo lo que va a los altavoces
+           pasa por una ganancia nuestra por contexto, a 0 en silencio. */
+        var ganancias = []
+        try {
+          var conectar = AudioNode.prototype.connect
+          AudioNode.prototype.connect = function (destino) {
+            if (typeof AudioDestinationNode !== 'undefined' && destino instanceof AudioDestinationNode) {
+              var ctx = destino.context
+              var g = ctx.__origenGanancia
+              if (!g) {
+                g = ctx.createGain()
+                g.gain.value = callado ? 0 : 1
+                conectar.call(g, destino)
+                ctx.__origenGanancia = g
+                ganancias.push(g)
+              }
+              if (this !== g) {
+                var args = Array.prototype.slice.call(arguments)
+                args[0] = g
+                return conectar.apply(this, args)
+              }
+            }
+            return conectar.apply(this, arguments)
+          }
+        } catch (e) {}
+        var silenciar = function (si) {
+          si = si === true
+          if (si === callado) return
+          callado = si
+          raiz.dataset.silencio = si ? 'si' : 'no'
+          for (var i = 0; i < ganancias.length; i++) ganancias[i].gain.value = si ? 0 : 1
+          var els = document.querySelectorAll('audio,video')
+          for (var j = 0; j < els.length; j++) ajustar(els[j])
+          // El boton del riel se entera por este mensaje.
+          window.postMessage({ accion: 'origen:silencio', silencio: si }, '*')
+        }
+        raiz.dataset.silencio = 'no'
+        window.addEventListener('message', function (e) {
+          var d = e.data
+          if (d && d.accion === 'origen:silencio') silenciar(d.silencio)
+        })
+        /* La ESCALA por encima de 1080p (27/09). Las interfaces se dibujaron
+           a 1920x1080; en 1440p o 4K lo medido en px se quedaba chico y los
+           menus salian finos. Solo en las paginas con <html data-escala>, y
+           solo si la pantalla pasa de 1080 de alto: a 1080 no se toca nada.
+           - El body se escala entero, como si la pantalla midiera 1080.
+           - Lo que la pagina lee por JS (ventana, raton, cajas) se traduce a
+             esas medidas, para que arrastrar y los clics caigan donde toca.
+           - Los vh/vw los divide al compilar origen_map/kit/escala-postcss.mjs.
+           Con `zoom` no: en el Chromium 103 del juego elementFromPoint y
+           getBoundingClientRect salen en coordenadas distintas (medido). */
+        ;(function () {
+          if (!raiz.hasAttribute('data-escala')) return
+          var dW = Object.getOwnPropertyDescriptor(window, 'innerWidth')
+          var dH = Object.getOwnPropertyDescriptor(window, 'innerHeight')
+          if (!dW || !dW.get || !dH || !dH.get) return
+          var s = 1
+          var calcular = function () {
+            var f = window.__ognEscalaForzada
+            return f > 0 ? f : Math.max(1, dH.get.call(window) / 1080)
+          }
+          var hoja = document.createElement('style')
+          hoja.textContent = 'html.ogn-escalado{overflow:hidden}' +
+            'html.ogn-escalado body{margin:0 !important;' +
+            'width:calc(100vw / var(--ogn-escala)) !important;min-width:0 !important;max-width:none !important;' +
+            'height:calc(100vh / var(--ogn-escala)) !important;min-height:0 !important;max-height:none !important;' +
+            'transform:scale(var(--ogn-escala));transform-origin:0 0;overflow:hidden}'
+          document.head.appendChild(hoja)
+          var aplicar = function () {
+            s = calcular()
+            raiz.style.setProperty('--ogn-escala', String(s))
+            raiz.classList.toggle('ogn-escalado', s !== 1)
+          }
+          var entre = function (v) { return v / s }
+          var envolver = function (obj, prop, fn, solo) {
+            var d = Object.getOwnPropertyDescriptor(obj, prop)
+            if (!d || !d.get) return
+            Object.defineProperty(obj, prop, {
+              configurable: true,
+              enumerable: d.enumerable,
+              get: function () {
+                var v = d.get.call(this)
+                return s === 1 || (solo && !solo(this)) ? v : fn(v)
+              },
+              set: d.set
+            })
+          }
+          try {
+            envolver(window, 'innerWidth', entre)
+            envolver(window, 'innerHeight', entre)
+            var raton = ['clientX', 'clientY', 'pageX', 'pageY', 'x', 'y']
+            for (var i = 0; i < raton.length; i++) envolver(MouseEvent.prototype, raton[i], entre)
+            var esRaiz = function (el) { return el === document.documentElement }
+            envolver(Element.prototype, 'clientWidth', entre, esRaiz)
+            envolver(Element.prototype, 'clientHeight', entre, esRaiz)
+            var caja = Element.prototype.getBoundingClientRect
+            Element.prototype.getBoundingClientRect = function () {
+              var r = caja.call(this)
+              return s === 1 ? r : new DOMRect(r.x / s, r.y / s, r.width / s, r.height / s)
+            }
+            var cajas = Element.prototype.getClientRects
+            Element.prototype.getClientRects = function () {
+              var l = cajas.call(this)
+              if (s === 1) return l
+              var o = []
+              for (var k = 0; k < l.length; k++) o.push(new DOMRect(l[k].x / s, l[k].y / s, l[k].width / s, l[k].height / s))
+              o.item = function (n) { return o[n] || null }
+              return o
+            }
+            var punto = Document.prototype.elementFromPoint
+            Document.prototype.elementFromPoint = function (x, y) { return punto.call(this, x * s, y * s) }
+            var puntos = Document.prototype.elementsFromPoint
+            if (puntos) Document.prototype.elementsFromPoint = function (x, y) { return puntos.call(this, x * s, y * s) }
+          } catch (e) {}
+          aplicar()
+          // En captura y antes que nadie: los oyentes de la pagina ya leen
+          // la ventana nueva.
+          window.addEventListener('resize', aplicar, true)
+          window.__ognAplicarEscala = aplicar
+        })()
+        // La pagina puede nacer DESPUES del aviso: entonces hay que preguntar.
+        try {
+          var yo = typeof GetParentResourceName === 'function' ? GetParentResourceName() : null
+          if (yo) {
+            fetch('https://' + yo + '/origen:tema:dame', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json; charset=UTF-8' },
+              body: '{}'
+            })
+              .then(function (r) { return r.json() })
+              .then(function (d) {
+                if (d && typeof d.silencio === 'boolean') silenciar(d.silencio)
+              })
+              .catch(function () {})
+          }
+        } catch (e) {}
+      })()
+    </script>
+  <style>/* 07/10: sin barras de desplazamiento visibles; se sigue pudiendo desplazar. */ html *::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; } html * { scrollbar-width: none !important; }</style></head>
+
+    <body>
+        <div id="app">
+            <transition name="fade">
+                <!-- Los hackeos que quedan, en la BARRA DE ABAJO (07/10): era una
+                     pastilla suelta arriba en el centro. Placa, rótulo y la cifra
+                     en su pieza clara, como el resto de barras del servidor. -->
+                <div class="tracker-container cbb" v-if="trackerUI.visible" data-foco-ignora>
+                    <span class="cbb-placa"><iconify-icon icon="lucide:radar"></iconify-icon></span>
+                    <span class="cbb-k">{{ t('tracker', '').split(':')[0] }}</span>
+                    <span class="cbb-v">{{ trackerUI.trackers }}</span>
+                </div>
+            </transition>
+
+            <transition name="fade"> 
+                <div class="container" v-if="visible" :class="{ 'cbr-en-riel': rielPuesto && !riel.ancho, 'cbr-en-ancho': rielPuesto && riel.ancho }">
+                    <div class="effects"></div>
+
+                    <!--  EL MENU DEL JUGADOR, EN RIEL (07/10). Como el Racing Hub de
+                          origen_racing: la barra en el canto derecho y una columna a su
+                          izquierda (skill origen-riel). «Panel grande» despliega la vista
+                          ancha de siempre (.boosting, .market, .ranking-menu) entre el
+                          canto izquierdo y esta misma barra, y «Reducir» la recoge.
+                          La gestion (createMenu) no pasa por aqui: va a pantalla completa. -->
+                    <div class="cbr-velo" v-if="rielPuesto && !riel.ancho" @click="cerrarTablet()"></div>
+
+                    <transition name="cbr-col">
+                        <section class="cbr" v-if="rielPuesto" :class="{ 'cbr--ancho': riel.ancho }">
+                            <header class="cbr-cab">
+                                <!-- 08/10: como el Racing Hub. El titulo es fijo y lo que
+                                     cambia es la brocha (la seccion); a su lado, quien
+                                     eres en chapas. El saldo, en su tarjeta: se pulsa
+                                     para enviar OGN. -->
+                                <span class="cbr-cab__placa"><iconify-icon icon="lucide:file-stack"></iconify-icon></span>
+                                <div class="cbr-cab__tit">
+                                    <h2 class="cbr-cab__h">Boosting Hub</h2>
+                                    <div class="cbr-cab__sub">
+                                        <span class="cbr-cab__brocha">{{ rielSeccion.brocha }}</span>
+                                        <span class="cbr-chapas">
+                                            <b>{{ mainBoosting.profile.username || 'Sin nombre' }}</b>
+                                            <b>{{ mainBoosting.profile.currentLevelVehicle.rank }}</b>
+                                            <b>P{{ mainBoosting.profile.prestige }}</b>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button type="button" class="cbr-saldo" @click="openModal('sendCoins')" title="Enviar OGN">
+                                    <span>{{ t('contracts.coinsName') }}</span><b>{{ n(mainBoosting.profile.coins) }}</b>
+                                </button>
+                            </header>
+
+                            <!-- Las secciones, en una fila de pestañas arriba (antes
+                                 eran los botones del riel). -->
+                            <nav class="cbr-vistas">
+                                <button type="button" class="cbr-vista" v-for="sec in pestanas" :key="'rv-' + sec.id" :class="{ on: vistaCentro === sec.id }" @click="rielIr(sec.id)">
+                                    <span class="cbr-vista__t">{{ sec.label }}</span>
+                                    <span class="cbr-vista__n" v-if="sec.n">{{ sec.n }}</span>
+                                </button>
+                            </nav>
+
+                            <div class="cbr-cuerpo" :class="{ 'cbr-cuerpo--dos': riel.ancho }">
+                                <!-- 08/10: en grande la columna se estira hasta el canto
+                                     izquierdo y el cuerpo se parte en dos, como el Racing
+                                     Hub: tu ficha a la izquierda (siempre a la vista) y la
+                                     seccion a la derecha. En pequeño solo sale una de las
+                                     dos: la ficha en «Perfil», la seccion en las demas. -->
+                                <div class="cbr-lado" v-if="riel.ancho || riel.vista === 'perfil'">
+                                    <!-- Sin perfil: se dice y se ofrece crearlo aqui mismo. -->
+                                    <div class="cbr-cola" v-if="!mainBoosting.profile.username">
+                                        <i class="cbr-cola__punto"></i>
+                                        <div class="cbr-cola__txt">
+                                            <b>Aún no tienes perfil</b>
+                                            <span>Ponte un nombre para recibir y comprar contratos.</span>
+                                        </div>
+                                        <button type="button" class="cbr-btn cbr-btn--rosa" @click="openNameModal()"><iconify-icon icon="lucide:user-round-plus"></iconify-icon><span>Crear perfil</span></button>
+                                    </div>
+                                    <div class="cbr-fichap">
+                                        <div class="cbr-banner" :style="mainBoosting.profile.banner ? { backgroundImage: `url(${mainBoosting.profile.banner})` } : {}">
+                                            <button type="button" class="cbr-banner__btn" title="Cambiar la portada" @click="openBannerModal()"><iconify-icon icon="lucide:image-plus"></iconify-icon></button>
+                                        </div>
+                                        <div class="cbr-ident">
+                                            <button type="button" class="cbr-ident__foto" @click="openImageModal()" title="Cambiar foto">
+                                                <img v-if="mainBoosting.profile.image" :src="mainBoosting.profile.image" alt="" />
+                                                <iconify-icon v-else icon="lucide:user-round"></iconify-icon>
+                                            </button>
+                                            <div class="cbr-ident__txt">
+                                                <b class="cbr-ident__nom">{{ mainBoosting.profile.username || 'PLAYER' }}</b>
+                                                <span class="cbr-chapas">
+                                                    <b class="es-rosa">Prestigio {{ mainBoosting.profile.prestige }}</b>
+                                                    <b>{{ n(mainBoosting.profile.coins) }} {{ t('contracts.coinsName') }}</b>
+                                                </span>
+                                                <button type="button" class="cbr-btn cbr-btn--icono" title="Cambiar nombre" @click="openNameModal()"><iconify-icon icon="lucide:pencil"></iconify-icon></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="cbr-cifras">
+                                        <div class="cbr-cifra"><i>Completados</i><b>{{ playerStats.completed }}</b></div>
+                                        <div class="cbr-cifra"><i>En curso</i><b>{{ playerStats.started }}</b></div>
+                                        <div class="cbr-cifra"><i>Disponibles</i><b>{{ mainBoosting.contracts.length }}</b></div>
+                                        <div class="cbr-cifra"><i>Guardados</i><b>{{ mainBoosting.savedContracts.length }}</b></div>
+                                    </div>
+
+                                    <div class="cbr-rotulo"><span>Rangos</span></div>
+                                    <div class="cbr-rango">
+                                        <div class="cbr-rango__cab">
+                                            <iconify-icon icon="mdi:car-sports"></iconify-icon>
+                                            <span>Vehículos</span>
+                                            <b>{{ mainBoosting.profile.currentLevelVehicle.rank }}</b>
+                                            <em>{{ vehicleRankProgress.nextRank ? '→ ' + vehicleRankProgress.nextRank : 'Máximo' }}</em>
+                                        </div>
+                                        <div class="cbr-barra"><i :style="{ width: vehicleRankProgress.percent + '%' }"></i></div>
+                                        <div class="cbr-rango__pie"><span>{{ n(vehicleRankProgress.currentXp) }} / {{ n(vehicleRankProgress.targetXp) }} XP</span><span>{{ vehicleRankProgress.remainingXp > 0 ? 'Faltan ' + n(vehicleRankProgress.remainingXp) + ' XP' : 'Rango máximo' }}</span></div>
+                                    </div>
+                                    <div class="cbr-rango">
+                                        <div class="cbr-rango__cab">
+                                            <iconify-icon icon="mdi:package-variant-closed"></iconify-icon>
+                                            <span>Objetos</span>
+                                            <b>{{ mainBoosting.profile.currentLevelProp.rank }}</b>
+                                            <em>{{ propRankProgress.nextRank ? '→ ' + propRankProgress.nextRank : 'Máximo' }}</em>
+                                        </div>
+                                        <div class="cbr-barra"><i :style="{ width: propRankProgress.percent + '%' }"></i></div>
+                                        <div class="cbr-rango__pie"><span>{{ n(propRankProgress.currentXp) }} / {{ n(propRankProgress.targetXp) }} XP</span><span>{{ propRankProgress.remainingXp > 0 ? 'Faltan ' + n(propRankProgress.remainingXp) + ' XP' : 'Rango máximo' }}</span></div>
+                                    </div>
+
+                                    <div class="cbr-caja">
+                                        <div class="cbr-rotulo"><span>Estadísticas</span></div>
+                                        <div class="cbr-linea"><span>Rango de vehículos</span><b>{{ mainBoosting.profile.currentLevelVehicle.rank || '-' }}</b></div>
+                                        <div class="cbr-linea"><span>Rango de objetos</span><b>{{ mainBoosting.profile.currentLevelProp.rank || '-' }}</b></div>
+                                        <div class="cbr-linea"><span>XP de vehículos</span><b>{{ n(mainBoosting.profile.totalExperienceVehicle || 0) }}</b></div>
+                                        <div class="cbr-linea"><span>XP de objetos</span><b>{{ n(mainBoosting.profile.totalExperienceProp || 0) }}</b></div>
+                                        <button type="button" class="cbr-btn cbr-btn--largo" @click="rielIr('ranking')">
+                                            <iconify-icon icon="lucide:trophy"></iconify-icon><span>Ver la clasificación</span><iconify-icon icon="lucide:arrow-right"></iconify-icon>
+                                        </button>
+                                    </div>
+                                
+                                </div>
+                                <div class="cbr-centro" v-if="riel.ancho || riel.vista !== 'perfil'">
+                                <!-- Contratos: la bolsa -->
+                                <template v-if="vistaCentro === 'contratos'">
+                                    <!-- La cola va aqui (antes era una seccion aparte): de ella
+                                         depende que lleguen contratos a esta lista. -->
+                                    <div class="cbr-cola" :class="{ 'is-on': mainBoosting.onDuty }">
+                                        <i class="cbr-cola__punto"></i>
+                                        <div class="cbr-cola__txt">
+                                            <b>{{ mainBoosting.onDuty ? 'Estás en la cola' : 'Fuera de la cola' }}</b>
+                                            <span>{{ mainBoosting.onDuty ? 'Te irán llegando ofertas de contratos.' : 'Únete para recibir ofertas de contratos.' }}</span>
+                                        </div>
+                                        <button type="button" class="cbr-btn" :class="{ 'cbr-btn--rosa': !mainBoosting.onDuty }" @click="onToggleDuty()">
+                                            <iconify-icon :icon="mainBoosting.onDuty ? 'iconoir:off-tag' : 'iconoir:on-tag'"></iconify-icon>
+                                            <span>{{ mainBoosting.onDuty ? 'Salir' : 'Unirme' }}</span>
+                                        </button>
+                                    </div>
+                                    <div class="cbr-ficha" v-for="(item, index) in displayQueueContracts" :key="'rq-' + (item.id || index)" :class="{ 'es-objeto': item.__type === 'OBJETO' }">
+                                        <div class="cbr-ficha__cab">
+                                            <span class="cbr-ficha__ico"><iconify-icon :icon="item.__type === 'OBJETO' ? 'mdi:package-variant-closed' : 'mdi:car-sports'"></iconify-icon></span>
+                                            <div class="cbr-ficha__nom">
+                                                <b>{{ item.label }}</b>
+                                                <small>{{ item.__type === 'OBJETO' ? 'Objeto' : 'Vehículo' }} · Clase {{ item.category }} · {{ '#' + String(item.ID || item.id || index + 1).padStart(3, '0') }}</small>
+                                            </div>
+                                            <span class="cbr-reloj"><iconify-icon icon="lucide:timer"></iconify-icon>{{ item.remainingCountdown || '00:30:00' }}</span>
+                                        </div>
+                                        <div class="cbr-datos">
+                                            <div class="cbr-dato"><b>{{ n(item.price) }} <small>OGN</small></b><i>Precio</i></div>
+                                            <div class="cbr-dato"><b>{{ n(item.reward) }} <small>OGN</small></b><i>Recompensa</i></div>
+                                            <div class="cbr-dato" v-if="item.__type === 'OBJETO'"><b>{{ ((item.propRobable === false) || (item.robable === false)) ? 'No' : 'Sí' }}</b><i>Robable</i></div>
+                                            <div class="cbr-dato" v-else><b>{{ (item.vin && item.vin !== 0) ? n(item.vin) : 'No' }}</b><i>VIN</i></div>
+                                        </div>
+                                        <div class="cbr-ficha__acc">
+                                            <button type="button" class="cbr-btn" @click="openModal('declineContract', index)"><iconify-icon icon="mdi:trash-can-outline"></iconify-icon><span>Descartar</span></button>
+                                            <button type="button" class="cbr-btn cbr-btn--rosa" @click="openModal('buyContract', index)"><iconify-icon icon="mdi:cart-arrow-down"></iconify-icon><span>Comprar</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="cbr-vacio" v-if="displayQueueContracts.length === 0">
+                                        <iconify-icon icon="mdi:file-search-outline"></iconify-icon>
+                                        <b>No hay contratos disponibles</b>
+                                        <span>{{ mainBoosting.onDuty ? 'Estás en la cola: las ofertas irán llegando aquí.' : 'Únete a la cola para recibir ofertas.' }}</span>
+                                    </div>
+                                </template>
+
+                                <!-- Cartera: los contratos comprados -->
+                                <template v-if="vistaCentro === 'cartera'">
+                                    <div class="cbr-ficha" v-for="(item, index) in displaySavedContracts" :key="'rs-' + (item.uniqueID || index)" :class="{ 'es-objeto': item.__type === 'OBJETO', apagada: item.auction || item.offered }">
+                                        <div class="cbr-ficha__cab">
+                                            <span class="cbr-ficha__ico"><iconify-icon :icon="item.__type === 'OBJETO' ? 'mdi:package-variant-closed' : 'mdi:car-sports'"></iconify-icon></span>
+                                            <div class="cbr-ficha__nom">
+                                                <b>{{ item.label }}</b>
+                                                <small>{{ item.__type === 'OBJETO' ? 'Objeto' : 'Vehículo' }} · Clase {{ item.category }} · {{ '#' + String(item.ID || index + 1).padStart(3, '0') }}</small>
+                                            </div>
+                                            <span class="cbr-estado" v-if="item.auction">{{ t('contracts.auction') }}</span>
+                                            <span class="cbr-estado" v-else-if="item.offered">{{ t('contracts.offered') }}</span>
+                                            <span class="cbr-estado es-vivo" v-else-if="item.started">{{ t('contracts.started') }}</span>
+                                        </div>
+                                        <div class="cbr-datos cbr-datos--2">
+                                            <div class="cbr-dato"><b>{{ n(item.reward) }} <small>OGN</small></b><i>Recompensa</i></div>
+                                            <div class="cbr-dato" v-if="item.__type === 'OBJETO'"><b>{{ ((item.propRobable === false) || (item.robable === false)) ? 'No' : 'Sí' }}</b><i>Robable</i></div>
+                                            <div class="cbr-dato" v-else><b>{{ (item.vin && item.vin !== 0) ? n(item.vin) : 'No' }}</b><i>VIN</i></div>
+                                        </div>
+                                        <div class="cbr-ficha__acc" v-if="!item.started">
+                                            <button type="button" class="cbr-btn cbr-btn--icono" title="Descartar" @click="openModal('declineSavedContract', index, item.ID)"><iconify-icon icon="mdi:trash-can-outline"></iconify-icon></button>
+                                            <button type="button" class="cbr-btn" @click="openModal('sellContract', index)"><iconify-icon icon="mdi:cart-arrow-up"></iconify-icon><span>Ofrecer</span></button>
+                                            <button type="button" class="cbr-btn" @click="openModal('sellContractMarket', index)"><iconify-icon icon="hugeicons:auction"></iconify-icon><span>Subastar</span></button>
+                                            <button type="button" class="cbr-btn cbr-btn--rosa" @click="openModal('startContract', index)"><iconify-icon icon="mdi:check"></iconify-icon><span>Empezar</span></button>
+                                        </div>
+                                        <div class="cbr-ficha__acc" v-else>
+                                            <button type="button" class="cbr-btn" @click="openModal('cancelContract', index)"><iconify-icon icon="mdi:cancel-bold"></iconify-icon><span>Cancelar</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="cbr-vacio" v-if="displaySavedContracts.length === 0">
+                                        <iconify-icon icon="mdi:folder-open-outline"></iconify-icon>
+                                        <b>Cartera vacía</b>
+                                        <span>Compra contratos en <a @click="rielIr('contratos')">Contratos</a> o en <a @click="rielIr('mercado')">Mercado</a> para empezar.</span>
+                                    </div>
+                                </template>
+
+                                <!-- Mercado: las subastas de otros jugadores -->
+                                <template v-if="vistaCentro === 'mercado'">
+                                    <div class="cbr-ficha" v-for="item in market.list" :key="'rm-' + item.id">
+                                        <div class="cbr-ficha__cab">
+                                            <span class="cbr-ficha__ico"><iconify-icon icon="hugeicons:auction"></iconify-icon></span>
+                                            <div class="cbr-ficha__nom">
+                                                <b>{{ item.data.label }}</b>
+                                                <small>Clase {{ String(item.data.category || '').toUpperCase() }}{{ item.seller === mainBoosting.profile.citizen ? ' · Tuyo' : '' }}</small>
+                                            </div>
+                                            <span class="cbr-reloj"><iconify-icon icon="lucide:timer"></iconify-icon>{{ item.remainingCountdown }}</span>
+                                        </div>
+                                        <div class="cbr-datos">
+                                            <div class="cbr-dato"><b>{{ n(item.data.price) }} <small>OGN</small></b><i>Precio</i></div>
+                                            <div class="cbr-dato"><b>{{ n(item.data.reward) }} <small>OGN</small></b><i>Recompensa</i></div>
+                                            <div class="cbr-dato"><b>{{ item.data.vin && item.data.vin !== 0 ? n(item.data.vin) : 'No' }}</b><i>VIN</i></div>
+                                        </div>
+                                        <div class="cbr-ficha__acc">
+                                            <button type="button" class="cbr-btn" v-if="item.seller === mainBoosting.profile.citizen" @click="openModal('cancelAuctionOffer', item.id)"><iconify-icon icon="mdi:trash-can-outline"></iconify-icon><span>Retirar</span></button>
+                                            <button type="button" class="cbr-btn cbr-btn--rosa" v-else @click="openModal('buyAuctionOffer', item.id, item.data.price)"><iconify-icon icon="mdi:cart-arrow-down"></iconify-icon><span>{{ t('contracts.market.buy') }}</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="cbr-vacio" v-if="market.list.length === 0">
+                                        <iconify-icon icon="mdi:store-off"></iconify-icon>
+                                        <b>{{ t('contracts.market.no_offers') }}</b>
+                                        <span>Subasta un contrato de tu cartera para que lo vean los demás.</span>
+                                    </div>
+                                </template>
+
+                                <!-- Ranking -->
+                                <template v-if="vistaCentro === 'ranking'">
+                                    <label class="cbr-buscar">
+                                        <iconify-icon icon="radix-icons:magnifying-glass"></iconify-icon>
+                                        <input type="text" placeholder="Buscar un jugador…" v-model="ranking.search" />
+                                    </label>
+                                    <!-- Las categorias: por que se ordena la lista. La cifra
+                                         de la derecha de cada fila es la de la elegida. -->
+                                    <div class="cbr-cats">
+                                        <button type="button" class="cbr-cat" v-for="c in rankingCategorias" :key="'rk-' + c.id" :class="{ on: ranking.categoria === c.id }" @click="ranking.categoria = c.id">{{ c.label }}</button>
+                                    </div>
+                                    <div class="cbr-fila cbr-fila--rank" v-for="(user, index) in filteredRanking" :key="'rr-' + (user.id || index)" :class="{ 'es-tuya': isSelfRankingUser(user) }">
+                                        <span class="cbr-pos" :class="{ 'es-podio': index < 3 }">{{ index + 1 }}</span>
+                                        <div class="cbr-fila__nom">
+                                            <b>{{ user.name }}</b>
+                                            <small>{{ user.completed || 0 }} completados · {{ user.success_rate || 0 }}% de éxito</small>
+                                        </div>
+                                        <div class="cbr-fila__rangos">
+                                            <span class="cbr-clase" title="Rango de vehículos"><iconify-icon icon="mdi:car-sports"></iconify-icon>{{ user.rankVehicle || user.rank || '-' }}</span>
+                                            <span class="cbr-clase es-objeto" title="Rango de objetos"><iconify-icon icon="mdi:package-variant-closed"></iconify-icon>{{ user.rankProp || '-' }}</span>
+                                        </div>
+                                        <div class="cbr-fila__cifra"><b>{{ rankingCifra(user) }}</b><small>{{ rankingCategoria.unidad }}</small></div>
+                                    </div>
+                                    <div class="cbr-vacio" v-if="!filteredRanking || filteredRanking.length === 0">
+                                        <iconify-icon icon="solar:ranking-bold"></iconify-icon>
+                                        <b>{{ t('ranking.no_data') }}</b>
+                                        <span v-if="ranking.search">Prueba con otro nombre.</span>
+                                    </div>
+                                </template>
+
+                                <!-- Movimientos: el historial -->
+                                <template v-if="vistaCentro === 'movimientos'">
+                                    <div class="cbr-fila" v-for="(item, index) in mainBoosting.contractHistory" :key="'rh-' + index">
+                                        <span class="cbr-fila__ico"><iconify-icon icon="lucide:check"></iconify-icon></span>
+                                        <div class="cbr-fila__nom">
+                                            <b>{{ item.label }}</b>
+                                            <small>Clase {{ String(item.category || '').toUpperCase() }} · #{{ String(index + 1).padStart(3, '0') }} · +{{ n(item.experience) }} XP</small>
+                                        </div>
+                                        <div class="cbr-fila__cifra"><b>{{ n(item.price) }}</b><small>OGN</small></div>
+                                    </div>
+                                    <div class="cbr-vacio" v-if="mainBoosting.contractHistory.length === 0">
+                                        <iconify-icon icon="mdi:clock-remove-outline"></iconify-icon>
+                                        <b>Sin movimientos</b>
+                                        <span>{{ t('contracts.no_history') }}</span>
+                                    </div>
+                                </template>
+                                </div>
+                            </div>
+
+                            <footer class="cbr-pie">
+                                <button type="button" class="cbr-btn" @click="cerrarTablet()"><kbd class="cbr-tecla">ESC</kbd><span>Cerrar</span></button>
+                                <button type="button" class="cbr-btn" @click="rielAncho(!riel.ancho)"><span>{{ riel.ancho ? 'Reducir »' : '« Panel grande' }}</span></button>
+                            </footer>
+                        </section>
+                    </transition>
+
+                    <nav class="cbr-riel" v-if="rielPuesto">
+                        <span class="cbr-riel__placa"><iconify-icon :icon="rielSeccion.icon"></iconify-icon></span>
+                        <!-- Con la columna, el riel es el COMPARTIDO: los menus de
+                             siempre (inventario, personaje, llaves…), para saltar de
+                             uno a otro; las secciones van en las pestañas de arriba.
+                             Con el panel grande —o si el inventario no esta— lleva
+                             las secciones, que es por donde se navega ahi. -->
+                        <template v-if="rielCompartido.length">
+                            <template v-for="(b, i) in rielCompartido">
+                                <span class="cbr-riel__raya" v-if="b.tipo === 'acceso' && i > 0 && rielCompartido[i - 1].tipo !== 'acceso'" :key="'rr-' + b.id"></span>
+                                <button type="button" class="cbr-riel__btn" :key="'rc-' + b.id" :class="{ on: b.actual }" @click="rielSaltar(b)">
+                                    <iconify-icon :icon="b.icon"></iconify-icon>
+                                    <span class="cbr-riel__tip">{{ b.label }}</span>
+                                </button>
+                            </template>
+                        </template>
+                        <template v-else>
+                            <button type="button" class="cbr-riel__btn" v-for="sec in rielSecciones" :key="'rb-' + sec.id" :class="{ on: riel.vista === sec.id }" @click="rielIr(sec.id)">
+                                <iconify-icon :icon="sec.icon"></iconify-icon>
+                                <span class="cbr-riel__n" v-if="sec.n">{{ sec.n }}</span>
+                                <span class="cbr-riel__tip">{{ sec.label }}{{ sec.n ? ' · ' + sec.n : '' }}</span>
+                            </button>
+                            <span class="cbr-riel__raya"></span>
+                            <button type="button" class="cbr-riel__btn" @click="rielAncho(!riel.ancho)">
+                                <iconify-icon :icon="riel.ancho ? 'lucide:minimize-2' : 'lucide:maximize-2'"></iconify-icon>
+                                <span class="cbr-riel__tip">{{ riel.ancho ? 'Reducir' : 'Panel grande' }}</span>
+                            </button>
+                        </template>
+                        <span class="cbr-riel__marca">{{ marca === 'nacion' ? 'Nación' : 'Origen' }} Boosting</span>
+                    </nav>
+                    <transition :name="getDirection('mainBoosting')">
+                        <div class="boosting boosting-v2" v-if="false">
+                            <div class="ops-shell">
+                                <aside class="ops-sidebar">
+                                    <div class="ops-card agent-card">
+                                        <div class="agent-banner" :style="mainBoosting.profile.banner ? { backgroundImage: `url(${mainBoosting.profile.banner})` } : {}">
+                                            <div class="banner-overlay"></div>
+                                            <div class="edit-banner-btn" @click="openBannerModal(), onClickSound()" @mouseenter="onHoverSound()">
+                                                <iconify-icon icon="lucide:image-plus"></iconify-icon>
+                                            </div>
+                                        </div>
+                                        <div class="agent-main">
+                                            <div class="profile-photo-wrapper" @click="openImageModal(), onClickSound()" @mouseenter="onHoverSound()">
+                                                <img v-if="mainBoosting.profile.image" :src="mainBoosting.profile.image" alt="Perfil" class="profile-photo" />
+                                                <i v-else class="fa-solid fa-user profile-photo profile-photo--vacia"></i>
+                                                <div class="level-badge">{{ mainBoosting.profile.currentLevel.rank }}</div>
+                                                <div class="edit-photo-overlay">
+                                                    <iconify-icon icon="lucide:camera"></iconify-icon>
+                                                </div>
+                                            </div>
+                                            <div class="agent-meta">
+                                                <h2 class="profile-name">
+                                                    <span class="name-text">{{ mainBoosting.profile.username || 'PLAYER' }}</span>
+                                                    <img @click="openNameModal(), onClickSound()" src="./img/edit.webp" class="edit-name" alt="" @mouseenter="onHoverSound()">
+                                                </h2>
+                                                <div class="prestige-badge">
+                                                    <iconify-icon icon="lucide:star"></iconify-icon>
+                                                    <span>Prestigio {{ mainBoosting.profile.prestige }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="agent-stats">
+                                            <div class="mini-stat">
+                                                <span class="k">Completados</span>
+                                                <strong>{{ playerStats.completed }}</strong>
+                                            </div>
+                                            <div class="mini-stat">
+                                                <span class="k">En curso</span>
+                                                <strong>{{ playerStats.started }}</strong>
+                                            </div>
+                                            <div class="mini-stat">
+                                                <span class="k">Disponibles</span>
+                                                <strong>{{ mainBoosting.contracts.length }}</strong>
+                                            </div>
+                                            <div class="mini-stat">
+                                                <span class="k">Monedas</span>
+                                                <strong>{{ n(mainBoosting.profile.coins) }}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="agent-ranks">
+                                            <div class="rank-line">
+                                                <span>Rango vehículos</span>
+                                                <strong>{{ mainBoosting.profile.currentLevelVehicle.rank }}</strong>
+                                            </div>
+                                            <div class="rank-line">
+                                                <span>Rango objetos</span>
+                                                <strong>{{ mainBoosting.profile.currentLevelProp.rank }}</strong>
+                                            </div>
+                                            <div class="rank-line">
+                                                <span>Guardados</span>
+                                                <strong>{{ mainBoosting.savedContracts.length }}</strong>
+                                            </div>
+                                            <div class="rank-line">
+                                                <span>Historial</span>
+                                                <strong>{{ mainBoosting.contractHistory.length }}</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ops-card history-card-new">
+                                        <div class="ops-title">
+                                            <iconify-icon icon="lucide:history"></iconify-icon>
+                                            <span>Últimos movimientos</span>
+                                        </div>
+                                        <div class="historyLog">
+                                            <template v-if="mainBoosting.contractHistory.length === 0">
+                                                <div class="mission-empty-state">
+                                                    <iconify-icon icon="mdi:clock-remove-outline"></iconify-icon>
+                                                    <span>Sin movimientos</span>
+                                                    <small>{{t('contracts.no_history')}}</small>
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <div class="movement-list">
+                                                    <div class="movement-card" v-for="(item, index) in mainBoosting.contractHistory" :key="index">
+                                                        <div class="movement-top">
+                                                            <span class="movement-type">{{ item.category.toUpperCase() }}</span>
+                                                            <span class="movement-id">#{{ String(index + 1).padStart(3, '0') }}</span>
+                                                        </div>
+                                                        <div class="movement-name">{{ item.label }}</div>
+                                                        <div class="movement-metrics">
+                                                            <div class="m"><span>Precio</span><strong>{{ n(item.price) }}</strong></div>
+                                                            <div class="m"><span>XP</span><strong>{{ n(item.experience) }}</strong></div>
+                                                            <div class="m"><span>Clase</span><strong>{{ item.category }}</strong></div>
+                                                        </div>
+                                                    </div>
+                                                    <template v-if="false && mainBoosting.contractHistory.length < 8">
+                                                        <div class="movement-card demo" v-for="(demo, idx) in [
+                                                            { type: 'Vehiculo', label: 'Contrato D-301', price: 18, xp: 10, category: 'D' },
+                                                            { type: 'Objeto', label: 'Contrato O-208', price: 22, xp: 13, category: 'C' },
+                                                            { type: 'Vehiculo', label: 'Contrato D-149', price: 27, xp: 15, category: 'B' },
+                                                            { type: 'Objeto', label: 'Contrato O-117', price: 17, xp: 9, category: 'D' },
+                                                            { type: 'Vehiculo', label: 'Contrato D-533', price: 35, xp: 19, category: 'A' },
+                                                            { type: 'Objeto', label: 'Contrato O-602', price: 24, xp: 12, category: 'C' }
+                                                        ].slice(0, 8 - mainBoosting.contractHistory.length)" :key="'history-fill-' + idx">
+                                                            <div class="movement-top">
+                                                                <span class="movement-type">{{ demo.type.toUpperCase() }}</span>
+                                                                <span class="movement-id">#{{ String(mainBoosting.contractHistory.length + idx + 1).padStart(3, '0') }}</span>
+                                                            </div>
+                                                            <div class="movement-name">{{ demo.label }}</div>
+                                                            <div class="movement-metrics">
+                                                                <div class="m"><span>Precio</span><strong>{{ n(demo.price) }}</strong></div>
+                                                                <div class="m"><span>XP</span><strong>{{ n(demo.xp) }}</strong></div>
+                                                                <div class="m"><span>Clase</span><strong>{{ demo.category }}</strong></div>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </aside>
+
+                                <section class="ops-main">
+                                    <div class="ops-hud">
+                                        <div class="ops-balance" @click="openModal('sendCoins'), onClickSound()" @mouseenter="onHoverSound()">
+                                            <iconify-icon icon="ri:copper-coin-fill" class="icon"></iconify-icon>
+                                            <span>{{ n(mainBoosting.profile.coins) }} {{t('contracts.coinsName')}}</span>
+                                        </div>
+                                        <div class="ops-progress">
+                                            <div class="progress-module">
+                                                <iconify-icon class="progress-type-icon vehicle" icon="mdi:car-sports"></iconify-icon>
+                                                <div class="rank-rail">
+                                                    <span class="rank-rail-current">{{ mainBoosting.profile.currentLevelVehicle.rank }}</span>
+                                                    <div class="progressbar">
+                                                        <div class="progress" :style="{ width: vehicleRankProgress.percent + '%' }"></div>
+                                                    </div>
+                                                    <span class="rank-rail-next">{{ vehicleRankProgress.nextRank ? vehicleRankProgress.nextRank : 'MAX' }}</span>
+                                                </div>
+                                                <div class="xp-row">
+                                                    <span>{{ vehicleRankProgress.currentXp }} / {{ vehicleRankProgress.targetXp }} XP</span>
+                                                    <strong v-if="vehicleRankProgress.remainingXp > 0">Faltan {{ vehicleRankProgress.remainingXp }} XP</strong>
+                                                    <strong v-else>Rango máximo</strong>
+                                                </div>
+                                            </div>
+                                            <div class="progress-module">
+                                                <iconify-icon class="progress-type-icon object" icon="mdi:package-variant-closed"></iconify-icon>
+                                                <div class="rank-rail">
+                                                    <span class="rank-rail-current">{{ mainBoosting.profile.currentLevelProp.rank }}</span>
+                                                    <div class="progressbar">
+                                                        <div class="progress" :style="{ width: propRankProgress.percent + '%' }"></div>
+                                                    </div>
+                                                    <span class="rank-rail-next">{{ propRankProgress.nextRank ? propRankProgress.nextRank : 'MAX' }}</span>
+                                                </div>
+                                                <div class="xp-row">
+                                                    <span>{{ propRankProgress.currentXp }} / {{ propRankProgress.targetXp }} XP</span>
+                                                    <strong v-if="propRankProgress.remainingXp > 0">Faltan {{ propRankProgress.remainingXp }} XP</strong>
+                                                    <strong v-else>Rango máximo</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ops-actions">
+                                            <button class="hud-btn cbr-reducir" @click="rielAncho(false)">
+                                                <iconify-icon icon="lucide:minimize-2"></iconify-icon>
+                                                <span>» Reducir</span>
+                                            </button>
+                                            <button class="hud-btn queue-btn" @click="onToggleDuty(), onClickSound()" @mouseenter="onHoverSound()" :class="{ 'is-off-duty': !mainBoosting.onDuty, 'is-on-duty': mainBoosting.onDuty }">
+                                                <iconify-icon :icon="mainBoosting.onDuty ? 'iconoir:on-tag' : 'iconoir:off-tag'"></iconify-icon>
+                                                <span class="fichar-label">{{ mainBoosting.onDuty ? t('contracts.off_duty') : t('contracts.on_duty') }}</span>
+                                            </button>
+                                            <button class="hud-btn ranking-btn" @click="navigateTo('ranking'), onClickSound()" @mouseenter="onHoverSound()">
+                                                <iconify-icon icon="solar:ranking-bold"></iconify-icon>
+                                                <span>{{ t('ranking.header') }}</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="ops-board">
+                                        <div class="ops-card board-card">
+                                            <div class="board-title">
+                                                <div class="ops-title">
+                                                    <iconify-icon icon="lucide:file-stack"></iconify-icon>
+                                                    <span>Bolsa de contratos</span>
+                                                </div>
+                                            </div>
+                                            <template v-if="displayQueueContracts.length > 0">
+                                                <div class="mission-grid"
+                                                    ref="contractsRef"
+                                                    @mousedown="handleMouseDown"
+                                                    @mousemove="handleMouseMove"
+                                                    @mouseup="handleMouseUp"
+                                                    @mouseleave="handleMouseUp"
+                                                    @wheel="handleMouseWheel"
+                                                >
+                                                    <div class="mission-card" :class="[item.__type === 'OBJETO' ? 'is-object' : 'is-vehicle', 'live']" v-for="(item, index) in displayQueueContracts" :key="'queue-' + (item.id || index)">
+                                                        <div class="mission-head">
+                                                            <span class="type-chip">
+                                                                <span class="type">{{ (item.__type || item.category || 'VEHÍCULO').toUpperCase() }}</span>
+                                                            </span>
+                                                            <span class="code">{{ '#' + String(item.ID || item.id || index + 1).padStart(3, '0') }}</span>
+                                                            <span class="ttl">{{ item.remainingCountdown || '00:30:00' }}</span>
+                                                        </div>
+                                                        <div class="mission-focus">
+                                                            <iconify-icon class="mission-kind-icon" :icon="(item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'mdi:package-variant-closed' : 'mdi:car-sports'"></iconify-icon>
+                                                            <div class="mission-name-block">
+                                                                <div class="mission-name">{{ item.label }}</div>
+                                                                <div class="mission-description">{{ getContractDescription(item) }}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mission-data">
+                                                            <div class="cell">
+                                                                <div class="k"><iconify-icon icon="solar:tag-price-bold"></iconify-icon><span>Precio</span></div>
+                                                                <strong>{{ n(item.price) }}</strong>
+                                                            </div>
+                                                            <div class="cell">
+                                                                <div class="k"><iconify-icon icon="mdi:hand-coin"></iconify-icon><span>Recompensa</span></div>
+                                                                <strong>{{ n(item.reward) }}</strong>
+                                                            </div>
+                                                            <div class="cell">
+                                                                <div class="k">
+                                                                    <iconify-icon :icon="(item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'mdi:package-check' : 'solar:garage-bold'"></iconify-icon>
+                                                                    <span>{{ (item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'Robable' : 'VIN' }}</span>
+                                                                </div>
+                                                                <strong>{{
+                                                                    (item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO'
+                                                                        ? (((item.propRobable === false) || (item.robable === false)) ? 'No' : 'Si')
+                                                                        : (((item.vin && item.vin !== 0) ? item.vin : 'No disponible'))
+                                                                }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mission-actions">
+                                                            <div class="action neutral" @click="openModal('declineContract', index); onClickSound()" @mouseenter="onHoverSound()">
+                                                                <iconify-icon class="icon" icon="mdi:trash-can-outline"></iconify-icon>
+                                                            </div>
+                                                            <div class="action strong" @click="openModal('buyContract', index); onClickSound()" @mouseenter="onHoverSound()">
+                                                                <iconify-icon class="icon" icon="mdi:cart-arrow-down"></iconify-icon>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <div class="mission-empty-state">
+                                                    <iconify-icon icon="mdi:file-search-outline"></iconify-icon>
+                                                    <span>No hay contratos disponibles</span>
+                                                    <small>Únete a la cola para recibir ofertas</small>
+                                                </div>
+                                            </template>
+                                        </div>
+
+                                        <div class="ops-card board-card">
+                                            <div class="board-title split">
+                                                <div class="ops-title">
+                                                    <iconify-icon icon="solar:documents-bold"></iconify-icon>
+                                                    <span>Contratos en cartera</span>
+                                                </div>
+                                                <div class="market-inline" @click="navigateTo('market'), onClickSound()" @mouseenter="onHoverSound()">
+                                                    <span>{{ t('contracts.market.title') }}</span>
+                                                </div>
+                                            </div>
+                                            <template v-if="displaySavedContracts.length > 0">
+                                                <div class="mission-grid">
+                                                    <div class="mission-card" :data-uniqueID="item.uniqueID" v-for="(item, index) in displaySavedContracts" :key="'saved-' + (item.uniqueID || index)" :class="[item.__type === 'OBJETO' ? 'is-object' : 'is-vehicle', 'live', { disabled: item.auction || item.offered }]">
+                                                        <div class="mission-head">
+                                                            <span class="type-chip">
+                                                                <span class="type">{{ (item.__type || item.category || 'VEHÍCULO').toUpperCase() }}</span>
+                                                            </span>
+                                                            <span class="status" v-if="item.auction">{{t('contracts.auction')}}</span>
+                                                            <span class="status" v-else-if="item.offered">{{t('contracts.offered')}}</span>
+                                                            <span class="status" v-else-if="item.started">{{t('contracts.started')}}</span>
+                                                            <span class="code" v-else>{{ '#' + String(item.ID || index + 1).padStart(3, '0') }}</span>
+                                                        </div>
+                                                        <div class="mission-focus">
+                                                            <iconify-icon class="mission-kind-icon" :icon="(item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'mdi:package-variant-closed' : 'mdi:car-sports'"></iconify-icon>
+                                                            <div class="mission-name-block">
+                                                                <div class="mission-name">{{ item.label }}</div>
+                                                                <div class="mission-description">{{ getContractDescription(item) }}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mission-data">
+                                                            <div class="cell">
+                                                                <div class="k"><iconify-icon icon="mdi:hand-coin"></iconify-icon><span>Recompensa</span></div>
+                                                                <strong>{{ n(item.reward) }}</strong>
+                                                            </div>
+                                                            <div class="cell">
+                                                                <div class="k">
+                                                                    <iconify-icon :icon="(item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'mdi:package-check' : 'solar:garage-bold'"></iconify-icon>
+                                                                    <span>{{ (item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO' ? 'Robable' : 'VIN' }}</span>
+                                                                </div>
+                                                                <strong>{{
+                                                                    (item.__type || item.category || 'VEHICULO').toUpperCase() === 'OBJETO'
+                                                                        ? (((item.propRobable === false) || (item.robable === false)) ? 'No' : 'Si')
+                                                                        : (((item.vin && item.vin !== 0) ? item.vin : 'No disponible'))
+                                                                }}</strong>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mission-actions" v-if="!item.started">
+                                                            <div class="action strong" @click="openModal('startContract', index); onClickSound()" @mouseenter="onHoverSound()"><iconify-icon class="icon" icon="mdi:check"></iconify-icon></div>
+                                                            <div class="action" @click="openModal('sellContract', index); onClickSound()" @mouseenter="onHoverSound()"><iconify-icon class="icon" icon="mdi:cart-arrow-up"></iconify-icon></div>
+                                                            <div class="action" @click="openModal('sellContractMarket', index); onClickSound()" @mouseenter="onHoverSound()"><iconify-icon class="icon" icon="hugeicons:auction"></iconify-icon></div>
+                                                            <div class="action neutral" @click="openModal('declineSavedContract', index, item.ID); onClickSound()" @mouseenter="onHoverSound()"><iconify-icon class="icon" icon="mdi:trash-can-outline"></iconify-icon></div>
+                                                        </div>
+                                                        <div class="mission-actions" v-else>
+                                                            <div class="action neutral" @click="openModal('cancelContract', index); onClickSound()" @mouseenter="onHoverSound()"><iconify-icon class="icon" icon="mdi:cancel-bold"></iconify-icon></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <div class="mission-empty-state">
+                                                    <iconify-icon icon="mdi:folder-open-outline"></iconify-icon>
+                                                    <span>Cartera vacía</span>
+                                                    <small>Compra contratos de la bolsa para empezar</small>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <transition :name="getDirection('market')">
+                        <div class="market market-v2" v-if="false">
+                            <div class="content">
+                                <div class="market-header">
+                                    <div class="title">{{ t('contracts.market.title') }}</div>
+                                    <div class="market-back-inline cbr-reducir" @click="rielAncho(false)">
+                                        <iconify-icon icon="lucide:minimize-2" class="icon"></iconify-icon>
+                                        <span>» Reducir</span>
+                                    </div>
+                                    <div class="market-back-inline" @click="navigateTo('mainBoosting'), onClickSound()" @mouseenter="onHoverSound()">
+                                        <iconify-icon icon="iconamoon:arrow-up-2-light" class="icon"></iconify-icon>
+                                        <span>Volver</span>
+                                    </div>
+                                </div>
+                                <template v-if="market.list.length > 0">
+                                    <div class="list">
+                                        <div class="item" v-for="item in market.list">
+                                            <div class="name">
+                                                <span>{{ item.data.label }}</span>
+                                            </div>
+                                            <div class="tags">
+                                                <div class="tag">
+                                                    <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                                    <span>{{ n(item.data.price) }}</span>
+                                                </div>
+                                                <div class="tag">
+                                                    <iconify-icon icon="mdi:hand-coin" class="icon"></iconify-icon>
+                                                    <span>{{ n(item.data.reward) }}</span>
+                                                </div>
+                                                <div class="tag" v-if="item.data.vin !== 0">
+                                                    <iconify-icon icon="solar:garage-bold" class="icon"></iconify-icon>
+                                                    <span>{{ item.data.vin }}</span>
+                                                </div>
+                                            </div>
+
+                                            <span class="category">{{ item.data.category.toUpperCase() }}</span>
+
+                                            
+                                            <div class="actions">
+                                                <div class="timer">
+                                                    <div class="tag">
+                                                        <iconify-icon icon="tabler:clock-filled" class="icon"></iconify-icon>
+                                                        <span>{{ item.remainingCountdown }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="action" @click="openModal('cancelAuctionOffer', item.id), onClickSound()" @mouseenter="onHoverSound()" v-if="item.seller === mainBoosting.profile.citizen">
+                                                    <iconify-icon class="icon" icon="mdi:trash-can-outline"></iconify-icon>
+                                                </div>
+                                                <div class="action" @click="openModal('buyAuctionOffer', item.id, item.data.price), onClickSound()" @mouseenter="onHoverSound()" v-if="item.seller !== mainBoosting.profile.citizen">
+                                                    <iconify-icon class="icon" icon="mdi:cart-arrow-down"></iconify-icon>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template v-else>
+                                    <div class="no-contracts">
+                                        <iconify-icon icon="mdi:store-off" class="icon"></iconify-icon>
+                                        <span>{{t('contracts.market.no_offers')}}</span>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <transition :name="getDirection('createMenu')">
+                        <!--  GESTION DE CONTRATOS: la plantilla de pantalla completa de los
+                              paneles de administracion (riel, cabecera, zona y barra de cifras). -->
+                        <div class="create-menu cba" v-if="createMenu.visible">
+                            <div class="cba-fondo"></div>
+
+                            <nav class="cba-riel">
+                                <span class="cba-riel__placa"><iconify-icon icon="mdi:car-key"></iconify-icon></span>
+                                <span class="cba-riel__raya"></span>
+                                <div class="cba-riel__nav">
+                                    <button type="button" class="cba-riel__it is-on">
+                                        <iconify-icon icon="mdi:file-document-multiple-outline"></iconify-icon>
+                                        <span class="cba-riel__pista">Contratos</span>
+                                    </button>
+                                    <button type="button" class="cba-riel__it" @click="openModal('create_contract')">
+                                        <iconify-icon icon="mdi:plus"></iconify-icon>
+                                        <span class="cba-riel__pista">Crear contrato</span>
+                                    </button>
+                                    <button type="button" class="cba-riel__it" @click="openModal('settings')">
+                                        <iconify-icon icon="mdi:cog-outline"></iconify-icon>
+                                        <span class="cba-riel__pista">{{t('contracts.settings.title')}}</span>
+                                    </button>
+                                    <button type="button" class="cba-riel__it" @click="openModal('adminGiveCoins')">
+                                        <iconify-icon icon="mdi:hand-coin-outline"></iconify-icon>
+                                        <span class="cba-riel__pista">{{t('contracts.give_ogn')}}</span>
+                                    </button>
+                                </div>
+                                <span class="cba-riel__medio"><span class="cba-riel__palabra">{{ marca === 'nacion' ? 'Nación Carboosting' : 'Origen Carboosting' }}</span></span>
+                                <span class="cba-riel__pie" :class="{ 'is-on': createMenu.list.length > 0 }">
+                                    <i class="cba-riel__punto"></i>
+                                    <span class="cba-riel__estado">{{ createMenu.list.length }} {{ createMenu.list.length === 1 ? 'contrato' : 'contratos' }}</span>
+                                </span>
+                            </nav>
+
+                            <div class="cba-marco">
+                                <header class="cba-cab">
+                                    <span class="cba-cab__placa"><iconify-icon icon="mdi:file-document-multiple-outline"></iconify-icon></span>
+                                    <div class="cba-cab__titulo">
+                                        <span class="cba-chapa">{{t('contracts.header')}}</span>
+                                        <h2 class="cba-h2" data-brocha="Encargos sobre ruedas">Contratos</h2>
+                                    </div>
+                                    <div class="cba-cab__der">
+                                        <label class="cba-buscar">
+                                            <iconify-icon icon="radix-icons:magnifying-glass"></iconify-icon>
+                                            <input type="text" placeholder="Buscar un contrato…" v-model="createMenu.search" />
+                                        </label>
+                                        <button type="button" class="cba-btn" @click="openModal('settings')">
+                                            <iconify-icon icon="mdi:cog-outline"></iconify-icon><span>{{t('contracts.settings.title')}}</span>
+                                        </button>
+                                        <button type="button" class="cba-btn" @click="openModal('adminGiveCoins')">
+                                            <iconify-icon icon="mdi:hand-coin-outline"></iconify-icon><span>{{t('contracts.give_ogn')}}</span>
+                                        </button>
+                                        <button type="button" class="cba-btn cba-btn--rosa" @click="openModal('create_contract')">
+                                            <iconify-icon icon="mdi:plus"></iconify-icon><span>Crear contrato</span>
+                                        </button>
+                                    </div>
+                                </header>
+
+                                <section class="cba-zona">
+                                    <div class="cba-zona__cab">
+                                        <div class="cba-tabs">
+                                            <button type="button" class="cba-tab" :class="{ active: createMenu.typeFilter === 'all' }" @click="createMenu.typeFilter = 'all'"><span>Todos</span><b>{{ createMenu.list.length }}</b></button>
+                                            <button type="button" class="cba-tab" :class="{ active: createMenu.typeFilter === 'vehicle' }" @click="createMenu.typeFilter = 'vehicle'"><iconify-icon icon="mdi:car-sports"></iconify-icon><span>Vehículos</span><b>{{ cuentaContratos('vehicle') }}</b></button>
+                                            <button type="button" class="cba-tab" :class="{ active: createMenu.typeFilter === 'prop' }" @click="createMenu.typeFilter = 'prop'"><iconify-icon icon="mdi:package-variant-closed"></iconify-icon><span>Objetos</span><b>{{ cuentaContratos('prop') }}</b></button>
+                                        </div>
+                                        <span class="cba-zona__cuenta">{{ filteredContracts.length }} {{ filteredContracts.length === 1 ? 'resultado' : 'resultados' }}</span>
+                                    </div>
+
+                                    <div class="cba-zona__cuerpo">
+                                        <table class="cba-tabla" v-if="filteredContracts && filteredContracts.length > 0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="cba-col-nombre">{{t('contracts.label')}}</th>
+                                                    <th>Tipo</th>
+                                                    <th>Clase</th>
+                                                    <th>Guardias</th>
+                                                    <th>{{t('contracts.npcs_weapon')}}</th>
+                                                    <th>{{t('contracts.difficulty')}}</th>
+                                                    <th>Modelos</th>
+                                                    <th>{{t('contracts.reward')}}</th>
+                                                    <th>VIN</th>
+                                                    <th>Exp.</th>
+                                                    <th>{{t('contracts.price')}}</th>
+                                                    <th class="cba-col-acciones">{{t('contracts.actions')}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(item, index) in filteredContracts" :key="item.id || index">
+                                                    <td class="cba-col-nombre" :title="item.label">{{item.label}}</td>
+                                                    <td>
+                                                        <span class="cba-tipo" :class="(item.objectiveType || item.missionType || 'vehicle') === 'prop' ? 'is-objeto' : 'is-vehiculo'">
+                                                            <iconify-icon :icon="(item.objectiveType || item.missionType || 'vehicle') === 'prop' ? 'mdi:package-variant-closed' : 'mdi:car-sports'"></iconify-icon>
+                                                            {{ (item.objectiveType || item.missionType || 'vehicle') === 'prop' ? 'Objeto' : 'Vehículo' }}
+                                                        </span>
+                                                    </td>
+                                                    <td><span class="cba-clase">{{item.category}}</span></td>
+                                                    <td class="cba-cifra">{{item.guards}}</td>
+                                                    <td class="cba-arma">{{ armaLegible(item.weapon) }}</td>
+                                                    <td>{{ getNpcDifficultyLabel(item.difficulty) }}</td>
+                                                    <td class="cba-cifra">{{ item.vehicle ? item.vehicle.length : 0 }}</td>
+                                                    <td class="cba-cifra">{{n(item.reward)}}</td>
+                                                    <td>{{item.vin > 0 ? item.vin : 'No'}}</td>
+                                                    <td class="cba-cifra">{{n(item.experience)}}</td>
+                                                    <td class="cba-cifra">{{n(item.price)}}</td>
+                                                    <td class="cba-col-acciones">
+                                                        <div class="cba-acciones">
+                                                            <button type="button" class="cba-accion" @click="openModal('send_contract', item.id)"><iconify-icon icon="mdi:send"></iconify-icon></button>
+                                                            <button type="button" class="cba-accion" @click="editContract(item.id)"><iconify-icon icon="mdi:pencil"></iconify-icon></button>
+                                                            <button type="button" class="cba-accion cba-accion--rojo" @click="openModal('delete_contract', item.id)"><iconify-icon icon="mdi:delete"></iconify-icon></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="cba-vacio" v-else>
+                                            <iconify-icon icon="mdi:file-document-remove-outline"></iconify-icon>
+                                            <span class="cba-vacio__t">{{t('contracts.no_contracts')}}</span>
+                                            <span class="cba-vacio__p" v-if="createMenu.search || createMenu.typeFilter !== 'all'">Prueba con otra búsqueda o con otro filtro.</span>
+                                            <button type="button" class="cba-btn cba-btn--rosa" v-else @click="openModal('create_contract')"><iconify-icon icon="mdi:plus"></iconify-icon><span>Crear contrato</span></button>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <div class="cba-barra">
+                                    <div class="cba-barra__celda"><span class="cba-barra__r">Contratos</span><span class="cba-barra__c">{{ createMenu.list.length }}</span></div>
+                                    <div class="cba-barra__celda"><span class="cba-barra__r">De vehículo</span><span class="cba-barra__c">{{ cuentaContratos('vehicle') }}</span></div>
+                                    <div class="cba-barra__celda"><span class="cba-barra__r">De objeto</span><span class="cba-barra__c">{{ cuentaContratos('prop') }}</span></div>
+                                    <div class="cba-barra__celda"><span class="cba-barra__r">Con borrado de VIN</span><span class="cba-barra__c">{{ createMenu.list.filter(c => Number(c.vin) > 0).length }}</span></div>
+                                    <div class="cba-barra__celda"><span class="cba-barra__r">Precio medio</span><span class="cba-barra__c">{{ precioMedioContratos }} <small>OGN</small></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <transition :name="getDirection('ranking')">
+                        <div class="ranking-menu" v-if="false">
+                            <div class="ranking ranking-v2">
+                                <div class="header">
+                                    <div class="ranking-title-group">
+                                        <span class="title">{{t('ranking.header')}}</span>
+                                        <div class="ranking-self-rank vehicle">
+                                            <iconify-icon icon="mdi:car-sports"></iconify-icon>
+                                            <span>Rango Vehículo</span>
+                                            <strong>{{ mainBoosting.profile.currentLevelVehicle.rank || '-' }}</strong>
+                                        </div>
+                                        <div class="ranking-self-rank object">
+                                            <iconify-icon icon="mdi:package-variant-closed"></iconify-icon>
+                                            <span>Rango Objetos</span>
+                                            <strong>{{ mainBoosting.profile.currentLevelProp.rank || '-' }}</strong>
+                                        </div>
+                                        <div class="ranking-self-pill vehicle">
+                                            <span>XP Vehículos</span>
+                                            <strong>{{ n(mainBoosting.profile.totalExperienceVehicle || 0) }}</strong>
+                                        </div>
+                                        <div class="ranking-self-pill object">
+                                            <span>XP Objetos</span>
+                                            <strong>{{ n(mainBoosting.profile.totalExperienceProp || 0) }}</strong>
+                                        </div>
+                                    </div>
+                                    <div class="ranking-back-inline cbr-reducir" @click="rielAncho(false)">
+                                        <iconify-icon icon="lucide:minimize-2" class="icon"></iconify-icon>
+                                        <span>» Reducir</span>
+                                    </div>
+                                    <div class="ranking-back-inline" @click="navigateTo('mainBoosting'), onClickSound()" @mouseenter="onHoverSound()">
+                                        <iconify-icon icon="iconamoon:arrow-left-2-light" class="icon"></iconify-icon>
+                                        <span>{{ t('ranking.back') }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <div class="search-items">
+                                        <iconify-icon icon="radix-icons:magnifying-glass" class="icon"></iconify-icon>
+                                        <input type="text" :placeholder="t('ranking.search')" v-model="ranking.search"/>
+                                    </div>
+            
+                                    <div class="ranking-list">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>{{t('ranking.#')}}</th>
+                                                    <th>{{t('ranking.name')}}</th>
+                                                    <th>Rango Vehículos</th>
+                                                    <th>XP Vehículos</th>
+                                                    <th>Rango Objetos</th>
+                                                    <th>XP Objetos</th>
+                                                    <th>{{t('ranking.completed')}}</th>
+                                                    <th>{{t('ranking.saved')}}</th>
+                                                    <th>{{t('ranking.failed')}}</th>
+                                                    <th>{{t('ranking.success_rate')}}</th>
+                                                    <th>{{t('ranking.vin_completed')}}</th>
+                                                    <th>{{t('ranking.ogn_earned')}}</th>
+                                                    <th>{{t('ranking.hacks_success')}}</th>
+                                                    <th>{{t('ranking.hacks_failed')}}</th>
+                                                </tr>
+                                            </thead>
+                                            <template v-if="filteredRanking && filteredRanking.length > 0">
+                                                <tbody>
+                                                    <tr v-for="(user, index) in filteredRanking" :key="user.id" :class="{ 'is-self': isSelfRankingUser(user) }">
+                                                        <td>{{ index + 1 }}</td>
+                                                        <td>{{ user.name }}</td>
+                                                        <td class="rank-cell"><span class="rank-pill vehicle">{{ user.rankVehicle || user.rank }}</span></td>
+                                                        <td class="xp-cell">{{ n(user.experience_vehicle || user.experience || 0) }}</td>
+                                                        <td class="rank-cell"><span class="rank-pill object">{{ user.rankProp || '-' }}</span></td>
+                                                        <td class="xp-cell">{{ n(user.experience_prop || 0) }}</td>
+                                                        <td>{{ user.completed || 0 }}</td>
+                                                        <td>{{ user.saved || 0 }}</td>
+                                                        <td>{{ user.failed || 0 }}</td>
+                                                        <td>{{ user.success_rate || 0 }}%</td>
+                                                        <td>{{ user.vin_completed || 0 }}</td>
+                                                        <td>{{ n(user.ogn_earned || 0) }}</td>
+                                                        <td>{{ user.hacks_success || 0 }}</td>
+                                                        <td>{{ user.hacks_failed || 0 }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </template>
+                                            <template v-else>
+                                                <tbody>
+                                                    <td colspan="14" style="text-align: center;">{{ t('ranking.no_data') }}</td>
+                                                </tbody>
+                                            </template>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </transition>
+
+                    <transition name="fade">
+                        <template v-if="modal.id === 'create_contract'">
+                            <div class="modal-container">
+                                <div class="modal contract-editor-modal">
+                                    <div class="title">
+                                        <div v-if="modal.createContract.editing === true">{{t('modal.admin_edit_contract.edit_header')}}</div>
+                                        <div v-else>{{t('modal.admin_edit_contract.create_header')}}</div>
+                                    </div>
+                                    <div class="body contract-editor-body">
+                                        <div class="contract-grid">
+                                        <div class="input">
+                                            <iconify-icon icon="material-symbols:label" class="icon"></iconify-icon>
+                                            <input type="text" :placeholder="t('modal.admin_edit_contract.label')" v-model="modal.createContract.label">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.admin_edit_contract.price')" v-model="modal.createContract.price">
+                                        </div>
+                                        <div class="input input-textarea full-width">
+                                            <iconify-icon icon="mdi:text-box-outline" class="icon"></iconify-icon>
+                                            <textarea placeholder="Descripción del contrato (aparece en la tarjeta)" v-model="modal.createContract.description" rows="2" maxlength="255"></textarea>
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('objectiveType') }" @click.stop="toggleCustomSelect('objectiveType')">
+                                            <iconify-icon icon="mdi:shape-outline" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ getObjectiveTypeLabel(modal.createContract.objectiveType || 'vehicle') }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.objectiveTypeOpen" @click.stop>
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="objectiveType in createMenu.objectiveTypes" :key="'objective-type-' + objectiveType" @click.stop="selectCustomOption('objectiveType', objectiveType)">
+                                                        {{ getObjectiveTypeLabel(objectiveType) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('vehicle') }" v-if="modal.createContract.objectiveType === 'vehicle'" @click.stop="toggleCustomSelect('vehicle')">
+                                            <iconify-icon icon="mdi:car" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ modal.createContract.vehicle || 'Vehículo objetivo' }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.vehicleOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar o escribe un modelo..." v-model="createMenu.selects.vehicleQuery" @keydown.enter.stop="createMenu.selects.vehicleQuery.trim() && (selectCustomOption('vehicle', createMenu.selects.vehicleQuery.trim()))">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option custom-model-option"
+                                                        v-if="createMenu.selects.vehicleQuery.trim() && !createMenu.vehicles.some(v => v.toLowerCase() === createMenu.selects.vehicleQuery.trim().toLowerCase())"
+                                                        @click.stop="selectCustomOption('vehicle', createMenu.selects.vehicleQuery.trim())">
+                                                        <iconify-icon icon="mdi:pencil-outline"></iconify-icon> Usar "{{ createMenu.selects.vehicleQuery.trim() }}"
+                                                    </div>
+                                                    <div class="dropdown-option" v-for="vehicle in filteredVehicles" :key="'vehicle-' + vehicle" @click.stop="selectCustomOption('vehicle', vehicle)">
+                                                        {{ vehicle }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('prop') }" v-if="modal.createContract.objectiveType === 'prop'" @click.stop="toggleCustomSelect('prop')">
+                                            <iconify-icon icon="mdi:package-variant-closed" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ modal.createContract.objectiveModel || 'Prop objetivo' }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.propOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar o escribe un modelo..." v-model="createMenu.selects.propQuery" @keydown.enter.stop="createMenu.selects.propQuery.trim() && (selectCustomOption('prop', createMenu.selects.propQuery.trim()))">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option custom-model-option"
+                                                        v-if="createMenu.selects.propQuery.trim() && !createMenu.props.some(p => p.toLowerCase() === createMenu.selects.propQuery.trim().toLowerCase())"
+                                                        @click.stop="selectCustomOption('prop', createMenu.selects.propQuery.trim())">
+                                                        <iconify-icon icon="mdi:pencil-outline"></iconify-icon> Usar "{{ createMenu.selects.propQuery.trim() }}"
+                                                    </div>
+                                                    <div class="dropdown-option" v-for="prop in filteredProps" :key="'prop-' + prop" @click.stop="selectCustomOption('prop', prop)">
+                                                        {{ prop }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input" v-if="modal.createContract.objectiveType === 'prop' && createMenu.propRobable">
+                                            <iconify-icon icon="mdi:tag-text-outline" class="icon"></iconify-icon>
+                                            <input type="text" placeholder="Item robado (ej: black_money)" v-model="modal.createContract.propItemName">
+                                        </div>
+                                        <div class="input" v-if="modal.createContract.objectiveType === 'prop' && createMenu.propRobable">
+                                            <iconify-icon icon="mdi:numeric" class="icon"></iconify-icon>
+                                            <input type="number" min="1" placeholder="Cantidad del item robado" v-model="modal.createContract.propItemAmount">
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('accessMode') }" @click.stop="toggleCustomSelect('accessMode')">
+                                            <iconify-icon icon="mdi:account-group-outline" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ getAccessModeLabel(modal.createContract.accessMode || 'public') }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.accessModeOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar acceso..." v-model="createMenu.selects.accessModeQuery">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="accessMode in filteredAccessModes" :key="'access-' + accessMode" @click.stop="selectCustomOption('accessMode', accessMode)">
+                                                        {{ getAccessModeLabel(accessMode) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input" v-if="modal.createContract.accessMode === 'specific_gang'">
+                                            <iconify-icon icon="mdi:shield-account-outline" class="icon"></iconify-icon>
+                                            <input type="text" placeholder="ID/Nombre banda requerida" v-model="modal.createContract.requiredGang">
+                                        </div>
+                                        <div class="input" v-if="modal.createContract.accessMode === 'specific_crew'">
+                                            <iconify-icon icon="mdi:car-multiple" class="icon"></iconify-icon>
+                                            <input type="text" placeholder="ID/Nombre crew requerida" v-model="modal.createContract.requiredCrew">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="fluent:guardian-20-filled" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Número de guardias" v-model="modal.createContract.npcs">
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('npcWeapon') }" @click.stop="toggleCustomSelect('npcWeapon')">
+                                            <iconify-icon icon="game-icons:pistol-gun" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ modal.createContract.npcWeapon ? armaLegible(modal.createContract.npcWeapon) : 'Arma de guardias' }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.npcWeaponOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar o escribe un arma..." v-model="createMenu.selects.npcWeaponQuery" @keydown.enter.stop="createMenu.selects.npcWeaponQuery.trim() && selectCustomOption('npcWeapon', createMenu.selects.npcWeaponQuery.trim())">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option custom-model-option"
+                                                        v-if="createMenu.selects.npcWeaponQuery.trim() && !createMenu.weapons.some(w => w.toLowerCase() === createMenu.selects.npcWeaponQuery.trim().toLowerCase())"
+                                                        @click.stop="selectCustomOption('npcWeapon', createMenu.selects.npcWeaponQuery.trim())">
+                                                        <iconify-icon icon="mdi:pencil-outline"></iconify-icon> Usar "{{ createMenu.selects.npcWeaponQuery.trim() }}"
+                                                    </div>
+                                                    <div class="dropdown-option" v-for="weapon in filteredWeapons" :key="'weapon-' + weapon" @click.stop="selectCustomOption('npcWeapon', weapon)">
+                                                        {{ armaLegible(weapon) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input searchable-select point-select" :class="{ open: isSelectOpen('spawnPoint') }" @click.stop="toggleCustomSelect('spawnPoint')">
+                                            <iconify-icon icon="mdi:map-marker-radius" class="icon"></iconify-icon>
+                                            <div class="selected-value">
+                                                {{ modal.createContract.spawnPointId ? getPointOptionLabel(getPointById(createMenu.spawnPoints, modal.createContract.spawnPointId, 'spawn'), 0, 'spawn') : 'Punto de inicio' }}
+                                            </div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <button class="inline-modal-btn compact" @click.stop="openNewPointDialog('spawn')">+ Nuevo</button>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.spawnPointOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar punto de inicio..." v-model="createMenu.selects.spawnPointQuery">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="(point, idx) in filteredSpawnPoints" :key="'spawn-' + (point.id || idx)" @click.stop="selectCustomOption('spawnPoint', getPointOptionId(point, idx, 'spawn'))">
+                                                        {{ getPointOptionLabel(point, idx, 'spawn') }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input searchable-select point-select" :class="{ open: isSelectOpen('deliveryPoint') }" @click.stop="toggleCustomSelect('deliveryPoint')">
+                                            <iconify-icon icon="mdi:map-marker-check" class="icon"></iconify-icon>
+                                            <div class="selected-value">
+                                                {{ modal.createContract.deliveryPointId ? getPointOptionLabel(getPointById(createMenu.deliveryPoints, modal.createContract.deliveryPointId, 'delivery'), 0, 'delivery') : 'Punto final (entrega)' }}
+                                            </div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <button class="inline-modal-btn compact" @click.stop="openNewPointDialog('delivery')">+ Nuevo</button>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.deliveryPointOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar punto de entrega..." v-model="createMenu.selects.deliveryPointQuery">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="(point, idx) in filteredDeliveryPoints" :key="'delivery-' + (point.id || idx)" @click.stop="selectCustomOption('deliveryPoint', getPointOptionId(point, idx, 'delivery'))">
+                                                        {{ getPointOptionLabel(point, idx, 'delivery') }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:crosshairs-gps" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Radio visible del contrato en mapa" v-model="modal.createContract.stageRadius">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:timer-outline" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Tiempo máximo de la fase (segundos)" v-model="modal.createContract.stageTimer">
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('minigame') }" @click.stop="toggleCustomSelect('minigame')">
+                                            <iconify-icon icon="mdi:gamepad-variant" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ modal.createContract.minigame ? getMinigameLabel(modal.createContract.minigame) : t('modal.admin_edit_contract.minigame') }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.minigameOpen" @click.stop>
+                                                <input type="text" :placeholder="t('contracts.search')" v-model="createMenu.selects.minigameQuery">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="minigame in filteredMinigames" :key="'minigame-' + minigame" @click.stop="selectCustomOption('minigame', minigame)">
+                                                        {{ getMinigameLabel(minigame) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input searchable-select" :class="{ open: isSelectOpen('minigameDifficulty') }" @click.stop="toggleCustomSelect('minigameDifficulty')">
+                                            <iconify-icon icon="mdi:tune-vertical-variant" class="icon"></iconify-icon>
+                                            <div class="selected-value">{{ getMinigameDifficultyLabel(modal.createContract.minigameDifficulty || 'auto') }}</div>
+                                            <iconify-icon icon="mdi:chevron-down" class="select-arrow"></iconify-icon>
+                                            <div class="dropdown-panel" v-if="createMenu.selects.minigameDifficultyOpen" @click.stop>
+                                                <input type="text" placeholder="Buscar dificultad..." v-model="createMenu.selects.minigameDifficultyQuery">
+                                                <div class="dropdown-options">
+                                                    <div class="dropdown-option" v-for="difficulty in filteredMinigameDifficulties" :key="'difficulty-' + difficulty" @click.stop="selectCustomOption('minigameDifficulty', difficulty)">
+                                                        {{ getMinigameDifficultyLabel(difficulty) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:hand-coin" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Recompensa OGN" v-model="modal.createContract.reward">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="lets-icons:expand-up-double" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Experiencia (XP)" v-model="modal.createContract.experience">
+                                        </div>
+                                        <div class="input" v-if="modal.createContract.objectiveType === 'vehicle'" :class="{ disabled: !createMenu.vinScratch }">
+                                            <iconify-icon icon="tabler:coin-filled" class="icon"></iconify-icon>
+                                            <input type="number" placeholder="Precio del borrado de VIN" v-model="modal.createContract.vin">
+                                        </div>
+                                        </div>
+
+                                        <div class="contract-options-row">
+                                            <div class="co-cell">
+                                                <span class="co-label">Categoría</span>
+                                                <div class="co-picker">
+                                                    <button class="co-arrow" @click="updateCategory('prev')"><iconify-icon icon="eva:arrow-left-fill"></iconify-icon></button>
+                                                    <span class="co-val">{{modal.createContract.category}}</span>
+                                                    <button class="co-arrow" @click="updateCategory('next')"><iconify-icon icon="eva:arrow-right-fill"></iconify-icon></button>
+                                                </div>
+                                            </div>
+                                            <div class="co-cell">
+                                                <span class="co-label">{{t('modal.admin_edit_contract.difficulty')}}</span>
+                                                <div class="co-picker">
+                                                    <button class="co-arrow" @click="createMenu.difficultyIndex = createMenu.difficultyIndex > 1 ? createMenu.difficultyIndex - 1 : createMenu.difficulty.length"><iconify-icon icon="eva:arrow-left-fill"></iconify-icon></button>
+                                                    <span class="co-val">{{t('modal.admin_edit_contract.difficulties.' + createMenu.difficultyIndex)}}</span>
+                                                    <button class="co-arrow" @click="createMenu.difficultyIndex = createMenu.difficultyIndex < createMenu.difficulty.length ? createMenu.difficultyIndex + 1 : 1"><iconify-icon icon="eva:arrow-right-fill"></iconify-icon></button>
+                                                </div>
+                                            </div>
+                                            <div class="co-cell" v-if="modal.createContract.objectiveType === 'vehicle'">
+                                                <span class="co-label">{{t('modal.admin_edit_contract.vin_scratch')}}</span>
+                                                <button class="co-toggle" :class="{ active: createMenu.vinScratch }" @click="createMenu.vinScratch = !createMenu.vinScratch">
+                                                    <iconify-icon :icon="createMenu.vinScratch ? 'mdi:check-circle' : 'mdi:close-circle'"></iconify-icon>
+                                                    {{createMenu.vinScratch ? t('modal.admin_edit_contract.enabled') : t('modal.admin_edit_contract.disabled')}}
+                                                </button>
+                                            </div>
+                                            <div class="co-cell" v-if="modal.createContract.objectiveType === 'prop'">
+                                                <span class="co-label">Objeto robable</span>
+                                                <button class="co-toggle" :class="{ active: createMenu.propRobable }" @click="createMenu.propRobable = !createMenu.propRobable">
+                                                    <iconify-icon :icon="createMenu.propRobable ? 'mdi:check-circle' : 'mdi:close-circle'"></iconify-icon>
+                                                    {{createMenu.propRobable ? t('modal.admin_edit_contract.enabled') : t('modal.admin_edit_contract.disabled')}}
+                                                </button>
+                                            </div>
+                                            <div class="co-cell" v-if="modal.createContract.objectiveType === 'prop'">
+                                                <span class="co-label">Entrega obligatoria</span>
+                                                <button class="co-toggle" :class="{ active: createMenu.propRequireDelivery }" @click="createMenu.propRequireDelivery = !createMenu.propRequireDelivery">
+                                                    <iconify-icon :icon="createMenu.propRequireDelivery ? 'mdi:check-circle' : 'mdi:close-circle'"></iconify-icon>
+                                                    {{createMenu.propRequireDelivery ? t('modal.admin_edit_contract.enabled') : t('modal.admin_edit_contract.disabled')}}
+                                                </button>
+                                            </div>
+                                            <div class="co-cell" v-if="modal.createContract.objectiveType === 'prop' && createMenu.propRobable">
+                                                <span class="co-label">Pierde al morir</span>
+                                                <button class="co-toggle" :class="{ active: createMenu.propLoseOnDeath }" @click="createMenu.propLoseOnDeath = !createMenu.propLoseOnDeath">
+                                                    <iconify-icon :icon="createMenu.propLoseOnDeath ? 'mdi:check-circle' : 'mdi:close-circle'"></iconify-icon>
+                                                    {{createMenu.propLoseOnDeath ? t('modal.admin_edit_contract.enabled') : t('modal.admin_edit_contract.disabled')}}
+                                                </button>
+                                            </div>
+                                            <div class="co-cell" v-if="modal.createContract.objectiveType === 'prop' && createMenu.propRobable">
+                                                <span class="co-label">Pierde al desconectar</span>
+                                                <button class="co-toggle" :class="{ active: createMenu.propLoseOnDisconnect }" @click="createMenu.propLoseOnDisconnect = !createMenu.propLoseOnDisconnect">
+                                                    <iconify-icon :icon="createMenu.propLoseOnDisconnect ? 'mdi:check-circle' : 'mdi:close-circle'"></iconify-icon>
+                                                    {{createMenu.propLoseOnDisconnect ? t('modal.admin_edit_contract.enabled') : t('modal.admin_edit_contract.disabled')}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestCreateContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Overlay: nombre del nuevo punto -->
+                                <transition name="fade">
+                                    <div class="npd-overlay" v-if="createMenu.newPointDialog.visible" @click.self="createMenu.newPointDialog.visible = false">
+                                        <div class="npd-modal" @click.stop>
+                                            <div class="npd-header">
+                                                <iconify-icon :icon="createMenu.newPointDialog.type === 'spawn' ? 'mdi:map-marker-radius' : 'mdi:map-marker-check'"></iconify-icon>
+                                                <span>{{ createMenu.newPointDialog.type === 'spawn' ? 'Nuevo punto de inicio' : 'Nuevo punto de entrega' }}</span>
+                                            </div>
+                                            <div class="npd-body">
+                                                <p class="npd-hint">Ponle un nombre para identificarlo y luego colócalo en el mapa.</p>
+                                                <input class="npd-input" type="text"
+                                                    :placeholder="createMenu.newPointDialog.type === 'spawn' ? 'Ej: Almacén Sur, Garaje Norte...' : 'Ej: Puerto, Entrega Centro...'"
+                                                    v-model="createMenu.newPointDialog.name"
+                                                    @keydown.enter.stop="confirmNewPointDialog()"
+                                                    @keydown.esc.stop="createMenu.newPointDialog.visible = false">
+                                            </div>
+                                            <div class="npd-footer">
+                                                <button class="npd-btn confirm" @click="confirmNewPointDialog()">
+                                                    <iconify-icon icon="mdi:map-marker-plus"></iconify-icon>
+                                                    Colocar en mapa
+                                                </button>
+                                                <button class="npd-btn cancel" @click="createMenu.newPointDialog.visible = false">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
+                            </div>
+                        </template>
+                        <template v-if="modal.id === 'send_contract'">
+                            <div class="modal-container">
+                                <div class="modal send-coins-modal">
+                                    <div class="title">
+                                        {{t('modal.admin_send_contract.header')}}
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="eva:person-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.admin_send_contract.player_id')" v-model="modal.sendContract.id">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.admin_send_contract.price')" v-model="modal.sendContract.price">
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestSendContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'settings'">
+                            <div class="modal-container">
+                                <div class="modal settings-modal" id="cSettings">
+                                    <div class="title settings-title">
+                                        <div class="settings-title-main">
+                                            <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
+                                            <span>Gestión de Categorías</span>
+                                        </div>
+                                        <div class="settings-title-sub">Vehículos y objetos gestionados por separado</div>
+                                    </div>
+                                    <div class="body">
+                                        <div class="settings-sections">
+                                            <div class="settings-type-block" :class="settingsViewType === 'vehicle' ? 'vehicle' : 'object'">
+                                                <div class="settings-actions">
+                                                    <div class="settings-type-tabs">
+                                                        <button class="settings-tab-btn" :class="{ active: settingsViewType === 'vehicle' }" @click="setSettingsViewType('vehicle')">
+                                                            <iconify-icon icon="mdi:car-sports"></iconify-icon>
+                                                            <span>Vehículos</span>
+                                                        </button>
+                                                        <button class="settings-tab-btn" :class="{ active: settingsViewType === 'prop' }" @click="setSettingsViewType('prop')">
+                                                            <iconify-icon icon="mdi:package-variant-closed"></iconify-icon>
+                                                            <span>Objetos</span>
+                                                        </button>
+                                                    </div>
+                                                    <button class="inline-modal-btn" @click="addSettingRank(settingsViewType)">Nueva categoría</button>
+                                                </div>
+                                                <div class="settings-table-wrap">
+                                                    <div class="settings-editor-list">
+                                                        <div class="settings-editor-row" v-for="(item, key) in activeSettingsRows" :key="'setting-active-' + settingsViewType + '-' + key + '-' + item.name">
+                                                            <div class="settings-row-content">
+                                                                <div class="settings-main-grid">
+                                                                    <div class="settings-field lg">
+                                                                        <span>Categoría</span>
+                                                                        <input type="text" maxlength="24" v-model="item.name">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>Orden</span>
+                                                                        <input type="number" min="1" v-model="item.sortOrder" @change="normalizeTypeSortOrders(settingsViewType)">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.xp')}}</span>
+                                                                        <input type="number" v-model="item.xp">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.percentage')}}</span>
+                                                                        <input type="number" v-model="item.percentage">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="settings-secondary-grid">
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.tries')}}</span>
+                                                                        <input type="number" v-model="item.tries">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.fails')}}</span>
+                                                                        <input type="number" v-model="item.fails">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.max')}}</span>
+                                                                        <input type="number" v-model="item.max">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.minCops')}}</span>
+                                                                        <input type="number" v-model="item.minCops">
+                                                                    </div>
+                                                                    <div class="settings-field">
+                                                                        <span>{{t('contracts.settings.hackxp')}}</span>
+                                                                        <input type="number" v-model="item.hackxp">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="settings-row-actions">
+                                                                <button class="inline-modal-btn compact" @click="moveSettingRankByType(settingsViewType, key, 'up')" :disabled="key === 0">↑</button>
+                                                                <button class="inline-modal-btn compact" @click="moveSettingRankByType(settingsViewType, key, 'down')" :disabled="key === (activeSettingsRows.length - 1)">↓</button>
+                                                                <button class="inline-modal-btn compact" @click="onSettingMissionTypeChange(item, settingsViewType === 'vehicle' ? 'prop' : 'vehicle')">{{ settingsViewType === 'vehicle' ? 'A Obj' : 'A Veh' }}</button>
+                                                                <button class="inline-modal-btn danger" @click="removeSettingRankByType(settingsViewType, key)" :disabled="activeSettingsRows.length <= 1">Eliminar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onUpdateRanks()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'changeName'">
+                            <div class="modal-container">
+                                <div class="modal profile-name-modal">
+                                    <div class="title">
+                                        <span v-if="this.mainBoosting.profile.username">{{t('modal.change_name.edit_header')}}</span>
+                                        <span v-else>{{t('modal.change_name.create_header')}}</span>
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:rename" class="icon"></iconify-icon>
+                                            <input type="text" :placeholder="t('modal.change_name.name')" v-model="modal.editName.username"/>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestNameUpdate(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()" :class="{disabled: modal.editName.restrictExit}">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'changeProfileImage'">
+                            <div class="modal-container">
+                                <div class="modal profile-media-modal">
+                                    <div class="title">
+                                        Cambiar foto de perfil
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="lucide:user-circle" class="icon"></iconify-icon>
+                                            <input type="text" placeholder="https://..." v-model="modal.editProfile.image"/>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestProfileImageUpdate(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'changeProfileBanner'">
+                            <div class="modal-container">
+                                <div class="modal profile-media-modal">
+                                    <div class="title">
+                                        Cambiar banner de perfil
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="lucide:image" class="icon"></iconify-icon>
+                                            <input type="text" placeholder="https://..." v-model="modal.editProfile.banner"/>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestProfileBannerUpdate(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'delete_contract'">
+                            <div class="modal-container">
+                                <div class="modal send-coins-modal modal--peligro">
+                                    <div class="title">
+                                        {{t('modal.admin_delete_contract.header')}}
+                                    </div>
+                                    <div class="body">
+                                        <p>{{t('modal.admin_delete_contract.message', modal.selectedContract.label)}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestRemoveContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'sendCoins'">
+                            <div class="modal-container">
+                                <div class="modal send-coins-modal modal--jugador">
+                                    <div class="title">
+                                        {{t('modal.send_coins.header')}}
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="eva:person-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.send_coins.player_id')" v-model="modal.sendCoins.id">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="ri:copper-coin-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.send_coins.amount')" v-model="modal.sendCoins.amount">
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestSendCoins(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'adminGiveCoins'">
+                            <div class="modal-container">
+                                <div class="modal send-coins-modal">
+                                    <div class="title">
+                                        {{t('modal.admin_give_coins.header')}}
+                                    </div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="eva:person-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.admin_give_coins.player_id')" v-model="modal.adminGiveCoins.id">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="ri:copper-coin-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.admin_give_coins.amount')" v-model="modal.adminGiveCoins.amount">
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestAdminGiveCoins(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'buyContract'">
+                            <div class="modal-container">
+                                <div class="modal buy-contract-modal">
+                                    <div class="title">{{t('modal.buy_contract.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.buy_contract.message', n(modal.selectedContract.price))}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestBuyContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'cancelAuctionOffer'">
+                            <div class="modal-container">
+                                <div class="modal">
+                                    <div class="title">{{t('modal.cancel_market_offer.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.cancel_market_offer.message')}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestCancelAuctionOffer(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'buyAuctionOffer'">
+                            <div class="modal-container">
+                                <div class="modal">
+                                    <div class="title">{{t('modal.buy_market_offer.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.buy_market_offer.message', n(modal.selectedContract.price))}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestBuyAuctionOffer(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'declineContract'">
+                            <div class="modal-container">
+                                <div class="modal">
+                                    <div class="title">{{t('modal.decline_contract.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.decline_contract.message')}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestDeclineContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'startContract'">
+                            <div class="modal-container">
+                                <div class="modal start-contract-modal">
+                                    <div class="title">{{t('modal.start_contract.header')}}</div>
+                                    <div class="body">
+                                        <p v-if="modal.selectedContract.vin">{{t('modal.start_contract.message_vin', n(modal.selectedContract.reward), modal.selectedContract.vin)}}</p>
+                                        <p v-else>{{t('modal.start_contract.message', n(modal.selectedContract.reward))}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <div>
+                                            <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestStartContract(false), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                                {{t('modal.deliver')}}
+                                            </button>
+                                            <button v-if="modal.selectedContract.vin" @mouseenter="onHoverSound()" class="pay" @click="onRequestStartContract(true), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                                {{t('modal.deliver_vin')}}
+                                            </button>
+                                        </div>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'cancelContract'">
+                            <div class="modal-container">
+                                <div class="modal cancel-contract-modal">
+                                    <div class="title">{{t('modal.cancel_contract.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.cancel_contract.message')}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestCancelContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'sellContract'">
+                            <div class="modal-container">
+                                <div class="modal sell-contract-modal">
+                                    <div class="title">{{t('modal.sell_contract.header')}}</div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="eva:person-fill" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.sell_contract.player_id')" v-model="modal.sellContract.target">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.sell_contract.price')" v-model="modal.sellContract.offerPrice">
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestSellContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'sellContractMarket'">
+                            <div class="modal-container">
+                                <div class="modal sell-market-modal">
+                                    <div class="title">{{t('modal.sell_contract_market.header')}}</div>
+                                    <div class="body">
+                                        <div class="input">
+                                            <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.sell_contract_market.price')" v-model="modal.sellContractMarket.price">
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="tabler:clock-filled" class="icon"></iconify-icon>
+                                            <input type="number" :placeholder="t('modal.sell_contract_market.duration')" v-model="modal.sellContractMarket.duration">
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestSellContractMarket(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template v-if="modal.id === 'declineSavedContract'">
+                            <div class="modal-container">
+                                <div class="modal decline-saved-modal">
+                                    <div class="title">{{t('modal.decline_saved_contract.header')}}</div>
+                                    <div class="body">
+                                        <p>{{t('modal.decline_saved_contract.message')}}</p>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestDeclineSavedContract(), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onCancelModal(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <template v-if="modal.id === 'contractOffer'">
+                            <div class="modal-container">
+                                <div class="modal">
+                                    <div class="title">{{t('modal.contract_offer.header')}}</div>
+                                    <div class="body">
+                                        <p class="subtitle">{{t('modal.contract_offer.message')}}</p>
+                                        <div class="input">
+                                            <iconify-icon icon="solar:tag-price-bold" class="icon"></iconify-icon>
+                                            <p class="info">{{n(modal.selectedContract.price)}}</p>
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:rank" class="icon"></iconify-icon>
+                                            <p class="info">{{modal.selectedContract.category}}</p>
+                                        </div>
+                                        <div class="input" v-if="modal.selectedContract.vin">
+                                            <iconify-icon icon="solar:garage-bold" class="icon"></iconify-icon>
+                                            <p class="info">{{modal.selectedContract.vin}}</p>
+                                        </div>
+                                        <div class="input">
+                                            <iconify-icon icon="mdi:hand-coin" class="icon"></iconify-icon>
+                                            <p class="info">{{n(modal.selectedContract.reward)}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <button class="confirm" @mouseenter="onHoverSound()" @click="onRequestBuyContract(true), onClickSound()" :class="{disabled: !showConfirmModal()}">
+                                            {{t('modal.confirm')}}
+                                        </button>
+                                        <button class="cancel" @mouseenter="onHoverSound()" @click="onRequestRefuseContractOffer(), onClickSound()">
+                                            {{t('modal.cancel')}}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </transition>
+
+                    <div class="notifications">
+                        <transition-group name="fade-bottom" class="list" tag="div">
+                            <div class="notification" v-for="(item, index) in notifications" :key="index" :class="item.type">
+                                <div class="content" :style="{ marginTop: item.title ? 'calc(0.6vh / var(--ogn-escala, 1))' : '0' }">
+                                    <div class="icon">
+                                        <iconify-icon
+                                            :icon="item.type === 'success' ? 'mdi:check' : item.type === 'error' ? 'mdi:close' : 'mdi:information'" 
+                                            class="icon"
+                                        ></iconify-icon>
+                                    </div>
+                                    <div class="info">
+                                        <div class="name" v-if="item.title">{{item.title}}</div>
+                                        <div class="message">{{item.message}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition-group>
+                    </div>
+                </div>
+            </transition>
+            <transition name="incoming-contract-slide">
+                <!-- Formato MENÚ PEQUEÑO (07/10, skill origen-dialogo): la columna
+                     con el aviso y el riel de 64 a su derecha, del mismo alto. -->
+                <div class="incoming-contract-popup cbi" v-if="incomingContractPopup.visible && incomingContractPopup.contract">
+                  <section class="cbi-col">
+                    <div class="incoming-timer">
+                        <div class="incoming-timer-fill" :style="{ width: incomingContractPopup.progress + '%' }"></div>
+                    </div>
+                    <div class="contact-head">
+                        <div class="contact-avatar">
+                            <iconify-icon icon="mdi:account-tie"></iconify-icon>
+                        </div>
+                        <div class="contact-meta">
+                            <span class="contact-name">Señor Nadie</span>
+                            <span class="contact-sub">Transmisión de misión</span>
+                        </div>
+                    </div>
+                    <div class="incoming-body">
+                        <div class="incoming-title">{{ incomingContractPopup.contract.label || 'Contrato recibido' }}</div>
+                        <div class="incoming-desc">{{ getContractDescription(incomingContractPopup.contract) }}</div>
+                        <div class="incoming-metrics">
+                            <div class="m">
+                                <span>Precio</span>
+                                <strong>{{ n(incomingContractPopup.contract.price || 0) }}</strong>
+                            </div>
+                            <div class="m">
+                                <span>Recompensa</span>
+                                <strong>{{ n(incomingContractPopup.contract.reward || 0) }}</strong>
+                            </div>
+                            <div class="m">
+                                <span>Clase</span>
+                                <strong>{{ (incomingContractPopup.contract.category || '-').toUpperCase() }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="incoming-hint">
+                        Pulsa <strong>I</strong> para mostrar/ocultar raton y responder el encargo
+                    </div>
+                    <div class="incoming-actions">
+                        <button class="accept" @click="onIncomingContractDecision('buy'), onClickSound()" @mouseenter="onHoverSound()">Comprar</button>
+                        <button class="deny" @click="onIncomingContractDecision('decline'), onClickSound()" @mouseenter="onHoverSound()">Denegar</button>
+                    </div>
+                  </section>
+                  <nav class="cbi-riel">
+                    <span class="cbi-riel__placa"><iconify-icon icon="mdi:account-tie"></iconify-icon></span>
+                    <span class="cbi-riel__pie">{{ marca === 'nacion' ? 'Nación' : 'Origen' }} Boosting</span>
+                  </nav>
+                </div>
+            </transition>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="./js/script.js?v=hub0810f"></script>
+</html>
